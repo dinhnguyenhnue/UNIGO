@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Extraction & cache files
+extracted_pages/
+extracted_assets/
+*.zip
+
+# AI Models sub-repositories (optional ignore or track)
+# AI_model/
