@@ -3,10 +3,11 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Extraction & cache files
+# Extraction & temp files
 extracted_pages/
 extracted_assets/
-*.zip
+ocr_output/
+*.log
 
-# AI Models sub-repositories (optional ignore or track)
-# AI_model/
+# Sub-repositories cloned under AI_model
+AI_model/
