@@ -11,3 +11,7 @@ ocr_output/
 
 # Sub-repositories cloned under AI_model
 AI_model/
+
+# Office temporary files
+~$*
+

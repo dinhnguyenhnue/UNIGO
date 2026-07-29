@@ -64,8 +64,7 @@ D:\UNIGO\
 ├── Công_văn_quy_định\     # Ref: Công văn, quy định
 ├── Hệ thống mẫu văn bản\ # Ref: Templates (KHBD, slide, v.v.)
 ├── Phân phối chương trình\ # Ref: PPCT
-├── KHBD\Lớp_{X}\          # Output: Kế hoạch bài dạy
-├── Slide_bài_giảng\Lớp_{X}\ # Output: Slide bài giảng
+├── KHBD\Lớp_{X}\Bài {Y}\  # Output: Folder lưu KHBD .docx, Slide .pptx và ảnh AI
 ├── Tài liệu thêm\         # Tài liệu bổ sung
 └── .agents\skills\         # Skills định nghĩa
     ├── unigo-giao-vien\    # Harness chính (file này)
@@ -78,22 +77,23 @@ D:\UNIGO\
 ### Font & Format
 | Sản phẩm | Font | Cỡ chữ | Lề |
 |----------|------|---------|-----|
-| KHBD .docx | Times New Roman | 13 | Trên/dưới 2cm, trái 2.5cm, phải 1.5cm |
+| KHBD .docx | Times New Roman | 13 | Trái 3cm, Phải 2cm, Trên 2cm, Dưới 2cm |
 | Slide .pptx | Arial | ≥18 (nội dung), ≥28 (tiêu đề) | Margin ≥1cm |
 
 ### Năng lực số
 **BẮT BUỘC** trong mọi KHBD — phải có mục "Năng lực số" riêng biệt.
 
-### Màu sắc slide
-Thay đổi theo chủ đề bài học, KHÔNG cố định một màu.
-Đảm bảo tương phản tốt (chữ dễ đọc trên nền).
+### Màu sắc slide & Hiệu ứng
+- Thay đổi theo chủ đề bài học, KHÔNG cố định một màu.
+- Đảm bảo tương phản tốt (chữ dễ đọc trên nền).
+- Có hiệu ứng chuyển slide (Transition) và xuất hiện nội dung (Animation).
 
 ### Chân trang slide
 Mọi slide đều có thanh chân trang xanh với "TRƯỜNG TIỂU HỌC VÀ THCS UNIGO".
 
 ### Lưu file đúng vị trí
-- KHBD → `D:\UNIGO\KHBD\Lớp_{X}\`
-- Slide → `D:\UNIGO\Slide_bài_giảng\Lớp_{X}\`
+Tất cả tài liệu của từng bài học lưu gom trong 1 folder bài học nằm trong folder khối lớp:
+- `D:\UNIGO\KHBD\Lớp_{X}\Bài {Y}\` (chứa file Word, PPTX và thư mục `images/`)
 
 ## Cải tiến liên tục (Learning Loop)
 

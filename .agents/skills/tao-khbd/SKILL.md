@@ -41,7 +41,7 @@ Sử dụng `python-docx` để tạo file .docx với:
 
 #### Format bắt buộc:
 - Font: **Times New Roman**, cỡ **13**
-- Lề: trên 2cm, dưới 2cm, trái 2.5cm, phải 1.5cm
+- Lề: trái 3cm, phải 2cm, trên 2cm, dưới 2cm (3, 2, 2, 2)
 - Line spacing: 1.15
 
 #### Cấu trúc KHBD Tiểu học (Mẫu Unigo):
@@ -58,7 +58,7 @@ I. YÊU CẦU CẦN ĐẠT:
 2. Phát triển năng lực
    2.1. Năng lực môn học
    2.2. Năng lực chung và đặc thù
-   2.3. Năng lực số ⭐ (BẮT BUỘC)
+   2.3. Năng lực số (BẮT BUỘC)
 
 II. ĐỒ DÙNG DẠY HỌC:
 1. Giáo viên: ...
@@ -98,7 +98,7 @@ I. Mục tiêu
 2. Năng lực:
    - Năng lực chung: ...
    - Năng lực đặc thù: ...
-   - Năng lực số: ... ⭐ (BẮT BUỘC)
+   - Năng lực số: ... (BẮT BUỘC)
 3. Phẩm chất: [cụ thể]
 
 II. Thiết bị dạy học và học liệu
@@ -118,11 +118,14 @@ BGH | TỔ CHUYÊN MÔN | NGƯỜI SOẠN
 ```
 
 ### Bước 6: Lưu file
-**Quy tắc đặt tên và lưu file:**
+**Quy tắc đặt tên và cấu trúc lưu file:**
 ```
-D:\UNIGO\KHBD\Lớp_{X}\KHBD_{Môn}_{Lớp}_Bai{XX}_{Ten_bai}.docx
+D:\UNIGO\KHBD\Lớp_{X}\Bài {Y}\
+├── KHBD_{Môn}_{Lớp}_Bai{XX}_{Ten_bai}.docx
+├── Slide_{Môn}_{Lớp}_Bai{XX}_{Ten_bai}.pptx
+└── images\
 ```
-Ví dụ: `D:\UNIGO\KHBD\Lớp_3\KHBD_Tin_hoc_3_Bai01_Thong_tin_va_quyet_dinh.docx`
+Ví dụ: `D:\UNIGO\KHBD\Lớp_3\Bài 1\KHBD_Tin_hoc_3_Bai01_Thong_tin_va_quyet_dinh.docx`
 
 ## Yêu cầu nội dung Năng lực số (BẮT BUỘC)
 Mục Năng lực số phải bao gồm các biểu hiện cụ thể:

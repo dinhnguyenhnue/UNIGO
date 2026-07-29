@@ -29,34 +29,33 @@ font tiếng Việt chuẩn, màu sắc thay đổi linh hoạt theo nội dung 
 - Kích thước: 20×11.2 inches (widescreen)
 - Giữ nguyên chân trang UNIGO
 
-### Bước 4: Thiết kế slide
-
-#### Quy tắc font:
-- Font chính: **Arial** (hỗ trợ Unicode/tiếng Việt tốt nhất trên PowerPoint)
-- **KHÔNG dùng** Times New Roman cho slide (chỉ dùng cho KHBD .docx)
-- Font size: Tiêu đề ≥ 28pt, Nội dung ≥ 18pt, Chú thích ≥ 14pt
-- Luôn set cả `a:latin` attribute để đảm bảo không lỗi font
-
-#### Quy tắc màu sắc (LINH HOẠT theo bài):
+#### Quy tắc thiết kế giao diện & Bố cục nâng cao (High-Aesthetic Design System):
+1. **Top Header Banner (Thanh tiêu đề hàng đầu):**
+   - Mọi slide nội dung đều có thanh Banner màu chủ đạo phía trên (chiều cao ~3.8cm).
+   - Có **Badge Pill màu nhấn** hiển thị tên môn & số bài (ví dụ `[ TIN HỌC 3 • BÀI 1 ]`).
+   - Tiêu đề slide chữ trắng in đậm (22pt) đặt vừa vặn trong Banner.
+2. **Hệ thống Container dạng Thẻ (Modern Card Grid System):**
+   - Nội dung không thả trôi tự do mà được đóng gói trong các **Card bo góc** (`ROUNDED_RECTANGLE`) màu trắng (`#FFFFFF`) hoặc pastel nhạt (`#F8FAFC`, `#EEF2FF`).
+   - **Vạch màu nhấn bên trái Card (Left Accent Strip):** Mỗi card kiến thức/mục tiêu có thanh vạch màu chuyên biệt ở lề trái (rộng ~0.6cm) tạo điểm nhấn thị giác cực đẹp.
+   - **Huy hiệu số thứ tự (Number Badges):** Mục tiêu hay danh sách được đánh số bằng hình tròn/Pill màu nổi bật (`01`, `02`, `03`).
+3. **Khung hình ảnh AI (Image Framing):**
+   - Hình ảnh AI được lồng bên trong một Card container màu trắng có viền bo tròn (`ROUNDED_RECTANGLE`) giúp bức ảnh chìm nổi hài hòa với slide, không bị cụt hay thô.
+4. **Trang bìa Hero (Hero Title Slide):**
+   - Thiết kế dạng Hero Card sang trọng chính giữa slide với thanh accent màu da cam lề trái, Badge Pill môn học, tiêu đề chữ tối nổi bật và thẻ thông tin GV/Trường bên phải.
+5. **Quy tắc màu sắc (LINH HOẠT theo bài):**
 | Chủ đề | Màu chủ đạo | Màu nhấn |
 |--------|-------------|----------|
-| Thông tin, Internet, Mạng | Xanh dương | Cam |
-| Lập trình, Thuật toán | Tím | Xanh lá |
-| Đạo đức số, An toàn | Đỏ cam | Vàng |
-| Ứng dụng, Phần mềm | Xanh lá | Xanh dương |
-| Máy tính, Phần cứng | Xám xanh | Cam |
-| Sáng tạo, Mĩ thuật | Tím hồng | Vàng |
+| Thông tin, Internet, Mạng | Xanh dương (`#1E3A8A`) | Cam (`#EA580C`) / Xanh lá (`#10B981`) |
+| Lập trình, Thuật toán | Tím (`#581C87`) | Xanh dương (`#2563EB`) / Xanh lá |
+| Đạo đức số, An toàn | Đỏ cam (`#DC2626`) | Vàng (`#F59E0B`) |
+| Ứng dụng, Phần mềm | Xanh lá (`#065F46`) | Xanh biển (`#0284C7`) / Cam |
+| Máy tính, Phần cứng | Xám xanh (`#0F172A`) | Xanh điện (`#0284C7`) / Hổ phách |
+| Sáng tạo, Lịch sử | Tím hoàng gia (`#581C87`) | Xanh ngọc (`#0D9488`) |
 
-#### Quy tắc tương phản:
-- Chữ tối trên nền sáng, chữ trắng trên nền tối
-- Nền slide: luôn dùng màu rất nhạt (pastel), KHÔNG dùng trắng thuần
-- Tiêu đề section: rounded rectangle với nền đậm + chữ trắng
-- Hộp kiến thức: nền pastel nhạt + chữ tối
-
-#### Quy tắc khoảng cách:
-- Margin slide: tối thiểu 1cm từ mép
-- Khoảng cách giữa các phần tử: ≥ 0.5cm
-- Chân trang: 1.2cm từ đáy slide
+#### Quy tắc tương phản & khoảng cách:
+- Nền slide: luôn dùng màu rất nhạt (pastel/slate `#F8FAFC`), KHÔNG dùng trắng thuần hay tối thui.
+- Card: màu trắng tinh (`#FFFFFF`) có viền nhẹ (`#E2E8F0`) + vạch lề màu nổi bật.
+- Margin slide: tối thiểu 1cm từ mép; Chân trang: 1.2cm từ đáy slide.
 
 ### Bước 5: Cấu trúc slide deck (12-16 slides)
 
@@ -76,10 +75,19 @@ Mỗi slide đều có:
 - Thanh ngang xanh dương (#0070C0) ở đáy
 - Text: "TRƯỜNG TIỂU HỌC VÀ THCS UNIGO" (trắng, bold, 14pt)
 
-### Bước 7: Lưu file
+### Bước 7: Hiệu ứng chuyển cảnh & Animation
+- **Slide transition (Chuyển trang):** Can thiệp XML `p:transition` với các hiệu ứng `fade`, `push`, `wipe`, `cover`, `split`.
+- **Animation (Xuất hiện nội dung):** Can thiệp XML `p:timing` với hiệu ứng `appear` hiển thị các ô văn bản và hình ảnh theo lượt click.
+
+### Bước 8: Lưu file
+**Vị trí lưu tập trung theo bài học:**
 ```
-D:\UNIGO\Slide_bài_giảng\Lớp_{X}\Slide_{Môn}_{Lớp}_Bai{XX}_{Ten_bai}.pptx
+D:\UNIGO\KHBD\Lớp_{X}\Bài {Y}\
+├── Slide_{Môn}_{Lớp}_Bai{XX}_{Ten_bai}.pptx
+├── KHBD_{Môn}_{Lớp}_Bai{XX}_{Ten_bai}.docx
+└── images\
 ```
+Ví dụ: `D:\UNIGO\KHBD\Lớp_3\Bài 1\Slide_Tin_hoc_3_Bai01_Thong_tin_va_quyet_dinh.pptx`
 
 ## Thư viện sử dụng
 - `python-pptx`: Tạo .pptx
