@@ -95,6 +95,13 @@ Mọi slide đều có thanh chân trang xanh với "TRƯỜNG TIỂU HỌC VÀ 
 Tất cả tài liệu của từng bài học lưu gom trong 1 folder bài học nằm trong folder khối lớp:
 - `D:\UNIGO\KHBD\Lớp_{X}\Bài {Y}\` (chứa file Word, PPTX và thư mục `images/`)
 
+### Bảo tồn Header & Footer mẫu (QUY TẮC TOÀN CỤC)
+Áp dụng cho TẤT CẢ sản phẩm .docx và .pptx:
+- **Header .docx:** KHÔNG xóa/ghi đè paragraph chứa logo `w:drawing`. Chỉ sửa text trong Run cụ thể.
+- **Footer .docx:** KHÔNG thao tác footer. Giữ `w:sectPr` khi dọn body để bảo tồn cả header lẫn footer.
+- **Chân trang .pptx:** Giữ nguyên slide master/layout chứa thanh chân trang UNIGO. KHÔNG xóa shapes chân trang.
+- **Phần đầu & cuối văn bản:** Tiêu đề, ngày tháng, khung ký tên, rút kinh nghiệm... luôn giữ đúng form mẫu gốc.
+
 ## Cải tiến liên tục (Learning Loop)
 
 Sau mỗi phiên làm việc:

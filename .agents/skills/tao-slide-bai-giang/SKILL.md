@@ -27,7 +27,9 @@ font tiếng Việt chuẩn, màu sắc thay đổi linh hoạt theo nội dung 
 ### Bước 3: Load template
 - **Luôn** bắt đầu từ template: `D:\UNIGO\Hệ thống mẫu văn bản\Mẫu slide có chân trang.pptx`
 - Kích thước: 20×11.2 inches (widescreen)
-- Giữ nguyên chân trang UNIGO
+- **Giữ nguyên chân trang UNIGO** trên MỌI slide (thanh xanh "TRƯỜNG TIỂU HỌC VÀ THCS UNIGO").
+- **Bảo tồn slide master/layout:** KHÔNG xóa shapes ở vị trí chân trang. Khi thêm slide mới, luôn dùng layout từ template có sẵn chân trang.
+- **Kiểm tra sau xuất:** Xác nhận mỗi slide có shape chân trang UNIGO.
 
 #### Quy tắc thiết kế giao diện & Bố cục nâng cao (High-Aesthetic Design System):
 1. **Top Header Banner (Thanh tiêu đề hàng đầu):**

@@ -1,6 +1,34 @@
-# Quy trình & Quy chuẩn tạo Kế hoạch dạy học (KHDH / Khung chương trình) UNIGO
+# Quy trình & Quy chuẩn tạo văn bản UNIGO
 
-Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu cầu đầu ra bắt buộc cho Agent AI khi tạo, chỉnh sửa hoặc chuẩn hóa các văn bản Kế hoạch dạy học (KHDH), Khung chương trình phân phối môn học (Phụ lục IV - Bộ GD&ĐT) cho các môn học tại UNIGO.
+Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu cầu đầu ra bắt buộc cho Agent AI khi tạo, chỉnh sửa hoặc chuẩn hóa các văn bản tại UNIGO (KHDH, KHBD, Kế hoạch tổ chuyên môn, Lịch báo giảng, Báo cáo, và tất cả các loại văn bản hành chính khác).
+
+---
+
+## 0. Quy tắc bảo tồn mẫu văn bản (Áp dụng cho TẤT CẢ các loại tài liệu)
+
+> [!IMPORTANT]
+> Quy tắc này áp dụng cho MỌI task xử lý file .docx/.pptx tại UNIGO: KHBD, Kế hoạch dạy học, Kế hoạch tổ chuyên môn, Lịch báo giảng, Báo cáo, và tất cả các văn bản hành chính khác.
+
+1. **TUYỆT ĐỐI giữ nguyên phần ĐẦU và CUỐI của file mẫu gốc:**
+   - **Header:** Logo UNIGO, tên trường, thông tin giáo viên nằm trong header. KHÔNG được xóa, ghi đè hoặc làm mất bất kỳ phần tử nào (đặc biệt là `w:drawing` chứa logo).
+   - **Footer:** Chân trang mẫu (ký tên BGH, Tổ chuyên môn, Người soạn, hoặc thanh chân trang slide). KHÔNG được xóa, ghi đè hoặc thay đổi nội dung footer.
+   - **Phần đầu trang văn bản:** Tiêu đề văn bản, thông tin trường, ngày tháng... phải giữ đúng format mẫu.
+   - **Phần cuối trang văn bản:** Khung ký tên, Rút kinh nghiệm, Điều chỉnh bổ sung... phải giữ nguyên.
+
+2. **Kỹ thuật python-docx bảo tồn Header/Footer:**
+   - **Giữ `w:sectPr`:** Khi dọn body, lặp `doc.element.body` và bỏ qua child có tag kết thúc bằng `sectPr` (chứa references tới cả header lẫn footer).
+   - **Sửa text trong Header:** KHÔNG gọi `paragraph.text = "..."` trên paragraph chứa `w:drawing`. Chỉ sửa text trong Run cụ thể (VD: `hp.runs[2].text`) để giữ nguyên Run 0 chứa logo drawing.
+   - **Không thao tác Footer:** Footer nằm trong `section.footer` và được bảo tồn tự động khi giữ `w:sectPr`. KHÔNG truy cập hoặc chỉnh sửa footer trừ khi user yêu cầu rõ ràng.
+
+3. **Kỹ thuật python-pptx bảo tồn chân trang slide:**
+   - Giữ nguyên slide master/layout chứa thanh chân trang.
+   - Khi thêm slide mới, luôn dùng layout từ template có sẵn chân trang.
+   - KHÔNG xóa shapes ở vị trí chân trang.
+
+4. **Kiểm tra sau xuất file:**
+   - `.docx`: Xác nhận `header drawings count ≥ 1` và `footer paragraphs count ≥ 1`.
+   - `.pptx`: Xác nhận mỗi slide có shape chân trang UNIGO.
+   - Không có paragraphs rỗng thừa (50+) ở đầu file.
 
 ---
 
@@ -89,7 +117,7 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
 
 1. **Mục tiêu Kiến thức & Mục tiêu Hoạt động**: Sử dụng Danh từ / Cụm danh từ (ví dụ: *Sự hiểu biết về...*, *Khả năng nhận diện...*, *Sự phân biệt...*). TUYỆT ĐỐI KHÔNG ghi chữ `(BẮT BUỘC)` tùy tiện.
 2. **Phân nhóm Năng lực & Phẩm chất**: Phải chia làm 3 nhóm: Năng lực đặc thù (Tin học), Năng lực số (Thông tư 02/2025 - CV 3456), Năng lực chung. Chỉ rõ mỗi năng lực/phẩm chất được phát triển qua `#Hoạt động` nào trong bài (ví dụ: `(Đạt được thông qua Hoạt động 1, Hoạt động 2)`).
-3. **Cấu trúc 4 Hoạt động & Bảng 3 Cột**: 
+3. **Cấu trúc 4 Hoạt động & Bảng 3 Cột**:
    - 4 Hoạt động: Khởi động -> Hình thành kiến thức mới -> Luyện tập -> Vận dụng.
    - Mỗi hoạt động có 4 mục: a) Mục tiêu; b) Nội dung; c) Sản phẩm; d) Tổ chức thực hiện.
    - Bảng Tổ chức thực hiện dạng **3 Cột** (`Bước` | `Hoạt động của GV` | `Hoạt động của HS`) với 4 hàng (`Chuyển giao`, `Thực hiện`, `Báo cáo`, `Kết luận`).
