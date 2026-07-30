@@ -44,6 +44,7 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
 
 2. **Xử lý bảng và định dạng bằng Script Python (`python-docx`):**
    - Đảm bảo can thiệp cấp XML (`w:gridSpan`, `w:tcPr`) khi xử lý dòng gộp (Chủ đề) hoặc dòng phân tách (Bài học).
+   - **Đường viền bảng (Table Borders):** Bắt buộc chèn XML `w:tblBorders` (`top`, `left`, `bottom`, `right`, `insideH`, `insideV` với `w:val="single"`, `w:sz="4"`, `w:color="000000"`) khi tạo hoặc thay thế bảng bằng `doc.add_table()`. Tuyệt đối không để bảng thiếu viền (borderless) và không phụ thuộc vào `table.style = 'Table Grid'` (tránh lỗi `KeyError: no style with name 'Table Grid'`).
    - Áp dụng hàm `afont()` / `set_font_all()` quét toàn bộ paragraph và run để áp font Times New Roman 13pt.
    - Bọc hàm lưu file `save_doc()` bằng try-except PermissionError để tránh lỗi khóa file khi người dùng đang mở trong Word.
 
@@ -58,3 +59,27 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
 4. **Báo cáo & Nghiệm thu:**
    - Kiểm tra empirically thông qua script Python xác nhận 100% các bảng đạt 4 cột, đủ 35 tiết/năm và không bị lỗi lặp hàng.
    - Trả lời ngắn gọn, rõ ràng kèm đường dẫn gạch chân `file:///...` clickable cho người dùng.
+
+---
+
+## III. Quy định bắt buộc cho Kế hoạch Tổ chuyên môn (THCS)
+
+1. **TUYỆT ĐỐI GIỮ NGUYÊN FORM MẪU FILE GỐC:**
+   - Khi xử lý file `30.07.26. Kế hoạch tổ chuyên môn (THCS).docx` (hoặc các file Kế hoạch tổ chuyên môn tương tự), **CẤM TUYỆT ĐỐI** xóa bỏ form, thay đổi cấu trúc bảng mẫu hoặc tự ý nạp/thay thế các bảng 4 cột/bảng ngoài vào làm vỡ form của file gốc.
+   - Giữ intact toàn bộ các Phần I, II, III, IV, V, VII, VIII của file gốc.
+
+2. **CẤU TRÚC PHẦN VI. KẾ HOẠCH GIẢNG DẠY:**
+   Nội dung phần **VI. KẾ HOẠCH GIẢNG DẠY** cho các môn học tổ THCS (Lớp 6, 7, 8) bắt buộc phải điền dữ liệu đúng theo khung form chuẩn sẵn có của file mẫu:
+   - **Mỗi môn học gồm 3 mục:**
+     - `X.1. Kế hoạch dạy học chính khoá`:
+       - Đoạn thông tin số tiết (Cả năm, Học kì 1, Học kì 2, số điểm kiểm tra thường xuyên/định kỳ).
+       - **Bảng 7 CỘT Phân phối bài học:** `TT` | `Bài/chủ đề` | `Tổng số tiết` | `Tuần` | `Tiết theo PPCT` | `Nội dung` | `Mục tiêu bài học`. Có dòng gộp ô `Học kì 1` và `Học kì 2`.
+     - `X.2. Kế hoạch dạy học tăng cường`: Mô tả hoặc liệt kê nội dung dạy học tăng cường.
+     - `X.3. Kế hoạch kiểm tra đánh giá`:
+       - **Bảng 5 CỘT Kiểm tra đánh giá:** `TT` | `Lớp` | `Bài kiểm tra` | `Nội dung` | `Hình thức`. Cập nhật đủ 4 mốc (Đánh giá định kỳ 1, 2, 3, 4).
+
+3. **Thứ tự 14 môn học cố định:**
+   Sắp xếp lần lượt đúng 14 môn:
+   `1. Ngữ văn` -> `2. Toán` -> `3. Tiếng Anh` -> `4. Tiếng Trung` -> `5. Khoa học tự nhiên` -> `6. Lịch sử và Địa lý` -> `7. Tin học` -> `8. Robotics` -> `9. Giáo dục công dân` -> `10. Giáo dục địa phương` -> `11. Hoạt động trải nghiệm, hướng nghiệp` -> `12. Âm nhạc` -> `13. Mỹ thuật` -> `14. Giáo dục thể chất`.
+   - Nếu môn nào chưa có đủ chi tiết PPCT (ví dụ: Tiếng Trung, LS&ĐL, GDCD, Âm nhạc), giữ nguyên khung form chuẩn của môn đó và ghi rõ ghi chú bổ sung sau.
+
