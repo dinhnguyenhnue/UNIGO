@@ -83,3 +83,14 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
    `1. Ngữ văn` -> `2. Toán` -> `3. Tiếng Anh` -> `4. Tiếng Trung` -> `5. Khoa học tự nhiên` -> `6. Lịch sử và Địa lý` -> `7. Tin học` -> `8. Robotics` -> `9. Giáo dục công dân` -> `10. Giáo dục địa phương` -> `11. Hoạt động trải nghiệm, hướng nghiệp` -> `12. Âm nhạc` -> `13. Mỹ thuật` -> `14. Giáo dục thể chất`.
    - Nếu môn nào chưa có đủ chi tiết PPCT (ví dụ: Tiếng Trung, LS&ĐL, GDCD, Âm nhạc), giữ nguyên khung form chuẩn của môn đó và ghi rõ ghi chú bổ sung sau.
 
+---
+
+## IV. Quy định soạn Kế hoạch bài dạy (KHBD) môn Tin học theo Prompt chuẩn
+
+1. **Mục tiêu Kiến thức & Mục tiêu Hoạt động**: Sử dụng Danh từ / Cụm danh từ (ví dụ: *Sự hiểu biết về...*, *Khả năng nhận diện...*, *Sự phân biệt...*). TUYỆT ĐỐI KHÔNG ghi chữ `(BẮT BUỘC)` tùy tiện.
+2. **Phân nhóm Năng lực & Phẩm chất**: Phải chia làm 3 nhóm: Năng lực đặc thù (Tin học), Năng lực số (Thông tư 02/2025 - CV 3456), Năng lực chung. Chỉ rõ mỗi năng lực/phẩm chất được phát triển qua `#Hoạt động` nào trong bài (ví dụ: `(Đạt được thông qua Hoạt động 1, Hoạt động 2)`).
+3. **Cấu trúc 4 Hoạt động & Bảng 3 Cột**: 
+   - 4 Hoạt động: Khởi động -> Hình thành kiến thức mới -> Luyện tập -> Vận dụng.
+   - Mỗi hoạt động có 4 mục: a) Mục tiêu; b) Nội dung; c) Sản phẩm; d) Tổ chức thực hiện.
+   - Bảng Tổ chức thực hiện dạng **3 Cột** (`Bước` | `Hoạt động của GV` | `Hoạt động của HS`) với 4 hàng (`Chuyển giao`, `Thực hiện`, `Báo cáo`, `Kết luận`).
+4. **Chuyển Phụ lục xuống Phần V**: Phiếu học tập, Rubric đánh giá, kịch bản minigame phải đưa xuống Phần V. Phụ lục ở cuối bài dạy.
