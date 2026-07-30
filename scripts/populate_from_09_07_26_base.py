@@ -253,6 +253,74 @@ def parse_lessons_from_source(doc_src, table_idx):
 
     return cleaned_rows
 
+def populate_section_v(doc):
+    """Populates Section IV and Section V (MỤC TIÊU) tables 6, 7, 8 and paragraphs."""
+    print("Populating Section IV & Section V (MỤC TIÊU)...")
+    
+    # Section IV paragraph
+    for p in doc.paragraphs:
+        txt = p.text.strip()
+        if txt.startswith("- Danh hiệu thi đua của tổ:"):
+            p.text = "- Danh hiệu thi đua của tổ: Tập thể Lao động Xuất sắc"
+        elif txt.startswith("Mục tiêu năm 2025-2026") or txt.startswith("Mục tiêu năm 2026-2027"):
+            p.text = "Mục tiêu năm 2026-2027: 100% học sinh đạt yêu cầu môn học, tỷ lệ Tốt/Khá đạt trên 85%, không có học sinh Chưa đạt."
+
+    # Table 06: Chất lượng đại trà
+    if len(doc.tables) > 6:
+        t6 = doc.tables[6]
+        row3_vals = ['1', 'Lớp 6A1', '30', 'Tin học & Robotics', 'Đậu Đình Nguyên', '24', '80%', '6', '20%', '0', '0%', '0', '0%']
+        row4_vals = ['2', 'Lớp 7A1', '30', 'Ngữ văn & Toán', 'Nguyễn Thị Hà / Cô Tân', '21', '70%', '9', '30%', '0', '0%', '0', '0%']
+        row6_vals = ['1', 'Lớp 6A1', '30', 'Tin học & Robotics', 'Đậu Đình Nguyên', '26', '86.7%', '4', '13.3%', '0', '0%', '0', '0%']
+        row7_vals = ['2', 'Lớp 7A1', '30', 'Ngữ văn & Toán', 'Nguyễn Thị Hà / Cô Tân', '24', '80%', '6', '20%', '0', '0%', '0', '0%']
+        
+        if len(t6.rows) > 3:
+            for c_i, val in enumerate(row3_vals): t6.rows[3].cells[c_i].text = val
+        if len(t6.rows) > 4:
+            for c_i, val in enumerate(row4_vals): t6.rows[4].cells[c_i].text = val
+        if len(t6.rows) > 6:
+            for c_i, val in enumerate(row6_vals): t6.rows[6].cells[c_i].text = val
+        if len(t6.rows) > 7:
+            for c_i, val in enumerate(row7_vals): t6.rows[7].cells[c_i].text = val
+
+    # Table 07: Chất lượng thành tích cao
+    if len(doc.tables) > 7:
+        t7 = doc.tables[7]
+        t7_r1 = ['1', 'Học sinh giỏi cấp Cụm/Huyện', 'Tin học & Ngữ văn', 'Đậu Đình Nguyên / Nguyễn Thị Hà', '5', 'Cụm/Huyện', '1', '1', '2', '1', '100%']
+        t7_r2 = ['2', 'Hội thi KHKT / Sáng tạo TTN', 'Robotics & KHTN', 'Đậu Đình Nguyên', '3', 'Cụm/Thành phố', '1', '1', '1', '0', '100%']
+        if len(t7.rows) > 1:
+            for c_i, val in enumerate(t7_r1): t7.rows[1].cells[c_i].text = val
+        if len(t7.rows) > 2:
+            for c_i, val in enumerate(t7_r2): t7.rows[2].cells[c_i].text = val
+
+    # Table 08: Thành tích cá nhân
+    if len(doc.tables) > 8:
+        t8 = doc.tables[8]
+        t8_vals = [
+            ['1', 'Giáo viên xuất sắc', '4', '2', '0', '0'],
+            ['2', 'Giáo viên giỏi', '4', '2', '0', '0'],
+            ['3', 'Lao động tiên tiến', '4', '0', '0', '0'],
+            ['4', 'Chiến sĩ thi đua', '2', '1', '0', '0'],
+            ['5', 'Viết SKKN', '4', '2', '0', '0'],
+            ['6', 'Bài giảng E-learning', '4', '2', '0', '0'],
+        ]
+        for r_i, r_data in enumerate(t8_vals):
+            if len(t8.rows) > r_i + 2:
+                for c_i, val in enumerate(r_data):
+                    t8.rows[r_i+2].cells[c_i].text = val
+
+    # Format fonts for Section V tables
+    for t_idx in [6, 7, 8]:
+        if len(doc.tables) > t_idx:
+            t = doc.tables[t_idx]
+            set_table_borders(t)
+            for row in t.rows:
+                for cell in row.cells:
+                    for p in cell.paragraphs:
+                        p.style.font.name = 'Times New Roman'
+                        for r in p.runs:
+                            r.font.name = 'Times New Roman'
+                            r.font.size = Pt(13)
+
 def add_subject_section_inplace(doc, anchor_elem, s_idx, s_name, has_data, source_files_map, periods_per_week=1):
     curr = anchor_elem
     curr = add_p_after(doc, curr, f"{s_idx}. Môn: {s_name}", bold=True, font_size=14)
@@ -290,6 +358,9 @@ def add_subject_section_inplace(doc, anchor_elem, s_idx, s_name, has_data, sourc
 def main():
     print(f"Loading base template file from {BASE_09_07_26}...")
     doc = docx.Document(BASE_09_07_26)
+
+    # First populate Section V before editing Section VI
+    populate_section_v(doc)
 
     p_vi = None
     p_vii = None
@@ -330,7 +401,7 @@ def main():
     f_tin = os.path.join(DIR_MAU, 'Kế hoạch dạy học môn Tin học (THCS) - 2026 - 2027.docx')
     f_robotics = os.path.join(DIR_MAU, 'Kế hoạch dạy học môn Robotics (THCS) - 2026 - 2027.docx')
 
-    print("Populating 14 subjects (Setting HĐTN name to 'Hoạt động trải nghiệm' with PPCT tables 6, 7, 8)...")
+    print("Populating 14 subjects with Section V filled...")
 
     # 1. Ngữ văn (Văn 6 from f_van6_lsdl T7; Văn 7 from f_van78_gddp T5; Văn 8 from f_van78_gddp T8)
     map_van = {6: (f_van6_lsdl, 7), 7: (f_van78_gddp, 5), 8: (f_van78_gddp, 8)}
@@ -406,7 +477,7 @@ def main():
     for target in [TARGET_1, TARGET_2, TARGET_3]:
         try:
             doc.save(target)
-            print(f"Successfully saved document with HĐTN to {target}")
+            print(f"Successfully saved document with SECTION V filled to {target}")
         except PermissionError:
             print(f"Permission error saving to {target}")
 
