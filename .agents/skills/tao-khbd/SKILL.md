@@ -25,27 +25,37 @@ các hoạt động trực quan, sinh động.
 Agent PHẢI thực hiện tuần tự đầy đủ 6 bước dưới đây cho MỖI bài dạy.
 Không được bỏ qua hay gộp bước. Mỗi bước phải có kết quả kiểm chứng rõ ràng.
 
-### Bước 1: Xem mẫu file KHBD (Template)
+### Bước 1: Xác định cấp học & Đọc Luật tương ứng
 
-**Mục đích:** Nắm chắc cấu trúc, layout, header/footer, logo, margin, font của file
-mẫu để đảm bảo bản xuất ra giữ nguyên 100% form.
+**Mục đích:** Nắm chắc luật format, cấu trúc, header/footer riêng cho từng cấp học trước khi thực hiện bất kỳ thao tác nào.
 
-**Thực hiện:**
-- Mở và đọc file template tương ứng với cấp học:
+**Thực hiện — BẮT BUỘC đọc file luật trước:**
 
-| Cấp | File mẫu |
-|-----|----------|
-| Tiểu học (Tiền TH, Lớp 1-5) | `D:\UNIGO\Hệ thống mẫu văn bản\Khung  giáo án Unigo 2026-2027 Thang 7.2026.docx` |
-| THCS (Lớp 6-9) | `D:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx` |
+| Cấp học | File mẫu | File luật |  
+|:---|:---|:---|
+| Tiền TH + Lớp 1-5 (Tiểu học) | `D:\UNIGO\Hệ thống mẫu văn bản\Khung  giáo án Unigo 2026-2027 Thang 7.2026.docx` | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_TIEU_HOC.md` |
+| Lớp 6-9 (THCS) | `D:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx` | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_THCS.md` |
 
-- Xác nhận:
-  - Header có logo UNIGO (Run 0 chứa `w:drawing`) → PHẢI bảo tồn.
-  - Footer có nội dung ký tên / chân trang mẫu → PHẢI bảo tồn.
-  - Font: Times New Roman 13pt.
-  - Lề: Trái 3cm, Phải 2cm, Trên 2cm, Dưới 2cm.
-  - Giãn dòng: 1.15.
+**Dispatch logic:**
+```
+Nếu cấp = Tiền TH / Lớp 1 / Lớp 2 / Lớp 3 / Lớp 4 / Lớp 5:
+    → Đọc KHBD_TIEU_HOC.md → Áp dụng toàn bộ luật TH
+    → Template: Khung giáo án Unigo 2026-2027 Thang 7.2026.docx
+    → Bảng HĐ: 2 cột (GV / HS), hàng gộp gridSpan=2
+    → Margins: Trái 3.0cm, Phải 2.0cm, Trên 2.0cm, Dưới 2.0cm
+    → Line spacing: 1.5
+    → Mục tiêu: Phẩm chất TRƯỚC → Năng lực SAU
 
-**Kết quả bước 1:** Ghi nhận cấu trúc template, số section, header drawings count, footer content.
+Nếu cấp = Lớp 6 / Lớp 7 / Lớp 8 / Lớp 9:
+    → Đọc KHBD_THCS.md → Áp dụng toàn bộ luật THCS
+    → Template: PL4-Khung kế hoạch bài dạy (THCS).docx
+    → Tiến trình: Paragraphs Bước 1-4 (KHÔNG dùng bảng)
+    → Margins: Trái 2.54cm, Phải 1.27cm, Trên 1.27cm, Dưới 1.27cm
+    → Line spacing: 1.15
+    → Mục tiêu: Kiến thức → Năng lực (chung/đặc thù/số) → Phẩm chất
+```
+
+**Kết quả bước 1:** Ghi nhận: (1) Cấp học, (2) File luật đã đọc, (3) Template sẽ dùng, (4) Format chủ đạo.
 
 ---
 
@@ -94,77 +104,74 @@ mẫu trong SGK.
 
 ---
 
-### Bước 4: Soạn bài theo Prompt chuẩn
+### Bước 4: Soạn bài theo cấu trúc luật tương ứng
 
-**Mục đích:** Xây dựng nội dung KHBD hoàn chỉnh theo đúng cấu trúc quy định.
+**Mục đích:** Xây dựng nội dung KHBD hoàn chỉnh theo đúng luật cấp học đã đọc ở Bước 1.
 
-**Cấu trúc KHBD chuẩn:**
+> QUAN TRỌNG: Cấu trúc KHBD Tiểu học và THCS KHÁC NHAU. Phải áp dụng đúng luật đã đọc.
 
+**Cấu trúc KHBD Tiểu học (đọc chi tiết tại KHBD_TIEU_HOC.md):**
 ```
-TÊN BÀI DẠY: [TÊN BÀI IN HOA]
-Môn học: Tin học | Lớp: [Lớp] | Thời lượng: [Số tiết] (45 phút)
-Tiết theo PPCT: [Số tiết]
-Giáo viên thực hiện: Đậu Đình Nguyên
+[Ngày dạy] [GV] [Môn] [Chủ điểm] [Bài - Tiết PPCT]
 
-I. MỤC TIÊU
-1. Về kiến thức:
-   * [Danh từ 1]... (VD: Sự hiểu biết về khái niệm...)
-   * [Danh từ 2]...
+I. YÊU CẦU CẦN ĐẠT:
+   - Sau tiết học, học sinh sẽ:
+   1. Phát triển phẩm chất     ← PHẨM CHẤT TRƯỚC
+   2. Phát triển năng lực
+      2.1. Năng lực môn học:
+      2.2. Năng lực chung và đặc thù:
 
-2. Về năng lực:
-   * Năng lực đặc thù (Tin học):
-     - NLa/NLb/NLc: [Mô tả] (Đạt được thông qua Hoạt động [X]).
-   * Năng lực số:
-     - Năng lực [Mã - Tên]: [Mô tả] (Đạt được thông qua Hoạt động [Y]).
-   * Năng lực chung:
-     - [Tên NL]: [Mô tả] (Đạt được thông qua Hoạt động [Z]).
+II. ĐỒ DÙNG DẠY HỌC
+III. PHƯƠNG PHÁP, KĨ THUẬT DẠY HỌC
 
-3. Về phẩm chất:
-   * [Tên PC]: [Hành vi biểu hiện] (Thông qua Hoạt động [W]).
+IV. CÁC HOẠT ĐỘNG DẠY - HỌC CHỦ YẾU:
+[BẢNG 2 CỘT: Hoạt động của GV | Hoạt động của HS]
+- Hàng gộp (gridSpan=2) cho mỗi tiêu đề HĐ
+- 4 HĐ: Mở đầu | Hình thành KT | Luyện tập-TH | Vận dụng, Trải nghiệm
 
-II. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU
-   * Giáo viên: ...
-   * Học sinh: ...
-
-III. TIẾN TRÌNH DẠY HỌC
-   1. Hoạt động 1: Khởi động (7 phút)
-      a) Mục tiêu   b) Nội dung   c) Sản phẩm   d) Tổ chức thực hiện
-      | Bước        | Hoạt động của GV | Hoạt động của HS |
-      | Chuyển giao | ...              | ...              |
-      | Thực hiện   | ...              | ...              |
-      | Báo cáo     | ...              | ...              |
-      | Kết luận    | ...              | ...              |
-
-   2. Hoạt động 2: Hình thành kiến thức mới (18 phút)
-      (Cấu trúc tương tự)
-
-   3. Hoạt động 3: Luyện tập (12 phút)
-      (Cấu trúc tương tự)
-
-   4. Hoạt động 4: Vận dụng (8 phút)
-      (Cấu trúc tương tự)
-
-IV. ĐÁNH GIÁ KẾT QUẢ
-   * Đánh giá thường xuyên: ...
-   * Đánh giá định biên (Nhóm): ... (Rubric 1 ở Phụ lục 3)
-   * Đánh giá sản phẩm vận dụng: ... (Rubric 2 ở Phụ lục 4)
-
-V. PHỤ LỤC
-   * Phụ lục 1: Phiếu học tập số 1 (Cá nhân)
-   * Phụ lục 2: Phiếu học tập số 2 (Nhóm)
-   * Phụ lục 3: Rubric 1 - Đánh giá hoạt động nhóm (Bảng 4 cột)
-   * Phụ lục 4: Rubric 2 - Đánh giá sản phẩm vận dụng
+V. ĐIỀU CHỈNH - BỔ SUNG SAU TIẾT DẠY  ← COPY NGUYÊN từ template
 ```
 
-**Quy tắc nội dung:**
+**Cấu trúc KHBD THCS (đọc chi tiết tại KHBD_THCS.md):**
+```
+[Table 2×2: Trường/GV/Tổ/Ngày]  ← GIỮ NGUYÊN TABLE GỐC
+TÊN BÀI DẠY: ...
+Tiết theo PPCT: ...
+Tên tiết: ...
+
+I. Mục tiêu
+   1. Kiến thức:               ← KIẾN THỨC TRƯỚC
+   2. Năng lực:
+      - Năng lực chung:
+      - Năng lực đặc thù
+      - Năng lực số
+   3. Phẩm chất:
+
+II. Thiết bị dạy học và học liệu:
+   1. Thiết bị
+   2. Học liệu
+
+III. Tiến trình dạy học
+   1. Hoạt động 1. Khởi động    ← PARAGRAPHS (không dùng bảng)
+      a) Mục tiêu  b) Nội dung  c) Sản phẩm  d) Tổ chức thực hiện
+      Bước 1. Chuyển giao nhiệm vụ
+      Bước 2. Học sinh tiếp nhận
+      Bước 3. Báo cáo kết quả
+      Bước 4. Đánh giá kết quả
+   (HĐ 2, 3: cấu trúc tương tự)
+   4. Hoạt động mở rộng (Nhiệm vụ về nhà)
+
+RÚT KINH NGHIỆM SAU BÀI DẠY   ← GIỮ NGUYÊN
+[Table 1×3: BGH | Tổ CM | Người soạn]  ← GIỮ NGUYÊN TABLE GỐC
+```
+
+**Quy tắc nội dung chung:**
 - Nội dung phải bám sát SGK (Bước 2), không bịa đặt kiến thức.
-- Hoạt động khởi động phải gây hứng thú, mới mẻ (câu hỏi tình huống, trò chơi, video).
-- Hoạt động hình thành kiến thức phải có tương tác GV-HS, không chỉ đọc SGK.
-- Hoạt động luyện tập phải có thực hành trên máy tính (nếu bài cho phép).
-- Hoạt động vận dụng phải gắn với tình huống thực tế đời sống.
-- Phiếu học tập, Rubric → chuyển hết xuống Phần V. Phụ lục.
+- Hoạt động khởi động: câu hỏi tình huống, trò chơi, video tạo hứng thú.
+- Hình thành kiến thức: tương tác GV-HS, không chỉ đọc SGK.
+- Luyện tập: thực hành trên máy tính nếu bài cho phép.
 
-**Kết quả bước 4:** Nội dung KHBD hoàn chỉnh dạng văn bản.
+**Kết quả bước 4:** Nội dung KHBD hoàn chỉnh đúng cấu trúc cấp học.
 
 ---
 
