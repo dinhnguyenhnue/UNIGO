@@ -122,3 +122,16 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
    - Mỗi hoạt động có 4 mục: a) Mục tiêu; b) Nội dung; c) Sản phẩm; d) Tổ chức thực hiện.
    - Bảng Tổ chức thực hiện dạng **3 Cột** (`Bước` | `Hoạt động của GV` | `Hoạt động của HS`) với 4 hàng (`Chuyển giao`, `Thực hiện`, `Báo cáo`, `Kết luận`).
 4. **Chuyển Phụ lục xuống Phần V**: Phiếu học tập, Rubric đánh giá, kịch bản minigame phải đưa xuống Phần V. Phụ lục ở cuối bài dạy.
+
+---
+
+## V. Quy định Quản lý Git & Push dữ liệu (Git Workflow)
+
+1. **Quy tắc Push toàn bộ (Full Push):**
+   Khi người dùng yêu cầu "push", "đẩy lên git", hoặc sau khi hoàn thành task được yêu cầu đồng bộ:
+   - **Bước 1:** Kiểm tra toàn bộ trạng thái repository bằng `git status`.
+   - **Bước 2:** Bắt buộc dùng `git add -A` (hoặc `git add .`) để gom TOÀN BỘ file đã chỉnh sửa (Modified), file xóa (Deleted) và file mới tạo (Untracked). KHÔNG gom riêng lẻ từng file trừ khi user chỉ định cụ thể.
+   - **Bước 3:** Commit với thông điệp rõ ràng, tóm tắt các công việc/file đã thay đổi: `git commit -m "..."`.
+   - **Bước 4:** Đẩy lên remote repository: `git push origin [branch]`.
+   - **Bước 5:** Chạy lại `git status` để xác nhận working tree hoàn toàn sạch (`nothing to commit, working tree clean`).
+
