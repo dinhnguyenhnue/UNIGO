@@ -135,18 +135,20 @@ Tất cả hoạt động được đặt trong **1 bảng duy nhất** với **
 - Luyện tập: 10 phút
 - Vận dụng: 5 phút
 
-### Phần V — ĐIỀU CHỈNH - BỔ SUNG (GIỮ NGUYÊN HOÀN TOÀN)
+### Phần V — ĐIỀU CHỈNH - BỔ SUNG
 
-CÁC PARAGRAPH SAU ĐÂY PHẢI được sao chép nguyên xi từ template, không được tự viết lại:
+CÁC PARAGRAPH SAU ĐÂY PHẢI được sao chép nguyên xi từ template (từ P[33] đến P[35]):
 - `V. ĐIỀU CHỈNH - BỔ SUNG SAU TIẾT DẠY :` (bold, center)
 - `(GV ghi những nội dung mà mình đã bổ sung ngoài KHBD đã lên...)` (bold, center)
 - Hàng dấu chấm `........`
-- Phần `* Lưu ý khi soạn kế hoạch bài dạy:` và 5 dòng ghi chú bên dưới (P[36]-P[42])
 
-Kỹ thuật: Mở template thứ hai, copy XML trực tiếp:
+> [!IMPORTANT]
+> **LOẠI BỎ**: Phần `* Lưu ý khi soạn kế hoạch bài dạy:` và các dòng hướng dẫn bên dưới (P[36]-P[42]) chỉ mang tính chỉ dẫn trong mẫu, **BẮT BUỘC BỎ** khi tạo file KHBD chính thức.
+
+Kỹ thuật: Mở template, copy XML chỉ lấy P[33] đến P[35]:
 ```python
 doc_tpl = Document(TPL_PRIMARY)
-tail_paras = doc_tpl.paragraphs[33:]  # Từ "V. ĐIỀU CHỈNH..." đến hết
+tail_paras = doc_tpl.paragraphs[33:36]  # Chỉ lấy P[33], P[34], P[35], BỎ P[36] trở đi
 for p in tail_paras:
     new_p = copy.deepcopy(p._p)
     doc.element.body._body.append(new_p)  # Thêm trước sectPr

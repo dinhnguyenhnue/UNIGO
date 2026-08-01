@@ -328,12 +328,12 @@ def create_khbd_th(grade_name, grade_folder, bai_so, ten_bai, chu_diem,
                 add_merged_row_th(table, header_lines)
                 add_content_row_th(table, act.get('gv', ['']), act.get('hs', ['']))
 
-    # ── V. ĐIỀU CHỈNH BỔ SUNG — copy từ template gốc ─────────────────────
+    # ── V. ĐIỀU CHỈNH BỔ SUNG — copy từ template gốc (chỉ P[33]-P[35], BỎ P[36]+) ──
     doc_tpl = Document(TPL_TH)
     tpl_paras = doc_tpl.paragraphs
-    # P[33] là "V. ĐIỀU CHỈNH..." đến P[43]
+    # P[33] đến P[35]: "V. ĐIỀU CHỈNH...", ghi chú GV, hàng dấu chấm. Bỏ P[36]+ (* Lưu ý...)
     tail_start = 33
-    for i in range(tail_start, min(len(tpl_paras), 44)):
+    for i in range(tail_start, 36):
         new_p = copy.deepcopy(tpl_paras[i]._p)
         # Chèn trước sectPr
         sect_pr = doc.element.body.find(qn('w:sectPr'))
