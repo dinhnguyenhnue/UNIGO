@@ -343,8 +343,14 @@ def create_khbd_th(grade_name, grade_folder, bai_so, ten_bai, chu_diem,
             doc.element.body.append(new_p)
 
     # ── Save ──────────────────────────────────────────────────────────────
-    out_dir = os.path.join(OUT_BASE, grade_folder, f'Bài_{bai_so:02d}')
-    filename = f'KHBD_Tin_hoc_{grade_folder}_Bai{bai_so:02d}_{ten_bai.replace(" ", "_")[:40]}.docx'
+    if bai_so == 0:
+        out_dir = os.path.join(OUT_BASE, grade_folder, 'Tiết_00')
+        clean_name = ten_bai.replace(":", "").replace("/", "_").replace("\\", "_").replace(" ", "_")[:40]
+        filename = f'KHBD_Tin_hoc_{grade_folder}_Tiet00_{clean_name}.docx'
+    else:
+        out_dir = os.path.join(OUT_BASE, grade_folder, f'Bài_{bai_so:02d}')
+        clean_name = ten_bai.replace(":", "").replace("/", "_").replace("\\", "_").replace(" ", "_")[:40]
+        filename = f'KHBD_Tin_hoc_{grade_folder}_Bai{bai_so:02d}_{clean_name}.docx'
     out_path = os.path.join(out_dir, filename)
     saved = save_doc(doc, out_path)
 
@@ -559,8 +565,14 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
         doc.element.body.append(tbl_sign)
 
     # ── Save ──────────────────────────────────────────────────────────────
-    out_dir = os.path.join(OUT_BASE, grade_folder, f'Bài_{bai_so:02d}')
-    filename = f'KHBD_Tin_hoc_{grade_folder}_Bai{bai_so:02d}_{ten_bai.replace(" ", "_")[:40]}.docx'
+    if bai_so == 0:
+        out_dir = os.path.join(OUT_BASE, grade_folder, 'Tiết_00')
+        clean_name = ten_bai.replace(":", "").replace("/", "_").replace("\\", "_").replace(" ", "_")[:40]
+        filename = f'KHBD_Tin_hoc_{grade_folder}_Tiet00_{clean_name}.docx'
+    else:
+        out_dir = os.path.join(OUT_BASE, grade_folder, f'Bài_{bai_so:02d}')
+        clean_name = ten_bai.replace(":", "").replace("/", "_").replace("\\", "_").replace(" ", "_")[:40]
+        filename = f'KHBD_Tin_hoc_{grade_folder}_Bai{bai_so:02d}_{clean_name}.docx'
     out_path = os.path.join(out_dir, filename)
     saved = save_doc(doc, out_path)
 
@@ -582,10 +594,754 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
 def build_all():
     results = []
 
-    # ────────────────────────────────────────────────────────────────────
-    # TIỀN TIỂU HỌC — Bài 1: Máy tính xung quanh em
-    # ────────────────────────────────────────────────────────────────────
-    print('\n🔵 Tạo KHBD Tiền tiểu học - Bài 1...')
+    # ════════════════════════════════════════════════════════════════════
+    # TIẾT 0 — ĐỊNH HƯỚNG MÔN HỌC (TẤT CẢ CÁC KHỐI LỚP)
+    # ════════════════════════════════════════════════════════════════════
+
+    # 1. Tiền tiểu học - Tiết 0
+    print('\n🔵 Tạo KHBD Tiền tiểu học - Tiết 0...')
+    saved = create_khbd_th(
+        grade_name='Tiền tiểu học', grade_folder='Tiền_tiểu_học',
+        bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - EM LÀM QUEN VỚI THẾ GIỚI CÔNG NGHỆ',
+        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        pham_chat_items=[
+            '- Chăm chỉ: Tích cực lắng nghe thầy cô giới thiệu phòng học Tin học và thiết bị.',
+            '- Trách nhiệm: Giữ gìn an toàn thiết bị máy tính, tuân thủ hướng dẫn của thầy cô.',
+            '- Nhân ái: Yêu thương, nhường nhịn và giúp đỡ bạn bè trong phòng máy.',
+        ],
+        nang_luc_mon_items=[
+            '- NLa: Nhận diện phòng thực hành Tin học là không gian học tập đặc biệt.',
+            '- NLb: Biết vị trí chỗ ngồi và cách làm quen nhẹ nhàng với máy tính.',
+        ],
+        nang_luc_chung_items=[
+            '- Tự chủ và tự học: Bước đầu có thói quen tự giác vào lớp và ngồi đúng vị trí.',
+            '- Giao tiếp và hợp tác: Làm quen với thầy cô và các bạn trong lớp.',
+        ],
+        do_dung_gv='Phòng máy tính ngăn nắp, máy chiếu, nhạc vui tươi, bảng nội quy có hình ảnh minh họa.',
+        do_dung_hs='Tâm thế vui tươi, sẵn sàng học tập.',
+        phuong_phap='trực quan, làm quen, trò chơi học tập, trò chuyện thân thiện',
+        ki_thuat='đặt câu hỏi nhẹ nhàng, trình bày 1 phút, động viên khen thưởng',
+        activities=[
+            {
+                'ten': '1. Hoạt động MỞ ĐẦU (5 phút)',
+                'muc_tieu': 'Chào đón HS, tạo khí thế vui tươi khi đến với phòng Tin học.',
+                'gv': [
+                    'GV bật bản nhạc vui tươi chào đón HS bước vào phòng thực hành Tin học.',
+                    'GV tự giới thiệu bản thân và chào mừng các em học sinh.',
+                ],
+                'hs': [
+                    '- HS đi vào phòng máy theo hàng, mỉm cười chào thầy cô.',
+                    '- HS vỗ tay theo giai điệu nhạc.',
+                ],
+            },
+            {
+                'ten': '2. HOẠT ĐỘNG HÌNH THÀNH KIẾN THỨC MỚI',
+                'sub': [
+                    {
+                        'ten': '2.1. Khám phá phòng máy tính của em (10 phút)',
+                        'muc_tieu': 'HS nhận biết được phòng máy tính và chỗ ngồi cố định của mình.',
+                        'gv': [
+                            'GV giới thiệu xung quanh phòng máy: máy tính, màn chiếu, bàn ghế.',
+                            'GV hướng dẫn từng cặp HS về đúng vị trí chỗ ngồi của mình.',
+                        ],
+                        'hs': [
+                            '- HS quan sát xung quanh phòng máy.',
+                            '- HS về đúng chỗ ngồi được phân công và ngồi ngay ngắn.',
+                        ],
+                    },
+                    {
+                        'ten': '2.2. Quy tắc 3 NÊN và 3 KHÔNG (8 phút)',
+                        'muc_tieu': 'HS ghi nhớ những quy tắc an toàn cơ bản nhất.',
+                        'gv': [
+                            'GV chiếu tranh minh họa 3 NÊN (Lắng nghe, Giữ vệ sinh, Ngồi đúng tư thế) và 3 KHÔNG (Không ăn uống, Không sờ vào dây điện, Không đùa giỡn).',
+                            'GV cùng HS đọc thuộc 3 NÊN và 3 KHÔNG qua bài vè vui.',
+                        ],
+                        'hs': [
+                            '- HS xem tranh minh họa.',
+                            '- HS đọc vè theo GV.',
+                        ],
+                    },
+                ],
+            },
+            {
+                'ten': '3. HĐ LUYỆN TẬP-THỰC HÀNH',
+                'sub': [
+                    {
+                        'ten': '3.1. Trò chơi "Bé ngoan phòng máy" (7 phút)',
+                        'muc_tieu': 'Rèn luyện phản xạ ngồi đúng tư thế và tuân thủ quy tắc.',
+                        'gv': [
+                            'GV hô: "Tư thế đẹp!" → HS ngồi thẳng lưng, tay đặt lên bàn.',
+                            'GV khen thưởng các bé thực hiện đúng nhanh nhất.',
+                        ],
+                        'hs': [
+                            '- HS tham gia trò chơi hào hứng.',
+                            '- HS thi đua ngồi đẹp.',
+                        ],
+                    },
+                ],
+            },
+            {
+                'ten': '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                'gv': [
+                    '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                    'GV hỏi: "Hôm nay bước vào phòng máy em thấy thế nào?"',
+                    'GV dặn: Về nhà kể cho bố mẹ nghe về thầy cô và phòng Tin học nhé!',
+                ],
+                'hs': [
+                    '- HS phát biểu cảm xúc vui vẻ.',
+                    '- HS vẫy tay chào thầy cô khi ra về.',
+                ],
+            },
+        ]
+    )
+    results.append(saved)
+
+    # 2. Lớp 1 - Tiết 0
+    print('\n🔵 Tạo KHBD Lớp 1 - Tiết 0...')
+    saved = create_khbd_th(
+        grade_name='Lớp 1', grade_folder='Lớp_1',
+        bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - NỘI QUY VÀ AN TOÀN PHÒNG MÁY TÍNH',
+        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        pham_chat_items=[
+            '- Chăm chỉ: Hăng hái tham gia thảo luận quy tắc an toàn phòng máy.',
+            '- Trách nhiệm: Giữ gìn an toàn thiết bị, bảo vệ bản thân và bạn bè khỏi nguy cơ về điện.',
+            '- Trung thực: Nhận lỗi ngay khi lỡ làm rớt hay chạm nhầm thiết bị.',
+        ],
+        nang_luc_mon_items=[
+            '- NLa: Nắm được quy trình học tập môn Tin học lớp 1 và các đồ dùng cần chuẩn bị.',
+            '- NLb: Biết các quy tắc an toàn điện và vệ sinh phòng thực hành.',
+        ],
+        nang_luc_chung_items=[
+            '- Tự chủ và tự học: Chủ động chuẩn bị sách vở và đồ dùng học tập môn Tin học.',
+            '- Giao tiếp và hợp tác: Thảo luận nhóm đôi về nội quy phòng máy.',
+        ],
+        do_dung_gv='Máy chiếu, bảng nội quy phòng máy tính, video hoạt hình an toàn điện.',
+        do_dung_hs='SGK Tin học 1, vở ghi, bút.',
+        phuong_phap='xem video, vấn đáp, thảo luận nhóm, thực hành tư thế',
+        ki_thuat='đặt câu hỏi, đóng vai tình huống, chia sẻ nhóm đôi',
+        activities=[
+            {
+                'ten': '1. Hoạt động MỞ ĐẦU (5 phút)',
+                'muc_tieu': 'Tạo không khí học tập hào hứng và kết nối bài học.',
+                'gv': [
+                    'GV cho HS xem 1 video ngắn hoạt hình vui nhộn về máy tính.',
+                    'GV hỏi: "Học môn Tin học chúng ta được làm những gì?"',
+                ],
+                'hs': [
+                    '- HS xem video vui vẻ.',
+                    '- HS phát biểu: được chơi game học tập, được vẽ tranh, gõ phím...',
+                ],
+            },
+            {
+                'ten': '2. HOẠT ĐỘNG HÌNH THÀNH KIẾN THỨC MỚI',
+                'sub': [
+                    {
+                        'ten': '2.1. Nội quy phòng thực hành Tin học (10 phút)',
+                        'muc_tieu': 'HS nắm rõ các điều khoản trong bảng nội quy.',
+                        'gv': [
+                            'GV chiếu Bảng nội quy phòng Tin học gồm 5 điều.',
+                            'GV giải thích ý nghĩa từng điều nội quy qua hình ảnh thực tế.',
+                        ],
+                        'hs': [
+                            '- HS quan sát và lắng nghe GV giải thích.',
+                            '- HS đọc đồng thanh 5 điều nội quy.',
+                        ],
+                    },
+                    {
+                        'ten': '2.2. An toàn điện và tư thế ngồi đúng (5 phút)',
+                        'muc_tieu': 'HS biết cách phòng tránh nguy cơ giật điện và bảo vệ mắt, cột sống.',
+                        'gv': [
+                            'GV chỉ rõ các vị trí dây điện, ổ cắm — nhắc tuyệt đối KHÔNG chạm vào.',
+                            'GV thao tác mẫu tư thế ngồi: lưng thẳng, mắt cách màn hình 50cm.',
+                        ],
+                        'hs': [
+                            '- HS quan sát các vị trí an toàn.',
+                            '- HS điều chỉnh dáng ngồi theo mẫu của GV.',
+                        ],
+                    },
+                ],
+            },
+            {
+                'ten': '3. HĐ LUYỆN TẬP-THỰC HÀNH',
+                'sub': [
+                    {
+                        'ten': '3.1. Thực hành dáng ngồi đẹp (7 phút)',
+                        'muc_tieu': 'Củng cố tư thế ngồi chuẩn khi làm việc với máy tính.',
+                        'gv': ['GV đi từng bàn kiểm tra và chỉnh sửa tư thế cho HS.'],
+                        'hs': ['- HS ngồi đúng tư thế, tay đặt lên bàn máy tính.'],
+                    },
+                ],
+            },
+            {
+                'ten': '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                'gv': [
+                    '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                    'GV: "Em hãy nhủ bạn bên cạnh 1 việc KHÔNG được làm trong phòng máy."',
+                    'GV dặn dò chuẩn bị SGK và vở cho tiết sau.',
+                ],
+                'hs': [
+                    '- HS nhắc nhở bạn ngồi cùng.',
+                    '- HS ghi nhớ dặn dò.',
+                ],
+            },
+        ]
+    )
+    results.append(saved)
+
+    # 3. Lớp 2 - Tiết 0
+    print('\n🔵 Tạo KHBD Lớp 2 - Tiết 0...')
+    saved = create_khbd_th(
+        grade_name='Lớp 2', grade_folder='Lớp_2',
+        bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - EM TRỞ THÀNH NHÀ SÁNG TẠO SỐ',
+        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        pham_chat_items=[
+            '- Chăm chỉ: Tích cực tìm hiểu mục tiêu môn Tin học 2.',
+            '- Trách nhiệm: Giữ gìn vệ sinh chung, bảo quản thiết bị.',
+            '- Nhân ái: Sẵn sàng hợp tác và hỗ trợ bạn bè cùng tiến bộ.',
+        ],
+        nang_luc_mon_items=[
+            '- NLa: Hiểu được định hướng môn Tin học 2 giúp em sáng tạo ra các sản phẩm số đơn giản.',
+            '- NLb: Nắm rõ cách thức đánh giá và ôn tập trong năm học.',
+        ],
+        nang_luc_chung_items=[
+            '- Tự chủ và tự học: Biết lập mục tiêu cá nhân cho môn học.',
+            '- Giao tiếp và hợp tác: Thảo luận nhóm về các sản phẩm số yêu thích.',
+        ],
+        do_dung_gv='Slide giới thiệu chương trình Tin 2, video các sản phẩm HS lớp trước đã làm (tranh vẽ, bài gõ).',
+        do_dung_hs='SGK Tin học 2, vở, bút.',
+        phuong_phap='trình bày trực quan, thảo luận nhóm, chia sẻ cảm xúc',
+        ki_thuat='động não, trình bày 1 phút, hỏi đáp',
+        activities=[
+            {
+                'ten': '1. Hoạt động MỞ ĐẦU (5 phút)',
+                'muc_tieu': 'Khơi gợi niềm yêu thích môn Tin học lớp 2.',
+                'gv': [
+                    'GV chiếu một số bức tranh vẽ đẹp và bài gõ văn bản của HS lớp trước.',
+                    'GV hỏi: "Em có muốn tự tay tạo nên những sản phẩm đẹp như vậy không?"',
+                ],
+                'hs': [
+                    '- HS quan sát các sản phẩm.',
+                    '- HS hào hứng reo hò phát biểu.',
+                ],
+            },
+            {
+                'ten': '2. HOẠT ĐỘNG HÌNH THÀNH KIẾN THỨC MỚI',
+                'sub': [
+                    {
+                        'ten': '2.1. Hành trình khám phá Tin học 2 (10 phút)',
+                        'muc_tieu': 'HS nắm được tổng quan các chủ đề học trong năm.',
+                        'gv': [
+                            'GV giới thiệu 4 chủ đề chính: Máy tính & em, Tập gõ bàn phím, Vẽ tranh sáng tạo, An toàn số.',
+                        ],
+                        'hs': [
+                            '- HS mở mục lục SGK Tin 2, quan sát và đọc tên các chủ đề.',
+                        ],
+                    },
+                    {
+                        'ten': '2.2. Tiêu chí đánh giá và khen thưởng (5 phút)',
+                        'muc_tieu': 'HS hiểu cách thức đánh giá và tích điểm thi đua.',
+                        'gv': [
+                            'GV giới thiệu bảng tích sao thi đua "Nhà sáng tạo số nhỏ tuổi".',
+                        ],
+                        'hs': [
+                            '- HS lắng nghe và đặt mục tiêu tích sao.',
+                        ],
+                    },
+                ],
+            },
+            {
+                'ten': '3. HĐ LUYỆN TẬP-THỰC HÀNH',
+                'sub': [
+                    {
+                        'ten': '3.1. Lập mục tiêu học tập (8 phút)',
+                        'muc_tieu': 'HS viết/vẽ ước mơ mục tiêu đạt được trong môn Tin học 2.',
+                        'gv': ['GV phát phiếu mục tiêu nhỏ, hướng dẫn HS điền.'],
+                        'hs': ['- HS viết mục tiêu (VD: Đạt 10 điểm, Vẽ được bức tranh ngôi nhà...).'],
+                    },
+                ],
+            },
+            {
+                'ten': '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                'gv': [
+                    '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                    'GV: "Hãy dán tấm phiếu mục tiêu này vào trang đầu vở Tin học của em!"',
+                ],
+                'hs': ['- HS dán phiếu mục tiêu vào vở.'],
+            },
+        ]
+    )
+    results.append(saved)
+
+    # 4. Lớp 3 - Tiết 0
+    print('\n🔵 Tạo KHBD Lớp 3 - Tiết 0...')
+    saved = create_khbd_th(
+        grade_name='Lớp 3', grade_folder='Lớp_3',
+        bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - KHÁM PHÁ MÔN TIN HỌC 3',
+        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        pham_chat_items=[
+            '- Chăm chỉ: Thích học hỏi, chủ động khám phá tri thức số mới.',
+            '- Trách nhiệm: Tuân thủ quy định phòng máy, bảo vệ thiết bị.',
+            '- Trung thực: Tự giác trong kiểm tra đánh giá.',
+        ],
+        nang_luc_mon_items=[
+            '- NLa: Hiểu được vai trò của Tin học 3 theo Chương trình GDPT 2018.',
+            '- NLc: Biết phương pháp học tập trải nghiệm kết hợp thực hành trên máy.',
+        ],
+        nang_luc_chung_items=[
+            '- Tự chủ và tự học: Biết tự quản lý thời gian học tập phòng máy.',
+            '- Giao tiếp và hợp tác: Hợp tác tốt với bạn cùng bàn thực hành.',
+        ],
+        do_dung_gv='Máy chiếu, sơ đồ tư duy chương trình Tin học 3, phiếu khảo sát ban đầu.',
+        do_dung_hs='SGK Tin học 3, vở ghi.',
+        phuong_phap='sơ đồ tư duy, hỏi đáp gợi mở, làm việc nhóm đôi',
+        ki_thuat='động não, chia sẻ nhóm đôi, KWL',
+        activities=[
+            {
+                'ten': '1. Hoạt động MỞ ĐẦU (5 phút)',
+                'muc_tieu': 'Tạo tâm thế chủ động, khám phá môn học mới bắt buộc.',
+                'gv': [
+                    'GV chúc mừng HS bước vào Lớp 3 — năm đầu tiên học Tin học chính thức!',
+                    'GV đặt câu hỏi: "Em mong chờ điều gì nhất ở môn Tin học 3?"',
+                ],
+                'hs': [
+                    '- HS vỗ tay chúc mừng.',
+                    '- HS chia sẻ mong muốn cá nhân.',
+                ],
+            },
+            {
+                'ten': '2. HOẠT ĐỘNG HÌNH THÀNH KIẾN THỨC MỚI',
+                'sub': [
+                    {
+                        'ten': '2.1. Cấu trúc chương trình Tin học 3 (10 phút)',
+                        'muc_tieu': 'HS nắm bắt 6 chủ đề lớn của môn Tin học 3.',
+                        'gv': ['GV giới thiệu sơ đồ tư duy 6 chủ đề (A, B, C, D, E, F).'],
+                        'hs': ['- HS theo dõi sơ đồ và đối chiếu với SGK.'],
+                    },
+                    {
+                        'ten': '2.2. Phương pháp học tập hiệu quả (5 phút)',
+                        'muc_tieu': 'HS biết cách kết hợp giữa lý thuyết và thực hành.',
+                        'gv': ['GV nêu 3 bí quyết: Quan sát kỹ -> Thao tác đúng -> Sáng tạo thêm.'],
+                        'hs': ['- HS ghi nhớ 3 bí quyết vào vở.'],
+                    },
+                ],
+            },
+            {
+                'ten': '3. HĐ LUYỆN TẬP-THỰC HÀNH',
+                'sub': [
+                    {
+                        'ten': '3.1. Điền phiếu KWL (7 phút)',
+                        'muc_tieu': 'Khảo sát nhu cầu và kiến thức sẵn có của HS.',
+                        'gv': ['GV phát phiếu KWL: Điền cột K (Đã biết) và W (Muốn biết).'],
+                        'hs': ['- HS hoàn thành phiếu cá nhân.'],
+                    },
+                ],
+            },
+            {
+                'ten': '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                'gv': [
+                    '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                    'GV dặn dò HS bọc sách vở Tin học 3 cẩn thận và mang đủ cho buổi học sau.',
+                ],
+                'hs': ['- HS ghi lại dặn dò.'],
+            },
+        ]
+    )
+    results.append(saved)
+
+    # 5. Lớp 4 - Tiết 0
+    print('\n🔵 Tạo KHBD Lớp 4 - Tiết 0...')
+    saved = create_khbd_th(
+        grade_name='Lớp 4', grade_folder='Lớp_4',
+        bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - KHÁM PHÁ MÔN TIN HỌC 4',
+        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        pham_chat_items=[
+            '- Chăm chỉ: Tích cực khám phá nội dung kiến thức nâng cao lớp 4.',
+            '- Trách nhiệm: Giữ gìn an toàn thông tin cá nhân và an toàn mạng.',
+            '- Trung thực: Không sao chép bài làm của bạn.',
+        ],
+        nang_luc_mon_items=[
+            '- NLa: Nhận biết được các mạch kiến thức trọng tâm của Tin học 4.',
+            '- NLc: Biết định hướng làm dự án học tập nhỏ và lập trình Scratch.',
+        ],
+        nang_luc_chung_items=[
+            '- Tự chủ và tự học: Tự đặt ra kế hoạch rèn luyện gõ phím và tìm kiếm mạng.',
+            '- Giao tiếp và hợp tác: Hợp tác tích cực trong các bài tập nhóm.',
+        ],
+        do_dung_gv='Máy chiếu, demo dự án Scratch mẫu, bài trình chiếu slide ấn tượng.',
+        do_dung_hs='SGK Tin học 4, vở ghi.',
+        phuong_phap='demo dự án, thảo luận, định hướng nhiệm vụ',
+        ki_thuat='đặt câu hỏi gợi mở, chia sẻ nhóm',
+        activities=[
+            {
+                'ten': '1. Hoạt động MỞ ĐẦU (5 phút)',
+                'muc_tieu': 'Tạo sự hứng thú với nội dung lập trình và thiết kế slide ở Lớp 4.',
+                'gv': [
+                    'GV chiếu 1 minigame Scratch đơn giản do học sinh làm.',
+                    'GV hỏi: "Các em có muốn tự tay lập trình trò chơi này không?"',
+                ],
+                'hs': [
+                    '- HS xem demo trò chơi và vô cùng thích thú.',
+                ],
+            },
+            {
+                'ten': '2. HOẠT ĐỘNG HÌNH THÀNH KIẾN THỨC MỚI',
+                'sub': [
+                    {
+                        'ten': '2.1. Tổng quan mạch kiến thức Tin 4 (10 phút)',
+                        'muc_tieu': 'HS nắm bắt các điểm mới: Phần cứng-mềm, Tìm kiếm Internet, Lập trình Scratch.',
+                        'gv': ['GV giới thiệu chi tiết 6 chủ đề chính của lớp 4.'],
+                        'hs': ['- HS theo dõi và đánh dấu bài học yêu thích trong SGK.'],
+                    },
+                    {
+                        'ten': '2.2. Yêu cầu sản phẩm học tập (5 phút)',
+                        'muc_tieu': 'HS hiểu rõ các yêu cầu về bài trình chiếu và trò chơi Scratch.',
+                        'gv': ['GV nêu quy định về sản phẩm cuối chủ đề.'],
+                        'hs': ['- HS ghi nhớ quy định.'],
+                    },
+                ],
+            },
+            {
+                'ten': '3. HĐ LUYỆN TẬP-THỰC HÀNH',
+                'sub': [
+                    {
+                        'ten': '3.1. Thảo luận nhóm chọn chủ đề yêu thích (8 phút)',
+                        'muc_tieu': 'Kích thích định hướng học tập tự chủ.',
+                        'gv': ['GV chia nhóm 4, yêu cầu chọn 1 chủ đề nhóm mong muốn khám phá nhất.'],
+                        'hs': ['- Các nhóm thảo luận và đại diện báo cáo.'],
+                    },
+                ],
+            },
+            {
+                'ten': '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                'gv': [
+                    '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                    'GV dặn chuẩn bị máy tính ở nhà (nếu có) và SGK cho Bài 1.',
+                ],
+                'hs': ['- HS ghi chép nhiệm vụ.'],
+            },
+        ]
+    )
+    results.append(saved)
+
+    # 6. Lớp 5 - Tiết 0
+    print('\n🔵 Tạo KHBD Lớp 5 - Tiết 0...')
+    saved = create_khbd_th(
+        grade_name='Lớp 5', grade_folder='Lớp_5',
+        bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - KHÁM PHÁ MÔN TIN HỌC 5',
+        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        pham_chat_items=[
+            '- Chăm chỉ: Tích cực chuẩn bị cho năm học cuối cấp Tiểu học.',
+            '- Trách nhiệm: Gương mẫu thực hiện quy định phòng máy, làm nòng cốt giúp đỡ các em lớp dưới.',
+            '- Trung thực: Tôn trọng bản quyền tác giả khi thu thập thông tin.',
+        ],
+        nang_luc_mon_items=[
+            '- NLa: Nắm vững mục tiêu Tin học 5 — hoàn thiện năng lực số cấp Tiểu học.',
+            '- NLe: Ý thức rõ về bản quyền, văn hóa ứng xử trên môi trường số.',
+        ],
+        nang_luc_chung_items=[
+            '- Tự chủ và tự học: Tự định hướng phát triển kỹ năng số cá nhân.',
+            '- Giao tiếp và hợp tác: Đóng vai trò trưởng nhóm trong các dự án nhỏ.',
+        ],
+        do_dung_gv='Slide tổng quan Tin 5, video giới thiệu kỹ năng số thế kỷ 21.',
+        do_dung_hs='SGK Tin học 5, sổ tay học tập.',
+        phuong_phap='thuyết trình, định hướng dự án, thảo luận nhóm',
+        ki_thuat='đặt vấn đề, sơ đồ tư duy',
+        activities=[
+            {
+                'ten': '1. Hoạt động MỞ ĐẦU (5 phút)',
+                'muc_tieu': 'Tạo động lực học tập cho năm cuối cấp Tiểu học.',
+                'gv': [
+                    'GV chúc mừng HS lớp 5 và nhấn mạnh tầm quan trọng của kỹ năng số khi bước sang THCS.',
+                ],
+                'hs': ['- HS lắng nghe và thể hiện quyết tâm.'],
+            },
+            {
+                'ten': '2. HOẠT ĐỘNG HÌNH THÀNH KIẾN THỨC MỚI',
+                'sub': [
+                    {
+                        'ten': '2.1. Những điểm mới trong Tin học 5 (10 phút)',
+                        'muc_tieu': 'HS biết được các nội dung nâng cao: Thuật toán, Xử lý ảnh, Bản quyền số.',
+                        'gv': ['GV giới thiệu các chủ đề cốt lõi của Lớp 5.'],
+                        'hs': ['- HS theo dõi SGK và ghi lại các từ khóa chính.'],
+                    },
+                    {
+                        'ten': '2.2. Văn hóa số và Trách nhiệm người dùng (5 phút)',
+                        'muc_tieu': 'Nhấn mạnh quy tắc ứng xử văn minh trên không gian mạng.',
+                        'gv': ['GV phân tích quy tắc ứng xử văn minh và tôn trọng bản quyền.'],
+                        'hs': ['- HS lắng nghe và cam kết thực hiện.'],
+                    },
+                ],
+            },
+            {
+                'ten': '3. HĐ LUYỆN TẬP-THỰC HÀNH',
+                'sub': [
+                    {
+                        'ten': '3.1. Cam kết văn hóa phòng máy (8 phút)',
+                        'muc_tieu': 'Xây dựng môi trường học tập văn minh.',
+                        'gv': ['GV hướng dẫn cả lớp xây dựng Bảng cam kết văn hóa phòng máy Lớp 5.'],
+                        'hs': ['- Đại diện HS lên ký cam kết.'],
+                    },
+                ],
+            },
+            {
+                'ten': '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                'gv': [
+                    '4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (5 phút)',
+                    'GV dặn dò chuẩn bị bài học tuần sau.',
+                ],
+                'hs': ['- HS ghi nhớ dặn dò.'],
+            },
+        ]
+    )
+    results.append(saved)
+
+    # 7. Lớp 6 - Tiết 0 (THCS)
+    print('\n🟠 Tạo KHBD Lớp 6 - Tiết 0 (THCS)...')
+    saved = create_khbd_thcs(
+        grade_name='Lớp 6', grade_folder='Lớp_6',
+        bai_so=0, ten_bai='Định hướng môn học Tin học 6 - Phương pháp học tập và An toàn số',
+        mon_hoc='Tin học', lop='6', thoi_luong='1 tiết (45 phút)', tiet_ppct='0',
+        ngay_soan='   /   /2026', ngay_day='   /   /2026',
+        kien_thuc_items=[
+            '- Sự hiểu biết về cấu trúc môn Tin học 6 theo Chương trình GDPT 2018.',
+            '- Khả năng nhận biết các phương pháp học tập chủ động và nghiên cứu môn Tin học ở cấp THCS.',
+            '- Sự hiểu biết về các nguyên tắc an toàn thông tin và văn hóa ứng xử trên mạng.',
+        ],
+        nang_luc_chung_items=[
+            '- Tự chủ và tự học: Xác định được mục tiêu và kế hoạch học tập môn Tin học 6. (Đạt được thông qua Hoạt động 2, 3)',
+            '- Giao tiếp và hợp tác: Thảo luận nhóm về các phương pháp học tập hiệu quả. (Đạt được thông qua Hoạt động 2)',
+        ],
+        nang_luc_dac_thu_items=[
+            '- NLa (Hiểu biết máy tính): Nhận biết hệ thống phòng thực hành và các quy định an toàn THCS. (Đạt được thông qua Hoạt động 1, 2)',
+            '- NLe (Ứng xử phù hợp): Hiểu được các quy tắc an toàn và văn hóa số khi tham gia không gian mạng. (Đạt được thông qua Hoạt động 3)',
+        ],
+        nang_luc_so_items=[
+            '- Năng lực 1.1 (Hiểu biết số): Nắm bắt tổng quan về năng lực số cần đạt trong cấp THCS. (Đạt được thông qua Hoạt động 2)',
+        ],
+        pham_chat_items=[
+            '- Chăm chỉ: Chủ động học tập, thích ứng nhanh với môi trường học tập cấp THCS. (Thông qua Hoạt động 1, 2)',
+            '- Trách nhiệm: Giữ gìn an toàn thiết bị phòng máy và có trách nhiệm trên không gian số. (Thông qua Hoạt động 3, 4)',
+        ],
+        thiet_bi='Máy tính GV, máy chiếu, sơ đồ chương trình Tin 6, video an toàn mạng.',
+        hoc_lieu='SGK Tin học 6, sổ tay học tập THCS.',
+        hoat_dong_list=[
+            {
+                'stt': 1,
+                'ten': 'Khởi động (Chào mừng HS đến với môn Tin học THCS)',
+                'muc_tieu': 'Giúp HS cảm thấy tự tin và hào hứng khi bước vào cấp học mới.',
+                'noi_dung': 'GV chiếu video chào mừng và đặt câu hỏi giao lưu: "Tin học THCS có gì khác so với Tiểu học?"',
+                'san_pham': 'HS chia sẻ suy nghĩ và nêu được cảm nhận khi học Tin học ở cấp THCS.',
+                'to_chuc': 'GV trình chiếu và dẫn dắt thảo luận.',
+                'buoc1': 'GV phát video chào mừng khối 6.',
+                'buoc2': 'HS xem video và suy nghĩ câu hỏi.',
+                'buoc3': '2-3 HS phát biểu suy nghĩ.',
+                'buoc4': 'GV tổng kết, nhấn mạnh bước chuyển mình quan trọng sang cấp THCS.',
+            },
+            {
+                'stt': 2,
+                'ten': 'Hình thành kiến thức mới (Tổng quan chương trình & Phương pháp học)',
+                'muc_tieu': 'HS hiểu rõ cấu trúc 6 chủ đề Tin 6 và các tiêu chí đánh giá.',
+                'noi_dung': 'GV giới thiệu 6 chủ đề chính (Máy tính, Mạng máy tính, An toàn thông tin, Biểu diễn thông tin, Thuật toán, Lập trình).',
+                'san_pham': 'Sơ đồ tư duy học tập cá nhân trong vở ghi của HS.',
+                'to_chuc': 'GV giảng kết hợp làm việc nhóm.',
+                'buoc1': 'GV chiếu sơ đồ 6 chủ đề môn Tin 6.',
+                'buoc2': 'HS quan sát SGK Tin 6 và gạch chân các chủ đề.',
+                'buoc3': 'GV trình bày phương pháp học chủ động: Học qua dự án, Học qua giải quyết vấn đề.',
+                'buoc4': 'GV chốt các hình thức đánh giá (Thường xuyên, Định kỳ, Sản phẩm thực hành).',
+            },
+            {
+                'stt': 3,
+                'ten': 'Luyện tập (Nội quy phòng máy & An toàn số)',
+                'muc_tieu': 'Củng cố các quy định phòng thực hành THCS và nguyên tắc an toàn số.',
+                'noi_dung': 'HS thảo luận nhóm phân tích các tình huống vi phạm an toàn điện và an toàn mạng.',
+                'san_pham': 'Kết quả xử lý tình huống của các nhóm trên bảng phụ.',
+                'to_chuc': 'Thảo luận nhóm 4 người.',
+                'buoc1': 'GV giao 3 tình huống thực tế cho các nhóm.',
+                'buoc2': 'HS thảo luận phân tích đúng/sai và đưa ra giải pháp.',
+                'buoc3': 'Đại diện nhóm trình bày.',
+                'buoc4': 'GV nhận xét và chuẩn hóa quy tắc an toàn.',
+            },
+            {
+                'stt': 4,
+                'ten': 'Mở rộng (Nhiệm vụ về nhà)',
+                'muc_tieu': 'Chuẩn bị kế hoạch cá nhân cho môn học.',
+                'noi_dung': 'HS lập bảng kế hoạch cá nhân "Chinh phục môn Tin học 6".',
+                'san_pham': 'Bảng kế hoạch cá nhân hoàn chỉnh nộp vào tiết sau.',
+                'buoc1': 'GV hướng dẫn cấu trúc bảng kế hoạch.',
+                'buoc2': 'HS ghi nhiệm vụ vào sổ.',
+                'buoc3': 'Nộp bài tiết sau.',
+                'buoc4': 'GV dặn dò chuẩn bị SGK Bài 1.',
+            },
+        ]
+    )
+    results.append(saved)
+
+    # 8. Lớp 7 - Tiết 0 (THCS)
+    print('\n🟠 Tạo KHBD Lớp 7 - Tiết 0 (THCS)...')
+    saved = create_khbd_thcs(
+        grade_name='Lớp 7', grade_folder='Lớp_7',
+        bai_so=0, ten_bai='Định hướng môn học Tin học 7 - Tổng quan chương trình và Kỹ năng số',
+        mon_hoc='Tin học', lop='7', thoi_luong='1 tiết (45 phút)', tiet_ppct='0',
+        ngay_soan='   /   /2026', ngay_day='   /   /2026',
+        kien_thuc_items=[
+            '- Sự hiểu biết về mục tiêu và nội dung cốt lõi môn Tin học 7.',
+            '- Khả năng định hướng ứng dụng phần mềm bảng tính và biên tập đa phương tiện.',
+            '- Sự hiểu biết về khung năng lực số cấp THCS theo CV 3456.',
+        ],
+        nang_luc_chung_items=[
+            '- Tự chủ và tự học: Biết xác định kỹ năng số cần rèn luyện trong năm học. (Đạt được thông qua Hoạt động 2)',
+            '- Giao tiếp và hợp tác: Thảo luận nhóm xây dựng tiêu chí làm việc nhóm hiệu quả. (Đạt được thông qua Hoạt động 3)',
+        ],
+        nang_luc_dac_thu_items=[
+            '- NLa (Hiểu biết máy tính): Nắm vững cấu trúc bài học và tiêu chí đánh giá sản phẩm thực hành. (Đạt được thông qua Hoạt động 2)',
+            '- NLc (Giải quyết vấn đề): Biết sử dụng phần mềm bảng tính để xử lý dữ liệu thực tế. (Đạt được thông qua Hoạt động 3)',
+        ],
+        nang_luc_so_items=[
+            '- Năng lực số (CV 3456): Khai thác và quản lý dữ liệu số an toàn, hiệu quả. (Đạt được thông qua Hoạt động 2, 3)',
+        ],
+        pham_chat_items=[
+            '- Chăm chỉ: Tích cực thực hành rèn luyện kỹ năng xử lý dữ liệu.',
+            '- Trách nhiệm: Tuân thủ quy định sử dụng thiết bị và bản quyền phần mềm.',
+        ],
+        thiet_bi='Máy tính GV, máy chiếu, demo các sản phẩm Bảng tính & Slide Lớp 7.',
+        hoc_lieu='SGK Tin học 7, tài liệu hướng dẫn kỹ năng số.',
+        hoat_dong_list=[
+            {
+                'stt': 1,
+                'ten': 'Khởi động (Kết nối tri thức Lớp 6 & Lớp 7)',
+                'muc_tieu': 'Ôn lại nền tảng Lớp 6 và định hướng yêu cầu cao hơn ở Lớp 7.',
+                'noi_dung': 'GV đặt câu hỏi nhắm vào kỹ năng đã có và giới thiệu điểm mới ở Lớp 7.',
+                'san_pham': 'HS nêu được các công cụ số mình đã thành thạo.',
+                'to_chuc': 'GV nêu vấn đề và điều phối.',
+                'buoc1': 'GV chiếu câu hỏi khảo sát nhanh.',
+                'buoc2': 'HS trả lời cá nhân.',
+                'buoc3': '3 HS chia sẻ kinh nghiệm.',
+                'buoc4': 'GV chốt chuyển giao vào môn Tin 7.',
+            },
+            {
+                'stt': 2,
+                'ten': 'Hình thành kiến thức mới (Tổng quan Tin 7 & Khung Năng lực số)',
+                'muc_tieu': 'HS nắm được trọng tâm: Bảng tính Excel, Biên tập ảnh/video, Đạo đức số.',
+                'noi_dung': 'GV trình bày các chủ đề lớn của Lớp 7 và Khung Năng lực số CV 3456.',
+                'san_pham': 'Ghi chép trọng tâm chương trình vào vở.',
+                'to_chuc': 'GV trình chiếu minh họa.',
+                'buoc1': 'GV giới thiệu các chủ đề cốt lõi.',
+                'buoc2': 'HS đối chiếu với SGK Tin 7.',
+                'buoc3': 'GV giải thích các mức độ năng lực số cần đạt.',
+                'buoc4': 'GV chốt các cột mốc kiểm tra đánh giá.',
+            },
+            {
+                'stt': 3,
+                'ten': 'Luyện tập (Xây dựng Quy tắc làm việc nhóm phòng thực hành)',
+                'muc_tieu': 'Thống nhất nguyên tắc làm việc nhóm khi thực hành bài tập lớn.',
+                'noi_dung': 'Các nhóm thảo luận xây dựng 5 tiêu chí nhóm hiệu quả.',
+                'san_pham': 'Bản tiêu chí hoạt động nhóm trên giấy A4.',
+                'to_chuc': 'Thảo luận nhóm 4.',
+                'buoc1': 'GV giao nhiệm vụ xây dựng tiêu chí nhóm.',
+                'buoc2': 'HS thảo luận và viết ra giấy A4.',
+                'buoc3': 'Đại diện nhóm treo bản tiêu chí.',
+                'buoc4': 'GV tổng kết quy tắc chung cho cả lớp.',
+            },
+            {
+                'stt': 4,
+                'ten': 'Mở rộng (Nhiệm vụ về nhà)',
+                'muc_tieu': 'Chuẩn bị bài học tiếp theo.',
+                'noi_dung': 'Đọc trước Bài 1: Thiết bị vào - ra.',
+                'san_pham': 'Câu hỏi thắc mắc ban đầu về Bài 1.',
+                'buoc1': 'GV dặn xem trước Bài 1.',
+                'buoc2': 'HS ghi sổ tay.',
+                'buoc3': 'Chuẩn bị cho buổi học tới.',
+                'buoc4': 'GV kết thúc tiết học.',
+            },
+        ]
+    )
+    results.append(saved)
+
+    # 9. Lớp 8 - Tiết 0 (THCS)
+    print('\n🟠 Tạo KHBD Lớp 8 - Tiết 0 (THCS)...')
+    saved = create_khbd_thcs(
+        grade_name='Lớp 8', grade_folder='Lớp_8',
+        bai_so=0, ten_bai='Định hướng môn học Tin học 8 - Định hướng học tập và Nghiên cứu công nghệ',
+        mon_hoc='Tin học', lop='8', thoi_luong='1 tiết (45 phút)', tiet_ppct='0',
+        ngay_soan='   /   /2026', ngay_day='   /   /2026',
+        kien_thuc_items=[
+            '- Sự hiểu biết về cấu trúc chương trình Tin học 8 (Lược sử công nghệ, Đồ họa vector, Xử lý dữ liệu nâng cao, Lập trình).',
+            '- Khả năng định hướng nghiên cứu và ứng dụng công nghệ giải quyết bài toán thực tế.',
+            '- Sự hiểu biết về tác động của công nghệ số và trí tuệ nhân tạo (AI) trong đời sống.',
+        ],
+        nang_luc_chung_items=[
+            '- Tự chủ và tự học: Chủ động lập kế hoạch tự nghiên cứu công nghệ mới. (Đạt được thông qua Hoạt động 2, 4)',
+            '- Giải quyết vấn đề và sáng tạo: Đề xuất ý tưởng ứng dụng Tin học vào các môn học khác. (Đạt được thông qua Hoạt động 3)',
+        ],
+        nang_luc_dac_thu_items=[
+            '- NLa (Hiểu biết máy tính): Trình bày được định hướng môn học và phương pháp tư duy máy tính (Computational Thinking). (Đạt được thông qua Hoạt động 2)',
+            '- NLc (Giải quyết vấn đề): Sử dụng công nghệ số như công cụ sáng tạo và nghiên cứu học tập. (Đạt được thông qua Hoạt động 3)',
+        ],
+        nang_luc_so_items=[
+            '- Năng lực số (CV 3456): Khai thác an toàn các công cụ trí tuệ nhân tạo và dịch vụ đám mây phục vụ học tập. (Đạt được thông qua Hoạt động 2, 3)',
+        ],
+        pham_chat_items=[
+            '- Chăm chỉ: Tích cực tìm hiểu công nghệ mới, có tinh thần ham học hỏi.',
+            '- Trách nhiệm: Sử dụng công nghệ có trách nhiệm, tuân thủ đạo đức trí tuệ nhân tạo.',
+        ],
+        thiet_bi='Máy tính GV, máy chiếu, demo sản phẩm đồ họa vector Inkscape và lập trình Python/Scratch nâng cao.',
+        hoc_lieu='SGK Tin học 8, tài liệu tham khảo công nghệ số.',
+        hoat_dong_list=[
+            {
+                'stt': 1,
+                'ten': 'Khởi động (Công nghệ thay đổi thế giới như thế nào?)',
+                'muc_tieu': 'Truyền cảm hứng nghiên cứu công nghệ cho học sinh Lớp 8.',
+                'noi_dung': 'GV chiếu clip 2 phút về sự phát triển của AI và công nghệ hiện đại.',
+                'san_pham': 'HS phát biểu suy nghĩ về vai trò của công nghệ với tương lai bản thân.',
+                'to_chuc': 'GV trình chiếu và dẫn dắt.',
+                'buoc1': 'GV chiếu video AI và công nghệ tương lai.',
+                'buoc2': 'HS theo dõi và suy nghĩ.',
+                'buoc3': 'HS chia sẻ ước mơ nghề nghiệp liên quan công nghệ.',
+                'buoc4': 'GV dẫn vào bài định hướng Lớp 8.',
+            },
+            {
+                'stt': 2,
+                'ten': 'Hình thành kiến thức mới (Tổng quan Tin 8 & Tư duy máy tính)',
+                'muc_tieu': 'HS nắm được nội dung trọng tâm Lớp 8 và khái niệm Tư duy máy tính (Computational Thinking).',
+                'noi_dung': 'GV giới thiệu 5 mạch kiến thức Tin 8 và 4 trụ cột của tư duy máy tính (Tách nhỏ, Tìm quy luật, Trừu tượng hóa, Thuật toán).',
+                'san_pham': 'HS ghi chép 4 trụ cột tư duy máy tính vào vở.',
+                'to_chuc': 'GV trình bày kết hợp ví dụ minh họa.',
+                'buoc1': 'GV giới thiệu các mảng kiến thức Lớp 8.',
+                'buoc2': 'HS mở SGK đối chiếu các bài học.',
+                'buoc3': 'GV giải thích 4 trụ cột tư duy máy tính.',
+                'buoc4': 'GV chốt phương pháp nghiên cứu dự án môn Tin 8.',
+            },
+            {
+                'stt': 3,
+                'ten': 'Luyện tập (Ứng dụng Tư duy máy tính giải quyết tình huống)',
+                'muc_tieu': 'HS vận dụng 4 trụ cột tư duy máy tính để phân tích 1 bài toán thực tế.',
+                'noi_dung': 'Bài toán: "Tổ chức một buổi triển lãm sản phẩm công nghệ của trường".',
+                'san_pham': 'Bản phân tích công việc theo 4 trụ cột tư duy trên giấy nháp.',
+                'to_chuc': 'Thảo luận nhóm 4.',
+                'buoc1': 'GV giao bài toán tình huống thực tế.',
+                'buoc2': 'Nhóm thảo luận tách nhỏ công việc và đề xuất giải pháp.',
+                'buoc3': 'Đại diện nhóm trình bày dàn ý.',
+                'buoc4': 'GV nhận xét, chuẩn hóa tư duy máy tính.',
+            },
+            {
+                'stt': 4,
+                'ten': 'Mở rộng (Nhiệm vụ về nhà)',
+                'muc_tieu': 'Chuẩn bị cho Bài 1.',
+                'noi_dung': 'Tìm hiểu lịch sử ra đời chiếc máy tính đầu tiên.',
+                'san_pham': 'Ghi chú ngắn 3 câu về chiếc máy tính ENIAC.',
+                'buoc1': 'GV dặn nhiệm vụ tìm hiểu bài 1.',
+                'buoc2': 'HS ghi sổ.',
+                'buoc3': 'Thực hiện tại nhà.',
+                'buoc4': 'GV kết thúc tiết học.',
+            },
+        ]
+    )
+    results.append(saved)
+
+    # ════════════════════════════════════════════════════════════════════
+    # BÀI 1 — NỘI DUNG BÀI HỌC ĐẦU TIÊN (TẤT CẢ CÁC KHỐI LỚP)
+    # ════════════════════════════════════════════════════════════════════
+
     saved = create_khbd_th(
         grade_name='Tiền tiểu học', grade_folder='Tiền_tiểu_học',
         bai_so=1, ten_bai='BÀI 1. MÁY TÍNH XUNG QUANH EM', chu_diem='Làm quen với công nghệ',
