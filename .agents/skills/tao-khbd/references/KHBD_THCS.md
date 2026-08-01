@@ -3,8 +3,8 @@
 > Tài liệu này được tạo dựa trên phân tích thực tế file mẫu:
 > `D:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx`
 >
-> Phương án được chọn: **Phương án A** — Giữ đúng format template gốc THCS
-> (Dùng paragraphs Bước 1-4, KHÔNG dùng bảng cho Tiến trình hoạt động)
+> Phương án được chọn: **Phương án B** — Dùng **bảng 3 cột** cho phần Tiến trình dạy học
+> (`Bước | Hoạt động của GV | Hoạt động của HS`) — dễ đọc, rõ ràng, thẩm mỹ cao hơn.
 
 ---
 
@@ -17,12 +17,11 @@
 | **Lề trên** | 1.27 cm (457200 EMU) |
 | **Lề dưới** | 1.27 cm (457200 EMU) |
 | **Font chữ** | Times New Roman |
-| **Cỡ chữ** | 13pt (kế thừa từ style, font.size=None) |
+| **Cỡ chữ** | 13pt |
 | **Line spacing chủ đạo** | 1.15 |
 | **First-line indent mục con** | 180340 EMU (~0.5cm) |
-| **First-line indent bước** | 360045 EMU (~1.0cm) |
-| **Alignment nội dung** | None (kế thừa, thực tế là LEFT) |
-| **Alignment tiêu đề bài** | CENTER (1) |
+| **Alignment nội dung** | LEFT |
+| **Alignment tiêu đề bài** | CENTER |
 
 ---
 
@@ -33,51 +32,26 @@
   - `Paragraph[0]`: chứa `w:drawing` (logo UNIGO) + text thông tin trường
   - `Paragraph[1]`: rỗng
 - **TUYỆT ĐỐI không gọi `paragraph.text =` trên Paragraph[0]**
-- Template có 3 loại header (even, default, first) — tất cả đều được bảo tồn tự động qua sectPr
+- Template có 3 loại header — tất cả được bảo tồn tự động qua sectPr
 
-### Footer (3 footer references: `even`, `default`, `first`)
-- Footer rỗng (chỉ có paragraph trống)
-- **KHÔNG truy cập hay chỉnh sửa footer**
+### Footer
+- Footer rỗng — **KHÔNG truy cập hay chỉnh sửa footer**
 - Tự động bảo tồn khi giữ `w:sectPr`
-
-### Giữ `w:sectPr`:
-```python
-for child in list(doc.element.body):
-    tag = child.tag.split('}')[-1] if '}' in child.tag else child.tag
-    if tag != 'sectPr':
-        doc.element.body.remove(child)
-```
 
 ---
 
 ## C. Cấu trúc KHBD THCS — 3 bảng quan trọng
 
-Template THCS có **3 bảng** — mỗi bảng có vai trò khác nhau:
+Template THCS có **3 bảng**:
 
-### Bảng Table[0] — Thông tin trường/GV (2×2) — GIỮ NGUYÊN STRUCTURE, chỉ sửa text
+### Bảng Table[0] — Thông tin trường/GV (2×2) — GIỮ NGUYÊN STRUCTURE, chỉ sửa text ngày soạn/dạy
 
 | Cell | Nội dung gốc | Chỉnh sửa |
 |:---|:---|:---|
 | Row[0], Col[0] | `Trường Tiểu học và THCS UNIGO` | Giữ nguyên |
-| Row[0], Col[1] | `Họ tên giáo viên: Đậu Đình Nguyên` | Sửa tên GV nếu cần |
+| Row[0], Col[1] | `Họ tên giáo viên: Đậu Đình Nguyên` | Giữ nguyên |
 | Row[1], Col[0] | `Tổ Tin học` | Giữ nguyên |
 | Row[1], Col[1] | `Ngày soạn: / /2026\nNgày dạy: / /2026` | Điền ngày soạn + ngày dạy |
-
-**Kỹ thuật sửa text trong cell (không xóa table)**:
-```python
-table0 = doc.tables[0]
-# Sửa ngày soạn/dạy
-cell_ngay = table0.cell(1, 1)
-for para in cell_ngay.paragraphs:
-    for run in para.runs:
-        if 'Ngày soạn' in run.text:
-            run.text = f'Ngày soạn:  {ngay_soan}   Ngày dạy:  {ngay_day}'
-```
-
-### Bảng Table[1] — HĐ của GV và HS / Kết quả cần đạt (2×2) — TÙY CHỌN dùng cho HĐ Khởi động
-
-Template gốc có bảng 2 cột này nhưng chỉ dùng cho Hoạt động 1 (Khởi động).
-Các hoạt động còn lại dùng paragraphs Bước 1-4.
 
 ### Bảng Table[2] — Ký tên BGH/Tổ CM/Người soạn (1×3) — GIỮ NGUYÊN HOÀN TOÀN
 
@@ -87,40 +61,33 @@ Các hoạt động còn lại dùng paragraphs Bước 1-4.
 
 ---
 
-## D. Cấu trúc KHBD THCS — Phần nào GIỮ NGUYÊN / CHỈNH SỬA
+## D. Cấu trúc KHBD THCS — Nội dung xây dựng
 
-### Phần ĐẦU
+### Phần đầu
 
-| Element | Nội dung | Chỉnh sửa |
-|:---|:---|:---|
-| Table[0] | 2×2 thông tin trường | Sửa ngày soạn/dạy trong cell |
-| P[0]: Tên bài | `TÊN BÀI DẠY:` (CENTER, bold) | Điền tên bài IN HOA |
-| P[1]: Môn/Lớp | `Môn học/Hoạt động giáo dục: ... Lớp:` | Điền môn + lớp |
-| P[2]: Thời lượng | (nếu có) | Điền số tiết |
-| P[3]: Tiết PPCT | `Tiết theo PPCT:` (CENTER, bold) | Điền số tiết PPCT |
-| P[4]: Tên tiết | `Tên tiết:` (CENTER, bold) | Điền tên tiết/bài |
+| Element | Nội dung |
+|:---|:---|
+| Table[0] | 2×2 thông tin trường — sửa ngày soạn/dạy |
+| P Tên bài | `TÊN BÀI DẠY: [TÊN IN HOA]` (CENTER, bold) |
+| P Môn/Lớp | `Môn học: ... Lớp: ... Thời lượng: ...` (CENTER, bold) |
+| P Tiết PPCT | `Tiết theo PPCT: [số]` (CENTER, bold) |
+| P Tên tiết | `Tên tiết: [tên bài]` (CENTER, bold) |
 
-### Phần I — MỤC TIÊU (theo thứ tự mẫu THCS)
+### Phần I — MỤC TIÊU (thứ tự bắt buộc THCS)
 
 ```
 I. Mục tiêu
-   1. Kiến thức: Nêu cụ thể yêu cầu cần đạt về kiến thức...
+   1. Kiến thức: [Dùng Danh từ/Cụm danh từ: "Sự hiểu biết về...", "Khả năng nhận diện..."]
    2. Năng lực:
-      - Năng lực chung:
-      - Năng lực đặc thù
-      - Năng lực số
-   3. Phẩm chất: ...
+      - Năng lực chung: [...] (Đạt được thông qua Hoạt động X)
+      - Năng lực đặc thù: [...]
+      - Năng lực số (CV 3456): [...]
+   3. Phẩm chất: [mô tả hành vi biểu hiện cụ thể]
 ```
 
-> QUAN TRỌNG - Thứ tự bắt buộc THCS: Kiến thức → Năng lực (chung, đặc thù, số) → Phẩm chất
-> (ngược với Tiểu học)
+> QUAN TRỌNG: Thứ tự bắt buộc THCS: **Kiến thức → Năng lực → Phẩm chất** (ngược với Tiểu học)
 
-**Quy tắc viết mục tiêu THCS:**
-- `1. Kiến thức`: Dùng Danh từ/Cụm danh từ: "Sự hiểu biết về...", "Khả năng nhận diện..."
-- `2. Năng lực`: Mô tả biểu hiện cụ thể, gắn mốc `(Đạt được thông qua Hoạt động X)`
-- `3. Phẩm chất`: Mô tả hành vi biểu hiện cụ thể
-
-### Phần II — THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU
+### Phần II — THIẾT BỊ DẠY HỌC
 
 ```
 II. Thiết bị dạy học và học liệu:
@@ -128,140 +95,142 @@ II. Thiết bị dạy học và học liệu:
    2. Học liệu: [SGK, phiếu học tập, ...]
 ```
 
-### Phần III — TIẾN TRÌNH DẠY HỌC (PARAGRAPHS - KHÔNG DÙNG BẢNG)
+### Phần III — TIẾN TRÌNH DẠY HỌC (PHƯƠNG ÁN B: BẢNG 3 CỘT)
 
-Đây là điểm đặc trưng quan trọng nhất của THCS theo Phương án A:
+> [!IMPORTANT]
+> **Phương án B**: Mỗi hoạt động gồm 4 phần (a, b, c, d) + **bảng 3 cột** cho các bước tổ chức thực hiện.
+
+**Cấu trúc 4 Hoạt động:**
 
 ```
 III. Tiến trình dạy học
 
 1. Hoạt động 1. Khởi động (Xác định vấn đề/nhiệm vụ học tập/Mở đầu)
-   a) Mục tiêu: [italic] Nêu mục tiêu giúp HS xác định vấn đề cần giải quyết
-   b) Nội dung: [italic] Nêu rõ nội dung yêu cầu/nhiệm vụ cụ thể
-   c) Sản phẩm: [italic] Trình bày yêu cầu về sản phẩm
-   d) Tổ chức thực hiện: [italic] Các bước tổ chức hoạt động
-      Bước 1. Chuyển giao nhiệm vụ học tập [italic]
-      Bước 2. Học sinh tiếp nhận nhiệm vụ học tập [italic]
-      Bước 3. Báo cáo kết quả hoạt động [italic]
-      Bước 4. Đánh giá kết quả thực hiện nhiệm vụ [italic]
+   a) Mục tiêu: [italic] Mục tiêu của hoạt động
+   b) Nội dung: [italic] Nội dung yêu cầu/nhiệm vụ
+   c) Sản phẩm: [italic] Yêu cầu sản phẩm
+   d) Tổ chức thực hiện: [italic]
+
+   +-------+--------------------+--------------------+
+   | Bước  | Hoạt động của GV   | Hoạt động của HS   |
+   +-------+--------------------+--------------------+
+   | Bước 1: Chuyển giao nhiệm vụ học tập  | ...GV... | ...HS... |
+   | Bước 2: Học sinh tiếp nhận nhiệm vụ   | ...GV... | ...HS... |
+   | Bước 3: Báo cáo kết quả hoạt động     | ...GV... | ...HS... |
+   | Bước 4: Đánh giá kết quả thực hiện    | ...GV... | ...HS... |
+   +-------+--------------------+--------------------+
 
 2. Hoạt động 2. Hình thành kiến thức mới/giải quyết vấn đề
-   (cấu trúc a-d + Bước 1-4 tương tự)
+   (a-d + bảng 3 cột tương tự)
 
 3. Hoạt động 3. Luyện tập
-   (cấu trúc a-d + Bước 1-4 tương tự)
+   (a-d + bảng 3 cột, Bước 4 mặc định)
 
 4. Hoạt động mở rộng (Nhiệm vụ về nhà)
-   a) Mục tiêu
-   b) Nội dung
-   c) Sản phẩm
-   d) Tổ chức thực hiện
-      Bước 1. Chuyển giao nhiệm vụ học tập
-      Bước 2. Học sinh tiếp nhận nhiệm vụ học tập
-      Bước 3. Báo cáo kết quả hoạt động
-      Bước 4. Giáo viên nhắc nhở nhiệm vụ về nhà
+   (a-d + bảng 3 cột, Bước 4 = "Giáo viên nhắc nhở nhiệm vụ về nhà")
 ```
 
-**Quy tắc formatting:**
-- Tiêu đề HĐ (`1. Hoạt động 1. Khởi động...`): **bold**, first-line indent 180340 EMU
-- `a) b) c) d)`: italic, first-line indent 180340 EMU
-- `Bước 1. Bước 2...`: italic, first-line indent 360045 EMU
-- Sub-labels trong `a)` chú thích: normal (không italic)
-- Line spacing: 1.15 xuyên suốt
+**Quy tắc formatting bảng 3 cột:**
 
-### Phần RÚT KINH NGHIỆM SAU BÀI DẠY (GIỮ NGUYÊN)
+| Cột | Nội dung | Tỉ lệ chiều rộng |
+|:---|:---|:---|
+| Cột 1: `Bước` | Tên bước (italic, bold) | ~20% |
+| Cột 2: `Hoạt động của GV` | Mô tả hoạt động GV | ~40% |
+| Cột 3: `Hoạt động của HS` | Mô tả hoạt động HS | ~40% |
 
-```
-RÚT KINH NGHIỆM SAU BÀI DẠY    [bold]
-….……………………………………………    [bold]
-Lưu ý: Sau 1 tuần mới để phần kí    [bold, CENTER]
-```
+- Header row: **bold**, center, có viền đầy đủ
+- Nội dung: TNR 13pt, line spacing 1.15, căn trái
+- Đường viền: `single`, sz=4, color=000000
 
-### Bảng Table[2] — Ký tên (GIỮ NGUYÊN HOÀN TOÀN)
+**Tên 4 Bước (Bước 1-3 giống nhau cho tất cả hoạt động, Bước 4 thay đổi ở HĐ cuối):**
+- `Bước 1: Chuyển giao nhiệm vụ học tập`
+- `Bước 2: Học sinh tiếp nhận nhiệm vụ học tập`
+- `Bước 3: Báo cáo kết quả hoạt động`
+- HĐ 1-3: `Bước 4: Đánh giá kết quả thực hiện nhiệm vụ`
+- HĐ cuối: `Bước 4: Giáo viên nhắc nhở nhiệm vụ về nhà`
 
-KHÔNG xóa, KHÔNG chỉnh sửa Table[2] (1×3: BGH/Tổ CM/Người soạn).
-Kỹ thuật: Copy nguyên bảng Table[2] từ template gốc vào cuối body.
+**Tên 4 Hoạt động (đúng theo mẫu THCS):**
+- `1. Hoạt động 1. Khởi động (Xác định vấn đề/nhiệm vụ học tập/Mở đầu)`
+- `2. Hoạt động 2. Hình thành kiến thức mới/giải quyết vấn đề`
+- `3. Hoạt động 3. Luyện tập`
+- `4. Hoạt động mở rộng (Nhiệm vụ về nhà)`
+
+**Thời lượng chuẩn THCS (tiết 45 phút):**
+- Khởi động: 7 phút
+- Hình thành kiến thức: 18 phút
+- Luyện tập: 12 phút
+- Mở rộng/Nhiệm vụ về nhà: 8 phút
 
 ---
 
-## E. Kỹ thuật python-docx cho THCS
+## E. Kỹ thuật python-docx cho THCS (Phương án B)
 
 ### 1. Luồng code chính
 
 ```python
 doc = Document(TPL_SECONDARY)  # Load template THCS
+clean_body(doc)  # Xóa body, giữ sectPr
 
-# Giữ Table[0] (thông tin trường) và Table[2] (ký tên)
-# Xóa các element khác, giữ sectPr
-body_children = list(doc.element.body)
-for child in body_children:
-    tag = child.tag.split('}')[-1] if '}' in child.tag else child.tag
-    if tag not in ('sectPr',):
-        doc.element.body.remove(child)
-
-# Re-create table[0] (thông tin trường) — hoặc copy từ template gốc
-# Thêm paragraphs: Tên bài, Tiết PPCT, Tên tiết
-# Thêm I. Mục tiêu (Kiến thức → Năng lực → Phẩm chất)
-# Thêm II. Thiết bị dạy học
-# Thêm III. Tiến trình dạy học (4 HĐ dạng paragraphs)
-# Thêm RÚT KINH NGHIỆM
-# Copy Table[2] từ template gốc
-# doc.save(output_path)
+# Re-create: Table[0] thông tin, paragraphs I/II/III, bảng 3 cột mỗi HĐ, Table ký tên
 ```
 
-### 2. Cách copy Table từ template gốc
+### 2. Tạo bảng 3 cột cho mỗi hoạt động
 
 ```python
-import copy
-doc_tpl = Document(TPL_SECONDARY)
-# Lấy Table[0] (thông tin) và Table[2] (ký tên) từ template
-tbl_info_xml = copy.deepcopy(doc_tpl.tables[0]._tbl)
-tbl_sign_xml = copy.deepcopy(doc_tpl.tables[2]._tbl)
-# Insert vào body trước sectPr
-sect_pr = doc.element.body.find(qn('w:sectPr'))
-doc.element.body.insert(0, tbl_info_xml)  # Table thông tin ở đầu
-doc.element.body.insert(-1, tbl_sign_xml)  # Table ký tên ở cuối
+def add_activity_table_b(doc, buoc_rows, is_last=False):
+    """
+    Tạo bảng 3 cột cho 1 hoạt động (Phương án B)
+    buoc_rows = list of (gv_text, hs_text) cho 4 bước
+    """
+    buoc_labels = [
+        'Bước 1:\nChuyển giao\nnhiệm vụ học tập',
+        'Bước 2:\nHọc sinh tiếp nhận\nnhiệm vụ học tập',
+        'Bước 3:\nBáo cáo kết quả\nhoạt động',
+        'Bước 4:\nĐánh giá kết quả\nthực hiện nhiệm vụ',
+    ]
+    if is_last:
+        buoc_labels[3] = 'Bước 4:\nGiáo viên nhắc nhở\nnhiệm vụ về nhà'
+
+    table = doc.add_table(rows=1, cols=3)
+    set_table_borders(table)
+
+    # Header row
+    hdr = table.rows[0].cells
+    fill_cell(hdr[0], 'Bước', bold=True, align=CENTER)
+    fill_cell(hdr[1], 'Hoạt động của GV', bold=True, align=CENTER)
+    fill_cell(hdr[2], 'Hoạt động của HS', bold=True, align=CENTER)
+
+    # 4 data rows
+    for i, (gv, hs) in enumerate(buoc_rows):
+        row = table.add_row().cells
+        fill_cell(row[0], buoc_labels[i], bold=True, italic=True, align=CENTER)
+        fill_cell(row[1], gv)
+        fill_cell(row[2], hs)
 ```
 
-### 3. Thêm paragraph với format đúng
+### 3. Cấu trúc dữ liệu hoat_dong_list (Phương án B)
 
 ```python
-def add_para_thcs(doc, text, bold=False, italic=False,
-                   indent_first=None, line_spacing=1.15, align=None):
-    para = doc.add_paragraph()
-    run = para.add_run(text)
-    run.bold = bold
-    run.italic = italic
-    afont(run)
-    # Line spacing 1.15
-    pPr = para._p.get_or_add_pPr()
-    spacing = OxmlElement('w:spacing')
-    spacing.set(qn('w:line'), '276')  # 1.15 * 240 = 276
-    spacing.set(qn('w:lineRule'), 'auto')
-    pPr.append(spacing)
-    # Indent
-    if indent_first:
-        para.paragraph_format.first_line_indent = Emu(indent_first)
-    # Align
-    if align:
-        para.alignment = align
-    return para
-```
-
-### 4. Đường viền bảng (tương tự TH)
-
-```python
-def set_table_borders(table):
-    tblPr = table._tbl.tblPr
-    tblBorders = OxmlElement('w:tblBorders')
-    for side in ['top', 'left', 'bottom', 'right', 'insideH', 'insideV']:
-        b = OxmlElement(f'w:{side}')
-        b.set(qn('w:val'), 'single')
-        b.set(qn('w:sz'), '4')
-        b.set(qn('w:color'), '000000')
-        b.set(qn('w:space'), '0')
-        tblBorders.append(b)
-    tblPr.append(tblBorders)
+hoat_dong_list = [
+    {
+        'stt': 1,
+        'ten': 'Khởi động (Xác định vấn đề/nhiệm vụ học tập/Mở đầu)',
+        'muc_tieu': 'Kích hoạt hiểu biết nền...',
+        'noi_dung': 'GV đặt câu hỏi...',
+        'san_pham': 'HS trả lời được...',
+        'to_chuc': 'Hoạt động cá nhân nhanh...',
+        # 4 bước: mỗi bước có gv_text và hs_text
+        'buoc1_gv': 'GV yêu cầu HS...',
+        'buoc1_hs': 'HS quan sát và...',
+        'buoc2_gv': 'GV theo dõi...',
+        'buoc2_hs': 'HS thực hiện...',
+        'buoc3_gv': 'GV ghi lên bảng...',
+        'buoc3_hs': 'HS xung phong...',
+        'buoc4_gv': 'GV đặt câu hỏi dẫn vào bài...',
+        'buoc4_hs': 'HS lắng nghe và chuẩn bị...',
+    },
+    ...
+]
 ```
 
 ---
@@ -273,12 +242,11 @@ def set_table_borders(table):
 3. **Thời lượng**: Tiết 45 phút — Khởi động 7', Hình thành KT 18', Luyện tập 12', Mở rộng 8'
 4. **HĐ 3 (Luyện tập)**: Phải có thực hành trên máy tính
 5. **HĐ 4**: Tên là "Hoạt động mở rộng (Nhiệm vụ về nhà)" — KHÔNG phải "Vận dụng"
-6. **Phụ lục**: Phiếu học tập, Rubric đánh giá — được ghi vào nội dung HĐ tương ứng (không tách ra Section riêng như SKILL.md cũ)
-7. **Bảng ký tên cuối**: Luôn có Table[2] 3 cột (BGH / Tổ CM / Người soạn)
+6. **Bảng ký tên cuối**: Luôn có Table[2] 3 cột (BGH / Tổ CM / Người soạn)
 
 ---
 
-## G. Checklist kiểm tra file THCS sau xuất
+## G. Checklist kiểm tra file THCS sau xuất (Phương án B)
 
 | # | Tiêu chí | Yêu cầu |
 |:---|:---|:---|
@@ -286,9 +254,10 @@ def set_table_borders(table):
 | 2 | Header drawing intact? | Paragraphs[0] trong header có w:drawing |
 | 3 | Table[0] tồn tại? | 2×2, có ngày soạn/dạy |
 | 4 | Thứ tự mục tiêu? | Kiến thức → Năng lực (chung/đặc thù/số) → Phẩm chất |
-| 5 | Tiến trình dùng paragraphs? | Không có bảng 3 cột trong phần III |
-| 6 | Bước 1-4 đúng thứ tự? | Chuyển giao → Tiếp nhận → Báo cáo → Đánh giá |
+| 5 | Tiến trình dùng bảng 3 cột? | Mỗi HĐ có 1 bảng (Bước \| GV \| HS) |
+| 6 | Bước 1-4 đúng thứ tự? | Chuyển giao → Tiếp nhận → Báo cáo → Đánh giá/Nhắc nhở |
 | 7 | HĐ 4 đúng tên? | "Hoạt động mở rộng (Nhiệm vụ về nhà)" |
-| 8 | Bảng ký tên cuối? | Table[2] 1×3 tồn tại |
+| 8 | Bảng ký tên cuối? | Table cuối 1×3 tồn tại |
 | 9 | Font 13pt? | Toàn bộ runs |
 | 10 | Line spacing 1.15? | Toàn bộ paragraphs |
+| 11 | Tổng số bảng? | ≥ 6 (1 TT + 4 HĐ + 1 ký tên) |

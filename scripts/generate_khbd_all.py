@@ -367,12 +367,70 @@ def create_khbd_th(grade_name, grade_folder, bai_so, ten_bai, chu_diem,
 
 # ════════════════════════════════════════════════════════════════════════════
 # PHẦN B: TẠO KHBD THCS
-# Theo luật KHBD_THCS.md (Phương án A):
-# - Font: TNR 13pt, Line spacing: 1.15, Indent mục con: 180340 EMU
-# - Mục tiêu: Kiến thức → Năng lực → Phẩm chất
-# - Tiến trình: Paragraphs Bước 1-4 (KHÔNG dùng bảng)
+# Theo luật KHBD_THCS.md (Phương án B):
+# - Font: TNR 13pt, Line spacing: 1.15
+# - Mục tiêu: Kiến thức → Năng lực (chung/đặc thù/số) → Phẩm chất
+# - Tiến trình: mỗi HĐ có a)b)c)d) + BẢNG 3 CỘT (Bước | HĐ GV | HĐ HS)
 # - GIỮ NGUYÊN Table[0] thông tin và Table[2] ký tên từ template
 # ════════════════════════════════════════════════════════════════════════════
+
+def add_activity_table_b(doc, buoc_data, is_last=False):
+    """
+    Tạo bảng 3 cột cho 1 hoạt động (Phương án B).
+    buoc_data: list of 4 tuples [(gv_text, hs_text), ...] cho Bước 1-4
+    """
+    buoc_labels_default = [
+        'Bước 1:\nChuyển giao\nnhiệm vụ học tập',
+        'Bước 2:\nHọc sinh tiếp nhận\nnhiệm vụ học tập',
+        'Bước 3:\nBáo cáo kết quả\nhoạt động',
+        'Bước 4:\nĐánh giá kết quả\nthực hiện nhiệm vụ',
+    ]
+    buoc_labels_last = [
+        'Bước 1:\nChuyển giao\nnhiệm vụ học tập',
+        'Bước 2:\nHọc sinh tiếp nhận\nnhiệm vụ học tập',
+        'Bước 3:\nBáo cáo kết quả\nhoạt động',
+        'Bước 4:\nGiáo viên nhắc nhở\nnhiệm vụ về nhà',
+    ]
+    buoc_labels = buoc_labels_last if is_last else buoc_labels_default
+
+    table = doc.add_table(rows=1, cols=3)
+    set_table_borders(table)
+
+    # Thiết lập chiều rộng cột: 20% | 40% | 40% (tổng ~9026 units = 16cm)
+    tbl = table._tbl
+    tblGrid = OxmlElement('w:tblGrid')
+    for w in [1805, 3610, 3611]:  # twips (units)
+        gridCol = OxmlElement('w:gridCol')
+        gridCol.set(qn('w:w'), str(w))
+        tblGrid.append(gridCol)
+    # Chèn tblGrid vào sau tblPr
+    tblPr_el = tbl.find(qn('w:tblPr'))
+    if tblPr_el is not None:
+        tblPr_el.addnext(tblGrid)
+    else:
+        tbl.insert(0, tblGrid)
+
+    # Header row
+    hdr = table.rows[0].cells
+    fill_cell(hdr[0], 'Bước', bold=True, line_ratio=1.15,
+              align=WD_ALIGN_PARAGRAPH.CENTER)
+    fill_cell(hdr[1], 'Hoạt động của GV', bold=True, line_ratio=1.15,
+              align=WD_ALIGN_PARAGRAPH.CENTER)
+    fill_cell(hdr[2], 'Hoạt động của HS', bold=True, line_ratio=1.15,
+              align=WD_ALIGN_PARAGRAPH.CENTER)
+
+    # 4 data rows
+    for i, (gv_text, hs_text) in enumerate(buoc_data):
+        row = table.add_row()
+        fill_cell(row.cells[0], buoc_labels[i], bold=True, italic=True,
+                  line_ratio=1.15, align=WD_ALIGN_PARAGRAPH.CENTER)
+        fill_cell(row.cells[1], gv_text, line_ratio=1.15)
+        fill_cell(row.cells[2], hs_text, line_ratio=1.15)
+
+    # Thêm paragraph trống sau bảng để phân cách
+    add_para(doc, '', line_ratio=1.15)
+    return table
+
 
 def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
                      mon_hoc, lop, thoi_luong, tiet_ppct,
@@ -383,18 +441,23 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
                      thiet_bi, hoc_lieu,
                      hoat_dong_list):
     """
-    Tạo KHBD THCS hoàn chỉnh theo Phương án A.
+    Tạo KHBD THCS hoàn chỉnh theo Phương án B (bảng 3 cột).
     hoat_dong_list: list of dicts:
       {
         'stt': 1,
-        'ten': 'Khởi động (Xác định vấn đề/...)',
+        'ten': 'Khởi động (Xác định vấn đề/nhiệm vụ học tập/Mở đầu)',
         'muc_tieu': '...',
         'noi_dung': '...',
         'san_pham': '...',
-        'buoc1': '...',
-        'buoc2': '...',
-        'buoc3': '...',
-        'buoc4': '...',
+        'to_chuc': '...',          # tùy chọn, mô tả hình thức tổ chức
+        'buoc1_gv': '...GV làm...',
+        'buoc1_hs': '...HS làm...',
+        'buoc2_gv': '...',
+        'buoc2_hs': '...',
+        'buoc3_gv': '...',
+        'buoc3_hs': '...',
+        'buoc4_gv': '...',
+        'buoc4_hs': '...',
       }
     """
     doc = Document(TPL_THCS)
@@ -404,8 +467,7 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
     doc_tpl = Document(TPL_THCS)
     tbl_info = copy.deepcopy(doc_tpl.tables[0]._tbl)
 
-    # Sửa ngày trong table copy
-    # Row[1], Col[1] chứa ngày soạn/dạy
+    # Sửa ngày soạn/dạy trong Row[1], Col[1]
     rows = tbl_info.findall(qn('w:tr'))
     if len(rows) >= 2:
         cells_r1 = rows[1].findall(qn('w:tc'))
@@ -427,8 +489,8 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
         doc.element.body.append(tbl_info)
 
     # ── Tên bài + Tiết PPCT ───────────────────────────────────────────────
-    p_ten = add_para(doc, f'TÊN BÀI DẠY: {ten_bai.upper()}',
-                     bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, line_ratio=1.15)
+    add_para(doc, f'TÊN BÀI DẠY: {ten_bai.upper()}',
+             bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, line_ratio=1.15)
     add_para(doc, f'Môn học: {mon_hoc}   Lớp: {lop}   Thời lượng: {thoi_luong}',
              bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, line_ratio=1.15)
     add_para(doc, f'Tiết theo PPCT: {tiet_ppct}',
@@ -483,7 +545,7 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
              indent_first=180340, sp_after=0, line_ratio=1.15)
     add_para(doc, hoc_lieu, indent_first=180340, sp_after=0, line_ratio=1.15)
 
-    # ── III. TIẾN TRÌNH DẠY HỌC (paragraphs, KHÔNG bảng) ─────────────────
+    # ── III. TIẾN TRÌNH DẠY HỌC (Phương án B: bảng 3 cột) ────────────────
     add_para(doc, 'III. Tiến trình dạy học', bold=True, line_ratio=1.15)
 
     for hd in hoat_dong_list:
@@ -491,61 +553,51 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
         ten_hd = hd['ten']
         is_last = (stt == len(hoat_dong_list))
 
+        # Tiêu đề hoạt động
         add_para(doc, f'{stt}. Hoạt động {stt}. {ten_hd}', bold=True,
                  indent_first=180340, line_ratio=1.15)
 
-        # a) b) c) d)
+        # a) Mục tiêu
         p_a = add_para(doc, '', indent_first=180340, sp_after=0, line_ratio=1.15)
         r_a_label = p_a.add_run('a) Mục tiêu: ')
         afont(r_a_label, italic=True)
         r_a_val = p_a.add_run(hd.get('muc_tieu', ''))
         afont(r_a_val)
 
+        # b) Nội dung
         p_b = add_para(doc, '', indent_first=180340, sp_after=0, line_ratio=1.15)
         r_b_label = p_b.add_run('b) Nội dung: ')
         afont(r_b_label, italic=True)
         r_b_val = p_b.add_run(hd.get('noi_dung', ''))
         afont(r_b_val)
 
+        # c) Sản phẩm
         p_c = add_para(doc, '', indent_first=180340, sp_after=0, line_ratio=1.15)
         r_c_label = p_c.add_run('c) Sản phẩm: ')
         afont(r_c_label, italic=True)
         r_c_val = p_c.add_run(hd.get('san_pham', ''))
         afont(r_c_val)
 
+        # d) Tổ chức thực hiện
         p_d = add_para(doc, '', indent_first=180340, line_ratio=1.15)
         r_d_label = p_d.add_run('d) Tổ chức thực hiện: ')
         afont(r_d_label, italic=True)
-        r_d_val = p_d.add_run(hd.get('to_chuc', ''))
-        afont(r_d_val)
+        to_chuc = hd.get('to_chuc', '')
+        if to_chuc:
+            r_d_val = p_d.add_run(to_chuc)
+            afont(r_d_val)
 
-        # Bước 1-4
-        buoc_labels_default = [
-            'Bước 1. Chuyển giao nhiệm vụ học tập',
-            'Bước 2. Học sinh tiếp nhận nhiệm vụ học tập',
-            'Bước 3. Báo cáo kết quả hoạt động',
-            'Bước 4. Đánh giá kết quả thực hiện nhiệm vụ',
-        ]
-        buoc_labels_last = [
-            'Bước 1. Chuyển giao nhiệm vụ học tập',
-            'Bước 2. Học sinh tiếp nhận nhiệm vụ học tập',
-            'Bước 3. Báo cáo kết quả hoạt động',
-            'Bước 4. Giáo viên nhắc nhở nhiệm vụ về nhà',
-        ]
-        buoc_labels = buoc_labels_last if is_last else buoc_labels_default
-        buoc_contents = [
-            hd.get('buoc1', ''), hd.get('buoc2', ''),
-            hd.get('buoc3', ''), hd.get('buoc4', ''),
-        ]
 
-        for j, (label, content) in enumerate(zip(buoc_labels, buoc_contents)):
-            p_buoc = add_para(doc, '', indent_first=360045,
-                              sp_after=0, line_ratio=1.15)
-            r_bl = p_buoc.add_run(label)
-            afont(r_bl, italic=True)
-            if content:
-                r_bc = p_buoc.add_run(f'\n{content}')
-                afont(r_bc)
+        # Bảng 3 cột Bước 1-4
+        # Hỗ trợ cả key mới (buoc1_gv/buoc1_hs) và key cũ (buoc1)
+        def _get_buoc(hd, n):
+            gv = hd.get(f'buoc{n}_gv') or hd.get(f'buoc{n}', '')
+            hs = hd.get(f'buoc{n}_hs', '')
+            return gv, hs
+        buoc_data = [_get_buoc(hd, 1), _get_buoc(hd, 2),
+                     _get_buoc(hd, 3), _get_buoc(hd, 4)]
+        add_activity_table_b(doc, buoc_data, is_last=is_last)
+
 
     # ── RÚT KINH NGHIỆM ──────────────────────────────────────────────────
     add_para(doc, 'RÚT KINH NGHIỆM SAU BÀI DẠY', bold=True, line_ratio=1.15)
@@ -555,7 +607,7 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
     add_para(doc, '')
     add_para(doc, '', indent_first=180340, line_ratio=1.15)
 
-    # ── Table[2]: Bảng ký tên — copy từ template ─────────────────────────
+    # ── Table ký tên — copy từ template ───────────────────────────────────
     tbl_sign = copy.deepcopy(doc_tpl.tables[2]._tbl)
     sect_pr2 = doc.element.body.find(qn('w:sectPr'))
     if sect_pr2 is not None:
@@ -583,13 +635,14 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
                        for r in p.runs if r._r.findall(qn('w:drawing')))
     tbl_count = len(verify.tables)
     print(f'  ✅ Saved: {saved}')
-    print(f'     Header drawings: {hdr_drawings} | Tables: {tbl_count}')
+    print(f'     Header drawings: {hdr_drawings} | Tables: {tbl_count} (expected ≥6)')
     return saved
 
 
 # ════════════════════════════════════════════════════════════════════════════
 # DỮ LIỆU NỘI DUNG CHO TỪNG LỚP - Bài 1
 # ════════════════════════════════════════════════════════════════════════════
+
 
 def build_all():
     results = []
