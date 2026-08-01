@@ -601,11 +601,11 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
 
     # ── RÚT KINH NGHIỆM ──────────────────────────────────────────────────
     add_para(doc, 'RÚT KINH NGHIỆM SAU BÀI DẠY', bold=True, line_ratio=1.15)
-    add_para(doc, '….……………………………………………………………………………………………..', bold=True, line_ratio=1.15)
-    add_para(doc, 'Lưu ý: Sau 1 tuần mới để phần kí',
-             bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, line_ratio=1.15)
+    dot_line = '........................................................................................................................'
+    for _ in range(4):
+        add_para(doc, dot_line, line_ratio=1.15)
     add_para(doc, '')
-    add_para(doc, '', indent_first=180340, line_ratio=1.15)
+
 
     # ── Table ký tên — copy từ template ───────────────────────────────────
     tbl_sign = copy.deepcopy(doc_tpl.tables[2]._tbl)
