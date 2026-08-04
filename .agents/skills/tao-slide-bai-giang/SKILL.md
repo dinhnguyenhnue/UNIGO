@@ -32,32 +32,26 @@ font tiếng Việt chuẩn, màu sắc thay đổi linh hoạt theo nội dung 
 - **Kiểm tra sau xuất:** Xác nhận mỗi slide có shape chân trang UNIGO.
 
 #### Quy tắc thiết kế giao diện & Bố cục nâng cao (High-Aesthetic Design System):
-1. **Top Header Banner (Thanh tiêu đề hàng đầu):**
-   - Mọi slide nội dung đều có thanh Banner màu chủ đạo phía trên (chiều cao ~3.8cm).
-   - Có **Badge Pill màu nhấn** hiển thị tên môn & số bài (ví dụ `[ TIN HỌC 3 • BÀI 1 ]`).
-   - Tiêu đề slide chữ trắng in đậm (22pt) đặt vừa vặn trong Banner.
-2. **Hệ thống Container dạng Thẻ (Modern Card Grid System):**
-   - Nội dung không thả trôi tự do mà được đóng gói trong các **Card bo góc** (`ROUNDED_RECTANGLE`) màu trắng (`#FFFFFF`) hoặc pastel nhạt (`#F8FAFC`, `#EEF2FF`).
-   - **Vạch màu nhấn bên trái Card (Left Accent Strip):** Mỗi card kiến thức/mục tiêu có thanh vạch màu chuyên biệt ở lề trái (rộng ~0.6cm) tạo điểm nhấn thị giác cực đẹp.
-   - **Huy hiệu số thứ tự (Number Badges):** Mục tiêu hay danh sách được đánh số bằng hình tròn/Pill màu nổi bật (`01`, `02`, `03`).
-3. **Khung hình ảnh AI (Image Framing):**
-   - Hình ảnh AI được lồng bên trong một Card container màu trắng có viền bo tròn (`ROUNDED_RECTANGLE`) giúp bức ảnh chìm nổi hài hòa với slide, không bị cụt hay thô.
-4. **Trang bìa Hero (Hero Title Slide):**
-   - Thiết kế dạng Hero Card sang trọng chính giữa slide với thanh accent màu da cam lề trái, Badge Pill môn học, tiêu đề chữ tối nổi bật và thẻ thông tin GV/Trường bên phải.
-5. **Quy tắc màu sắc (LINH HOẠT theo bài):**
-| Chủ đề | Màu chủ đạo | Màu nhấn |
-|--------|-------------|----------|
-| Thông tin, Internet, Mạng | Xanh dương (`#1E3A8A`) | Cam (`#EA580C`) / Xanh lá (`#10B981`) |
-| Lập trình, Thuật toán | Tím (`#581C87`) | Xanh dương (`#2563EB`) / Xanh lá |
-| Đạo đức số, An toàn | Đỏ cam (`#DC2626`) | Vàng (`#F59E0B`) |
-| Ứng dụng, Phần mềm | Xanh lá (`#065F46`) | Xanh biển (`#0284C7`) / Cam |
-| Máy tính, Phần cứng | Xám xanh (`#0F172A`) | Xanh điện (`#0284C7`) / Hổ phách |
-| Sáng tạo, Lịch sử | Tím hoàng gia (`#581C87`) | Xanh ngọc (`#0D9488`) |
+1. **Bảo tồn Slide Master & Vùng An Toàn:**
+   - GIỮ NGUYÊN Logo UNIGO (`Picture 7` tại L=0.17in, T=0.15in) và Chân trang (`Picture 9` tại L=0.00in, T=6.43in) từ slide master.
+   - VÙNG AN TOÀN NỘI DUNG: Chiều dọc từ **Y = 1.15in đến Y = 6.30in** (chiều cao 5.15in). Tuyệt đối không vẽ shape hoặc đè nền màu vượt quá Y = 6.30in hoặc chờm lên Y < 1.15in làm che logo/chân trang.
 
-#### Quy tắc tương phản & khoảng cách:
-- Nền slide: luôn dùng màu rất nhạt (pastel/slate `#F8FAFC`), KHÔNG dùng trắng thuần hay tối thui.
-- Card: màu trắng tinh (`#FFFFFF`) có viền nhẹ (`#E2E8F0`) + vạch lề màu nổi bật.
-- Margin slide: tối thiểu 1cm từ mép; Chân trang: 1.2cm từ đáy slide.
+2. **Quy chuẩn Font chữ & Cỡ chữ:**
+   - Tiêu đề slide chính / Giới thiệu: **24pt - 28pt** (Bold).
+   - Nội dung thường (Bullet text): **18pt - 20pt**.
+   - Ký tự đầu dòng (●): **14pt**, Giãn dòng (Line spacing): **28pt**, Khoảng cách sau đoạn (Space after): **8pt**.
+   - Giới hạn nội dung mỗi slide ngắn gọn (tối đa 3 - 4 dòng bullet) để đảm bảo chữ to rõ, thoáng, không dính hoặc chồng chữ.
+
+3. **Cấu trúc Group Card & Accent Bar:**
+   - **Thanh Accent Bar khít tuyệt đối:** Thanh accent màu bên mép card BẮT BUỘC phải khít hoàn toàn chiều cao ô trắng (`bar.top = card.top`, `bar.height = card.height`), không tạo margin hở trên/dưới.
+   - **Bắt buộc Grouping:** Card ô trắng (`ROUNDED_RECTANGLE`) và thanh accent bar BẮT BUỘC phải được nhóm lại thành một khối duy nhất (`group_shapes` qua `<p:grpSp>`) để giáo viên dễ dàng di chuyển và căn chỉnh trong PowerPoint.
+
+4. **Nội dung Song ngữ:**
+   - Có thể mix thuật ngữ tiếng Anh nhưng BẮT BUỘC có phần mở ngoặc `()` giải thích tiếng Việt rõ ràng.
+
+5. **Slide Tổng kết & Màu sắc:**
+   - Slide tổng kết dùng nền nhạt `bg` và chèn panel màu chỉ nằm gọn trong Vùng An Toàn (Y 1.15in → 6.30in). Tuyệt đối không gọi `set_slide_bg(primary)` phủ toàn slide làm che mất logo master.
+   - Áp dụng hệ thống xoay vòng 8 bộ màu (Color Palette rotation) linh hoạt, hiện đại cho từng bài/lớp.
 
 ### Bước 5: Cấu trúc slide deck (12-16 slides)
 
