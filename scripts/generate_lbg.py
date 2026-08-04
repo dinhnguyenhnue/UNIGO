@@ -8,12 +8,22 @@ QUY TAC ROTATION:
       Tuan LE  (3, 5, 7...): ca 2 tiet -> Robotics
   - Cac lop con lai: giu nguyen mon hoc goc
 
+QUY TAC PPCT (Back-to-School rule):
+  - Tuan 1: Tat ca = Tiet 0 (Dinh huong)
+  - Tuan 2+:
+      T2, T3 (day_idx 0,1): bi tre 1 tuan do Back to School
+        => ppct = max(0, tuan_so - 2)
+      T4, T5, T6 (day_idx 2,3,4): binh thuong
+        => ppct = max(0, tuan_so - 1)
+  - Rotation classes (5,6,7,8): PPCT rieng cho Tin/Robotics
+      Khi co 2 tiet lien tiep cung mon -> PPCT lien tiep
+
 QUY TRINH (moi tuan):
   1. Doc file Tuan 01 lam template
   2. Cap nhat tieu de tuan + ngay
   3. Cap nhat nhan Thu/ngay trong bang
   4. Ap dung rotation cho lop 5,6,7,8
-  5. Cap nhat PPCT (tuan 2 = tiet 1, tuan 3 = tiet 2, ...)
+  5. Cap nhat PPCT + Ten bai tu PPCT_DATA
   6. Luu ban goc tong hop
   7. Tach 2 ban: TTH+TH va THCS
   8. Chen page break (sang/chieu/nhan xet = 3 trang)
@@ -50,10 +60,495 @@ TEMPLATE = os.path.join(LBG_DIR, 'Lịch báo giảng - Tuần 01.docx')
 TUAN_01_START = date(2026, 8, 3)
 
 # Lop co rotation Tin hoc / Robotics tuan chan-le (bat dau tu lop 5)
-# Phat hien dong: neu lop bat dau bang 5, 6, 7, 8 thi rotation
 ROTATION_PREFIXES = ('5', '6', '7', '8')
 
 THU_LABELS = {0: 'Hai', 1: 'Ba', 2: 'Tư', 3: 'Năm', 4: 'Sáu'}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PPCT_DATA: Mapping class -> {ppct_num: lesson_name}
+# ppct_num starts at 0 (Dinh huong) then 1, 2, 3...
+# In PPCT files, PPCT=1 = "Tiết 0: Định hướng", PPCT=2 = "Bài 1..."
+# But in LBG, we use ppct=0 for orientation, ppct=1 for first real lesson
+# So LBG ppct N maps to PPCT_DATA key N+1
+# ─────────────────────────────────────────────────────────────────────────────
+
+PPCT_TIN = {
+    # Tiền Tiểu học (TT3, TTH 1, TTH2 - dùng PPCT chung TTH)
+    'TT3': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Em làm quen với thế giới công nghệ',
+        2: 'Máy tính quanh em',
+        3: 'Em ngồi máy tính an toàn',
+        4: 'Làm quen với chuột',
+        5: 'Kéo – thả thật vui',
+        6: 'Khám phá bàn phím',
+        7: 'Chữ, hình và âm thanh',
+        8: 'Màu sắc và hình dạng',
+        9: 'Em tạo bức tranh đầu tiên',
+        10: 'Ôn tập kỹ năng số',
+        11: 'ĐÁNH GIÁ ĐỊNH KỲ 1',
+        12: 'Thông tin quanh em',
+        13: 'Máy tính làm việc theo lệnh',
+        14: 'Một việc – nhiều bước',
+        15: 'Chỉ đường cho nhân vật',
+        16: 'Mê cung của em',
+        17: 'Sửa lỗi đường đi',
+        18: 'Làm quen lập trình trực quan',
+        19: 'Ôn tập Coding cơ bản',
+        20: 'ĐÁNH GIÁ ĐỊNH KỲ 2',
+        21: 'Kể chuyện số',
+        22: 'Tạo nhân vật',
+        23: 'Tạo bối cảnh',
+        24: 'Nhân vật chuyển động',
+        25: 'Âm thanh và lời kể',
+        26: 'Dự án: Câu chuyện số',
+        27: 'Chia sẻ và làm việc nhóm',
+        28: 'Hoàn thiện sản phẩm',
+        29: 'ĐÁNH GIÁ ĐỊNH KỲ 3',
+        30: 'Robot quanh em',
+        31: 'Điều khiển robot',
+        32: 'Robot thực hiện nhiệm vụ',
+        33: 'AI quanh em',
+        34: 'Sử dụng công nghệ an toàn',
+        35: 'ĐÁNH GIÁ ĐỊNH KỲ 4',
+    },
+    # Lớp 1 (1A1, 1C1)
+    '1': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Em làm quen với thế giới công nghệ',
+        2: 'Ôn và nâng cấp kỹ năng chuột',
+        3: 'Bàn phím và gõ câu ngắn',
+        4: 'Mở, đóng và chuyển đổi ứng dụng',
+        5: 'Tệp là gì?',
+        6: 'Thư mục là gì?',
+        7: 'Đặt tên và lưu sản phẩm',
+        8: 'Mở lại và sắp xếp sản phẩm',
+        9: 'Tạo một sản phẩm có tổ chức',
+        10: 'Ôn tập tệp – thư mục',
+        11: 'ĐÁNH GIÁ ĐỊNH KỲ 1',
+        12: 'Thông tin và dữ liệu',
+        13: 'Thông tin dạng chữ, hình, âm thanh, video',
+        14: 'Thu nhận và xử lý thông tin',
+        15: 'Một nhiệm vụ thành nhiều bước',
+        16: 'Thuật toán bằng lời và hình',
+        17: 'Lập trình trực quan: chuỗi lệnh',
+        18: 'Lặp lại một hành động',
+        19: 'Chạy thử và sửa lỗi',
+        20: 'ĐÁNH GIÁ ĐỊNH KỲ 2',
+        21: 'Thiết kế câu chuyện số',
+        22: 'Thiết kế nhân vật',
+        23: 'Thiết kế bối cảnh',
+        24: 'Animation: chuyển động',
+        25: 'Tương tác và âm thanh',
+        26: 'Dự án: Hoạt hình ngắn',
+        27: 'Thiết kế sản phẩm nhóm',
+        28: 'Kiểm thử và hoàn thiện',
+        29: 'ĐÁNH GIÁ ĐỊNH KỲ 3',
+        30: 'Robot và cảm biến',
+        31: 'Lập trình robot theo nhiệm vụ',
+        32: 'Robot giải quyết vấn đề',
+        33: 'AI có thể làm gì?',
+        34: 'AI có thể sai – dữ liệu cần kiểm tra',
+        35: 'ĐÁNH GIÁ ĐỊNH KỲ 4',
+    },
+    # Lớp 2 (2A1, 2C1)
+    '2': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Em trở thành nhà sáng tạo số',
+        2: 'Ôn và nâng cấp kỹ năng chuột',
+        3: 'Bàn phím và gõ câu ngắn',
+        4: 'Mở, đóng và chuyển đổi ứng dụng',
+        5: 'Tệp là gì?',
+        6: 'Thư mục là gì?',
+        7: 'Đặt tên và lưu sản phẩm',
+        8: 'Mở lại và sắp xếp sản phẩm',
+        9: 'Tạo một sản phẩm có tổ chức',
+        10: 'Ôn tập tệp – thư mục',
+        11: 'ĐÁNH GIÁ ĐỊNH KỲ 1',
+        12: 'Thông tin và dữ liệu',
+        13: 'Thông tin dạng chữ, hình, âm thanh, video',
+        14: 'Thu nhận và xử lý thông tin',
+        15: 'Một nhiệm vụ thành nhiều bước',
+        16: 'Thuật toán bằng lời và hình',
+        17: 'Lập trình trực quan: chuỗi lệnh',
+        18: 'Lặp lại một hành động',
+        19: 'Chạy thử và sửa lỗi',
+        20: 'ĐÁNH GIÁ ĐỊNH KỲ 2',
+        21: 'Thiết kế câu chuyện số',
+        22: 'Thiết kế nhân vật',
+        23: 'Thiết kế bối cảnh',
+        24: 'Animation: chuyển động',
+        25: 'Tương tác và âm thanh',
+        26: 'Dự án: Hoạt hình ngắn',
+        27: 'Thiết kế sản phẩm nhóm',
+        28: 'Kiểm thử và hoàn thiện',
+        29: 'ĐÁNH GIÁ ĐỊNH KỲ 3',
+        30: 'Robot và cảm biến',
+        31: 'Lập trình robot theo nhiệm vụ',
+        32: 'Robot giải quyết vấn đề',
+        33: 'AI có thể làm gì?',
+        34: 'AI có thể sai – dữ liệu cần kiểm tra',
+        35: 'ĐÁNH GIÁ ĐỊNH KỲ 4',
+    },
+    # Lớp 3 (3A1, 3C1) - from Table 4 Tin TH
+    '3': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Bài 1: Thông tin và quyết định',
+        2: 'Bài 2: Xử lí thông tin',
+        3: 'Bài 3: Máy tính và em',
+        4: 'Bài 4: Làm việc với máy tính',
+        5: 'Ôn tập Đánh giá định kỳ 1',
+        6: 'Đánh giá định kỳ 1',
+        7: 'Bài 5: Sử dụng bàn phím',
+        8: 'Bài 6: Khám phá thông tin trên Internet',
+        9: 'Bài 7: Sắp xếp để dễ tìm',
+        10: 'Bài 8: Sơ đồ hình cây. Tổ chức thông tin trong máy tính',
+        11: 'Ôn tập Đánh giá định kỳ 2',
+        12: 'Đánh giá định kỳ 2',
+        13: 'Bài 11: Thực hành với tệp và thư mục trong máy tính',
+        14: 'Bài 12: Bảo vệ thông tin khi dùng máy tính',
+        15: 'Bài 13: Bài trình chiếu của em',
+        16: 'Bài 14: Tìm hiểu về thế giới tự nhiên',
+        17: 'Bài 15: Luyện tập sử dụng chuột',
+        18: 'Ôn tập Đánh giá định kỳ 3',
+        19: 'Đánh giá định kỳ 3',
+        20: 'Bài 16: Em thực hiện công việc như thế nào?',
+        21: 'Ôn tập và luyện tập',
+        22: 'Ôn tập Đánh giá định kỳ 4',
+        23: 'Đánh giá định kỳ 4',
+        24: 'Tổng kết năm học',
+    },
+    # Lớp 4 (4C1) - from Table 5 Tin TH
+    '4': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Bài 1: Phần cứng và phần mềm máy tính',
+        2: 'Bài 2: Gõ bàn phím đúng cách',
+        3: 'Bài 3: Thông tin trên trang Web',
+        4: 'Bài 4: Tìm kiếm thông tin trên Internet',
+        5: 'Ôn tập Đánh giá định kỳ 1',
+        6: 'Đánh giá định kỳ 1',
+        7: 'Bài 5: Cây thư mục',
+        8: 'Bài 6: Sử dụng phần mềm khi được phép',
+        9: 'Bài 7: Tạo bài trình chiếu',
+        10: 'Bài 8: Định dạng văn bản trên trang chiếu',
+        11: 'Bài 9: Hiệu ứng chuyển trang',
+        12: 'Ôn tập Đánh giá định kỳ 2',
+        13: 'Đánh giá định kỳ 2',
+        14: 'Bài 12: Phần mềm soạn thảo văn bản',
+        15: 'Bài 13: Chỉnh sửa văn bản',
+        16: 'Bài 14: Luyện tập gõ bàn phím / Đa phương tiện',
+        17: 'Bài 15: Chơi với máy tính',
+        18: 'Ôn tập Đánh giá định kỳ 3',
+        19: 'Đánh giá định kỳ 3',
+        20: 'Bài 16: Khám phá môi trường lập trình trực quan',
+        21: 'Ôn tập và luyện tập',
+        22: 'Ôn tập Đánh giá định kỳ 4',
+        23: 'Đánh giá định kỳ 4',
+        24: 'Tổng kết năm học',
+    },
+    # Lớp 5 (5C1) - from Table 6 Tin TH
+    '5': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Bài 1: Em có thể làm gì với máy tính?',
+        2: 'Bài 2: Tìm kiếm thông tin trên website',
+        3: 'Bài 3: Tìm kiếm thông tin trong giải quyết vấn đề',
+        4: 'Bài 4: Cây thư mục',
+        5: 'Ôn tập Đánh giá định kỳ 1',
+        6: 'Đánh giá định kỳ 1',
+        7: 'Bài 5: Bản quyền nội dung thông tin',
+        8: 'Bài 6: Định dạng kí tự và bố trí hình ảnh trong văn bản',
+        9: 'Bài 7: Thực hành soạn thảo văn bản',
+        10: 'Bài 8: Sản phẩm đồ họa / Sản phẩm thủ công',
+        11: 'Ôn tập Đánh giá định kỳ 2',
+        12: 'Đánh giá định kỳ 2',
+        13: 'Bài 11: Thực hành tạo sản phẩm số',
+        14: 'Bài 12: Cấu trúc tuần tự',
+        15: 'Bài 13: Cấu trúc lặp',
+        16: 'Bài 14: Thực hành sử dụng lệnh lặp',
+        17: 'Ôn tập Đánh giá định kỳ 3',
+        18: 'Đánh giá định kỳ 3',
+        19: 'Bài 15: Cấu trúc rẽ nhánh',
+        20: 'Bài 16: Sử dụng biến trong chương trình',
+        21: 'Ôn tập và luyện tập',
+        22: 'Ôn tập Đánh giá định kỳ 4',
+        23: 'Đánh giá định kỳ 4',
+        24: 'Tổng kết năm học',
+    },
+    # Lớp 6 (6A1) - from Table 3 Tin THCS
+    '6': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Bài 1. Thông tin và dữ liệu',
+        2: 'Bài 2. Xử lí thông tin',
+        3: 'Bài 3. Thông tin trong máy tính',
+        4: 'Bài 4. Mạng máy tính',
+        5: 'Ôn tập Đánh giá định kỳ 1',
+        6: 'Đánh giá định kỳ 1',
+        7: 'Bài 5. Internet',
+        8: 'Bài 6. Mạng thông tin toàn cầu',
+        9: 'Bài 7. Tìm kiếm thông tin trên Internet',
+        10: 'Bài 8. Thư điện tử',
+        11: 'Ôn tập Đánh giá định kỳ 2',
+        12: 'Đánh giá định kỳ 2',
+        13: 'Bài 9. An toàn thông tin trên Internet',
+        14: 'Bài 10. Sơ đồ tư duy',
+        15: 'Bài 11. Định dạng văn bản',
+        16: 'Bài 12. Trình bày thông tin ở dạng bảng',
+        17: 'Ôn tập Đánh giá định kỳ 3',
+        18: 'Đánh giá định kỳ 3',
+        19: 'Bài 13. Tìm kiếm và thay thế',
+        20: 'Ôn tập và luyện tập',
+        21: 'Ôn tập Đánh giá định kỳ 4',
+        22: 'Đánh giá định kỳ 4',
+        23: 'Tổng kết năm học',
+    },
+    # Lớp 7 (7A1) - from Table 4 Tin THCS
+    '7': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Bài 1. Thiết bị vào - ra',
+        2: 'Bài 2. Phần mềm máy tính',
+        3: 'Bài 3. Quản lý dữ liệu trong máy tính',
+        4: 'Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet',
+        5: 'Ôn tập Đánh giá định kỳ 1',
+        6: 'Đánh giá định kỳ 1',
+        7: 'Bài 5. Ứng xử trên mạng',
+        8: 'Bài 6. Làm quen với phần mềm bảng tính',
+        9: 'Bài 7. Tính toán tự động trên bảng tính',
+        10: 'Bài 8. Công cụ hỗ trợ tính toán',
+        11: 'Ôn tập Đánh giá định kỳ 2',
+        12: 'Đánh giá định kỳ 2',
+        13: 'Bài 9. Trình bày bảng tính',
+        14: 'Bài 10. Hoàn thiện bảng tính',
+        15: 'Bài 11. Tạo bài trình chiếu',
+        16: 'Bài 12. Định dạng đối tượng trên trang chiếu',
+        17: 'Bài 13. Thực hành tổng hợp: Hoàn thiện bài trình chiếu',
+        18: 'Ôn tập Đánh giá định kỳ 3',
+        19: 'Đánh giá định kỳ 3',
+        20: 'Ôn tập và luyện tập',
+        21: 'Ôn tập Đánh giá định kỳ 4',
+        22: 'Đánh giá định kỳ 4',
+        23: 'Tổng kết năm học',
+    },
+    # Lớp 8 (8A1) - from Table 5 Tin THCS
+    '8': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Bài 1. Lược sử công cụ tính toán',
+        2: 'Bài 2. Thông tin trong môi trường số',
+        3: 'Bài 3. Thực hành khai thác thông tin số',
+        4: 'Ôn tập Đánh giá định kỳ 1',
+        5: 'Đánh giá định kỳ 1',
+        6: 'Bài 4. Đạo đức và văn hóa trong sử dụng công nghệ số',
+        7: 'Bài 5. Sử dụng bảng tính giải quyết bài toán thực tế',
+        8: 'Bài 6. Sắp xếp và lọc dữ liệu',
+        9: 'Bài 7. Trình bày dữ liệu bằng biểu đồ',
+        10: 'Ôn tập Đánh giá định kỳ 2',
+        11: 'Đánh giá định kỳ 2',
+        12: 'Bài 8a. Làm việc với danh sách dạng liệt kê và hình ảnh trong văn bản',
+        13: 'Bài 9a. Tạo đầu trang, chân trang cho văn bản',
+        14: 'Bài 10a. Định dạng nâng cao cho trang chiếu',
+        15: 'Bài 11a. Sử dụng bản mẫu cho bài trình chiếu',
+        16: 'Ôn tập Đánh giá định kỳ 3',
+        17: 'Đánh giá định kỳ 3',
+        18: 'Bài 12. Từ thuật toán đến chương trình',
+        19: 'Ôn tập và luyện tập',
+        20: 'Ôn tập Đánh giá định kỳ 4',
+        21: 'Đánh giá định kỳ 4',
+        22: 'Bài 16. Tin học với nghề nghiệp',
+    },
+}
+
+# Robotics PPCT (shared for 6,7,8; separate for TH classes)
+PPCT_ROB = {
+    # Robotics cho lop 1 (1A1, 1C1) - giong Rob TH Table 5
+    '1': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Bài 1. Tập thể dục nào!',
+        2: 'Bài 2. Chú cún dễ thương',
+        3: 'Bài 3. Tăng cường sức khỏe',
+        4: 'Bài 4. Chú ốc sên chậm chạp',
+        5: 'Bài 5. Xe cảnh sát tuần tra',
+        6: 'Bài 6. Khám phá xe cứu hoả',
+        7: 'Bài 7. Người giao hàng đã đến',
+        8: 'Bài 8. Thế giới khủng long',
+        9: 'Ôn tập Đánh giá định kỳ 1',
+        10: 'Đánh giá định kỳ 1',
+        11: 'Bài 9. Hồ bơi mùa hè',
+        12: 'Bài 10. Khám phá đại dương',
+        13: 'Bài 11. Chú cua cứng cáp',
+        14: 'Bài 12. Tôi có thể di chuyển đến bất cứ đâu',
+        15: 'Bài 13. Hoạt động mùa hè',
+        16: 'Bài 14. Bắt đầu chuyến hành trình cùng tàu hoả',
+        17: 'Bài 15. Phía trên bầu trời',
+        18: 'Ôn tập Đánh giá định kỳ 2',
+        19: 'Đánh giá định kỳ 2',
+        20: 'Bài 16. Khám phá vũ trụ rộng lớn',
+        21: 'Bài 17. Máy bắn đá khổng lồ',
+        22: 'Bài 18. Trò chơi dân gian',
+        23: 'Bài 19. Khám phá trò chơi truyền thống các nước',
+        24: 'Bài 20. Đấu vật thú vị',
+        25: 'Bài 21. Sóc nhỏ dễ thương',
+        26: 'Bài 22. Chú hươu tuyệt đẹp',
+        27: 'Ôn tập Đánh giá định kỳ 3',
+        28: 'Đánh giá định kỳ 3',
+        29: 'Bài 23. Chú rùa thông minh',
+        30: 'Bài 24. Đôi chân mạnh mẽ của chuột túi',
+        31: 'Bài 25. Chú sư tử dũng mãnh',
+        32: 'Bài 26. Chuột chũi, máy ủi dưới lòng đất',
+        33: 'Ôn tập Đánh giá định kỳ 4',
+        34: 'Đánh giá định kỳ 4',
+        35: 'Tổng kết môn học & Triển lãm Robotics',
+    },
+    # Robotics cho lop 2 (2A1, 2C1) - giong Rob TH Table 6
+    '2': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Bài 1. Hãy nấu những món ăn ngon',
+        2: 'Bài 2. Hàm răng trắng sáng',
+        3: 'Bài 3. Sự phản xạ ánh sáng',
+        4: 'Bài 4. Đàn gà con',
+        5: 'Bài 5. Những bạn nhỏ lễ phép',
+        6: 'Bài 6. Động vật thân mềm',
+        7: 'Bài 7. Khu phố của chúng ta',
+        8: 'Bài 8. Rèn luyện sức khỏe',
+        9: 'Ôn tập Đánh giá định kỳ 1',
+        10: 'Đánh giá định kỳ 1',
+        11: 'Bài 9. Môi trường biển',
+        12: 'Bài 10. Cùng câu cá nào!',
+        13: 'Bài 11. Thế giới khủng long',
+        14: 'Bài 12. Người hiệp sĩ dũng cảm',
+        15: 'Bài 13. Vận chuyển đồ vật',
+        16: 'Bài 14. Sức mạnh của máy ủi',
+        17: 'Bài 15. Máy xúc',
+        18: 'Ôn tập Đánh giá định kỳ 2',
+        19: 'Đánh giá định kỳ 2',
+        20: 'Bài 16. Cùng nhau đi khắp thế giới',
+        21: 'Bài 17. Nhắm và bắn!',
+        22: 'Bài 18. Độ đàn hồi, lực đẩy của cung tên',
+        23: 'Bài 19. Ba! Hai! Một! Bắn!!!',
+        24: 'Bài 20. Cùng nhau tham quan thành phố',
+        25: 'Bài 21. Khám phá trang phục người da đỏ',
+        26: 'Bài 22. Cá sấu thật ngầu!',
+        27: 'Ôn tập Đánh giá định kỳ 3',
+        28: 'Đánh giá định kỳ 3',
+        29: 'Bài 23. Những nốt nhạc vui',
+        30: 'Bài 24. Choo Choo! Tàu hỏa',
+        31: 'Bài 25. Có sáu chân thật tuyệt!!!',
+        32: 'Bài 26. Bầu không khí trong lành',
+        33: 'Ôn tập Đánh giá định kỳ 4',
+        34: 'Đánh giá định kỳ 4',
+        35: 'Tổng kết môn học & Triển lãm Robotics',
+    },
+    # Robotics cho lop 3 (3A1, 3C1) - giong Rob TH Table 7
+    '3': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Bài 1. Hãy nấu những món ăn ngon',
+        2: 'Bài 2. Hàm răng trắng sáng',
+        3: 'Bài 3. Sự phản xạ ánh sáng',
+        4: 'Bài 4. Đàn gà con',
+        5: 'Bài 5. Những bạn nhỏ lễ phép',
+        6: 'Bài 6. Động vật thân mềm',
+        7: 'Bài 7. Khu phố của chúng ta',
+        8: 'Bài 8. Rèn luyện sức khỏe',
+        9: 'Ôn tập Đánh giá định kỳ 1',
+        10: 'Đánh giá định kỳ 1',
+        11: 'Bài 9. Môi trường biển',
+        12: 'Bài 10. Cùng câu cá nào!',
+        13: 'Bài 11. Thế giới khủng long',
+        14: 'Bài 12. Người hiệp sĩ dũng cảm',
+        15: 'Bài 13. Vận chuyển đồ vật',
+        16: 'Bài 14. Sức mạnh của máy ủi',
+        17: 'Bài 15. Máy xúc',
+        18: 'Ôn tập Đánh giá định kỳ 2',
+        19: 'Đánh giá định kỳ 2',
+        20: 'Bài 16. Cùng nhau đi khắp thế giới',
+        21: 'Bài 17. Nhắm và bắn!',
+        22: 'Bài 18. Độ đàn hồi, lực đẩy của cung tên',
+        23: 'Bài 19. Ba! Hai! Một! Bắn!!!',
+        24: 'Bài 20. Cùng nhau tham quan thành phố',
+        25: 'Bài 21. Khám phá trang phục người da đỏ',
+        26: 'Bài 22. Cá sấu thật ngầu!',
+        27: 'Ôn tập Đánh giá định kỳ 3',
+        28: 'Đánh giá định kỳ 3',
+        29: 'Bài 23. Những nốt nhạc vui',
+        30: 'Bài 24. Choo Choo! Tàu hỏa',
+        31: 'Bài 25. Có sáu chân thật tuyệt!!!',
+        32: 'Bài 26. Bầu không khí trong lành',
+        33: 'Ôn tập Đánh giá định kỳ 4',
+        34: 'Đánh giá định kỳ 4',
+        35: 'Tổng kết môn học & Triển lãm Robotics',
+    },
+    # Robotics cho lop 4 (4C1) - giong Rob TH Table 7 (same kit)
+    '4': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Bài 1. Hãy nấu những món ăn ngon',
+        2: 'Bài 2. Hàm răng trắng sáng',
+        3: 'Bài 3. Sự phản xạ ánh sáng',
+        4: 'Bài 4. Đàn gà con',
+        5: 'Bài 5. Những bạn nhỏ lễ phép',
+        6: 'Bài 6. Động vật thân mềm',
+        7: 'Bài 7. Khu phố của chúng ta',
+        8: 'Bài 8. Rèn luyện sức khỏe',
+        9: 'Ôn tập Đánh giá định kỳ 1',
+        10: 'Đánh giá định kỳ 1',
+        11: 'Bài 9. Môi trường biển',
+        12: 'Bài 10. Cùng câu cá nào!',
+        13: 'Bài 11. Thế giới khủng long',
+        14: 'Bài 12. Người hiệp sĩ dũng cảm',
+        15: 'Bài 13. Vận chuyển đồ vật',
+        16: 'Bài 14. Sức mạnh của máy ủi',
+        17: 'Bài 15. Máy xúc',
+        18: 'Ôn tập Đánh giá định kỳ 2',
+        19: 'Đánh giá định kỳ 2',
+        20: 'Bài 16. Cùng nhau đi khắp thế giới',
+        21: 'Bài 17. Nhắm và bắn!',
+        22: 'Bài 18. Độ đàn hồi, lực đẩy của cung tên',
+        23: 'Bài 19. Ba! Hai! Một! Bắn!!!',
+        24: 'Bài 20. Cùng nhau tham quan thành phố',
+        25: 'Bài 21. Khám phá trang phục người da đỏ',
+        26: 'Bài 22. Cá sấu thật ngầu!',
+        27: 'Ôn tập Đánh giá định kỳ 3',
+        28: 'Đánh giá định kỳ 3',
+        29: 'Bài 23. Những nốt nhạc vui',
+        30: 'Bài 24. Choo Choo! Tàu hỏa',
+        31: 'Bài 25. Có sáu chân thật tuyệt!!!',
+        32: 'Bài 26. Bầu không khí trong lành',
+        33: 'Ôn tập Đánh giá định kỳ 4',
+        34: 'Đánh giá định kỳ 4',
+        35: 'Tổng kết môn học & Triển lãm Robotics',
+    },
+    # Robotics THCS (5,6,7,8) - shared PPCT from Rob THCS
+    '5': {
+        0: 'Tiết 0: Định hướng môn học',
+        1: 'Bài 1. Động cơ là gì?',
+        2: 'Bài 2. Robot cố định vật',
+        3: 'Bài 3. Robot nhận biết âm thanh',
+        4: 'Bài 4. Bộ điều khiển từ xa',
+        5: 'Ôn tập Đánh giá định kỳ 1',
+        6: 'Đánh giá định kỳ 1',
+        7: 'Bài 5. Động cơ Dynamixel hoạt động thế nào?',
+        8: 'Bài 6. Phương tiện giao thông qua các thời đại',
+        9: 'Bài 7. Cơ chế tăng giảm chiều dài tự động',
+        10: 'Bài 8. Robot nhận biết vật thể bằng cách nào?',
+        11: 'Ôn tập Đánh giá định kỳ 2',
+        12: 'Đánh giá định kỳ 2',
+        13: 'Bài 9. Số ngẫu nhiên',
+        14: 'Bài 10. Robot hút bụi',
+        15: 'Bài 11. Lực hấp dẫn',
+        16: 'Bài 12. Domino trong Robotics',
+        17: 'Ôn tập Đánh giá định kỳ 3',
+        18: 'Đánh giá định kỳ 3',
+        19: 'Bài 13. Robot phục vụ đời sống',
+        20: 'Luyện tập & Thực hành sáng tạo Robotics',
+        21: 'Ôn tập Đánh giá định kỳ 4',
+        22: 'Đánh giá định kỳ 4',
+        23: 'Tổng kết môn học & Triển lãm Robotics',
+    },
+}
+# 6,7,8 cùng chương trình Robotics THCS
+PPCT_ROB['6'] = PPCT_ROB['5'].copy()
+PPCT_ROB['7'] = PPCT_ROB['5'].copy()
+PPCT_ROB['8'] = PPCT_ROB['5'].copy()
+# TTH dùng chung Rob lớp 1
+PPCT_ROB['TT'] = PPCT_ROB['1'].copy()
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TIEN ICH
@@ -98,6 +593,122 @@ def rotation_mon(tuan_so):
 
 def rotation_do_dung(tuan_so):
     return 'Phòng Tin học' if tuan_so % 2 == 0 else 'Bộ Kit Robotics'
+
+
+def get_grade_key(lop):
+    """Extract grade key from class name for PPCT lookup.
+    Examples: '1A1' -> '1', '7A1' -> '7', 'TT3' -> 'TT3', 'TTH 1' -> 'TT', 'TTH2' -> 'TT'
+    """
+    s = lop.strip().upper()
+    if s.startswith('TT'):
+        return 'TT3'  # TTH classes use TT3 PPCT
+    m = re.match(r'^(\d)', s)
+    if m:
+        return m.group(1)
+    return None
+
+
+def get_ppct_lesson(lop, mon, ppct_num):
+    """Get lesson name for a class at given PPCT number."""
+    grade = get_grade_key(lop)
+    if grade is None:
+        return ''
+
+    if mon == 'Tin học':
+        data = PPCT_TIN.get(grade, {})
+    elif mon == 'Robotics':
+        data = PPCT_ROB.get(grade, {})
+    else:
+        return ''
+
+    return data.get(ppct_num, '')
+
+
+def compute_ppct(tuan_so, day_idx):
+    """
+    Tinh PPCT theo tuan va ngay trong tuan.
+    - Tuan 1: tat ca = 0 (Dinh huong)
+    - Thứ 2, 3 (day_idx 0,1): bi tre 1 tuan do Back to School
+      => ppct = max(0, tuan_so - 2)
+    - Thứ 4, 5, 6 (day_idx 2,3,4): binh thuong
+      => ppct = max(0, tuan_so - 1)
+    """
+    if tuan_so <= 1:
+        return 0
+    if day_idx <= 1:  # Thu 2, 3
+        return max(0, tuan_so - 2)
+    else:             # Thu 4, 5, 6
+        return max(0, tuan_so - 1)
+
+
+def compute_rotation_ppct(tuan_so, day_idx, is_even_week, period_index_in_day):
+    """
+    Tinh PPCT cho lop rotation (5,6,7,8) co 2+ tiet lien tiep.
+    
+    Rotation classes alternate: Even weeks = Tin hoc, Odd weeks = Robotics.
+    Each subject is taught every other week with 2 periods.
+    
+    Args:
+        tuan_so: So tuan
+        day_idx: 0=T2, 1=T3, 2=T4, 3=T5, 4=T6
+        is_even_week: True if even week (Tin hoc)
+        period_index_in_day: 0 for first period, 1 for second period (of same class)
+    
+    Returns:
+        PPCT number for this period
+    """
+    base = compute_ppct(tuan_so, day_idx)
+    if base == 0:
+        return 0  # Still in orientation
+    
+    # Count how many teaching weeks of THIS subject have passed before this week
+    # Even weeks (Tin): 2, 4, 6... -> for T4/T5/T6 starting from week 2
+    # Odd weeks (Rob): 3, 5, 7... -> for T4/T5/T6 starting from week 3
+    
+    # Simple approach: use base PPCT and multiply by 2 for rotation
+    # Since rotation classes get 2 periods per week but only every other week,
+    # the effective PPCT per subject = base (same rate as single-period classes)
+    # But with 2 periods per session, each session advances by 2
+    
+    # For non-rotation class with 1 period/week: PPCT = base
+    # For rotation class with 2 periods every other week:
+    #   Tin hoc sessions (even weeks only): 
+    #     Number of even weeks up to tuan_so = (tuan_so) // 2 (starting from week 2)
+    #   Each session = 2 periods
+    
+    # Let's compute properly
+    if day_idx <= 1:  # T2/T3 (back-to-school delayed)
+        first_real_week = 3  # First real content starts at week 3
+    else:  # T4/T5/T6
+        first_real_week = 2  # First real content starts at week 2
+    
+    if tuan_so < first_real_week:
+        return 0
+    
+    # Count how many weeks of THIS specific subject have been taught
+    if is_even_week:
+        # Tin hoc in even weeks
+        # Count even weeks from first_real_week to tuan_so (inclusive)
+        subject_weeks = 0
+        for w in range(first_real_week, tuan_so + 1):
+            if w % 2 == 0:
+                subject_weeks += 1
+        # Current week is the last one counted, subtract 1 to get completed + current
+    else:
+        # Robotics in odd weeks
+        subject_weeks = 0
+        for w in range(first_real_week, tuan_so + 1):
+            if w % 2 == 1:
+                subject_weeks += 1
+    
+    if subject_weeks == 0:
+        return 0
+    
+    # PPCT = (completed_sessions * 2) + period_index + 1
+    completed = subject_weeks - 1  # Weeks before this one
+    ppct = completed * 2 + period_index_in_day + 1
+    
+    return ppct
 
 
 def set_cell_text(cell, text):
@@ -175,34 +786,78 @@ def update_day_labels(doc, start_date):
                 set_cell_text(cell0, label)
 
 
+def get_day_idx_from_row(ri):
+    """Get day index (0=T2..4=T6) from row index in LBG table."""
+    return (ri - 1) // 5
+
+
 def update_table_data(doc, tuan_so):
     """
-    Cap nhat mon hoc, PPCT, do dung cho cac hang co du lieu.
-    - Lop 5,6,7,8: ap dung rotation
-    - Tat ca: cap nhat PPCT = tuan_so - 1 (tu tuan 2)
+    Cap nhat mon hoc, PPCT, ten bai, do dung cho cac hang co du lieu.
+    - Lop 5,6,7,8: ap dung rotation + PPCT rieng
+    - Tat ca: cap nhat PPCT + ten bai tu PPCT_DATA
     """
     if tuan_so == 1:
         return
 
-    ppct = str(tuan_so - 1)
-
+    is_even = (tuan_so % 2 == 0)
+    
     for ti in [1, 3]:
         tbl = doc.tables[ti]
+        
+        # First pass: identify rotation classes with multiple periods on same day
+        # Build a map: (day_idx, lop) -> list of row indices
+        day_lop_rows = {}
         for ri in range(1, len(tbl.rows)):
             row = tbl.rows[ri]
             lop = row.cells[4].text.strip()
             if not lop:
                 continue
-
-            # Cap nhat PPCT
-            set_cell_text(row.cells[2], ppct)
-
-            # Rotation cho lop 5,6,7,8
-            if is_rotation_lop(lop):
+            day_idx = get_day_idx_from_row(ri)
+            key = (day_idx, lop)
+            if key not in day_lop_rows:
+                day_lop_rows[key] = []
+            day_lop_rows[key].append(ri)
+        
+        # Second pass: update each row
+        for ri in range(1, len(tbl.rows)):
+            row = tbl.rows[ri]
+            lop = row.cells[4].text.strip()
+            if not lop:
+                continue
+            
+            day_idx = get_day_idx_from_row(ri)
+            is_rot = is_rotation_lop(lop)
+            
+            # Determine the subject for this row
+            if is_rot:
                 mon = rotation_mon(tuan_so)
                 dd = rotation_do_dung(tuan_so)
                 set_cell_text(row.cells[3], mon)
                 set_cell_text(row.cells[6], dd)
+            else:
+                mon = row.cells[3].text.strip()
+                # Keep original mon (Tin hoc or Robotics)
+            
+            # Compute PPCT
+            if is_rot:
+                # Find period_index for this row within same (day, lop) group
+                key = (day_idx, lop)
+                rows_for_this = day_lop_rows.get(key, [ri])
+                period_index = rows_for_this.index(ri) if ri in rows_for_this else 0
+                ppct = compute_rotation_ppct(tuan_so, day_idx, is_even, period_index)
+            else:
+                ppct = compute_ppct(tuan_so, day_idx)
+            
+            # Set PPCT
+            set_cell_text(row.cells[2], str(ppct))
+            
+            # Set lesson name
+            lesson = get_ppct_lesson(lop, mon, ppct)
+            if lesson:
+                set_cell_text(row.cells[5], lesson)
+            elif ppct == 0:
+                set_cell_text(row.cells[5], 'Tiết 0: Định hướng môn học')
 
 
 def update_ky_ten(doc, start_date):
@@ -220,7 +875,6 @@ def update_ky_ten(doc, start_date):
                     for p in cell.paragraphs:
                         for r in p.runs:
                             if 'Ngày' in r.text and 'tháng' in r.text:
-                                # Thay the doan "Ngay ... nam XXXX"
                                 m = re.search(
                                     r'Ngày\s+\d+\s+tháng\s+\d+\s+năm\s+\d+',
                                     r.text)
@@ -341,10 +995,9 @@ def generate_lbg(tuan_so):
     update_day_labels(doc, start_date)
     print('   Cap nhat nhan Thu/ngay')
 
-    # B4: Rotation + PPCT
+    # B4: Rotation + PPCT + Ten bai
     update_table_data(doc, tuan_so)
-    mon_info = f'Tin hoc' if tuan_so % 2 == 0 else 'Robotics'
-    print(f'   Rotation lop 5,6,7,8 -> {mon_info} | PPCT = {tuan_so - 1}')
+    print(f'   Rotation + PPCT + Ten bai updated')
 
     # B5: Ky ten
     update_ky_ten(doc, start_date)

@@ -135,3 +135,30 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
    - **Bước 4:** Đẩy lên remote repository: `git push origin [branch]`.
    - **Bước 5:** Chạy lại `git status` để xác nhận working tree hoàn toàn sạch (`nothing to commit, working tree clean`).
 
+---
+
+## VI. Quy định Lịch báo giảng (LBG) — PPCT & Rotation
+
+1. **Quy tắc PPCT theo ngày trong tuần (Back-to-School offset):**
+   - **Tuần 1:** Tất cả các lớp = PPCT 0 (`Tiết 0: Định hướng môn học`).
+   - **Tuần 2+:**
+     - **Thứ 2, Thứ 3 (day_idx 0,1):** Bị trễ 1 tuần do Back to School tuần 1 → `ppct = max(0, tuan_so - 2)`.
+     - **Thứ 4, Thứ 5, Thứ 6 (day_idx 2,3,4):** Bình thường → `ppct = max(0, tuan_so - 1)`.
+   - **Quy tắc +1 mỗi tuần:** Mỗi tuần nhìn vào LBG tuần trước và +1 tiết. Đến tuần 4, tất cả sẽ đồng bộ.
+
+2. **Quy tắc Rotation Tuần chẵn/lẻ cho lớp 5, 6, 7, 8:**
+   - **Tuần CHẴN (2, 4, 6...):** Cả 2 tiết → **Tin học** (Đồ dùng: Phòng Tin học).
+   - **Tuần LẺ (3, 5, 7...):** Cả 2 tiết → **Robotics** (Đồ dùng: Bộ Kit Robotics).
+   - Khi có 2 tiết liên tiếp cùng môn (sau rotation), PPCT tính liên tiếp (VD: tiết 1 = PPCT N, tiết 2 = PPCT N+1) và tên bài cũng liên tiếp theo PPCT tương ứng.
+
+3. **Tên bài tự động điền:**
+   - PPCT = 0 → `"Tiết 0: Định hướng môn học"`.
+   - PPCT ≥ 1 → Lấy tên bài từ `PPCT_TIN` / `PPCT_ROB` trong `generate_lbg.py` (dữ liệu trích xuất từ KHDH).
+
+4. **Script & Output:**
+   - Script: `scripts/generate_lbg.py <so_tuan>` (VD: `python generate_lbg.py 2`).
+   - Output: 3 file trong `Hệ thống mẫu văn bản/Nguyên đã làm/Lịch báo giảng/`:
+     - `Lịch báo giảng - Tuần XX.docx` (bản gốc tổng hợp)
+     - `Lịch báo giảng - Tuần XX (TTH+TH).docx` (Tiền TH + TH)
+     - `Lịch báo giảng - Tuần XX (THCS).docx` (THCS)
+
