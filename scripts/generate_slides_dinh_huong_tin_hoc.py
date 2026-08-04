@@ -1,473 +1,567 @@
-import os
-import re
-import sys
-import pptx
+"""
+Tạo Slide Định hướng Tin học (Tiết 0) — Chuẩn mẫu UNIGO
+V3: Font lớn + Group card+bar + Fix slide cuối không che logo.
+
+VÙNG AN TOÀN: Y 1.15in → 6.30in
+Logo master: (0.17, 0.15) 0.95×0.94in
+Chân trang master: (0.00, 6.43) 13.40×1.23in
+"""
+
+import os, sys, random
 from pptx import Presentation
-from pptx.util import Inches, Pt
+from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
+from pptx.oxml.ns import qn
+from pptx.oxml import parse_xml
 
 sys.stdout.reconfigure(encoding='utf-8')
 
 TPL_PATH = r'd:\UNIGO\Hệ thống mẫu văn bản\Mẫu slide UNIGO.pptx'
-BASE_OUT_DIR = r'd:\UNIGO\KHBD_Tin_học'
+IMG_DIR = r'C:\Users\bmngu\.gemini\antigravity-ide\brain\af66fc76-d63a-4745-b893-b085a3c30f22'
+BASE_OUT = r'd:\UNIGO\KHBD_Tin_học'
 
-# Color Palette Tokens
-C_NAVY = RGBColor(0x1E, 0x3A, 0x8A)      # Primary Banner / Accent
-C_BLUE = RGBColor(0x02, 0x84, 0xC7)      # Secondary Blue
-C_ORANGE = RGBColor(0xEA, 0x58, 0x0C)    # Badge / Accent Orange
-C_AMBER = RGBColor(0xF5, 0x9E, 0x0B)     # Highlight Amber
-C_GREEN = RGBColor(0x10, 0xB9, 0x81)     # Accent Green
-C_BG = RGBColor(0xF8, 0xFA, 0xFC)        # Slide background pastel
-C_CARD_BG = RGBColor(0xFF, 0xFF, 0xFF)   # Card White
-C_BORDER = RGBColor(0xE2, 0xE8, 0xF0)    # Soft Gray Border
-C_TEXT_DARK = RGBColor(0x0F, 0x17, 0x2A) # Dark text
-C_TEXT_MUTED = RGBColor(0x47, 0x55, 0x69)# Muted text
-C_WHITE = RGBColor(0xFF, 0xFF, 0xFF)     # Pure White
+# ─── 8 Bộ màu hài hoà ───────────────────────────────────────────────
+PALETTES = [
+    { 'name': 'Ocean Tech',
+        'bg': RGBColor(0xE0,0xF2,0xFE), 'card': RGBColor(0xFF,0xFF,0xFF),
+        'primary': RGBColor(0x0C,0x4A,0x6E), 'second': RGBColor(0x06,0x96,0xC7),
+        'accent': RGBColor(0xF9,0x73,0x16) },
+    { 'name': 'Emerald Garden',
+        'bg': RGBColor(0xEC,0xFD,0xF5), 'card': RGBColor(0xFF,0xFF,0xFF),
+        'primary': RGBColor(0x06,0x5F,0x46), 'second': RGBColor(0x10,0xB9,0x81),
+        'accent': RGBColor(0xF5,0x9E,0x0B) },
+    { 'name': 'Royal Purple',
+        'bg': RGBColor(0xF5,0xF3,0xFF), 'card': RGBColor(0xFF,0xFF,0xFF),
+        'primary': RGBColor(0x5B,0x21,0xB6), 'second': RGBColor(0x8B,0x5C,0xF6),
+        'accent': RGBColor(0x06,0xB6,0xD4) },
+    { 'name': 'Sunset Coral',
+        'bg': RGBColor(0xFF,0xF1,0xE6), 'card': RGBColor(0xFF,0xFF,0xFF),
+        'primary': RGBColor(0x9A,0x34,0x12), 'second': RGBColor(0xEA,0x58,0x0C),
+        'accent': RGBColor(0x02,0x84,0xC7) },
+    { 'name': 'Teal Fresh',
+        'bg': RGBColor(0xF0,0xFD,0xFA), 'card': RGBColor(0xFF,0xFF,0xFF),
+        'primary': RGBColor(0x11,0x5E,0x59), 'second': RGBColor(0x14,0xB8,0xA6),
+        'accent': RGBColor(0xE1,0x1D,0x48) },
+    { 'name': 'Navy Elegant',
+        'bg': RGBColor(0xEE,0xF2,0xFF), 'card': RGBColor(0xFF,0xFF,0xFF),
+        'primary': RGBColor(0x1E,0x3A,0x8A), 'second': RGBColor(0x3B,0x82,0xF6),
+        'accent': RGBColor(0xF4,0x3F,0x5E) },
+    { 'name': 'Berry Academic',
+        'bg': RGBColor(0xFD,0xF2,0xF8), 'card': RGBColor(0xFF,0xFF,0xFF),
+        'primary': RGBColor(0x83,0x18,0x43), 'second': RGBColor(0xEC,0x48,0x99),
+        'accent': RGBColor(0x0D,0x94,0x88) },
+    { 'name': 'Slate Modern',
+        'bg': RGBColor(0xF1,0xF5,0xF9), 'card': RGBColor(0xFF,0xFF,0xFF),
+        'primary': RGBColor(0x1E,0x29,0x3B), 'second': RGBColor(0x47,0x55,0x69),
+        'accent': RGBColor(0x7C,0x3A,0xED) },
+]
 
-def set_slide_bg(slide, color=C_BG):
-    background = slide.background
-    fill = background.fill
+C_WHITE = RGBColor(0xFF,0xFF,0xFF)
+C_TEXT = RGBColor(0x1E,0x29,0x3B)
+C_MUTED = RGBColor(0x64,0x74,0x8B)
+C_BORDER = RGBColor(0xE2,0xE8,0xF0)
+
+# ─── Font sizes chuẩn ────────────────────────────────────────────────
+SZ_TITLE    = Pt(26)
+SZ_TITLE_SM = Pt(24)
+SZ_BODY     = Pt(18)
+SZ_BODY_SM  = Pt(16)
+SZ_BULLET   = Pt(14)
+SZ_BADGE    = Pt(14)
+SZ_INTRO_T  = Pt(28)
+SZ_SUB      = Pt(20)
+SZ_INFO     = Pt(16)
+LINE_SP     = Pt(28)
+LINE_SP_SM  = Pt(24)
+SP_AFTER    = Pt(8)
+
+IMG = {
+    'classroom': os.path.join(IMG_DIR, 'classroom_computer_lab_1785861919471.png'),
+    'devices':   os.path.join(IMG_DIR, 'digital_devices_around_1785861929327.png'),
+    'safety':    os.path.join(IMG_DIR, 'internet_safety_kids_1785861941729.png'),
+    'goals':     os.path.join(IMG_DIR, 'student_learning_goals_1785861961479.png'),
+    'rules':     os.path.join(IMG_DIR, 'computer_room_rules_1785861971149.png'),
+    'mindmap':   os.path.join(IMG_DIR, 'tin_hoc_mindmap_1785861980454.png'),
+}
+
+# ─── Helpers ─────────────────────────────────────────────────────────
+def set_slide_bg(slide, color):
+    fill = slide.background.fill
     fill.solid()
     fill.fore_color.rgb = color
 
-def add_header_banner(slide, grade, slide_title):
-    # Top banner bar
-    banner = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), Inches(13.33), Inches(1.1))
-    banner.fill.solid()
-    banner.fill.fore_color.rgb = C_NAVY
-    banner.line.color.rgb = C_NAVY
-    
-    # Badge Pill
-    pill = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.5), Inches(0.2), Inches(2.8), Inches(0.35))
-    pill.fill.solid()
-    pill.fill.fore_color.rgb = C_ORANGE
-    pill.line.color.rgb = C_ORANGE
-    tf_pill = pill.text_frame
-    tf_pill.word_wrap = True
-    p_p = tf_pill.paragraphs[0]
-    p_p.alignment = PP_ALIGN.CENTER
-    r_p = p_p.add_run()
-    r_p.text = f"TIN HỌC {grade} • TIẾT 0"
-    r_p.font.name = "Times New Roman"
-    r_p.font.size = Pt(11)
-    r_p.font.bold = True
-    r_p.font.color.rgb = C_WHITE
-
-    # Title text in Banner
-    tb = slide.shapes.add_textbox(Inches(3.4), Inches(0.12), Inches(9.4), Inches(0.85))
-    tf = tb.text_frame
-    tf.word_wrap = True
-    p = tf.paragraphs[0]
-    p.alignment = PP_ALIGN.LEFT
-    r = p.add_run()
-    r.text = slide_title.upper()
-    r.font.name = "Times New Roman"
-    r.font.size = Pt(20)
-    r.font.bold = True
-    r.font.color.rgb = C_WHITE
-
-def add_footer(slide):
-    # Bottom UNIGO bar
-    footer_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(7.05), Inches(13.33), Inches(0.45))
-    footer_bar.fill.solid()
-    footer_bar.fill.fore_color.rgb = RGBColor(0x00, 0x70, 0xC0)
-    footer_bar.line.color.rgb = RGBColor(0x00, 0x70, 0xC0)
-    
-    tf = footer_bar.text_frame
-    p = tf.paragraphs[0]
-    p.alignment = PP_ALIGN.CENTER
-    r = p.add_run()
-    r.text = "TRƯỜNG TIỂU HỌC VÀ THCS UNIGO — NĂM HỌC 2026 - 2027"
-    r.font.name = "Times New Roman"
-    r.font.size = Pt(12)
-    r.font.bold = True
-    r.font.color.rgb = C_WHITE
-
-def add_card(slide, left, top, width, height, title="", items=None, accent_color=C_NAVY):
-    # Main card rounded container
+def _add_rounded_card_raw(slide, left, top, width, height, fill_color=C_WHITE, border_color=C_BORDER):
+    """Tạo card bo góc (trả về shape để group)."""
     card = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height)
     card.fill.solid()
-    card.fill.fore_color.rgb = C_CARD_BG
-    card.line.color.rgb = C_BORDER
-    
-    # Left accent strip
-    strip = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top + Inches(0.1), Inches(0.15), height - Inches(0.2))
-    strip.fill.solid()
-    strip.fill.fore_color.rgb = accent_color
-    strip.line.color.rgb = accent_color
+    card.fill.fore_color.rgb = fill_color
+    card.line.color.rgb = border_color
+    card.line.width = Pt(0.75)
+    card.adjustments[0] = 0.02
+    return card
 
-    # Card Content Textbox
-    tb = slide.shapes.add_textbox(left + Inches(0.3), top + Inches(0.15), width - Inches(0.45), height - Inches(0.3))
+def _add_accent_bar_raw(slide, left, top, height, color, width=Inches(0.15)):
+    """Tạo thanh accent dọc (trả về shape để group)."""
+    bar = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height)
+    bar.fill.solid()
+    bar.fill.fore_color.rgb = color
+    bar.line.fill.background()
+    bar.adjustments[0] = 0.5
+    return bar
+
+def group_shapes(slide, shapes):
+    """Nhóm (group) các shape lại với nhau trên slide."""
+    spTree = slide.shapes._spTree
+
+    # Bounding box
+    min_left   = min(s.left for s in shapes)
+    min_top    = min(s.top for s in shapes)
+    max_right  = max(s.left + s.width for s in shapes)
+    max_bottom = max(s.top + s.height for s in shapes)
+    grp_w = max_right - min_left
+    grp_h = max_bottom - min_top
+
+    # Next unique ID
+    used_ids = set()
+    for elem in spTree.iter():
+        id_val = elem.get('id')
+        if id_val and id_val.isdigit():
+            used_ids.add(int(id_val))
+    next_id = (max(used_ids) + 1) if used_ids else 100
+
+    grpSp_xml = (
+        f'<p:grpSp xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"'
+        f'         xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"'
+        f'         xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+        f'  <p:nvGrpSpPr>'
+        f'    <p:cNvPr id="{next_id}" name="Card Group {next_id}"/>'
+        f'    <p:cNvGrpSpPr/>'
+        f'    <p:nvPr/>'
+        f'  </p:nvGrpSpPr>'
+        f'  <p:grpSpPr>'
+        f'    <a:xfrm>'
+        f'      <a:off x="{min_left}" y="{min_top}"/>'
+        f'      <a:ext cx="{grp_w}" cy="{grp_h}"/>'
+        f'      <a:chOff x="{min_left}" y="{min_top}"/>'
+        f'      <a:chExt cx="{grp_w}" cy="{grp_h}"/>'
+        f'    </a:xfrm>'
+        f'  </p:grpSpPr>'
+        f'</p:grpSp>'
+    )
+    grpSp = parse_xml(grpSp_xml)
+
+    # Di chuyển các shape elements vào group
+    for shape in shapes:
+        elem = shape._element
+        spTree.remove(elem)
+        grpSp.append(elem)
+
+    spTree.append(grpSp)
+
+def add_card_group(slide, left, top, width, height,
+                   card_color=C_WHITE, bar_color=None, bar_width=Inches(0.15)):
+    """Tạo card + accent bar đã group lại.
+    Thanh accent bar khít hoàn toàn chiều cao card (top = card.top, height = card.height).
+    """
+    card = _add_rounded_card_raw(slide, left, top, width, height, card_color)
+    shapes_to_group = [card]
+
+    if bar_color is not None:
+        # Bar khít đúng chiều cao card — KHÔNG có margin
+        bar = _add_accent_bar_raw(slide, left, top, height, bar_color, bar_width)
+        shapes_to_group.append(bar)
+
+    group_shapes(slide, shapes_to_group)
+    return card
+
+def make_tf(slide, left, top, width, height):
+    tb = slide.shapes.add_textbox(left, top, width, height)
     tf = tb.text_frame
     tf.word_wrap = True
-    
-    if title:
-        p_t = tf.paragraphs[0]
-        r_t = p_t.add_run()
-        r_t.text = title
-        r_t.font.name = "Times New Roman"
-        r_t.font.size = Pt(16)
-        r_t.font.bold = True
-        r_t.font.color.rgb = accent_color
-        p_t.space_after = Pt(6)
+    return tf
 
-    if items:
-        for idx, item in enumerate(items):
-            p = tf.add_paragraph() if (title or idx > 0) else tf.paragraphs[0]
-            p.space_after = Pt(4)
-            p.line_spacing = 1.15
-            r_num = p.add_run()
-            r_num.text = f"• "
-            r_num.font.name = "Times New Roman"
-            r_num.font.size = Pt(13)
-            r_num.font.bold = True
-            r_num.font.color.rgb = accent_color
-            
-            r_txt = p.add_run()
-            r_txt.text = item
-            r_txt.font.name = "Times New Roman"
-            r_txt.font.size = Pt(13)
-            r_txt.font.color.rgb = C_TEXT_DARK
+def add_run(para, text, font_name="Times New Roman", size=SZ_BODY,
+            bold=False, italic=False, color=C_TEXT):
+    r = para.add_run()
+    r.text = text
+    r.font.name = font_name
+    r.font.size = size
+    r.font.bold = bold
+    r.font.italic = italic
+    r.font.color.rgb = color
+    return r
 
-def create_title_slide(prs, grade, subtitle_text):
-    slide = prs.slides.add_slide(prs.slide_layouts[6]) # blank
-    set_slide_bg(slide, C_BG)
+def title_paragraph(tf, text, color, size=SZ_TITLE):
+    p = tf.paragraphs[0]
+    p.space_after = Pt(12)
+    p.line_spacing = Pt(32)
+    add_run(p, text, bold=True, size=size, color=color)
+    return p
 
-    # Hero Card Container
-    hero = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.0), Inches(1.0), Inches(11.33), Inches(5.0))
-    hero.fill.solid()
-    hero.fill.fore_color.rgb = C_CARD_BG
-    hero.line.color.rgb = C_BORDER
+def bullet_items(tf, items, color=C_TEXT, bullet_color=None,
+                 size=SZ_BODY, line_spacing=LINE_SP):
+    for item in items:
+        p = tf.add_paragraph()
+        p.space_after = SP_AFTER
+        p.line_spacing = line_spacing
+        bc = bullet_color or color
+        add_run(p, "●  ", size=SZ_BULLET, color=bc, bold=True)
+        add_run(p, item, size=size, color=color)
 
-    # Left Hero Accent Bar
-    hero_strip = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.0), Inches(1.0), Inches(0.3), Inches(5.0))
-    hero_strip.fill.solid()
-    hero_strip.fill.fore_color.rgb = C_ORANGE
-    hero_strip.line.color.rgb = C_ORANGE
+def clear_template_slides(prs):
+    while len(prs.slides) > 0:
+        rId = prs.slides._sldIdLst[0].get(qn('r:id'))
+        prs.part.drop_rel(rId)
+        prs.slides._sldIdLst.remove(prs.slides._sldIdLst[0])
 
-    # Badge Pill
-    badge = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.6), Inches(1.4), Inches(3.5), Inches(0.45))
-    badge.fill.solid()
-    badge.fill.fore_color.rgb = C_NAVY
-    badge.line.color.rgb = C_NAVY
+def new_slide(prs, layout_idx=6):
+    return prs.slides.add_slide(prs.slide_layouts[layout_idx])
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# SLIDE BUILDERS (V3: font lớn, group card+bar, slide cuối fix logo)
+# ═══════════════════════════════════════════════════════════════════════
+
+def build_slide_intro(prs, pal, grade, subtitle):
+    """Slide 1: Giới thiệu — ảnh phải, card trái."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
+
+    if os.path.exists(IMG['classroom']):
+        s.shapes.add_picture(IMG['classroom'], Inches(7.0), Inches(1.3), Inches(5.6), Inches(4.6))
+
+    add_card_group(s, Inches(0.6), Inches(1.3), Inches(6.0), Inches(4.6),
+                   pal['card'], pal['accent'])
+
+    # Badge
+    badge = _add_rounded_card_raw(s, Inches(1.1), Inches(1.5), Inches(4.5), Inches(0.5),
+                                  pal['primary'], pal['primary'])
     tf_b = badge.text_frame
-    p_b = tf_b.paragraphs[0]
-    p_b.alignment = PP_ALIGN.CENTER
-    r_b = p_b.add_run()
-    r_b.text = f"CHƯƠNG TRÌNH TIN HỌC {grade} — GDPT 2018"
-    r_b.font.name = "Times New Roman"
-    r_b.font.size = Pt(11)
-    r_b.font.bold = True
-    r_b.font.color.rgb = C_WHITE
+    tf_b.paragraphs[0].alignment = PP_ALIGN.CENTER
+    add_run(tf_b.paragraphs[0], f"TIN HỌC {grade}  •  NĂM HỌC 2026 – 2027",
+            size=SZ_BADGE, bold=True, color=C_WHITE)
 
-    # Title Text
-    tb = slide.shapes.add_textbox(Inches(1.6), Inches(2.1), Inches(10.2), Inches(2.2))
-    tf = tb.text_frame
-    tf.word_wrap = True
-    
-    p1 = tf.paragraphs[0]
-    r1 = p1.add_run()
-    r1.text = f"ĐỊNH HƯỚNG MÔN HỌC TIN HỌC {grade}\n"
-    r1.font.name = "Times New Roman"
-    r1.font.size = Pt(28)
-    r1.font.bold = True
-    r1.font.color.rgb = C_NAVY
-
+    tf = make_tf(s, Inches(1.1), Inches(2.2), Inches(5.2), Inches(2.0))
+    add_run(tf.paragraphs[0], "Tiết 0 — Định hướng", size=SZ_INTRO_T, bold=True, color=pal['primary'])
     p2 = tf.add_paragraph()
-    r2 = p2.add_run()
-    r2.text = subtitle_text.upper()
-    r2.font.name = "Times New Roman"
-    r2.font.size = Pt(20)
-    r2.font.bold = True
-    r2.font.color.rgb = C_ORANGE
+    p2.space_before = Pt(6)
+    add_run(p2, subtitle, size=SZ_SUB, bold=True, color=pal['accent'])
 
-    # Teacher / School Info Box
-    tb_info = slide.shapes.add_textbox(Inches(1.6), Inches(4.5), Inches(10.2), Inches(1.2))
-    tf_info = tb_info.text_frame
-    p_i = tf_info.paragraphs[0]
-    r_i = p_i.add_run()
-    r_i.text = "Trường: TH & THCS UNIGO   |   Giáo viên: Đậu Đình Nguyên   |   Năm học: 2026 - 2027"
-    r_i.font.name = "Times New Roman"
-    r_i.font.size = Pt(14)
-    r_i.font.italic = True
-    r_i.font.color.rgb = C_TEXT_MUTED
+    tf2 = make_tf(s, Inches(1.1), Inches(4.4), Inches(5.2), Inches(1.2))
+    add_run(tf2.paragraphs[0], "Trường TH & THCS UNIGO", size=SZ_INFO, color=pal['second'], bold=True)
+    p3 = tf2.add_paragraph()
+    p3.space_before = Pt(4)
+    add_run(p3, "Giáo viên: Đậu Đình Nguyên", size=Pt(15), color=C_MUTED, italic=True)
 
-    add_footer(slide)
-    return slide
 
-def build_orientation_deck(grade):
-    prs = Presentation(TPL_PATH)
+def build_slide_objectives(prs, pal, grade):
+    """Slide 2: Mục tiêu — ảnh trái, card phải."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
 
-    subtitles = {
-        1: "Nội quy & An toàn phòng máy tính",
-        2: "Em trở thành nhà sáng tạo số",
-        3: "Khám phá môn Tin học 3",
-        4: "Khám phá môn Tin học 4",
-        5: "Khám phá môn Tin học 5 & Kỹ năng số thế kỷ 21",
-        6: "Phương pháp học tập & An toàn số",
-        7: "Tổng quan chương trình & Kỹ năng số",
-        8: "Định hướng học tập & Tư duy máy tính"
-    }
-    subtitle = subtitles.get(grade, f"Khám phá môn Tin học {grade}")
+    if os.path.exists(IMG['goals']):
+        s.shapes.add_picture(IMG['goals'], Inches(0.4), Inches(1.4), Inches(4.2), Inches(4.6))
 
-    # Slide 1: Trang bìa
-    create_title_slide(prs, grade, subtitle)
+    add_card_group(s, Inches(5.0), Inches(1.3), Inches(7.6), Inches(4.8),
+                   pal['card'], pal['primary'])
 
-    # Slide 2: Mục tiêu tiết học
-    s2 = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(s2)
-    add_header_banner(s2, grade, "I. MỤC TIÊU TIẾT HỌC (YÊU CẦU CẦN ĐẠT)")
-    add_footer(s2)
-    
-    add_card(s2, Inches(0.8), Inches(1.5), Inches(5.6), Inches(5.1), 
-             title="1. Năng lực môn học & Kỹ năng số", 
-             items=[
-                 f"Nắm vững cấu trúc môn Tin học {grade} theo chuẩn GDPT 2018.",
-                 "Hiểu rõ quy trình sử dụng thiết bị máy tính an toàn và đúng cách.",
-                 "Hình thành thói quen thao tác đúng quy chuẩn phòng thực hành Tin học.",
-                 "Ứng dụng Khung năng lực số (CV 3456) vào quá trình học tập."
-             ], accent_color=C_NAVY)
-             
-    add_card(s2, Inches(6.8), Inches(1.5), Inches(5.6), Inches(5.1), 
-             title="2. Phẩm chất & Năng lực chung", 
-             items=[
-                 "Chăm chỉ: Tích cực khám phá kiến thức và chủ động chuẩn bị bài.",
-                 "Trách nhiệm: Bảo vệ tài sản công cộng, giữ gìn phòng máy sạch sẽ.",
-                 "Trung thực: Tự giác làm việc nhóm, tôn trọng sản phẩm số của bạn.",
-                 "Hợp tác: Phối hợp hiệu quả với bạn cùng bàn trong giờ thực hành."
-             ], accent_color=C_ORANGE)
+    tf = make_tf(s, Inches(5.4), Inches(1.5), Inches(6.9), Inches(4.4))
+    title_paragraph(tf, "🎯  Mục tiêu tiết học", pal['primary'], SZ_TITLE)
+    bullet_items(tf, [
+        f"Tổng quan chương trình Tin học {grade}.",
+        "Nội quy an toàn phòng máy tính UNIGO.",
+        "Ứng xử văn minh trên môi trường số (Digital Citizenship).",
+    ], bullet_color=pal['accent'])
 
-    # Slide 3: Chào mừng & Khởi động
-    s3 = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(s3)
-    add_header_banner(s3, grade, "II. HOẠT ĐỘNG 1: KHỞI ĐỘNG — CHÀO MỪNG & KẾT NỐI")
-    add_footer(s3)
 
-    add_card(s3, Inches(0.8), Inches(1.5), Inches(11.6), Inches(2.3),
-             title="🎮 Trò chơi khởi động: 'Thế giới số xung quanh em'",
-             items=[
-                 "Quan sát hình ảnh các thiết bị công nghệ quen thuộc trong cuộc sống (Máy tính, Máy tính bảng, Robot...).",
-                 "Thảo luận nhanh: Em đã từng dùng máy tính để làm những công việc gì?",
-                 "Báo cáo: 3-4 bạn học sinh đại diện giơ tay chia sẻ trải nghiệm cá nhân."
-             ], accent_color=C_BLUE)
+def build_slide_warmup(prs, pal, grade):
+    """Slide 3: Khởi động — card trái, ảnh phải."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
 
-    add_card(s3, Inches(0.8), Inches(4.1), Inches(11.6), Inches(2.5),
-             title="💡 Gợi mở thông điệp kết nối",
-             items=[
-                 f"Môn Tin học {grade} sẽ giúp các em chuyển từ người 'sử dụng máy tính' thành 'nhà sáng tạo số' thông minh!",
-                 "Chúng ta sẽ cùng nhau khám phá tri thức mới, rèn luyện kỹ năng thực hành và tạo ra các sản phẩm công nghệ ấn tượng."
-             ], accent_color=C_GREEN)
+    if os.path.exists(IMG['devices']):
+        s.shapes.add_picture(IMG['devices'], Inches(7.4), Inches(1.3), Inches(5.3), Inches(4.8))
 
-    # Slide 4: Tổng quan chương trình
-    s4 = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(s4)
-    add_header_banner(s4, grade, f"III. HOẠT ĐỘNG 2: TỔNG QUAN CHƯƠNG TRÌNH TIN HỌC {grade}")
-    add_footer(s4)
+    add_card_group(s, Inches(0.6), Inches(1.3), Inches(6.4), Inches(4.8),
+                   pal['card'], pal['second'])
+
+    tf = make_tf(s, Inches(1.0), Inches(1.5), Inches(5.7), Inches(4.4))
+    title_paragraph(tf, "🎮  Thế giới số quanh em", pal['second'], SZ_TITLE)
+    bullet_items(tf, [
+        "Thiết bị nào quanh em? (máy tính, tablet...)",
+        "Em đã dùng máy tính để làm gì?",
+        f"Tin học {grade}: \"người dùng\" → \"nhà sáng tạo số\"!",
+    ], bullet_color=pal['second'])
+
+
+def build_slide_overview(prs, pal, grade):
+    """Slide 4: Tổng quan — ảnh trái, card phải."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
+
+    if os.path.exists(IMG['mindmap']):
+        s.shapes.add_picture(IMG['mindmap'], Inches(0.4), Inches(1.5), Inches(4.5), Inches(4.4))
+
+    add_card_group(s, Inches(5.2), Inches(1.3), Inches(7.4), Inches(4.8),
+                   pal['card'], pal['accent'])
 
     if grade <= 5:
         topics = [
-            ("Chủ đề A: Máy tính & Em", "Khám phá phần cứng, phần mềm, chuột và bàn phím máy tính."),
-            ("Chủ đề B: Mạng máy tính & Internet", "Tìm hiểu thế giới Internet, an toàn thông tin và giao tiếp số."),
-            ("Chủ đề C: Tổ chức lưu trữ dữ liệu", "Sắp xếp thư mục, quản lý tệp tin và tìm kiếm thông tin hiệu quả."),
-            ("Chủ đề D: Đạo đức & Pháp luật số", "Văn hóa ứng xử trên mạng, tôn trọng bản quyền và thông tin cá nhân."),
-            ("Chủ đề E: Ứng dụng tin học", "Soạn thảo văn bản, vẽ tranh, trình chiếu slide và giải trí số."),
-            ("Chủ đề F: Giải quyết vấn đề & Lập trình", "Tư duy thuật toán, làm quen lập trình Scratch sinh động.")
+            "Máy tính & Em (Computer & Me)",
+            "Internet & Mạng (Internet Basics)",
+            "Lưu trữ dữ liệu (Data Organization)",
+            "Đạo đức số (Digital Ethics)",
+            "Ứng dụng Tin học (IT Apps)",
+            "Giải quyết vấn đề & Lập trình (Coding)",
         ]
     else:
         topics = [
-            ("Chủ đề 1: Máy tính & Xã hội tri thức", "Lịch sử phát triển máy tính, hệ điều hành và thiết bị vào/ra."),
-            ("Chủ đề 2: Mạng máy tính & Internet", "Mạng cục bộ (LAN), Internet, dịch vụ đám mây và tìm kiếm nâng cao."),
-            ("Chủ đề 3: Đạo đức, pháp luật & văn hóa số", "An toàn số, bản quyền tác giả, phòng chống lừa đảo trên mạng."),
-            ("Chủ đề 4: Ứng dụng tin học", "Soạn thảo nâng cao, Bảng tính Excel, Biên tập ảnh & Video số."),
-            ("Chủ đề 5: Giải thuật & Lập trình", "Tư duy máy tính (Computational Thinking), lập trình ngôn ngữ bậc cao.")
+            "Máy tính & Xã hội tri thức",
+            "Mạng & Internet (Networking)",
+            "Đạo đức & Pháp luật số",
+            "Ứng dụng Tin học (IT Apps)",
+            "Giải thuật & Lập trình (Algorithms)",
         ]
 
-    card_w = Inches(3.6)
-    card_h = Inches(2.4)
-    for idx, (t_title, t_desc) in enumerate(topics[:6]):
-        col = idx % 3
-        row = idx // 3
-        left = Inches(0.8) + col * Inches(3.9)
-        top = Inches(1.5) + row * Inches(2.6)
-        add_card(s4, left, top, card_w, card_h, title=t_title, items=[t_desc], accent_color=C_NAVY if row==0 else C_ORANGE)
+    tf = make_tf(s, Inches(5.6), Inches(1.5), Inches(6.7), Inches(4.4))
+    title_paragraph(tf, f"📚  Chương trình Tin học {grade}", pal['accent'], SZ_TITLE_SM)
+    bullet_items(tf, topics, bullet_color=pal['primary'], size=SZ_BODY_SM, line_spacing=LINE_SP_SM)
 
-    # Slide 5: Phương pháp học tập
-    s5 = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(s5)
-    add_header_banner(s5, grade, "IV. PHƯƠNG PHÁP HỌC TẬP & TƯ DUY CÔNG NGHỆ")
-    add_footer(s5)
 
-    add_card(s5, Inches(0.8), Inches(1.5), Inches(5.6), Inches(5.1),
-             title="🚀 4 Phương pháp học tập chủ đạo",
-             items=[
-                 "1. Học qua trải nghiệm (Hands-on Practice): Tăng thời lượng thực hành trực tiếp trên máy tính.",
-                 "2. Học qua dự án (Project-based Learning): Thực hiện bài tập nhóm và tạo ra sản phẩm thực tế.",
-                 "3. Học qua giải quyết vấn đề: Tìm lỗi sai (Debug) và tối ưu quy trình xử lý công việc.",
-                 "4. Tự học & Đọc tài liệu: Khai thác học liệu số và sách giáo khoa hiệu quả."
-             ], accent_color=C_BLUE)
+def build_slide_methods(prs, pal, grade):
+    """Slide 5: 2 card — Phương pháp + Tư duy."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
 
-    add_card(s5, Inches(6.8), Inches(1.5), Inches(5.6), Inches(5.1),
-             title="🧠 Tư duy máy tính (Computational Thinking)",
-             items=[
-                 "• Phân rã bài toán (Decomposition): Chia nhỏ vấn đề lớn thành các phần dễ xử lý.",
-                 "• Nhận diện mẫu (Pattern Recognition): Tìm điểm chung giữa các nhiệm vụ.",
-                 "• Trừu tượng hóa (Abstraction): Tập trung vào chi tiết quan trọng nhất.",
-                 "• Thuật toán (Algorithm): Thiết kế các bước thực hiện tuần tự chính xác."
-             ], accent_color=C_GREEN)
+    # Card trái (grouped)
+    add_card_group(s, Inches(0.5), Inches(1.3), Inches(5.9), Inches(4.8),
+                   pal['card'], pal['primary'])
+    tf1 = make_tf(s, Inches(0.9), Inches(1.5), Inches(5.2), Inches(4.4))
+    title_paragraph(tf1, "🚀  Cách học hiệu quả", pal['primary'], SZ_TITLE_SM)
+    bullet_items(tf1, [
+        "Trải nghiệm (Hands-on)",
+        "Dự án (Project-based)",
+        "Tìm lỗi (Debugging)",
+    ], bullet_color=pal['primary'])
 
-    # Slide 6: Quy định phòng máy UNIGO
-    s6 = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(s6)
-    add_header_banner(s6, grade, "V. HOẠT ĐỘNG 3: NỘI QUY & AN TOÀN PHÒNG MÁY TÍNH UNIGO")
-    add_footer(s6)
+    # Card phải (grouped)
+    add_card_group(s, Inches(6.8), Inches(1.3), Inches(5.9), Inches(4.8),
+                   pal['card'], pal['accent'])
+    tf2 = make_tf(s, Inches(7.2), Inches(1.5), Inches(5.2), Inches(4.4))
+    title_paragraph(tf2, "🧠  Tư duy máy tính", pal['accent'], SZ_TITLE_SM)
+    bullet_items(tf2, [
+        "Phân rã (Decomposition)",
+        "Nhận mẫu (Pattern)",
+        "Thuật toán (Algorithm)",
+    ], bullet_color=pal['accent'])
 
-    rules = [
-        "1. Xếp hàng trật tự trước khi vào phòng máy. Để giày dép đúng nơi quy định.",
-        "2. TUYỆT ĐỐI KHÔNG mang đồ ăn, nước uống vào phòng thực hành máy tính.",
-        "3. Thao tác bật/tắt máy đúng quy trình. Không tự ý tháo dỡ, cắm rút dây điện.",
-        "4. Ngồi đúng vị trí máy được phân công. Giữ vệ sinh chung ngăn nắp.",
-        "5. Khi gặp sự cố máy tính hoặc nguồn điện: BÁO NGAY CHO GIÁO VIÊN HỖ TRỢ."
-    ]
-    add_card(s6, Inches(0.8), Inches(1.5), Inches(11.6), Inches(5.1),
-             title="⚠️ 5 NGUYÊN TẮC VÀNG PHÒNG THỰC HÀNH TIN HỌC UNIGO",
-             items=rules, accent_color=C_ORANGE)
 
-    # Slide 7: An toàn số & Đạo đức số
-    s7 = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(s7)
-    add_header_banner(s7, grade, "VI. AN TOÀN SỐ & ĐẠO ĐỨC SỐ (DIGITAL SAFETY & ETHICS)")
-    add_footer(s7)
+def build_slide_rules(prs, pal, grade):
+    """Slide 6: Nội quy — card trái, ảnh phải."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
 
-    add_card(s7, Inches(0.8), Inches(1.5), Inches(5.6), Inches(5.1),
-             title="🛡️ An toàn thông tin cá nhân",
-             items=[
-                 "Giữ bí mật mật khẩu tài khoản cá nhân và tài khoản trường cấp.",
-                 "Không tự ý cung cấp họ tên, số điện thoại, địa chỉ cho người lạ trên mạng.",
-                 "Cảnh giác với các đường link lạ, file tải về không rõ nguồn gốc.",
-                 "Đăng xuất tài khoản sau khi hoàn thành giờ học trên máy tính dùng chung."
-             ], accent_color=C_NAVY)
+    if os.path.exists(IMG['rules']):
+        s.shapes.add_picture(IMG['rules'], Inches(7.2), Inches(1.3), Inches(5.4), Inches(4.8))
 
-    add_card(s7, Inches(6.8), Inches(1.5), Inches(5.6), Inches(5.1),
-             title="🌐 Văn hóa & Đạo đức số",
-             items=[
-                 "Tôn trọng bạn bè: Không sử dụng ngôn từ thiếu văn hóa trên môi trường số.",
-                 "Tôn trọng bản quyền: Tải tài liệu, hình ảnh phải ghi rõ nguồn trích dẫn.",
-                 "Sử dụng thời gian hợp lý: Cân bằng thời gian dùng máy tính và vận động.",
-                 "Chia sẻ năng lượng tích cực: Lan tỏa các nội dung học tập hữu ích."
-             ], accent_color=C_AMBER)
+    C_WARN = RGBColor(0xEA, 0x58, 0x0C)
+    add_card_group(s, Inches(0.5), Inches(1.3), Inches(6.3), Inches(4.8),
+                   pal['card'], C_WARN)
 
-    # Slide 8: Đánh giá & Học liệu
-    s8 = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(s8)
-    add_header_banner(s8, grade, "VII. CÁCH THỨC ĐÁNH GIÁ & ĐỒ DÙNG HỌC TẬP")
-    add_footer(s8)
+    tf = make_tf(s, Inches(0.9), Inches(1.5), Inches(5.6), Inches(4.4))
+    title_paragraph(tf, "⚠️  Nội quy phòng máy", C_WARN, SZ_TITLE)
+    bullet_items(tf, [
+        "Xếp hàng, để giày dép đúng nơi.",
+        "KHÔNG mang đồ ăn, nước uống vào.",
+        "Bật/tắt máy đúng quy trình.",
+        "Gặp sự cố → BÁO NGAY giáo viên.",
+    ], bullet_color=C_WARN)
 
-    add_card(s8, Inches(0.8), Inches(1.5), Inches(5.6), Inches(5.1),
-             title="📊 Hình thức đánh giá môn học",
-             items=[
-                 "• Đánh giá thường xuyên: Nhận xét thái độ học tập, bài thực hành cá nhân.",
-                 "• Đánh giá sản phẩm nhóm: Tiêu chí sáng tạo, kỹ năng làm việc nhóm.",
-                 "• Đánh giá định kỳ 1 & 2 (Học kỳ 1): Bài kiểm tra lý thuyết & thực hành.",
-                 "• Đánh giá định kỳ 3 & 4 (Học kỳ 2): Bài kiểm tra & Sản phẩm dự án cuối năm."
-             ], accent_color=C_BLUE)
 
-    add_card(s8, Inches(6.8), Inches(1.5), Inches(5.6), Inches(5.1),
-             title="📚 Đồ dùng & Học liệu cần chuẩn bị",
-             items=[
-                 f"1. Sách giáo khoa Tin học {grade} (Bộ sách GDPT 2018).",
-                 "2. Vở ghi bài & Sổ tay ghi chép cá nhân.",
-                 "3. Tài khoản học tập trực tuyến UNIGO (Office 365 / LMS).",
-                 "4. Thẻ nhớ / USB cá nhân (dùng cho các khối lớp THCS)."
-             ], accent_color=C_GREEN)
+def build_slide_safety(prs, pal, grade):
+    """Slide 7: An toàn số — ảnh trái, card phải."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
 
-    # Slide 9: Nhiệm vụ mở rộng
-    s9 = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(s9)
-    add_header_banner(s9, grade, "VIII. HOẠT ĐỘNG 4: NHIỆM VỤ MỞ RỘNG & KẾ HOẠCH CÁ NHÂN")
-    add_footer(s9)
+    if os.path.exists(IMG['safety']):
+        s.shapes.add_picture(IMG['safety'], Inches(0.4), Inches(1.4), Inches(4.3), Inches(4.5))
 
-    add_card(s9, Inches(0.8), Inches(1.5), Inches(11.6), Inches(5.1),
-             title="📝 Nhiệm vụ thiết lập mục tiêu cá nhân",
-             items=[
-                 "Thảo luận nhóm 2 bạn cùng bàn:",
-                 "1. Viết ra 2 mục tiêu em mong muốn đạt được nhất trong môn Tin học năm học này.",
-                 "2. Đề xuất 1 ý tưởng sản phẩm số em muốn tự tay tạo ra (Ví dụ: Tranh vẽ, Bài trình chiếu, Trò chơi Scratch...).",
-                 "3. Cam kết thực hiện đúng 5 nguyên tắc vàng phòng máy tính UNIGO."
-             ], accent_color=C_NAVY)
+    add_card_group(s, Inches(5.0), Inches(1.3), Inches(7.6), Inches(4.8),
+                   pal['card'], pal['second'])
 
-    # Slide 10: Tóm tắt & Dặn dò
-    s10 = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(s10)
-    add_header_banner(s10, grade, "IX. TỔNG KẾT & DẶN DÒ NHIỆM VỤ VỀ NHÀ")
-    add_footer(s10)
+    tf = make_tf(s, Inches(5.4), Inches(1.5), Inches(6.9), Inches(4.4))
+    title_paragraph(tf, "🛡️  An toàn số (Digital Safety)", pal['second'], SZ_TITLE_SM)
+    bullet_items(tf, [
+        "Giữ bí mật mật khẩu (password).",
+        "Không chia sẻ thông tin cá nhân.",
+        "Cảnh giác link lạ, file lạ.",
+        "Ứng xử văn minh, không bắt nạt mạng.",
+    ], bullet_color=pal['second'])
 
-    add_card(s10, Inches(0.8), Inches(1.5), Inches(11.6), Inches(5.1),
-             title="📌 3 Điểm ghi nhớ quan trọng",
-             items=[
-                 f"1. Môn Tin học {grade} mang lại kiến thức công nghệ hiện đại và kỹ năng thực hành thiết thực.",
-                 "2. Luôn tuân thủ tuyệt đối quy định an toàn phòng máy và nguyên tắc ứng xử văn minh số.",
-                 "3. Dặn dò nhiệm vụ về nhà: Xem trước Bài 1 trong SGK, chuẩn bị đầy đủ vở ghi và đồ dùng học tập cho tiết sau."
-             ], accent_color=C_ORANGE)
 
-    # Slide 11: Cảm ơn
-    s11 = prs.slides.add_slide(prs.slide_layouts[6])
-    set_slide_bg(s11, C_NAVY)
-    
-    tb_c = s11.shapes.add_textbox(Inches(1.0), Inches(2.0), Inches(11.33), Inches(3.5))
-    tf_c = tb_c.text_frame
-    tf_c.word_wrap = True
-    
-    p_c1 = tf_c.paragraphs[0]
-    p_c1.alignment = PP_ALIGN.CENTER
-    r_c1 = p_c1.add_run()
-    r_c1.text = "CHÚC CÁC EM CÓ MỘT NĂM HỌC THÀNH CÔNG VÀ NHIỀU NIỀM VUI SÁNG TẠO SỐ!\n\n"
-    r_c1.font.name = "Times New Roman"
-    r_c1.font.size = Pt(26)
-    r_c1.font.bold = True
-    r_c1.font.color.rgb = C_AMBER
+def build_slide_assessment(prs, pal, grade):
+    """Slide 8: 2 card — Đánh giá + Đồ dùng."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
 
-    p_c2 = tf_c.add_paragraph()
-    p_c2.alignment = PP_ALIGN.CENTER
-    r_c2 = p_c2.add_run()
-    r_c2.text = "TRƯỜNG TIỂU HỌC VÀ THCS UNIGO"
-    r_c2.font.name = "Times New Roman"
-    r_c2.font.size = Pt(22)
-    r_c2.font.bold = True
-    r_c2.font.color.rgb = C_WHITE
+    add_card_group(s, Inches(0.5), Inches(1.3), Inches(5.9), Inches(4.8),
+                   pal['card'], pal['primary'])
+    tf1 = make_tf(s, Inches(0.9), Inches(1.5), Inches(5.2), Inches(4.4))
+    title_paragraph(tf1, "📊  Cách đánh giá", pal['primary'], SZ_TITLE_SM)
+    bullet_items(tf1, [
+        "Đánh giá thường xuyên (ĐGTX).",
+        "Đánh giá định kỳ (4 lần/năm).",
+        "Sản phẩm dự án nhóm.",
+    ], bullet_color=pal['primary'])
 
-    add_footer(s11)
+    add_card_group(s, Inches(6.8), Inches(1.3), Inches(5.9), Inches(4.8),
+                   pal['card'], pal['second'])
+    tf2 = make_tf(s, Inches(7.2), Inches(1.5), Inches(5.2), Inches(4.4))
+    title_paragraph(tf2, "📚  Đồ dùng cần có", pal['second'], SZ_TITLE_SM)
+    bullet_items(tf2, [
+        f"SGK Tin học {grade}.",
+        "Vở ghi & sổ tay cá nhân.",
+        "USB / thẻ nhớ (THCS).",
+    ], bullet_color=pal['second'])
+
+
+def build_slide_homework(prs, pal, grade):
+    """Slide 9: Nhiệm vụ — full width card."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
+
+    add_card_group(s, Inches(0.5), Inches(1.3), Inches(12.3), Inches(4.8),
+                   pal['card'], pal['accent'])
+
+    tf = make_tf(s, Inches(1.0), Inches(1.5), Inches(11.5), Inches(4.4))
+    title_paragraph(tf, "📝  Nhiệm vụ mở rộng (Homework)", pal['accent'], SZ_TITLE)
+    bullet_items(tf, [
+        "Viết 2 mục tiêu em muốn đạt trong năm học.",
+        "Đề xuất 1 sản phẩm số muốn tự tạo.",
+        "Cam kết thực hiện nội quy phòng máy.",
+        "Về nhà: Xem trước Bài 1 trong SGK.",
+    ], bullet_color=pal['accent'])
+
+
+def build_slide_summary(prs, pal, grade):
+    """Slide 10: Tổng kết — panel màu trong VÙNG AN TOÀN, không che logo/chân."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])  # Nền nhạt — logo + chân trang luôn thấy rõ
+
+    # Panel màu primary CHỈ trong vùng an toàn (dưới logo, trên chân trang)
+    panel = s.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                               Inches(0), Inches(1.15),
+                               Inches(13.33), Inches(5.15))
+    panel.fill.solid()
+    panel.fill.fore_color.rgb = pal['primary']
+    panel.line.fill.background()
+
+    # Card + bar (grouped)
+    add_card_group(s, Inches(1.2), Inches(1.5), Inches(10.9), Inches(4.5),
+                   pal['card'], pal['accent'], bar_width=Inches(0.18))
+
+    tf = make_tf(s, Inches(1.7), Inches(1.7), Inches(10.0), Inches(4.0))
+    title_paragraph(tf, f"📌  Ghi nhớ — Tin học {grade}", pal['primary'], SZ_TITLE)
+    bullet_items(tf, [
+        "Tin học mang đến kỹ năng số thiết thực.",
+        "Tuân thủ nội quy & ứng xử văn minh.",
+        "Tự tin khám phá, sáng tạo!",
+    ], bullet_color=pal['accent'], size=SZ_SUB)
+
+    p_thanks = tf.add_paragraph()
+    p_thanks.space_before = Pt(20)
+    p_thanks.alignment = PP_ALIGN.CENTER
+    add_run(p_thanks, "Chúc các em năm học tuyệt vời! 🎉",
+            size=Pt(22), bold=True, color=pal['second'])
+
+
+# ─── Quality Check ───────────────────────────────────────────────────
+def quality_check(filepath):
+    prs = Presentation(filepath)
+    issues = []
+    if len(prs.slides) < 8:
+        issues.append(f"WARN: Chi co {len(prs.slides)} slides")
+    master = prs.slide_masters[0]
+    has_logo = any(s.name == 'Picture 7' and s.shape_type == 13 for s in master.shapes)
+    has_footer = any(s.name == 'Picture 9' and s.shape_type == 13 for s in master.shapes)
+    if not has_logo:  issues.append("FAIL: Logo UNIGO bi mat!")
+    if not has_footer: issues.append("FAIL: Chan trang bi mat!")
+    # Check slide cuoi khong co bg che logo (shape at y=0)
+    last = prs.slides[len(prs.slides) - 1]
+    for shape in last.shapes:
+        if Emu(shape.top).inches < 0.5 and Emu(shape.width).inches > 10:
+            issues.append(f"WARN: Slide cuoi shape '{shape.name}' co the che logo (top={Emu(shape.top).inches:.2f}in)")
+    return issues
+
+
+# ─── Main ────────────────────────────────────────────────────────────
+def build_deck(grade, palette_idx=None):
+    prs = Presentation(TPL_PATH)
+    clear_template_slides(prs)
+
+    if palette_idx is None:
+        palette_idx = (grade - 1) % len(PALETTES)
+    pal = PALETTES[palette_idx]
+    print(f"  Palette: {pal['name']} (#{palette_idx + 1})")
+
+    subtitles = {
+        1: "Noi quy & An toan phong may",
+        2: "Nha sang tao so",
+        3: "Kham pha Tin hoc 3",
+        4: "Kham pha Tin hoc 4",
+        5: "Ky nang so the ky 21",
+        6: "Phuong phap & An toan so",
+        7: "Tong quan & Ky nang so",
+        8: "Tu duy may tinh",
+    }
+
+    build_slide_intro(prs, pal, grade, subtitles.get(grade, f"Kham pha Tin hoc {grade}"))
+    build_slide_objectives(prs, pal, grade)
+    build_slide_warmup(prs, pal, grade)
+    build_slide_overview(prs, pal, grade)
+    build_slide_methods(prs, pal, grade)
+    build_slide_rules(prs, pal, grade)
+    build_slide_safety(prs, pal, grade)
+    build_slide_assessment(prs, pal, grade)
+    build_slide_homework(prs, pal, grade)
+    build_slide_summary(prs, pal, grade)
 
     return prs
 
-def main():
-    print("==================================================")
-    print(" BẮT ĐẦU TẠO HỆ THỐNG SLIDE ĐỊNH HƯỚNG TIN HỌC (TIẾT 0)")
-    print("==================================================")
 
-    created_count = 0
+def main():
+    print("=== TẠO TOÀN BỘ SLIDE TIẾT 0 TIN HỌC (LỚP 1 ĐẾN LỚP 8) ===")
+    total_files = 0
+    all_passed = True
 
     for grade in range(1, 9):
-        print(f"\n---> Đang tạo Slide Tiết 0 môn Tin học Lớp {grade}...")
-        prs = build_orientation_deck(grade)
+        print(f"\n--- Đang xử lý Lớp {grade} ---")
+        prs = build_deck(grade)
 
-        out_folder = os.path.join(BASE_OUT_DIR, f"Lớp_{grade}", "Tiết_00")
+        out_folder = os.path.join(BASE_OUT, f"Lớp_{grade}", "Tiết_00")
         os.makedirs(out_folder, exist_ok=True)
+        out_path = os.path.join(out_folder, f"Slide_Tin_hoc_Lop_{grade}_Tiet00_Dinh_huong.pptx")
 
-        filename = f"Slide_Tin_hoc_Lớp_{grade}_Tiet00_Dinh_huong_mon_hoc.pptx"
-        out_filepath = os.path.join(out_folder, filename)
+        prs.save(out_path)
+        total_files += 1
+        print(f"  ✓ Đã lưu: {out_path}")
+        print(f"  ✓ Số slide: {len(prs.slides)}")
 
-        try:
-            prs.save(out_filepath)
-            created_count += 1
-            print(f"  [+] Đã tạo slide: {out_filepath}")
-        except Exception as e:
-            print(f"  [!] Lỗi khi lưu slide {out_filepath}: {e}")
+        issues = quality_check(out_path)
+        if issues:
+            all_passed = False
+            print("  ⚠ QUALITY ISSUES:")
+            for iss in issues:
+                print(f"    - {iss}")
+        else:
+            print("  ✅ QUALITY CHECK PASSED!")
 
-    print(f"\n==================================================")
-    print(f" HOÀN THÀNH TẠO {created_count} SLIDE ĐỊNH HƯỚNG MON TIN HỌC!")
-    print(f"==================================================")
+    print(f"\n=== HOÀN THÀNH: Đã tạo {total_files}/8 bộ slide Tiết 0 thành công! ===")
+    if all_passed:
+        print("🎉 100% các bộ slide đạt chuẩn chất lượng UNIGO!")
+
 
 if __name__ == '__main__':
     main()

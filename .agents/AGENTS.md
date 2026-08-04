@@ -162,3 +162,26 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
      - `Lịch báo giảng - Tuần XX (TTH+TH).docx` (Tiền TH + TH)
      - `Lịch báo giảng - Tuần XX (THCS).docx` (THCS)
 
+---
+
+## VII. Quy định Tạo Slide Bài giảng (.pptx) chuẩn UNIGO
+
+1. **Bảo tồn Slide Master & Vùng An Toàn:**
+   - GIỮ NGUYÊN Logo UNIGO (`Picture 7` tại L=0.17in, T=0.15in) và Chân trang (`Picture 9` tại L=0.00in, T=6.43in) từ slide master.
+   - VÙNG AN TOÀN NỘI DUNG: Chiều dọc từ **Y = 1.15in đến Y = 6.30in** (chiều cao 5.15in). Tuyệt đối không vẽ shape hoặc đè nền màu vượt quá Y = 6.30in hoặc chờm lên Y < 1.15in làm che logo/chân trang.
+
+2. **Quy chuẩn Font chữ & Cỡ chữ:**
+   - Tiêu đề slide chính / Giới thiệu: **24pt - 28pt** (Bold).
+   - Nội dung thường (Bullet text): **18pt - 20pt**.
+   - Ký tự đầu dòng (●): **14pt**, Giãn dòng (Line spacing): **28pt**, Khoảng cách sau đoạn (Space after): **8pt**.
+   - Giới hạn nội dung mỗi slide ngắn gọn (tối đa 3 - 4 dòng bullet) để đảm bảo chữ to rõ, thoáng, không dính hoặc chồng chữ.
+
+3. **Cấu trúc Group Card & Accent Bar:**
+   - **Thanh Accent Bar khít tuyệt đối:** Thanh accent màu bên mép card BẮT BUỘC phải khít hoàn toàn chiều cao ô trắng (`bar.top = card.top`, `bar.height = card.height`), không tạo margin hở trên/dưới.
+   - **Bắt buộc Grouping:** Card ô trắng (`ROUNDED_RECTANGLE`) và thanh accent bar BẮT BUỘC phải được nhóm lại thành một khối duy nhất (`group_shapes` qua `<p:grpSp>`) để giáo viên dễ dàng di chuyển và căn chỉnh trong PowerPoint.
+
+4. **Slide Tổng kết & Màu sắc:**
+   - Slide tổng kết dùng nền nhạt `bg` và chèn panel màu chỉ nằm gọn trong Vùng An Toàn (Y 1.15in → 6.30in). Tuyệt đối không gọi `set_slide_bg(primary)` phủ toàn slide làm che mất logo master.
+   - Áp dụng hệ thống xoay vòng 8 bộ màu (Color Palette rotation) linh hoạt, hiện đại cho từng bài/lớp.
+
+
