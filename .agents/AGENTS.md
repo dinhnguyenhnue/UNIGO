@@ -139,12 +139,10 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
 
 ## VI. Quy định Lịch báo giảng (LBG) — PPCT & Rotation
 
-1. **Quy tắc PPCT theo ngày trong tuần (Back-to-School offset):**
-   - **Tuần 1:** Tất cả các lớp = PPCT 0 (`Tiết 0: Định hướng môn học`).
-   - **Tuần 2+:**
-     - **Thứ 2, Thứ 3 (day_idx 0,1):** Bị trễ 1 tuần do Back to School tuần 1 → `ppct = max(0, tuan_so - 2)`.
-     - **Thứ 4, Thứ 5, Thứ 6 (day_idx 2,3,4):** Bình thường → `ppct = max(0, tuan_so - 1)`.
-   - **Quy tắc +1 mỗi tuần:** Mỗi tuần nhìn vào LBG tuần trước và +1 tiết. Đến tuần 4, tất cả sẽ đồng bộ.
+1. **Quy tắc PPCT (Không áp dụng offset ngày trong tuần):**
+   - **Tuần 1:** Tất cả các lớp (tất cả các Thứ) = PPCT 0 (`Tiết 0: Định hướng môn học`).
+   - **Tuần 2 trở đi:** Tất cả các Thứ (từ Thứ 2 đến Thứ 6) đều đồng bộ `PPCT = tuan_so - 1` (Tuần 2 = PPCT 1, Tuần 3 = PPCT 2,...). Không áp dụng trễ tuần cho Thứ 2, Thứ 3.
+
 
 2. **Quy tắc Rotation Tuần chẵn/lẻ cho lớp 5, 6, 7, 8:**
    - **Tuần CHẴN (2, 4, 6...):** Cả 2 tiết → **Tin học** (Đồ dùng: Phòng Tin học).

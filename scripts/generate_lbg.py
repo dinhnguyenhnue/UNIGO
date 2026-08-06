@@ -8,15 +8,11 @@ QUY TAC ROTATION:
       Tuan LE  (3, 5, 7...): ca 2 tiet -> Robotics
   - Cac lop con lai: giu nguyen mon hoc goc
 
-QUY TAC PPCT (Back-to-School rule):
+QUY TAC PPCT (Khong offset):
   - Tuan 1: Tat ca = Tiet 0 (Dinh huong)
-  - Tuan 2+:
-      T2, T3 (day_idx 0,1): bi tre 1 tuan do Back to School
-        => ppct = max(0, tuan_so - 2)
-      T4, T5, T6 (day_idx 2,3,4): binh thuong
-        => ppct = max(0, tuan_so - 1)
+  - Tuan 2+: Tat ca cac Thu (T2 -> T6) đeu dong bo ppct = tuan_so - 1
   - Rotation classes (5,6,7,8): PPCT rieng cho Tin/Robotics
-      Khi co 2 tiet lien tiep cung mon -> PPCT lien tiep
+      Khi co 2 tiet lien tiep cung mon -> PPCT lien tiep (Tuan 2: PPCT 1,2; Tuan 4: PPCT 3,4...)
 
 QUY TRINH (moi tuan):
   1. Doc file Tuan 01 lam template
@@ -624,91 +620,38 @@ def get_ppct_lesson(lop, mon, ppct_num):
     return data.get(ppct_num, '')
 
 
-def compute_ppct(tuan_so, day_idx):
+def compute_ppct(tuan_so, day_idx=0):
     """
-    Tinh PPCT theo tuan va ngay trong tuan.
+    Tinh PPCT theo tuan (Khong ap dung offset ngay trong tuan).
     - Tuan 1: tat ca = 0 (Dinh huong)
-    - Thứ 2, 3 (day_idx 0,1): bi tre 1 tuan do Back to School
-      => ppct = max(0, tuan_so - 2)
-    - Thứ 4, 5, 6 (day_idx 2,3,4): binh thuong
-      => ppct = max(0, tuan_so - 1)
+    - Tuan 2+: tat ca cac ngay = tuan_so - 1
     """
     if tuan_so <= 1:
         return 0
-    if day_idx <= 1:  # Thu 2, 3
-        return max(0, tuan_so - 2)
-    else:             # Thu 4, 5, 6
-        return max(0, tuan_so - 1)
+    return tuan_so - 1
 
 
 def compute_rotation_ppct(tuan_so, day_idx, is_even_week, period_index_in_day):
     """
-    Tinh PPCT cho lop rotation (5,6,7,8) co 2+ tiet lien tiep.
-    
-    Rotation classes alternate: Even weeks = Tin hoc, Odd weeks = Robotics.
-    Each subject is taught every other week with 2 periods.
-    
-    Args:
-        tuan_so: So tuan
-        day_idx: 0=T2, 1=T3, 2=T4, 3=T5, 4=T6
-        is_even_week: True if even week (Tin hoc)
-        period_index_in_day: 0 for first period, 1 for second period (of same class)
-    
-    Returns:
-        PPCT number for this period
+    Tinh PPCT cho lop rotation (5,6,7,8) co 2 tiet lien tiep (Khong offset).
+    - Tuan CHAN (2, 4, 6...): Tin hoc (Tuan 2 -> PPCT 1,2; Tuan 4 -> PPCT 3,4;...)
+    - Tuan LE (3, 5, 7...): Robotics (Tuan 3 -> PPCT 1,2; Tuan 5 -> PPCT 3,4;...)
     """
-    base = compute_ppct(tuan_so, day_idx)
-    if base == 0:
-        return 0  # Still in orientation
-    
-    # Count how many teaching weeks of THIS subject have passed before this week
-    # Even weeks (Tin): 2, 4, 6... -> for T4/T5/T6 starting from week 2
-    # Odd weeks (Rob): 3, 5, 7... -> for T4/T5/T6 starting from week 3
-    
-    # Simple approach: use base PPCT and multiply by 2 for rotation
-    # Since rotation classes get 2 periods per week but only every other week,
-    # the effective PPCT per subject = base (same rate as single-period classes)
-    # But with 2 periods per session, each session advances by 2
-    
-    # For non-rotation class with 1 period/week: PPCT = base
-    # For rotation class with 2 periods every other week:
-    #   Tin hoc sessions (even weeks only): 
-    #     Number of even weeks up to tuan_so = (tuan_so) // 2 (starting from week 2)
-    #   Each session = 2 periods
-    
-    # Let's compute properly
-    if day_idx <= 1:  # T2/T3 (back-to-school delayed)
-        first_real_week = 3  # First real content starts at week 3
-    else:  # T4/T5/T6
-        first_real_week = 2  # First real content starts at week 2
-    
-    if tuan_so < first_real_week:
+    if tuan_so <= 1:
         return 0
     
-    # Count how many weeks of THIS specific subject have been taught
     if is_even_week:
-        # Tin hoc in even weeks
-        # Count even weeks from first_real_week to tuan_so (inclusive)
-        subject_weeks = 0
-        for w in range(first_real_week, tuan_so + 1):
-            if w % 2 == 0:
-                subject_weeks += 1
-        # Current week is the last one counted, subtract 1 to get completed + current
+        # Tin hoc in even weeks (2, 4, 6...)
+        if tuan_so < 2:
+            return 0
+        k = (tuan_so - 2) // 2 + 1  # Session index (1-based)
+        return (k - 1) * 2 + period_index_in_day + 1
     else:
-        # Robotics in odd weeks
-        subject_weeks = 0
-        for w in range(first_real_week, tuan_so + 1):
-            if w % 2 == 1:
-                subject_weeks += 1
-    
-    if subject_weeks == 0:
-        return 0
-    
-    # PPCT = (completed_sessions * 2) + period_index + 1
-    completed = subject_weeks - 1  # Weeks before this one
-    ppct = completed * 2 + period_index_in_day + 1
-    
-    return ppct
+        # Robotics in odd weeks (3, 5, 7...)
+        if tuan_so < 3:
+            return 0
+        k = (tuan_so - 3) // 2 + 1  # Session index (1-based)
+        return (k - 1) * 2 + period_index_in_day + 1
 
 
 def set_cell_text(cell, text):
