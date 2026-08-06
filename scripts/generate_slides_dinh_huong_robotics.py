@@ -18,6 +18,13 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 TPL_PATH = r'd:\UNIGO\Hệ thống mẫu văn bản\Mẫu slide UNIGO.pptx'
 BASE_OUT = r'd:\UNIGO\KHBD_Robotics'
+IMG_RULES_DIR = r'd:\UNIGO\KHBD_Robotics\images\noi_quy'
+
+IMG_RULES = {
+    'kit_ollo':     os.path.join(IMG_RULES_DIR, 'rules_kit_ollo.png'),
+    'during_class': os.path.join(IMG_RULES_DIR, 'rules_during_class.png'),
+    'after_class':  os.path.join(IMG_RULES_DIR, 'rules_after_class.png'),
+}
 
 # ─── 8 Bộ màu hài hoà cho Robotics ──────────────────────────────
 PALETTES = [
@@ -235,21 +242,66 @@ def build_slide_methods(prs, pal, grade):
     ], bullet_color=pal['second'])
 
 
-def build_slide_rules(prs, pal, grade):
+def build_slide_rules_1(prs, pal, grade):
+    """Slide 6a: Quy định Kit OLLO — Quản lý linh kiện, động cơ, pin."""
     s = new_slide(prs)
     set_slide_bg(s, pal['bg'])
 
-    add_card_group(s, Inches(0.5), Inches(1.3), Inches(12.3), Inches(4.8),
+    if os.path.exists(IMG_RULES['kit_ollo']):
+        s.shapes.add_picture(IMG_RULES['kit_ollo'], Inches(7.2), Inches(1.3), Inches(5.4), Inches(4.8))
+
+    add_card_group(s, Inches(0.5), Inches(1.3), Inches(6.3), Inches(4.8),
                    pal['card'], C_WARN)
 
-    tf = make_tf(s, Inches(1.0), Inches(1.5), Inches(11.5), Inches(4.4))
-    title_paragraph(tf, "⚠️  Nội quy phòng Thực hành Robotics", C_WARN, SZ_TITLE)
+    tf = make_tf(s, Inches(1.0), Inches(1.5), Inches(5.6), Inches(4.4))
+    title_paragraph(tf, "⚠️  II. Quy định Kit OLLO", C_WARN, Pt(22))
     bullet_items(tf, [
-        "Bảo quản bộ Kit Robotics: Phân loại chi tiết đúng ô khay đựng.",
-        "KHÔNG làm rơi vỡ động cơ, cảm biến hay mạch điều khiển.",
-        "Tắt nguồn pin/bộ điều khiển sau khi kết thúc giờ thực hành.",
-        "Gặp sự cố kỹ thuật → BÁO NGAY cho Giáo viên hướng dẫn.",
+        "Dùng dụng cụ tháo rivet chuyên dụng; không dùng răng/móng tay cạy.",
+        "Làm việc trên khay/hộp; không để linh kiện rơi xuống sàn.",
+        "Cắm/rút dây cáp nhẹ nhàng, thẳng góc vào đúng cổng.",
+        "Tắt nguồn khi lắp ráp; báo ngay nếu pin nóng/phồng bất thường.",
+    ], bullet_color=C_WARN, size=Pt(16))
+
+
+def build_slide_rules_2(prs, pal, grade):
+    """Slide 6b: Nội quy trong giờ học & Lập trình."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
+
+    if os.path.exists(IMG_RULES['during_class']):
+        s.shapes.add_picture(IMG_RULES['during_class'], Inches(7.2), Inches(1.3), Inches(5.4), Inches(4.8))
+
+    add_card_group(s, Inches(0.5), Inches(1.3), Inches(6.3), Inches(4.8),
+                   pal['card'], C_WARN)
+
+    tf = make_tf(s, Inches(1.0), Inches(1.5), Inches(5.6), Inches(4.4))
+    title_paragraph(tf, "⚠️  III. Trong giờ học", C_WARN, Pt(22))
+    bullet_items(tf, [
+        "Ngồi đúng vị trí nhóm/cá nhân được phân công.",
+        "Thử nghiệm Robot trên thảm/bàn chuyên dụng, không cho chạy dưới sàn.",
+        "Chỉ dùng phần mềm được chỉ định (R+ Task, ROBOTIS BLOCK...).",
     ], bullet_color=C_WARN)
+
+
+def build_slide_rules_3(prs, pal, grade):
+    """Slide 6c: Nội quy sau giờ thực hành."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
+
+    if os.path.exists(IMG_RULES['after_class']):
+        s.shapes.add_picture(IMG_RULES['after_class'], Inches(7.2), Inches(1.3), Inches(5.4), Inches(4.8))
+
+    add_card_group(s, Inches(0.5), Inches(1.3), Inches(6.3), Inches(4.8),
+                   pal['card'], C_WARN)
+
+    tf = make_tf(s, Inches(1.0), Inches(1.5), Inches(5.6), Inches(4.4))
+    title_paragraph(tf, "⚠️  IV. Sau thực hành", C_WARN, Pt(22))
+    bullet_items(tf, [
+        "Tháo dỡ Robot nhẹ nhàng; phân loại linh kiện về đúng ngăn hộp.",
+        "Tắt nguồn Robot, tháo dây sạc/kết nối.",
+        "Kiểm tra đủ số lượng linh kiện cùng giáo viên trước khi rời.",
+        "Vệ sinh mặt bàn, thu dọn rác và xếp ghế gọn gàng.",
+    ], bullet_color=C_WARN, size=Pt(16))
 
 
 def build_slide_assessment(prs, pal, grade):
@@ -367,7 +419,9 @@ def build_deck(grade, palette_idx=None):
     build_slide_warmup(prs, pal, grade)
     build_slide_overview(prs, pal, grade)
     build_slide_methods(prs, pal, grade)
-    build_slide_rules(prs, pal, grade)
+    build_slide_rules_1(prs, pal, grade)
+    build_slide_rules_2(prs, pal, grade)
+    build_slide_rules_3(prs, pal, grade)
     build_slide_assessment(prs, pal, grade)
     build_slide_homework(prs, pal, grade)
     build_slide_summary(prs, pal, grade)

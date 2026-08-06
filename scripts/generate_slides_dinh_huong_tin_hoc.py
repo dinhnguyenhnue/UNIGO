@@ -77,6 +77,8 @@ LINE_SP     = Pt(28)
 LINE_SP_SM  = Pt(24)
 SP_AFTER    = Pt(8)
 
+IMG_RULES_DIR = r'd:\UNIGO\KHBD_Tin_học\images\noi_quy'
+
 IMG = {
     'classroom': os.path.join(IMG_DIR, 'classroom_computer_lab_1785861919471.png'),
     'devices':   os.path.join(IMG_DIR, 'digital_devices_around_1785861929327.png'),
@@ -84,6 +86,9 @@ IMG = {
     'goals':     os.path.join(IMG_DIR, 'student_learning_goals_1785861961479.png'),
     'rules':     os.path.join(IMG_DIR, 'computer_room_rules_1785861971149.png'),
     'mindmap':   os.path.join(IMG_DIR, 'tin_hoc_mindmap_1785861980454.png'),
+    'rules_before': os.path.join(IMG_RULES_DIR, 'rules_before_class.png'),
+    'rules_during': os.path.join(IMG_RULES_DIR, 'rules_during_class.png'),
+    'rules_after':  os.path.join(IMG_RULES_DIR, 'rules_after_class.png'),
 }
 
 # ─── Helpers ─────────────────────────────────────────────────────────
@@ -358,25 +363,67 @@ def build_slide_methods(prs, pal, grade):
     ], bullet_color=pal['accent'])
 
 
-def build_slide_rules(prs, pal, grade):
-    """Slide 6: Nội quy — card trái, ảnh phải."""
+def build_slide_rules_1(prs, pal, grade):
+    """Slide 6a: Nội quy I — Trước khi vào phòng máy."""
     s = new_slide(prs)
     set_slide_bg(s, pal['bg'])
 
-    if os.path.exists(IMG['rules']):
-        s.shapes.add_picture(IMG['rules'], Inches(7.2), Inches(1.3), Inches(5.4), Inches(4.8))
+    if os.path.exists(IMG['rules_before']):
+        s.shapes.add_picture(IMG['rules_before'], Inches(7.2), Inches(1.3), Inches(5.4), Inches(4.8))
 
     C_WARN = RGBColor(0xEA, 0x58, 0x0C)
     add_card_group(s, Inches(0.5), Inches(1.3), Inches(6.3), Inches(4.8),
                    pal['card'], C_WARN)
 
     tf = make_tf(s, Inches(0.9), Inches(1.5), Inches(5.6), Inches(4.4))
-    title_paragraph(tf, "⚠️  Nội quy phòng máy", C_WARN, SZ_TITLE)
+    title_paragraph(tf, "⚠️  I. Trước khi vào phòng máy", C_WARN, SZ_TITLE_SM)
     bullet_items(tf, [
-        "Xếp hàng, để giày dép đúng nơi.",
-        "KHÔNG mang đồ ăn, nước uống vào.",
-        "Bật/tắt máy đúng quy trình.",
-        "Gặp sự cố → BÁO NGAY giáo viên.",
+        "Trang phục chỉnh tề; để balo, giày dép đúng nơi quy định.",
+        "Chỉ mang sách, vở, bút và tài liệu được phép vào vị trí ngồi.",
+        "NGHIÊM CẤM mang đồ ăn, thức uống, kẹo cao su, chất dễ cháy nổ vào phòng máy.",
+    ], bullet_color=C_WARN)
+
+
+def build_slide_rules_2(prs, pal, grade):
+    """Slide 6b: Nội quy II — Trong giờ học và làm việc."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
+
+    if os.path.exists(IMG['rules_during']):
+        s.shapes.add_picture(IMG['rules_during'], Inches(7.2), Inches(1.3), Inches(5.4), Inches(4.8))
+
+    C_WARN = RGBColor(0xEA, 0x58, 0x0C)
+    add_card_group(s, Inches(0.5), Inches(1.3), Inches(6.3), Inches(4.8),
+                   pal['card'], C_WARN)
+
+    tf = make_tf(s, Inches(0.9), Inches(1.5), Inches(5.6), Inches(4.4))
+    title_paragraph(tf, "⚠️  II. Trong giờ học", C_WARN, SZ_TITLE_SM)
+    bullet_items(tf, [
+        "Ngồi đúng vị trí, đúng máy tính được phân công.",
+        "Kiểm tra máy trước khi bật; không tự ý tháo lắp, cài/gỡ phần mềm.",
+        "Chỉ truy cập nội dung phục vụ bài học; cấm chơi game, xem phim.",
+        "Giữ trật tự, không nói chuyện riêng, không đi lại tự do.",
+    ], bullet_color=C_WARN, size=SZ_BODY_SM, line_spacing=LINE_SP_SM)
+
+
+def build_slide_rules_3(prs, pal, grade):
+    """Slide 6c: Nội quy III — Sau khi kết thúc giờ học."""
+    s = new_slide(prs)
+    set_slide_bg(s, pal['bg'])
+
+    if os.path.exists(IMG['rules_after']):
+        s.shapes.add_picture(IMG['rules_after'], Inches(7.2), Inches(1.3), Inches(5.4), Inches(4.8))
+
+    C_WARN = RGBColor(0xEA, 0x58, 0x0C)
+    add_card_group(s, Inches(0.5), Inches(1.3), Inches(6.3), Inches(4.8),
+                   pal['card'], C_WARN)
+
+    tf = make_tf(s, Inches(0.9), Inches(1.5), Inches(5.6), Inches(4.4))
+    title_paragraph(tf, "⚠️  III. Sau khi kết thúc giờ học", C_WARN, SZ_TITLE_SM)
+    bullet_items(tf, [
+        "Tắt máy đúng quy trình (Shutdown); KHÔNG ngắt nguồn đột ngột.",
+        "Bàn phím, chuột để ngay ngắn; ghế đẩy sát vào gầm bàn.",
+        "Thu gom rác cá nhân, giấy nháp bỏ vào thùng rác.",
     ], bullet_color=C_WARN)
 
 
@@ -522,7 +569,9 @@ def build_deck(grade, palette_idx=None):
     build_slide_warmup(prs, pal, grade)
     build_slide_overview(prs, pal, grade)
     build_slide_methods(prs, pal, grade)
-    build_slide_rules(prs, pal, grade)
+    build_slide_rules_1(prs, pal, grade)
+    build_slide_rules_2(prs, pal, grade)
+    build_slide_rules_3(prs, pal, grade)
     build_slide_safety(prs, pal, grade)
     build_slide_assessment(prs, pal, grade)
     build_slide_homework(prs, pal, grade)
