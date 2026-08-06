@@ -70,7 +70,7 @@ def update_excel_schedule():
     # Row 2: Subtitle
     ws.merge_cells('A2:I2')
     c2 = ws['A2']
-    c2.value = "Giáo viên: ĐẬU ĐÌNH NGUYÊN  |  Bộ môn: Tin học & Robotics  |  Tổng số tiết/tuần: 26 tiết"
+    c2.value = "Giáo viên: ĐẬU ĐÌNH NGUYÊN  |  Bộ môn: Tin học & Robotics  |  Tổng số tiết/tuần: 25 tiết (Theo TKB toàn trường CHECK - chuẩn)"
     c2.font = font_subtitle
     c2.fill = fill_subtitle
     c2.alignment = align_center
@@ -93,7 +93,7 @@ def update_excel_schedule():
         # SÁNG
         ('SÁNG', 'Tiết 1', '08:15 - 08:50\n(08:05-08:50)', ['', '', '', 'Tin - TT3', '', '']),
         ('SÁNG', 'Tiết 2', '08:55 - 9:30\n(08:55-09:40)', ['', '', 'Robotics - 3A1', 'Robotics - 1A1', 'Robotics - 3C1', '']),
-        ('SÁNG', 'Tiết 3', '09:45 - 10:20\n(09:45-10:25)', ['Tin - 7A1', 'Tin - 5C1', '', '', 'Tin - 2C1', '']),
+        ('SÁNG', 'Tiết 3', '09:45 - 10:20\n(09:45-10:25)', ['', 'Tin - 5C1', '', '', '', '']),
         ('SÁNG', 'Tiết 4', '10:25 - 11:00\n(10:30-11:10)', ['Tin - 1A1', 'Robotics - 5C1', 'Tin - 3C1', 'Robotics - 2C1', 'Tin - 6A1', '']),
         ('SÁNG', 'Tiết 5', '11:15 - 11:50\n(THCS)', ['', '', '', '', 'Robotics - 6A1', '']),
         
@@ -228,7 +228,7 @@ def update_docx_schedule():
     p_info = doc.add_paragraph()
     p_info.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_info.paragraph_format.space_after = Pt(12)
-    r_info = p_info.add_run("Bộ môn: Tin học & Robotics  |  Tổng số tiết/tuần: 26 tiết  |  Áp dụng từ 04/08/2025")
+    r_info = p_info.add_run("Bộ môn: Tin học & Robotics  |  Tổng số tiết/tuần: 25 tiết  |  Theo TKB toàn trường CHECK - chuẩn")
     format_run(r_info, font_size=11, bold=True, color_rgb=(15, 23, 42))
 
     # Table 9 columns
@@ -236,7 +236,7 @@ def update_docx_schedule():
     data = [
         ('SÁNG', 'Tiết 1', '08:15 - 08:50\n(08:05-08:50)', '', '', '', 'Tin - TT3', '', ''),
         ('SÁNG', 'Tiết 2', '08:55 - 09:30\n(08:55-09:40)', '', '', 'Robotics - 3A1', 'Robotics - 1A1', 'Robotics - 3C1', ''),
-        ('SÁNG', 'Tiết 3', '09:45 - 10:20\n(09:45-10:25)', 'Tin - 7A1', 'Tin - 5C1', '', '', 'Tin - 2C1', ''),
+        ('SÁNG', 'Tiết 3', '09:45 - 10:20\n(09:45-10:25)', '', 'Tin - 5C1', '', '', '', ''),
         ('SÁNG', 'Tiết 4', '10:25 - 11:00\n(10:30-11:10)', 'Tin - 1A1', 'Robotics - 5C1', 'Tin - 3C1', 'Robotics - 2C1', 'Tin - 6A1', ''),
         ('SÁNG', 'Tiết 5', '11:15 - 11:50\n(THCS)', '', '', '', '', 'Robotics - 6A1', ''),
         

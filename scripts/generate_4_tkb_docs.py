@@ -12,129 +12,64 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 OUT_DIR_WORD = r'D:\UNIGO\Thời khóa biểu giáo viên'
 OUT_DIR_MAU = r'D:\UNIGO\Hệ thống mẫu văn bản\Nguyên đã làm\Thời khóa biểu'
+TKB_EXCEL_SOURCE = r'D:\UNIGO\TKB toàn trường CHECK - chuẩn.xlsx'
 
 os.makedirs(OUT_DIR_WORD, exist_ok=True)
 os.makedirs(OUT_DIR_MAU, exist_ok=True)
 
-# Timetable data extracted directly from "TKB toàn trường CHECK - lần 2.1.xlsx"
-TEACHER_DATA = {
-    'Nguyên': {
-        'full_name': 'Đậu Đình Nguyên',
-        'subject': 'Tin học & Robotics',
-        'slots': [
-            ('2', 'Sáng', 4, 'Tin học', '1A1'),
-            ('2', 'Chiều', 1, 'Tin học', '7A1'),
-            ('3', 'Sáng', 3, 'Tin học', '5C1'),
-            ('3', 'Sáng', 4, 'Robotics', '5C1'),
-            ('3', 'Chiều', 1, 'Tin học', '2A1'),
-            ('3', 'Chiều', 2, 'Tin học', '1C1'),
-            ('3', 'Chiều', 3, 'Tin học', '7A1'),
-            ('3', 'Chiều', 4, 'Robotics', '7A1'),
-            ('4', 'Sáng', 2, 'Robotics', '3A1'),
-            ('4', 'Sáng', 4, 'Tin học', '3C1'),
-            ('4', 'Chiều', 3, 'Tin học', '4C1'),
-            ('4', 'Chiều', 4, 'Robotics', '2A1'),
-            ('5', 'Sáng', 1, 'Tin học', 'TT3'),
-            ('5', 'Sáng', 2, 'Robotics', '1A1'),
-            ('5', 'Sáng', 4, 'Robotics', '2C1'),
-            ('5', 'Chiều', 1, 'Tin học', '3A1'),
-            ('5', 'Chiều', 2, 'Tin học', 'TTH 1'),
-            ('5', 'Chiều', 3, 'Tin học', 'TTH2'),
-            ('5', 'Chiều', 4, 'Robotics', '1C1'),
-            ('6', 'Sáng', 2, 'Robotics', '3C1'),
-            ('6', 'Sáng', 3, 'Tin học', '2C1'),
-            ('6', 'Sáng', 4, 'Tin học', '6A1'),
-            ('6', 'Sáng', 5, 'Robotics', '6A1'),
-            ('6', 'Chiều', 1, 'Tin học', '8A1'),
-            ('6', 'Chiều', 2, 'Robotics', '8A1'),
-            ('6', 'Chiều', 3, 'Robotics', '4C1'),
-        ]
-    },
-    'Hà': {
-        'full_name': 'Nguyễn Thị Hà',
-        'subject': 'Ngữ văn & LS-ĐL-GDCD',
-        'slots': [
-            ('2', 'Sáng', 1, 'LS&ĐL', '6A1'),
-            ('2', 'Sáng', 2, 'LS&ĐL', '8A1'),
-            ('2', 'Chiều', 2, 'Văn', '6A1'),
-            ('2', 'Chiều', 3, 'Văn', '6A1'),
-            ('2', 'Chiều', 4, 'LS&ĐL', '7A1'),
-            ('3', 'Sáng', 2, 'GDCD', '8A1'),
-            ('3', 'Sáng', 3, 'Văn', '6A1'),
-            ('3', 'Chiều', 2, 'Văn', '6A1'),
-            ('3', 'Chiều', 3, 'Đọc sách', '6A1'),
-            ('4', 'Sáng', 3, 'Văn', '6A1'),
-            ('4', 'Sáng', 4, 'Văn', '6A1'),
-            ('4', 'Chiều', 2, 'LS&ĐL', '7A1'),
-            ('4', 'Chiều', 3, 'GDCD', '6A1'),
-            ('4', 'Chiều', 4, 'LS&ĐL', '8A1'),
-            ('5', 'Sáng', 2, 'LS&ĐL', '8A1'),
-            ('5', 'Sáng', 4, 'LS&ĐL', '6A1'),
-            ('6', 'Sáng', 1, 'LS&ĐL', '6A1'),
-            ('6', 'Sáng', 2, 'GDCD', '7A1'),
-            ('6', 'Sáng', 3, 'LS&ĐL', '7A1'),
-            ('6', 'Chiều', 3, 'Văn', '6A1'),
-            ('6', 'Chiều', 4, 'Văn', '6A1'),
-        ]
-    },
-    'Ánh NV': {
-        'full_name': 'Nguyễn Thị Ánh (Ánh NV)',
-        'subject': 'Ngữ văn & GDĐP-Đọc sách',
-        'slots': [
-            ('2', 'Sáng', 1, 'GDĐP', '7A1'),
-            ('2', 'Sáng', 4, 'Văn', '8A1'),
-            ('2', 'Sáng', 5, 'Văn', '8A1'),
-            ('2', 'Chiều', 1, 'GDĐP', '6A1'),
-            ('2', 'Chiều', 2, 'Văn', '7A1'),
-            ('3', 'Sáng', 5, 'Văn', '7A1'),
-            ('3', 'Chiều', 3, 'Văn', '8A1'),
-            ('3', 'Chiều', 4, 'Văn', '8A1'),
-            ('4', 'Sáng', 1, 'Văn', '7A1'),
-            ('4', 'Sáng', 4, 'Văn', '7A1'),
-            ('4', 'Sáng', 5, 'Đọc sách', '8A1'),
-            ('4', 'Chiều', 4, 'Đọc sách', '7A1'),
-            ('5', 'Sáng', 3, 'Văn', '8A1'),
-            ('5', 'Sáng', 4, 'Văn', '8A1'),
-            ('5', 'Sáng', 5, 'GDĐP', '8A1'),
-            ('5', 'Chiều', 3, 'Văn', '7A1'),
-            ('5', 'Chiều', 4, 'Văn', '7A1'),
-            ('6', 'Sáng', 4, 'Văn', '8A1'),
-            ('6', 'Sáng', 5, 'Văn', '8A1'),
-            ('6', 'Chiều', 3, 'Văn', '7A1'),
-            ('6', 'Chiều', 4, 'Văn', '7A1'),
-        ]
-    },
-    'Tân': {
-        'full_name': 'Cô Tân',
-        'subject': 'Toán',
-        'slots': [
-            ('2', 'Sáng', 1, 'Toán', '8A1'),
-            ('2', 'Sáng', 5, 'Toán', '6A1'),
-            ('2', 'Chiều', 1, 'Toán', '7A1'),
-            ('2', 'Chiều', 4, 'Toán', '8A1'),
-            ('3', 'Sáng', 2, 'Toán', '7A1'),
-            ('3', 'Sáng', 3, 'Toán', '8A1'),
-            ('3', 'Sáng', 5, 'Toán', '8A1'),
-            ('3', 'Chiều', 1, 'Toán', '6A1'),
-            ('3', 'Chiều', 2, 'Toán', '7A1'),
-            ('3', 'Chiều', 4, 'Toán', '6A1'),
-            ('4', 'Sáng', 1, 'Toán', '8A1'),
-            ('4', 'Chiều', 1, 'Toán', '7A1'),
-            ('4', 'Chiều', 4, 'Toán', '6A1'),
-            ('5', 'Sáng', 2, 'Toán', '7A1'),
-            ('5', 'Sáng', 5, 'Toán', '6A1'),
-            ('5', 'Chiều', 1, 'Toán', '6A1'),
-            ('5', 'Chiều', 2, 'Toán', '7A1'),
-            ('5', 'Chiều', 4, 'Toán', '8A1'),
-            ('6', 'Sáng', 2, 'Toán', '6A1'),
-            ('6', 'Sáng', 3, 'Toán', '6A1'),
-            ('6', 'Chiều', 1, 'Toán', '7A1'),
-            ('6', 'Chiều', 2, 'Toán', '7A1'),
-            ('6', 'Chiều', 3, 'Toán', '8A1'),
-            ('6', 'Chiều', 4, 'Toán', '8A1'),
-        ]
+def load_teacher_data_from_excel(xlsx_path):
+    wb = openpyxl.load_workbook(xlsx_path, data_only=True)
+    ws = wb['TKB_LOP_SC']
+
+    classes = {}
+    curr_lop = None
+    for c in range(3, ws.max_column + 1):
+        val = ws.cell(4, c).value
+        if val:
+            curr_lop = str(val).strip()
+        buoi = str(ws.cell(5, c).value or '').strip()
+        classes[c] = (curr_lop, buoi)
+
+    teacher_map = {
+        'Nguyên': {'full_name': 'Đậu Đình Nguyên', 'subject': 'Tin học & Robotics'},
+        'Hà': {'full_name': 'Nguyễn Thị Hà', 'subject': 'Ngữ văn & LS-ĐL-GDCD'},
+        'Ánh NV': {'full_name': 'Nguyễn Thị Ánh (Ánh NV)', 'subject': 'Ngữ văn & GDĐP-Đọc sách'},
+        'Tân': {'full_name': 'Cô Tân', 'subject': 'Toán'}
     }
-}
+
+    data = {k: {'full_name': teacher_map[k]['full_name'], 'subject': teacher_map[k]['subject'], 'slots': []} for k in teacher_map}
+
+    curr_thu = None
+    for r in range(6, ws.max_row + 1):
+        t_val = ws.cell(r, 1).value
+        if t_val:
+            curr_thu = str(int(t_val))
+        tiet_val = ws.cell(r, 2).value
+        if tiet_val is None:
+            continue
+        tiet = int(tiet_val)
+        for c in range(3, ws.max_column + 1):
+            cell_val = ws.cell(r, c).value
+            if not cell_val:
+                continue
+            cell_str = str(cell_val).strip()
+            
+            for t_key in data:
+                matched = False
+                if t_key == 'Nguyên' and 'Nguyên' in cell_str:
+                    matched = True
+                elif t_key == 'Hà' and 'Hà' in cell_str and 'Ngọc Ánh' not in cell_str:
+                    matched = True
+                elif t_key == 'Ánh NV' and ('Ánh NV' in cell_str or ('Ánh' in cell_str and 'Ngọc' not in cell_str)):
+                    matched = True
+                elif t_key == 'Tân' and 'Tân' in cell_str:
+                    matched = True
+                
+                if matched:
+                    lop, buoi = classes[c]
+                    mon = cell_str.split('-')[0].strip() if '-' in cell_str else cell_str
+                    data[t_key]['slots'].append((curr_thu, buoi, tiet, mon, lop))
+    return data
 
 def set_table_borders(table):
     """Sets explicit full black grid borders."""
@@ -178,7 +113,7 @@ def create_docx_tkb(t_key, data, save_paths):
     r2.font.size = Pt(15)
     r2.bold = True
     
-    r3 = p_header.add_run("Năm học 2026 - 2027 (Theo TKB CHECK lần 2.1 - Áp dụng từ ngày 03/08/2026)\n")
+    r3 = p_header.add_run("Năm học 2026 - 2027 (Theo TKB toàn trường CHECK - chuẩn)\n")
     r3.font.name = 'Times New Roman'
     r3.font.size = Pt(12)
     r3.italic = True
@@ -307,7 +242,7 @@ def create_excel_tkb(t_key, data, save_path):
     ws['A2'].alignment = Alignment(horizontal='center')
 
     ws.merge_cells('A3:F3')
-    ws['A3'] = f"Giáo viên: {data['full_name']} | Bộ môn: {data['subject']} | Tổng số: {len(data['slots'])} tiết/tuần (TKB lần 2.1)"
+    ws['A3'] = f"Giáo viên: {data['full_name']} | Bộ môn: {data['subject']} | Tổng số: {len(data['slots'])} tiết/tuần (Theo TKB toàn trường CHECK - chuẩn)"
     ws['A3'].font = Font(name='Times New Roman', size=12, italic=True)
     ws['A3'].alignment = Alignment(horizontal='center')
 
@@ -374,8 +309,10 @@ def create_excel_tkb(t_key, data, save_path):
     print(f"Saved EXCEL: {save_path}")
 
 def main():
-    print("Generating Timetable documents based on TKB CHECK lần 2.1...")
-    for t_key, data in TEACHER_DATA.items():
+    print("Loading Timetable data from 'TKB toàn trường CHECK - chuẩn.xlsx'...")
+    teacher_data = load_teacher_data_from_excel(TKB_EXCEL_SOURCE)
+    
+    for t_key, data in teacher_data.items():
         fname_word1 = os.path.join(OUT_DIR_WORD, f"Thời khóa biểu - {data['full_name']}.docx")
         fname_word2 = os.path.join(OUT_DIR_MAU, f"Thời khóa biểu - {data['full_name']}.docx")
         fname_excel = os.path.join(OUT_DIR_WORD, f"Thời khóa biểu - {data['full_name']}.xlsx")
