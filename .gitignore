@@ -15,3 +15,6 @@ AI_model/
 # Office temporary files
 ~$*
 
+# Lop 8 scanned PDF tile images (800x1144 tiles - hundreds of useless duplicates)
+# Full pages (full_pages/) are kept
+SGK/Lớp_8/bai1_images/bai1_p*.jpeg

@@ -18,11 +18,20 @@ font tiếng Việt chuẩn, màu sắc thay đổi linh hoạt theo nội dung 
 - Môn, Lớp, Bài, Chủ đề
 - Nội dung chính từ SGK
 
-### Bước 2: Đọc SGK & Trích xuất hình ảnh (PaddleOCR)
+### Bước 2: Đọc SGK & Trích xuất hình ảnh (BẮT BUỘC)
+
+> **QUY TẮC: MỌI slide hoạt động PHẢI có hình ảnh minh họa. TUYỆT ĐỐI KHÔNG để slide trống chỉ có emoji.**
+
 - Mở SGK PDF từ `D:\UNIGO\SGK\Lớp_{X}\`
-- Dùng `PaddleOCR / PP-Structure` hoặc script `d:\UNIGO\scripts\sgk_ocr.py` để bóc tách thông tin bài học và tự động crop hình ảnh minh họa từ trang sách.
-- Trích xuất hình ảnh minh họa để nhúng trực tiếp vào slide.
-- Nếu cần sinh thêm hình ảnh minh họa mới, dùng tool `generate_image`.
+- Chạy script `d:\UNIGO\scripts\extract_sgk_all_images.py` để trích xuất:
+  - **Full page renders** (200 DPI) → `SGK/Lớp_{X}/bai1_images/full_pages/`
+  - **Individual embedded images** → `SGK/Lớp_{X}/bai1_images/`
+- **Chuỗi fallback ảnh (3 tầng)**:
+  1. ✅ **Ảnh riêng lẻ từ SGK** (`bai1_images/*.jpeg`) — ưu tiên cao nhất
+  2. ✅ **Full page SGK** (`full_pages/*.png`) — luôn có cho Lớp 3-8
+  3. ✅ **AI-generated** (`KHBD_Tin_học/{folder}/Bài_{XX}/images/`) — dùng `generate_image` tool
+- **Với các lớp không có SGK** (Tiền TH, Lớp 1, Lớp 2): BẮT BUỘC tạo ảnh AI gồm: `cover.png`, `activity.png`, `practice.png`, `summary.png`
+- **Dùng `slide.shapes.add_picture()`** để chèn ảnh thật vào slide, KHÔNG dùng shape rỗng + emoji thay thế
 
 ### Bước 3: Load template
 - **Luôn** bắt đầu từ template: `D:\UNIGO\Hệ thống mẫu văn bản\Mẫu slide có chân trang.pptx`

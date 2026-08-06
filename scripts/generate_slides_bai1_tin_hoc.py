@@ -1,6 +1,9 @@
 """
 Generate Slide Bài 1 Tin học for all grades (Tiền TH, Lớp 1-8).
 Reads KHBD .docx to extract lesson content, then creates .pptx slides.
+
+v2: Adds SGK images / AI-generated images to every activity slide.
+     Minimizes empty space, maximizes visual content.
 """
 import sys, os, glob, copy, re
 sys.stdout.reconfigure(encoding='utf-8')
@@ -12,6 +15,7 @@ from pptx.enum.shapes import MSO_SHAPE
 from pptx.dml.color import RGBColor
 from docx import Document
 from lxml import etree
+from PIL import Image as PILImage
 
 # ── Constants ──────────────────────────────────────────────────────
 TEMPLATE = r'D:\UNIGO\Hệ thống mẫu văn bản\Mẫu slide có chân trang.pptx'
@@ -157,6 +161,146 @@ GRADES = [
 
 
 # ══════════════════════════════════════════════════════════════════
+#                     IMAGE FINDER
+# ══════════════════════════════════════════════════════════════════
+
+def find_images(grade_cfg):
+    """Find available images for a grade.
+    
+    Returns dict with keys: 'full_pages' (sorted list), 'individual' (sorted list),
+    'generated' (dict with named images like cover, activity, practice, summary).
+    """
+    result = {
+        'full_pages': [],
+        'individual': [],
+        'generated': {},
+    }
+    
+    # 1. SGK full pages
+    if grade_cfg['sgk']:
+        grade_num = grade_cfg['sgk_grade']
+        fp_dir = os.path.join(SGK_ROOT, f'Lớp_{grade_num}', 'bai1_images', 'full_pages')
+        if os.path.isdir(fp_dir):
+            pages = sorted(glob.glob(os.path.join(fp_dir, '*.png')))
+            result['full_pages'] = pages
+        
+        # Individual extracted images (skip if too many = tiled PDF)
+        img_dir = os.path.join(SGK_ROOT, f'Lớp_{grade_num}', 'bai1_images')
+        if os.path.isdir(img_dir):
+            indiv = sorted([
+                os.path.join(img_dir, f) for f in os.listdir(img_dir)
+                if f.endswith(('.jpeg', '.jpg', '.png')) and os.path.isfile(os.path.join(img_dir, f))
+            ])
+            # If too many (tiled PDF like Lớp 8), skip individual images
+            if len(indiv) <= 50:
+                result['individual'] = indiv
+    
+    # 2. AI-generated images
+    gen_dir = os.path.join(KHBD_ROOT, grade_cfg['folder'], 'Bài_01', 'images')
+    if os.path.isdir(gen_dir):
+        for f in os.listdir(gen_dir):
+            if f.endswith(('.png', '.jpg', '.jpeg')):
+                name = os.path.splitext(f)[0]  # cover, activity, practice, summary
+                result['generated'][name] = os.path.join(gen_dir, f)
+    
+    return result
+
+
+def pick_image_for_slide(images, slide_type, slide_index=0):
+    """Pick the best image for a given slide type.
+    
+    slide_type: 'cover', 'objective', 'khởi_động', 'kiến_thức', 'luyện_tập', 'vận_dụng', 'summary', 'thankyou'
+    slide_index: index within the type (e.g., 2nd knowledge slide = 1)
+    
+    Returns: absolute path to image, or None.
+    """
+    fp = images['full_pages']
+    indiv = images['individual']
+    gen = images['generated']
+    
+    # Strategy: map slide type to page numbers
+    # Full pages are usually ordered: [muc_luc, bai1_page1, bai1_page2, ...]
+    # We skip the first page if it's a TOC
+    content_pages = fp[1:] if len(fp) > 1 else fp  # Skip potential TOC page
+    
+    if slide_type == 'cover':
+        # Cover: first content page of SGK or generated cover
+        if gen.get('cover'):
+            return gen['cover']
+        if content_pages:
+            return content_pages[0]
+    
+    elif slide_type == 'objective':
+        # Objective: first page showing YCCD (usually page 1 of bài)
+        if content_pages:
+            return content_pages[0]
+        if gen.get('cover'):
+            return gen['cover']
+    
+    elif slide_type == 'khởi_động':
+        # Khởi động: first content page (has KD section)
+        if content_pages:
+            return content_pages[0]
+        if gen.get('activity'):
+            return gen['activity']
+    
+    elif slide_type == 'kiến_thức':
+        # Knowledge slides: distribute across content pages
+        # Pages 2-5 are typically knowledge content
+        page_offset = 1 + slide_index  # start from 2nd content page
+        if page_offset < len(content_pages):
+            return content_pages[page_offset]
+        # Fallback: cycle through individual images
+        if indiv and slide_index < len(indiv):
+            return indiv[slide_index]
+        if gen.get('activity'):
+            return gen['activity']
+    
+    elif slide_type == 'luyện_tập':
+        # Practice: later pages 
+        page_offset = max(3, len(content_pages) - 3) + slide_index
+        if page_offset < len(content_pages):
+            return content_pages[page_offset]
+        if gen.get('practice'):
+            return gen['practice']
+        # Fallback to last content pages
+        if content_pages:
+            return content_pages[-1]
+    
+    elif slide_type == 'vận_dụng':
+        # Application: second-to-last page
+        if len(content_pages) >= 2:
+            return content_pages[-2]
+        if gen.get('practice'):
+            return gen['practice']
+        if content_pages:
+            return content_pages[-1]
+    
+    elif slide_type == 'summary':
+        # Summary: last page or generated summary
+        if gen.get('summary'):
+            return gen['summary']
+        if content_pages:
+            return content_pages[-1]
+    
+    elif slide_type == 'thankyou':
+        if gen.get('cover'):
+            return gen['cover']
+        if content_pages:
+            return content_pages[0]
+    
+    # Ultimate fallback: any available image
+    if gen:
+        return list(gen.values())[0]
+    if content_pages:
+        return content_pages[0]
+    if indiv:
+        return indiv[0]
+    
+    return None
+
+
+# ══════════════════════════════════════════════════════════════════
 #                     KHBD READER
 # ══════════════════════════════════════════════════════════════════
 
@@ -183,7 +327,6 @@ def read_khbd(grade_cfg):
         txt = p.text.strip()
         if 'BÀI:' in txt:
             raw = txt.replace('BÀI:', '').strip()
-            # Remove "(Tiết: X)" suffix
             raw = re.sub(r'\s*\(Tiết.*?\)', '', raw).strip()
             data['title'] = raw
         elif 'CHỦ ĐIỂM:' in txt or 'CHỦ ĐỀ:' in txt:
@@ -203,7 +346,7 @@ def read_khbd(grade_cfg):
         if in_objectives:
             if txt.startswith('II.') or txt.startswith('III.') or txt.startswith('1. Kiến thức'):
                 if txt.startswith('1. Kiến thức'):
-                    in_objectives = True  # continue for THCS
+                    in_objectives = True
                     continue
                 break
             if txt.startswith('- ') and 'NL' not in txt and 'Năng lực' not in txt:
@@ -218,12 +361,11 @@ def read_khbd(grade_cfg):
             if txt.startswith('- Sự ') or txt.startswith('- Khả năng') or txt.startswith('- Sự nhận biết'):
                 data['objectives'].append(txt.lstrip('- '))
     
-    # Extract activities from paragraphs (THCS format)
+    # Extract activities
     if is_thcs:
         activities = _extract_thcs_activities(doc)
         data['activities'] = activities
     else:
-        # TH format: single table with GV/HS columns
         activities = _extract_th_activities(doc)
         data['activities'] = activities
     
@@ -243,23 +385,18 @@ def _extract_th_activities(doc):
         gv_text = row.cells[0].text.strip()
         hs_text = row.cells[1].text.strip() if len(row.cells) > 1 else ''
         
-        # Extract multi-line content after the header line
         gv_lines = gv_text.split('\n')
         gv_extra = '\n'.join(gv_lines[1:]).strip() if len(gv_lines) > 1 else ''
         
-        # Detect activity headers
         if 'MỞ ĐẦU' in gv_text or 'Hoạt động MỞ ĐẦU' in gv_text:
             current_act = {'type': 'khởi_động', 'title': 'Khởi động', 'gv': '', 'hs': ''}
             activities.append(current_act)
-            # Header rows often contain content too
             if gv_extra:
                 current_act['gv'] += gv_extra + '\n'
                 current_act['hs'] += hs_text + '\n'
         elif 'KIẾN THỨC MỚI' in gv_text and not re.match(r'^2\.\d', gv_text):
-            # Section header only, skip
             continue
         elif re.match(r'^2\.\d\.\s', gv_text):
-            # Sub-activity of knowledge section (title + optional mục tiêu)
             match = re.match(r'^2\.\d\.\s*(.+?)(?:\s*\(\d+ phút\))?$', gv_lines[0])
             title = match.group(1) if match else gv_lines[0][:50]
             current_act = {'type': 'kiến_thức', 'title': title, 'gv': '', 'hs': ''}
@@ -278,7 +415,6 @@ def _extract_th_activities(doc):
                 current_act['gv'] += gv_extra + '\n'
                 current_act['hs'] += hs_text + '\n'
         elif current_act is not None:
-            # Content row - add to current activity
             current_act['gv'] += gv_text + '\n'
             current_act['hs'] += hs_text + '\n'
     
@@ -292,7 +428,6 @@ def _extract_thcs_activities(doc):
     for p in doc.paragraphs:
         txt = p.text.strip()
         
-        # Detect activity headers with various naming patterns
         if re.search(r'Hoạt động\s*1', txt) and any(kw in txt for kw in ['Khởi động', 'Mở đầu', 'Xác định']):
             act = {'type': 'khởi_động', 'title': 'Khởi động', 'content': '', 'product': ''}
             activities.append(act)
@@ -314,14 +449,13 @@ def _extract_thcs_activities(doc):
         elif activities and txt.startswith('d) Tổ chức thực hiện:'):
             activities[-1]['organize'] = txt.replace('d) Tổ chức thực hiện:', '').strip()
     
-    # Also extract GV content from tables (tables 1-4 correspond to activities)
+    # Also extract GV content from tables
     act_tables = [t for t in doc.tables if len(t.columns) == 3 and len(t.rows) >= 4]
     for i, (act, tbl) in enumerate(zip(activities, act_tables)):
         gv_content = []
-        for row in tbl.rows[1:]:  # Skip header
+        for row in tbl.rows[1:]:
             gv_text = row.cells[1].text.strip() if len(row.cells) > 1 else ''
             if gv_text and len(gv_text) > 10:
-                # Take first meaningful line
                 for line in gv_text.split('\n'):
                     line = line.strip()
                     if line and len(line) > 15 and not line.startswith('HS '):
@@ -337,39 +471,40 @@ def _extract_thcs_activities(doc):
 #                     SLIDE BUILDER
 # ══════════════════════════════════════════════════════════════════
 
-def create_presentation(grade_cfg, lesson_data):
+def create_presentation(grade_cfg, lesson_data, images):
     """Create a complete slide deck for a grade's Bài 1."""
     pal = PALETTES[grade_cfg['key']]
     
-    # Create new presentation with correct dimensions
     prs = Presentation()
     prs.slide_width = Emu(12192000)   # 13.33 inches
     prs.slide_height = Emu(6858000)   # 7.5 inches
     
-    # We'll use blank layout
     blank_layout = prs.slide_layouts[6]  # Blank
     
     title_short = lesson_data['title']
-    # Remove "BÀI 1. " prefix for display
     display_title = re.sub(r'^BÀI\s*\d+\.\s*', '', title_short, flags=re.IGNORECASE).strip()
     
     slides_created = []
+    img_counter = {'kiến_thức': 0, 'luyện_tập': 0}
     
     # ── Slide 1: TRANG BÌA ────────────────────────────────────────
     slide = prs.slides.add_slide(blank_layout)
-    _add_cover_slide(slide, prs, grade_cfg, display_title, lesson_data['topic'], pal)
+    cover_img = pick_image_for_slide(images, 'cover')
+    _add_cover_slide(slide, prs, grade_cfg, display_title, lesson_data['topic'], pal, cover_img)
     slides_created.append('Trang bìa')
     
     # ── Slide 2: MỤC TIÊU ────────────────────────────────────────
     slide = prs.slides.add_slide(blank_layout)
-    _add_objectives_slide(slide, prs, grade_cfg, lesson_data, pal)
+    obj_img = pick_image_for_slide(images, 'objective')
+    _add_objectives_slide(slide, prs, grade_cfg, lesson_data, pal, obj_img)
     slides_created.append('Mục tiêu')
     
     # ── Slide 3: KHỞI ĐỘNG ────────────────────────────────────────
     kd_acts = [a for a in lesson_data['activities'] if a['type'] == 'khởi_động']
     if kd_acts:
         slide = prs.slides.add_slide(blank_layout)
-        _add_activity_slide(slide, prs, '🎮  Khởi động', kd_acts[0], pal, 'left')
+        kd_img = pick_image_for_slide(images, 'khởi_động')
+        _add_activity_slide(slide, prs, '🎮  Khởi động', kd_acts[0], pal, 'left', kd_img)
         slides_created.append('Khởi động')
     
     # ── Slide 4-7: KIẾN THỨC MỚI ─────────────────────────────────
@@ -379,13 +514,14 @@ def create_presentation(grade_cfg, lesson_data):
         side = 'right' if i % 2 == 0 else 'left'
         emoji = ['📖', '📝', '💡', '🔍'][i % 4]
         title_text = f'{emoji}  {act.get("title", "Kiến thức mới")}'
-        _add_activity_slide(slide, prs, title_text, act, pal, side)
+        kt_img = pick_image_for_slide(images, 'kiến_thức', i)
+        _add_activity_slide(slide, prs, title_text, act, pal, side, kt_img)
         slides_created.append(f'Kiến thức {i+1}')
     
-    # If no knowledge activities found, add a generic one
     if not kt_acts:
         slide = prs.slides.add_slide(blank_layout)
-        _add_generic_knowledge_slide(slide, prs, display_title, pal)
+        kt_img = pick_image_for_slide(images, 'kiến_thức', 0)
+        _add_generic_knowledge_slide(slide, prs, display_title, pal, kt_img)
         slides_created.append('Kiến thức mới')
     
     # ── Slide 8-9: LUYỆN TẬP ─────────────────────────────────────
@@ -394,24 +530,28 @@ def create_presentation(grade_cfg, lesson_data):
         slide = prs.slides.add_slide(blank_layout)
         emoji = ['✏️', '🎯'][i % 2]
         title_text = f'{emoji}  {act.get("title", "Luyện tập")}'
-        _add_activity_slide(slide, prs, title_text, act, pal, 'right' if i % 2 == 0 else 'left')
+        lt_img = pick_image_for_slide(images, 'luyện_tập', i)
+        _add_activity_slide(slide, prs, title_text, act, pal, 'right' if i % 2 == 0 else 'left', lt_img)
         slides_created.append(f'Luyện tập {i+1}')
     
     # ── Slide 10: VẬN DỤNG ───────────────────────────────────────
     vd_acts = [a for a in lesson_data['activities'] if a['type'] == 'vận_dụng']
     if vd_acts:
         slide = prs.slides.add_slide(blank_layout)
-        _add_activity_slide(slide, prs, '🚀  Vận dụng', vd_acts[0], pal, 'left')
+        vd_img = pick_image_for_slide(images, 'vận_dụng')
+        _add_activity_slide(slide, prs, '🚀  Vận dụng', vd_acts[0], pal, 'left', vd_img)
         slides_created.append('Vận dụng')
     
     # ── Slide 11: TỔNG KẾT ───────────────────────────────────────
     slide = prs.slides.add_slide(blank_layout)
-    _add_summary_slide(slide, prs, display_title, lesson_data, pal)
+    sum_img = pick_image_for_slide(images, 'summary')
+    _add_summary_slide(slide, prs, display_title, lesson_data, pal, sum_img)
     slides_created.append('Tổng kết')
     
     # ── Slide 12: CẢM ƠN ─────────────────────────────────────────
     slide = prs.slides.add_slide(blank_layout)
-    _add_thankyou_slide(slide, prs, grade_cfg, pal)
+    ty_img = pick_image_for_slide(images, 'thankyou')
+    _add_thankyou_slide(slide, prs, grade_cfg, pal, ty_img)
     slides_created.append('Cảm ơn')
     
     # ── Add footer to ALL slides ──────────────────────────────────
@@ -420,6 +560,10 @@ def create_presentation(grade_cfg, lesson_data):
     
     return prs, slides_created
 
+
+# ══════════════════════════════════════════════════════════════════
+#                     SHAPE HELPERS
+# ══════════════════════════════════════════════════════════════════
 
 def _set_slide_bg(slide, color):
     """Set slide background color."""
@@ -436,7 +580,7 @@ def _add_shape(slide, shape_type, left, top, width, height, fill_color=None, lin
         shape.fill.solid()
         shape.fill.fore_color.rgb = fill_color
     else:
-        shape.fill.background()  # No fill
+        shape.fill.background()
     if line_color:
         shape.line.color.rgb = line_color
     else:
@@ -474,14 +618,12 @@ def _add_bullet_textbox(slide, left, top, width, height, items, pal,
         else:
             p = tf.add_paragraph()
         
-        # Add bullet
         run_bullet = p.add_run()
         run_bullet.text = f'{bullet_char}  '
         run_bullet.font.size = Pt(14)
         run_bullet.font.color.rgb = pal['primary']
         run_bullet.font.name = 'Times New Roman'
         
-        # Add text
         run_text = p.add_run()
         run_text.text = item
         run_text.font.size = font_size
@@ -495,16 +637,13 @@ def _add_bullet_textbox(slide, left, top, width, height, items, pal,
 
 
 def _add_card_with_accent(slide, left, top, width, height, pal, accent_side='left'):
-    """Add a white card with colored accent bar."""
-    # White card
+    """Add a white card with colored accent bar and shadow."""
     card = _add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height,
                       fill_color=pal['card_bg'])
-    # Make corners less rounded
     card.adjustments[0] = 0.02
     
-    # Add shadow effect via XML
+    # Shadow
     spPr = card._element.spPr
-    nsmap = {'a': 'http://schemas.openxmlformats.org/drawingml/2006/main'}
     effectLst = etree.SubElement(spPr, '{http://schemas.openxmlformats.org/drawingml/2006/main}effectLst')
     outerShdw = etree.SubElement(effectLst, '{http://schemas.openxmlformats.org/drawingml/2006/main}outerShdw',
                                   attrib={'blurRad': '50800', 'dist': '25400', 'dir': '5400000',
@@ -527,16 +666,107 @@ def _add_card_with_accent(slide, left, top, width, height, pal, accent_side='lef
     return card, bar
 
 
-def _add_cover_slide(slide, prs, grade_cfg, display_title, topic, pal):
-    """Create cover slide."""
-    _set_slide_bg(slide, pal['primary'])
+def _add_picture_fitted(slide, img_path, left, top, max_width, max_height):
+    """Add a picture that fits within given bounds while maintaining aspect ratio.
+    Returns the picture shape, or None if image can't be loaded.
+    """
+    if not img_path or not os.path.exists(img_path):
+        return None
     
+    try:
+        with PILImage.open(img_path) as img:
+            img_w, img_h = img.size
+    except Exception:
+        return None
+    
+    # Calculate scale to fit within bounds
+    scale_w = max_width / img_w
+    scale_h = max_height / img_h
+    scale = min(scale_w, scale_h)
+    
+    final_w = int(img_w * scale)
+    final_h = int(img_h * scale)
+    
+    # Center within the given area
+    offset_x = (max_width - final_w) // 2
+    offset_y = (max_height - final_h) // 2
+    
+    pic = slide.shapes.add_picture(
+        img_path,
+        left + offset_x,
+        top + offset_y,
+        final_w,
+        final_h
+    )
+    
+    return pic
+
+
+def _add_picture_cropped(slide, img_path, left, top, width, height):
+    """Add a picture that fills the given area (may crop edges).
+    Uses fill-and-crop strategy for maximum visual impact.
+    Returns the picture shape, or None.
+    """
+    if not img_path or not os.path.exists(img_path):
+        return None
+    
+    try:
+        with PILImage.open(img_path) as img:
+            img_w, img_h = img.size
+    except Exception:
+        return None
+    
+    # Calculate scale to FILL (not fit) the area
+    scale_w = width / img_w
+    scale_h = height / img_h
+    scale = max(scale_w, scale_h)  # Use max to fill
+    
+    final_w = int(img_w * scale)
+    final_h = int(img_h * scale)
+    
+    # Center (will be cropped by PowerPoint's crop feature)
+    pic = slide.shapes.add_picture(
+        img_path,
+        left,
+        top,
+        width,
+        height
+    )
+    
+    return pic
+
+
+# ══════════════════════════════════════════════════════════════════
+#                     SLIDE CREATORS
+# ══════════════════════════════════════════════════════════════════
+
+def _add_cover_slide(slide, prs, grade_cfg, display_title, topic, pal, img_path):
+    """Create cover slide with image background."""
+    _set_slide_bg(slide, pal['primary'])
     sw = prs.slide_width
     
-    # Large white card in center
-    card_w = Inches(10)
+    # Add background image (right side) if available
+    if img_path:
+        # Right-side large image
+        img_w = Inches(5.5)
+        img_h = Inches(5.0)
+        img_l = sw - img_w - Inches(0.3)
+        img_t = CONTENT_TOP
+        pic = _add_picture_fitted(slide, img_path, img_l, img_t, img_w, img_h)
+        if pic:
+            # Add subtle rounded overlay
+            overlay = _add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE,
+                                img_l - Inches(0.1), img_t - Inches(0.1),
+                                img_w + Inches(0.2), img_h + Inches(0.2),
+                                fill_color=None, line_color=pal['accent'])
+            if overlay:
+                overlay.line.width = Pt(3)
+                overlay.adjustments[0] = 0.03
+    
+    # White card on left
+    card_w = Inches(7.5)
     card_h = Inches(4.6)
-    card_l = (sw - card_w) // 2
+    card_l = Inches(0.4)
     card_t = Inches(1.40)
     
     card = _add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, card_l, card_t, card_w, card_h,
@@ -573,7 +803,6 @@ def _add_cover_slide(slide, prs, grade_cfg, display_title, topic, pal):
     tf = txBox.text_frame
     tf.word_wrap = True
     
-    # Line 1: "Bài 1 —"
     p1 = tf.paragraphs[0]
     r1 = p1.add_run()
     r1.text = 'Bài 1'
@@ -582,7 +811,6 @@ def _add_cover_slide(slide, prs, grade_cfg, display_title, topic, pal):
     r1.font.bold = True
     r1.font.name = 'Times New Roman'
     
-    # Line 2: Title
     p2 = tf.add_paragraph()
     r2 = p2.add_run()
     r2.text = display_title
@@ -592,7 +820,6 @@ def _add_cover_slide(slide, prs, grade_cfg, display_title, topic, pal):
     r2.font.name = 'Times New Roman'
     p2.space_before = Pt(4)
     
-    # Line 3: Topic
     if topic:
         p3 = tf.add_paragraph()
         r3 = p3.add_run()
@@ -627,65 +854,61 @@ def _add_cover_slide(slide, prs, grade_cfg, display_title, topic, pal):
     r_gv.font.name = 'Times New Roman'
 
 
-def _add_objectives_slide(slide, prs, grade_cfg, lesson_data, pal):
-    """Create objectives slide."""
+def _add_objectives_slide(slide, prs, grade_cfg, lesson_data, pal, img_path):
+    """Create objectives slide with image on right side."""
     _set_slide_bg(slide, pal['bg'])
     sw = prs.slide_width
     
-    # Card
-    card_w = Inches(11.5)
+    # Left card with objectives
+    card_w = Inches(7.8)
     card_h = Inches(4.8)
-    card_l = (sw - card_w) // 2
+    card_l = Inches(0.35)
     card_t = CONTENT_TOP
     
     _add_card_with_accent(slide, card_l, card_t, card_w, card_h, pal, 'left')
     
-    # Title
     _add_textbox(slide, card_l + Inches(0.5), card_t + Inches(0.2),
-                 Inches(10), Inches(0.5),
+                 Inches(7), Inches(0.5),
                  '🎯  Mục tiêu bài học', Pt(24), pal['primary'], bold=True)
     
-    # Objectives
     objectives = lesson_data.get('objectives', [])
     if not objectives:
         objectives = ['Nắm được kiến thức cơ bản của bài học.',
                       'Vận dụng kiến thức vào thực hành.',
                       'Phát triển năng lực tư duy và hợp tác.']
-    
-    # Limit to 4 objectives max
     objectives = objectives[:4]
     
     _add_bullet_textbox(slide, card_l + Inches(0.5), card_t + Inches(0.9),
-                        Inches(10.5), Inches(3.6), objectives, pal,
+                        Inches(7), Inches(3.6), objectives, pal,
                         font_size=Pt(18))
+    
+    # Right image
+    if img_path:
+        img_l = card_l + card_w + Inches(0.25)
+        img_w = sw - img_l - Inches(0.35)
+        _add_picture_fitted(slide, img_path, img_l, card_t, img_w, card_h)
 
 
 def _get_activity_content(act):
     """Extract content from an activity dict into bullet points."""
     bullets = []
     
-    # For TH format (gv/hs keys)
     if 'gv' in act:
         gv_text = act['gv'].strip()
         for line in gv_text.split('\n'):
             line = line.strip()
             if line.startswith('*') or line.startswith('-'):
                 line = line.lstrip('*- ').strip()
-            # Strip "GV " prefix
             if line.startswith('GV '):
                 line = line[3:]
-            # Strip "Mục tiêu:" prefix
             if line.startswith('Mục tiêu:'):
                 continue
             if len(line) > 15 and len(line) < 120:
-                # Capitalize first letter
                 line = line[0].upper() + line[1:] if line else line
                 bullets.append(line)
     
-    # For THCS format (content/product keys)
     if 'content' in act and act['content']:
         content = act['content']
-        # Split by semicolons
         parts = re.split(r'[;]', content)
         for part in parts:
             part = part.strip().rstrip('.')
@@ -693,7 +916,6 @@ def _get_activity_content(act):
                 part = part[0].upper() + part[1:] if part else part
                 bullets.append(part)
     
-    # For THCS format with gv_bullets extracted from tables
     if 'gv_bullets' in act and act['gv_bullets']:
         for b in act['gv_bullets']:
             b = b.strip()
@@ -709,34 +931,39 @@ def _get_activity_content(act):
         product = product[0].upper() + product[1:] if product else product
         bullets.append(f'📋 Sản phẩm: {product}')
     
-    # Limit and clean
     cleaned = []
     seen = set()
     for b in bullets:
         b = b.strip()
         if b and len(b) > 5 and b not in seen:
             seen.add(b)
-            # Truncate long bullets
             if len(b) > 90:
                 b = b[:87] + '...'
             cleaned.append(b)
     
-    return cleaned[:4]  # Max 4 bullets per slide
+    return cleaned[:4]
 
 
-
-def _add_activity_slide(slide, prs, title_text, act, pal, card_side='left'):
-    """Create an activity slide with card layout."""
+def _add_activity_slide(slide, prs, title_text, act, pal, card_side='left', img_path=None):
+    """Create an activity slide with card + image layout.
+    
+    The card side determines text placement, image goes on opposite side.
+    """
     _set_slide_bg(slide, pal['bg'])
     sw = prs.slide_width
     
-    card_w = Inches(7.5)
+    card_w = Inches(7.0)
     card_h = Inches(4.8)
     
     if card_side == 'left':
-        card_l = Inches(0.50)
+        card_l = Inches(0.35)
+        img_l = card_l + card_w + Inches(0.25)
+        img_w = sw - img_l - Inches(0.35)
     else:
-        card_l = sw - card_w - Inches(0.50)
+        img_l = Inches(0.35)
+        img_w = Inches(5.5)
+        card_l = img_l + img_w + Inches(0.25)
+    
     card_t = CONTENT_TOP
     
     accent_side = 'left' if card_side == 'left' else 'right'
@@ -760,51 +987,87 @@ def _add_activity_slide(slide, prs, title_text, act, pal, card_side='left'):
                         card_w - Inches(0.8), Inches(3.6), bullets, pal,
                         font_size=Pt(18))
     
-    # Add colored accent rectangle on the opposite side (decorative)
-    if card_side == 'left':
-        deco_l = sw - Inches(5.2)
+    # IMAGE: Replace the old decorative rectangle with actual image
+    if img_path and os.path.exists(img_path):
+        # Add image with a subtle background card
+        img_card = _add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE,
+                             img_l, card_t, img_w, card_h,
+                             fill_color=RGBColor(0xF8, 0xF8, 0xF8))
+        img_card.adjustments[0] = 0.03
+        # No border
+        img_card.line.fill.background()
+        
+        # Add the actual image fitted inside the card (with small padding)
+        pad = Inches(0.15)
+        pic = _add_picture_fitted(slide, img_path,
+                                  img_l + pad, card_t + pad,
+                                  img_w - pad * 2, card_h - pad * 2)
+        
+        if pic:
+            # Add a thin border around the image card
+            img_card.line.color.rgb = pal['primary']
+            img_card.line.width = Pt(1.5)
+            
+            # Add "SGK" label badge at top-right corner of image
+            badge_w = Inches(1.2)
+            badge_h = Inches(0.30)
+            badge_l = img_l + img_w - badge_w - Inches(0.1)
+            badge_t = card_t + Inches(0.1)
+            badge = _add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE,
+                              badge_l, badge_t, badge_w, badge_h,
+                              fill_color=pal['primary'])
+            badge.adjustments[0] = 0.3
+            badge_tf = badge.text_frame
+            badge_p = badge_tf.paragraphs[0]
+            badge_p.alignment = PP_ALIGN.CENTER
+            r = badge_p.add_run()
+            r.text = '📚 SGK'
+            r.font.size = Pt(10)
+            r.font.color.rgb = pal['text_light']
+            r.font.bold = True
+            r.font.name = 'Times New Roman'
     else:
-        deco_l = Inches(0.50)
-    deco_w = Inches(4.8)
-    deco_h = Inches(4.8)
-    deco = _add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, deco_l, card_t, deco_w, deco_h,
-                      fill_color=pal['primary'])
-    deco.adjustments[0] = 0.04
-    # Make it semi-transparent by setting alpha
-    fill_el = deco._element.spPr.solidFill
-    if fill_el is not None:
-        srgb = fill_el.find('{http://schemas.openxmlformats.org/drawingml/2006/main}srgbClr')
-        if srgb is not None:
-            etree.SubElement(srgb, '{http://schemas.openxmlformats.org/drawingml/2006/main}alpha',
-                             attrib={'val': '20000'})  # 20% opacity
-    
-    # Add emoji decoration on the decorative card
-    emoji_map = {
-        'khởi_động': '🎮',
-        'kiến_thức': '📖',
-        'luyện_tập': '✏️',
-        'vận_dụng': '🚀',
-    }
-    emoji = emoji_map.get(act.get('type', ''), '📌')
-    _add_textbox(slide, deco_l + deco_w//2 - Inches(0.5), card_t + deco_h//2 - Inches(0.5),
-                 Inches(1), Inches(1),
-                 emoji, Pt(48), pal['text_light'], alignment=PP_ALIGN.CENTER)
+        # Fallback: colored area with emoji (original behavior, but improved)
+        deco = _add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE,
+                         img_l if card_side == 'left' else Inches(0.35),
+                         card_t, img_w, card_h,
+                         fill_color=pal['primary'])
+        deco.adjustments[0] = 0.04
+        fill_el = deco._element.spPr.solidFill
+        if fill_el is not None:
+            srgb = fill_el.find('{http://schemas.openxmlformats.org/drawingml/2006/main}srgbClr')
+            if srgb is not None:
+                etree.SubElement(srgb, '{http://schemas.openxmlformats.org/drawingml/2006/main}alpha',
+                                 attrib={'val': '20000'})
+        
+        emoji_map = {
+            'khởi_động': '🎮',
+            'kiến_thức': '📖',
+            'luyện_tập': '✏️',
+            'vận_dụng': '🚀',
+        }
+        emoji = emoji_map.get(act.get('type', ''), '📌')
+        _add_textbox(slide,
+                     (img_l if card_side == 'left' else Inches(0.35)) + img_w // 2 - Inches(0.5),
+                     card_t + card_h // 2 - Inches(0.5),
+                     Inches(1), Inches(1),
+                     emoji, Pt(48), pal['text_light'], alignment=PP_ALIGN.CENTER)
 
 
-def _add_generic_knowledge_slide(slide, prs, display_title, pal):
+def _add_generic_knowledge_slide(slide, prs, display_title, pal, img_path=None):
     """Add a generic knowledge slide when no activities are extracted."""
     _set_slide_bg(slide, pal['bg'])
     sw = prs.slide_width
     
-    card_w = Inches(12)
+    card_w = Inches(7.0)
     card_h = Inches(4.8)
-    card_l = (sw - card_w) // 2
+    card_l = Inches(0.35)
     card_t = CONTENT_TOP
     
     _add_card_with_accent(slide, card_l, card_t, card_w, card_h, pal, 'left')
     
     _add_textbox(slide, card_l + Inches(0.5), card_t + Inches(0.2),
-                 Inches(11), Inches(0.5),
+                 Inches(6), Inches(0.5),
                  f'📖  {display_title}', Pt(24), pal['primary'], bold=True)
     
     bullets = [
@@ -814,27 +1077,32 @@ def _add_generic_knowledge_slide(slide, prs, display_title, pal):
     ]
     
     _add_bullet_textbox(slide, card_l + Inches(0.5), card_t + Inches(0.9),
-                        Inches(11), Inches(3.6), bullets, pal)
+                        Inches(6), Inches(3.6), bullets, pal)
+    
+    # Right image
+    if img_path:
+        img_l = card_l + card_w + Inches(0.25)
+        img_w = sw - img_l - Inches(0.35)
+        _add_picture_fitted(slide, img_path, img_l, card_t, img_w, card_h)
 
 
-def _add_summary_slide(slide, prs, display_title, lesson_data, pal):
-    """Create summary slide."""
+def _add_summary_slide(slide, prs, display_title, lesson_data, pal, img_path=None):
+    """Create summary slide with image."""
     _set_slide_bg(slide, pal['bg'])
     sw = prs.slide_width
     
-    # Full-width card
-    card_w = Inches(12.30)
+    # Left card
+    card_w = Inches(8.0)
     card_h = Inches(4.8)
-    card_l = (sw - card_w) // 2
+    card_l = Inches(0.35)
     card_t = CONTENT_TOP
     
     _add_card_with_accent(slide, card_l, card_t, card_w, card_h, pal, 'left')
     
     _add_textbox(slide, card_l + Inches(0.5), card_t + Inches(0.2),
-                 Inches(11), Inches(0.5),
+                 Inches(7), Inches(0.5),
                  f'📌  Ghi nhớ — {display_title}', Pt(24), pal['primary'], bold=True)
     
-    # Summary bullets from objectives
     summary = lesson_data.get('objectives', [])[:3]
     if not summary:
         summary = ['Nắm vững kiến thức cơ bản của bài học.',
@@ -844,14 +1112,40 @@ def _add_summary_slide(slide, prs, display_title, lesson_data, pal):
     summary.append('📚 Bài tập về nhà: Xem lại nội dung bài học và chuẩn bị bài tiếp theo.')
     
     _add_bullet_textbox(slide, card_l + Inches(0.5), card_t + Inches(0.9),
-                        Inches(11), Inches(3.6), summary, pal)
+                        Inches(7), Inches(3.6), summary, pal)
+    
+    # Right image
+    if img_path:
+        img_l = card_l + card_w + Inches(0.25)
+        img_w = sw - img_l - Inches(0.35)
+        _add_picture_fitted(slide, img_path, img_l, card_t, img_w, card_h)
 
 
-def _add_thankyou_slide(slide, prs, grade_cfg, pal):
-    """Create thank you slide."""
+def _add_thankyou_slide(slide, prs, grade_cfg, pal, img_path=None):
+    """Create thank you slide with background image."""
     _set_slide_bg(slide, pal['primary'])
     sw = prs.slide_width
     sh = prs.slide_height
+    
+    # Background image (semi-transparent overlay)
+    if img_path:
+        # Place image on the right half as decoration
+        img_w = Inches(5)
+        img_h = Inches(4.5)
+        img_l = sw - img_w - Inches(0.5)
+        img_t = Inches(1.5)
+        pic = _add_picture_fitted(slide, img_path, img_l, img_t, img_w, img_h)
+        if pic:
+            # Add semi-transparent overlay on image
+            overlay = _add_shape(slide, MSO_SHAPE.RECTANGLE,
+                                img_l, img_t, img_w, img_h,
+                                fill_color=pal['primary'])
+            fill_el = overlay._element.spPr.solidFill
+            if fill_el is not None:
+                srgb = fill_el.find('{http://schemas.openxmlformats.org/drawingml/2006/main}srgbClr')
+                if srgb is not None:
+                    etree.SubElement(srgb, '{http://schemas.openxmlformats.org/drawingml/2006/main}alpha',
+                                     attrib={'val': '50000'})
     
     # Center card
     card_w = Inches(8)
@@ -863,7 +1157,6 @@ def _add_thankyou_slide(slide, prs, grade_cfg, pal):
                       fill_color=RGBColor(0xFF, 0xFF, 0xFF))
     card.adjustments[0] = 0.04
     
-    # Thank you text
     txBox = slide.shapes.add_textbox(card_l + Inches(0.5), card_t + Inches(0.5),
                                       card_w - Inches(1), Inches(1.2))
     tf = txBox.text_frame
@@ -877,7 +1170,6 @@ def _add_thankyou_slide(slide, prs, grade_cfg, pal):
     r.font.bold = True
     r.font.name = 'Times New Roman'
     
-    # Subtitle
     p2 = tf.add_paragraph()
     p2.alignment = PP_ALIGN.CENTER
     r2 = p2.add_run()
@@ -887,7 +1179,6 @@ def _add_thankyou_slide(slide, prs, grade_cfg, pal):
     r2.font.name = 'Times New Roman'
     p2.space_before = Pt(12)
     
-    # School info
     txBox2 = slide.shapes.add_textbox(card_l + Inches(0.5), card_t + Inches(2.2),
                                        card_w - Inches(1), Inches(1.0))
     tf2 = txBox2.text_frame
@@ -908,11 +1199,9 @@ def _add_footer(slide, prs):
     footer_h = Inches(0.55)
     footer_t = prs.slide_height - footer_h
     
-    # Blue bar
     bar = _add_shape(slide, MSO_SHAPE.RECTANGLE, 0, footer_t, sw, footer_h,
                      fill_color=RGBColor(0x00, 0x70, 0xC0))
     
-    # Footer text
     txBox = slide.shapes.add_textbox(Inches(0.3), footer_t + Inches(0.05),
                                       sw - Inches(0.6), footer_h - Inches(0.1))
     tf = txBox.text_frame
@@ -934,6 +1223,7 @@ def _add_footer(slide, prs):
 def main():
     print('=' * 60)
     print('  GENERATE SLIDES BÀI 1 TIN HỌC — TẤT CẢ CÁC LỚP')
+    print('  v2: Với hình ảnh SGK / AI-generated')
     print('=' * 60)
     
     results = []
@@ -955,17 +1245,27 @@ def main():
             print(f'    Objectives: {len(lesson_data["objectives"])}')
             print(f'    Activities: {len(lesson_data["activities"])}')
             
-            # 2. Create slides
-            prs, slides_created = create_presentation(grade_cfg, lesson_data)
+            # 2. Find images
+            images = find_images(grade_cfg)
+            print(f'  ✓ Images: {len(images["full_pages"])} full pages, '
+                  f'{len(images["individual"])} individual, '
+                  f'{len(images["generated"])} generated')
+            
+            # 3. Create slides
+            prs, slides_created = create_presentation(grade_cfg, lesson_data, images)
             print(f'  ✓ Slides: {len(slides_created)} slides')
+            
+            # Count pictures in slides
+            pic_count = sum(1 for s in prs.slides for sh in s.shapes if sh.shape_type == 13)
+            print(f'  ✓ Pictures embedded: {pic_count}')
+            
             for s in slides_created:
                 print(f'    • {s}')
             
-            # 3. Save
+            # 4. Save
             out_dir = os.path.join(KHBD_ROOT, folder, 'Bài_01')
             os.makedirs(out_dir, exist_ok=True)
             
-            # Generate filename
             title_clean = lesson_data['title']
             title_clean = re.sub(r'^BÀI\s*\d+\.\s*', '', title_clean, flags=re.IGNORECASE)
             title_clean = re.sub(r'[^\w\s]', '', title_clean)
@@ -979,22 +1279,24 @@ def main():
             prs.save(out_path)
             print(f'  ✓ Saved: {out_path}')
             
-            results.append((label, '✅', fname, len(slides_created)))
+            results.append((label, '✅', fname, len(slides_created), pic_count))
             
         except Exception as e:
             print(f'  ✗ ERROR: {e}')
             import traceback
             traceback.print_exc()
-            results.append((label, '❌', str(e), 0))
+            results.append((label, '❌', str(e), 0, 0))
     
     # Summary
     print(f'\n{"="*60}')
     print('  KẾT QUẢ TỔNG HỢP')
     print(f'{"="*60}')
-    for label, status, fname, count in results:
-        print(f'  {status} {label}: {fname} ({count} slides)')
+    for label, status, fname, count, pics in results:
+        print(f'  {status} {label}: {fname} ({count} slides, {pics} images)')
     
-    print(f'\nHOÀN THÀNH! Tổng: {sum(1 for r in results if r[1]=="✅")}/{len(results)} file thành công.')
+    total_ok = sum(1 for r in results if r[1] == '✅')
+    total_pics = sum(r[4] for r in results)
+    print(f'\nHOÀN THÀNH! {total_ok}/{len(results)} file thành công. Tổng {total_pics} hình ảnh.')
 
 
 if __name__ == '__main__':
