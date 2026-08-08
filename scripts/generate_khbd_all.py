@@ -179,7 +179,7 @@ def create_khbd_th(grade_name, grade_folder, bai_so, ten_bai, chu_diem,
                    pham_chat_items, nang_luc_mon_items, nang_luc_chung_items,
                    do_dung_gv, do_dung_hs,
                    phuong_phap, ki_thuat,
-                   activities):
+                   activities, nang_luc_so_items=None):
     """
     Tạo KHBD Tiểu học hoàn chỉnh.
     activities: list of dicts:
@@ -263,6 +263,15 @@ def create_khbd_th(grade_name, grade_folder, bai_so, ten_bai, chu_diem,
     for nl in nang_luc_mon_items:
         add_para(doc, nl, indent_first=450215, line_ratio=1.33,
                  align=WD_ALIGN_PARAGRAPH.JUSTIFY)
+    # 2.1b. Năng lực số (tách riêng, hanging indent)
+    if nang_luc_so_items:
+        add_para(doc, '- Năng lực số:', bold=True,
+                 indent_first=457200, sp_after=0, line_ratio=1.33,
+                 align=WD_ALIGN_PARAGRAPH.JUSTIFY)
+        for nl in nang_luc_so_items:
+            p = add_para(doc, f'  {nl}', sp_after=0, line_ratio=1.33,
+                         indent_left=720000)
+            p.paragraph_format.first_line_indent = Emu(-262000)
     add_para(doc, '2.2. Năng lực chung và đặc thù:', indent_first=457200,
              line_ratio=1.5, align=WD_ALIGN_PARAGRAPH.JUSTIFY)
     for nl in nang_luc_chung_items:
@@ -525,7 +534,9 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
     add_para(doc, '- Năng lực số:', bold=True,
              indent_first=180340, sp_after=0, line_ratio=1.15)
     for nl in nang_luc_so_items:
-        add_para(doc, f'  {nl}', indent_first=180340, sp_after=0, line_ratio=1.15)
+        p = add_para(doc, f'  {nl}', sp_after=0, line_ratio=1.15,
+                     indent_left=540000)
+        p.paragraph_format.first_line_indent = Emu(-180000)
 
     add_para(doc, '3. Phẩm chất: ', bold=True,
              indent_first=180340, line_ratio=1.15)

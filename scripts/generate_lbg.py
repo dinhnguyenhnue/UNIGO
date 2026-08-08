@@ -717,9 +717,13 @@ def update_headers(doc, tuan_so, start_date, end_date):
 
 
 def update_day_labels(doc, start_date):
-    """Cap nhat nhan Thu/ngay trong Table[1] va Table[3]."""
-    for ti in [1, 3]:
-        tbl = doc.tables[ti]
+    """Cap nhat nhan Thu/ngay trong tat ca bang LBG 7 cot."""
+    for tbl in doc.tables:
+        if len(tbl.columns) != 7:
+            continue
+        header_texts = [c.text.strip() for c in tbl.rows[0].cells]
+        if 'Lớp' not in header_texts:
+            continue
         for ri in range(1, len(tbl.rows)):
             day_idx = (ri - 1) // 5   # 0=Hai..4=Sau
             d = start_date + timedelta(days=day_idx)
@@ -737,16 +741,18 @@ def get_day_idx_from_row(ri):
 def update_table_data(doc, tuan_so):
     """
     Cap nhat mon hoc, PPCT, ten bai, do dung cho cac hang co du lieu.
-    - Lop 5,6,7,8: ap dung rotation + PPCT rieng
+    - Lop 5,6,7,8: ten mon hien thi = 'Tin - Robotics', rotation PPCT rieng
     - Tat ca: cap nhat PPCT + ten bai tu PPCT_DATA
     """
-    if tuan_so == 1:
-        return
-
     is_even = (tuan_so % 2 == 0)
     
-    for ti in [1, 3]:
-        tbl = doc.tables[ti]
+    # Dynamically find all 7-column LBG tables (not hardcoded to [1,3])
+    for ti, tbl in enumerate(doc.tables):
+        if len(tbl.columns) != 7:
+            continue
+        header_texts = [c.text.strip() for c in tbl.rows[0].cells]
+        if 'Lớp' not in header_texts:
+            continue
         
         # First pass: identify rotation classes with multiple periods on same day
         # Build a map: (day_idx, lop) -> list of row indices
@@ -774,13 +780,17 @@ def update_table_data(doc, tuan_so):
             
             # Determine the subject for this row
             if is_rot:
-                mon = rotation_mon(tuan_so)
+                mon = rotation_mon(tuan_so)  # Internal: 'Tin học' or 'Robotics' for PPCT lookup
                 dd = rotation_do_dung(tuan_so)
-                set_cell_text(row.cells[3], mon)
+                set_cell_text(row.cells[3], 'Tin - Robotics')  # Display name
                 set_cell_text(row.cells[6], dd)
             else:
                 mon = row.cells[3].text.strip()
                 # Keep original mon (Tin hoc or Robotics)
+            
+            # Skip PPCT/lesson update for week 1 (template already has orientation data)
+            if tuan_so <= 1:
+                continue
             
             # Compute PPCT
             if is_rot:
@@ -907,9 +917,14 @@ def clear_row_data(row):
 
 
 def filter_for_cap(doc, keep_cap):
-    for ti in [1, 3]:
-        for ri in range(1, len(doc.tables[ti].rows)):
-            row = doc.tables[ti].rows[ri]
+    for tbl in doc.tables:
+        if len(tbl.columns) != 7:
+            continue
+        header_texts = [c.text.strip() for c in tbl.rows[0].cells]
+        if 'Lớp' not in header_texts:
+            continue
+        for ri in range(1, len(tbl.rows)):
+            row = tbl.rows[ri]
             lop = row.cells[4].text.strip()
             cap = classify_lop(lop)
             if cap is not None and cap != keep_cap:
