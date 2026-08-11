@@ -100,7 +100,7 @@ Quy trình sinh nội dung:
    - Chân trang tự động hiển thị trên mọi slide nhờ slide master.
 
 3. **Z-Order & Tương phản (QUAN TRỌNG):**
-   - **Background shapes phải `send_to_back`:** Khi tạo nền màu, gọi `sp.getparent().insert(0, sp)` để đẩy xuống dưới cùng.
+   - **Background shapes phải `send_to_back`:** Khi tạo nền màu, gọi `spTree = sp.getparent(); spTree.remove(sp); spTree.insert(2, sp)` để đẩy xuống dưới cùng (sau `nvGrpSpPr` và `grpSpPr`). TUYỆT ĐỐI KHÔNG dùng `insert(0, sp)` vì sẽ làm vỡ XML schema (`spTree`).
    - **Text luôn ở trên:** Textbox phải được thêm SAU background shape để tự động nằm trên.
    - **Tương phản cao bắt buộc:**
      - Chữ trắng (`FFFFFF`) trên nền tối (primary/accent đậm)

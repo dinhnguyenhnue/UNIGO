@@ -179,7 +179,7 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
    - KHÔNG thêm shape footer mới — chân trang tự động hiển thị trên mọi slide nhờ slide master.
 
 3. **Z-Order & Tương phản (QUAN TRỌNG):**
-   - **Background shapes phải `send_to_back`:** Gọi `sp.getparent().insert(0, sp)` để đẩy xuống dưới cùng.
+   - **Background shapes phải `send_to_back`:** Gọi `spTree = sp.getparent(); spTree.remove(sp); spTree.insert(2, sp)` để đẩy xuống dưới cùng (sau `nvGrpSpPr` và `grpSpPr`). TUYỆT ĐỐI KHÔNG gọi `insert(0, sp)` vì sẽ làm hỏng cấu trúc XML làm PowerPoint báo lỗi repair.
    - **Text luôn ở trên:** Textbox phải được thêm SAU background shape.
    - **Tương phản cao bắt buộc:**
      - Chữ trắng (`FFFFFF`) trên nền tối (primary/accent đậm)

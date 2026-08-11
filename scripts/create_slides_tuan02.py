@@ -346,7 +346,9 @@ def add_shape_in_safe_zone(slide, shape_type, left, top, width, height, fill_hex
 
     if send_to_back:
         sp = shape._element
-        sp.getparent().insert(0, sp)
+        spTree = sp.getparent()
+        spTree.remove(sp)
+        spTree.insert(2, sp)
     return shape
 
 def add_slide_transition(slide, transition_type="fade"):
