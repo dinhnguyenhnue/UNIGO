@@ -164,22 +164,40 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
 
 ## VII. Quy định Tạo Slide Bài giảng (.pptx) chuẩn UNIGO
 
-1. **Bảo tồn Slide Master & Vùng An Toàn:**
-   - GIỮ NGUYÊN Logo UNIGO (`Picture 7` tại L=0.17in, T=0.15in) và Chân trang (`Picture 9` tại L=0.00in, T=6.43in) từ slide master.
-   - VÙNG AN TOÀN NỘI DUNG: Chiều dọc từ **Y = 1.15in đến Y = 6.30in** (chiều cao 5.15in). Tuyệt đối không vẽ shape hoặc đè nền màu vượt quá Y = 6.30in hoặc chờm lên Y < 1.15in làm che logo/chân trang.
+1. **Bảo tồn Slide Master & Vùng An Toàn (VERIFIED từ template):**
+   - **Logo UNIGO** = `Picture 7` tại L=0.17in, T=0.15in, W=0.95in, H=0.94in → kết thúc tại **Y=1.09in**
+   - **Chân trang UNIGO** = `Picture 9` tại L=0.00in, T=6.43in, W=13.40in, H=1.23in → bắt đầu từ **Y=6.43in**
+   - **VÙNG AN TOÀN NỘI DUNG:** Y = **1.15in → 6.35in** (chiều cao 5.20in). Slide size: 13.33×7.50 inches.
+   - **TUYỆT ĐỐI CẤM:**
+     - Vẽ shape/rectangle/background có `top < 1.15in` (che logo)
+     - Vẽ shape/rectangle/background có `top + height > 6.35in` (che chân trang)
+     - Dùng `add_shape(RECTANGLE, 0, 0, SLIDE_W, SLIDE_H)` phủ toàn bộ slide
+   - **Kỹ thuật clamp bắt buộc:** `actual_top = max(top, 1.15)`, `actual_bottom = min(top+height, 6.35)`
 
-2. **Quy chuẩn Font chữ & Cỡ chữ:**
+2. **KHÔNG thêm footer tự tạo:**
+   - Template master ĐÃ CÓ chân trang `Picture 9` (thanh xanh + thông tin trường + SĐT + địa chỉ).
+   - KHÔNG thêm shape footer mới — chân trang tự động hiển thị trên mọi slide nhờ slide master.
+
+3. **Z-Order & Tương phản (QUAN TRỌNG):**
+   - **Background shapes phải `send_to_back`:** Gọi `sp.getparent().insert(0, sp)` để đẩy xuống dưới cùng.
+   - **Text luôn ở trên:** Textbox phải được thêm SAU background shape.
+   - **Tương phản cao bắt buộc:**
+     - Chữ trắng (`FFFFFF`) trên nền tối (primary/accent đậm)
+     - Chữ tối (`1A2744`, `2E1065`...) trên nền nhạt (bg/card trắng)
+     - KHÔNG dùng chữ nhạt trên nền nhạt hoặc chữ tối trên nền tối
+   - **Palette bắt buộc có 3 loại text color:** `text_on_primary`, `text_on_bg`, `text_on_card`
+
+4. **Quy chuẩn Font chữ & Cỡ chữ:**
    - Tiêu đề slide chính / Giới thiệu: **24pt - 28pt** (Bold).
    - Nội dung thường (Bullet text): **18pt - 20pt**.
    - Ký tự đầu dòng (●): **14pt**, Giãn dòng (Line spacing): **28pt**, Khoảng cách sau đoạn (Space after): **8pt**.
-   - Giới hạn nội dung mỗi slide ngắn gọn (tối đa 3 - 4 dòng bullet) để đảm bảo chữ to rõ, thoáng, không dính hoặc chồng chữ.
+   - Giới hạn nội dung mỗi slide ngắn gọn (tối đa 3 - 4 dòng bullet).
 
-3. **Cấu trúc Group Card & Accent Bar:**
-   - **Thanh Accent Bar khít tuyệt đối:** Thanh accent màu bên mép card BẮT BUỘC phải khít hoàn toàn chiều cao ô trắng (`bar.top = card.top`, `bar.height = card.height`), không tạo margin hở trên/dưới.
-   - **Bắt buộc Grouping:** Card ô trắng (`ROUNDED_RECTANGLE`) và thanh accent bar BẮT BUỘC phải được nhóm lại thành một khối duy nhất (`group_shapes` qua `<p:grpSp>`) để giáo viên dễ dàng di chuyển và căn chỉnh trong PowerPoint.
+5. **Cấu trúc Group Card & Accent Bar:**
+   - **Thanh Accent Bar khít tuyệt đối:** `bar.top = card.top`, `bar.height = card.height`.
+   - **Bắt buộc Grouping:** Card + accent bar nhóm thành một khối (`group_shapes` qua `<p:grpSp>`).
 
-4. **Slide Tổng kết & Màu sắc:**
-   - Slide tổng kết dùng nền nhạt `bg` và chèn panel màu chỉ nằm gọn trong Vùng An Toàn (Y 1.15in → 6.30in). Tuyệt đối không gọi `set_slide_bg(primary)` phủ toàn slide làm che mất logo master.
-   - Áp dụng hệ thống xoay vòng 8 bộ màu (Color Palette rotation) linh hoạt, hiện đại cho từng bài/lớp.
-
-
+6. **Slide Tổng kết & Màu sắc:**
+   - Panel màu chỉ nằm gọn trong Vùng An Toàn (Y 1.15in → 6.35in).
+   - KHÔNG gọi `set_slide_bg(primary)` phủ toàn slide.
+   - Áp dụng hệ thống xoay vòng 8+ bộ màu (Color Palette rotation).

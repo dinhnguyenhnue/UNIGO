@@ -1,4 +1,31 @@
 # Nhật ký cải tiến Slide Bài giảng UNIGO
+## 2026-08-10 (v2) - Fix: Logo/Chân trang bị che, Tương phản kém
+
+- **Vấn đề nhận diện (từ user feedback + screenshot)**:
+  1. File lỗi cần Repair khi mở trong PowerPoint (slide removal method gây corrupt)
+  2. Nền shape `RECTANGLE(0, 0, SLIDE_W, SLIDE_H)` phủ toàn slide → che logo master + chân trang master
+  3. Custom footer bar chồng lên footer master có sẵn (Picture 9)
+  4. Banner tại Y=0.8 đè lên logo (Logo kết thúc tại Y=1.09in)
+  5. Chữ nhạt trên nền nhạt → khó đọc, thiếu tương phản
+- **Fix đã áp dụng**:
+  1. **Clamp mọi shape vào SAFE ZONE** Y=1.15in→6.35in: `actual_top = max(top, 1.15)`
+  2. **Xóa custom footer** — template master ĐÃ CÓ chân trang (Picture 9 tại Y=6.43)
+  3. **Z-Order đúng**: Background → `send_to_back`; Text → thêm sau (tự nằm trên)
+  4. **High-contrast palettes**: 3 loại `text_on_primary`, `text_on_bg`, `text_on_card`
+  5. **Verified template**: Logo=Y0.15→1.09, Footer=Y6.43→7.66, Slide=13.33×7.50in
+- **Quy tắc đã cập nhật**: SKILL.md, AGENTS.md Section VII
+
+## 2026-08-10 - Chuyển đổi triết lý: Student-Facing Slides
+
+- **Vấn đề nhận diện**: Slide Tuần 02 được tạo dưới dạng mô tả lại KHBD (liệt kê mục tiêu, năng lực, phẩm chất) — không phù hợp để chiếu cho học sinh nhìn và làm theo trong lớp.
+- **Thay đổi cốt lõi**:
+  1. **Triết lý Student-Facing**: Slide phải là thứ HS nhìn lên màn hình và làm theo, KHÔNG phải bản mô tả giáo án.
+  2. **Ngôn ngữ hướng tới HS**: "Em hãy...", "Bước 1:...", "Quan sát hình..." thay vì "HS nhận biết được...", "Mục tiêu:...".
+  3. **AI Content Generation**: Agent tự phân tích SGK + KHBD và sinh nội dung phù hợp, không copy/paste từ KHBD.
+  4. **Bỏ slide Mục tiêu/Năng lực**: Mục tiêu được lồng ghép tự nhiên vào nội dung hoạt động.
+  5. **Điều chỉnh theo lứa tuổi**: Tiền TH/Lớp 1-2 cực đơn giản, Lớp 3-5 tăng dần, Lớp 6-8 có thuật ngữ.
+- **Hành động**: Xóa 9 file slide Tuần 02 cũ. Slide mới sẽ được tạo lại theo skill đã cập nhật.
+- **Giữ nguyên**: Toàn bộ quy tắc kỹ thuật (chân trang, đầu trang, vùng an toàn, font, template, Card Grid, Accent Bar, Color Palette).
 
 ## 2026-07-28 - Nâng cấp toàn diện Thiết kế Giao diện Slide (Modern High-Aesthetic Design System)
 
