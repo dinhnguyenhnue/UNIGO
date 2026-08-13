@@ -59,6 +59,73 @@ Nội dung: [Hình ảnh máy tính với các mũi tên chỉ vào từng bộ 
 - **Với các lớp không có SGK** (Tiền TH, Lớp 1, Lớp 2): BẮT BUỘC tạo ảnh AI gồm: `cover.png`, `activity.png`, `practice.png`, `summary.png`
 - **Dùng `slide.shapes.add_picture()`** để chèn ảnh thật vào slide, KHÔNG dùng shape rỗng + emoji thay thế
 
+### Bước 2.5: Tạo ảnh riêng cho từng gạch đầu dòng (Per-Bullet Images) — BẮT BUỘC
+
+> **QUY TẮC MỚI: Mỗi bullet point trong slide nội dung PHẢI có ảnh minh họa riêng.**
+> Không dùng 1 ảnh chung cho toàn slide. Mỗi ý → 1 ảnh → giúp HS ghi nhớ trực quan.
+
+#### Quy trình tạo ảnh per-bullet:
+
+1. **Tách bullet:** Phân tích nội dung slide, tách ra từng bullet point riêng biệt.
+2. **Tạo prompt AI từ nội dung bullet:**
+   - Lấy chính text bullet làm prompt gốc
+   - Thêm context phù hợp lứa tuổi:
+     - **Tiền TH / Lớp 1-2**: `"cute kawaii cartoon illustration for young children aged 5-7, bright vivid colors, simple shapes, friendly characters, no text in image"`
+     - **Lớp 3-5**: `"friendly colorful educational cartoon illustration for children aged 8-10, clear details, educational theme, no text in image"`
+     - **Lớp 6-8**: `"clean modern educational infographic illustration for middle school students aged 11-14, semi-realistic style, no text in image"`
+   - Ví dụ:
+     - Bullet `"Màn hình — để con nhìn"` → Prompt: `"Cute kawaii cartoon: a friendly computer monitor screen with colorful display, for young children, bright colors, no text"`
+     - Bullet `"Phần cứng = sờ được, nhìn thấy"` → Prompt: `"Educational infographic: hands touching computer hardware components keyboard mouse monitor, for middle school, clean modern style, no text"`
+3. **Gọi `generate_image` tool** cho mỗi bullet → lưu tại `images/slide_{N}_bullet_{M}.png`
+4. **Chuỗi fallback ảnh per-bullet (3 tầng):**
+   - Tầng 1: ✅ Ảnh SGK trích xuất (nếu match nội dung bullet)
+   - Tầng 2: ✅ AI-generated từ prompt bullet (dùng `generate_image`)
+   - Tầng 3: ✅ Ảnh đại diện chung cho loại nội dung (cover/activity/practice)
+
+#### Layout Per-Bullet Image — Phân cấp theo lứa tuổi:
+
+**Layout A — Grid Flashcard (Tiền TH → Lớp 5):**
+```
+┌──────────────────────────────────────────────────┐
+│ [Badge Banner]                                    │
+│ Tiêu đề slide                                    │
+│                                                    │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐           │
+│  │  ẢNH 1  │  │  ẢNH 2  │  │  ẢNH 3  │           │
+│  │(2in×2in)│  │(2in×2in)│  │(2in×2in)│           │
+│  ├─────────┤  ├─────────┤  ├─────────┤           │
+│  │ Text 1  │  │ Text 2  │  │ Text 3  │           │
+│  └─────────┘  └─────────┘  └─────────┘           │
+└──────────────────────────────────────────────────┘
+```
+- 2-3 bullets/slide → 1 hàng × 2-3 cột
+- 4 bullets/slide → 2 hàng × 2 cột
+- Nếu > 4 bullets → CHIA thành 2 slides
+- Ảnh kích thước: **2in × 2in** (đủ lớn HS nhìn rõ)
+- Text bên dưới ảnh: **18pt**, căn giữa
+
+**Layout B — Horizontal Row (Lớp 6 → Lớp 8):**
+```
+┌──────────────────────────────────────────────────┐
+│ [Badge Banner]                                    │
+│ Tiêu đề slide                                    │
+│                                                    │
+│  ┌──────┐  ┌────────────────────────────────┐    │
+│  │ẢNH 1 │  │ Text bullet 1                   │    │
+│  │2in×   │  │ Mô tả chi tiết...               │    │
+│  │1.5in  │  └────────────────────────────────┘    │
+│  └──────┘                                         │
+│  ┌──────┐  ┌────────────────────────────────┐    │
+│  │ẢNH 2 │  │ Text bullet 2                   │    │
+│  │2in×   │  │ Mô tả chi tiết...               │    │
+│  │1.5in  │  └────────────────────────────────┘    │
+│  └──────┘                                         │
+└──────────────────────────────────────────────────┘
+```
+- Ảnh bên trái: **2in × 1.5in** + text bên phải
+- Tối đa 3 rows/slide
+- Nếu > 3 bullets → CHIA thành 2 slides
+
 ### Bước 3: Sinh nội dung slide bằng AI (THAY ĐỔI QUAN TRỌNG)
 
 > **KHÔNG copy/paste từ KHBD vào slide. Agent phải TỰ PHÂN TÍCH bài học và SINH nội dung phù hợp cho học sinh.**
@@ -133,9 +200,9 @@ Quy trình sinh nội dung:
 |---|-------|--------------------|--------------|----------|
 | 1 | **Trang bìa** | Gây hứng thú, giới thiệu chủ đề | Hình ảnh lớn bắt mắt + Tên bài ngắn gọn | Nền màu chủ đạo, chữ trắng lớn |
 | 2 | **Khởi động** | Kích thích tò mò, dẫn dắt vào bài | "Em hãy đoán xem đây là gì?" + hình ảnh bí ẩn / câu hỏi vui | Hình ảnh to + câu hỏi nổi bật |
-| 3-6 | **Nội dung bài học** | Hướng dẫn HS quan sát, khám phá, thực hành từng bước | Hình ảnh SGK + chỉ dẫn ngắn: "Bước 1: Mở...", "Bước 2: Nhấp vào..." | Hình ảnh chiếm 50-60% slide + text ngắn |
-| 7-8 | **Luyện tập** | HS tự làm bài tập | "Em hãy thực hành theo các bước sau...", bài tập có gợi ý | Card bài tập + gợi ý màu nhạt |
-| 9 | **Vận dụng / Thử thách** | Áp dụng vào thực tế, mini game | Câu hỏi nối, đúng/sai, tình huống thực tế, "Em hãy chia sẻ..." | Thiết kế game/quiz tương tác |
+| 3-6 | **Nội dung bài học** | Hướng dẫn HS quan sát, khám phá | **Mỗi bullet có ảnh riêng** — Layout A (Grid) cho TH, Layout B (Row) cho THCS | Per-Bullet Image Grid/Row |
+| 7-8 | **Luyện tập** | HS tự làm bài tập, trả lời câu hỏi | Items xuất hiện **tuần tự theo click** + ảnh minh họa mỗi item | Animation appear per-item + ảnh |
+| 9 | **Trò chơi / Thử thách** | Mini game tương tác | Ghép nối, Đúng/Sai, Sắp xếp — **BẮT BUỘC có ảnh minh họa** | Game layout + ảnh ~2in + animation |
 | 10 | **Tổng kết** | Ghi nhớ điểm chính | Infographic tóm tắt 3-4 điểm chính + icon | Nền nhạt, panel trong Vùng An Toàn |
 | 11 | **Cảm ơn** | Kết bài + BTVN | "Các em giỏi lắm! 🌟" + BTVN ngắn gọn | Nền chủ đạo + chữ trắng |
 
@@ -143,17 +210,118 @@ Quy trình sinh nội dung:
 > - KHÔNG có slide "Mục tiêu bài học" liệt kê YCCD theo kiểu giáo án
 > - KHÔNG có slide liệt kê "Năng lực", "Phẩm chất" 
 > - Mục tiêu được lồng ghép tự nhiên vào nội dung các slide hoạt động
-> - Mỗi slide tối đa 3-4 dòng text ngắn + 1 hình ảnh lớn
+> - Mỗi slide tối đa 3-4 dòng text ngắn
+> - **MỖI BULLET POINT phải có ẢNH RIÊNG** (per-bullet image)
+> - **Slide câu hỏi/ghép nối: animation tuần tự + ảnh từng item**
+> - **Slide trò chơi: BẮT BUỘC có ảnh minh họa đủ lớn (~2in) cho HS nhìn**
 
 ### Bước 6: Chân trang (footer) — TỰ ĐỘNG TỪ MASTER
 Chân trang được cung cấp bởi slide master (`Picture 9`):
 - Thanh xanh dương với text "TRƯỜNG TIỂU HỌC VÀ THCS UNIGO" + thông tin liên hệ, địa chỉ
 - **KHÔNG cần thêm shape footer mới.** Chỉ cần đảm bảo KHÔNG có shape nào che lên vùng Y > 6.35in.
 
-### Bước 7: Hiệu ứng chuyển cảnh & Animation
-- **Slide transition (Chuyển trang):** Can thiệp XML `p:transition` với các hiệu ứng `fade`, `push`, `wipe`, `cover`, `split`.
-- **Animation (Xuất hiện nội dung):** Can thiệp XML `p:timing` với hiệu ứng `appear` hiển thị các ô văn bản và hình ảnh theo lượt click.
-- **Đặc biệt cho slide Luyện tập/Thử thách:** Dùng animation reveal để HS suy nghĩ trước khi GV click hiện đáp án.
+### Bước 7: Hiệu ứng chuyển cảnh & Animation nâng cao
+
+#### 7.1 Slide transition (Chuyển trang):
+- Can thiệp XML `p:transition` với các hiệu ứng `fade`, `push`, `wipe`, `cover`, `split`.
+
+#### 7.2 Animation tuần tự cho slide Câu hỏi / Ghép nối (BẮT BUỘC):
+
+> **Slide practice/activity có `items` PHẢI animation từng item theo click.**
+> HS cần thời gian suy nghĩ trước khi GV bấm hiện item/đáp án tiếp theo.
+
+**Quy tắc animation per-item:**
+1. Mỗi item (card text + ảnh minh họa) là 1 nhóm animation.
+2. Thứ tự: Item 1 → click → Item 2 → click → Item 3...
+3. Đáp án (nếu có) xuất hiện SAU câu hỏi, bằng 1 click riêng.
+4. Ảnh minh họa của item xuất hiện CÙNG LÚC với text item (cùng 1 click).
+
+**Quy tắc animation cho slide Ghép nối (items chứa `↔` hoặc `→`):**
+1. Cột trái (vế A) + ảnh vế A xuất hiện trước → click → Cột phải (vế B) xuất hiện.
+2. Mỗi cặp ghép nối có ảnh minh họa cho vế A (tạo bằng AI), kích thước ~2in×2in.
+3. Đường nối/mũi tên giữa 2 vế xuất hiện sau khi cả 2 vế đã hiện.
+
+**Hàm helper bắt buộc trong script:**
+- `add_appear_animation(slide, shape, click_index)` — gán XML `p:timing` animation `appear` cho shape theo thứ tự click.
+- `add_group_animation(slide, shapes_list, click_index)` — gán animation appear cho nhóm shapes (text + ảnh) cùng 1 click.
+
+**XML Animation template (per-shape appear on click):**
+```xml
+<p:timing>
+  <p:tnLst>
+    <p:par>
+      <p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot">
+        <p:childTnLst>
+          <p:seq concurrent="1" nextAc="seek">
+            <p:cTn id="2" dur="indefinite" nodeType="mainSeq">
+              <p:childTnLst>
+                <!-- Repeat for each click_index: -->
+                <p:par>
+                  <p:cTn id="N" fill="hold">
+                    <p:stCondLst><p:cond delay="0"/></p:stCondLst>
+                    <p:childTnLst>
+                      <p:par>
+                        <p:cTn id="N+1" presetID="1" presetClass="entr" presetSubtype="0" fill="hold">
+                          <p:stCondLst><p:cond delay="0"/></p:stCondLst>
+                          <p:childTnLst>
+                            <p:set>
+                              <p:cBhvr>
+                                <p:cTn id="N+2" dur="1" fill="hold">
+                                  <p:stCondLst><p:cond delay="0"/></p:stCondLst>
+                                </p:cTn>
+                                <p:tgtEl><p:spTgt spid="SHAPE_ID"/></p:tgtEl>
+                                <p:attrNameLst><p:attrName>style.visibility</p:attrName></p:attrNameLst>
+                              </p:cBhvr>
+                              <p:to><p:strVal val="visible"/></p:to>
+                            </p:set>
+                          </p:childTnLst>
+                        </p:cTn>
+                      </p:par>
+                    </p:childTnLst>
+                  </p:cTn>
+                </p:par>
+              </p:childTnLst>
+            </p:cTn>
+          </p:seq>
+        </p:childTnLst>
+      </p:cTn>
+    </p:par>
+  </p:tnLst>
+</p:timing>
+```
+
+#### 7.3 Slide Trò chơi — Bắt buộc có hình ảnh minh họa:
+
+> **MỌI slide trò chơi / hoạt động (`activity`) PHẢI có ảnh minh họa đủ lớn (~2in×2in) để HS nhìn rõ khi chơi.**
+
+**Bảng loại trò chơi và ảnh cần tạo:**
+
+| Loại trò chơi | Ảnh cần tạo | Prompt AI mẫu |
+|---|---|---|
+| **Đúng/Sai** | Ảnh minh họa từng câu hỏi + biểu tượng ✅❌ | `"[Nội dung câu hỏi], educational cartoon, clear yes/no visual"` |
+| **Ghép nối** | Ảnh từng đối tượng vế A (VD: ảnh màn hình, bàn phím...) | `"[Đối tượng cần ghép], isolated on white background, cartoon style, clear"` |
+| **Sắp xếp thứ tự** | Ảnh timeline / dòng thời gian minh họa | `"Timeline infographic showing [nội dung], colorful, educational"` |
+| **Vẽ/Sáng tạo** | Ảnh mẫu hoặc ảnh HS đang thực hiện | `"[Hoạt động], children in classroom, bright illustration"` |
+| **Thảo luận nhóm** | Ảnh nhóm HS đang thảo luận + chủ đề | `"Group of students discussing [topic] in classroom, cartoon"` |
+| **Chỉ/Nhận diện** | Ảnh đối tượng cần nhận diện với mũi tên/label | `"[Đối tượng] with labeled arrows pointing to parts, educational diagram"` |
+
+**Layout slide trò chơi:**
+```
+┌──────────────────────────────────────────────────┐
+│ [Accent Badge: LUYỆN TẬP / TRÒ CHƠI]             │
+│ Tiêu đề: "Cùng chơi nào!" (26pt Bold)            │
+│ Hướng dẫn ngắn (17pt)                             │
+│                                                    │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐        │
+│  │  ẢNH 1   │  │  ẢNH 2   │  │  ẢNH 3   │        │
+│  │ (2in×2in)│  │ (2in×2in)│  │ (2in×2in)│        │
+│  ├──────────┤  ├──────────┤  ├──────────┤        │
+│  │[Card chọn│  │[Card chọn│  │[Card chọn│        │
+│  │ Item 1]  │  │ Item 2]  │  │ Item 3]  │        │
+│  └──────────┘  └──────────┘  └──────────┘        │
+│              ← Animation: hiện tuần tự →          │
+└──────────────────────────────────────────────────┘
+```
 
 ### Bước 8: Lưu file
 **Vị trí lưu tập trung theo bài học:**
@@ -168,17 +336,62 @@ Ví dụ: `D:\UNIGO\KHBD_Tin_học\Lớp_3\Tuần_02\Slide_Tin_hoc_Lop_3_Bai01_T
 
 ---
 
+## Anti-Bug Checklist & Kiểm tra tự động (BẮT BUỘC)
+
+> **Chạy kiểm tra SAU MỖI LẦN tạo slide. Nếu có FAIL → sửa và chạy lại.**
+
+### Bảng quy tắc kỹ thuật cứng (Hard Rules):
+
+| # | Quy tắc | Kiểm tra tự động | Hậu quả nếu vi phạm |
+|---|---------|-------------------|----------------------|
+| 1 | KHÔNG vẽ shape có `top < 1.15in` | `assert shape.top >= Inches(1.15)` | Logo bị che |
+| 2 | KHÔNG vẽ shape có `top + height > 6.35in` | `assert shape.top + shape.height <= Inches(6.35)` | Chân trang bị che |
+| 3 | KHÔNG dùng `add_shape(RECT, 0, 0, SLIDE_W, SLIDE_H)` | grep script | File corrupt / Repair |
+| 4 | KHÔNG thêm shape footer mới | Đếm shapes ở Y > 6.35 = chỉ master | Footer chồng |
+| 5 | Z-order: `insert(2, sp)` KHÔNG BAO GIỜ `insert(0, sp)` | grep `insert(0` | XML schema vỡ |
+| 6 | 3 loại text color trong palette | Check keys | Chữ bị mất tương phản |
+| 7 | Font tiêu đề 24-28pt, nội dung 18-20pt | Verify font sizes | Chữ quá to/nhỏ |
+| 8 | Tối đa 3-4 bullets/slide | Count lines ≤ 4 | Chữ tràn/chồng |
+| 9 | Mỗi slide nội dung có ≥ 1 hình ảnh | Count pictures ≥ 1 | Slide trống |
+| 10 | Mỗi bullet có ảnh riêng (per-bullet) | Count pictures ≥ bullets | Thiếu minh họa |
+| 11 | Slide practice/activity có animation | Check `p:timing` XML | Items hiện cùng lúc |
+| 12 | Slide trò chơi có ảnh minh họa ≥ 1 | Count pictures on game slides | HS không có gì nhìn |
+| 13 | Card + accent bar phải group | Check `<p:grpSp>` | Bố cục rời rạc |
+
+### Script kiểm tra `_verify_slide_v2.py`:
+- Chạy tự động sau mỗi lần tạo slide
+- Input: file `.pptx` vừa tạo
+- Output: Báo cáo PASS/FAIL cho từng slide + từng quy tắc
+- Nếu bất kỳ quy tắc 1-5 FAIL → BẮT BUỘC sửa và tạo lại
+
+---
+
 ## Checklist kiểm tra trước khi giao slide
 
-- [ ] Mỗi slide có hình ảnh minh họa (không chỉ có text/emoji)
-- [ ] Ngôn ngữ hướng tới HS (không có "HS nhận biết được...", "Mục tiêu:...")  
-- [ ] Chân trang UNIGO có trên mọi slide
-- [ ] Logo UNIGO không bị che
-- [ ] Nội dung nằm trong Vùng An Toàn (Y 1.15in → 6.30in)
-- [ ] Tối đa 3-4 dòng text/slide
+### Kỹ thuật:
+- [ ] Mọi shape nằm trong Vùng An Toàn (Y 1.15in → 6.35in)
+- [ ] Logo UNIGO không bị che (không shape nào ở Y < 1.15in)
+- [ ] Chân trang UNIGO có trên mọi slide (master Picture 9)
+- [ ] Z-order đúng: background `insert(2, sp)`, text thêm sau
+- [ ] Không có shape footer tự tạo
 - [ ] Font chữ đúng chuẩn (cỡ phù hợp lứa tuổi)
-- [ ] Có hiệu ứng transition và animation
+
+### Nội dung:
+- [ ] Ngôn ngữ hướng tới HS (không có "HS nhận biết được...", "Mục tiêu:...")
 - [ ] Không có slide liệt kê mục tiêu/năng lực kiểu giáo án
+- [ ] Tối đa 3-4 bullets/slide
+
+### Hình ảnh (MỚI):
+- [ ] **Mỗi bullet point có ảnh riêng** (per-bullet image)
+- [ ] Ảnh per-bullet đủ lớn: ≥ 2in×2in (TH Grid) hoặc 2in×1.5in (THCS Row)
+- [ ] Slide trò chơi có ảnh minh họa đủ lớn cho HS nhìn
+- [ ] Layout ảnh đúng cấp: Grid Flashcard (TH) / Horizontal Row (THCS)
+
+### Animation (MỚI):
+- [ ] Có hiệu ứng transition giữa các slide
+- [ ] Slide câu hỏi/ghép nối: items animation tuần tự theo click
+- [ ] Slide ghép nối: vế A hiện trước → click → vế B hiện
+- [ ] Ảnh và text cùng item hiện ĐỒNG THỜI (cùng 1 click)
 
 ## Thư viện sử dụng
 - `python-pptx`: Tạo .pptx

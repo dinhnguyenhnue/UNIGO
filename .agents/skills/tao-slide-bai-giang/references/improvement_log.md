@@ -1,4 +1,37 @@
 # Nhật ký cải tiến Slide Bài giảng UNIGO
+
+## 2026-08-13 (v3) — Nâng cấp: Per-Bullet Images, Animation tuần tự, Game Images, Anti-Bug Checklist
+
+- **Yêu cầu từ user (4 nhóm):**
+  1. Mỗi bullet point phải có ảnh AI riêng (tạo prompt từ nội dung bullet)
+  2. Slide câu hỏi/ghép nối cần animation tuần tự (hiện dần theo click) + ảnh mỗi item
+  3. Slide trò chơi bắt buộc có hình ảnh minh họa đủ lớn cho HS chơi
+  4. Anti-bug checklist kỹ thuật để tránh mọi lỗi đã gặp (logo/footer/z-order/font)
+
+- **Thay đổi đã áp dụng:**
+  1. **Per-Bullet Images (Bước 2.5 mới trong SKILL.md):**
+     - Mỗi bullet → 1 ảnh AI (prompt = nội dung bullet + context lứa tuổi)
+     - Layout phân cấp: Grid Flashcard (TH, ảnh 2in×2in) vs Horizontal Row (THCS, ảnh 2in×1.5in)
+     - Chuỗi fallback 3 tầng: SGK → AI → ảnh chung
+     - Tối đa 3-4 bullets/slide, > 4 thì chia 2 slides
+  2. **Animation tuần tự (Bước 7.2 mới):**
+     - XML `p:timing` animation `appear` per-shape on click
+     - Items practice/activity hiện lần lượt (HS suy nghĩ trước khi GV click)
+     - Ghép nối: vế A + ảnh hiện trước → click → vế B hiện
+     - Helper: `add_appear_animation()`, `add_group_animation()`
+  3. **Game Images (Bước 7.3 mới):**
+     - Bảng 6 loại trò chơi + prompt AI mẫu riêng
+     - Layout: tiêu đề (40%) + grid ảnh 2in×2in + card (60%)
+  4. **Anti-Bug Checklist (Section mới):**
+     - 13 quy tắc kỹ thuật cứng kiểm tra tự động
+     - Script `_verify_slide_v2.py` chạy sau mỗi lần tạo slide
+     - Quy tắc 1-5 FAIL → bắt buộc sửa lại
+
+- **Files đã cập nhật:**
+  - `SKILL.md` — Thêm Bước 2.5, cập nhật Bước 5 (bảng deck), Bước 7 (animation nâng cao), Anti-Bug Checklist, Checklist cuối
+  - `AGENTS.md` Section VII — Thêm quy tắc 7, 8, 9
+  - `improvement_log.md` — Entry này
+
 ## 2026-08-10 (v2) - Fix: Logo/Chân trang bị che, Tương phản kém
 
 - **Vấn đề nhận diện (từ user feedback + screenshot)**:

@@ -13,7 +13,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 DIR_WORD = r'D:\UNIGO\Thời khóa biểu giáo viên'
 DIR_MAU = r'D:\UNIGO\Hệ thống mẫu văn bản\Nguyên đã làm\Thời khóa biểu'
-TKB_EXCEL_SOURCE = r'D:\UNIGO\TKB toàn trường CHECK - chuẩn.xlsx'
+TKB_EXCEL_SOURCE = r'D:\UNIGO\TKB toàn trường lần 3 - 12.8.2026.xlsx'
 
 os.makedirs(DIR_WORD, exist_ok=True)
 os.makedirs(DIR_MAU, exist_ok=True)
@@ -53,33 +53,94 @@ def get_nguyen_data():
     wb = openpyxl.load_workbook(TKB_EXCEL_SOURCE, data_only=True)
     ws = wb['TKB_LOP_SC']
 
+    # Xây dựng map cột -> (lớp, buổi)
+    # File có nhiều nhóm cột THỨ/TIẾT lặp lại (col 1-2, 11-12, 21-22, 33-34)
+    # Các cột THỨ/TIẾT là header không phải lớp học
+    THU_COLS  = set()  # Cột chứa "THỨ"
+    TIET_COLS = set()  # Cột chứa "TIẾT"
+    for c in range(1, ws.max_column + 1):
+        v4 = str(ws.cell(4, c).value or '').strip()
+        v5 = str(ws.cell(5, c).value or '').strip()
+        if v4 in ('THỨ', 'THU'):
+            THU_COLS.add(c)
+        elif v4 in ('TIẾT', 'TIET'):
+            TIET_COLS.add(c)
+
     classes = {}
     curr_lop = None
-    for c in range(3, ws.max_column + 1):
+    for c in range(1, ws.max_column + 1):
         val = ws.cell(4, c).value
-        if val:
+        val5 = ws.cell(5, c).value
+        if val and str(val).strip() not in ('THỨ', 'TIẾT', 'THU', 'TIET'):
             curr_lop = str(val).strip()
-        buoi = str(ws.cell(5, c).value or '').strip()
-        classes[c] = (curr_lop, buoi)
+        buoi = str(val5 or '').strip()
+        if c not in THU_COLS and c not in TIET_COLS:
+            classes[c] = (curr_lop, buoi)
+
+    # Tìm tất cả cột THỨ trong file (có thể nhiều cột)
+    # và cột TIẾT tương ứng ngay sau THỨ
+    # Mỗi "block" của bảng có dạng: [THỨ_col, TIET_col, lop1_sang, lop1_chieu, lop2_sang, ...]
+    # Xác định các block bằng cách tìm cột có giá trị THỨ ở row 4
+    thu_col_list = sorted(THU_COLS)
+    tiet_col_list = sorted(TIET_COLS)
 
     slots = []
-    curr_thu = None
+    # Đọc từng hàng dữ liệu (từ row 6 trở đi)
+    # Với mỗi block, thu và tiet nằm ở cột riêng của block đó
+    # Block 1: THỨ=col1, TIẾT=col2, lớp từ col3 đến col10
+    # Block 2: THỨ=col11, TIẾT=col12, lớp từ col13 đến col20
+    # Block 3: THỨ=col21, TIẾT=col22, lớp từ col23 đến col32
+    # Block 4: THỨ=col33, TIẾT=col34, lớp từ col35 đến col44
+
+    # Map: thu_col -> tiet_col (cột TIẾT ngay sau THỨ)
+    block_map = {}  # thu_col -> tiet_col
+    for tc in thu_col_list:
+        # TIẾT col là col ngay sau hoặc tiet_col > tc nhỏ nhất
+        candidates = [x for x in tiet_col_list if x > tc]
+        if candidates:
+            block_map[tc] = candidates[0]
+
+    # Đọc dữ liệu theo từng block
+    block_thu_states = {tc: None for tc in thu_col_list}  # lưu thứ hiện tại cho mỗi block
+
     for r in range(6, ws.max_row + 1):
-        t_val = ws.cell(r, 1).value
-        if t_val:
-            curr_thu = str(int(t_val))
-        tiet_val = ws.cell(r, 2).value
-        if tiet_val is None:
-            continue
-        tiet = int(tiet_val)
-        for c in range(3, ws.max_column + 1):
-            cell_val = ws.cell(r, c).value
-            if cell_val and 'Nguyên' in str(cell_val):
-                lop, buoi = classes[c]
-                raw = str(cell_val).strip()
-                mon = raw.split('-')[0].strip()
-                is_thcs = any(x in lop for x in ['6', '7', '8'])
-                slots.append((curr_thu, buoi, tiet, mon, lop, is_thcs))
+        # Cập nhật thứ cho mỗi block
+        for tc in thu_col_list:
+            tv = ws.cell(r, tc).value
+            if tv and str(tv).strip().isdigit():
+                block_thu_states[tc] = str(int(str(tv).strip()))
+
+        # Với mỗi block, lấy tiết và scan các cột lớp
+        for tc, tiet_col in block_map.items():
+            tiet_val = ws.cell(r, tiet_col).value
+            if tiet_val is None:
+                continue
+            try:
+                tiet = int(tiet_val)
+            except (ValueError, TypeError):
+                continue
+
+            curr_thu = block_thu_states[tc]
+            if curr_thu is None:
+                continue
+
+            # Scan các cột lớp trong block này
+            # Block kết thúc khi gặp THỨ/TIẾT block tiếp theo
+            next_thu_cols = [x for x in thu_col_list if x > tc]
+            col_end = next_thu_cols[0] if next_thu_cols else ws.max_column + 1
+
+            for c in range(tiet_col + 1, col_end):
+                if c in THU_COLS or c in TIET_COLS:
+                    continue
+                cell_val = ws.cell(r, c).value
+                if cell_val and 'Nguyên' in str(cell_val):
+                    lop, buoi = classes.get(c, (None, ''))
+                    if not lop:
+                        continue
+                    raw = str(cell_val).strip()
+                    mon = raw.split('-')[0].strip()
+                    is_thcs = any(x in lop for x in ['6', '7', '8'])
+                    slots.append((curr_thu, buoi, tiet, mon, lop, is_thcs))
 
     return {
         'full_name': 'Đậu Đình Nguyên',

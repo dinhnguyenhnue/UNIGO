@@ -39,6 +39,7 @@ import sys
 import os
 import re
 from docx import Document
+from docx.shared import Pt
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from datetime import date, timedelta
@@ -655,16 +656,24 @@ def compute_rotation_ppct(tuan_so, day_idx, is_even_week, period_index_in_day):
 
 
 def set_cell_text(cell, text):
-    """Ghi text vao cell, giu dinh dang run dau tien."""
+    """Ghi text vao cell, giu dinh dang run dau tien. Neu khong co run, tao moi voi Times New Roman."""
     for p in cell.paragraphs:
         if p.runs:
             p.runs[0].text = text
             for r in p.runs[1:]:
                 r.text = ''
-            break
-        else:
-            p.text = text
-            break
+            # Dam bao font Times New Roman cho run dau tien
+            if p.runs[0].font.name is None:
+                p.runs[0].font.name = 'Times New Roman'
+            if p.runs[0].font.size is None:
+                p.runs[0].font.size = Pt(13)
+            return
+    # Khong co run -> tao moi voi font chuan
+    p = cell.paragraphs[0]
+    p.clear()
+    run = p.add_run(text)
+    run.font.name = 'Times New Roman'
+    run.font.size = Pt(13)
 
 
 def save_safe(doc, path):
@@ -836,6 +845,83 @@ def update_ky_ten(doc, start_date):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# XOA BAN SAO THU 2 & FIX FONT
+# ─────────────────────────────────────────────────────────────────────────────
+
+def remove_second_copy(doc):
+    """
+    Template Tuan 01 co 2 ban (orientation + bai hoc thuc).
+    Khi generate tuan 2+, chi giu 1 ban de tranh double noi dung.
+    Xoa tat ca elements tu TUAN paragraph thu 2 den truoc 'Nhan xet cua BGH'.
+    """
+    body = doc.element.body
+    children = list(body)
+
+    # Tim tat ca paragraph co 'TUAN' va 'tu ngay'
+    tuan_paras = []
+    for c in children:
+        tag = c.tag.split('}')[-1] if '}' in c.tag else c.tag
+        if tag == 'p':
+            txt = ''.join(t.text or '' for t in c.findall('.//' + qn('w:t')))
+            if 'TUẦN' in txt.upper() and 'từ ngày' in txt:
+                tuan_paras.append(c)
+
+    if len(tuan_paras) < 2:
+        return 0  # Chi co 1 ban, khong can xoa
+
+    # Tim paragraph 'Nhan xet cua BGH'
+    nhanxet_el = None
+    for c in children:
+        tag = c.tag.split('}')[-1] if '}' in c.tag else c.tag
+        if tag == 'p':
+            txt = ''.join(t.text or '' for t in c.findall('.//' + qn('w:t')))
+            if 'nhận xét' in txt.lower() and 'bgh' in txt.lower():
+                nhanxet_el = c
+                break
+
+    if nhanxet_el is None:
+        return 0
+
+    # Xoa tat ca elements tu TUAN thu 2 den truoc nhan xet
+    children = list(body)  # Refresh
+    start_idx = children.index(tuan_paras[1])
+    end_idx = children.index(nhanxet_el)
+
+    removed = 0
+    for el in children[start_idx:end_idx]:
+        tag = el.tag.split('}')[-1] if '}' in el.tag else el.tag
+        if tag != 'sectPr':  # Giu lai sectPr
+            body.remove(el)
+            removed += 1
+
+    return removed
+
+
+def fix_all_fonts(doc):
+    """
+    Quet tat ca bang LBG 7 cot va dam bao moi run deu co Times New Roman 13pt.
+    """
+    fixed = 0
+    for tbl in doc.tables:
+        if len(tbl.columns) != 7:
+            continue
+        header_texts = [c.text.strip() for c in tbl.rows[0].cells]
+        if 'Lớp' not in header_texts:
+            continue
+        for ri in range(0, len(tbl.rows)):
+            for ci in range(len(tbl.rows[ri].cells)):
+                cell = tbl.rows[ri].cells[ci]
+                for p in cell.paragraphs:
+                    for run in p.runs:
+                        if run.font.name != 'Times New Roman':
+                            run.font.name = 'Times New Roman'
+                            fixed += 1
+                        if run.font.size is None or run.font.size != Pt(13):
+                            run.font.size = Pt(13)
+    return fixed
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # PAGE BREAKS
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -855,15 +941,28 @@ def fix_page_breaks(doc):
     Xoa empty paragraph thua giua cac section.
     Chen page break sau bang ky ten sang va chieu.
     Ket qua: 3 trang (sang | chieu | nhan xet BGH).
+    Tim bang ky ten bang noi dung (1 row, 2 cols, co 'Nhan xet') thay vi hardcode index.
     """
     body = doc.element.body
     children = list(body)
 
-    tbls = [c for c in children
-            if (c.tag.split('}')[-1] if '}' in c.tag else c.tag) == 'tbl']
+    # Tim bang ky ten = bang 1 hang, 2 cot, co text 'nhận xét' hoac 'Kiểm tra'
+    sign_tables = []
+    for c in children:
+        tag = c.tag.split('}')[-1] if '}' in c.tag else c.tag
+        if tag == 'tbl':
+            # Tim bang tuong ung trong doc.tables
+            for tbl in doc.tables:
+                if tbl._element is c and len(tbl.rows) == 1 and len(tbl.columns) == 2:
+                    sign_tables.append(c)
+                    break
 
-    sign_sang = tbls[2]   # Bang ky ten sang
-    sign_chieu = tbls[4]  # Bang ky ten chieu
+    if len(sign_tables) < 2:
+        print(f'   ⚠ Chi tim thay {len(sign_tables)} bang ky ten (can 2)')
+        return
+
+    sign_sang = sign_tables[0]
+    sign_chieu = sign_tables[1]
 
     def find_para(keyword):
         for c in list(body):
@@ -945,6 +1044,11 @@ def generate_lbg(tuan_so):
     # B1: Load template
     doc = Document(TEMPLATE)
 
+    # B1.5: Xoa ban sao thu 2 (tranh double noi dung)
+    n_removed = remove_second_copy(doc)
+    if n_removed:
+        print(f'   Xoa ban sao thu 2: {n_removed} elements')
+
     # B2: Cap nhat tieu de
     update_headers(doc, tuan_so, start_date, end_date)
     print('   Cap nhat tieu de + ngay')
@@ -956,6 +1060,11 @@ def generate_lbg(tuan_so):
     # B4: Rotation + PPCT + Ten bai
     update_table_data(doc, tuan_so)
     print(f'   Rotation + PPCT + Ten bai updated')
+
+    # B4.5: Fix font Times New Roman
+    n_fixed = fix_all_fonts(doc)
+    if n_fixed:
+        print(f'   Fix font: {n_fixed} runs')
 
     # B5: Ky ten
     update_ky_ten(doc, start_date)
@@ -979,13 +1088,19 @@ def generate_lbg(tuan_so):
         split_path = os.path.join(LBG_DIR, split_name)
         saved = save_safe(d2, split_path)
 
-        # Kiem tra
+        # Kiem tra - tim bang LBG dong (7 cot, co 'Lop')
         dc = Document(saved)
-        cs = sum(1 for ri in range(1, len(dc.tables[1].rows))
-                 if dc.tables[1].rows[ri].cells[4].text.strip())
-        cc = sum(1 for ri in range(1, len(dc.tables[3].rows))
-                 if dc.tables[3].rows[ri].cells[4].text.strip())
-        print(f'   {label}: sang={cs} tiet, chieu={cc} tiet -> {os.path.basename(saved)}')
+        lbg_tbls = [t for t in dc.tables
+                    if len(t.columns) == 7
+                    and 'Lớp' in [c.text.strip() for c in t.rows[0].cells]]
+        if len(lbg_tbls) >= 2:
+            cs = sum(1 for ri in range(1, len(lbg_tbls[0].rows))
+                     if lbg_tbls[0].rows[ri].cells[4].text.strip())
+            cc = sum(1 for ri in range(1, len(lbg_tbls[1].rows))
+                     if lbg_tbls[1].rows[ri].cells[4].text.strip())
+            print(f'   {label}: sang={cs} tiet, chieu={cc} tiet -> {os.path.basename(saved)}')
+        else:
+            print(f'   {label}: -> {os.path.basename(saved)}')
 
     print(f'\n HOAN TAT Tuan {tuan_so:02d}! Thu muc: {LBG_DIR}')
 

@@ -201,3 +201,25 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
    - Panel màu chỉ nằm gọn trong Vùng An Toàn (Y 1.15in → 6.35in).
    - KHÔNG gọi `set_slide_bg(primary)` phủ toàn slide.
    - Áp dụng hệ thống xoay vòng 8+ bộ màu (Color Palette rotation).
+
+7. **Per-Bullet Images (BẮT BUỘC từ v3):**
+   - **Mỗi bullet point trong slide nội dung (`learn`, `warmup`) PHẢI có ảnh minh họa riêng.**
+   - Tạo prompt AI từ chính nội dung text bullet + context phù hợp lứa tuổi.
+   - Layout phân cấp:
+     - **Tiền TH → Lớp 5:** Layout A — Grid Flashcard (ảnh 2in×2in trên + text dưới)
+     - **Lớp 6 → Lớp 8:** Layout B — Horizontal Row (ảnh 2in×1.5in trái + text phải)
+   - Tối đa 3-4 bullets/slide. Nếu > 4 bullets → chia thành 2 slides.
+   - Chuỗi fallback: SGK → AI-generated → Ảnh chung.
+
+8. **Animation tuần tự cho slide Câu hỏi / Ghép nối (BẮT BUỘC từ v3):**
+   - Slide `practice`/`activity` có `items` PHẢI animation từng item theo click.
+   - Mỗi item (card text + ảnh) = 1 nhóm animation. HS suy nghĩ trước khi GV click hiện tiếp.
+   - Slide ghép nối (chứa `↔`/`→`): vế A + ảnh hiện trước → click → vế B hiện.
+   - Ảnh minh họa mỗi item xuất hiện CÙNG LÚC với text (cùng 1 click).
+   - Hàm bắt buộc: `add_appear_animation(slide, shape, click_index)`, `add_group_animation(slide, shapes_list, click_index)`.
+
+9. **Slide Trò chơi BẮT BUỘC có ảnh minh họa (từ v3):**
+   - MỌI slide trò chơi / hoạt động (`activity`) PHẢI có ảnh minh họa đủ lớn (~2in×2in) để HS nhìn rõ.
+   - Bảng loại trò chơi: Đúng/Sai, Ghép nối, Sắp xếp, Vẽ, Thảo luận, Nhận diện → mỗi loại có prompt AI mẫu riêng.
+   - Layout: Phần trên (40%) = tiêu đề + hướng dẫn; Phần dưới (60%) = grid ảnh + card tương tác.
+   - Animation tuần tự: ảnh + card item hiện lần lượt theo click.
