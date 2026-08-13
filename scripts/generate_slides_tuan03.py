@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Script tạo Bộ Slide bài giảng Student-Facing v3 cho TOÀN BỘ 9 KHỐI LỚP Tuần 02
+Script tạo Bộ Slide bài giảng Student-Facing v3 cho TOÀN BỘ 9 KHỐI LỚP Tuần 03
 (Tiền Tiểu Học, Lớp 1, 2, 3, 4, 5, 6, 7, 8)
 
-Quy chuẩn v3 (Đã lưu vào bộ nhớ Agent):
+Quy chuẩn v3:
   1. Per-Bullet Images:
      - TH (Tiền TH -> Lớp 5): Layout A — Grid Flashcard (ảnh trên, text dưới)
      - THCS (Lớp 6 -> Lớp 8): Layout B — Horizontal Row (ảnh trái 2in×1.5in, text phải)
@@ -66,348 +66,349 @@ COLOR_PALETTES = [
      "text_on_primary": "FFFFFF", "text_on_bg": "78350F", "text_on_card": "451A03"},
 ]
 
-# ─── Nội dung bài học 9 Khối Lớp ───
-LESSONS = [
+# ─── Nội dung bài học 9 Khối Lớp TUẦN 03 ───
+LESSONS_TUAN03 = [
     {
         "id": "Tien_TH", "folder": "Tiền_tiểu_học", "lop_label": "Tiền Tiểu học", "lop_num": 0, "is_thcs": False,
-        "bai": "Bài 1. Máy tính xung quanh em",
-        "file_name": "Slide_Tin_hoc_Tien_TH_Bai01_May_tinh_xung_quanh_em.pptx",
+        "bai": "Bài 2. Em ngồi máy tính an toàn",
+        "file_name": "Slide_Tin_hoc_Tien_TH_Bai02_Em_ngoi_may_tinh_an_toan.pptx",
         "slides_content": [
-            {"type": "cover", "title": "Máy tính xung quanh em", "subtitle": "Tin học • Tiền Tiểu học • Bài 1"},
-            {"type": "warmup", "title": "Các con ơi, nhìn xung quanh nào!",
-             "content": "Con có thấy chiếc máy tính nào không?\nChỉ cho cô xem nhé!"},
-            {"type": "learn", "title": "Đây là máy tính!",
+            {"type": "cover", "title": "Em ngồi máy tính an toàn 🪑", "subtitle": "Tin học • Tiền Tiểu học • Bài 2"},
+            {"type": "warmup", "title": "Ai ngồi đúng tư thế nào?",
+             "content": "Con hãy nhìn hai hình mẫu:\nBạn nào đang ngồi thẳng lưng, mắt cách màn hình vừa đủ?\nCùng chỉ cho cô xem nhé!"},
+            {"type": "learn", "title": "Tư thế ngồi chuẩn",
              "bullets": [
-                 "Trong phòng học của chúng mình",
-                 "Ở nhà (laptop của bố mẹ)",
-                 "Trên tay (điện thoại cũng là máy tính nhỏ!)"
+                 "Lưng thẳng, tựa nhẹ vào ghế",
+                 "Hai chân đặt bằng phẳng trên sàn",
+                 "Mắt cách màn hình 50-70cm (bằng 1 cánh tay)",
+                 "Cánh tay vuông góc khi dùng bàn phím"
              ]},
-            {"type": "learn", "title": "Máy tính có những phần nào?",
+            {"type": "learn", "title": "Bảo vệ đôi mắt của em",
              "bullets": [
-                 "Màn hình — để con nhìn",
-                 "Bàn phím — để con gõ chữ",
-                 "Chuột — để con chỉ và nhấp",
-                 "Thân máy — bộ não của máy tính"
+                 "Không ngồi quá gần màn hình",
+                 "Nghỉ ngơi mắt sau mỗi 15-20 phút",
+                 "Nhìn ra xa cửa sổ để thư giãn mắt",
+                 "Giữ phòng học đủ ánh sáng"
              ]},
-            {"type": "learn", "title": "Máy tính giúp chúng ta làm gì?",
+            {"type": "learn", "title": "An toàn điện trong phòng máy",
              "bullets": [
-                 "Học bài vui vẻ",
-                 "Vẽ tranh đẹp",
-                 "Nghe nhạc hay",
-                 "Xem hoạt hình"
+                 "Không chạm tay vào ổ cắm hay dây điện",
+                 "Không mang đồ ăn, nước uống gần máy",
+                 "Báo ngay cho giáo viên khi máy có sự cố"
              ]},
-            {"type": "practice", "title": "Cùng chơi nào!",
-             "instruction": "Con hãy chỉ vào từng bộ phận và nói tên cho cô nghe:",
-             "items": ["Đâu là màn hình?", "Đâu là bàn phím?", "Đâu là chuột?"]},
-            {"type": "activity", "title": "Thử thách nhỏ!",
-             "content": "Con hãy vẽ một chiếc máy tính vào giấy của mình.\nNhớ vẽ đủ các bộ phận nhé!"},
-            {"type": "summary", "title": "Hôm nay con đã biết!",
-             "items": ["Máy tính ở xung quanh chúng ta", "Máy tính có: màn hình, bàn phím, chuột, thân máy", "Máy tính giúp con học và chơi"]},
-            {"type": "thanks", "title": "Các con giỏi lắm!", "content": "Hẹn gặp lại tiết sau nhé!"},
+            {"type": "practice", "title": "Bắt chước tư thế đúng!",
+             "instruction": "Các con cùng thực hiện 4 bước:",
+             "items": ["Chỉnh ghế thẳng lưng", "Đặt hai chân xuống sàn", "Đưa tay duỗi thẳng đo màn hình", "Mỉm cười sẵn sàng học bài!"]},
+            {"type": "activity", "title": "Trò chơi: Đúng hay Sai?",
+             "instruction": "Hành động nào an toàn?",
+             "items": ["Ngồi còng lưng ghé sát mắt ↔ SAI ❌", "Nghỉ mắt nhìn ra cửa sổ ↔ ĐÚNG ✅", "Vừa uống nước vừa dùng máy ↔ SAI ❌", "Nhờ cô trợ giúp khi hỏng điện ↔ ĐÚNG ✅"]},
+            {"type": "summary", "title": "Hôm nay em đã nhớ!",
+             "items": ["Ngồi thẳng lưng, chân chạm sàn", "Mắt xa màn hình một cánh tay", "Giữ an toàn điện tuyệt đối"]},
+            {"type": "thanks", "title": "Các con giỏi lắm! 🌟", "content": "BTVN: Hướng dẫn bố mẹ\ntư thế ngồi máy tính đúng ở nhà!"},
         ]
     },
     {
         "id": "Lop_1", "folder": "Lớp_1", "lop_label": "Lớp 1", "lop_num": 1, "is_thcs": False,
-        "bai": "Bài 1. Chiếc máy tính của em",
-        "file_name": "Slide_Tin_hoc_Lop_1_Bai01_Chiec_may_tinh_cua_em.pptx",
+        "bai": "Bài 2. Ôn và nâng cấp kỹ năng chuột",
+        "file_name": "Slide_Tin_hoc_Lop_1_Bai02_On_va_nang_cap_ky_nang_chuot.pptx",
         "slides_content": [
-            {"type": "cover", "title": "Chiếc máy tính của em", "subtitle": "Tin học • Lớp 1 • Bài 1"},
-            {"type": "warmup", "title": "Em đã gặp máy tính ở đâu?",
-             "content": "Hãy kể cho cô nghe:\n● Em thấy máy tính ở đâu?\n● Bố mẹ dùng máy tính để làm gì?"},
-            {"type": "learn", "title": "Cùng khám phá máy tính nào!",
+            {"type": "cover", "title": "Nâng cấp kỹ năng chuột 🖱️", "subtitle": "Tin học • Lớp 1 • Bài 2"},
+            {"type": "warmup", "title": "Chú chuột siêu tốc!",
+             "content": "Em đã biết cách cầm chuột chưa?\nCùng ôn lại 5 thao tác chuột cơ bản nào!"},
+            {"type": "learn", "title": "5 thao tác dùng chuột",
              "bullets": [
-                 "Máy tính để bàn (Desktop)",
-                 "Máy tính xách tay (Laptop)",
-                 "Máy tính bảng (Tablet)"
+                 "Di chuyển chuột (Move mouse)",
+                 "Nháy chuột trái (Left click)",
+                 "Nháy chuột phải (Right click)",
+                 "Nháy đôi chuột (Double click)"
              ]},
-            {"type": "learn", "title": "Các bộ phận của máy tính",
+            {"type": "learn", "title": "Kéo thả chuột chuyên nghiệp",
              "bullets": [
-                 "Màn hình — hiển thị hình ảnh, chữ",
-                 "Bàn phím — em gõ chữ, số",
-                 "Chuột — em nhấp để chọn",
-                 "Thân máy — nơi xử lý thông tin"
+                 "Nắm giữ nút chuột trái",
+                 "Di chuyển chuột đến vị trí mới",
+                 "Thả ngón tay ra để hoàn tất",
+                 "Dùng để di chuyển biểu tượng trên màn hình"
              ]},
-            {"type": "learn", "title": "Bật và tắt máy tính đúng cách",
+            {"type": "learn", "title": "Bí kíp điều khiển con trỏ",
              "bullets": [
-                 "Bước 1: Nhấn nút nguồn để bật máy",
-                 "Bước 2: Chờ máy khởi động xong",
-                 "Bước 3: Khi muốn tắt → Chọn Shut Down"
+                 "Cầm chuột nhẹ nhàng bằng tay phải",
+                 "Ngón trỏ đặt lên nút trái",
+                 "Ngón giữa đặt lên nút phải",
+                 "Giữ chuột phẳng trên mặt bàn"
              ]},
-            {"type": "practice", "title": "Em hãy thực hành!",
-             "instruction": "Thực hiện lần lượt các yêu cầu sau:",
-             "items": ["Chỉ vào từng bộ phận và gọi tên", "Thử nhấp chuột trái", "Thử gõ tên mình bằng bàn phím"]},
-            {"type": "activity", "title": "Trò chơi: Nối đúng!",
-             "instruction": "Nối tên bộ phận với công dụng đúng:",
-             "items": ["Màn hình ↔ Hiện hình ảnh", "Bàn phím ↔ Gõ chữ và số", "Chuột ↔ Nhấp và chọn", "Thân máy ↔ Bộ não máy tính"]},
-            {"type": "summary", "title": "Em nhớ được gì nào?",
-             "items": ["Máy tính có nhiều loại khác nhau", "4 bộ phận chính: Màn hình, Bàn phím, Chuột, Thân máy", "Bật/Tắt máy tính đúng quy trình"]},
-            {"type": "thanks", "title": "Em giỏi lắm!", "content": "Về nhà: Hãy kể cho bố mẹ nghe\nvề chiếc máy tính ở lớp nhé!"},
+            {"type": "practice", "title": "Thực hành luyện tập chuột!",
+             "instruction": "Thực hiện theo các yêu cầu:",
+             "items": ["Nháy đôi mở phần mềm Paint", "Kéo thả biểu tượng vào thư mục", "Nháy phải chuột xem thực đơn", "Nháy trái chọn màu vẽ"]},
+            {"type": "activity", "title": "Thử thách kéo thả!",
+             "instruction": "Thực hiện bài tập ghép hình:",
+             "items": ["Di chuyển hình tròn vào ô tương ứng", "Kéo ô chữ thả vào khung bài làm", "Ghép mảnh tranh thành hình hoàn chỉnh"]},
+            {"type": "summary", "title": "Tóm tắt bài học",
+             "items": ["Thành thạo 5 thao tác chuột cơ bản", "Kéo thả chuột chính xác và linh hoạt", "Bảo vệ chuột sạch sẽ sau khi dùng"]},
+            {"type": "thanks", "title": "Em giỏi lắm! ⭐", "content": "BTVN: Luyện tập trò chơi kéo thả chuột 10 phút!"},
         ]
     },
     {
         "id": "Lop_2", "folder": "Lớp_2", "lop_label": "Lớp 2", "lop_num": 2, "is_thcs": False,
-        "bai": "Bài 1. Máy tính là người bạn của em",
-        "file_name": "Slide_Tin_hoc_Lop_2_Bai01_May_tinh_la_nguoi_ban_cua_em.pptx",
+        "bai": "Bài 2. Ôn và nâng cấp kỹ năng chuột",
+        "file_name": "Slide_Tin_hoc_Lop_2_Bai02_On_va_nang_cap_ky_nang_chuot.pptx",
         "slides_content": [
-            {"type": "cover", "title": "Máy tính là người bạn của em", "subtitle": "Tin học • Lớp 2 • Bài 1"},
-            {"type": "warmup", "title": "Máy tính giúp em những gì?",
-             "content": "Hãy kể cho cô nghe:\n● Em dùng máy tính để làm gì?\n● Máy tính giúp ích gì cho công việc gia đình?"},
-            {"type": "learn", "title": "Máy tính — Người bạn thông minh!",
+            {"type": "cover", "title": "Luyện tập thao tác chuột nâng cao 🖱️", "subtitle": "Tin học • Lớp 2 • Bài 2"},
+            {"type": "warmup", "title": "Thử thách phản xạ chuột!",
+             "content": "Em có thể nháy chuột nhanh trong 5 giây không?\nCùng sẵn sàng nhé!"},
+            {"type": "learn", "title": "Nâng cấp kỹ năng nháy đôi",
              "bullets": [
-                 "Học bài — tra cứu kiến thức bổ ích",
-                 "Vẽ tranh — sáng tạo nhiều sắc màu",
-                 "Viết văn — tập gõ chữ và soạn thảo"
+                 "Nháy hai lần liên tiếp thật nhanh",
+                 "Dùng để mở ngay các ứng dụng và thư mục",
+                 "Giữ chuột cố định không di chuyển khi nháy đôi"
              ]},
-            {"type": "learn", "title": "Máy tính còn giúp gì nữa?",
+            {"type": "learn", "title": "Luyện tập cuộn chuột (Scroll)",
              "bullets": [
-                 "Gọi video — nói chuyện với người thân",
-                 "Nghe nhạc và xem phim giải trí",
-                 "Chơi các trò chơi học tập trí tuệ"
+                 "Dùng ngón trỏ lăn con lăn ở giữa chuột",
+                 "Cuộn lên để xem phần trên trang web",
+                 "Cuộn xuống để xem phần dưới tài liệu"
              ]},
-            {"type": "learn", "title": "Sử dụng máy tính an toàn",
+            {"type": "learn", "title": "Lựa chọn nhiều đối tượng",
              "bullets": [
-                 "Ngồi đúng tư thế, mắt cách màn hình 40-50cm",
-                 "Nghỉ mắt sau mỗi 20-30 phút làm việc",
-                 "Luôn xin phép bố mẹ trước khi dùng máy"
+                 "Kéo chuột tạo khung bao quanh các đối tượng",
+                 "Chọn nhiều tệp cùng một lúc dễ dàng",
+                 "Tiết kiệm thời gian thao tác"
              ]},
-            {"type": "practice", "title": "Em hãy thực hành!",
-             "instruction": "Hãy hoàn thành từng bước luyện tập:",
-             "items": ["Ngồi đúng tư thế trước máy tính", "Mở phần mềm vẽ", "Vẽ một chiếc ô tô hoặc bông hoa"]},
-            {"type": "activity", "title": "Trò chơi: Đúng hay Sai?",
-             "instruction": "Chọn Đúng hoặc Sai cho mỗi câu sau:",
-             "items": ["Ngồi quá sát màn hình là ĐÚNG hay SAI?", "Hỏi ý kiến bố mẹ trước khi lên mạng?", "Chơi game cả ngày không nghỉ là ĐÚNG hay SAI?"]},
-            {"type": "summary", "title": "Em nhớ được gì nào?",
-             "items": ["Máy tính là người bạn hỗ trợ học tập và giải trí", "Biết nhiều ứng dụng thực tế của máy tính", "Giữ tư thế và khoảng cách ngồi an toàn"]},
-            {"type": "thanks", "title": "Em giỏi lắm!", "content": "BTVN: Kể cho người thân 3 điều\nmáy tính giúp em học tốt hơn!"},
+            {"type": "practice", "title": "Thực hành trên máy tính!",
+             "instruction": "Lần lượt thực hiện các bước:",
+             "items": ["Mở thư mục Học tập bằng nháy đôi", "Lăn con lăn xem hết danh sách tệp", "Kéo chuột chọn 3 tệp bài tập", "Nháy phải chuột để xem thông tin"]},
+            {"type": "activity", "title": "Trò chơi: Bắt bong bóng!",
+             "instruction": "Quy tắc chơi trên phần mềm:",
+             "items": ["Nháy chuột trái diệt bóng thường ↔ 10 điểm", "Nháy đôi diệt bóng vàng ↔ 20 điểm", "Kéo thả bóng xanh vào giỏ ↔ 30 điểm"]},
+            {"type": "summary", "title": "Ghi nhớ bài học",
+             "items": ["Nháy đôi nhanh và chuẩn xác", "Sử dụng hiệu quả con lăn cuộn chuột", "Thao tác chọn nhiều đối tượng"]},
+            {"type": "thanks", "title": "Xuất sắc! 🎉", "content": "BTVN: Thực hành cuộn chuột đọc sách điện tử ở nhà!"},
         ]
     },
     {
         "id": "Lop_3", "folder": "Lớp_3", "lop_label": "Lớp 3", "lop_num": 3, "is_thcs": False,
-        "bai": "Bài 1. Thông tin và quyết định",
-        "file_name": "Slide_Tin_hoc_Lop_3_Bai01_Thong_tin_va_quyet_dinh.pptx",
+        "bai": "Bài 2. Xử lí thông tin",
+        "file_name": "Slide_Tin_hoc_Lop_3_Bai02_Xu_li_thong_tin.pptx",
         "slides_content": [
-            {"type": "cover", "title": "Thông tin và Quyết định", "subtitle": "Tin học • Lớp 3 • Bài 1"},
-            {"type": "warmup", "title": "Em hãy đoán xem!",
-             "content": "Sáng nay trước khi đi học, em quyết định mặc áo gì?\nEm dựa vào đâu để đưa ra quyết định đó?"},
-            {"type": "learn", "title": "Thông tin là gì?",
+            {"type": "cover", "title": "Bài 2. Xử lí thông tin 🧠", "subtitle": "Tin học • Lớp 3 • Bài 2"},
+            {"type": "warmup", "title": "Bộ não chúng ta xử lý thế nào?",
+             "content": "Khi nhìn thấy đèn giao thông chuyển sang màu đỏ:\nEm sẽ làm gì?\nĐó chính là quá trình xử lý thông tin đấy!"},
+            {"type": "learn", "title": "Con người xử lý thông tin",
              "bullets": [
-                 "Nhìn thấy — chữ viết, hình ảnh, màu sắc",
-                 "Nghe thấy — âm thanh, tiếng nói, tiếng chuông",
-                 "Cảm nhận — độ nóng, lạnh, cứng, mềm"
+                 "Tiếp nhận thông tin qua giác quan (mắt, tai, mũi...)",
+                 "Bộ não suy nghĩ, phân tích và xử lý",
+                 "Đưa ra quyết định hoặc hành động phù hợp"
              ]},
-            {"type": "learn", "title": "Thông tin giúp em quyết định!",
+            {"type": "learn", "title": "Máy tính xử lý thông tin",
              "bullets": [
-                 "Trời mưa → Em mang theo ô hoặc áo mưa",
-                 "Đèn đỏ → Em dừng xe lại trước vạch",
-                 "Chuông reo → Em nhanh chóng vào lớp"
+                 "Thu nhận thông tin vào (Input: bàn phím, chuột)",
+                 "Bộ xử lý CPU tính toán và xử lý dữ liệu",
+                 "Xuất kết quả ra ngoài (Output: màn hình, loa)"
              ]},
-            {"type": "learn", "title": "Các dạng thông tin cơ bản",
+            {"type": "learn", "title": "So sánh Não người ↔ Máy tính",
              "bullets": [
-                 "Dạng chữ (văn bản) — sách, báo, tin nhắn",
-                 "Dạng hình ảnh — bức tranh, ảnh chụp",
-                 "Dạng âm thanh — bản nhạc, tiếng nói"
+                 "Bộ não con người: sáng tạo, cảm xúc, linh hoạt",
+                 "Máy tính: tính toán cực nhanh, chính xác, không mệt mỏi",
+                 "Con người điều khiển máy tính phục vụ cuộc sống"
              ]},
-            {"type": "practice", "title": "Em hãy thử nào!",
-             "instruction": "Trả lời từng câu hỏi tình huống:",
-             "items": ["Thấy mây đen kéo đến → Em quyết định gì?", "Nghe tiếng chuông báo thức → Em làm gì?", "Nhìn thấy bảng hiệu ghi Stop → Em làm gì?"]},
-            {"type": "activity", "title": "Trò chơi: Phân loại thông tin!",
-             "instruction": "Hãy xác định dạng của mỗi thông tin sau:",
-             "items": ["Bảng thời khóa biểu ↔ Dạng chữ / bảng", "Bản nhạc Quốc ca ↔ Dạng âm thanh", "Bức ảnh tập thể lớp ↔ Dạng hình ảnh"]},
-            {"type": "summary", "title": "Hôm nay em đã học!",
-             "items": ["Thông tin là những gì ta tiếp nhận qua giác quan", "3 dạng thông tin chính: Chữ, Hình ảnh, Âm thanh", "Thông tin là cơ sở giúp con người quyết định"]},
-            {"type": "thanks", "title": "Em làm tốt lắm!", "content": "BTVN: Kể 3 thông tin em nhận được\nhôm nay và quyết định tương ứng!"},
+            {"type": "practice", "title": "Phân tích ví dụ!",
+             "instruction": "Xác định 3 giai đoạn xử lý thông tin:",
+             "items": ["Nghe tiếng chuông báo thức (Thông tin vào)", "Bộ não biết đã đến giờ dậy (Xử lý)", "Thức dậy chuẩn bị đi học (Kết quả)"]},
+            {"type": "activity", "title": "Trò chơi: Thần đồng tính nhanh!",
+             "instruction": "Thi đấu giữa Não người & Máy tính:",
+             "items": ["Tính 15 + 27 ↔ Cả người và máy đều nhanh!", "Tính 987 x 654 ↔ Máy tính xử lý trong 0.01s!", "Sáng tác bức tranh ↔ Não con người sáng tạo hơn!"]},
+            {"type": "summary", "title": "Tóm tắt kiến thức",
+             "items": ["Quá trình xử lý: Tiếp nhận -> Xử lý -> Quyết định", "Bộ não xử lý thông tin của con người", "CPU là bộ não xử lý thông tin của máy tính"]},
+            {"type": "thanks", "title": "Bài học kết thúc!", "content": "BTVN: Tìm 2 ví dụ về xử lý thông tin\ntrong sinh hoạt hàng ngày của em!"},
         ]
     },
     {
         "id": "Lop_4", "folder": "Lớp_4", "lop_label": "Lớp 4", "lop_num": 4, "is_thcs": False,
-        "bai": "Bài 1. Phần cứng và phần mềm máy tính",
-        "file_name": "Slide_Tin_hoc_Lop_4_Bai01_Phan_cung_va_phan_mem.pptx",
+        "bai": "Bài 2. Gõ bàn phím đúng cách",
+        "file_name": "Slide_Tin_hoc_Lop_4_Bai02_Go_ban_phim_dung_cach.pptx",
         "slides_content": [
-            {"type": "cover", "title": "Phần cứng và Phần mềm", "subtitle": "Tin học • Lớp 4 • Bài 1"},
-            {"type": "warmup", "title": "Thử đoán xem!",
-             "content": "Em có thể chạm tay vào bàn phím không? → CÓ\nEm có thể sờ vào nhân vật trong trò chơi không? → KHÔNG\nVì sao lại như vậy?"},
-            {"type": "learn", "title": "Phần cứng (Hardware) là gì?",
+            {"type": "cover", "title": "Gõ bàn phím đúng cách ⌨️", "subtitle": "Tin học • Lớp 4 • Bài 2"},
+            {"type": "warmup", "title": "10 ngón tay múa trên bàn phím!",
+             "content": "Em gõ bàn phím bằng mấy ngón tay?\nGõ bằng 10 ngón sẽ giúp em gõ nhanh gấp 5 lần đấy!"},
+            {"type": "learn", "title": "Hàng phím cơ sở (Home row)",
              "bullets": [
-                 "Màn hình, bàn phím, chuột máy tính",
-                 "Loa, tai nghe, webcam thu hình",
-                 "CPU, RAM, ổ cứng bên trong thân máy"
+                 "Các phím: A S D F G H J K L ;",
+                 "Hai phím có gờ: F và J (đặt ngón trỏ)",
+                 "Nơi 10 ngón tay luôn xuất phát và trở về"
              ]},
-            {"type": "learn", "title": "Phần mềm (Software) là gì?",
+            {"type": "learn", "title": "Phân công 10 ngón tay",
              "bullets": [
-                 "Hệ điều hành Windows, macOS điều khiển máy",
-                 "Trình duyệt web Chrome, Edge lướt Internet",
-                 "Phần mềm soạn thảo Word, phần mềm vẽ Paint"
+                 "Ngón trỏ trái: F, V, B, R, T, 4, 5",
+                 "Ngón trỏ phải: J, N, M, U, Y, 7, 8",
+                 "Hai ngón cái phụ trách phím cách (Spacebar)"
              ]},
-            {"type": "learn", "title": "Mối quan hệ Phần cứng & Phần mềm",
+            {"type": "learn", "title": "Quy tắc gõ mười ngón",
              "bullets": [
-                 "Phần cứng như CƠ THỂ của máy tính",
-                 "Phần mềm như TRÍ ÓC điều khiển máy tính",
-                 "Máy tính cần CẢ HAI để hoạt động"
+                 "Đặt ngón tay đúng vị trí xuất phát ở hàng cơ sở",
+                 "Mỗi ngón tay chỉ gõ các phím được phân công",
+                 "Gõ nhẹ nhàng, không nhìn bàn phím (Touch typing)"
              ]},
-            {"type": "practice", "title": "Em hãy phân loại!",
-             "instruction": "Phân loại từng thiết bị/chương trình:",
-             "items": ["Bàn phím ↔ Phần cứng", "Microsoft Word ↔ Phần mềm", "Chuột máy tính ↔ Phần cứng", "Trình duyệt Chrome ↔ Phần mềm"]},
-            {"type": "activity", "title": "Thử thách nhanh!",
-             "instruction": "Quan sát phòng máy và thực hiện:",
-             "items": ["Liệt kê 3 phần cứng em thấy trước mặt", "Kể tên 2 phần mềm em đã từng sử dụng", "So sánh sự khác nhau giữa phần cứng và phần mềm"]},
-            {"type": "summary", "title": "Hôm nay em đã hiểu!",
-             "items": ["Phần cứng: nhìn thấy và sờ được (Hardware)", "Phần mềm: chương trình chạy bên trong (Software)", "Phần cứng và phần mềm luôn đồng hành cùng nhau"]},
-            {"type": "thanks", "title": "Em giỏi lắm!", "content": "BTVN: Liệt kê 3 phần cứng và\n3 phần mềm của máy tính ở nhà em!"},
+            {"type": "practice", "title": "Luyện đặt tay đúng cách!",
+             "instruction": "Thực hiện theo các bước:",
+             "items": ["Đặt ngón trỏ trái lên phím F (có gờ)", "Đặt ngón trỏ phải lên phím J (có gờ)", "Đặt 6 ngón còn lại lên A,S,D và K,L,;", "Hai ngón cái đặt nhẹ lên phím cách (Space)"]},
+            {"type": "activity", "title": "Luyện gõ trên RapidTyping!",
+             "instruction": "Thực hành bài luyện gõ hàng phím cơ sở:",
+             "items": ["Gõ chuỗi: asdf jkl; asdf jkl;", "Gõ từ ngắn: fa la da ka ja", "Thi đua xem ai đạt độ chính xác 100%!"]},
+            {"type": "summary", "title": "Hôm nay em đã học!",
+             "items": ["Hàng phím cơ sở và 2 phím có gờ F, J", "Phân công vị trí 10 ngón tay", "Quy tắc gõ phím không cần nhìn (Touch typing)"]},
+            {"type": "thanks", "title": "Tuyệt vời! 🌟", "content": "BTVN: Luyện gõ 10 ngón trên phần mềm\n15 phút mỗi ngày!"},
         ]
     },
     {
         "id": "Lop_5", "folder": "Lớp_5", "lop_label": "Lớp 5", "lop_num": 5, "is_thcs": False,
-        "bai": "Bài 1. Em có thể làm gì với máy tính",
-        "file_name": "Slide_Tin_hoc_Lop_5_Bai01_Em_co_the_lam_gi_voi_may_tinh.pptx",
+        "bai": "Bài 2. Tìm kiếm thông tin trên website",
+        "file_name": "Slide_Tin_hoc_Lop_5_Bai02_Tim_kiem_thong_tin_tren_website.pptx",
         "slides_content": [
-            {"type": "cover", "title": "Em có thể làm gì với máy tính?", "subtitle": "Tin học • Lớp 5 • Bài 1"},
-            {"type": "warmup", "title": "Kể cho cô nghe nào!",
-             "content": "Tuần trước em đã dùng máy tính để làm những việc gì?\nKể ít nhất 2 việc cụ thể nhé!"},
-            {"type": "learn", "title": "Máy tính — Trợ thủ đa năng!",
+            {"type": "cover", "title": "Tìm kiếm thông tin trên Website 🌐", "subtitle": "Tin học • Lớp 5 • Bài 2"},
+            {"type": "warmup", "title": "Làm sao tìm được câu trả lời?",
+             "content": "Nếu muốn biết 'Con cá heo thở bằng gì?':\nEm sẽ gõ từ khóa gì vào Google để tìm nhanh nhất?"},
+            {"type": "learn", "title": "Trình duyệt web và Máy tìm kiếm",
              "bullets": [
-                 "Soạn thảo văn bản và bài viết (Word)",
-                 "Tính toán và xử lý số liệu (Excel)",
-                 "Thiết kế tranh ảnh và sơ đồ (Paint, Canva)",
-                 "Tạo bài trình chiếu sinh động (PowerPoint)"
+                 "Trình duyệt Web (Chrome, Edge): công cụ mở trang web",
+                 "Máy tìm kiếm (Google, Bing): công cụ tra cứu thông tin",
+                 "Nhập địa chỉ website vào thanh địa chỉ (Address bar)"
              ]},
-            {"type": "learn", "title": "Kết nối và chia sẻ tri thức!",
+            {"type": "learn", "title": "Từ khóa tìm kiếm (Keywords)",
              "bullets": [
-                 "Tìm kiếm thông tin học tập trên Google",
-                 "Gửi thư điện tử Email trao đổi bài",
-                 "Học trực tuyến qua Zoom, Google Meet"
+                 "Từ khóa là từ hoặc cụm từ thể hiện nội dung cần tìm",
+                 "Chọn từ khóa ngắn gọn, chính xác",
+                 "Ví dụ: thay vì 'tôi muốn tìm ảnh con hổ', gõ 'ảnh con hổ'"
              ]},
-            {"type": "learn", "title": "Máy tính trong mọi nghề nghiệp",
+            {"type": "learn", "title": "Đánh giá thông tin tìm được",
              "bullets": [
-                 "Bác sĩ — chẩn đoán bệnh và lưu hồ sơ",
-                 "Kỹ sư — thiết kế công trình và bản vẽ",
-                 "Giáo viên — giảng dạy và soạn giáo án"
+                 "Đọc lướt tiêu đề và đoạn tóm tắt kết quả",
+                 "Chọn các trang web uy tín (.edu, .gov, báo chính thống)",
+                 "So sánh thông tin từ 2-3 trang web khác nhau"
              ]},
-            {"type": "practice", "title": "Em hãy thực hành!",
-             "instruction": "Thực hiện lần lượt các bước:",
-             "items": ["Mở phần mềm Word", "Gõ họ tên và lớp của em", "Viết câu: 'Em thích máy tính vì...'", "Lưu file bài làm vào thư mục"]},
-            {"type": "activity", "title": "Trò chơi: Ghép đôi công việc!",
-             "instruction": "Nối công việc với phần mềm tương ứng:",
-             "items": ["Viết bài văn ↔ Word", "Tạo bài thuyết trình ↔ PowerPoint", "Vẽ bức tranh ↔ Paint", "Tính bảng điểm ↔ Excel"]},
-            {"type": "summary", "title": "Hôm nay em đã biết!",
-             "items": ["Máy tính là công cụ đa năng trong học tập", "Mỗi công việc ứng với phần mềm chuyên dụng", "Máy tính đóng vai trò quan trọng trong xã hội"]},
-            {"type": "thanks", "title": "Em giỏi lắm!", "content": "BTVN: Hỏi 1 người lớn về công việc\nhọ thực hiện trên máy tính hàng ngày!"},
+            {"type": "practice", "title": "Thực hành tìm kiếm!",
+             "instruction": "Thực hiện trên máy tính:",
+             "items": ["Mở trình duyệt Google Chrome", "Gõ từ khóa: 'Hành tinh lớn nhất hệ mặt trời'", "Nhấn Enter và đọc kết quả đầu tiên", "Lưu ảnh hành tinh về máy tính"]},
+            {"type": "activity", "title": "Thử thách: Truy tìm tri thức!",
+             "instruction": "Tìm câu trả lời cho các câu hỏi:",
+             "items": ["Ngọn núi cao nhất Việt Nam tên là gì? ↔ Fansipan", "Quốc hoa của Việt Nam là hoa gì? ↔ Hoa Sen", "Vận tốc ánh sáng là bao nhiêu? ↔ ~300.000 km/s"]},
+            {"type": "summary", "title": "Tóm tắt bài học",
+             "items": ["Sử dụng trình duyệt web và máy tìm kiếm", "Lựa chọn từ khóa thông minh và ngắn gọn", "Đánh giá và chọn lọc thông tin đáng tin cậy"]},
+            {"type": "thanks", "title": "Em giỏi lắm! 🚀", "content": "BTVN: Tìm kiếm 3 thông tin thú vị\nvề động vật biển và ghi vào vở!"},
         ]
     },
     {
         "id": "Lop_6", "folder": "Lớp_6", "lop_label": "Lớp 6", "lop_num": 6, "is_thcs": True,
-        "bai": "Bài 1. Thông tin và dữ liệu",
-        "file_name": "Slide_Tin_hoc_Lop_6_Bai01_Thong_tin_va_du_lieu.pptx",
+        "bai": "Bài 2. Xử lí thông tin",
+        "file_name": "Slide_Tin_hoc_Lop_6_Bai02_Xu_li_thong_tin.pptx",
         "slides_content": [
-            {"type": "cover", "title": "Thông tin và Dữ liệu", "subtitle": "Tin học • Lớp 6 • Bài 1"},
-            {"type": "warmup", "title": "Hãy thử suy nghĩ!",
-             "content": "'Ngày mai trời sẽ mưa' — Đây là thông tin hay dữ liệu?\n'23°C' — Còn đây thì sao?\nHai khái niệm này khác nhau như thế nào?"},
-            {"type": "learn", "title": "Khái niệm Thông tin (Information)",
+            {"type": "cover", "title": "Xử lí thông tin", "subtitle": "Tin học • Lớp 6 • Bài 2"},
+            {"type": "warmup", "title": "Hệ thống xử lý thông tin quanh ta!",
+             "content": "Hãy quan sát một chiếc máy tính bỏ túi:\nKhi em bấm '8 x 9 =', quy trình bên trong máy diễn ra như thế nào?"},
+            {"type": "learn", "title": "Mô hình xử lý thông tin 4 bước",
              "bullets": [
-                 "Thông tin là những hiểu biết của con người về thế giới xung quanh",
-                 "Ví dụ: 'Hà Nội là thủ đô của Việt Nam', 'Hôm nay trời nắng đẹp'",
-                 "Thông tin giúp con người đưa ra các quyết định hợp lý"
+                 "1. Thu nhận thông tin (Input) — tiếp nhận dữ liệu đầu vào",
+                 "2. Lưu trữ thông tin (Storage) — ghi nhớ trên bộ nhớ",
+                 "3. Xử lý thông tin (Processing) — biến đổi dữ liệu theo giải thuật",
+                 "4. Truyền / Xuất thông tin (Output) — đưa kết quả ra ngoài"
              ]},
-            {"type": "learn", "title": "Khái niệm Dữ liệu (Data)",
+            {"type": "learn", "title": "Máy tính là thiết bị xử lý thông tin",
              "bullets": [
-                 "Dữ liệu là thông tin được biểu diễn dưới dạng máy tính xử lý được",
-                 "Dạng văn bản (text): chữ cái, số, ký hiệu",
-                 "Dạng hình ảnh, âm thanh, video được lưu trữ kỹ thuật số"
+                 "Máy tính thực hiện tự động quy trình xử lý thông tin",
+                 "Tốc độ xử lý hàng tỷ phép tính mỗi giây",
+                 "Khả năng lưu trữ khối lượng dữ liệu khổng lồ"
              ]},
-            {"type": "learn", "title": "Mối quan hệ Thông tin ↔ Dữ liệu",
+            {"type": "learn", "title": "Vai trò của xử lý thông tin trong đời sống",
              "bullets": [
-                 "Thông tin gốc -> Mã hóa, lưu trữ -> Dữ liệu trong máy tính",
-                 "Dữ liệu được xử lý -> Giải mã -> Thông tin cho con người",
-                 "Dữ liệu là phương tiện chở thông tin trên thiết bị công nghệ"
+                 "Dự báo thời tiết dựa trên dữ liệu khí hậu",
+                 "Hệ thống định vị GPS tìm đường đi tối ưu",
+                 "Y tế: phân tích hình ảnh X-quang chẩn đoán bệnh"
              ]},
-            {"type": "practice", "title": "Hãy phân loại dữ liệu!",
-             "instruction": "Xác định dạng dữ liệu cho các đối tượng:",
-             "items": ["Bài hát Quốc ca ↔ Dữ liệu Âm thanh", "Ảnh chụp tập thể lớp ↔ Dữ liệu Hình ảnh", "Bảng điểm tổng kết ↔ Dữ liệu Văn bản & Số", "Video bài giảng ↔ Dữ liệu Video"]},
-            {"type": "activity", "title": "Thảo luận nhóm",
-             "instruction": "Thảo luận theo nhóm 4 học sinh (5 phút):",
-             "items": ["Khi đăng ảnh lên mạng xã hội, em tạo dữ liệu dạng gì?", "Ai có thể tiếp nhận thông tin từ dữ liệu đó?", "Cần chú ý gì để bảo vệ dữ liệu cá nhân?"]},
+            {"type": "practice", "title": "Phân tích chu trình xử lý!",
+             "instruction": "Ghép nối thiết bị với bước xử lý tương ứng:",
+             "items": ["Bàn phím & Micro ↔ 1. Thu nhận thông tin (Input)", "Ổ cứng & RAM ↔ 2. Lưu trữ thông tin (Storage)", "Bộ vi xử lý CPU ↔ 3. Xử lý thông tin (Processing)", "Màn hình & Loa ↔ 4. Xuất thông tin (Output)"]},
+            {"type": "activity", "title": "Thảo luận nhóm tình huống",
+             "instruction": "Thảo luận nhóm 4 học sinh (5 phút):",
+             "items": ["Mô tả chu trình xử lý thông tin của xe tự lái", "Thiết bị nào đóng vai trò thu nhận thông tin?", "Nêu tầm quan trọng của việc lưu trữ dữ liệu accurate"]},
             {"type": "summary", "title": "Tóm tắt bài học",
-             "items": ["Thông tin là hiểu biết; Dữ liệu là dạng biểu diễn thông tin", "4 dạng dữ liệu phổ biến: Văn bản, Hình ảnh, Âm thanh, Video", "Xử lý dữ liệu nhằm rút ra thông tin có ích"]},
-            {"type": "thanks", "title": "Bài học kết thúc!", "content": "BTVN: Liệt kê 5 loại dữ liệu\nem tiếp nhận trong một ngày!"},
+             "items": ["Mô hình 4 bước: Thu nhận -> Lưu trữ -> Xử lý -> Xuất thông tin", "Máy tính xử lý thông tin tự động, chính xác và nhanh chóng", "Ứng dụng rộng rãi trong mọi lĩnh vực xã hội hiện đại"]},
+            {"type": "thanks", "title": "Bài học kết thúc!", "content": "BTVN: Vẽ sơ đồ khối chu trình xử lý thông tin\ncủa thiết bị nhận diện khuôn mặt!"},
         ]
     },
     {
         "id": "Lop_7", "folder": "Lớp_7", "lop_label": "Lớp 7", "lop_num": 7, "is_thcs": True,
-        "bai": "Bài 1. Thiết bị vào - ra",
-        "file_name": "Slide_Tin_hoc_Lop_7_Bai01_Thiet_bi_vao_ra.pptx",
+        "bai": "Bài 2. Phần mềm máy tính",
+        "file_name": "Slide_Tin_hoc_Lop_7_Bai02_Phan_mem_may_tinh.pptx",
         "slides_content": [
-            {"type": "cover", "title": "Thiết bị vào - ra (I/O Devices)", "subtitle": "Tin học • Lớp 7 • Bài 1"},
-            {"type": "warmup", "title": "Quan sát và trả lời!",
-             "content": "Hãy nhìn quanh phòng máy tính:\nKể tên TẤT CẢ các thiết bị em nhìn thấy kết nối với máy tính!\nThiết bị nào đưa thông tin vào, thiết bị nào đưa thông tin ra?"},
-            {"type": "learn", "title": "Thiết bị vào (Input Devices)",
+            {"type": "cover", "title": "Phần mềm máy tính (Software)", "subtitle": "Tin học • Lớp 7 • Bài 2"},
+            {"type": "warmup", "title": "Nếu không có phần mềm?",
+             "content": "Một chiếc máy tính rất mạnh nhưng không cài bất kỳ phần mềm nào:\nLiệu ta có sử dụng được máy tính không?\nVì sao?"},
+            {"type": "learn", "title": "Phần mềm hệ thống (System Software)",
              "bullets": [
-                 "Bàn phím (Keyboard) — nhập dữ liệu văn bản và lệnh",
-                 "Chuột (Mouse) — điều khiển con trỏ và thao tác chọn",
-                 "Microphone & Webcam — thu âm thanh và hình ảnh trực tiếp",
-                 "Máy quét (Scanner) — chuyển văn bản giấy thành dữ liệu số"
+                 "Hệ điều hành (Operating System — OS): Windows, macOS, Linux, Android",
+                 "Quản lý toàn bộ phần cứng và phần mềm của máy tính",
+                 "Môi trường để các phần mềm ứng dụng hoạt động"
              ]},
-            {"type": "learn", "title": "Thiết bị ra (Output Devices)",
+            {"type": "learn", "title": "Phần mềm ứng dụng (Application Software)",
              "bullets": [
-                 "Màn hình (Monitor) — hiển thị kết quả xử lý trực quan",
-                 "Loa & Tai nghe (Speaker/Headphone) — phát tín hiệu âm thanh",
-                 "Máy in (Printer) — in dữ liệu ra bản giấy",
-                 "Máy chiếu (Projector) — trình chiếu nội dung lên màn rộng"
+                 "Phần mềm văn phòng: Word, Excel, PowerPoint",
+                 "Trình duyệt web: Chrome, Edge, Safari",
+                 "Phần mềm đồ họa & giải trí: Photoshop, VLC Player, Games"
              ]},
-            {"type": "learn", "title": "Sơ đồ hoạt động Input → Processing → Output",
+            {"type": "learn", "title": "Mối quan hệ Phần cứng ↔ Hệ điều hành ↔ Ứng dụng",
              "bullets": [
-                 "Thiết bị Vào (Input) tiếp nhận thông tin từ người dùng",
-                 "Bộ xử lý trung tâm (CPU) xử lý dữ liệu theo chương trình",
-                 "Thiết bị Ra (Output) xuất kết quả cho người dùng tiếp nhận"
+                 "Người dùng thao tác trên Phần mềm ứng dụng",
+                 "Phần mềm ứng dụng gửi lệnh tới Hệ điều hành",
+                 "Hệ điều hành điều khiển Phần cứng thực thi"
              ]},
-            {"type": "practice", "title": "Hãy phân loại thiết bị!",
-             "instruction": "Xác định vai trò của từng thiết bị:",
-             "items": ["Bàn phím & Chuột ↔ Thiết bị VÀO (Input)", "Màn hình & Máy in ↔ Thiết bị RA (Output)", "Webcam & Micro ↔ Thiết bị VÀO (Input)", "Màn hình cảm ứng ↔ Vừa VÀO vừa RA"]},
-            {"type": "activity", "title": "Thảo luận chuyên sâu",
+            {"type": "practice", "title": "Phân loại phần mềm!",
+             "instruction": "Phân loại các phần mềm sau:",
+             "items": ["Windows 11, Android 14 ↔ Phần mềm Hệ thống (OS)", "Microsoft Word, Canva ↔ Phần mềm Ứng dụng", "Google Chrome, Cốc Cốc ↔ Phần mềm Ứng dụng", "iOS, Ubuntu Linux ↔ Phần mềm Hệ thống (OS)"]},
+            {"type": "activity", "title": "Thảo luận bản quyền phần mềm",
              "instruction": "Trả lời các câu hỏi tình huống (5 phút):",
-             "items": ["Nếu hỏng thiết bị vào, ta có điều khiển được máy không?", "Điện thoại thông minh dùng thiết bị vào/ra nào?", "Nêu 2 thiết bị vừa là thiết bị vào vừa là thiết bị ra"]},
+             "items": ["Phần mềm thương mại và phần mềm miễn phí khác nhau gì?", "Tại sao không nên sử dụng phần mềm bẻ khóa (crack)?", "Kể tên 2 phần mềm mã nguồn mở phổ biến"]},
             {"type": "summary", "title": "Tóm tắt bài học",
-             "items": ["Thiết bị vào (Input): nhập dữ liệu vào máy tính", "Thiết bị ra (Output): xuất kết quả từ máy tính", "Quy trình xử lý: Input -> Processing -> Output"]},
-            {"type": "thanks", "title": "Bài học kết thúc!", "content": "BTVN: Vẽ sơ đồ khối các thiết bị\nVào - Ra của máy tính ở phòng máy!"},
+             "items": ["2 loại phần mềm: Phần mềm hệ thống & Phần mềm ứng dụng", "Hệ điều hành điều khiển phần cứng và quản lý ứng dụng", "Sử dụng phần mềm có bản quyền và an toàn"]},
+            {"type": "thanks", "title": "Bài học kết thúc!", "content": "BTVN: Kể tên 5 phần mềm ứng dụng\nem sử dụng nhiều nhất trên máy tính hoặc điện thoại!"},
         ]
     },
     {
         "id": "Lop_8", "folder": "Lớp_8", "lop_label": "Lớp 8", "lop_num": 8, "is_thcs": True,
-        "bai": "Bài 1. Lược sử công cụ tính toán",
-        "file_name": "Slide_Tin_hoc_Lop_8_Bai01_Luoc_su_cong_cu_tinh_toan.pptx",
+        "bai": "Bài 2. Thông tin trong môi trường số",
+        "file_name": "Slide_Tin_hoc_Lop_8_Bai02_Thong_tin_trong_moi_truong_so.pptx",
         "slides_content": [
-            {"type": "cover", "title": "Lược sử công cụ tính toán", "subtitle": "Tin học • Lớp 8 • Bài 1"},
-            {"type": "warmup", "title": "Quan sát và so sánh!",
-             "content": "So sánh hai hình ảnh:\n● Chiếc bàn tính Abacus cổ đại\n● Siêu máy tính hiện đại ngày nay\nĐiểm giống và khác nhau cốt lõi là gì?"},
-            {"type": "learn", "title": "Từ bàn tính cổ đại đến máy tính cơ học",
+            {"type": "cover", "title": "Thông tin trong môi trường số", "subtitle": "Tin học • Lớp 8 • Bài 2"},
+            {"type": "warmup", "title": "Thông tin trên Internet đáng tin đến đâu?",
+             "content": "Mỗi ngày có hàng tỷ thông tin được đăng lên mạng:\nLàm sao em phân biệt được thông tin ĐÚNG và tin GIẢ (Fake news)?"},
+            {"type": "learn", "title": "Đặc điểm thông tin trong môi trường số",
              "bullets": [
-                 "Bàn tính Abacus (~2400 TCN) — công cụ tính toán đầu tiên",
-                 "Máy tính Pascaline (1642 - Blaise Pascal) — máy tính cơ học dùng bánh răng",
-                 "Máy phân tích (1834 - Charles Babbage) — ý tưởng máy tính tự động đầu tiên"
+                 "Khối lượng khổng lồ, cập nhật liên tục từng giây",
+                 "Đa dạng hình thức: văn bản, hình ảnh, âm thanh, video",
+                 "Lan truyền nhanh chóng trên phạm vi toàn cầu"
              ]},
-            {"type": "learn", "title": "Kỷ nguyên máy tính điện tử (ENIAC -> PC)",
+            {"type": "learn", "title": "Tác động của thông tin số",
              "bullets": [
-                 "ENIAC (1946) — máy tính điện tử đầu tiên, dùng đèn chân không, nặng 30 tấn",
-                 "Transistor & Mạch tích hợp (IC) — giúp máy tính nhỏ gọn và nhanh hơn gấp ngàn lần",
-                 "Microprocessor (1971) — sự ra đời của Máy tính cá nhân (PC)"
+                 "Mặt tích cực: tiếp cận tri thức nhanh, học tập mọi lúc mọi nơi",
+                 "Mặt tiêu cực: nguy cơ tin giả, lừa đảo trực tuyến, nghiện mạng",
+                 "Thông tin xấu độc ảnh hưởng tâm lý và tư duy"
              ]},
-            {"type": "learn", "title": "Máy tính thế hệ mới & Trí tuệ nhân tạo",
+            {"type": "learn", "title": "Tiêu chí đánh giá độ tin cậy thông tin",
              "bullets": [
-                 "Máy tính ngày càng nhỏ gọn, tốc độ siêu nhanh",
-                 "Điện toán đám mây & Internet vạn vật (IoT)",
-                 "Trí tuệ nhân tạo (AI) — máy tính biết học hỏi và suy luận"
+                 "1. Nguồn tin: tác giả, cơ quan xuất bản uy tín",
+                 "2. Tính cập nhật: thời điểm đăng tải thông tin",
+                 "3. Tính mục đích: thông tin nhằm cung cấp tri thức hay quảng cáo, giật gân",
+                 "4. Kiểm chứng chéo: so sánh với các nguồn báo chí chính thống"
              ]},
-            {"type": "practice", "title": "Sắp xếp mốc lịch sử!",
-             "instruction": "Sắp xếp theo đúng tiến trình thời gian:",
-             "items": ["Bàn tính Abacus (~2400 TCN) ↔ Công cụ đầu tiên", "Máy tính Pascaline (1642) ↔ Bánh răng cơ học", "Máy tính ENIAC (1946) ↔ Đèn chân không", "Vi xử lý Intel (1971) ↔ Máy tính cá nhân (PC)"]},
-            {"type": "activity", "title": "Thảo luận tương lai AI",
+            {"type": "practice", "title": "Thực hành đánh giá nguồn tin!",
+             "instruction": "Đánh giá độ tin cậy của các nguồn:",
+             "items": ["Cổng thông tin Chinhphu.vn ↔ Rất tin cậy (Chính thống)", "Tài khoản cá nhân lạ trên TikTok ↔ Cần kiểm chứng cậy!", "Website của Bộ Giáo dục và Đào tạo ↔ Rất tin cậy", "Bài viết không có tác giả trên blog cá nhân ↔ Độ tin cậy thấp"]},
+            {"type": "activity", "title": "Thảo luận: Phòng chống Tin giả",
              "instruction": "Thảo luận nhóm 4 học sinh (5 phút):",
-             "items": ["Máy tính thế hệ 5 (AI) giúp ích gì cho học tập?", "Em dự đoán 20 năm nữa máy tính sẽ thay đổi ra sao?", "Con người cần chuẩn bị kỹ năng gì trong kỷ nguyên AI?"]},
+             "items": ["Em làm gì khi thấy một tin đồn thất thố trên mạng?", "Nêu 3 dấu hiệu nhận biết một bài viết tin giả", "Quy tắc 5 giây suy nghĩ trước khi nhấn nút Share/Chia sẻ"]},
             {"type": "summary", "title": "Tóm tắt bài học",
-             "items": ["Lịch sử tính toán trải qua hàng nghìn năm phát triển", "5 thế hệ: Đèn chân không -> Transistor -> IC -> Vi xử lý -> AI", "Xu hướng: Nhỏ gọn hơn, Nhanh hơn, Thông minh hơn"]},
-            {"type": "thanks", "title": "Bài học kết thúc!", "content": "BTVN: Vẽ dòng thời gian 5 mốc quan trọng\ntrong lịch sử công cụ tính toán!"},
+             "items": ["Thông tin số phong phú nhưng cần chọn lọc", "Đánh giá nguồn tin theo 4 tiêu chí chuẩn", "Trở thành người tiêu dùng thông tin thông minh trên Internet"]},
+            {"type": "thanks", "title": "Bài học kết thúc!", "content": "BTVN: Tìm 1 ví dụ tin giả gần đây\nvà phân tích nguyên nhân vì sao nó sai!"},
         ]
     },
 ]
-
 
 # ═══════════════════════════════════════════════════
 # HELPER FUNCTIONS
@@ -495,7 +496,6 @@ def add_slide_transition(slide, transition_type="fade"):
     }
     xml_str = transitions.get(transition_type, transitions['fade'])
     slide._element.append(etree.fromstring(xml_str))
-
 
 def add_appear_animation(slide, shapes_with_click):
     nsmap = {
@@ -598,31 +598,34 @@ def add_appear_animation(slide, shapes_with_click):
             strVal = etree.SubElement(p_to, '{%s}strVal' % nsmap['p'])
             strVal.set('val', 'visible')
 
-
 def find_best_image_for_lesson(lesson, slide_type, idx=0):
     """Find image for a slide from SGK or KHBD images folder"""
     lop_folder = lesson["folder"]
     lop_num = lesson["lop_num"]
 
-    # 1. Check KHBD images
-    khbd_img_dir = os.path.join(KHBD_BASE, lop_folder, "Tuần_02", "images")
+    # 1. Check KHBD images in Tuần_03
+    khbd_img_dir = os.path.join(KHBD_BASE, lop_folder, "Tuần_03", "images")
     if os.path.isdir(khbd_img_dir):
-        # Priority 1A: Indexed match like learn1_lop6.jpg
         indexed_name = f"{slide_type}{idx+1}_lop{lop_num}"
         for ext in ('.jpg', '.png', '.jpeg'):
             p = os.path.join(khbd_img_dir, indexed_name + ext)
             if os.path.isfile(p):
                 return p
-        # Priority 1B: Exact type match like cover_lop6.jpg, warmup_lop6.jpg, activity_lop6.jpg
         exact_name = f"{slide_type}_lop{lop_num}"
         for ext in ('.jpg', '.png', '.jpeg'):
             p = os.path.join(khbd_img_dir, exact_name + ext)
             if os.path.isfile(p):
                 return p
-
         imgs = sorted([f for f in os.listdir(khbd_img_dir) if f.endswith(('.png','.jpeg','.jpg'))])
         if imgs:
             return os.path.join(khbd_img_dir, imgs[idx % len(imgs)])
+
+    # Fallback: check Tuần_02 images
+    khbd_t2_dir = os.path.join(KHBD_BASE, lop_folder, "Tuần_02", "images")
+    if os.path.isdir(khbd_t2_dir):
+        imgs = sorted([f for f in os.listdir(khbd_t2_dir) if f.endswith(('.png','.jpeg','.jpg'))])
+        if imgs:
+            return os.path.join(khbd_t2_dir, imgs[idx % len(imgs)])
 
     # 2. Check SGK images
     sgk_img_dir = os.path.join(SGK_BASE, f"Lớp_{lop_num}", "bai1_images")
@@ -631,14 +634,7 @@ def find_best_image_for_lesson(lesson, slide_type, idx=0):
                        if f.endswith(('.png','.jpeg','.jpg')) and not os.path.isdir(os.path.join(sgk_img_dir, f))])
         if imgs:
             return os.path.join(sgk_img_dir, imgs[idx % len(imgs)])
-
-        full_dir = os.path.join(sgk_img_dir, "full_pages")
-        if os.path.isdir(full_dir):
-            pages = sorted(os.listdir(full_dir))
-            if pages:
-                return os.path.join(full_dir, pages[idx % len(pages)])
     return None
-
 
 def remove_template_slides(prs):
     while len(prs.slides) > 0:
@@ -647,7 +643,6 @@ def remove_template_slides(prs):
         prs.part.drop_rel(rId)
         sldId = prs.slides._sldIdLst[0]
         prs.slides._sldIdLst.remove(sldId)
-
 
 # ═══════════════════════════════════════════════════
 # BUILDERS FOR ALL GRADES
@@ -667,7 +662,6 @@ def build_cover(prs, data, pal, lesson, layout):
 
     add_slide_transition(slide, "fade")
     return slide
-
 
 def build_warmup(prs, data, pal, lesson, layout):
     slide = prs.slides.add_slide(layout)
@@ -696,7 +690,6 @@ def build_warmup(prs, data, pal, lesson, layout):
 
     add_slide_transition(slide, "push")
     return slide
-
 
 def build_learn_grid(prs, data, pal, lesson, layout, learn_idx=0):
     """Layout A — Grid Flashcard (Primary Grades: Tiền TH -> Lớp 5)"""
@@ -755,7 +748,6 @@ def build_learn_grid(prs, data, pal, lesson, layout, learn_idx=0):
     add_slide_transition(slide, "wipe")
     return slide
 
-
 def build_learn_row(prs, data, pal, lesson, layout, learn_idx=0):
     """Layout B — Horizontal Row (Middle School Grades: Lớp 6 -> Lớp 8)"""
     slide = prs.slides.add_slide(layout)
@@ -771,45 +763,45 @@ def build_learn_row(prs, data, pal, lesson, layout, learn_idx=0):
     title_y = SAFE_TOP + 0.6
     add_textbox(slide, 0.5, title_y, SLIDE_W-1, 0.65, data["title"], size_pt=26, bold=True, color_hex=pal["text_on_bg"])
 
-    content_top = title_y + 0.8
-    avail_h = SAFE_BOTTOM - content_top - 0.1
+    row_top = title_y + 0.75
     n = len(bullets)
-    row_h = min(1.25, (avail_h - (n - 1) * 0.2) / max(n, 1))
+    gap = 0.15
+    avail_h = SAFE_BOTTOM - row_top - 0.1
+    row_h = min(1.4, (avail_h - gap*(n-1)) / max(n, 1))
 
     for i, btext in enumerate(bullets[:4]):
-        y = content_top + i * (row_h + 0.2)
+        y = row_top + i * (row_h + gap)
+
         if y + row_h > SAFE_BOTTOM + 0.05:
             break
 
-        # White card for row
-        card_x, card_w = 0.5, SLIDE_W - 1.0
-        add_safe_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, card_x, y, card_w, row_h, pal["card"], border_hex="D0D5DD")
-        add_safe_shape(slide, MSO_SHAPE.RECTANGLE, card_x, y, 0.12, row_h, pal["accent"])
-
         img = find_best_image_for_lesson(lesson, "learn", learn_idx*3 + i)
-        if img:
-            img_w = 1.8
-            add_picture_safe(slide, img, card_x + 0.3, y + 0.1, img_w, row_h - 0.2)
-            txt_x = card_x + 0.3 + img_w + 0.3
-            txt_w = card_w - (0.3 + img_w + 0.5)
-        else:
-            txt_x = card_x + 0.3
-            txt_w = card_w - 0.6
 
-        add_textbox(slide, txt_x, y + 0.15, txt_w, row_h - 0.3, f"● {btext}", size_pt=17, bold=False, color_hex=pal["text_on_card"])
+        img_w = 2.0
+        img_x = 0.5
+        txt_x = img_x + img_w + 0.2
+        txt_w = SLIDE_W - txt_x - 0.5
+
+        if img:
+            add_picture_safe(slide, img, img_x, y, img_w, row_h)
+        else:
+            txt_x = 0.5
+            txt_w = SLIDE_W - 1.0
+
+        card = add_safe_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, txt_x, y, txt_w, row_h, pal["card"], border_hex="D0D5DD")
+        add_safe_shape(slide, MSO_SHAPE.RECTANGLE, txt_x, y, 0.08, row_h, pal["accent"])
+        add_textbox(slide, txt_x + 0.25, y + 0.15, txt_w - 0.4, row_h - 0.3, btext, size_pt=18, bold=False, color_hex=pal["text_on_card"])
 
     add_slide_transition(slide, "wipe")
     return slide
 
-
 def build_practice(prs, data, pal, lesson, layout):
-    """Practice / Quiz Slide — Sequential appear animation on click"""
     slide = prs.slides.add_slide(layout)
 
     add_safe_shape(slide, MSO_SHAPE.RECTANGLE, 0, SAFE_TOP, SLIDE_W, SAFE_BOTTOM-SAFE_TOP, pal["bg"], send_to_back=True)
 
     badge_y = SAFE_TOP + 0.05
-    add_safe_shape(slide, MSO_SHAPE.RECTANGLE, 0, badge_y, SLIDE_W, 0.45, pal["accent"])
+    add_safe_shape(slide, MSO_SHAPE.RECTANGLE, 0, badge_y, SLIDE_W, 0.45, pal["primary"])
     add_textbox(slide, 0.3, badge_y+0.03, SLIDE_W-0.6, 0.4, f"  {lesson['lop_label'].upper()} • LUYỆN TẬP", size_pt=13, bold=True, color_hex=pal["text_on_primary"])
 
     title_y = SAFE_TOP + 0.6
@@ -864,7 +856,6 @@ def build_practice(prs, data, pal, lesson, layout):
     add_slide_transition(slide, "wipe")
     return slide
 
-
 def build_activity(prs, data, pal, lesson, layout):
     """Activity / Game Slide — Mandatory illustration picture"""
     slide = prs.slides.add_slide(layout)
@@ -897,7 +888,6 @@ def build_activity(prs, data, pal, lesson, layout):
     add_slide_transition(slide, "cover")
     return slide
 
-
 def build_summary(prs, data, pal, lesson, layout):
     slide = prs.slides.add_slide(layout)
 
@@ -926,7 +916,6 @@ def build_summary(prs, data, pal, lesson, layout):
     add_slide_transition(slide, "fade")
     return slide
 
-
 def build_thanks(prs, data, pal, lesson, layout):
     slide = prs.slides.add_slide(layout)
 
@@ -946,7 +935,6 @@ def build_thanks(prs, data, pal, lesson, layout):
 
     add_slide_transition(slide, "fade")
     return slide
-
 
 # ═══════════════════════════════════════════════════
 # VERIFICATION
@@ -971,12 +959,11 @@ def verify_slide_deck(prs, lesson_label):
         print(f"  ✅ {lesson_label} VERIFICATION: ALL {len(prs.slides)} slides PASS anti-bug checklist")
     return len(issues) == 0
 
-
 # ═══════════════════════════════════════════════════
-# MAIN BUILDER FOR ALL 9 GRADES
+# MAIN BUILDER FOR ALL 9 GRADES TUẦN 03
 # ═══════════════════════════════════════════════════
 
-def create_slide_deck_v3(lesson, palette_idx):
+def create_slide_deck_v3_tuan03(lesson, palette_idx):
     palette = COLOR_PALETTES[palette_idx % len(COLOR_PALETTES)]
     prs = Presentation(TEMPLATE)
     remove_template_slides(prs)
@@ -1011,7 +998,7 @@ def create_slide_deck_v3(lesson, palette_idx):
     verify_slide_deck(prs, lesson["lop_label"])
 
     # Output path
-    output_dir = os.path.join(KHBD_BASE, lesson["folder"], "Tuần_02")
+    output_dir = os.path.join(KHBD_BASE, lesson["folder"], "Tuần_03")
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, lesson["file_name"])
 
@@ -1027,25 +1014,23 @@ def create_slide_deck_v3(lesson, palette_idx):
 
     return output_path
 
-
 def main():
     print("=" * 70)
-    print("  TẠO BỘ SLIDE BÀI GIẢNG CHUẨN V3 — TOÀN BỘ 9 KHỐI LỚP (TUẦN 02)")
+    print("  TẠO BỘ SLIDE BÀI GIẢNG CHUẨN V3 — TOÀN BỘ 9 KHỐI LỚP (TUẦN 03)")
     print("  Quy chuẩn: Per-Bullet Images, Animation On-Click, Game Pics, Anti-Bug")
     print("=" * 70)
 
-    for i, lesson in enumerate(LESSONS):
+    for i, lesson in enumerate(LESSONS_TUAN03):
         print(f"\n[ Khối: {lesson['lop_label']} — {lesson['bai']} ]")
         try:
-            create_slide_deck_v3(lesson, i)
+            create_slide_deck_v3_tuan03(lesson, i)
         except Exception as e:
             print(f"❌ Error on {lesson['lop_label']}: {e}")
             traceback.print_exc()
 
     print("\n" + "=" * 70)
-    print("  HOÀN THÀNH TOÀN BỘ 9 BỘ SLIDE CHUẨN V3!")
+    print("  HOÀN THÀNH TOÀN BỘ 9 BỘ SLIDE TUẦN 03!")
     print("=" * 70)
-
 
 if __name__ == "__main__":
     main()
