@@ -18,3 +18,17 @@
   - Hiệu ứng: Chuyển trang (Transition XML) + Xuất hiện nội dung (Animation XML)
   - Hình ảnh: Tạo bằng AI (`generate_image`) lưu trong folder `images/`
 - **Kết quả**: Hoàn thành 100% đúng tiến độ và tiêu chuẩn Unigo.
+
+## 2026-08-15 - Chuẩn hóa Ngày soạn/Ngày dạy & Tên lớp (Lớp 5-8)
+
+- **Vấn đề**: KHBD tạo ra bị thừa 2 dòng "Lớp" trống trong Table[0] (THCS); Ngày soạn/dạy để trống; Tên lớp ghi sai (ghi "6" thay vì "6A1").
+- **Giải pháp**:
+  1. Xóa dòng `Lớp` thừa trong Table[0] Row[1] Cell[1] — chỉ giữ 2 paragraphs: `Ngày soạn:... Ngày dạy:...` và `Lớp: XA1`.
+  2. Thêm hàm `compute_dates()` tính tự động: Ngày dạy = theo LBG, Ngày soạn = Thứ 7 tuần trước.
+  3. Đổi tên lớp THCS: `6→6A1`, `7→7A1`, `8→8A1`; TH: `5→5C1`.
+  4. Sửa toàn bộ file cũ (12 file KHBD Lớp 5-8, Tuần 1-3) bằng script `fix_khbd_dates.py`.
+- **File đã sửa**:
+  - `generate_khbd_all.py`: Thêm `LOP_SCHEDULE`, `compute_dates()`, sửa `create_khbd_thcs()`, sửa `create_khbd_th()`, cập nhật tất cả call sites.
+  - `SKILL.md`: Thêm Bước 1.5 quy tắc Ngày/Lớp.
+  - Tạo mới `references/KHBD_NGAY_LOP.md`: File tham chiếu luật ngày/lớp.
+- **Kết quả**: 12/12 file KHBD đã sửa thành công. Không có file thừa.

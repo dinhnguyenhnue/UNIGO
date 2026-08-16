@@ -4,6 +4,7 @@ Dựa trên luật KHBD_TIEU_HOC.md và KHBD_THCS.md đã được phân tích t
 """
 import os, sys, shutil, copy
 sys.stdout.reconfigure(encoding='utf-8')
+from datetime import date, timedelta
 
 from docx import Document
 from docx.shared import Pt, Emu, Cm, RGBColor
@@ -15,6 +16,45 @@ from docx.oxml.ns import qn
 TPL_TH   = r'd:\UNIGO\Hệ thống mẫu văn bản\Khung  giáo án Unigo 2026-2027 Thang 7.2026.docx'
 TPL_THCS = r'd:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx'
 OUT_BASE = r'd:\UNIGO\KHBD_Tin_học'
+
+# ─── NGÀY DẠY / NGÀY SOẠN ─────────────────────────────────────────────────
+TUAN_01_START = date(2026, 8, 3)  # Thứ Hai đầu tiên của Tuần 1
+
+# Mapping: lớp → (day_of_week, tên_lớp)
+# day_of_week: 0=Thứ Hai, 1=Thứ Ba, 2=Thứ Tư, 3=Thứ Năm, 4=Thứ Sáu
+# Tên lớp lấy từ LBG thực tế
+LOP_SCHEDULE = {
+    # Tiền Tiểu học
+    'TTH':  (3, 'TT3'),    # Thứ Năm (dạy Tin - TT3 & TTH1 & TTH2 cùng Thứ Năm)
+    # Tiểu học
+    '1':  (0, '1A1'),       # Thứ Hai (Tin 1A1)
+    '2':  (1, '2A1'),       # Thứ Ba  (Tin 2A1)
+    '3':  (3, '3A1'),       # Thứ Năm (Tin 3A1)
+    '4':  (2, '4C1'),       # Thứ Tư  (Tin 4C1)
+    '5':  (1, '5C1'),       # Thứ Ba  (Tin-Rob 5C1)
+    # THCS
+    '6':  (4, '6A1'),       # Thứ Sáu (Tin-Rob 6A1)
+    '7':  (1, '7A1'),       # Thứ Ba  (Tin-Rob 7A1)
+    '8':  (4, '8A1'),       # Thứ Sáu (Tin-Rob 8A1)
+}
+
+def compute_dates(tuan_so, day_of_week):
+    """
+    Tính ngày dạy và ngày soạn.
+    day_of_week: 0=Thứ Hai, 1=Thứ Ba, ..., 4=Thứ Sáu
+    Ngày soạn = Thứ 7 (Saturday) tuần trước tuần dạy.
+    """
+    week_start = TUAN_01_START + timedelta(weeks=tuan_so - 1)
+    ngay_day = week_start + timedelta(days=day_of_week)
+    # Saturday tuần trước = week_start - 2 ngày
+    ngay_soan = week_start - timedelta(days=2)
+    return ngay_soan.strftime('%d/%m/%Y'), ngay_day.strftime('%d/%m/%Y')
+
+def get_dates_for_lop(lop_key, tuan_so):
+    """Lấy ngày soạn, ngày dạy, tên lớp cho 1 khối lớp và tuần."""
+    day_of_week, ten_lop = LOP_SCHEDULE[lop_key]
+    ngay_soan, ngay_day = compute_dates(tuan_so, day_of_week)
+    return ngay_soan, ngay_day, ten_lop
 
 # ─── FONT HELPER ───────────────────────────────────────────────────────────
 def afont(run, bold=None, italic=None, size_pt=13, color=None):
@@ -179,7 +219,7 @@ def create_khbd_th(grade_name, grade_folder, bai_so, ten_bai, chu_diem,
                    pham_chat_items, nang_luc_mon_items, nang_luc_chung_items,
                    do_dung_gv, do_dung_hs,
                    phuong_phap, ki_thuat,
-                   activities, nang_luc_so_items=None):
+                   activities, nang_luc_so_items=None, ngay_soan=None):
     """
     Tạo KHBD Tiểu học hoàn chỉnh.
     activities: list of dicts:
@@ -198,15 +238,13 @@ def create_khbd_th(grade_name, grade_folder, bai_so, ten_bai, chu_diem,
     clean_body(doc)
 
     # ── Phần đầu ─────────────────────────────────────────────────────────
-    # P[0]: Ngày
-    p = add_para(doc, f'Thứ …… ngày {ngay_day}',
-                 align=WD_ALIGN_PARAGRAPH.CENTER, line_ratio=1.5)
-    # Italic cho phần thứ
-    p.clear()
-    r0 = p.add_run('Thứ …… ngày ')
-    afont(r0, italic=True)
-    r1 = p.add_run(ngay_day)
-    afont(r1, italic=True)
+    # P[0]: Ngày soạn + Ngày dạy
+    p = add_para(doc, '', align=WD_ALIGN_PARAGRAPH.CENTER, line_ratio=1.5)
+    if ngay_soan:
+        r_soan = p.add_run(f'Ngày soạn: {ngay_soan}   Ngày dạy: {ngay_day}')
+    else:
+        r_soan = p.add_run(f'Thứ …… ngày {ngay_day}')
+    afont(r_soan, italic=True)
     set_line_spacing(p, 1.5)
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
@@ -476,18 +514,72 @@ def create_khbd_thcs(grade_name, grade_folder, bai_so, ten_bai,
     doc_tpl = Document(TPL_THCS)
     tbl_info = copy.deepcopy(doc_tpl.tables[0]._tbl)
 
-    # Sửa ngày soạn/dạy trong Row[1], Col[1]
+    # Đảm bảo Table[0] luôn KHÔNG VIỀN (borderless)
+    tblPr = tbl_info.find(qn('w:tblPr'))
+    if tblPr is not None:
+        old_b = tblPr.find(qn('w:tblBorders'))
+        if old_b is not None:
+            tblPr.remove(old_b)
+        borders_xml = parse_xml(
+            r'<w:tblBorders %s>'
+            r'<w:top w:val="none" w:sz="0" w:space="0" w:color="auto"/>'
+            r'<w:left w:val="none" w:sz="0" w:space="0" w:color="auto"/>'
+            r'<w:bottom w:val="none" w:sz="0" w:space="0" w:color="auto"/>'
+            r'<w:right w:val="none" w:sz="0" w:space="0" w:color="auto"/>'
+            r'<w:insideH w:val="none" w:sz="0" w:space="0" w:color="auto"/>'
+            r'<w:insideV w:val="none" w:sz="0" w:space="0" w:color="auto"/>'
+            r'</w:tblBorders>' % nsdecls('w')
+        )
+        tblPr.append(borders_xml)
+
+    # Sửa ngày soạn/dạy và lớp trong Row[1], Col[1]
+    # XÓA toàn bộ paragraphs cũ (bao gồm các dòng "Lớp" thừa), tạo lại 2 dòng
     rows = tbl_info.findall(qn('w:tr'))
     if len(rows) >= 2:
         cells_r1 = rows[1].findall(qn('w:tc'))
         if len(cells_r1) >= 2:
             tc_ngay = cells_r1[1]
-            for p_el in tc_ngay.findall(qn('w:p')):
-                for r_el in p_el.findall(qn('w:r')):
-                    t_el = r_el.find(qn('w:t'))
-                    if t_el is not None and t_el.text:
-                        if 'Ngày soạn' in t_el.text:
-                            t_el.text = f'Ngày soạn: {ngay_soan}   Ngày dạy: {ngay_day}'
+            # Xóa toàn bộ paragraphs cũ
+            for old_p in tc_ngay.findall(qn('w:p')):
+                tc_ngay.remove(old_p)
+            # Tạo paragraph 1: Ngày soạn + Ngày dạy
+            p1 = OxmlElement('w:p')
+            r1 = OxmlElement('w:r')
+            rPr1 = OxmlElement('w:rPr')
+            rFonts1 = OxmlElement('w:rFonts')
+            for attr in ('w:ascii', 'w:hAnsi', 'w:cs', 'w:eastAsia'):
+                rFonts1.set(qn(attr), 'Times New Roman')
+            rPr1.append(rFonts1)
+            sz1 = OxmlElement('w:sz'); sz1.set(qn('w:val'), '26')
+            rPr1.append(sz1)
+            b1 = OxmlElement('w:b')
+            rPr1.append(b1)
+            r1.append(rPr1)
+            t1 = OxmlElement('w:t')
+            t1.text = f'Ngày soạn: {ngay_soan}   Ngày dạy: {ngay_day}'
+            t1.set('{http://www.w3.org/XML/1998/namespace}space', 'preserve')
+            r1.append(t1)
+            p1.append(r1)
+            tc_ngay.append(p1)
+            # Tạo paragraph 2: Lớp
+            p2 = OxmlElement('w:p')
+            r2 = OxmlElement('w:r')
+            rPr2 = OxmlElement('w:rPr')
+            rFonts2 = OxmlElement('w:rFonts')
+            for attr in ('w:ascii', 'w:hAnsi', 'w:cs', 'w:eastAsia'):
+                rFonts2.set(qn(attr), 'Times New Roman')
+            rPr2.append(rFonts2)
+            sz2 = OxmlElement('w:sz'); sz2.set(qn('w:val'), '26')
+            rPr2.append(sz2)
+            b2 = OxmlElement('w:b')
+            rPr2.append(b2)
+            r2.append(rPr2)
+            t2 = OxmlElement('w:t')
+            t2.text = f'Lớp: {lop}'
+            t2.set('{http://www.w3.org/XML/1998/namespace}space', 'preserve')
+            r2.append(t2)
+            p2.append(r2)
+            tc_ngay.append(p2)
 
     # Insert table vào body
     sect_pr = doc.element.body.find(qn('w:sectPr'))
@@ -667,7 +759,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Tiền tiểu học', grade_folder='Tiền_tiểu_học',
         bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - EM LÀM QUEN VỚI THẾ GIỚI CÔNG NGHỆ',
-        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        chu_diem='Định hướng môn học', tiet_ppct='0',
+        ngay_day=compute_dates(1, LOP_SCHEDULE['TTH'][0])[1],
+        ngay_soan=compute_dates(1, LOP_SCHEDULE['TTH'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Tích cực lắng nghe thầy cô giới thiệu phòng học Tin học và thiết bị.',
             '- Trách nhiệm: Giữ gìn an toàn thiết bị máy tính, tuân thủ hướng dẫn của thầy cô.',
@@ -765,7 +859,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Lớp 1', grade_folder='Lớp_1',
         bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - NỘI QUY VÀ AN TOÀN PHÒNG MÁY TÍNH',
-        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        chu_diem='Định hướng môn học', tiet_ppct='0',
+        ngay_day=compute_dates(1, LOP_SCHEDULE['1'][0])[1],
+        ngay_soan=compute_dates(1, LOP_SCHEDULE['1'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Hăng hái tham gia thảo luận quy tắc an toàn phòng máy.',
             '- Trách nhiệm: Giữ gìn an toàn thiết bị, bảo vệ bản thân và bạn bè khỏi nguy cơ về điện.',
@@ -857,7 +953,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Lớp 2', grade_folder='Lớp_2',
         bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - EM TRỞ THÀNH NHÀ SÁNG TẠO SỐ',
-        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        chu_diem='Định hướng môn học', tiet_ppct='0',
+        ngay_day=compute_dates(1, LOP_SCHEDULE['2'][0])[1],
+        ngay_soan=compute_dates(1, LOP_SCHEDULE['2'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Tích cực tìm hiểu mục tiêu môn Tin học 2.',
             '- Trách nhiệm: Giữ gìn vệ sinh chung, bảo quản thiết bị.',
@@ -941,7 +1039,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Lớp 3', grade_folder='Lớp_3',
         bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - KHÁM PHÁ MÔN TIN HỌC 3',
-        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        chu_diem='Định hướng môn học', tiet_ppct='0',
+        ngay_day=compute_dates(1, LOP_SCHEDULE['3'][0])[1],
+        ngay_soan=compute_dates(1, LOP_SCHEDULE['3'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Thích học hỏi, chủ động khám phá tri thức số mới.',
             '- Trách nhiệm: Tuân thủ quy định phòng máy, bảo vệ thiết bị.',
@@ -1017,7 +1117,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Lớp 4', grade_folder='Lớp_4',
         bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - KHÁM PHÁ MÔN TIN HỌC 4',
-        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        chu_diem='Định hướng môn học', tiet_ppct='0',
+        ngay_day=compute_dates(1, LOP_SCHEDULE['4'][0])[1],
+        ngay_soan=compute_dates(1, LOP_SCHEDULE['4'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Tích cực khám phá nội dung kiến thức nâng cao lớp 4.',
             '- Trách nhiệm: Giữ gìn an toàn thông tin cá nhân và an toàn mạng.',
@@ -1092,7 +1194,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Lớp 5', grade_folder='Lớp_5',
         bai_so=0, ten_bai='TIẾT 0. ĐỊNH HƯỚNG MÔN HỌC - KHÁM PHÁ MÔN TIN HỌC 5',
-        chu_diem='Định hướng môn học', tiet_ppct='0', ngay_day='   /   /2026',
+        chu_diem='Định hướng môn học', tiet_ppct='0',
+        ngay_day=compute_dates(1, LOP_SCHEDULE['5'][0])[1],
+        ngay_soan=compute_dates(1, LOP_SCHEDULE['5'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Tích cực chuẩn bị cho năm học cuối cấp Tiểu học.',
             '- Trách nhiệm: Gương mẫu thực hiện quy định phòng máy, làm nòng cốt giúp đỡ các em lớp dưới.',
@@ -1164,8 +1268,9 @@ def build_all():
     saved = create_khbd_thcs(
         grade_name='Lớp 6', grade_folder='Lớp_6',
         bai_so=0, ten_bai='Định hướng môn học Tin học 6 - Phương pháp học tập và An toàn số',
-        mon_hoc='Tin học', lop='6', thoi_luong='1 tiết (45 phút)', tiet_ppct='0',
-        ngay_soan='   /   /2026', ngay_day='   /   /2026',
+        mon_hoc='Tin học', lop='6A1', thoi_luong='1 tiết (45 phút)', tiet_ppct='0',
+        ngay_soan=compute_dates(1, LOP_SCHEDULE['6'][0])[0],
+        ngay_day=compute_dates(1, LOP_SCHEDULE['6'][0])[1],
         kien_thuc_items=[
             '- Sự hiểu biết về cấu trúc môn Tin học 6 theo Chương trình GDPT 2018.',
             '- Khả năng nhận biết các phương pháp học tập chủ động và nghiên cứu môn Tin học ở cấp THCS.',
@@ -1261,8 +1366,9 @@ def build_all():
     saved = create_khbd_thcs(
         grade_name='Lớp 7', grade_folder='Lớp_7',
         bai_so=0, ten_bai='Định hướng môn học Tin học 7 - Tổng quan chương trình và Kỹ năng số',
-        mon_hoc='Tin học', lop='7', thoi_luong='1 tiết (45 phút)', tiet_ppct='0',
-        ngay_soan='   /   /2026', ngay_day='   /   /2026',
+        mon_hoc='Tin học', lop='7A1', thoi_luong='1 tiết (45 phút)', tiet_ppct='0',
+        ngay_soan=compute_dates(1, LOP_SCHEDULE['7'][0])[0],
+        ngay_day=compute_dates(1, LOP_SCHEDULE['7'][0])[1],
         kien_thuc_items=[
             '- Sự hiểu biết về mục tiêu và nội dung cốt lõi môn Tin học 7.',
             '- Khả năng định hướng ứng dụng phần mềm bảng tính và biên tập đa phương tiện.',
@@ -1358,8 +1464,9 @@ def build_all():
     saved = create_khbd_thcs(
         grade_name='Lớp 8', grade_folder='Lớp_8',
         bai_so=0, ten_bai='Định hướng môn học Tin học 8 - Định hướng học tập và Nghiên cứu công nghệ',
-        mon_hoc='Tin học', lop='8', thoi_luong='1 tiết (45 phút)', tiet_ppct='0',
-        ngay_soan='   /   /2026', ngay_day='   /   /2026',
+        mon_hoc='Tin học', lop='8A1', thoi_luong='1 tiết (45 phút)', tiet_ppct='0',
+        ngay_soan=compute_dates(1, LOP_SCHEDULE['8'][0])[0],
+        ngay_day=compute_dates(1, LOP_SCHEDULE['8'][0])[1],
         kien_thuc_items=[
             '- Sự hiểu biết về cấu trúc chương trình Tin học 8 (Lược sử công nghệ, Đồ họa vector, Xử lý dữ liệu nâng cao, Lập trình).',
             '- Khả năng định hướng nghiên cứu và ứng dụng công nghệ giải quyết bài toán thực tế.',
@@ -1457,7 +1564,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Tiền tiểu học', grade_folder='Tiền_tiểu_học',
         bai_so=1, ten_bai='BÀI 1. MÁY TÍNH XUNG QUANH EM', chu_diem='Làm quen với công nghệ',
-        tiet_ppct='1', ngay_day='   /   /2026',
+        tiet_ppct='1',
+        ngay_day=compute_dates(2, LOP_SCHEDULE['TTH'][0])[1],
+        ngay_soan=compute_dates(2, LOP_SCHEDULE['TTH'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Tích cực tham gia các hoạt động học tập, hoàn thành nhiệm vụ được giao.',
             '- Nhân ái: Biết chia sẻ, hợp tác với bạn bè trong các hoạt động nhóm.',
@@ -1575,7 +1684,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Lớp 1', grade_folder='Lớp_1',
         bai_so=1, ten_bai='BÀI 1. CHIẾC MÁY TÍNH CỦA EM', chu_diem='Em và máy tính',
-        tiet_ppct='1', ngay_day='   /   /2026',
+        tiet_ppct='1',
+        ngay_day=compute_dates(2, LOP_SCHEDULE['1'][0])[1],
+        ngay_soan=compute_dates(2, LOP_SCHEDULE['1'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Tích cực học tập, hoàn thành bài tập đúng thời gian.',
             '- Trách nhiệm: Giữ gìn và sử dụng thiết bị đúng cách.',
@@ -1689,7 +1800,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Lớp 2', grade_folder='Lớp_2',
         bai_so=1, ten_bai='BÀI 1. MÁY TÍNH LÀ NGƯỜI BẠN CỦA EM', chu_diem='Máy tính và cuộc sống',
-        tiet_ppct='1', ngay_day='   /   /2026',
+        tiet_ppct='1',
+        ngay_day=compute_dates(2, LOP_SCHEDULE['2'][0])[1],
+        ngay_soan=compute_dates(2, LOP_SCHEDULE['2'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Chủ động tìm hiểu và ghi nhớ các ứng dụng của máy tính.',
             '- Trách nhiệm: Sử dụng máy tính đúng mục đích, không lạm dụng.',
@@ -1797,7 +1910,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Lớp 3', grade_folder='Lớp_3',
         bai_so=1, ten_bai='BÀI 1. THÔNG TIN VÀ QUYẾT ĐỊNH', chu_diem='Thông tin quanh ta',
-        tiet_ppct='1', ngay_day='   /   /2026',
+        tiet_ppct='1',
+        ngay_day=compute_dates(2, LOP_SCHEDULE['3'][0])[1],
+        ngay_soan=compute_dates(2, LOP_SCHEDULE['3'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Chủ động tìm hiểu thông tin trong cuộc sống hằng ngày.',
             '- Trung thực: Nhận biết và không lan truyền thông tin sai lệch.',
@@ -1910,7 +2025,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Lớp 4', grade_folder='Lớp_4',
         bai_so=1, ten_bai='BÀI 1. PHẦN CỨNG VÀ PHẦN MỀM MÁY TÍNH', chu_diem='Cấu tạo máy tính',
-        tiet_ppct='1', ngay_day='   /   /2026',
+        tiet_ppct='1',
+        ngay_day=compute_dates(2, LOP_SCHEDULE['4'][0])[1],
+        ngay_soan=compute_dates(2, LOP_SCHEDULE['4'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Tích cực tìm hiểu, ghi nhớ kiến thức về phần cứng và phần mềm.',
             '- Trách nhiệm: Sử dụng đúng cách, bảo quản thiết bị phần cứng.',
@@ -2021,7 +2138,9 @@ def build_all():
     saved = create_khbd_th(
         grade_name='Lớp 5', grade_folder='Lớp_5',
         bai_so=1, ten_bai='BÀI 1. EM CÓ THỂ LÀM GÌ VỚI MÁY TÍNH', chu_diem='Máy tính và cuộc sống',
-        tiet_ppct='1', ngay_day='   /   /2026',
+        tiet_ppct='1',
+        ngay_day=compute_dates(2, LOP_SCHEDULE['5'][0])[1],
+        ngay_soan=compute_dates(2, LOP_SCHEDULE['5'][0])[0],
         pham_chat_items=[
             '- Chăm chỉ: Tích cực khám phá các ứng dụng hữu ích của máy tính trong học tập.',
             '- Trách nhiệm: Sử dụng máy tính đúng mục đích, không lướt web vô ích.',
@@ -2130,8 +2249,9 @@ def build_all():
     saved = create_khbd_thcs(
         grade_name='Lớp 6', grade_folder='Lớp_6',
         bai_so=1, ten_bai='Thông tin và dữ liệu',
-        mon_hoc='Tin học', lop='6', thoi_luong='1 tiết (45 phút)', tiet_ppct='1',
-        ngay_soan='   /   /2026', ngay_day='   /   /2026',
+        mon_hoc='Tin học', lop='6A1', thoi_luong='1 tiết (45 phút)', tiet_ppct='1',
+        ngay_soan=compute_dates(2, LOP_SCHEDULE['6'][0])[0],
+        ngay_day=compute_dates(2, LOP_SCHEDULE['6'][0])[1],
         kien_thuc_items=[
             '- Sự hiểu biết về khái niệm thông tin và dữ liệu trong máy tính.',
             '- Khả năng phân biệt thông tin (ý nghĩa con người hiểu) với dữ liệu (biểu diễn trong máy tính).',
@@ -2230,8 +2350,9 @@ def build_all():
     saved = create_khbd_thcs(
         grade_name='Lớp 7', grade_folder='Lớp_7',
         bai_so=1, ten_bai='Thiết bị vào - ra',
-        mon_hoc='Tin học', lop='7', thoi_luong='1 tiết (45 phút)', tiet_ppct='1',
-        ngay_soan='   /   /2026', ngay_day='   /   /2026',
+        mon_hoc='Tin học', lop='7A1', thoi_luong='1 tiết (45 phút)', tiet_ppct='1',
+        ngay_soan=compute_dates(2, LOP_SCHEDULE['7'][0])[0],
+        ngay_day=compute_dates(2, LOP_SCHEDULE['7'][0])[1],
         kien_thuc_items=[
             '- Sự hiểu biết về khái niệm thiết bị vào (Input devices) và thiết bị ra (Output devices).',
             '- Khả năng phân loại và liệt kê các thiết bị vào/ra phổ biến của máy tính.',
@@ -2329,8 +2450,9 @@ def build_all():
     saved = create_khbd_thcs(
         grade_name='Lớp 8', grade_folder='Lớp_8',
         bai_so=1, ten_bai='Lược sử công cụ tính toán',
-        mon_hoc='Tin học', lop='8', thoi_luong='1 tiết (45 phút)', tiet_ppct='1',
-        ngay_soan='   /   /2026', ngay_day='   /   /2026',
+        mon_hoc='Tin học', lop='8A1', thoi_luong='1 tiết (45 phút)', tiet_ppct='1',
+        ngay_soan=compute_dates(2, LOP_SCHEDULE['8'][0])[0],
+        ngay_day=compute_dates(2, LOP_SCHEDULE['8'][0])[1],
         kien_thuc_items=[
             '- Sự hiểu biết về các mốc lịch sử phát triển công cụ tính toán từ thủ công đến hiện đại.',
             '- Khả năng mô tả đặc điểm và vai trò của từng thế hệ máy tính (Thế hệ 1-5).',

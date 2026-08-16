@@ -59,6 +59,36 @@ Nếu cấp = Lớp 6 / Lớp 7 / Lớp 8 / Lớp 9:
 
 ---
 
+### Bước 1.5: Xác định Ngày soạn, Ngày dạy & Tên lớp
+
+**Mục đích:** Điền chính xác ngày soạn, ngày dạy và tên lớp theo Lịch báo giảng.
+
+> [!IMPORTANT]
+> **BẮT BUỘC đọc luật:** `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NGAY_LOP.md`
+
+**Quy tắc:**
+- **Ngày dạy** = ngày thực tế dạy lớp đó trong tuần (chiếu theo LBG).
+- **Ngày soạn** = Thứ 7 (Saturday) tuần trước tuần dạy.
+- **Tên lớp THCS:** `6A1`, `7A1`, `8A1` (KHÔNG ghi `6`, `7`, `8`).
+- **Tên lớp TH Lớp 5:** `5C1`.
+- **Table[0] THCS:** Chỉ có 2 dòng: `Ngày soạn: ... Ngày dạy: ...` và `Lớp: XA1`. Bỏ hết dòng `Lớp` thừa.
+
+**Mapping lớp → ngày dạy:**
+
+| Lớp | Tên lớp | Ngày dạy |
+|:----|:--------|:---------|
+| TTH | TT3     | Thứ Năm  |
+| 1   | 1A1     | Thứ Hai  |
+| 2   | 2A1     | Thứ Ba   |
+| 3   | 3A1     | Thứ Năm  |
+| 4   | 4C1     | Thứ Tư   |
+| 5   | 5C1     | Thứ Ba   |
+| 6   | 6A1     | Thứ Sáu  |
+| 7   | 7A1     | Thứ Ba   |
+| 8   | 8A1     | Thứ Sáu  |
+
+---
+
 ### Bước 2: Đọc SGK (Sách giáo khoa)
 
 **Mục đích:** Hiểu chính xác nội dung bài học từ nguồn chính thống.
@@ -249,6 +279,7 @@ D:\UNIGO\KHBD_Tin_học\{Khối_lớp}\{Bài_XX}\
 | Mẫu KHBD Tiểu học | `D:\UNIGO\Hệ thống mẫu văn bản\Khung  giáo án Unigo 2026-2027 Thang 7.2026.docx` |
 | Mẫu KHBD THCS | `D:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx` |
 | Mẫu tham chiếu THCS | `C:\Users\bmngu\OneDrive\Documents\slide\bai15_lop_6_Thuat_toan\KHBD_Bai15_Thuattoan_lop6.docx` |
+| Quy tắc Ngày/Lớp | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NGAY_LOP.md` |
 | Nhật ký cải tiến | `D:\UNIGO\.agents\skills\tao-khbd\references\improvement_log.md` |
 
 ---
