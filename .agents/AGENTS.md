@@ -113,15 +113,26 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
 
 ---
 
-## IV. Quy định soạn Kế hoạch bài dạy (KHBD) môn Tin học theo Prompt chuẩn
+## IV. Quy định soạn Kế hoạch bài dạy (KHBD) chuẩn UNIGO (Tin học & Robotics)
 
 1. **Mục tiêu Kiến thức & Mục tiêu Hoạt động**: Sử dụng Danh từ / Cụm danh từ (ví dụ: *Sự hiểu biết về...*, *Khả năng nhận diện...*, *Sự phân biệt...*). TUYỆT ĐỐI KHÔNG ghi chữ `(BẮT BUỘC)` tùy tiện.
-2. **Phân nhóm Năng lực & Phẩm chất**: Phải chia làm 3 nhóm: Năng lực đặc thù (Tin học), Năng lực số (Thông tư 02/2025 - CV 3456), Năng lực chung. Chỉ rõ mỗi năng lực/phẩm chất được phát triển qua `#Hoạt động` nào trong bài (ví dụ: `(Đạt được thông qua Hoạt động 1, Hoạt động 2)`).
+2. **Phân nhóm Năng lực & Phẩm chất**: Phải chia làm 3 nhóm: Năng lực đặc thù (Tin học / Robotics với mã NLa-NLe chuẩn), Năng lực số (Thông tư 02/2025 - CV 3456 gồm 6 Miền I-VI, thành tố và Bậc chuẩn), Năng lực chung. Chỉ rõ mỗi năng lực/phẩm chất được phát triển qua `#Hoạt động` nào trong bài (ví dụ: `(Đạt được thông qua Hoạt động 2, Hoạt động 3)`). CẤM LẶP nội dung năng lực giữa các bài.
 3. **Cấu trúc 4 Hoạt động & Bảng 3 Cột**:
-   - 4 Hoạt động: Khởi động -> Hình thành kiến thức mới -> Luyện tập -> Vận dụng.
-   - Mỗi hoạt động có 4 mục: a) Mục tiêu; b) Nội dung; c) Sản phẩm; d) Tổ chức thực hiện.
-   - Bảng Tổ chức thực hiện dạng **3 Cột** (`Bước` | `Hoạt động của GV` | `Hoạt động của HS`) với 4 hàng (`Chuyển giao`, `Thực hiện`, `Báo cáo`, `Kết luận`).
-4. **Chuyển Phụ lục xuống Phần V**: Phiếu học tập, Rubric đánh giá, kịch bản minigame phải đưa xuống Phần V. Phụ lục ở cuối bài dạy.
+   - 4 Hoạt động: `Hoạt động 1. Khởi động` -> `Hoạt động 2. Hình thành kiến thức mới` -> `Hoạt động 3. Luyện tập` -> `Hoạt động 4. Vận dụng`.
+   - Mỗi hoạt động có 4 mục: `a) Mục tiêu`; `b) Nội dung`; `c) Sản phẩm`; `d) Tổ chức thực hiện`.
+   - Bảng Tổ chức thực hiện dạng **3 Cột** (`Bước` | `Hoạt động của GV` | `Hoạt động của HS`) với 4 hàng (`Bước 1: Chuyển giao`, `Bước 2: Học sinh tiếp nhận`, `Bước 3: Báo cáo kết quả`, `Bước 4: Đánh giá kết quả`/`Giáo viên nhắc nhở nhiệm vụ về nhà`).
+4. **Quy chuẩn Viền bảng (Table Borders) trong KHBD:**
+   - **Bảng thông tin đầu bài (Trường / GV / Ngày):** BẮT BUỘC **NO BORDER** (Không viền - `w:val="nil"`).
+   - **Bảng các hoạt động dạy học (Tiến trình dạy học - Bảng 3 cột):** BẮT BUỘC **CÓ VIỀN** (`w:val="single"`, `w:sz="4"`, `w:color="000000"`).
+   - **Bảng chữ ký cuối bài (DUYỆT CỦA BGH / DUYỆT CỦA TỔ CM / NGƯỜI SOẠN):** BẮT BUỘC **NO BORDER** (Không viền - `w:val="nil"`).
+5. **Định dạng thụt lề & Khoảng cách (EMU Rules):**
+   - Tiêu đề mục La Mã (I., II., III.): `first_line_indent = 0` (In đậm).
+   - Mục con cấp 1 (1. Kiến thức, 2. Năng lực, 3. Phẩm chất): `first_line_indent = 180340` (In đậm).
+   - Mục con cấp 2 (2.1., 2.2., 2.3.): `first_line_indent = 360045` (In đậm).
+   - Nội dung gạch đầu dòng bullet (- NLa..., - Miền I...): `left_indent = 540000`, `first_line_indent = 0`.
+6. **Cấu trúc lưu trữ theo TUẦN (Đồng bộ Lịch báo giảng):**
+   - Mọi file KHBD lưu theo đường dẫn: `KHBD_[Môn]/[Khối_lớp]/Tuần_[XX]/KHBD_[Môn]_[Khối_lớp]_Tiet[YY]_[Tên_bài].docx`.
+   - Tuần được tính chính xác theo Lịch báo giảng và quy tắc xoay vòng Rotation chẵn/lẻ.
 
 ---
 

@@ -71,22 +71,76 @@ for child in list(doc.element.body):
 
 ### Phần I — YÊU CẦU CẦN ĐẠT
 
+> QUAN TRỌNG - Thứ tự bắt buộc TH: **Phẩm chất TRƯỚC → Năng lực SAU** (ngược với THCS)
+
+> [!CAUTION]
+> **CẤM LẶP NỘI DUNG**: Mỗi năng lực/phẩm chất CHỈ ĐƯỢC GHI MỘT LẦN duy nhất.
+> Không ghi tổng quát rồi lặp chi tiết bên dưới.
+
+**Format paragraph chính xác (python-docx EMU):**
+
+| Cấp | `first_line_indent` | `left_indent` | Bold | Ví dụ |
+|-----|---------------------|---------------|------|-------|
+| Tiêu đề section | 0 | 0 | ✅ | `I. YÊU CẦU CẦN ĐẠT:` |
+| Giới thiệu | 457200 | 0 | ❌ | `- Sau tiết học, học sinh sẽ:` |
+| Mục con cấp 1 | 457200 | 0 | ✅ | `1. Phát triển phẩm chất` |
+| Mục con cấp 2 | 450215 | 0 | ✅ | `2.1. Năng lực đặc thù (Tin học):` |
+| Bullet content | 0 | 540000 | ❌ | `- NLa (...): Biểu hiện...` |
+
+**Spacing:** `line_spacing=1.5` (phần NL: 1.33), `space_after=38100` (3pt), `alignment=JUSTIFY`
+
+**Cấu trúc mẫu chuẩn (verbatim):**
+
 ```
-I. YÊU CẦU CẦN ĐẠT:
-   - Sau tiết học, học sinh sẽ:
-   
-   1. Phát triển phẩm chất
-      [Nội dung phẩm chất: Chăm chỉ, Trách nhiệm, Trung thực, Nhân ái]
-   
-   2. Phát triển năng lực
-      2.1. Năng lực môn học:
-           [Năng lực đặc thù Tin học: NLa, NLb, NLc... + Năng lực số CV 3456]
-      2.2. Năng lực chung và đặc thù:
-           [Năng lực chung: Tự chủ & tự học, Giao tiếp & hợp tác, GQVĐ & sáng tạo]
+I. YÊU CẦU CẦN ĐẠT:                                 [bold, first_indent=0]
+  - Sau tiết học, học sinh sẽ:
+
+  1. Phát triển phẩm chất                             [bold, first_indent=457200]
+    - Chăm chỉ: Biểu hiện cụ thể. (HĐ X)            [normal, left_indent=540000]
+    - Trách nhiệm: Biểu hiện cụ thể. (HĐ X)         [normal, left_indent=540000]
+
+  2. Phát triển năng lực                              [bold, first_indent=457200]
+  2.1. Năng lực đặc thù (Tin học):                    [bold, first_indent=450215]
+    - NLa (Sử dụng và quản lí các phương tiện ICT):   [normal, left_indent=540000]
+      Biểu hiện cụ thể. (Đạt được thông qua HĐ X)
+    - NLd (Ứng dụng ICT trong học và tự học):          [normal, left_indent=540000]
+      Biểu hiện cụ thể. (Đạt được thông qua HĐ X)
+  2.2. Năng lực số (Thông tư 02/2025 – CV 3456):      [bold, first_indent=450215]
+    - Miền I. Khai thác dữ liệu và thông tin           [normal, left_indent=540000]
+      (thành tố 1.1. Duyệt, tìm kiếm... – Bậc 1):
+      Biểu hiện cụ thể. (Đạt được thông qua HĐ X)
+  2.3. Năng lực chung:                                [bold, first_indent=450215]
+    - Tự chủ và tự học: Biểu hiện. (HĐ X, Y)          [normal, left_indent=540000]
+    - Giao tiếp và hợp tác: Biểu hiện. (HĐ X, Y)     [normal, left_indent=540000]
 ```
 
-> QUAN TRỌNG - Thứ tự bắt buộc: Phẩm chất TRƯỚC → Năng lực SAU (ngược với THCS và SKILL.md cũ)
-> Năng lực số (CV 3456) được tích hợp vào mục `2.1. Năng lực môn học` cho Tiểu học
+#### Bảng tra cứu: 5 Năng lực đặc thù Tin học (CT GDPT 2018)
+
+| Mã | Tên thành phần | Biểu hiện ở Tiểu học |
+|----|---------------|----------------------|
+| NLa | Sử dụng và quản lí các phương tiện ICT | Nhận diện, phân biệt hình dạng và chức năng thiết bị; thao tác cơ bản với phần mềm |
+| NLb | Ứng xử phù hợp trong môi trường số | Biết bảo vệ thông tin cá nhân; biết quyền sở hữu trí tuệ mức đơn giản |
+| NLc | Giải quyết vấn đề với sự hỗ trợ của ICT | Tìm thông tin từ nguồn dữ liệu số; diễn đạt các bước giải quyết vấn đề |
+| NLd | Ứng dụng ICT trong học và tự học | Sử dụng phần mềm trò chơi, học tập; tạo sản phẩm số đơn giản |
+| NLe | Hợp tác trong môi trường số | Sử dụng công cụ kĩ thuật số để chia sẻ, trao đổi thông tin |
+
+#### Bảng tra cứu: 6 Miền Năng lực số (Thông tư 02/2025/TT-BGDĐT + CV 3456)
+
+| Miền | Tên đầy đủ | Các thành tố |
+|------|-----------|---------------|
+| I | Khai thác dữ liệu và thông tin | 1.1 Duyệt, tìm kiếm và lọc dữ liệu; 1.2 Đánh giá dữ liệu; 1.3 Quản lý dữ liệu; 1.4 Xử lý dữ liệu |
+| II | Giao tiếp và hợp tác trong môi trường số | 2.1 Tương tác qua công nghệ số; 2.2 Chia sẻ qua công nghệ số; 2.3 Tham gia cộng đồng số; 2.4 Hợp tác qua công nghệ số |
+| III | Sáng tạo nội dung số | 3.1 Phát triển nội dung số; 3.2 Tích hợp và tái thiết kế; 3.3 Bản quyền và giấy phép; 3.4 Lập trình |
+| IV | An toàn | 4.1 Bảo vệ thiết bị; 4.2 Bảo vệ dữ liệu cá nhân; 4.3 Bảo vệ sức khỏe; 4.4 Bảo vệ môi trường |
+| V | Giải quyết vấn đề | 5.1 Giải quyết vấn đề kỹ thuật; 5.2 Xác định nhu cầu công nghệ; 5.3 Sử dụng sáng tạo công nghệ; 5.4 Nhận diện khoảng trống NLS |
+| VI | Ứng dụng trí tuệ nhân tạo (AI) | 6.1 Nhận biết AI; 6.2 Sử dụng công cụ AI; 6.3 Đánh giá kết quả AI; 6.4 Đạo đức AI |
+
+**Format bắt buộc khi ghi Năng lực số:**
+```
+- Miền [số La Mã]. [Tên miền đầy đủ] (thành tố [X.Y]. [Tên thành tố] – Bậc [1-8]): 
+  [Biểu hiện cụ thể gắn với bài học]. (Đạt được thông qua HĐ X, Y)
+```
+
 
 ### Phần II — ĐỒ DÙNG DẠY HỌC
 

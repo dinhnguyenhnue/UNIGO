@@ -121,16 +121,23 @@ mẫu trong SGK.
 - Xác định:
   - **Kiến thức:** Dùng Danh từ / Cụm danh từ (VD: *Sự hiểu biết về...*, *Khả năng
     nhận diện...*, *Sự phân biệt...*).
-  - **Năng lực** (3 nhóm bắt buộc):
-    - Năng lực đặc thù (Tin học): NLa, NLb, NLc, NLd, NLe.
-    - Năng lực số (Khung CV 3456): Tra đúng mã năng lực theo khối lớp (VD: 3.4, 4.1).
-    - Năng lực chung: Tự chủ & tự học, Giao tiếp & hợp tác, GQVĐ & sáng tạo.
+  - **Năng lực** (3 nhóm bắt buộc, mục `2.1.`, `2.2.`, `2.3.`):
+    - `2.1. Năng lực đặc thù (Tin học)`: Ghi mã NLa-NLe kèm tên đầy đủ trong ngoặc.
+      VD: `- NLa (Sử dụng và quản lí các phương tiện ICT): Biểu hiện... (HĐ X)`
+    - `2.2. Năng lực số (Thông tư 02/2025 – CV 3456)`: Ghi đúng format Miền + thành tố + Bậc.
+      VD: `- Miền I. Khai thác dữ liệu và thông tin (thành tố 1.1. Duyệt, tìm kiếm... – Bậc 1): ...`
+    - `2.3. Năng lực chung`: Tự chủ & tự học, Giao tiếp & hợp tác, GQVĐ & sáng tạo.
   - **Phẩm chất:** Chăm chỉ, Trách nhiệm, Trung thực, Nhân ái.
   - Mỗi năng lực/phẩm chất PHẢI gắn mốc `(Đạt được thông qua Hoạt động X)`.
 
+> [!CAUTION]
+> **CẤM LẶP NỘI DUNG**: Mỗi năng lực/phẩm chất CHỈ ĐƯỢC GHI MỘT LẦN duy nhất.
+> KHÔNG ghi tổng quát (ví dụ: `- Năng lực đặc thù: Nhận biết...`) rồi lặp chi tiết bên dưới.
+> Tên mục `2.1.`, `2.2.`, `2.3.` chỉ xuất hiện 1 lần, nội dung bullet ngay dưới.
+
 > **TUYỆT ĐỐI KHÔNG** ghi chữ `(BẮT BUỘC)` tùy tiện vào tiêu đề hay nội dung.
 
-**Kết quả bước 3:** Bảng mục tiêu Kiến thức / Năng lực / Phẩm chất hoàn chỉnh.
+**Kết quả bước 3:** Bảng mục tiêu Kiến thức / Năng lực (2.1/2.2/2.3) / Phẩm chất hoàn chỉnh.
 
 ---
 
@@ -172,9 +179,9 @@ Tên tiết: ...
 I. Mục tiêu
    1. Kiến thức:               ← KIẾN THỨC TRƯỚC
    2. Năng lực:
-      - Năng lực chung:
-      - Năng lực đặc thù
-      - Năng lực số
+      2.1. Năng lực đặc thù (Tin học):  ← Mã NLa-NLe + tên + biểu hiện + #HĐ
+      2.2. Năng lực số (TT 02/2025):   ← Miền + thành tố + Bậc + biểu hiện + #HĐ
+      2.3. Năng lực chung:
    3. Phẩm chất:
 
 II. Thiết bị dạy học và học liệu:
@@ -182,18 +189,34 @@ II. Thiết bị dạy học và học liệu:
    2. Học liệu
 
 III. Tiến trình dạy học
-   1. Hoạt động 1. Khởi động    ← PARAGRAPHS (không dùng bảng)
+   1. Hoạt động 1. Khởi động    ← PARAGRAPHS + BẢNG 3 CỘT
       a) Mục tiêu  b) Nội dung  c) Sản phẩm  d) Tổ chức thực hiện
       Bước 1. Chuyển giao nhiệm vụ
       Bước 2. Học sinh tiếp nhận
       Bước 3. Báo cáo kết quả
       Bước 4. Đánh giá kết quả
    (HĐ 2, 3: cấu trúc tương tự)
-   4. Hoạt động mở rộng (Nhiệm vụ về nhà)
+   4. Hoạt động 4. Vận dụng
 
 RÚT KINH NGHIỆM SAU BÀI DẠY   ← GIỮ NGUYÊN
 [Table 1×3: BGH | Tổ CM | Người soạn]  ← GIỮ NGUYÊN TABLE GỐC
 ```
+
+**Quy tắc viền bảng (Table Borders):**
+- **Bảng thông tin đầu trang (Table 2×2):** BẮT BUỘC **NO BORDER** (Không viền - `w:val="nil"`).
+- **Bảng các hoạt động dạy học (Tiến trình 3 cột):** BẮT BUỘC **CÓ VIỀN** (`w:val="single"`, `w:sz="4"`, `w:color="000000"`).
+- **Bảng chữ ký cuối bài (DUYỆT BGH / DUYỆT TỔ CM / NGƯỜI SOẠN):** BẮT BUỘC **NO BORDER** (Không viền - `w:val="nil"`).
+
+**Quy tắc định dạng paragraph (python-docx EMU):**
+
+| Cấp | `first_line_indent` | `left_indent` | Bold |
+|------|---------------------|---------------|------|
+| Tiêu đề section (I., II., III.) | 0 | 0 | ✅ |
+| Mục con cấp 1 (1., 2., 3.) | 180340 | 0 | ✅ |
+| Mục con cấp 2 (2.1., 2.2.) | 360045 | 0 | ✅ |
+| Bullet content (- NLa...) | 0 | 540000 | ❌ |
+
+**Spacing THCS:** `line_spacing=1.15`, `space_after=38100` (3pt), `alignment=JUSTIFY`
 
 **Quy tắc nội dung chung:**
 - Nội dung phải bám sát SGK (Bước 2), không bịa đặt kiến thức.
@@ -215,14 +238,18 @@ RÚT KINH NGHIỆM SAU BÀI DẠY   ← GIỮ NGUYÊN
 |---|----------|---------|
 | 1 | Kiến thức bám sát SGK? | Nội dung KHBD phải phản ánh đúng kiến thức trong SGK, không thêm bớt sai lệch. |
 | 2 | Mục tiêu dùng Danh từ? | Không dùng động từ mở đầu (Hiểu, Biết...), phải dùng Danh từ (Sự hiểu biết, Khả năng...). |
-| 3 | Năng lực đủ 3 nhóm? | Đặc thù + Số + Chung, mỗi nhóm có ít nhất 1 mục. |
-| 4 | Năng lực số đúng mã CV 3456? | Tra bảng Khung NLS theo khối lớp, không bịa mã. |
-| 5 | Gắn mốc #Hoạt động? | Mỗi năng lực/phẩm chất đều chỉ rõ Hoạt động đạt được. |
-| 6 | Không ghi "(BẮT BUỘC)"? | Tuyệt đối không xuất hiện chuỗi `(BẮT BUỘC)` trong văn bản. |
-| 7 | Tiến trình đủ 4 Hoạt động? | Khởi động → Hình thành KT → Luyện tập → Vận dụng. |
-| 8 | Bảng 3 cột đúng format? | `Bước` / `Hoạt động của GV` / `Hoạt động của HS` × 4 hàng. |
-| 9 | Phụ lục ở cuối Phần V? | Phiếu HT, Rubric không nằm trong phần Tiến trình. |
-| 10 | Tổng thời lượng hợp lý? | 7 + 18 + 12 + 8 = 45 phút (điều chỉnh linh hoạt). |
+| 3 | Năng lực đủ 3 nhóm (2.1/2.2/2.3)? | Đặc thù (NLa-NLe) + Số (Miền I-VI) + Chung, mỗi nhóm có ít nhất 1 mục. |
+| 4 | NL đặc thù đúng format? | Có mã NLa-NLe + tên đầy đủ trong ngoặc + biểu hiện + gắn #HĐ. |
+| 5 | NL số đúng format? | Có `Miền [La Mã]. [Tên] (thành tố X.Y. ... – Bậc N)` + biểu hiện + #HĐ. |
+| 6 | Không lặp nội dung? | Mỗi NL/PC chỉ xuất hiện 1 lần duy nhất. KHÔNG tổng quát + chi tiết. |
+| 7 | Gắn mốc #Hoạt động? | Mỗi năng lực/phẩm chất đều chỉ rõ Hoạt động đạt được. |
+| 8 | Không ghi "(BẮT BUỘC)"? | Tuyệt đối không xuất hiện chuỗi `(BẮT BUỘC)` trong văn bản. |
+| 9 | Tiến trình đủ 4 Hoạt động? | Khởi động → Hình thành KT → Luyện tập → Vận dụng. |
+| 10 | Indent đều đặn? | Cấp 1/2/bullet đúng EMU: 180340/360045/left_indent=540000. |
+| 11 | Bảng 3 cột đúng format? | `Bước` / `Hoạt động của GV` / `Hoạt động của HS` × 4 hàng có viền. |
+| 12 | Bảng đầu và Bảng chữ ký? | Bảng thông tin đầu trang và Bảng chữ ký cuối trang BẮT BUỘC NO BORDER (không viền). |
+| 13 | Phụ lục ở cuối Phần V? | Phiếu HT, Rubric không nằm trong phần Tiến trình. |
+| 14 | Tổng thời lượng hợp lý? | 7 + 18 + 12 + 8 = 45 phút (điều chỉnh linh hoạt). |
 
 **Nếu phát hiện lỗi:** Quay lại Bước 4 sửa trước khi chuyển sang Bước 6.
 
@@ -246,8 +273,14 @@ RÚT KINH NGHIỆM SAU BÀI DẠY   ← GIỮ NGUYÊN
    Không dùng `paragraph.text = ""` (tạo paragraphs rỗng thừa).
 4. **Đường viền bảng:** Bắt buộc chèn XML `w:tblBorders` thủ công. Không phụ thuộc
    `table.style = 'Table Grid'` (dễ gây `KeyError`).
-5. **Font & Format:** Times New Roman 13pt, line spacing 1.15, space after 3pt.
-6. **Xử lý PermissionError:** Bọc `doc.save()` trong `try-except`. Nếu file bị khóa
+5. **Font & Format:** Times New Roman 13pt, line spacing 1.15 (THCS) / 1.5 (TH), space after 3pt.
+6. **Định dạng paragraph thống nhất (THCS):**
+   - Tiêu đề section: `first_indent=0, left_indent=0, bold`
+   - Mục con cấp 1: `first_indent=180340, bold`
+   - Mục con cấp 2: `first_indent=360045, bold`
+   - Bullet content: `left_indent=540000, first_indent=0, normal`
+   - `space_after=38100`, `space_before=0`, `alignment=JUSTIFY`
+7. **Xử lý PermissionError:** Bọc `doc.save()` trong `try-except`. Nếu file bị khóa
    bởi Word, lưu sang tên `_new.docx`.
 
 **Quy tắc đặt tên và lưu file:**

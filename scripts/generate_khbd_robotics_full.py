@@ -2,8 +2,10 @@ import os
 import re
 import sys
 import copy
+import shutil
+from datetime import date, timedelta
 import docx
-from docx.shared import Inches, Pt, RGBColor
+from docx.shared import Inches, Pt, Emu, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement
@@ -11,14 +13,27 @@ from docx.oxml.ns import qn
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-TPL_PRIMARY = r'd:\UNIGO\Hệ thống mẫu văn bản\Khung  giáo án Unigo 2026-2027 Thang 7.2026.docx'
-TPL_THCS = r'd:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx'
+# === INDENT EMU CONSTANTS ===
+INDENT_0 = 0
+INDENT_1 = 180340
+INDENT_2 = 360045
+INDENT_BULLET = 540000
+
+TPL_KHBD = r'd:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx'
 PPCT_PATH = r'd:\UNIGO\Phân phối chương trình\Robotics\Kế hoạch dạy học môn Robotics 2026-2027.docx'
 BASE_OUT_DIR = r'd:\UNIGO\KHBD_Robotics'
 
 # --- Helpers ---
 def set_table_borders(table, color="000000", sz="4", val="single"):
-    tblPr = table._tbl.tblPr
+    """Set table borders via XML, handling missing tblPr and removing old borders."""
+    tbl = table._tbl
+    tblPr = tbl.tblPr
+    if tblPr is None:
+        tblPr = OxmlElement('w:tblPr')
+        tbl.insert(0, tblPr)
+    old = tblPr.find(qn('w:tblBorders'))
+    if old is not None:
+        tblPr.remove(old)
     tblBorders = OxmlElement('w:tblBorders')
     for border_name in ['top', 'left', 'bottom', 'right', 'insideH', 'insideV']:
         border = OxmlElement(f'w:{border_name}')
@@ -94,7 +109,7 @@ def fill_cell(cell, text, bold=False, italic=False, align=WD_ALIGN_PARAGRAPH.LEF
 
 # --- Generator for Primary (Lớp 1-5) ---
 def build_khbd_primary(grade, title, tiet_ppct, yccd):
-    doc = docx.Document(TPL_PRIMARY)
+    doc = docx.Document(TPL_KHBD)
     clean_body_preserve_sectpr(doc)
     kit = get_kit_name(grade)
     
@@ -160,19 +175,44 @@ def build_khbd_primary(grade, title, tiet_ppct, yccd):
     p = doc.add_paragraph()
     p.paragraph_format.line_spacing = 1.33
     p.paragraph_format.space_after = Pt(3)
-    p.paragraph_format.left_indent = Inches(0.25)
+    p.paragraph_format.first_line_indent = Emu(INDENT_2)
     r = p.add_run(
-        f"2.1. Năng lực môn học (Robotics):\n"
-        f"  + Trọng tâm nội dung: {yccd}\n"
-        f"  + Nhận biết linh kiện & nguyên lý cơ khí: Nhận biết tên gọi, hình dạng, chức năng các chi tiết khung, chốt nối, động cơ, cảm biến bộ kit {kit} (Đạt được thông qua Hoạt động 2).\n"
-        f"  + Kĩ năng lắp ráp & vận hành: Thực hiện lắp ráp đúng quy trình từng bước mô hình {title}, vận hành chạy thử và điều chỉnh mô hình (Đạt được thông qua Hoạt động 3).\n"
-        f"  + Năng lực số (Khung CV 3456): Nhận biết linh kiện điện tử thông minh, thao tác an toàn với mạch điều khiển, dây dẫn và pin (Đạt được thông qua Hoạt động 2, Hoạt động 3).\n"
-        f"2.2. Năng lực chung và đặc thù:\n"
-        f"  + Tự chủ và tự học: Quan sát sơ đồ 2D/3D hướng dẫn lắp ráp, chủ động chuẩn bị đúng linh kiện (Đạt được thông qua Hoạt động 2).\n"
-        f"  + Giao tiếp và hợp tác: Phân công nhiệm vụ nhóm ăn ý khi thực hành lắp ráp và thử nghiệm sản phẩm (Đạt được thông qua Hoạt động 3).\n"
-        f"  + Giải quyết vấn đề và sáng tạo: Phát hiện và xử lý lỗi sai lắp ráp (kẹt khớp, ngược chốt), đề xuất ý tưởng cải tiến mô hình (Đạt được thông qua Hoạt động 3, Hoạt động 4)."
+        f"2.1. Năng lực đặc thù (Robotics):\n"
     )
-    afont(r, size_pt=13)
+    afont(r, size_pt=13, bold=True)
+    r2 = p.add_run(
+        f"- NLa (Sử dụng và quản lí các phương tiện ICT): Nhận biết tên gọi, hình dạng, chức năng các chi tiết khung, chốt nối, động cơ, cảm biến bộ kit {kit}. (Đạt được thông qua Hoạt động 2)\n"
+        f"- NLd (Ứng dụng ICT trong học và tự học): Thực hiện lắp ráp đúng quy trình từng bước mô hình {title}, vận hành chạy thử và điều chỉnh. (Đạt được thông qua Hoạt động 3)"
+    )
+    afont(r2, size_pt=13)
+
+    p = doc.add_paragraph()
+    p.paragraph_format.line_spacing = 1.33
+    p.paragraph_format.space_after = Pt(3)
+    p.paragraph_format.first_line_indent = Emu(INDENT_2)
+    r = p.add_run(
+        f"2.2. Năng lực số (Thông tư 02/2025 – CV 3456):\n"
+    )
+    afont(r, size_pt=13, bold=True)
+    r2 = p.add_run(
+        f"- Miền V. Giải quyết vấn đề (thành tố 5.3. Sử dụng sáng tạo công nghệ – Bậc 1): Nhận biết linh kiện điện tử thông minh, thao tác an toàn với mạch điều khiển, dây dẫn và pin. (Đạt được thông qua Hoạt động 2, Hoạt động 3)"
+    )
+    afont(r2, size_pt=13)
+
+    p = doc.add_paragraph()
+    p.paragraph_format.line_spacing = 1.33
+    p.paragraph_format.space_after = Pt(3)
+    p.paragraph_format.first_line_indent = Emu(INDENT_2)
+    r = p.add_run(
+        f"2.3. Năng lực chung:\n"
+    )
+    afont(r, size_pt=13, bold=True)
+    r2 = p.add_run(
+        f"- Tự chủ và tự học: Quan sát sơ đồ 2D/3D hướng dẫn lắp ráp, chủ động chuẩn bị đúng linh kiện. (Đạt được thông qua Hoạt động 2)\n"
+        f"- Giao tiếp và hợp tác: Phân công nhiệm vụ nhóm ăn ý khi thực hành lắp ráp và thử nghiệm sản phẩm. (Đạt được thông qua Hoạt động 3)\n"
+        f"- Giải quyết vấn đề và sáng tạo: Phát hiện và xử lý lỗi sai lắp ráp, đề xuất ý tưởng cải tiến mô hình. (Đạt được thông qua Hoạt động 3, Hoạt động 4)"
+    )
+    afont(r2, size_pt=13)
 
     # II. ĐỒ DÙNG DẠY HỌC
     p = doc.add_paragraph()
@@ -271,7 +311,7 @@ def build_khbd_primary(grade, title, tiet_ppct, yccd):
 
 # --- Generator for THCS (Lớp 6-8) ---
 def build_khbd_thcs(grade, title, tiet_ppct, yccd):
-    doc = docx.Document(TPL_THCS)
+    doc = docx.Document(TPL_KHBD)
     kit = get_kit_name(grade)
     
     # Preserve Table 0 (school/teacher info)
@@ -353,23 +393,63 @@ def build_khbd_thcs(grade, title, tiet_ppct, yccd):
     )
     afont(r, size_pt=13)
 
-    # 2. Năng lực SECOND for THCS
     p_nl = add_p_before_t2()
-    p_nl.paragraph_format.left_indent = Inches(0.2)
-    r = p_nl.add_run(
-        f"2. Năng lực:\n"
-        f"   - Năng lực chung: Chủ động tự học, tự nghiên cứu tài liệu sơ đồ kỹ thuật; giao tiếp và làm việc nhóm hiệu quả; giải quyết vấn đề sáng tạo kỹ thuật (Đạt được thông qua Hoạt động 2, Hoạt động 3).\n"
-        f"   - Năng lực đặc thù Robotics: Năng lực thiết kế mô phỏng 3D, kĩ năng thao tác lắp ráp chuẩn xác các khớp nối, năng lực nạp code lập trình và hiệu chỉnh robot (Đạt được thông qua Hoạt động 3).\n"
-        f"   - Năng lực số (Khung CV 3456): Kĩ năng vận hành thiết bị điều khiển thông minh, ứng dụng phần mềm nạp lập trình tự động, tuân thủ quy tắc an toàn thiết bị số và nguồn điện (Đạt được thông qua Hoạt động 2, Hoạt động 3)."
+    p_nl.paragraph_format.first_line_indent = Emu(INDENT_1)
+    r = p_nl.add_run("2. Năng lực:")
+    afont(r, size_pt=13, bold=True)
+
+    p_nldt = add_p_before_t2()
+    p_nldt.paragraph_format.first_line_indent = Emu(INDENT_2)
+    r = p_nldt.add_run("2.1. Năng lực đặc thù (Robotics):")
+    afont(r, size_pt=13, bold=True)
+
+    p_nldt_c = add_p_before_t2()
+    p_nldt_c.paragraph_format.left_indent = Emu(INDENT_BULLET)
+    r = p_nldt_c.add_run(
+        f"- NLa (Sử dụng và quản lí các phương tiện ICT): Năng lực thiết kế mô phỏng 3D, kĩ năng thao tác lắp ráp chuẩn xác các khớp nối. (Đạt được thông qua Hoạt động 2, Hoạt động 3)\n"
+        f"- NLd (Ứng dụng ICT trong học và tự học): Nạp code lập trình và hiệu chỉnh robot. (Đạt được thông qua Hoạt động 3)"
+    )
+    afont(r, size_pt=13)
+
+    p_nls = add_p_before_t2()
+    p_nls.paragraph_format.first_line_indent = Emu(INDENT_2)
+    r = p_nls.add_run("2.2. Năng lực số (Thông tư 02/2025 – CV 3456):")
+    afont(r, size_pt=13, bold=True)
+
+    p_nls_c = add_p_before_t2()
+    p_nls_c.paragraph_format.left_indent = Emu(INDENT_BULLET)
+    r = p_nls_c.add_run(
+        f"- Miền V. Giải quyết vấn đề (thành tố 5.3. Sử dụng sáng tạo công nghệ – Bậc 2): Kĩ năng vận hành thiết bị điều khiển thông minh, ứng dụng phần mềm nạp lập trình tự động. (Đạt được thông qua Hoạt động 2, Hoạt động 3)\n"
+        f"- Miền IV. An toàn (thành tố 4.1. Bảo vệ thiết bị – Bậc 2): Tuân thủ quy tắc an toàn thiết bị số và nguồn điện. (Đạt được thông qua Hoạt động 3)"
+    )
+    afont(r, size_pt=13)
+
+    p_nlc = add_p_before_t2()
+    p_nlc.paragraph_format.first_line_indent = Emu(INDENT_2)
+    r = p_nlc.add_run("2.3. Năng lực chung:")
+    afont(r, size_pt=13, bold=True)
+
+    p_nlc_c = add_p_before_t2()
+    p_nlc_c.paragraph_format.left_indent = Emu(INDENT_BULLET)
+    r = p_nlc_c.add_run(
+        f"- Tự chủ và tự học: Chủ động tự học, tự nghiên cứu tài liệu sơ đồ kỹ thuật. (Đạt được thông qua Hoạt động 2)\n"
+        f"- Giao tiếp và hợp tác: Giao tiếp và làm việc nhóm hiệu quả. (Đạt được thông qua Hoạt động 3)\n"
+        f"- Giải quyết vấn đề và sáng tạo: Giải quyết vấn đề sáng tạo kỹ thuật. (Đạt được thông qua Hoạt động 3, Hoạt động 4)"
     )
     afont(r, size_pt=13)
 
     # 3. Phẩm chất THIRD for THCS
     p_pc = add_p_before_t2()
-    p_pc.paragraph_format.left_indent = Inches(0.2)
-    r = p_pc.add_run(
-        f"3. Phẩm chất:\n"
-        f"   - Trách nhiệm trong việc quản lý, bảo vệ thiết bị công nghệ; trung thực trong báo cáo kết quả thử nghiệm mô hình; tác phong công nghiệp và tư duy khoa học (Đạt được thông qua Hoạt động 3, Hoạt động 4)."
+    p_pc.paragraph_format.first_line_indent = Emu(INDENT_1)
+    r = p_pc.add_run("3. Phẩm chất:")
+    afont(r, size_pt=13, bold=True)
+
+    p_pc_c = add_p_before_t2()
+    p_pc_c.paragraph_format.left_indent = Emu(INDENT_BULLET)
+    r = p_pc_c.add_run(
+        f"- Trách nhiệm: Quản lý, bảo vệ thiết bị công nghệ. (Đạt được thông qua Hoạt động 3, Hoạt động 4)\n"
+        f"- Trung thực: Trung thực trong báo cáo kết quả thử nghiệm mô hình. (Đạt được thông qua Hoạt động 3)\n"
+        f"- Chăm chỉ: Tác phong công nghiệp và tư duy khoa học. (Đạt được thông qua Hoạt động 2, Hoạt động 3)"
     )
     afont(r, size_pt=13)
 
@@ -423,11 +503,11 @@ def build_khbd_thcs(grade, title, tiet_ppct, yccd):
              ("GV đánh giá sản phẩm thực hành, chấm điểm tiêu chí kỹ thuật.", "HS tinh chỉnh lại chốt nối nếu robot bị kẹt hoặc di chuyển lệch.")
          ]),
 
-        ("4. Hoạt động mở rộng (Nhiệm vụ về nhà) (8 phút)",
+        ("4. Hoạt động 4. Vận dụng (8 phút)",
          f"Vận dụng sáng tạo, nâng cấp tính năng robot và dọn dẹp vệ sinh.",
          f"GV đặt yêu cầu cải tiến tối ưu thuật toán hoặc thêm chi tiết trang trí.",
          f"Báo cáo ý tưởng cải tiến mô hình và bộ Kit được sắp xếp ngăn nắp.",
-         f"Chuyển giao nhiệm vụ mở rộng và dọn dẹp.",
+         f"Chuyển giao nhiệm vụ vận dụng và dọn dẹp.",
          [
              (f"GV đặt câu hỏi: 'Em có thể cải tiến cấu trúc nào để {title} hoạt động tốt hơn?'", "HS tiếp nhận câu hỏi suy nghĩ ý tưởng sáng tạo mở rộng."),
              ("GV hướng dẫn quy trình tháo dỡ robot và kiểm kê linh kiện.", "HS nhẹ nhàng tháo chốt, phân loại linh kiện về đúng vị trí trong hộp Kit."),
@@ -493,13 +573,20 @@ def build_khbd_thcs(grade, title, tiet_ppct, yccd):
 
 # --- Main execution ---
 def main():
+    print("==================================================")
+    print(" BẮT ĐẦU TẠO TOÀN BỘ KHBD ROBOTICS (THEO TUẦN)")
+    print("==================================================")
+
+    # 1. Xóa sạch thư mục KHBD_Robotics cũ
+    if os.path.exists(BASE_OUT_DIR):
+        shutil.rmtree(BASE_OUT_DIR)
+        print("  [+] Đã xóa sạch thư mục KHBD_Robotics cũ.")
+
+    os.makedirs(BASE_OUT_DIR, exist_ok=True)
+
     doc_ppct = docx.Document(PPCT_PATH)
     tables = doc_ppct.tables
     created_count = 0
-
-    print("==================================================")
-    print(" BẮT ĐẦU TẠO TOÀN BỘ KHBD ROBOTICS (LỚP 1 - 8)")
-    print("==================================================")
 
     for grade, t_idx in enumerate(range(4, 12), start=1):
         t = tables[t_idx]
@@ -524,33 +611,41 @@ def main():
 
             safe_title = sanitize_filename(title)
 
-            # Determine folder and filename convention
-            if 'Tiết 0' in title or 'Định hướng' in title:
-                folder_name = "Tiết_00"
+            # Tính Tuần theo đúng logic Lịch báo giảng:
+            if grade >= 5:
+                # Lớp 5-8: Tuần 1 = Tiết 0; Tuần lẻ 3, 5, 7... = Robotics (2 tiết/tuần)
+                if tiet_ppct == 0:
+                    tuan_so = 1
+                else:
+                    tuan_so = 2 * ((tiet_ppct - 1) // 2) + 3
+            else:
+                # Lớp 1-4: Tuần 1 = Tiết 0; Tuần 2+ = ppct + 1
+                tuan_so = tiet_ppct + 1 if tiet_ppct >= 1 else 1
+
+            tuan_folder = f"Tuần_{tuan_so:02d}"
+
+            if tiet_ppct == 0 or 'Tiết 0' in title or 'Định hướng' in title:
                 filename = f"KHBD_Robotics_Lớp_{grade}_Tiet00_{safe_title}.docx"
             else:
                 lesson_counter += 1
-                folder_name = f"Bài_{lesson_counter:02d}"
-                filename = f"KHBD_Robotics_Lớp_{grade}_Bai{lesson_counter:02d}_{safe_title}.docx"
+                filename = f"KHBD_Robotics_Lớp_{grade}_Tiet{tiet_ppct:02d}_{safe_title}.docx"
 
-            out_folder = os.path.join(BASE_OUT_DIR, f"Lớp_{grade}", folder_name)
+            out_folder = os.path.join(BASE_OUT_DIR, f"Lớp_{grade}", tuan_folder)
             os.makedirs(out_folder, exist_ok=True)
             out_filepath = os.path.join(out_folder, filename)
 
-            if grade <= 5:
-                doc = build_khbd_primary(grade, title, tiet_ppct, yccd)
-            else:
-                doc = build_khbd_thcs(grade, title, tiet_ppct, yccd)
+            # Use THCS template for ALL grades
+            doc = build_khbd_thcs(grade, title, tiet_ppct, yccd)
 
             try:
                 doc.save(out_filepath)
                 created_count += 1
-                print(f"  [+] Đã tạo: Lớp {grade} -> {folder_name} -> {filename}")
+                print(f"  [+] Đã tạo: Lớp {grade} -> {tuan_folder} -> {filename}")
             except Exception as e:
                 print(f"  [!] Lỗi khi lưu {out_filepath}: {e}")
 
     print(f"\n==================================================")
-    print(f" HOÀN THÀNH TẠO {created_count} FILE KHBD ROBOTICS CHUẨN!")
+    print(f" HOÀN THÀNH TẠO {created_count} FILE KHBD ROBOTICS CHUẨN (THEO TUẦN)!")
     print(f"==================================================")
 
 if __name__ == '__main__':
