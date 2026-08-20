@@ -124,8 +124,22 @@ mẫu trong SGK.
   - **Năng lực** (3 nhóm bắt buộc, mục `2.1.`, `2.2.`, `2.3.`):
     - `2.1. Năng lực đặc thù (Tin học)`: Ghi mã NLa-NLe kèm tên đầy đủ trong ngoặc.
       VD: `- NLa (Sử dụng và quản lí các phương tiện ICT): Biểu hiện... (HĐ X)`
-    - `2.2. Năng lực số (Thông tư 02/2025 – CV 3456)`: Ghi đúng format Miền + thành tố + Bậc.
-      VD: `- Miền I. Khai thác dữ liệu và thông tin (thành tố 1.1. Duyệt, tìm kiếm... – Bậc 1): ...`
+    - `2.2. Năng lực số (Thông tư 02/2025 – CV 3456)`:
+      **BẮT BUỘC đọc** file `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_SO_CV3456.md` trước.
+      **BẮT BUỘC tra** `D:\UNIGO\.agents\skills\tao-khbd\references\cv3456_full_data.json` để lấy descriptor đúng Bậc.
+      
+      Quy trình:
+      1. Xác định **Bậc** theo khối lớp: L1-3 → Bậc 1, L4-5 → Bậc 2, L6-7 → Bậc 3, L8-9 → Bậc 4.
+      2. Chọn **Miền NLS phù hợp** nội dung bài (xem Bảng mapping trong KHBD_NANG_LUC_SO_CV3456.md).
+      3. Tra descriptor từ json: `data[thanh_to_key]['descriptors'][bac_col]`, lấy 1-2 bullet đầu.
+      4. Ghi 2 NLS items (primary + secondary), format:
+      `- Miền [La Mã]. [Tên Miền] (thành tố [Mã]. [Tên] – Bậc [X]): [Descriptor từ CV 3456] (Đạt được thông qua HĐ X, HĐ Y).`
+
+> [!CAUTION]
+> **CẤM dùng NLS chung chung** cho tất cả các bài (VD: "Khai thác thông tin số, dữ liệu đa phương tiện an toàn phục vụ bài học").
+> **CẤM dùng sai Bậc**: Lớp 6-7 = Bậc 3 (KHÔNG phải Bậc 2), Lớp 8-9 = Bậc 4.
+> **CẤM tự bịa descriptor**: Phải lấy từ cv3456_full_data.json.
+
     - `2.3. Năng lực chung`: Tự chủ & tự học, Giao tiếp & hợp tác, GQVĐ & sáng tạo.
   - **Phẩm chất:** Chăm chỉ, Trách nhiệm, Trung thực, Nhân ái.
   - Mỗi năng lực/phẩm chất PHẢI gắn mốc `(Đạt được thông qua Hoạt động X)`.
@@ -312,6 +326,8 @@ D:\UNIGO\KHBD_Tin_học\{Khối_lớp}\{Bài_XX}\
 | Mẫu KHBD Tiểu học | `D:\UNIGO\Hệ thống mẫu văn bản\Khung  giáo án Unigo 2026-2027 Thang 7.2026.docx` |
 | Mẫu KHBD THCS | `D:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx` |
 | Mẫu tham chiếu THCS | `C:\Users\bmngu\OneDrive\Documents\slide\bai15_lop_6_Thuat_toan\KHBD_Bai15_Thuattoan_lop6.docx` |
+| Quy tắc Năng lực số (CV 3456) | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_SO_CV3456.md` |
+| Dữ liệu NLS đầy đủ (CV 3456) | `D:\UNIGO\.agents\skills\tao-khbd\references\cv3456_full_data.json` |
 | Quy tắc Ngày/Lớp | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NGAY_LOP.md` |
 | Nhật ký cải tiến | `D:\UNIGO\.agents\skills\tao-khbd\references\improvement_log.md` |
 

@@ -60,14 +60,12 @@
 - **Hành động**: Xóa 9 file slide Tuần 02 cũ. Slide mới sẽ được tạo lại theo skill đã cập nhật.
 - **Giữ nguyên**: Toàn bộ quy tắc kỹ thuật (chân trang, đầu trang, vùng an toàn, font, template, Card Grid, Accent Bar, Color Palette).
 
-## 2026-07-28 - Nâng cấp toàn diện Thiết kế Giao diện Slide (Modern High-Aesthetic Design System)
+## 2026-08-18 (v4) — Mở rộng Tuần 3 & 4 Tin học: Video tham khảo YouTube & Đề ôn tập + Slide tương tác
 
-- **Vấn đề nhận diện**: Slide tạo ban đầu bị đánh giá là chưa đủ thẩm mỹ (thiếu điểm nhấn thị giác, hộp văn bản thô, thiếu cấu trúc container).
-- **Cải tiến thiết kế đã áp dụng**:
-  1. **Top Header Banner**: Mọi slide nội dung đều có thanh Banner màu chủ đạo phía trên kèm Badge Pill nổi bật (`[ TIN HỌC X • BÀI Y ]`).
-  2. **Modern Card Grid System**: Đóng gói nội dung trong các Card bo tròn (`ROUNDED_RECTANGLE`) màu trắng tinh (`#FFFFFF`) trên nền Slate nhạt (`#F8FAFC`).
-  3. **Left Accent Strips**: Mỗi card có dải vạch màu nhấn nổi bật bên lề trái (rộng 0.6cm) giúp phân chia và thu hút ánh nhìn.
-  4. **Number Badges (`01`, `02`, `03`)**: Sử dụng huy hiệu số thứ tự dạng hình tròn/Pill màu rực rỡ cho mục tiêu và các nội dung cốt lõi.
-  5. **Image Framing**: Ảnh AI được lồng bên trong Card container bo góc chuyên nghiệp, không bị thả trôi tự do.
-  6. **Hiệu ứng XML**: Tích hợp XML Transitions (chuyển slide mượt) và XML Animations (xuất hiện từng bước).
-- **Kết quả**: Áp dụng thành công cho toàn bộ bộ slide Lớp 3, 4, 5, 6, 7, 8. Đã được ghi nhận vào quy chuẩn thiết kế của Agent.
+- **Yêu cầu & Thiết kế mới:**
+  1. **Video tham khảo**: Mỗi bài học có thêm 1 slide "Video tham khảo 🎬/📹" chèn ngay sau Khởi động (hoạt động Khám phá / Hình thành kiến thức), chứa thumbnail, link YouTube tiếng Việt/minh họa chất lượng cao.
+  2. **Tiết ôn tập ĐGĐK (VD: Lớp 8 Tiết 4)**:
+     - Tạo file word `.docx` **Đề ôn tập ĐGĐK 1** (Ma trận câu hỏi trắc nghiệm + tự luận ngắn + thực hành).
+     - Tạo slide `.pptx` **Ôn tập tương tác** (mỗi câu hỏi 1 slide có ảnh minh họa + các phương án A/B/C/D với animation hiện đáp án đúng khi click).
+  3. **Độ tương phản & Bố cục**: Dành tối đa diện tích cho hình ảnh per-bullet, text súc tích vừa vặn không che lấp, thẻ card bo góc gọn gàng.
+  4. **Toàn bộ các khối**: Tiền Tiểu học, Lớp 1, 2, 3, 4 (Tuần 3 & Tuần 4) và Lớp 5, 6, 7, 8, 9 (Tuần 4 - 2 tiết gộp).

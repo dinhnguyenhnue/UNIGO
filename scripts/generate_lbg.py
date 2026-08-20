@@ -1,38 +1,33 @@
 """
-generate_lbg.py — Tu dong tao Lich bao giang theo tuan
-======================================================
+generate_lbg.py — Tu dong tao Lich bao giang theo tuan tu TKB Giao vien
+========================================================================
 
 QUY TAC ROTATION:
   - Lop 5, 6, 7, 8: Moi lop co 2 tiet / tuan
-      Tuan CHAN (2, 4, 6...): ca 2 tiet -> Tin hoc
-      Tuan LE  (3, 5, 7...): ca 2 tiet -> Robotics
-  - Cac lop con lai: giu nguyen mon hoc goc
+      Tuan CHAN (2, 4, 6...): ca 2 tiet -> Tin hoc (Phong Tin hoc)
+      Tuan LE  (3, 5, 7...): ca 2 tiet -> Robotics (Bo Kit Robotics)
+  - Cac lop con lai: giu nguyen mon hoc goc tu TKB
 
 QUY TAC PPCT (Khong offset):
   - Tuan 1: Tat ca = Tiet 0 (Dinh huong)
-  - Tuan 2+: Tat ca cac Thu (T2 -> T6) đeu dong bo ppct = tuan_so - 1
+  - Tuan 2+: Tat ca cac Thu (T2 -> T6) deu dong bo ppct = tuan_so - 1
   - Rotation classes (5,6,7,8): PPCT rieng cho Tin/Robotics
       Khi co 2 tiet lien tiep cung mon -> PPCT lien tiep (Tuan 2: PPCT 1,2; Tuan 4: PPCT 3,4...)
+      Tuan 3 (Le - Robotics): PPCT 1, 2; Tuan 5: PPCT 3, 4...
 
-QUY TRINH (moi tuan):
-  1. Doc file Tuan 01 lam template
-  2. Cap nhat tieu de tuan + ngay
-  3. Cap nhat nhan Thu/ngay trong bang
-  4. Ap dung rotation cho lop 5,6,7,8
-  5. Cap nhat PPCT + Ten bai tu PPCT_DATA
-  6. Luu ban goc tong hop
-  7. Tach 2 ban: TTH+TH va THCS
-  8. Chen page break (sang/chieu/nhan xet = 3 trang)
-
-CACH DUNG:
-  python generate_lbg.py <so_tuan>
-  Vi du: python generate_lbg.py 2
-         python generate_lbg.py 3
-
-OUTPUT (trong thu muc LBG_DIR):
-  Lich bao giang - Tuan XX.docx          <- ban goc tong hop
-  Lich bao giang - Tuan XX (TTH+TH).docx <- Tien TH + TH
-  Lich bao giang - Tuan XX (THCS).docx   <- THCS
+MASTER SCHEDULE (Tu 'Thoi khoa bieu - Dau Dinh Nguyen.xlsx'):
+  SANG (13 tiet):
+    - Thu Hai: T3 Rob 4C1, T4 Tin 1A1
+    - Thu Ba: T1 Tin 1C1, T3-T4 Tin-Rob 5C1
+    - Thu Tu: T2 Rob 3A1, T4 Tin 3C1
+    - Thu Nam: T1 Tin TT3, T2 Rob 1A1, T4 Rob 2C1
+    - Thu Sau: T1 Rob 3C1, T4-T5 Tin-Rob 6A1
+  CHIEU (12 tiet):
+    - Thu Hai: T3 Tin 2C1
+    - Thu Ba: T1 Tin 2A1, T3-T4 Tin-Rob 7A1
+    - Thu Tu: T3 Tin 4C1, T4 Rob 2A1
+    - Thu Nam: T1 Tin 3A1, T2 Tin TTH 1, T3 Tin TTH2, T4 Rob 1C1
+    - Thu Sau: T1-T2 Tin-Rob 8A1
 """
 
 import sys
@@ -46,31 +41,21 @@ from datetime import date, timedelta
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-# ─────────────────────────────────────────────────────────────────────────────
-# CAU HINH
-# ─────────────────────────────────────────────────────────────────────────────
-
 LBG_DIR = r'D:\UNIGO\Hệ thống mẫu văn bản\Nguyên đã làm\Lịch báo giảng'
 TEMPLATE = os.path.join(LBG_DIR, 'Lịch báo giảng - Tuần 01.docx')
-
-# Ngay dau Tuan 01 (Thu Hai 03/08/2026)
 TUAN_01_START = date(2026, 8, 3)
 
-# Lop co rotation Tin hoc / Robotics tuan chan-le (bat dau tu lop 5)
 ROTATION_PREFIXES = ('5', '6', '7', '8')
-
 THU_LABELS = {0: 'Hai', 1: 'Ba', 2: 'Tư', 3: 'Năm', 4: 'Sáu'}
 
-# ─────────────────────────────────────────────────────────────────────────────
-# PPCT_DATA: Mapping class -> {ppct_num: lesson_name}
-# ppct_num starts at 0 (Dinh huong) then 1, 2, 3...
-# In PPCT files, PPCT=1 = "Tiết 0: Định hướng", PPCT=2 = "Bài 1..."
-# But in LBG, we use ppct=0 for orientation, ppct=1 for first real lesson
-# So LBG ppct N maps to PPCT_DATA key N+1
-# ─────────────────────────────────────────────────────────────────────────────
+# Tên tổ trưởng theo cấp học
+TO_TRUONG_THCS = 'Nguyễn Thị Ngọc Ánh'
+TO_TRUONG_TH = 'Nguyễn Thị Ngọc'
+
+# Số dòng chấm nhận xét tối đa trong bảng chữ ký (giữ gọn 1 trang)
+MAX_DONG_CHAM = 4
 
 PPCT_TIN = {
-    # Tiền Tiểu học (TT3, TTH 1, TTH2 - dùng PPCT chung TTH)
     'TT3': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Em làm quen với thế giới công nghệ',
@@ -109,7 +94,6 @@ PPCT_TIN = {
         34: 'Sử dụng công nghệ an toàn',
         35: 'ĐÁNH GIÁ ĐỊNH KỲ 4',
     },
-    # Lớp 1 (1A1, 1C1)
     '1': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Em làm quen với thế giới công nghệ',
@@ -148,7 +132,6 @@ PPCT_TIN = {
         34: 'AI có thể sai – dữ liệu cần kiểm tra',
         35: 'ĐÁNH GIÁ ĐỊNH KỲ 4',
     },
-    # Lớp 2 (2A1, 2C1)
     '2': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Em trở thành nhà sáng tạo số',
@@ -187,7 +170,6 @@ PPCT_TIN = {
         34: 'AI có thể sai – dữ liệu cần kiểm tra',
         35: 'ĐÁNH GIÁ ĐỊNH KỲ 4',
     },
-    # Lớp 3 (3A1, 3C1) - from Table 4 Tin TH
     '3': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Bài 1: Thông tin và quyết định',
@@ -215,7 +197,6 @@ PPCT_TIN = {
         23: 'Đánh giá định kỳ 4',
         24: 'Tổng kết năm học',
     },
-    # Lớp 4 (4C1) - from Table 5 Tin TH
     '4': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Bài 1: Phần cứng và phần mềm máy tính',
@@ -243,7 +224,6 @@ PPCT_TIN = {
         23: 'Đánh giá định kỳ 4',
         24: 'Tổng kết năm học',
     },
-    # Lớp 5 (5C1) - from Table 6 Tin TH
     '5': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Bài 1: Em có thể làm gì với máy tính?',
@@ -271,7 +251,6 @@ PPCT_TIN = {
         23: 'Đánh giá định kỳ 4',
         24: 'Tổng kết năm học',
     },
-    # Lớp 6 (6A1) - from Table 3 Tin THCS
     '6': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Bài 1. Thông tin và dữ liệu',
@@ -298,7 +277,6 @@ PPCT_TIN = {
         22: 'Đánh giá định kỳ 4',
         23: 'Tổng kết năm học',
     },
-    # Lớp 7 (7A1) - from Table 4 Tin THCS
     '7': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Bài 1. Thiết bị vào - ra',
@@ -325,7 +303,6 @@ PPCT_TIN = {
         22: 'Đánh giá định kỳ 4',
         23: 'Tổng kết năm học',
     },
-    # Lớp 8 (8A1) - from Table 5 Tin THCS
     '8': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Bài 1. Lược sử công cụ tính toán',
@@ -353,9 +330,7 @@ PPCT_TIN = {
     },
 }
 
-# Robotics PPCT (shared for 6,7,8; separate for TH classes)
 PPCT_ROB = {
-    # Robotics cho lop 1 (1A1, 1C1) - giong Rob TH Table 5
     '1': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Bài 1. Tập thể dục nào!',
@@ -394,7 +369,6 @@ PPCT_ROB = {
         34: 'Đánh giá định kỳ 4',
         35: 'Tổng kết môn học & Triển lãm Robotics',
     },
-    # Robotics cho lop 2 (2A1, 2C1) - giong Rob TH Table 6
     '2': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Bài 1. Hãy nấu những món ăn ngon',
@@ -433,7 +407,6 @@ PPCT_ROB = {
         34: 'Đánh giá định kỳ 4',
         35: 'Tổng kết môn học & Triển lãm Robotics',
     },
-    # Robotics cho lop 3 (3A1, 3C1) - giong Rob TH Table 7
     '3': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Bài 1. Hãy nấu những món ăn ngon',
@@ -472,7 +445,6 @@ PPCT_ROB = {
         34: 'Đánh giá định kỳ 4',
         35: 'Tổng kết môn học & Triển lãm Robotics',
     },
-    # Robotics cho lop 4 (4C1) - giong Rob TH Table 7 (same kit)
     '4': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Bài 1. Hãy nấu những món ăn ngon',
@@ -511,7 +483,6 @@ PPCT_ROB = {
         34: 'Đánh giá định kỳ 4',
         35: 'Tổng kết môn học & Triển lãm Robotics',
     },
-    # Robotics THCS (5,6,7,8) - shared PPCT from Rob THCS
     '5': {
         0: 'Tiết 0: Định hướng môn học',
         1: 'Bài 1. Động cơ là gì?',
@@ -539,17 +510,49 @@ PPCT_ROB = {
         23: 'Tổng kết môn học & Triển lãm Robotics',
     },
 }
-# 6,7,8 cùng chương trình Robotics THCS
+
 PPCT_ROB['6'] = PPCT_ROB['5'].copy()
 PPCT_ROB['7'] = PPCT_ROB['5'].copy()
 PPCT_ROB['8'] = PPCT_ROB['5'].copy()
-# TTH dùng chung Rob lớp 1
 PPCT_ROB['TT'] = PPCT_ROB['1'].copy()
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# TIEN ICH
+# MASTER SCHEDULE (Tu 'Thoi khoa bieu - Dau Dinh Nguyen.xlsx')
+# (day_idx 0..4, tiet_tkb 1..5): (lop, mon_display, is_rotation)
 # ─────────────────────────────────────────────────────────────────────────────
+
+MASTER_SCHEDULE_SANG = {
+    (0, 3): ('4C1', 'Robotics', False),
+    (0, 4): ('1A1', 'Tin học', False),
+    (1, 1): ('1C1', 'Tin học', False),
+    (1, 3): ('5C1', 'Tin - Robotics', True),
+    (1, 4): ('5C1', 'Tin - Robotics', True),
+    (2, 2): ('3A1', 'Robotics', False),
+    (2, 4): ('3C1', 'Tin học', False),
+    (3, 1): ('TT3', 'Tin học', False),
+    (3, 2): ('1A1', 'Robotics', False),
+    (3, 4): ('2C1', 'Robotics', False),
+    (4, 1): ('3C1', 'Robotics', False),
+    (4, 4): ('6A1', 'Tin - Robotics', True),
+    (4, 5): ('6A1', 'Tin - Robotics', True),
+}
+
+MASTER_SCHEDULE_CHIEU = {
+    (0, 3): ('2C1', 'Tin học', False),
+    (1, 1): ('2A1', 'Tin học', False),
+    (1, 3): ('7A1', 'Tin - Robotics', True),
+    (1, 4): ('7A1', 'Tin - Robotics', True),
+    (2, 3): ('4C1', 'Tin học', False),
+    (2, 4): ('2A1', 'Robotics', False),
+    (3, 1): ('3A1', 'Tin học', False),
+    (3, 2): ('TTH 1', 'Tin học', False),
+    (3, 3): ('TTH2', 'Tin học', False),
+    (3, 4): ('1C1', 'Robotics', False),
+    (4, 1): ('8A1', 'Tin - Robotics', True),
+    (4, 2): ('8A1', 'Tin - Robotics', True),
+}
+
 
 def week_dates(tuan_so):
     delta = timedelta(weeks=tuan_so - 1)
@@ -568,7 +571,6 @@ def day_label(d):
 
 
 def classify_lop(lop):
-    """'TTH_TH' hoac 'THCS' hoac None."""
     s = lop.strip().upper()
     if not s:
         return None
@@ -578,13 +580,11 @@ def classify_lop(lop):
 
 
 def is_rotation_lop(lop):
-    """Tra ve True neu lop thuoc nhom 5,6,7,8 (co rotation)."""
     s = lop.strip().upper()
     return any(s.startswith(p) for p in ROTATION_PREFIXES)
 
 
 def rotation_mon(tuan_so):
-    """Mon hoc cho lop rotation theo tuan: chan=Tin hoc, le=Robotics."""
     return 'Tin học' if tuan_so % 2 == 0 else 'Robotics'
 
 
@@ -593,12 +593,9 @@ def rotation_do_dung(tuan_so):
 
 
 def get_grade_key(lop):
-    """Extract grade key from class name for PPCT lookup.
-    Examples: '1A1' -> '1', '7A1' -> '7', 'TT3' -> 'TT3', 'TTH 1' -> 'TT', 'TTH2' -> 'TT'
-    """
     s = lop.strip().upper()
     if s.startswith('TT'):
-        return 'TT3'  # TTH classes use TT3 PPCT
+        return 'TT3'
     m = re.match(r'^(\d)', s)
     if m:
         return m.group(1)
@@ -606,69 +603,57 @@ def get_grade_key(lop):
 
 
 def get_ppct_lesson(lop, mon, ppct_num):
-    """Get lesson name for a class at given PPCT number."""
     grade = get_grade_key(lop)
     if grade is None:
         return ''
-
     if mon == 'Tin học':
         data = PPCT_TIN.get(grade, {})
     elif mon == 'Robotics':
         data = PPCT_ROB.get(grade, {})
     else:
         return ''
-
-    return data.get(ppct_num, '')
+    if not data:
+        return ''
+    if ppct_num in data:
+        return data[ppct_num]
+    max_k = max(data.keys())
+    if ppct_num > max_k:
+        return data[max_k]
+    return ''
 
 
 def compute_ppct(tuan_so, day_idx=0):
-    """
-    Tinh PPCT theo tuan (Khong ap dung offset ngay trong tuan).
-    - Tuan 1: tat ca = 0 (Dinh huong)
-    - Tuan 2+: tat ca cac ngay = tuan_so - 1
-    """
     if tuan_so <= 1:
         return 0
     return tuan_so - 1
 
 
 def compute_rotation_ppct(tuan_so, day_idx, is_even_week, period_index_in_day):
-    """
-    Tinh PPCT cho lop rotation (5,6,7,8) co 2 tiet lien tiep (Khong offset).
-    - Tuan CHAN (2, 4, 6...): Tin hoc (Tuan 2 -> PPCT 1,2; Tuan 4 -> PPCT 3,4;...)
-    - Tuan LE (3, 5, 7...): Robotics (Tuan 3 -> PPCT 1,2; Tuan 5 -> PPCT 3,4;...)
-    """
     if tuan_so <= 1:
         return 0
-    
     if is_even_week:
-        # Tin hoc in even weeks (2, 4, 6...)
         if tuan_so < 2:
             return 0
-        k = (tuan_so - 2) // 2 + 1  # Session index (1-based)
+        k = (tuan_so - 2) // 2 + 1
         return (k - 1) * 2 + period_index_in_day + 1
     else:
-        # Robotics in odd weeks (3, 5, 7...)
         if tuan_so < 3:
             return 0
-        k = (tuan_so - 3) // 2 + 1  # Session index (1-based)
+        k = (tuan_so - 3) // 2 + 1
         return (k - 1) * 2 + period_index_in_day + 1
 
 
 def set_cell_text(cell, text):
-    """Ghi text vao cell, giu dinh dang run dau tien. Neu khong co run, tao moi voi Times New Roman."""
     for p in cell.paragraphs:
         if p.runs:
             p.runs[0].text = text
             for r in p.runs[1:]:
                 r.text = ''
-            # Dam bao font Times New Roman cho run dau tien
-            if p.runs[0].font.name is None:
+            if p.runs[0].font.name != 'Times New Roman':
                 p.runs[0].font.name = 'Times New Roman'
-            if p.runs[0].font.size is None:
+            if p.runs[0].font.size != Pt(13):
                 p.runs[0].font.size = Pt(13)
             return
-    # Khong co run -> tao moi voi font chuan
     p = cell.paragraphs[0]
     p.clear()
     run = p.add_run(text)
@@ -677,7 +662,6 @@ def set_cell_text(cell, text):
 
 
 def save_safe(doc, path):
-    """Luu file; neu bi khoa thi luu sang _v2."""
     try:
         doc.save(path)
         return path
@@ -689,31 +673,22 @@ def save_safe(doc, path):
         return alt
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# CAP NHAT NOI DUNG
-# ─────────────────────────────────────────────────────────────────────────────
-
 def update_headers(doc, tuan_so, start_date, end_date):
-    """Cap nhat tieu de tuan va ngay trong paragraph."""
     tuan_str = f'TUẦN {tuan_so:02d}'
     fs = fmt_date(start_date)
     fe = fmt_date(end_date)
-    ngay_soan = start_date - timedelta(days=3)  # Thu Sau tuan truoc
+    ngay_soan = start_date - timedelta(days=3)
 
     for p in doc.paragraphs:
         txt = p.text.strip()
-
         if 'TUẦN' in txt.upper() and 'từ ngày' in txt:
             new = f'{tuan_str} (từ ngày {fs} đến ngày {fe})'
         elif re.match(r'^Ngày\s+\d+\s+tháng\s+\d+\s+năm\s+\d+', txt) and len(txt) < 45:
-            new = (f'Ngày {ngay_soan.day:02d} tháng '
-                   f'{ngay_soan.month:02d} năm {ngay_soan.year}')
+            new = f'Ngày {ngay_soan.day:02d} tháng {ngay_soan.month:02d} năm {ngay_soan.year}'
         elif 'sáng' in txt.lower() and 'tuần' in txt.lower():
-            new = (f'Buổi…sáng……..Tuần…{tuan_so:02d}…'
-                   f'(Từ ngày…{fs} …đến ngày:… {fe}….)')
+            new = f'Buổi…sáng……..Tuần…{tuan_so:02d}…(Từ ngày…{fs} …đến ngày:… {fe}….)'
         elif 'chiều' in txt.lower() and 'tuần' in txt.lower():
-            new = (f'Buổi…chiều…..Tuần…{tuan_so:02d}…'
-                   f'(Từ ngày…{fs}…đến ngày:… {fe}….)')
+            new = f'Buổi…chiều…..Tuần…{tuan_so:02d}…(Từ ngày…{fs}…đến ngày:… {fe}….)'
         else:
             continue
 
@@ -725,139 +700,177 @@ def update_headers(doc, tuan_so, start_date, end_date):
             p.text = new
 
 
-def update_day_labels(doc, start_date):
-    """Cap nhat nhan Thu/ngay trong tat ca bang LBG 7 cot."""
-    for tbl in doc.tables:
-        if len(tbl.columns) != 7:
-            continue
-        header_texts = [c.text.strip() for c in tbl.rows[0].cells]
-        if 'Lớp' not in header_texts:
-            continue
-        for ri in range(1, len(tbl.rows)):
-            day_idx = (ri - 1) // 5   # 0=Hai..4=Sau
-            d = start_date + timedelta(days=day_idx)
-            label = day_label(d)
-            cell0 = tbl.rows[ri].cells[0]
-            if cell0.text.strip():
-                set_cell_text(cell0, label)
-
-
-def get_day_idx_from_row(ri):
-    """Get day index (0=T2..4=T6) from row index in LBG table."""
-    return (ri - 1) // 5
-
-
-def update_table_data(doc, tuan_so):
-    """
-    Cap nhat mon hoc, PPCT, ten bai, do dung cho cac hang co du lieu.
-    - Lop 5,6,7,8: ten mon hien thi = 'Tin - Robotics', rotation PPCT rieng
-    - Tat ca: cap nhat PPCT + ten bai tu PPCT_DATA
-    """
+def populate_lbg_table(tbl, schedule_map, tuan_so, start_date):
     is_even = (tuan_so % 2 == 0)
-    
-    # Dynamically find all 7-column LBG tables (not hardcoded to [1,3])
-    for ti, tbl in enumerate(doc.tables):
-        if len(tbl.columns) != 7:
-            continue
-        header_texts = [c.text.strip() for c in tbl.rows[0].cells]
-        if 'Lớp' not in header_texts:
-            continue
-        
-        # First pass: identify rotation classes with multiple periods on same day
-        # Build a map: (day_idx, lop) -> list of row indices
-        day_lop_rows = {}
-        for ri in range(1, len(tbl.rows)):
-            row = tbl.rows[ri]
-            lop = row.cells[4].text.strip()
-            if not lop:
+    for day_idx in range(5):
+        d = start_date + timedelta(days=day_idx)
+        d_lbl = day_label(d)
+        for tiet in range(1, 6):
+            ri = day_idx * 5 + tiet
+            if ri >= len(tbl.rows):
                 continue
-            day_idx = get_day_idx_from_row(ri)
-            key = (day_idx, lop)
-            if key not in day_lop_rows:
-                day_lop_rows[key] = []
-            day_lop_rows[key].append(ri)
-        
-        # Second pass: update each row
-        for ri in range(1, len(tbl.rows)):
             row = tbl.rows[ri]
-            lop = row.cells[4].text.strip()
-            if not lop:
-                continue
-            
-            day_idx = get_day_idx_from_row(ri)
-            is_rot = is_rotation_lop(lop)
-            
-            # Determine the subject for this row
-            if is_rot:
-                mon = rotation_mon(tuan_so)  # Internal: 'Tin học' or 'Robotics' for PPCT lookup
-                dd = rotation_do_dung(tuan_so)
-                set_cell_text(row.cells[3], 'Tin - Robotics')  # Display name
+            set_cell_text(row.cells[0], d_lbl)
+            set_cell_text(row.cells[1], str(tiet))
+            key = (day_idx, tiet)
+            if key in schedule_map:
+                lop, mon_display, is_rot = schedule_map[key]
+                if is_rot:
+                    mon_int = rotation_mon(tuan_so)
+                    dd = rotation_do_dung(tuan_so)
+                    mon_lbl = 'Tin - Robotics'
+                    p_idx = 0 if (day_idx, tiet - 1) not in schedule_map else 1
+                    ppct = compute_rotation_ppct(tuan_so, day_idx, is_even, p_idx)
+                    lesson = get_ppct_lesson(lop, mon_int, ppct) if tuan_so > 1 else 'Tiết 0: Định hướng môn học'
+                else:
+                    mon_lbl = mon_display
+                    dd = 'Phòng Tin học' if 'Tin' in mon_lbl else 'Bộ Kit Robotics'
+                    ppct = compute_ppct(tuan_so, day_idx) if tuan_so > 1 else 0
+                    lesson = get_ppct_lesson(lop, mon_lbl, ppct) if tuan_so > 1 else 'Tiết 0: Định hướng môn học'
+                ppct_str = str(ppct) if tuan_so > 1 else '1'
+                if not lesson and ppct == 0:
+                    lesson = 'Tiết 0: Định hướng môn học'
+                set_cell_text(row.cells[2], ppct_str)
+                set_cell_text(row.cells[3], mon_lbl)
+                set_cell_text(row.cells[4], lop)
+                set_cell_text(row.cells[5], lesson)
                 set_cell_text(row.cells[6], dd)
             else:
-                mon = row.cells[3].text.strip()
-                # Keep original mon (Tin hoc or Robotics)
-            
-            # Skip PPCT/lesson update for week 1 (template already has orientation data)
-            if tuan_so <= 1:
-                continue
-            
-            # Compute PPCT
-            if is_rot:
-                # Find period_index for this row within same (day, lop) group
-                key = (day_idx, lop)
-                rows_for_this = day_lop_rows.get(key, [ri])
-                period_index = rows_for_this.index(ri) if ri in rows_for_this else 0
-                ppct = compute_rotation_ppct(tuan_so, day_idx, is_even, period_index)
-            else:
-                ppct = compute_ppct(tuan_so, day_idx)
-            
-            # Set PPCT
-            set_cell_text(row.cells[2], str(ppct))
-            
-            # Set lesson name
-            lesson = get_ppct_lesson(lop, mon, ppct)
-            if lesson:
-                set_cell_text(row.cells[5], lesson)
-            elif ppct == 0:
-                set_cell_text(row.cells[5], 'Tiết 0: Định hướng môn học')
+                set_cell_text(row.cells[2], '')
+                set_cell_text(row.cells[3], '')
+                set_cell_text(row.cells[4], '')
+                set_cell_text(row.cells[5], '')
+                set_cell_text(row.cells[6], '')
+
+
+def update_table_data(doc, tuan_so, start_date=None):
+    if start_date is None:
+        start_date, _ = week_dates(tuan_so)
+    lbg_tbls = [t for t in doc.tables
+                if len(t.columns) == 7
+                and 'Lớp' in [c.text.strip() for c in t.rows[0].cells]]
+    if len(lbg_tbls) >= 1:
+        populate_lbg_table(lbg_tbls[0], MASTER_SCHEDULE_SANG, tuan_so, start_date)
+    if len(lbg_tbls) >= 2:
+        populate_lbg_table(lbg_tbls[1], MASTER_SCHEDULE_CHIEU, tuan_so, start_date)
 
 
 def update_ky_ten(doc, start_date):
-    """Cap nhat ngay trong bang ky ten."""
     ngay_soan = start_date - timedelta(days=3)
-    ngay_str = (f'Ngày {ngay_soan.day} tháng '
-                f'{ngay_soan.month} năm {ngay_soan.year}')
-    for ti in [2, 4]:
-        if ti >= len(doc.tables):
+    ngay_str = f'Ngày {ngay_soan.day} tháng {ngay_soan.month} năm {ngay_soan.year}'
+    # Update all sign tables (1r x 2c)
+    for tbl in doc.tables:
+        if len(tbl.rows) != 1 or len(tbl.columns) != 2:
             continue
-        for row in doc.tables[ti].rows:
+        for row in tbl.rows:
             for cell in row.cells:
                 txt = cell.text
                 if 'Ngày' in txt and 'tháng' in txt and 'năm' in txt:
                     for p in cell.paragraphs:
                         for r in p.runs:
                             if 'Ngày' in r.text and 'tháng' in r.text:
-                                m = re.search(
-                                    r'Ngày\s+\d+\s+tháng\s+\d+\s+năm\s+\d+',
-                                    r.text)
+                                m = re.search(r'Ngày\s+\d+\s+tháng\s+\d+\s+năm\s+\d+', r.text)
                                 if m:
                                     r.text = r.text[:m.start()] + ngay_str + r.text[m.end():]
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# XOA BAN SAO THU 2 & FIX FONT
-# ─────────────────────────────────────────────────────────────────────────────
+def update_sign_names(doc, to_truong_name):
+    """Insert tổ trưởng name below 'Tổ trưởng' in all sign tables (1r x 2c).
 
-def remove_second_copy(doc):
+    Sign table cell [0,1] run structure:
+      Run 0: 'Ngày X tháng Y năm Z'
+      Run 1: '\nTổ trưởng'
+      Run 2: '\n' or '\n(Ký tên, đóng dấu)'
+    We insert the name by modifying Run 1 to append '\n<name>'
+    or adding a new run after Run 1.
     """
-    Template Tuan 01 co 2 ban (orientation + bai hoc thuc).
-    Khi generate tuan 2+, chi giu 1 ban de tranh double noi dung.
-    Xoa tat ca elements tu TUAN paragraph thu 2 den truoc 'Nhan xet cua BGH'.
+    for tbl in doc.tables:
+        if len(tbl.rows) != 1 or len(tbl.columns) != 2:
+            continue
+        cell = tbl.rows[0].cells[1]  # Right cell (Tổ trưởng)
+        for p in cell.paragraphs:
+            runs = p.runs
+            if not runs:
+                continue
+            # Find the run containing 'Tổ trưởng'
+            for ri, r in enumerate(runs):
+                if 'Tổ trưởng' in r.text:
+                    # Check if name is already present
+                    if to_truong_name in cell.text:
+                        break
+                    # Append name below 'Tổ trưởng'
+                    r.text = r.text.rstrip() + '\n' + to_truong_name
+                    break
+
+
+def compact_sign_tables(doc):
+    """Reduce dòng chấm nhận xét in sign tables to MAX_DONG_CHAM lines
+    to ensure the LBG table + sign section fit within 1 page.
+
+    Sign table cell [0,0] run structure:
+      Run 0: 'Kiểm tra, nhận xét'
+      Run 1..N: '\n…………………………………………………………………'
+    We keep at most MAX_DONG_CHAM dòng chấm runs.
     """
+    for tbl in doc.tables:
+        if len(tbl.rows) != 1 or len(tbl.columns) != 2:
+            continue
+        cell = tbl.rows[0].cells[0]  # Left cell (Kiểm tra, nhận xét)
+        for p in cell.paragraphs:
+            runs = p.runs
+            if not runs:
+                continue
+            # Find runs with dòng chấm
+            dot_runs = []
+            for ri, r in enumerate(runs):
+                if '……' in r.text:
+                    dot_runs.append((ri, r))
+            # Keep only MAX_DONG_CHAM dòng chấm runs
+            if len(dot_runs) > MAX_DONG_CHAM:
+                for ri, r in dot_runs[MAX_DONG_CHAM:]:
+                    r.text = ''
+
+    # Also remove excessive empty paragraphs between tables
     body = doc.element.body
     children = list(body)
+    for i in range(len(children) - 1):
+        c = children[i]
+        tag = c.tag.split('}')[-1] if '}' in c.tag else c.tag
+        if tag == 'tbl':
+            # Check if this is a sign table
+            is_sign = False
+            for tbl in doc.tables:
+                if tbl._element is c and len(tbl.rows) == 1 and len(tbl.columns) == 2:
+                    is_sign = True
+                    break
+            if is_sign:
+                # Remove excessive empty paragraphs after sign table
+                # Keep at most 0 empty paragraphs
+                j = i + 1
+                empty_count = 0
+                while j < len(children):
+                    nc = children[j]
+                    nc_tag = nc.tag.split('}')[-1] if '}' in nc.tag else nc.tag
+                    if nc_tag != 'p':
+                        break
+                    txt = ''.join(t.text or '' for t in nc.findall('.//' + qn('w:t')))
+                    if txt.strip():
+                        break
+                    empty_count += 1
+                    j += 1
+                # Remove all empty paragraphs after sign table
+                if empty_count > 0:
+                    for nc in children[i+1:i+1+empty_count]:
+                        nc_tag = nc.tag.split('}')[-1] if '}' in nc.tag else nc.tag
+                        if nc_tag == 'p' and nc_tag != 'sectPr':
+                            txt = ''.join(t.text or '' for t in nc.findall('.//' + qn('w:t')))
+                            if not txt.strip():
+                                body.remove(nc)
 
-    # Tim tat ca paragraph co 'TUAN' va 'tu ngay'
+
+def remove_second_copy(doc):
+    body = doc.element.body
+    children = list(body)
     tuan_paras = []
     for c in children:
         tag = c.tag.split('}')[-1] if '}' in c.tag else c.tag
@@ -865,11 +878,8 @@ def remove_second_copy(doc):
             txt = ''.join(t.text or '' for t in c.findall('.//' + qn('w:t')))
             if 'TUẦN' in txt.upper() and 'từ ngày' in txt:
                 tuan_paras.append(c)
-
     if len(tuan_paras) < 2:
-        return 0  # Chi co 1 ban, khong can xoa
-
-    # Tim paragraph 'Nhan xet cua BGH'
+        return 0
     nhanxet_el = None
     for c in children:
         tag = c.tag.split('}')[-1] if '}' in c.tag else c.tag
@@ -878,29 +888,21 @@ def remove_second_copy(doc):
             if 'nhận xét' in txt.lower() and 'bgh' in txt.lower():
                 nhanxet_el = c
                 break
-
     if nhanxet_el is None:
         return 0
-
-    # Xoa tat ca elements tu TUAN thu 2 den truoc nhan xet
-    children = list(body)  # Refresh
+    children = list(body)
     start_idx = children.index(tuan_paras[1])
     end_idx = children.index(nhanxet_el)
-
     removed = 0
     for el in children[start_idx:end_idx]:
         tag = el.tag.split('}')[-1] if '}' in el.tag else el.tag
-        if tag != 'sectPr':  # Giu lai sectPr
+        if tag != 'sectPr':
             body.remove(el)
             removed += 1
-
     return removed
 
 
 def fix_all_fonts(doc):
-    """
-    Quet tat ca bang LBG 7 cot va dam bao moi run deu co Times New Roman 13pt.
-    """
     fixed = 0
     for tbl in doc.tables:
         if len(tbl.columns) != 7:
@@ -921,12 +923,7 @@ def fix_all_fonts(doc):
     return fixed
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# PAGE BREAKS
-# ─────────────────────────────────────────────────────────────────────────────
-
 def add_page_break_after_table(tbl_element):
-    """Them paragraph co page break ngay sau table."""
     p = OxmlElement('w:p')
     r = OxmlElement('w:r')
     br = OxmlElement('w:br')
@@ -937,30 +934,18 @@ def add_page_break_after_table(tbl_element):
 
 
 def fix_page_breaks(doc):
-    """
-    Xoa empty paragraph thua giua cac section.
-    Chen page break sau bang ky ten sang va chieu.
-    Ket qua: 3 trang (sang | chieu | nhan xet BGH).
-    Tim bang ky ten bang noi dung (1 row, 2 cols, co 'Nhan xet') thay vi hardcode index.
-    """
     body = doc.element.body
     children = list(body)
-
-    # Tim bang ky ten = bang 1 hang, 2 cot, co text 'nhận xét' hoac 'Kiểm tra'
     sign_tables = []
     for c in children:
         tag = c.tag.split('}')[-1] if '}' in c.tag else c.tag
         if tag == 'tbl':
-            # Tim bang tuong ung trong doc.tables
             for tbl in doc.tables:
                 if tbl._element is c and len(tbl.rows) == 1 and len(tbl.columns) == 2:
                     sign_tables.append(c)
                     break
-
     if len(sign_tables) < 2:
-        print(f'   ⚠ Chi tim thay {len(sign_tables)} bang ky ten (can 2)')
         return
-
     sign_sang = sign_tables[0]
     sign_chieu = sign_tables[1]
 
@@ -989,22 +974,13 @@ def fix_page_breaks(doc):
         return removed
 
     if chieu_el is not None:
-        n = remove_empty_between(sign_sang, chieu_el)
-        if n:
-            print(f'   Xoa {n} para trong (sau ky ten sang)')
+        remove_empty_between(sign_sang, chieu_el)
     if nhanxet_el is not None:
-        n = remove_empty_between(sign_chieu, nhanxet_el)
-        if n:
-            print(f'   Xoa {n} para trong (sau ky ten chieu)')
+        remove_empty_between(sign_chieu, nhanxet_el)
 
     add_page_break_after_table(sign_sang)
     add_page_break_after_table(sign_chieu)
-    print('   Page breaks: sang | chieu | nhan xet BGH')
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# TACH TTH+TH / THCS
-# ─────────────────────────────────────────────────────────────────────────────
 
 def clear_row_data(row):
     for ci in range(2, min(7, len(row.cells))):
@@ -1030,96 +1006,50 @@ def filter_for_cap(doc, keep_cap):
                 clear_row_data(row)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# HAM CHINH
-# ─────────────────────────────────────────────────────────────────────────────
-
 def generate_lbg(tuan_so):
     start_date, end_date = week_dates(tuan_so)
     loai = 'CHẴN → Tin học' if tuan_so % 2 == 0 else 'LẺ → Robotics'
+    print(f'📅 Tuần {tuan_so:02d}: {fmt_date(start_date)} -> {fmt_date(end_date)} [{loai}]')
 
-    print(f'\n📅 Tuan {tuan_so:02d}: {fmt_date(start_date)} -> {fmt_date(end_date)}')
-    print(f'   Lop 5,6,7,8: {loai}')
-
-    # B1: Load template
     doc = Document(TEMPLATE)
-
-    # B1.5: Xoa ban sao thu 2 (tranh double noi dung)
-    n_removed = remove_second_copy(doc)
-    if n_removed:
-        print(f'   Xoa ban sao thu 2: {n_removed} elements')
-
-    # B2: Cap nhat tieu de
+    remove_second_copy(doc)
     update_headers(doc, tuan_so, start_date, end_date)
-    print('   Cap nhat tieu de + ngay')
-
-    # B3: Cap nhat nhan Thu/ngay
-    update_day_labels(doc, start_date)
-    print('   Cap nhat nhan Thu/ngay')
-
-    # B4: Rotation + PPCT + Ten bai
-    update_table_data(doc, tuan_so)
-    print(f'   Rotation + PPCT + Ten bai updated')
-
-    # B4.5: Fix font Times New Roman
-    n_fixed = fix_all_fonts(doc)
-    if n_fixed:
-        print(f'   Fix font: {n_fixed} runs')
-
-    # B5: Ky ten
+    update_table_data(doc, tuan_so, start_date)
+    fix_all_fonts(doc)
     update_ky_ten(doc, start_date)
+    compact_sign_tables(doc)
 
-    # B6: Luu ban goc
     main_name = f'Lịch báo giảng - Tuần {tuan_so:02d}.docx'
     main_path = os.path.join(LBG_DIR, main_name)
     saved_main = save_safe(doc, main_path)
-    print(f'   Ban goc: {os.path.basename(saved_main)}')
 
-    # B7+B8: Tach TTH+TH va THCS
-    for keep_cap, suffix, label in [
-        ('TTH_TH', 'TTH+TH', 'Tien TH + TH'),
-        ('THCS', 'THCS', 'THCS'),
+    for keep_cap, suffix, label, to_truong in [
+        ('TTH_TH', 'TTH+TH', 'TTH + TH', TO_TRUONG_TH),
+        ('THCS', 'THCS', 'THCS', TO_TRUONG_THCS),
     ]:
         d2 = Document(saved_main)
         filter_for_cap(d2, keep_cap)
+        update_sign_names(d2, to_truong)
+        compact_sign_tables(d2)
         fix_page_breaks(d2)
-
         split_name = f'Lịch báo giảng - Tuần {tuan_so:02d} ({suffix}).docx'
         split_path = os.path.join(LBG_DIR, split_name)
-        saved = save_safe(d2, split_path)
+        save_safe(d2, split_path)
 
-        # Kiem tra - tim bang LBG dong (7 cot, co 'Lop')
-        dc = Document(saved)
-        lbg_tbls = [t for t in dc.tables
-                    if len(t.columns) == 7
-                    and 'Lớp' in [c.text.strip() for c in t.rows[0].cells]]
-        if len(lbg_tbls) >= 2:
-            cs = sum(1 for ri in range(1, len(lbg_tbls[0].rows))
-                     if lbg_tbls[0].rows[ri].cells[4].text.strip())
-            cc = sum(1 for ri in range(1, len(lbg_tbls[1].rows))
-                     if lbg_tbls[1].rows[ri].cells[4].text.strip())
-            print(f'   {label}: sang={cs} tiet, chieu={cc} tiet -> {os.path.basename(saved)}')
-        else:
-            print(f'   {label}: -> {os.path.basename(saved)}')
-
-    print(f'\n HOAN TAT Tuan {tuan_so:02d}! Thu muc: {LBG_DIR}')
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# ENTRY POINT
-# ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print('Cach dung: python generate_lbg.py <so_tuan>')
-        print('Vi du:     python generate_lbg.py 2')
+        print('Cách dùng: python generate_lbg.py <so_tuan> [den_tuan]')
+        print('Ví dụ:     python generate_lbg.py 3')
+        print('           python generate_lbg.py 3 35')
         sys.exit(1)
     try:
-        tuan = int(sys.argv[1])
+        t_start = int(sys.argv[1])
+        t_end = int(sys.argv[2]) if len(sys.argv) > 2 else t_start
     except ValueError:
-        print(f'Loi: "{sys.argv[1]}" khong phai so tuan hop le.')
+        print('Lỗi: Số tuần phải là số nguyên.')
         sys.exit(1)
-    if not (1 <= tuan <= 52):
-        print('Loi: So tuan phai tu 1 den 52.')
-        sys.exit(1)
-    generate_lbg(tuan)
+
+    for w in range(t_start, t_end + 1):
+        generate_lbg(w)
+    print(f'\\n✅ Đã tạo xong từ tuần {t_start:02d} đến {t_end:02d}!')

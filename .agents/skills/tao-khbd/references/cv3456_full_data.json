@@ -1,0 +1,266 @@
+{
+  "1.1. Duyệt, tìm kiếm và lọc dữ liệu, thông tin và nội dung số": {
+    "mien": "1. Khai thác dữ liệu và thông tin",
+    "mota": "Xác định được nhu cầu thông tin; tìm kiếm được dữ liệu, thông tin và nội dung trong môi trường số; truy cập chúng và khai thác được kết quả tìm kiếm. Tạo và cập nhật được chiến lược tìm kiếm.",
+    "descriptors": {
+      "L1-3": "- Xác định được nhu cầu thông tin, tìm kiếm dữ liệu, thông tin và nội dung thông qua tìm kiếm đơn giản trong môi trường số,\n- Tìm được cách truy cập những dữ liệu, thông tin và nội dung này cũng như điều hướng giữa chúng,\n- Xác định được các chiến lược tìm kiếm đơn giản.",
+      "L4-5": "- Xác định được nhu cầu thông tin,\n- Tìm được dữ liệu, thông tin và nội dung thông qua tìm kiếm đơn giản trong môi trường số,\n- Tìm được cách truy cập những dữ liệu, thông tin và nội dung này cũng như điều hướng giữa chúng,\n- Xác định được các chiến lược tìm kiếm đơn giản.",
+      "L6-7": "- Giải thích được nhu cầu thông tin,\n- Thực hiện được rõ ràng và theo quy trình các tìm kiếm để tìm dữ liệu, thông tin và nội dung trong môi trường số,\n- Giải thích được cách truy cập và điều hướng các kết quả tìm kiếm,\n- Giải thích được rõ ràng và theo quy trình chiến lược tìm kiếm.",
+      "L8-9": "- Minh họa được nhu cầu thông tin,\n- Tổ chức được tìm kiếm dữ liệu, thông tin và nội dung trong môi trường số,\n- Mô tả được cách truy cập những dữ liệu, thông tin và nội dung này cũng như điều hướng giữa chúng,\n- Tổ chức được các chiến lược tìm kiếm.",
+      "L10-12": "- Đáp ứng được nhu cầu thông tin,\n- Áp dụng được kỹ thuật tìm kiếm để lấy được dữ liệu, thông tin và nội dung trong môi trường số,\n- Chỉ cho người khác cách truy cập những dữ liệu, thông tin và nội dung này cũng như điều hướng giữa chúng.\n- Tự đề xuất được chiến lược tìm kiếm."
+    }
+  },
+  "1.2. Đánh giá dữ liệu, thông tin và nội dung số": {
+    "mien": "1. Khai thác dữ liệu và thông tin",
+    "mota": "Phân tích, so sánh và đánh giá được độ tin cậy và tính xác thực của nguồn dữ liệu, thông tin và nội dung số. Phân tích, giải thích và đánh giá được dữ liệu, thông tin và nội dung số.",
+    "descriptors": {
+      "L1-3": "- Phát hiện được độ tin cậy và độ chính xác của các nguồn chung của dữ liệu, thông tin và nội dung số.",
+      "L4-5": "- Phát hiện được độ tin cậy và độ chính xác của các nguồn chung của dữ liệu, thông tin và nội dung số.",
+      "L6-7": "- Thực hiện phân tích, so sánh, đánh giá được độ tin cậy và độ chính xác của các nguồn dữ liệu, thông tin và nội dung số đã được tổ chức rõ ràng.\n- Thực hiện phân tích, diễn giải và đánh giá được dữ liệu, thông tin và nội dung số được xác định rõ ràng.",
+      "L8-9": "- Thực hiện phân tích, so sánh và đánh giá được các nguồn dữ liệu, thông tin và nội dung số.\n- Thực hiện phân tích, diễn giải và đánh giá được dữ liệu, thông tin và nội dung số.",
+      "L10-12": "- Thực hiện đánh giá được độ tin cậy và độ tin cậy của các nguồn dữ liệu, thông tin và nội dung số.\n- Tiến hành đánh giá được các dữ liệu, thông tin và nội dung số khác nhau."
+    }
+  },
+  "1.3. Quản lý dữ liệu, thông tin và nội dung số": {
+    "mien": "1. Khai thác dữ liệu và thông tin",
+    "mota": "Tổ chức, lưu trữ và truy xuất được dữ liệu, thông tin và nội dung trong môi trường số. Tổ chức và sắp xếp được chúng trong một môi trường có cấu trúc.",
+    "descriptors": {
+      "L1-3": "- Xác định được cách tổ chức, lưu trữ và truy xuất dữ liệu, thông tin và nội dung một cách đơn giản trong môi trường số.\n- Nhận biết được nơi để sắp xếp dữ liệu, thông tin và nội dung một cách đơn giản trong môi trường có cấu trúc.",
+      "L4-5": "- Xác định được cách tổ chức, lưu trữ và truy xuất dữ liệu, thông tin và nội dung một cách đơn giản trong môi trường số.\n- Nhận biết được nơi để sắp xếp dữ liệu, thông tin và nội dung một cách đơn giản trong môi trường có cấu trúc.",
+      "L6-7": "- Lựa chọn được dữ liệu, thông tin và nội dung để tổ chức, lưu trữ và truy xuất chúng một cách thường xuyên trong môi trường số.\n- Sắp xếp chúng một cách trật tự trong một môi trường có cấu trúc.",
+      "L8-9": "- Sắp xếp được thông tin, dữ liệu, nội dung để dễ dàng lưu trữ và truy xuất.\n- Tổ chức được thông tin, dữ liệu và nội dung trong một môi trường có cấu trúc.",
+      "L10-12": "- Thao tác được thông tin, dữ liệu và nội dung để tổ chức, lưu trữ và truy xuất dễ dàng hơn.\n- Triển khai được việc tổ chức và sắp xếp dữ liệu, thông tin và nội dung trong môi trường có cấu trúc."
+    }
+  },
+  "2.1. Tương tác thông qua công nghệ số": {
+    "mien": "2. Giao tiếp và Hợp tác",
+    "mota": "Tương tác thông qua các công nghệ số khác nhau và nhận biết được phương tiện giao tiếp số nào phù hợp cho một bối cảnh nhất định.",
+    "descriptors": {
+      "L1-3": "- Lựa chọn được các công nghệ số đơn giản để tương tác.\n- Xác định được các phương tiện giao tiếp đơn giản thích hợp cho một bối cảnh cụ thể.",
+      "L4-5": "- Lựa chọn được các công nghệ số đơn giản để tương tác.\n- Xác định được các phương tiện giao tiếp đơn giản thích hợp cho một bối cảnh cụ thể.",
+      "L6-7": "- Thực hiện được các tương tác được xác định rõ ràng và thường xuyên với các công nghệ số.\n- Lựa chọn được các phương tiện giao tiếp số phù hợp, được xác định rõ ràng cho phù hợp với bối cảnh nhất định.",
+      "L8-9": "- Lựa chọn được nhiều công nghệ số để tương tác.\n- Lựa chọn được nhiều phương tiện truyền thông số cho phù hợp với bối cảnh nhất định.",
+      "L10-12": "- Sử dụng được nhiều công nghệ số để tương tác.\n- Cho người khác thấy phương tiện giao tiếp số phù hợp nhất cho một bối cảnh cụ thể."
+    }
+  },
+  "2.2. Chia sẻ thông tin và nội dung thông qua công nghệ số": {
+    "mien": "2. Giao tiếp và Hợp tác",
+    "mota": "Chia sẻ dữ liệu, thông tin và nội dung số với người khác thông qua các công nghệ số phù hợp. Đóng vai trò là người trung gian, hiểu biết và thực hành trích dẫn và ghi chú nguồn.",
+    "descriptors": {
+      "L1-3": "- Nhận biết được các công nghệ số đơn giản, phù hợp để chia sẻ dữ liệu, thông tin và nội dung kỹ thuật số.\n- Nhận biết được phương pháp trích dẫn và ghi nguồn cơ bản.",
+      "L4-5": "- Nhận biết được các công nghệ số đơn giản, phù hợp để chia sẻ dữ liệu, thông tin và nội dung kỹ thuật số.\n- Xác định được phương pháp trích dẫn và ghi nguồn cơ bản.",
+      "L6-7": "- Lựa chọn các công nghệ số phù hợp được xác định rõ để trao đổi dữ liệu, thông tin và nội dung số.\n- Giải thích cách thức hoạt động như một trung gian để chia sẻ thông tin và nội dung thông qua các công nghệ kỹ thuật số được xác định rõ ràng và thường xuyên,\n- Minh họa rõ ràng và thường xuyên các phương pháp tham chiếu và ghi chú nguồn.",
+      "L8-9": "- Vận dụng được các công nghệ số phù hợp để chia sẻ dữ liệu, thông tin và nội dung số.\n- Giải thích được cách đóng vai trò trung gian để chia sẻ thông tin và nội dung thông qua công nghệ số.\n- Áp dụng được các phương pháp tham chiếu và ghi chú nguồn.",
+      "L10-12": "- Chia sẻ dữ liệu, thông tin và nội dung số thông qua nhiều công cụ số phù hợp,\n- Hướng dẫn người khác cách đóng vai trò trung gian để chia sẻ thông tin và nội dung thông qua công nghệ số.\n- Áp dụng được nhiều phương pháp tham chiếu và ghi nguồn khác nhau."
+    }
+  },
+  "2.3. Sử dụng công nghệ số để thực hiện trách nhiệm công dân": {
+    "mien": "2. Giao tiếp và Hợp tác",
+    "mota": "Tham gia vào xã hội thông qua việc sử dụng các dịch vụ số công cộng và tư nhân. Tìm kiếm được cơ hội, để trao quyền và thu hút công dân thông qua các công nghệ số phù hợp.",
+    "descriptors": {
+      "L1-3": "- Xác định được các dịch vụ số đơn giản để có thể tham gia vào xã hội.\n- Nhận biết được các công nghệ số đơn giản, phù hợp để nâng cao năng lực cho bản thân và tham gia vào xã hội với tư cách là một công dân.",
+      "L4-5": "- Xác định được các dịch vụ số đơn giản để có thể tham gia vào xã hội.\n- Nhận biết được các công nghệ số đơn giản, phù hợp để nâng cao năng lực cho bản thân và tham gia vào xã hội với tư cách là một công dân.",
+      "L6-7": "- Lựa chọn được các dịch vụ số được xác định rõ ràng và phổ biến để tham gia vào xã hội.\n- Xác định được các công nghệ số rõ ràng và thích hợp để tự mình trang bị và tham gia vào xã hội như một công dân.",
+      "L8-9": "- Lựa chọn được các dịch vụ số để tham gia vào xã hội.\n- Thảo luận về các công nghệ số phù hợp để nâng cao năng lực của bản thân và tham gia vào xã hội với tư cách là một công dân.",
+      "L10-12": "- Đề xuất được các dịch vụ số khác nhau để tham gia vào xã hội.\n- Sử dụng được các công nghệ số thích hợp để tự mình trang bị và tham gia vào xã hội như một công dân."
+    }
+  },
+  "2.4. Hợp tác thông qua công nghệ số": {
+    "mien": "2. Giao tiếp và Hợp tác",
+    "mota": "Sử dụng được các công cụ và công nghệ số cho các quá trình hợp tác cũng như để cùng xây dựng và đồng sáng tạo dữ liệu, tài nguyên và kiến thức.",
+    "descriptors": {
+      "L1-3": "- Chọn được những công cụ và công nghệ số đơn giản cho các quá trình cộng tác.",
+      "L4-5": "- Chọn được những công cụ và công nghệ số đơn giản cho các quá trình cộng tác.",
+      "L6-7": "- Lựa chọn được các công cụ và công nghệ số được xác định rõ ràng và thường xuyên cho các quá trình hợp tác.",
+      "L8-9": "- Lựa chọn được các công cụ và công nghệ số cho các quá trình hợp tác.",
+      "L10-12": "- Đề xuất được các công cụ và công nghệ số khác nhau cho các quá trình hợp tác."
+    }
+  },
+  "2.5. Quy tắc ứng xử trên mạng": {
+    "mien": "2. Giao tiếp và Hợp tác",
+    "mota": "Nhận thức được các chuẩn mực hành vi và kiến thức khi sử dụng công nghệ số và tương tác trong môi trường số. Điều chỉnh các chiến lược giao tiếp phù hợp với đối tượng cụ thể và nhận thức được sự đa dạ",
+    "descriptors": {
+      "L1-3": "- Phân biệt được các chuẩn mực hành vi đơn giản và biết cách sử dụng công nghệ số và tương tác trong môi trường số.\n- Chọn được các phương thức và chiến lược giao tiếp đơn giản phù hợp trong môi trường số.\n- Phân biệt các khía cạnh đơn giản của sự đa dạng về văn hóa và thế hệ cần được tính đến trong môi trường số.",
+      "L4-5": "- Phân biệt được các chuẩn mực hành vi đơn giản và bí quyết sử dụng công nghệ số và tương tác trong môi trường số.\n- Chọn được các phương thức và chiến lược giao tiếp đơn giản phù hợp trong môi trường số.\n- Phân biệt các khía cạnh đơn giản của sự đa dạng về văn hóa và thế hệ cần được tính đến trong môi trường số.",
+      "L6-7": "- Làm rõ được các chuẩn mực hành vi thường xuyên và được xác định rõ ràng cũng như bí quyết khi sử dụng công nghệ số và tương tác trong môi trường số.\n- Thể hiện được các chiến lược giao tiếp thường xuyên và xác định rõ ràng phương thức giao tiếp phù hợp trong môi trường số.\n- Mô tả các khía cạnh đa dạng về văn hóa và thế hệ được xác định rõ ràng và thông thường cần xem xét trong môi trường số.",
+      "L8-9": "- Thảo luận về các chuẩn mực hành vi và cách sử dụng công nghệ số và tương tác trong môi trường số.\n- Thảo luận các chiến lược giao tiếp phù hợp trong môi trường số.\n- Thảo luận các khía cạnh đa dạng về văn hóa và thế hệ cần xem xét trong môi trường số.",
+      "L10-12": "- Áp dụng được các chuẩn mực hành vi và bí quyết khác nhau khi sử dụng công nghệ số và tương tác trong môi trường số.\n- Áp dụng được các chiến lược giao tiếp khác nhau trong môi trường số một cách phù hợp.\n- Áp dụng được các khía cạnh đa dạng về văn hóa và thế hệ khác nhau để xem xét trong môi trường số."
+    }
+  },
+  "2.6. Quản lý danh tính số": {
+    "mien": "2. Giao tiếp và Hợp tác",
+    "mota": "Tạo và quản lý được một hoặc nhiều danh tính số để bảo vệ danh tiếng của bản thân, làm việc với dữ liệu mà một người tạo ra bằng nhiều công cụ, môi trường và dịch vụ số.",
+    "descriptors": {
+      "L1-3": "- Xác định được danh tính số.\n- Mô tả được những cách đơn giản để bảo vệ danh tiếng trực tuyến của bản thân.\n- Nhận biết được dữ liệu đơn giản do mình tạo ra thông qua các công cụ, môi trường hoặc dịch vụ số.",
+      "L4-5": "- Xác định được danh tính số.\n- Mô tả được những cách đơn giản để bảo vệ danh tiếng trực tuyến của bản thân.\n- Nhận biết được dữ liệu đơn giản do mình tạo ra thông qua các công cụ, môi trường hoặc dịch vụ số.",
+      "L6-7": "- Phân biệt được một loạt các danh tính số thông thường và được xác định rõ ràng.\n- Giải thích được những cách được xác định rõ ràng và thường xuyên để bảo vệ danh tính trực tuyến của bản thân.\n- Mô tả dữ liệu được xác định rõ ràng mà bạn thường xuyên thu được thông qua các công cụ, môi trường hoặc dịch vụ số.",
+      "L8-9": "- Hiển thị được nhiều danh tính số cụ thể,\n- Thảo luận những cách cụ thể để bảo vệ danh tiếng trực tuyến của bản thân.\n- Thao tác dữ liệu cá nhân tạo ra thông qua các công cụ, môi trường hoặc dịch vụ số.",
+      "L10-12": "- Sử dụng được nhiều danh tính số khác nhau.\n- Áp dụng được các cách khác nhau để bảo vệ danh tính trực tuyến của bản thân.\n- Sử dụng được dữ liệu tạo ra thông qua các công cụ, môi trường và một số dịch vụ số."
+    }
+  },
+  "3.1. Phát triển nội dung số": {
+    "mien": "3. Sáng tạo nội dung số",
+    "mota": "Tạo và chỉnh sửa được nội dung số ở các định dạng khác nhau, nhằm thể hiện bản thân thông qua các phương tiện số.",
+    "descriptors": {
+      "L1-3": "- Xác định được các cách tạo và chỉnh sửa nội dung đơn giản ở các định dạng đơn giản,\n- Chọn được cách thể hiện bản thân thông qua việc tạo ra các nội dung số đơn giản.",
+      "L4-5": "- Xác định được các cách tạo và chỉnh sửa nội dung đơn giản ở các định dạng đơn giản,\n- Chọn được cách thể hiện bản thân thông qua việc tạo ra các nội dung số đơn giản.",
+      "L6-7": "- Chỉ ra được cách tạo và chỉnh sửa nội dung có khái niệm cụ thể và mang tính phổ thông bằng những định dạng rõ ràng, phổ biến,\n- Thể hiện được bản thân thông qua việc tạo ra các nội dung số thông thường và được xác định rõ ràng.",
+      "L8-9": "- Chỉ ra được cách tạo và chỉnh sửa nội dung ở các định dạng khác nhau,\n- Thể hiện được bản thân thông qua việc tạo ra các nội dung số.",
+      "L10-12": "- Áp dụng được các cách tạo và chỉnh sửa nội dung ở các định dạng khác nhau,\n- Chỉ ra được những cách thể hiện bản thân thông qua việc tạo ra các nội dung số."
+    }
+  },
+  "3.2. Tích hợp và tạo lập lại nội dung số": {
+    "mien": "3. Sáng tạo nội dung số",
+    "mota": "Sửa đổi, tinh chỉnh và tích hợp được thông tin và nội dung mới vào khối kiến thức và tài nguyên hiện có để tạo ra nội dung và kiến thức mới, độc đáo và phù hợp.",
+    "descriptors": {
+      "L1-3": "- Chọn được các cách sửa đổi, tinh chỉnh, cải thiện và tích hợp các mục đơn giản có nội dung và thông tin mới để tạo ra những nội dung và thông tin mới và độc đáo.",
+      "L4-5": "- Chọn được các cách sửa đổi, tinh chỉnh, cải thiện và tích hợp các mục đơn giản có nội dung và thông tin mới để tạo ra những nội dung và thông tin mới và độc đáo.",
+      "L6-7": "- Giải thích được các cách sửa đổi, tinh chỉnh, cải thiện và tích hợp các mục nội dung và thông tin mới được xác định rõ ràng để tạo ra những nội dung và thông tin mới và độc đáo.",
+      "L8-9": "- Thảo luận các cách sửa đổi, tinh chỉnh, cải thiện và tích hợp nội dung và thông tin mới để tạo ra những nội dung và thông tin mới và độc đáo.",
+      "L10-12": "- Làm việc với các mục nội dung và thông tin mới khác nhau, sửa đổi, tinh chỉnh, cải thiện và tích hợp chúng để tạo ra những mục mới và độc đáo."
+    }
+  },
+  "3.3. Thực thi bản quyền và giấy phép": {
+    "mien": "3. Sáng tạo nội dung số",
+    "mota": "Hiểu được cách áp dụng bản quyền và giấy phép cho thông tin và nội dung số",
+    "descriptors": {
+      "L1-3": "- Xác định được các quy tắc đơn giản về bản quyền và giấy phép áp dụng cho dữ liệu, thông tin và nội dung số.",
+      "L4-5": "- Xác định được các quy tắc đơn giản về bản quyền và giấy phép áp dụng cho dữ liệu, thông tin và nội dung số.",
+      "L6-7": "- Chỉ ra được các quy tắc thông thường và được xác định rõ ràng về bản quyền và giấy phép áp dụng cho dữ liệu, thông tin và nội dung số.",
+      "L8-9": "- Thảo luận các quy tắc về bản quyền và giấy phép áp dụng cho thông tin và nội dung số.",
+      "L10-12": "- Áp dụng được các quy định khác nhau về bản quyền và giấy phép cho dữ liệu, thông tin và nội dung số."
+    }
+  },
+  "3.4. Lập trình": {
+    "mien": "3. Sáng tạo nội dung số",
+    "mota": "Lập được kế hoạch và phát triển được một chuỗi các câu lệnh để hiểu cho một hệ thống máy tính để giải quyết một vấn đề nhất định hoặc thực hiện một nhiệm vụ cụ thể.",
+    "descriptors": {
+      "L1-3": "- Liệt kê được các hướng dẫn đơn giản để hệ thống máy tính giải quyết một vấn đề đơn giản hoặc thực hiện một nhiệm vụ đơn giản.",
+      "L4-5": "- Liệt kê được các hướng dẫn đơn giản để hệ thống máy tính giải quyết một vấn đề đơn giản hoặc thực hiện một nhiệm vụ đơn giản.",
+      "L6-7": "- Liệt kê được các hướng dẫn thông thường và được xác định rõ ràng cho một hệ thống máy tính để giải quyết các vấn đề thường ngày hoặc thực hiện các tác vụ thường ngày.",
+      "L8-9": "- Liệt kê được các hướng dẫn cho một hệ thống máy tính để giải quyết một vấn đề nhất định hoặc thực hiện một nhiệm vụ cụ thể.",
+      "L10-12": "- Tự thao tác được bằng các hướng dẫn dành cho hệ thống máy tính để giải quyết một vấn đề khác hoặc thực hiện các nhiệm vụ khác nhau."
+    }
+  },
+  "4.1. Bảo vệ thiết bị": {
+    "mien": "4. An toàn",
+    "mota": "Bảo vệ được thiết bị và nội dung số; hiểu được rủi ro và mối đe dọa trong môi trường số; nắm được các biện pháp an toàn và bảo mật; quan tâm đến mức độ tin cậy và quyền riêng tư.",
+    "descriptors": {
+      "L1-3": "- Nhận biết được cách bảo vệ thiết bị và nội dung số một cách đơn giản.\n- Phân biệt được rủi ro và mối đe dọa đơn giản trong môi trường số.\n- Chọn lựa được các biện pháp an toàn và bảo mật đơn giản.\n- Nhận biết được những cách thức đơn giản để quan tâm đến mức độ tin cậy và quyền riêng tư.",
+      "L4-5": "- Nhận biết được cách bảo vệ thiết bị và nội dung số một cách đơn giản.\n- Phân biệt được rủi ro và mối đe dọa đơn giản trong môi trường số.\n- Tuân theo được các biện pháp an toàn và bảo mật đơn giản.\n- Nhận biết được những cách thức đơn giản để quan tâm đến mức độ tin cậy và quyền riêng tư.",
+      "L6-7": "- Chỉ ra được những cách thức cơ bản và phổ biến để bảo vệ thiết bị và nội dung số.\n- Phân biệt được những rủi ro và mối đe dọa cơ bản và phổ biến trong môi trường số.\n- Chọn lựa được các biện pháp an toàn và bảo mật rõ ràng và thường xuyên.\n- Chỉ ra được những cách thức cơ bản và phổ biến để quan tâm đến mức độ tin cậy và quyền riêng tư.",
+      "L8-9": "- Thiết lập được những cách thức bảo vệ thiết bị và nội dung số.\n- Phân biệt được rủi ro và mối đe dọa trong môi trường số.\n- Chọn lựa được các biện pháp an toàn và bảo mật.\n- Giải thích được các cách thức để quan tâm đến mức độ tin cậy và quyền riêng tư.",
+      "L10-12": "- Áp dụng được các cách khác nhau để bảo vệ thiết bị và nội dung số.\n- Nhận thức được sự đa dạng của các rủi ro và đe dọa trong môi trường số.\n- Áp dụng được các biện pháp an toàn và bảo mật.\n- Sử dụng được các cách thức khác nhau để quan tâm đến mức độ tin cậy và quyền riêng tư."
+    }
+  },
+  "4.2. Bảo vệ dữ liệu cá nhân và quyền riêng tư": {
+    "mien": "4. An toàn",
+    "mota": "Bảo vệ được dữ liệu cá nhân và quyền riêng tư trong môi trường số. Hiểu được cách sử dụng và chia sẻ thông tin định danh cá nhân một cách an toàn, có khả năng bảo vệ bản thân và người khác. Hiểu được ",
+    "descriptors": {
+      "L1-3": "- Lựa chọn được những cách thức đơn giản để bảo vệ dữ liệu cá nhân và quyền riêng tư trong môi trường số.\n- Nhận biết được các cách sử dụng và chia sẻ thông tin định danh cá nhân một cách an toàn, có khả năng bảo vệ bản thân và người khác.\n- Nhận diện được các tuyên bố cơ bản trong chính sách quyền riêng tư về cách sử dụng dữ liệu cá nhân trong dịch vụ số.",
+      "L4-5": "- Lựa chọn được những cách thức đơn giản để bảo vệ dữ liệu cá nhân và quyền riêng tư trong môi trường số.\n- Nhận biết được các cách sử dụng và chia sẻ thông tin định danh cá nhân một cách an toàn, có khả năng bảo vệ bản thân và người khác.\n- Nhận diện được các tuyên bố cơ bản trong chính sách quyền riêng tư về cách sử dụng dữ liệu cá nhân trong dịch vụ số.",
+      "L6-7": "- Giải thích được các cách thức cơ bản và phổ biến để bảo vệ dữ liệu cá nhân và quyền riêng tư trong môi trường số.\n- Giải thích được các cách thức cơ bản và phổ biến để sử dụng và chia sẻ thông tin định danh cá nhân một cách an toàn.\n- Chỉ ra được các tuyên bố cơ bản và phổ biến trong chính sách quyền riêng tư về cách sử dụng dữ liệu cá nhân trong các dịch vụ số.",
+      "L8-9": "- Thảo luận về cách bảo vệ dữ liệu cá nhân và quyền riêng tư trong môi trường số.\n- Thảo luận về cách sử dụng và chia sẻ thông tin định danh cá nhân một cách an toàn.\n- Chỉ ra được các tuyên bố trong chính sách quyền riêng tư về cách sử dụng dữ liệu cá nhân trong các dịch vụ số.",
+      "L10-12": "- Áp dụng được các cách thức khác nhau để bảo vệ dữ liệu cá nhân và quyền riêng tư trong môi trường số.\n- Áp dụng được các cách thức đặc thù để chia sẻ dữ liệu cá nhân một cách an toàn.\n- Giải thích được các tuyên bố trong chính sách quyền riêng tư về cách sử dụng dữ liệu cá nhân trong các dịch vụ số."
+    }
+  },
+  "4.3. Bảo vệ sức khỏe và an sinh số": {
+    "mien": "4. An toàn",
+    "mota": "Tránh được rủi ro và đe dọa đến sức khỏe thể chất và tinh thần khi sử dụng công nghệ số. Bảo vệ được bản thân và người khác khỏi nguy cơ trong môi trường số (ví dụ: bắt nạt trên mạng). Nhận biết được ",
+    "descriptors": {
+      "L1-3": "- Phân biệt được các cách thức đơn giản để tránh rủi ro và đe dọa đến sức khỏe thể chất và tinh thần khi sử dụng công nghệ số.\n- Lựa chọn được những cách thức đơn giản để bảo vệ bản thân khỏi nguy cơ trong môi trường số.\n- Nhận biết được những công nghệ số đơn giản cho tăng cường thịnh vượng xã hội và sự hòa hợp trong xã hội.",
+      "L4-5": "- Phân biệt được các cách thức đơn giản để tránh rủi ro và đe dọa đến sức khỏe thể chất và tinh thần khi sử dụng công nghệ số.\n- Lựa chọn được những cách thức đơn giản để bảo vệ bản thân khỏi nguy cơ trong môi trường số.\n- Nhận biết được những công nghệ số đơn giản cho tăng cường thịnh vượng xã hội và sự hòa hợp trong xã hội.",
+      "L6-7": "- Giải thích được những cách thức cơ bản và phổ biến để tránh rủi ro và đe dọa đối với sức khỏe thể chất và tinh thần khi sử dụng công nghệ số.\n- Lựa chọn được những cách thức cơ bản và phổ biến để bảo vệ bản thân khỏi nguy cơ trong môi trường số.\n- Chỉ ra được những công nghệ số cơ bản và phổ biến giúp tăng cường thịnh vượng xã hội và sự hòa hợp trong xã hội.",
+      "L8-9": "- Giải thích được những cách thức để tránh những sự đe dọa liên quan đến việc sử dụng công nghệ số đối với sức khỏe thể chất và tinh thần.\n- Lựa chọn được cách thức bảo vệ bản thân và người khác khỏi nguy cơ trong môi trường số.\n- Thảo luận về những công nghệ số giúp tăng cường thịnh vượng xã hội và sự hòa hợp trong xã hội.",
+      "L10-12": "- Trình bày được các cách thức khác nhau để tránh rủi ro và đe dọa đến sức khỏe thể chất và tinh thần khi sử dụng công nghệ số.\n- Áp dụng được các cách thức khác nhau để bảo vệ bản thân và người khác khỏi nguy cơ trong môi trường số.\n- Trình bày được các công nghệ số khác nhau giúp tăng cường thịnh vượng xã hội và sự hòa hợp trong xã hội."
+    }
+  },
+  "4.4. Bảo vệ môi trường": {
+    "mien": "4. An toàn",
+    "mota": "Nhận thức được tác động của công nghệ số và việc sử dụng công nghệ số đối với môi trường.",
+    "descriptors": {
+      "L1-3": "- Nhận biết được tác động cơ bản của công nghệ số và việc sử dụng công nghệ số đối với môi trường.",
+      "L4-5": "- Nhận biết được tác động cơ bản của công nghệ số và việc sử dụng công nghệ số đối với môi trường.",
+      "L6-7": "- Chỉ ra được những tác động cơ bản và phổ biến của công nghệ số và việc sử dụng công nghệ số đối với môi trường.",
+      "L8-9": "- Thảo luận về các cách thức bảo vệ môi trường khỏi tác động của công nghệ số và việc sử dụng công nghệ số.",
+      "L10-12": "- Trình bày được các cách thức khác nhau để bảo vệ môi trường khỏi tác động của công nghệ số và việc sử dụng công nghệ số."
+    }
+  },
+  "5.1. Giải quyết các vấn đề kỹ thuật": {
+    "mien": "5. Giải quyết vấn đề",
+    "mota": "Xác định được các vấn đề kỹ thuật khi vận hành thiết bị, sử dụng môi trường số và giải quyết chúng (từ xử lý sự cố đến giải quyết các vấn đề phức tạp hơn).",
+    "descriptors": {
+      "L1-3": "- Xác định được các vấn đề kỹ thuật đơn giản khi vận hành thiết bị và sử dụng môi trường số.\n- Xác định được các giải pháp đơn giản để giải quyết chúng.",
+      "L4-5": "- Xác định được các vấn đề kỹ thuật đơn giản khi vận hành thiết bị và sử dụng môi trường số.\n- Xác định được các giải pháp đơn giản để giải quyết chúng.",
+      "L6-7": "- Chỉ ra được các vấn đề kỹ thuật thông thường và được xác định rõ ràng khi vận hành thiết bị và sử dụng môi trường số.\n- Chọn được các giải pháp được xác định rõ ràng và thông thường cho chúng.",
+      "L8-9": "- Phân biệt được các vấn đề kỹ thuật khi vận hành thiết bị và sử dụng môi trường số.\n- Chọn được giải pháp cho chúng.",
+      "L10-12": "- Đánh giá được các vấn đề kỹ thuật khi sử dụng môi trường số và vận hành các thiết bị số.\n- Áp dụng được các giải pháp khác nhau cho chúng."
+    }
+  },
+  "5.2. Xác định nhu cầu và giải pháp công nghệ": {
+    "mien": "5. Giải quyết vấn đề",
+    "mota": "Đánh giá được nhu cầu và xác định, đánh giá, lựa chọn, sử dụng các công cụ số cùng với các giải pháp công nghệ khả thi để giải quyết chúng. Điều chỉnh và tùy chỉnh được môi trường số theo nhu cầu cá n",
+    "descriptors": {
+      "L1-3": "- Xác định được nhu cầu cá nhân.\n- Nhận ra được các công cụ số đơn giản và các giải pháp công nghệ có thể để giải quyết những nhu cầu đó.\n- Chọn được những cách đơn giản để điều chỉnh và tùy chỉnh môi trường số theo nhu cầu cá nhân.",
+      "L4-5": "- Xác định được nhu cầu cá nhân.\n- Nhận ra được các công cụ số đơn giản và các giải pháp công nghệ có thể để giải quyết những nhu cầu đó.\n- Chọn được những cách đơn giản để điều chỉnh và tùy chỉnh môi trường số theo nhu cầu cá nhân.",
+      "L6-7": "- Chỉ ra được những nhu cầu được xác định rõ ràng và thường xuyên, và\n- Chọn được các công cụ số thông thường và được xác định rõ ràng cũng như các giải pháp công nghệ có thể để giải quyết những nhu cầu đó.\n- Chọn được những cách thông thường và được xác định rõ ràng để điều chỉnh và tùy chỉnh môi trường số theo nhu cầu cá nhân.",
+      "L8-9": "- Giải thích nhu cầu cá nhân, và\n- Lựa chọn được các công cụ số và các giải pháp công nghệ có thể để giải quyết những nhu cầu đó.\n- Chọn được cách điều chỉnh và tùy chỉnh môi trường số theo nhu cầu cá nhân.",
+      "L10-12": "- Đánh giá được nhu cầu cá nhân,\n- Áp dụng được các công cụ số khác nhau và các giải pháp công nghệ có thể để giải quyết những nhu cầu đó.\n- Sử dụng được các cách khác nhau để điều chỉnh và tùy chỉnh môi trường số theo nhu cầu cá nhân."
+    }
+  },
+  "5.3. Sử dụng sáng tạo công nghệ số": {
+    "mien": "5. Giải quyết vấn đề",
+    "mota": "Sử dụng các công cụ và công nghệ số để tạo ra kiến thức, đổi mới quy trình và sản phẩm. Gắn kết cá nhân và tập thể vào quá trình xử lý nhận thức để hiểu và giải quyết các vấn đề mang tính khái niệm và",
+    "descriptors": {
+      "L1-3": "- Xác định được các công cụ và công nghệ số đơn giản có thể được sử dụng để tạo ra kiến thức và đổi mới quy trình như sản phẩm.\n- Thể hiện được sự quan tâm của cá nhân và tập thể đến quá trình xử lý nhận thức đơn giản để hiểu và giải quyết các vấn đề khái niệm đơn giản và các tình huống có vấn đề trong môi trường số.",
+      "L4-5": "- Xác định được các công cụ và công nghệ số đơn giản có thể được sử dụng để tạo ra kiến thức và đổi mới quy trình cũng như sản phẩm.\n- Tuân theo quy trình nhận thức đơn giản của cá nhân và tập thể để hiểu và giải quyết các vấn đề khái niệm đơn giản và các tình huống có vấn đề trong môi trường số.",
+      "L6-7": "- Chọn được các công cụ và công nghệ số có thể được sử dụng để tạo ra kiến thức rõ ràng cũng như các quy trình và sản phẩm đổi mới được xác định rõ ràng.\n- Gắn kết được cá nhân và tập thể vào một số quá trình xử lý nhận thức để hiểu và giải quyết các vấn đề mang tính khái niệm và tình huống có vấn đề thông thường và được xác định rõ ràng trong môi trường số.",
+      "L8-9": "- Phân biệt được các công cụ và công nghệ số có thể được sử dụng để tạo ra kiến thức và đổi mới quy trình và sản phẩm.\n- Gắn kết được cá nhân và tập thể vào quá trình xử lý nhận thức để hiểu và giải quyết các vấn đề khái niệm và tình huống có vấn đề trong môi trường số.",
+      "L10-12": "- Áp dụng được các công cụ và công nghệ số khác nhau để tạo ra kiến thức cũng như các quy trình và sản phẩm đổi mới.\n- Áp dụng xử lý nhận thức của cá nhân và tập thể để giải quyết các vấn đề khái niệm và tình huống có vấn đề khác nhau trong môi trường số."
+    }
+  },
+  "5.4. Xác định các vấn đề cần cải thiện về NLS": {
+    "mien": "5. Giải quyết vấn đề",
+    "mota": "Hiểu được NLS của chính mình cần được cải thiện hoặc cập nhật ở đâu. Có thể hỗ trợ người khác phát triển NLS của họ. Tìm kiếm được cơ hội phát triển bản thân và cập nhật sự phát triển số.",
+    "descriptors": {
+      "L1-3": "- Nhận ra được NLS của tôi cần được cải thiện hoặc cập nhật ở đâu.\n- Xác định được nơi để tìm kiếm cơ hội phát triển bản thân và cập nhật sự phát triển công nghệ số.",
+      "L4-5": "- Nhận ra được NLS của tôi cần được cải thiện hoặc cập nhật ở đâu.\n- Xác định được nơi để tìm kiếm cơ hội phát triển bản thân và cập nhật sự phát triển công nghệ số.",
+      "L6-7": "- Giải thích được NLS của bản thân cần được cải thiện hoặc cập nhật ở đâu,\n- Chỉ ra được nơi để tìm kiếm các cơ hội được xác định rõ ràng để phát triển bản thân và cập nhật sự phát triển công nghệ số.",
+      "L8-9": "- Thảo luận về lĩnh vực NLS của bản thân cần được cải thiện hoặc cập nhật,\n- Chỉ ra được cách hỗ trợ người khác phát triển NLS của họ.\n- Chỉ ra được nơi để tìm kiếm cơ hội phát triển bản thân và cập nhật sự phát triển công nghệ số.",
+      "L10-12": "- Chứng minh được NLS của tôi cần được cải thiện hoặc cập nhật ở đâu,\n- Minh họa được những cách khác nhau để hỗ trợ người khác phát triển NLS của họ.\n- Đề xuất được các cơ hội khác nhau để phát triển bản thân và cập nhật sự phát triển công nghệ số."
+    }
+  },
+  "6.1. Hiểu biết về trí tuệ nhân tạo": {
+    "mien": "6. Ứng dụng trí tuệ nhân tạo",
+    "mota": "Hiểu được cách AI ảnh hưởng đến cuộc sống hằng ngày và vai trò của AI trong các lĩnh vực khác nhau. Nắm vững được nguyên tắc hoạt động của AI, khả năng và hạn chế của AI.",
+    "descriptors": {
+      "L1-3": "- Nhận diện được các công cụ AI đơn giản.\n- Thực hiện được các thao tác cơ bản với các công cụ AI.\n- Nhận thức được cơ bản về các vấn đề đạo đức và pháp lý liên quan đến AI.",
+      "L4-5": "- Xác định được các khái niệm cơ bản của AI.\n- Nhớ lại được các ứng dụng đơn giản của AI trong cuộc sống hàng ngày.",
+      "L6-7": "- Giải thích được nguyên tắc hoạt động cơ bản của AI.\n- Diễn giải được các thuật ngữ và khái niệm liên quan đến AI.",
+      "L8-9": "- Áp dụng được các nguyên tắc cơ bản của AI để giải quyết vấn đề đơn giản.\n- Thực hiện được các thao tác cơ bản trên các công cụ AI.",
+      "L10-12": "- Phân tích được cách AI hoạt động trong các ứng dụng cụ thể.\n- So sánh được các hệ thống AI khác nhau và cách chúng xử lý dữ liệu."
+    }
+  },
+  "6.2. Sử dụng trí tuệ nhân tạo": {
+    "mien": "6. Ứng dụng trí tuệ nhân tạo",
+    "mota": "Sử dụng hiệu quả các hệ thống AI và hiểu rõ ứng dụng thực tế của chúng. Sử dụng được AI để tạo nội dung, khám phá kiến thức và giải quyết các vấn đề trong công việc và cuộc sống hàng ngày.",
+    "descriptors": {
+      "L1-3": "- Nhận diện được các công cụ AI đơn giản.\n- Thực hiện được các thao tác cơ bản với các công cụ AI.\n- Nhận thức được cơ bản về các vấn đề đạo đức và pháp lý liên quan đến AI.",
+      "L4-5": "- Áp dụng được các công cụ AI để giải quyết vấn đề đơn giản.\n- Tương tác được với các hệ thống AI cơ bản.\n- Tuân thủ các quy định pháp luật cơ bản khi sử dụng AI.",
+      "L6-7": "- Sử dụng được các công cụ AI trong công việc và học tập hàng ngày.\n- Thực hành được các kỹ năng sử dụng AI thông qua các bài tập và dự án nhỏ.\n- Xem xét các khía cạnh đạo đức khi sử dụng AI, bảo đảm không vi phạm quyền riêng tư và bảo mật dữ liệu.",
+      "L8-9": "- Tối ưu hóa việc sử dụng các công cụ AI để đạt hiệu quả cao hơn.\n- Quản lý được việc triển khai các công cụ AI trong các dự án nhỏ.\n- Bảo vệ được dữ liệu cá nhân và tuân thủ các quy định pháp luật về bảo mật thông tin khi sử dụng AI.",
+      "L10-12": "- Phát triển được các ứng dụng AI tùy chỉnh để giải quyết các vấn đề cụ thể.\n- Điều chỉnh được các hệ thống AI để phù hợp với nhu cầu cụ thể.\n- Đánh giá và giảm thiểu được các rủi ro đạo đức và pháp lý liên quan đến việc sử dụng AI."
+    }
+  },
+  "6.3. Đánh giá trí tuệ nhân tạo": {
+    "mien": "6. Ứng dụng trí tuệ nhân tạo",
+    "mota": "Đánh giá và lọc được thông tin từ các nguồn được tạo ra hoặc xử lý bằng AI, để hiểu rõ hơn về tính đáng tin cậy và cách sử dụng thông tin đó. Đánh giá được AI trên các khía cạnh minh bạch, an toàn, đạ",
+    "descriptors": {
+      "L1-3": "- Nhận diện được một số vật dụng/trò chơi thông minh có sử dụng AI\n- Nhớ được rằng không phải mọi thông tin từ máy móc đều đúng",
+      "L4-5": "- Nhận diện được các yếu tố cơ bản của hệ thống AI cần được đánh giá.\n- Mô tả được các chức năng chính của hệ thống AI.",
+      "L6-7": "- Giải thích được cách thức hoạt động của các hệ thống AI đơn giản.\n- Tóm tắt được các đặc điểm và ứng dụng của hệ thống AI.",
+      "L8-9": "- Phân tích được hiệu quả của hệ thống AI trong việc giải quyết các vấn đề cụ thể.\n- So sánh được hiệu suất của các hệ thống AI khác nhau.",
+      "L10-12": "- Đánh giá được độ chính xác và tin cậy của các hệ thống AI.\n- Xem xét được các kết quả và đưa ra nhận xét về hiệu quả của hệ thống AI."
+    }
+  }
+}

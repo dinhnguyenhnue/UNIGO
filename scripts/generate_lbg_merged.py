@@ -36,9 +36,9 @@ from generate_lbg import (
     classify_lop, is_rotation_lop, rotation_mon, rotation_do_dung,
     get_grade_key, get_ppct_lesson, compute_ppct, compute_rotation_ppct,
     set_cell_text, save_safe,
-    update_headers, update_day_labels, update_table_data, update_ky_ten,
+    update_headers, update_table_data, update_ky_ten,
+    remove_second_copy, fix_all_fonts,
     filter_for_cap, fix_page_breaks,
-    get_day_idx_from_row,
 )
 
 TOTAL_WEEKS = 35
@@ -56,9 +56,10 @@ def generate_week_doc(tuan_so):
     print(f'  📅 Tuần {tuan_so:02d}: {fmt_date(start_date)} -> {fmt_date(end_date)}  [{loai}]')
 
     doc = Document(TEMPLATE)
+    remove_second_copy(doc)
     update_headers(doc, tuan_so, start_date, end_date)
-    update_day_labels(doc, start_date)
-    update_table_data(doc, tuan_so)
+    update_table_data(doc, tuan_so, start_date)
+    fix_all_fonts(doc)
     update_ky_ten(doc, start_date)
 
     return doc
