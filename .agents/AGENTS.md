@@ -121,9 +121,9 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
    - 4 Hoạt động: `Hoạt động 1. Khởi động` -> `Hoạt động 2. Hình thành kiến thức mới` -> `Hoạt động 3. Luyện tập` -> `Hoạt động 4. Vận dụng`.
    - Mỗi hoạt động có 4 mục: `a) Mục tiêu`; `b) Nội dung`; `c) Sản phẩm`; `d) Tổ chức thực hiện`.
    - Bảng Tổ chức thực hiện dạng **2 Cột** (`HOẠT ĐỘNG CỦA GV – HS` | `KẾT QUẢ CẦN ĐẠT`). Cột 1 gộp hoạt động GV & HS theo Bước 1-4 (tên bước in đậm nghiêng). Cột 2 ghi kiến thức/kết quả cần đạt.
-4. **Quy chuẩn Bảng thông tin đầu bài (Table 0 - NO BORDER) — Áp dụng cho cả Tin học & Robotics:**
+4. **Quy chuẩn Bảng thông tin đầu bài & Tiêu đề bài dạy — Áp dụng cho cả Tin học & Robotics:**
    - **KHÔNG TRÙNG LẶP thông tin**: Mỗi thông tin (lớp, tên bài, môn học) chỉ xuất hiện MỘT LẦN.
-   - **Bảng 3x2 không viền (`w:val="none"` / `w:val="nil"`):**
+   - **Bảng thông tin 3x2 không viền (Table 0 - `w:val="none"` / `w:val="nil"`):**
      - **Row 0:**
        - Cell 0: `Trường: Tiểu học và THCS UNIGO` (In đậm, TNR 13pt)
        - Cell 1: `Ngày soạn: DD/MM/YYYY` (In đậm, TNR 13pt - Thứ 7 tuần trước tuần dạy)
@@ -133,7 +133,19 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
      - **Row 2:**
        - Cell 0: `Tổ: Tổ chuyên môn Tiểu học` (Lớp 1-5) hoặc `Tổ chuyên môn THCS` (Lớp 6-8) (TNR 13pt)
        - Cell 1: `Lớp: [1A1, 2A1, 3A1, 4C1, 5C1, 6A1, 7A1, 8A1]` (TNR 13pt)
-   - Tuyệt đối không để dòng rác (`Ngày dạy:    /     /2026`, dòng `Lớp` rỗng thừa).
+   - **Bố cục hàng dọc dưới Table 0 (Căn giữa - KHÔNG lặp lại dòng Lớp, Thứ ngày, Họ tên GV):**
+     - **Đối với THCS (Lớp 6-8):**
+       - Dòng 1: `TÊN BÀI DẠY: BÀI [SỐ]. [TÊN BÀI DẠY]` (In đậm, TNR 13pt, Căn giữa)
+       - Dòng 2: `Môn học: Tin học` hoặc `Môn học: Robotics` (In nghiêng đậm, TNR 13pt, Căn giữa)
+       - Dòng 3: `Thời lượng: 1 tiết (45 phút)` (In nghiêng đậm, TNR 13pt, Căn giữa)
+       - Dòng 4: `Tiết theo PPCT: [Số tiết]` (In đậm, TNR 13pt, Căn giữa)
+     - **Đối với Tiểu học (Tiền TH & Lớp 1-5):**
+       - Dòng 1: `KẾ HOẠCH DẠY HỌC MÔN TIN HỌC` hoặc `KẾ HOẠCH DẠY HỌC MÔN ROBOTICS` (In đậm, 14pt, Căn giữa)
+       - Dòng 2 (nếu có bộ thiết bị): `CHỦ ĐIỂM: BỘ THIẾT BỊ: ...` (In đậm, 13pt, Căn giữa)
+       - Dòng 3: `BÀI [SỐ]. [TÊN BÀI IN HOA] (Tiết: [X] theo PPCT)` (In đậm, 13pt, Căn giữa - KHÔNG lặp `BÀI: Bài`)
+     - **Mục I. YÊU CẦU CẦN ĐẠT (Tiểu học):**
+       - Dưới dòng `- Sau bài học này em sẽ:` **BẮT BUỘC** liệt kê đầy đủ các gạch đầu dòng `+` Yêu cầu cần đạt của học sinh được trích xuất từ SGK/PPCT.
+   - Tuyệt đối không để dòng rác (`Ngày dạy:    /     /2026`, dòng `Lớp` rỗng thừa hay lặp lại `Lớp:` ở dưới tiêu đề bài).
    - Tên bài dạy chỉ xuất hiện 1 lần (`TÊN BÀI DẠY: ...`), KHÔNG thêm `Tên tiết:` trùng lặp.
 5. **Quy chuẩn Rút kinh nghiệm & Bảng chữ ký cuối bài (Table 3x3 - NO BORDER) — Áp dụng cho cả Tin học & Robotics:**
    - **Phần Rút kinh nghiệm:**

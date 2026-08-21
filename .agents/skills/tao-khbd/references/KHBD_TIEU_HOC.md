@@ -58,31 +58,32 @@ for child in list(doc.element.body):
 
 ## C. Cấu trúc KHBD Tiểu học — Phần nào GIỮ NGUYÊN / CHỈNH SỬA
 
-### Phần ĐẦU (chỉnh sửa nội dung text, GIỮ định dạng paragraph)
+### Phần ĐẦU
 
-| Paragraph | Nội dung mẫu gốc | Chỉnh sửa |
-|:---|:---|:---|
-| P[0] | `Thứ…ngày …. tháng ….năm 202..` | Điền ngày dạy thực tế |
-| P[1] | `Họ và tên Giáo viên: Đậu Đình Nguyên` | Giữ tên GV |
-| P[2] | `KẾ HOẠCH DẠY HỌC MÔN TIN HỌC` | Đổi môn học nếu cần |
-| P[3] | `CHỦ ĐIỂM: ………` | Điền tên Chủ đề/Chủ điểm |
-| P[4] | `BÀI:  …………….. (Tiết: (theo PPCT) )` | Điền tên bài + số tiết PPCT |
-| P[5] | *(trống)* | Giữ nguyên |
+> [!IMPORTANT]
+> Thông tin Giáo viên, Ngày soạn, Ngày dạy và Lớp đã có trong **Table 0** (Bảng thông tin đầu bài 2×2).
+> **TUYỆT ĐỐI KHÔNG lặp lại** dòng Thứ ngày hoặc Họ tên Giáo viên ở dưới Table 0.
+
+| Phần tử | Nội dung |
+|:---|:---|
+| Table[0] | Bảng 2×2 không viền (Trường / GV / Tổ CM / Ngày soạn, Ngày dạy, Lớp) |
+| Tiêu đề môn | `KẾ HOẠCH DẠY HỌC MÔN TIN HỌC` (hoặc `ROBOTICS`) (CENTER, bold, 14pt) |
+| Chủ điểm | `CHỦ ĐIỂM: BỘ THIẾT BỊ: ...` (Chỉ hiện nếu có bộ thiết bị Robotics) |
+| Tên bài | `BÀI [SỐ]. [TÊN BÀI IN HOA] (Tiết: [X] theo PPCT)` (CENTER, bold, 13pt) |
 
 ### Phần I — YÊU CẦU CẦN ĐẠT
 
 > QUAN TRỌNG - Thứ tự bắt buộc TH: **Phẩm chất TRƯỚC → Năng lực SAU** (ngược với THCS)
-
-> [!CAUTION]
-> **CẤM LẶP NỘI DUNG**: Mỗi năng lực/phẩm chất CHỈ ĐƯỢC GHI MỘT LẦN duy nhất.
-> Không ghi tổng quát rồi lặp chi tiết bên dưới.
+>
+> Bắt buộc: Dưới dòng `- Sau bài học này em sẽ:` phải liệt kê các **Yêu cầu cần đạt** của học sinh lấy từ SGK/PPCT (dấu `+`).
 
 **Format paragraph chính xác (python-docx EMU):**
 
 | Cấp | `first_line_indent` | `left_indent` | Bold | Ví dụ |
 |-----|---------------------|---------------|------|-------|
 | Tiêu đề section | 0 | 0 | ✅ | `I. YÊU CẦU CẦN ĐẠT:` |
-| Giới thiệu | 457200 | 0 | ❌ | `- Sau tiết học, học sinh sẽ:` |
+| Giới thiệu | 457200 | 0 | ❌ | `- Sau bài học này em sẽ:` |
+| YCCD từ SGK | 0 | 540000 | ❌ | `+ Kể tên một số thiết bị phần cứng và phần mềm máy tính.` |
 | Mục con cấp 1 | 457200 | 0 | ✅ | `1. Phát triển phẩm chất` |
 | Mục con cấp 2 | 450215 | 0 | ✅ | `2.1. Năng lực đặc thù (Tin học):` |
 | Bullet content | 0 | 540000 | ❌ | `- NLa (...): Biểu hiện...` |
@@ -93,11 +94,14 @@ for child in list(doc.element.body):
 
 ```
 I. YÊU CẦU CẦN ĐẠT:                                 [bold, first_indent=0]
-  - Sau tiết học, học sinh sẽ:
+  - Sau bài học này em sẽ:                           [normal, first_indent=457200]
+    + Kể tên được một số thiết bị phần cứng và phần mềm. [normal, left_indent=540000]
+    + Nêu được vai trò và mối quan hệ giữa phần cứng và phần mềm. [normal, left_indent=540000]
 
   1. Phát triển phẩm chất                             [bold, first_indent=457200]
     - Chăm chỉ: Biểu hiện cụ thể. (HĐ X)            [normal, left_indent=540000]
     - Trách nhiệm: Biểu hiện cụ thể. (HĐ X)         [normal, left_indent=540000]
+    - Trung thực: Biểu hiện cụ thể. (HĐ X)          [normal, left_indent=540000]
 
   2. Phát triển năng lực                              [bold, first_indent=457200]
   2.1. Năng lực đặc thù (Tin học):                    [bold, first_indent=450215]
@@ -106,8 +110,7 @@ I. YÊU CẦU CẦN ĐẠT:                                 [bold, first_indent=
     - NLd (Ứng dụng ICT trong học và tự học):          [normal, left_indent=540000]
       Biểu hiện cụ thể. (Đạt được thông qua HĐ X)
   2.2. Năng lực số (Thông tư 02/2025 – CV 3456):      [bold, first_indent=450215]
-    - Miền I. Khai thác dữ liệu và thông tin           [normal, left_indent=540000]
-      (thành tố 1.1. Duyệt, tìm kiếm... – Bậc 1):
+    - Miền V. Giải quyết vấn đề (thành tố 5.3... – Bậc 2): [normal, left_indent=540000]
       Biểu hiện cụ thể. (Đạt được thông qua HĐ X)
   2.3. Năng lực chung:                                [bold, first_indent=450215]
     - Tự chủ và tự học: Biểu hiện. (HĐ X, Y)          [normal, left_indent=540000]

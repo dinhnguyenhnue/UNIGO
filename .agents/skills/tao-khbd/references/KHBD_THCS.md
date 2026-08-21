@@ -78,7 +78,8 @@ Template THCS có **3 bảng**:
 |:---|:---|
 | Table[0] | 3×2 thông tin trường/GV/Tổ/Ngày/Lớp — sửa ngày soạn/dạy/lớp |
 | P Tên bài | `TÊN BÀI DẠY: BÀI [SỐ]. [TÊN IN HOA]` (CENTER, bold) |
-| P Thông tin | `Môn học: ... Thời lượng: ... tiết (... phút)` (CENTER, bold, italic) |
+| P Môn học | `Môn học: Tin học` / `Môn học: Robotics` (CENTER, bold, italic) |
+| P Thời lượng | `Thời lượng: 1 tiết (45 phút)` (CENTER, bold, italic) |
 | P Tiết PPCT | `Tiết theo PPCT: [số]` (CENTER, bold) |
 
 ### Phần I — MỤC TIÊU (thứ tự bắt buộc THCS)
