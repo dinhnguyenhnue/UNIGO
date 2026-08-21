@@ -158,23 +158,22 @@ III. PHƯƠNG PHÁP, KĨ THUẬT DẠY HỌC
    - Kĩ thuật: đặt câu hỏi, trình bày 1 phút, động não, chia sẻ nhóm đôi
 ```
 
-### Phần IV — CÁC HOẠT ĐỘNG DẠY - HỌC CHỦ YẾU *(BẢNG 2 CỘT)*
+### Phần IV — CÁC HOẠT ĐỘNG DẠY - HỌC CHỦ YẾU *(BẢNG 2 CỘT: GV–HS | KẾT QUẢ CẦN ĐẠT)*
 
-Tất cả hoạt động được đặt trong **1 bảng duy nhất** với **2 cột**: `Hoạt động của GV` | `Hoạt động của HS`
+Tất cả hoạt động được đặt trong **1 bảng duy nhất** với **2 cột**: `HOẠT ĐỘNG CỦA GV – HS` | `KẾT QUẢ CẦN ĐẠT`
 
 **Cấu trúc bảng (10 hàng mẫu gốc):**
 
-| Loại hàng | Cột 1 | Cột 2 |
+| Loại hàng | Cột 1: HOẠT ĐỘNG CỦA GV – HS | Cột 2: KẾT QUẢ CẦN ĐẠT |
 |:---|:---|:---|
 | Tiêu đề HĐ1 (gridSpan=2) | `1. Hoạt động MỞ ĐẦU (... phút)\n*Mục tiêu: ...` | *(merge)* |
-| Nội dung HĐ1 | GV: câu hỏi, quan sát | HS: trả lời, tương tác |
+| Nội dung HĐ1 | GV: câu hỏi, quan sát / HS: trả lời, tương tác | Kết quả cần đạt của HĐ |
 | Tiêu đề HĐ2 (gridSpan=2) | `2. HOẠT ĐỘNG HÌNH THÀNH KIẾN THỨC MỚI\n2.1 [Tên HĐ (...phút)]:\n*Mục tiêu:` | *(merge)* |
-| Nội dung HĐ2.1 | GV hướng dẫn... | HS thực hiện... |
+| Nội dung HĐ2.1 | GV hướng dẫn... / HS thực hiện... | Kiến thức cần đạt |
 | Tiêu đề HĐ2.2 (gridSpan=2) | `2.2. [Tên HĐ (...phút)]:\n*Mục tiêu:` | *(merge)* |
-| Nội dung HĐ2.2 | GV hướng dẫn... | HS thực hiện... |
+| Nội dung HĐ2.2 | GV hướng dẫn... / HS thực hiện... | Kiến thức cần đạt |
 | Tiêu đề HĐ3 (gridSpan=2) | `3. HĐ LUYỆN TẬP-THỰC HÀNH:\n3.1 [Tên HĐ (...phút)]:\n*Mục tiêu:` | *(merge)* |
-| Nội dung HĐ3.1 | GV... | HS... |
-| Tiêu đề HĐ3.2 (gridSpan=2) | `3.2 [Tên HĐ] (...phút):\n*Mục tiêu:` | *(merge)* |
+| Nội dung HĐ3.1 | GV... / HS... | Kết quả cần đạt |
 | Nội dung HĐ4 | `4. HOẠT ĐỘNG VẬN DỤNG, TRẢI NGHIỆM (...phút)` | `...............` |
 
 **Tên 4 loại Hoạt động (đúng theo mẫu TH):**
@@ -235,11 +234,11 @@ def add_merged_row(table, text, bold=True):
     run.bold = bold
     afont(run)
 
-def add_content_row(table, gv_text, hs_text):
-    """Thêm hàng nội dung GV | HS"""
+def add_content_row(table, gv_hs_text, ket_qua_text):
+    """Thêm hàng nội dung HOẠT ĐỘNG GV–HS | KẾT QUẢ CẦN ĐẠT"""
     row = table.add_row()
-    fill_cell(row.cells[0], gv_text)
-    fill_cell(row.cells[1], hs_text)
+    fill_cell(row.cells[0], gv_hs_text)
+    fill_cell(row.cells[1], ket_qua_text)
 ```
 
 ### 2. Đường viền bảng
@@ -293,9 +292,10 @@ for child in list(doc.element.body):
 
 ## E. Đặc điểm nội dung riêng cấp Tiểu học
 
-1. **Kiến thức**: Dùng "Sau tiết học, học sinh sẽ: [động từ trực tiếp]" — không dùng Danh từ như THCS
+1. **Kiến thức**: Dùng danh từ/cụm danh từ trực tiếp, KHÔNG dùng động từ (hiểu, nhận diện, vận dụng). Mỗi `-` xuống dòng riêng.
 2. **Hoạt động Mở đầu**: Trò chơi khởi động, câu hỏi tình huống đơn giản (5 phút)
 3. **Hình thành KT**: Quan sát tranh/video → thảo luận → kết luận (15 phút)
 4. **Luyện tập**: Thực hành trên máy có hướng dẫn từng bước (10 phút)
 5. **Vận dụng**: Kết hợp bài học với cuộc sống, nhiệm vụ về nhà (5 phút)
 6. **Không có**: Phụ lục, Rubric riêng — phần này chỉ có ở THCS
+7. **Tên trường**: `Trường Tiểu học và THCS UNIGO` (thống nhất)

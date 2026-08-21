@@ -32,3 +32,24 @@
   - `SKILL.md`: Thêm Bước 1.5 quy tắc Ngày/Lớp.
   - Tạo mới `references/KHBD_NGAY_LOP.md`: File tham chiếu luật ngày/lớp.
 - **Kết quả**: 12/12 file KHBD đã sửa thành công. Không có file thừa.
+
+## 2026-08-21 - Cập nhật Format KHBD theo 4 Điểm Feedback
+
+- **Vấn đề**:
+  1. Phần đầu KHBD (THCS) bị trùng lặp: Lớp xuất hiện 2 lần, tên bài xuất hiện 2 lần (`TÊN BÀI DẠY:` + `Tên tiết:`)
+  2. Tên trường viết sai (có lúc `TH&THCS UNIGO`, có lúc `Tiểu học và THCS Unigo`)
+  3. Phần Kiến thức dùng động từ (hiểu, nhận diện, vận dụng) và không xuống dòng khi có `-`
+  4. Bảng tiến trình dạy học dùng 3 cột (`Bước | GV | HS`) không đúng mẫu mới
+
+- **Giải pháp**:
+  1. Bỏ trùng lặp: Lớp chỉ ghi 1 lần trong Table[0], tên bài chỉ 1 lần (`TÊN BÀI DẠY:`), bỏ `Tên tiết:`. Table[0] đổi sang 3×2.
+  2. Thống nhất tên trường: `Trường Tiểu học và THCS UNIGO`
+  3. Phần Kiến thức: Dùng danh từ/cụm danh từ trực tiếp, KHÔNG dùng "Sự hiểu biết...", "Khả năng nhận diện...". Mỗi `-` xuống dòng riêng.
+  4. Đổi bảng sang 2 cột: `HOẠT ĐỘNG CỦA GV – HS` | `KẾT QUẢ CẦN ĐẠT` (áp dụng cả TH + THCS)
+
+- **File đã sửa**:
+  - `SKILL.md`: Cập nhật dispatch logic, checklist, cấu trúc bảng
+  - `references/KHBD_THCS.md`: Toàn bộ Section C/D/E/F/G
+  - `references/KHBD_TIEU_HOC.md`: Section D/E + tên trường
+  - `AGENTS.md`: Section IV điểm 1/3/4/6
+- **Kết quả**: 4/4 file rules đã cập nhật thành công.

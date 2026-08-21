@@ -75,45 +75,65 @@ def compute_dates(tuan_so, day_of_week):
 
 ---
 
-## 3. Format hiển thị trong file KHBD
+## 3. Format hiển thị trong file KHBD (Áp dụng cho cả Tin học & Robotics)
 
-### Cấp THCS (Lớp 6, 7, 8)
-Table[0] Row[1] Cell[1] chỉ có **2 dòng** (KHÔNG có dòng "Lớp" thừa):
+### Table[0] Thông tin trường/lớp/ngày (NO BORDER 2x2):
+- **Row 0:**
+  - Cell 0: `Trường: TH&THCS UNIGO` (In đậm, TNR 13pt)
+  - Cell 1: `Ngày soạn: DD/MM/YYYY` (In đậm, TNR 13pt - Thứ 7 tuần trước tuần dạy)
+- **Row 1:**
+  - Cell 0: `GV: Đậu Đình Nguyên` / `Tổ: Tổ chuyên môn Tiểu học` (Lớp 1-5) hoặc `Tổ chuyên môn THCS` (Lớp 6-8) (TNR 13pt)
+  - Cell 1: `Ngày dạy: DD/MM/YYYY` (Đúng thứ theo LBG) / `Lớp: [1A1, 2A1, 3A1, 4C1, 5C1, 6A1, 7A1, 8A1]` (TNR 13pt)
+
+### Paragraph tiêu đề bài dạy:
 ```
-Ngày soạn: DD/MM/YYYY   Ngày dạy: DD/MM/YYYY
-Lớp: 6A1
+Môn học: Tin học / Robotics   Lớp: 6A1   Thời lượng: 1 tiết (45 phút)
 ```
 
-Paragraph tiêu đề bài dạy:
-```
-Môn học: Tin học   Lớp: 6A1   Thời lượng: 1 tiết (45 phút)
-```
-
-### Cấp Tiểu học (Lớp 5)
-Paragraph P[0]:
-```
-Ngày soạn: DD/MM/YYYY   Ngày dạy: DD/MM/YYYY
-```
+### Bảng chữ ký cuối bài (NO BORDER 3x3):
+- Trước bảng ký có 3 dòng:
+  ```
+  RÚT KINH NGHIỆM SAU BÀI DẠY:
+  ...........................................................................................................................
+  ...........................................................................................................................
+  ```
+- **Bảng chữ ký 3 hàng × 3 cột:**
+  - Row 0: `DUYỆT CỦA BGH` | `DUYỆT CỦA TỔ CM` | `NGƯỜI SOẠN` (In đậm, Căn giữa)
+  - Row 1: `(Ký, ghi rõ họ tên)` | `(Ký, ghi rõ họ tên)` | `(Ký, ghi rõ họ tên)` (In nghiêng, Căn giữa)
+  - Row 2: `\n\n\n` | `\n\n\n` | `\n\n\nĐậu Đình Nguyên` (Căn giữa, tên in đậm)
 
 ---
 
 ## 4. Áp dụng trong code
 
-Constant `LOP_SCHEDULE` trong `generate_khbd_all.py`:
+Constant schedule:
 ```python
-LOP_SCHEDULE = {
-    'TTH':  (3, 'TT3'),    # Thứ Năm
-    '1':  (0, '1A1'),       # Thứ Hai
-    '2':  (1, '2A1'),       # Thứ Ba
-    '3':  (3, '3A1'),       # Thứ Năm
-    '4':  (2, '4C1'),       # Thứ Tư
-    '5':  (1, '5C1'),       # Thứ Ba
-    '6':  (4, '6A1'),       # Thứ Sáu
-    '7':  (1, '7A1'),       # Thứ Ba
-    '8':  (4, '8A1'),       # Thứ Sáu
+# Tin học
+TIN_HOC_SCHEDULE = {
+    'TTH': (3, 'TT3'),    # Thứ Năm
+    '1':   (0, '1A1'),    # Thứ Hai
+    '2':   (1, '2A1'),    # Thứ Ba
+    '3':   (3, '3A1'),    # Thứ Năm
+    '4':   (2, '4C1'),    # Thứ Tư
+    '5':   (1, '5C1'),    # Thứ Ba
+    '6':   (4, '6A1'),    # Thứ Sáu
+    '7':   (1, '7A1'),    # Thứ Ba
+    '8':   (4, '8A1'),    # Thứ Sáu
+}
+
+# Robotics
+ROBOTICS_SCHEDULE = {
+    '1':   (3, '1A1'),    # Thứ Năm
+    '2':   (2, '2A1'),    # Thứ Tư
+    '3':   (2, '3A1'),    # Thứ Tư
+    '4':   (4, '4C1'),    # Thứ Sáu
+    '5':   (1, '5C1'),    # Thứ Ba (Tuần lẻ)
+    '6':   (4, '6A1'),    # Thứ Sáu (Tuần lẻ)
+    '7':   (1, '7A1'),    # Thứ Ba (Tuần lẻ)
+    '8':   (4, '8A1'),    # Thứ Sáu (Tuần lẻ)
 }
 ```
 
-Khi gọi hàm tạo KHBD cho Lớp 5-8, luôn truyền:
-- `ngay_soan` và `ngay_day` tính từ `compute_dates(tuan_so, day_of_week)`
-- `lop` = tên lớp (VD: `'6A1'`, `'7A1'`, `'8A1'`, `'5C1'`)
+Khi tạo KHBD cho bất kỳ lớp nào (Lớp 1-8), luôn tính:
+- `ngay_soan` và `ngay_day` từ `compute_dates(tuan_so, day_of_week)`
+- `ten_lop` = tên lớp (VD: `'6A1'`, `'7A1'`, `'8A1'`, `'5C1'`, `'4C1'`, `'3A1'`, `'2A1'`, `'1A1'`)

@@ -3,8 +3,8 @@
 > Tài liệu này được tạo dựa trên phân tích thực tế file mẫu:
 > `D:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx`
 >
-> Phương án được chọn: **Phương án B** — Dùng **bảng 3 cột** cho phần Tiến trình dạy học
-> (`Bước | Hoạt động của GV | Hoạt động của HS`) — dễ đọc, rõ ràng, thẩm mỹ cao hơn.
+> Format: Dùng **bảng 2 cột** cho phần Tiến trình dạy học
+> (`HOẠT ĐỘNG CỦA GV – HS | KẾT QUẢ CẦN ĐẠT`) — theo mẫu giáo án mới UNIGO.
 
 ---
 
@@ -44,14 +44,19 @@
 
 Template THCS có **3 bảng**:
 
-### Bảng Table[0] — Thông tin trường/GV (2×2) — GIỮ NGUYÊN STRUCTURE, chỉ sửa text ngày soạn/dạy
+### Bảng Table[0] — Thông tin trường/GV (3×2) — GIỮ NGUYÊN STRUCTURE, chỉ sửa text ngày soạn/dạy/lớp
 
-| Cell | Nội dung gốc | Chỉnh sửa |
+> [!IMPORTANT]
+> **KHÔNG trùng lặp thông tin**: Mỗi thông tin (lớp, tên bài, môn học) chỉ xuất hiện MỘT LẦN duy nhất.
+
+| Cell | Nội dung | Ghi chú |
 |:---|:---|:---|
-| Row[0], Col[0] | `Trường Tiểu học và THCS UNIGO` | Giữ nguyên |
-| Row[0], Col[1] | `Họ tên giáo viên: Đậu Đình Nguyên` | Giữ nguyên |
-| Row[1], Col[0] | `Tổ Tin học` | Giữ nguyên |
-| Row[1], Col[1] | `Ngày soạn: / /2026\nNgày dạy: / /2026` | Điền ngày soạn + ngày dạy |
+| Row[0], Col[0] | `Trường: Tiểu học và THCS UNIGO` | **Tên trường chuẩn** (in đậm) |
+| Row[0], Col[1] | `Ngày soạn: DD/MM/YYYY` | In đậm |
+| Row[1], Col[0] | `GV: Đậu Đình Nguyên` | |
+| Row[1], Col[1] | `Ngày dạy: DD/MM/YYYY` | |
+| Row[2], Col[0] | `Tổ: Tổ chuyên môn THCS` | |
+| Row[2], Col[1] | `Lớp: [XA1]` | Chỉ ghi 1 lần, KHÔNG lặp |
 
 ### Bảng Table[2] — Ký tên BGH/Tổ CM/Người soạn (1×3) — GIỮ NGUYÊN HOÀN TOÀN
 
@@ -63,15 +68,18 @@ Template THCS có **3 bảng**:
 
 ## D. Cấu trúc KHBD THCS — Nội dung xây dựng
 
-### Phần đầu
+### Phần đầu (KHÔNG TRÙNG LẶP)
+
+> [!CAUTION]
+> **CẤM trùng lặp**: Tên bài chỉ xuất hiện 1 lần (`TÊN BÀI DẠY:`), KHÔNG thêm `Tên tiết:` nữa.
+> Lớp chỉ xuất hiện 1 lần trong Table[0], KHÔNG thêm dòng `Lớp:` bên dưới.
 
 | Element | Nội dung |
 |:---|:---|
-| Table[0] | 2×2 thông tin trường — sửa ngày soạn/dạy |
-| P Tên bài | `TÊN BÀI DẠY: [TÊN IN HOA]` (CENTER, bold) |
-| P Môn/Lớp | `Môn học: ... Lớp: ... Thời lượng: ...` (CENTER, bold) |
+| Table[0] | 3×2 thông tin trường/GV/Tổ/Ngày/Lớp — sửa ngày soạn/dạy/lớp |
+| P Tên bài | `TÊN BÀI DẠY: BÀI [SỐ]. [TÊN IN HOA]` (CENTER, bold) |
+| P Thông tin | `Môn học: ... Thời lượng: ... tiết (... phút)` (CENTER, bold, italic) |
 | P Tiết PPCT | `Tiết theo PPCT: [số]` (CENTER, bold) |
-| P Tên tiết | `Tên tiết: [tên bài]` (CENTER, bold) |
 
 ### Phần I — MỤC TIÊU (thứ tự bắt buộc THCS)
 
@@ -88,7 +96,7 @@ Template THCS có **3 bảng**:
 |-----|---------------------|---------------|------|-------|
 | Tiêu đề section | 0 | 0 | ✅ | `I. Mục tiêu` |
 | Mục con cấp 1 | 180340 | 0 | ✅ | `1. Kiến thức:` |
-| Nội dung cấp 1 | 180340 | 0 | ❌ | `Sự hiểu biết về...` |
+| Bullet kiến thức | 0 | 540000 | ❌ | `- Biểu diễn thông tin với kí hiệu 0 và 1.` |
 | Mục con cấp 2 | 360045 | 0 | ✅ | `2.1. Năng lực đặc thù (Tin học):` |
 | Bullet content | 0 | 540000 | ❌ | `- NLa (...): Biểu hiện...` |
 
@@ -100,8 +108,8 @@ Template THCS có **3 bảng**:
 I. Mục tiêu                                         [bold, first_indent=0]
 
   1. Kiến thức:                                      [bold, first_indent=180340]
-  - Sự hiểu biết về [khái niệm chốt từ SGK].        [normal, left_indent=540000]
-  - Khả năng nhận diện [kỹ năng cụ thể].             [normal, left_indent=540000]
+  - [Danh từ/cụm danh từ trực tiếp từ SGK].          [normal, left_indent=540000]
+  - [Mỗi gạch đầu dòng xuống dòng riêng].            [normal, left_indent=540000]
 
   2. Năng lực:                                       [bold, first_indent=180340]
   2.1. Năng lực đặc thù (Tin học):                   [bold, first_indent=360045]
@@ -168,10 +176,11 @@ II. Thiết bị dạy học và học liệu:
    2. Học liệu: [SGK, phiếu học tập, ...]
 ```
 
-### Phần III — TIẾN TRÌNH DẠY HỌC (PHƯƠNG ÁN B: BẢNG 3 CỘT)
+### Phần III — TIẾN TRÌNH DẠY HỌC (BẢNG 2 CỘT: GV–HS | KẾT QUẢ CẦN ĐẠT)
 
 > [!IMPORTANT]
-> **Phương án B**: Mỗi hoạt động gồm 4 phần (a, b, c, d) + **bảng 3 cột** cho các bước tổ chức thực hiện.
+> **Format mới**: Mỗi hoạt động gồm 4 phần (a, b, c, d) + **bảng 2 cột** (`HOẠT ĐỘNG CỦA GV – HS` | `KẾT QUẢ CẦN ĐẠT`).
+> Cột 1 gộp hoạt động GV và HS theo từng bước. Cột 2 ghi kiến thức/kết quả cần đạt sau hoạt động.
 
 **Cấu trúc 4 Hoạt động:**
 
@@ -184,38 +193,44 @@ III. Tiến trình dạy học
    c) Sản phẩm: [italic] Yêu cầu sản phẩm
    d) Tổ chức thực hiện: [italic]
 
-   +-------+--------------------+--------------------+
-   | Bước  | Hoạt động của GV   | Hoạt động của HS   |
-   +-------+--------------------+--------------------+
-   | Bước 1: Chuyển giao nhiệm vụ học tập  | ...GV... | ...HS... |
-   | Bước 2: Học sinh tiếp nhận nhiệm vụ   | ...GV... | ...HS... |
-   | Bước 3: Báo cáo kết quả hoạt động     | ...GV... | ...HS... |
-   | Bước 4: Đánh giá kết quả thực hiện    | ...GV... | ...HS... |
-   +-------+--------------------+--------------------+
+   +----------------------------------+----------------------------------+
+   | HOẠT ĐỘNG CỦA GV – HS           | KẾT QUẢ CẦN ĐẠT                |
+   +----------------------------------+----------------------------------+
+   | *Bước 1: Chuyển giao nhiệm vụ:* |                                  |
+   | - GV yêu cầu HS...              | I. [Tiêu đề kiến thức]          |
+   | - GV yêu cầu các nhóm...        | 1. [Nội dung kiến thức]         |
+   | *Bước 2: HS tiếp nhận:*         | - [Chi tiết kiến thức]          |
+   | - HS thực hiện...                | - [Chi tiết kiến thức]          |
+   | *Bước 3: Báo cáo kết quả:*      |                                  |
+   | - HS trình bày...               |                                  |
+   | *Bước 4: Đánh giá kết quả:*     |                                  |
+   | - GV nhận xét, chốt kiến thức   |                                  |
+   +----------------------------------+----------------------------------+
 
 2. Hoạt động 2. Hình thành kiến thức mới/giải quyết vấn đề
-   (a-d + bảng 3 cột tương tự)
+   (a-d + bảng 2 cột tương tự)
 
 3. Hoạt động 3. Luyện tập
-   (a-d + bảng 3 cột, Bước 4 mặc định)
+   (a-d + bảng 2 cột tương tự)
 
 4. Hoạt động 4. Vận dụng
-   (a-d + bảng 3 cột, Bước 4 = "Giáo viên nhắc nhở nhiệm vụ về nhà")
+   (a-d + bảng 2 cột, Bước 4 = "Giáo viên nhắc nhở nhiệm vụ về nhà")
 ```
 
-**Quy tắc formatting bảng 3 cột:**
+**Quy tắc formatting bảng 2 cột:**
 
 | Cột | Nội dung | Tỉ lệ chiều rộng |
 |:---|:---|:---|
-| Cột 1: `Bước` | Tên bước (italic, bold) | ~20% |
-| Cột 2: `Hoạt động của GV` | Mô tả hoạt động GV | ~40% |
-| Cột 3: `Hoạt động của HS` | Mô tả hoạt động HS | ~40% |
+| Cột 1: `HOẠT ĐỘNG CỦA GV – HS` | Gộp hoạt động GV & HS theo Bước 1-4. Tên bước in đậm nghiêng. | ~55% |
+| Cột 2: `KẾT QUẢ CẦN ĐẠT` | Kiến thức/kết quả HS cần đạt sau hoạt động | ~45% |
 
 - Header row: **bold**, center, có viền đầy đủ
 - Nội dung: TNR 13pt, line spacing 1.15, căn trái
 - Đường viền: `single`, sz=4, color=000000
+- Trong cột 1: Tên bước viết in đậm nghiêng (VD: `*Bước 1: Chuyển giao nhiệm vụ:*`)
+- Hoạt động GV & HS viết xen kẽ, dấu `-` đầu mỗi dòng
 
-**Tên 4 Bước (Bước 1-3 giống nhau cho tất cả hoạt động, Bước 4 thay đổi ở HĐ cuối):**
+**Tên 4 Bước trong cột HOẠT ĐỘNG CỦA GV – HS:**
 - `Bước 1: Chuyển giao nhiệm vụ học tập`
 - `Bước 2: Học sinh tiếp nhận nhiệm vụ học tập`
 - `Bước 3: Báo cáo kết quả hoạt động`
@@ -236,7 +251,7 @@ III. Tiến trình dạy học
 
 ---
 
-## E. Kỹ thuật python-docx cho THCS (Phương án B)
+## E. Kỹ thuật python-docx cho THCS
 
 ### 1. Luồng code chính
 
@@ -244,63 +259,62 @@ III. Tiến trình dạy học
 doc = Document(TPL_SECONDARY)  # Load template THCS
 clean_body(doc)  # Xóa body, giữ sectPr
 
-# Re-create: Table[0] thông tin, paragraphs I/II/III, bảng 3 cột mỗi HĐ, Table ký tên
+# Re-create: Table[0] thông tin, paragraphs I/II/III, bảng 2 cột mỗi HĐ, Table ký tên
 ```
 
-### 2. Tạo bảng 3 cột cho mỗi hoạt động
+### 2. Tạo bảng 2 cột cho mỗi hoạt động
 
 ```python
-def add_activity_table_b(doc, buoc_rows, is_last=False):
+def add_activity_table_2col(doc, gv_hs_text, ket_qua_text):
     """
-    Tạo bảng 3 cột cho 1 hoạt động (Phương án B)
-    buoc_rows = list of (gv_text, hs_text) cho 4 bước
+    Tạo bảng 2 cột cho 1 hoạt động
+    gv_hs_text = text gộp hoạt động GV & HS (theo Bước 1-4)
+    ket_qua_text = text kết quả cần đạt
     """
-    buoc_labels = [
-        'Bước 1:\nChuyển giao\nnhiệm vụ học tập',
-        'Bước 2:\nHọc sinh tiếp nhận\nnhiệm vụ học tập',
-        'Bước 3:\nBáo cáo kết quả\nhoạt động',
-        'Bước 4:\nĐánh giá kết quả\nthực hiện nhiệm vụ',
-    ]
-    if is_last:  # HĐ 4. Vận dụng
-        buoc_labels[3] = 'Bước 4:\nGiáo viên nhắc nhở\nnhiệm vụ về nhà'
-
-    table = doc.add_table(rows=1, cols=3)
+    table = doc.add_table(rows=1, cols=2)
     set_table_borders(table)
 
     # Header row
     hdr = table.rows[0].cells
-    fill_cell(hdr[0], 'Bước', bold=True, align=CENTER)
-    fill_cell(hdr[1], 'Hoạt động của GV', bold=True, align=CENTER)
-    fill_cell(hdr[2], 'Hoạt động của HS', bold=True, align=CENTER)
+    fill_cell(hdr[0], 'HOẠT ĐỘNG CỦA GV – HS', bold=True, align=CENTER)
+    fill_cell(hdr[1], 'KẾT QUẢ CẦN ĐẠT', bold=True, align=CENTER)
 
-    # 4 data rows
-    for i, (gv, hs) in enumerate(buoc_rows):
-        row = table.add_row().cells
-        fill_cell(row[0], buoc_labels[i], bold=True, italic=True, align=CENTER)
-        fill_cell(row[1], gv)
-        fill_cell(row[2], hs)
+    # 1 data row (nội dung chi tiết)
+    row = table.add_row().cells
+    fill_cell_multiline(row[0], gv_hs_text)  # Bước 1-4 + hoạt động GV/HS
+    fill_cell_multiline(row[1], ket_qua_text)  # Kiến thức/kết quả cần đạt
 ```
 
-### 3. Cấu trúc dữ liệu hoat_dong_list (Phương án B)
+### 3. Cấu trúc dữ liệu hoat_dong_list
 
 ```python
 hoat_dong_list = [
     {
         'stt': 1,
-        'ten': 'Khởi động (Xác định vấn đề/nhiệm vụ học tập/Mở đầu)',  # HĐ1
-        'muc_tieu': 'Kích hoạt hiểu biết nền...',  # HĐ2=HTKTM, HĐ3=LT, HĐ4=VD
+        'ten': 'Khởi động (Xác định vấn đề/nhiệm vụ học tập/Mở đầu)',
+        'muc_tieu': 'Kích hoạt hiểu biết nền...',
         'noi_dung': 'GV đặt câu hỏi...',
         'san_pham': 'HS trả lời được...',
         'to_chuc': 'Hoạt động cá nhân nhanh...',
-        # 4 bước: mỗi bước có gv_text và hs_text
-        'buoc1_gv': 'GV yêu cầu HS...',
-        'buoc1_hs': 'HS quan sát và...',
-        'buoc2_gv': 'GV theo dõi...',
-        'buoc2_hs': 'HS thực hiện...',
-        'buoc3_gv': 'GV ghi lên bảng...',
-        'buoc3_hs': 'HS xung phong...',
-        'buoc4_gv': 'GV đặt câu hỏi dẫn vào bài...',
-        'buoc4_hs': 'HS lắng nghe và chuẩn bị...',
+        # Cột 1: Gộp hoạt động GV & HS theo 4 bước
+        'gv_hs': [
+            ('Bước 1: Chuyển giao nhiệm vụ:', [
+                '- GV yêu cầu HS quan sát hình ảnh/video...',
+                '- GV đặt câu hỏi gợi mở...',
+            ]),
+            ('Bước 2: HS tiếp nhận:', [
+                '- HS quan sát, suy nghĩ cá nhân...',
+            ]),
+            ('Bước 3: Báo cáo kết quả:', [
+                '- HS xung phong trả lời...',
+                '- GV ghi nhận các câu trả lời...',
+            ]),
+            ('Bước 4: Đánh giá kết quả:', [
+                '- GV nhận xét, dẫn dắt vào bài mới...',
+            ]),
+        ],
+        # Cột 2: Kết quả cần đạt
+        'ket_qua': 'HS nhận diện được vấn đề bài học...',
     },
     ...
 ]
@@ -310,7 +324,7 @@ hoat_dong_list = [
 
 ## F. Đặc điểm nội dung riêng cấp THCS
 
-1. **Kiến thức**: Dùng Danh từ/Cụm danh từ — "Sự hiểu biết về...", "Khả năng nhận diện..."
+1. **Kiến thức**: Dùng Danh từ/Cụm danh từ trực tiếp — KHÔNG dùng động từ (hiểu, nhận diện, vận dụng). KHÔNG dùng cụm "Sự hiểu biết...", "Khả năng nhận diện...". Mỗi `-` xuống dòng riêng.
 2. **Năng lực đặc thù**: Tách mục `2.1.` riêng, ghi mã NLa-NLe kèm tên đầy đủ trong ngoặc
 3. **Năng lực số**: Tách mục `2.2.` riêng, ghi Miền + thành tố + Bậc theo Thông tư 02/2025
 4. **Năng lực chung**: Tách mục `2.3.` riêng
@@ -322,25 +336,28 @@ hoat_dong_list = [
 
 ---
 
-## G. Checklist kiểm tra file THCS sau xuất (Phương án B)
+## G. Checklist kiểm tra file THCS sau xuất
 
 | # | Tiêu chí | Yêu cầu |
 |:---|:---|:---|
 | 1 | Margins đúng? | Trái 2.54cm, Phải 1.27cm |
 | 2 | Header drawing intact? | Paragraphs[0] trong header có w:drawing |
-| 3 | Table[0] tồn tại? | 2×2, có ngày soạn/dạy |
-| 4 | Thứ tự mục tiêu? | Kiến thức → Năng lực (đặc thù 2.1/số 2.2/chung 2.3) → Phẩm chất |
-| 5 | NL đặc thù đúng format? | Có mã NLa-NLe + tên trong ngoặc + biểu hiện + #HĐ |
-| 6 | NL số đúng format? | Có `Miền [La Mã]. [Tên] (thành tố X.Y. ... – Bậc N)` |
-| 7 | Không lặp nội dung? | Mỗi NL/PC chỉ xuất hiện 1 lần duy nhất |
-| 8 | Indent đều đặn? | Cấp 1/2/bullet đúng EMU: 180340/360045/left_indent=540000 |
-| 9 | Tiến trình dùng bảng 3 cột? | Mỗi HĐ có 1 bảng (Bước \| GV \| HS) |
-| 10 | Bước 1-4 đúng thứ tự? | Chuyển giao → Tiếp nhận → Báo cáo → Đánh giá/Nhắc nhở |
-| 11 | HĐ 4 đúng tên? | `Hoạt động 4. Vận dụng` |
-| 12 | Bảng ký tên cuối? | Table cuối 1×3 tồn tại |
-| 13 | Font 13pt? | Toàn bộ runs |
-| 14 | Line spacing 1.15? | Toàn bộ paragraphs |
-| 15 | Spacing đúng? | space_after=38100, space_before=0, alignment=JUSTIFY |
-| 16 | Tổng số bảng? | ≥ 6 (1 TT + 4 HĐ + 1 ký tên) |
-| 17 | Viền bảng đúng chuẩn? | Table[0] (Thông tin) và Table ký tên cuối: **NO BORDER** (`w:val="nil"`). |
-| 18 | Viền bảng hoạt động? | 4 bảng tiến trình dạy học (HĐ 1-4): **CÓ VIỀN** (`w:val="single"`, `w:sz="4"`). |
+| 3 | Tên trường đúng? | `Trường Tiểu học và THCS UNIGO` |
+| 4 | Table[0] tồn tại? | 3×2, có ngày soạn/dạy/lớp — KHÔNG trùng lặp thông tin |
+| 5 | Phần đầu không trùng? | Tên bài chỉ 1 lần, Lớp chỉ 1 lần |
+| 6 | Thứ tự mục tiêu? | Kiến thức → Năng lực (đặc thù 2.1/số 2.2/chung 2.3) → Phẩm chất |
+| 7 | Kiến thức đúng format? | Danh từ trực tiếp, KHÔNG có động từ (hiểu, nhận diện, vận dụng), mỗi `-` xuống dòng riêng |
+| 8 | NL đặc thù đúng format? | Có mã NLa-NLe + tên trong ngoặc + biểu hiện + #HĐ |
+| 9 | NL số đúng format? | Có `Miền [La Mã]. [Tên] (thành tố X.Y. ... – Bậc N)` |
+| 10 | Không lặp nội dung? | Mỗi NL/PC chỉ xuất hiện 1 lần duy nhất |
+| 11 | Indent đều đặn? | Cấp 1/2/bullet đúng EMU: 180340/360045/left_indent=540000 |
+| 12 | Tiến trình dùng bảng 2 cột? | Mỗi HĐ có 1 bảng (`HOẠT ĐỘNG CỦA GV – HS` \| `KẾT QUẢ CẦN ĐẠT`) |
+| 13 | Bước 1-4 đúng thứ tự? | Chuyển giao → Tiếp nhận → Báo cáo → Đánh giá/Nhắc nhở |
+| 14 | HĐ 4 đúng tên? | `Hoạt động 4. Vận dụng` |
+| 15 | Bảng ký tên cuối? | Table cuối 1×3 tồn tại |
+| 16 | Font 13pt? | Toàn bộ runs |
+| 17 | Line spacing 1.15? | Toàn bộ paragraphs |
+| 18 | Spacing đúng? | space_after=38100, space_before=0, alignment=JUSTIFY |
+| 19 | Tổng số bảng? | ≥ 6 (1 TT + 4 HĐ + 1 ký tên) |
+| 20 | Viền bảng đúng chuẩn? | Table[0] (Thông tin) và Table ký tên cuối: **NO BORDER** (`w:val="nil"`). |
+| 21 | Viền bảng hoạt động? | 4 bảng tiến trình dạy học (HĐ 1-4): **CÓ VIỀN** (`w:val="single"`, `w:sz="4"`). |

@@ -41,7 +41,7 @@ Không được bỏ qua hay gộp bước. Mỗi bước phải có kết quả
 Nếu cấp = Tiền TH / Lớp 1 / Lớp 2 / Lớp 3 / Lớp 4 / Lớp 5:
     → Đọc KHBD_TIEU_HOC.md → Áp dụng toàn bộ luật TH
     → Template: Khung giáo án Unigo 2026-2027 Thang 7.2026.docx
-    → Bảng HĐ: 2 cột (GV / HS), hàng gộp gridSpan=2
+    → Bảng HĐ: 2 cột (HOẠT ĐỘNG CỦA GV – HS | KẾT QUẢ CẦN ĐẠT), hàng gộp gridSpan=2
     → Margins: Trái 3.0cm, Phải 2.0cm, Trên 2.0cm, Dưới 2.0cm
     → Line spacing: 1.5
     → Mục tiêu: Phẩm chất TRƯỚC → Năng lực SAU
@@ -49,7 +49,7 @@ Nếu cấp = Tiền TH / Lớp 1 / Lớp 2 / Lớp 3 / Lớp 4 / Lớp 5:
 Nếu cấp = Lớp 6 / Lớp 7 / Lớp 8 / Lớp 9:
     → Đọc KHBD_THCS.md → Áp dụng toàn bộ luật THCS
     → Template: PL4-Khung kế hoạch bài dạy (THCS).docx
-    → Tiến trình: Paragraphs Bước 1-4 (KHÔNG dùng bảng)
+    → Tiến trình: Bảng 2 cột (HOẠT ĐỘNG CỦA GV – HS | KẾT QUẢ CẦN ĐẠT)
     → Margins: Trái 2.54cm, Phải 1.27cm, Trên 1.27cm, Dưới 1.27cm
     → Line spacing: 1.15
     → Mục tiêu: Kiến thức → Năng lực (chung/đặc thù/số) → Phẩm chất
@@ -119,8 +119,9 @@ mẫu trong SGK.
   - `3456-VV_huong_dan_trien_khai_Khung_nang_luc_so_cho_HS_885ca.pdf` (Khung NLS).
   - `16. CT_Tin hoc.pdf` (Chương trình Tin học 2018).
 - Xác định:
-  - **Kiến thức:** Dùng Danh từ / Cụm danh từ (VD: *Sự hiểu biết về...*, *Khả năng
-    nhận diện...*, *Sự phân biệt...*).
+   - **Kiến thức:** Dùng Danh từ / Cụm danh từ trực tiếp. KHÔNG dùng động từ (hiểu, nhận diện, vận dụng).
+     KHÔNG dùng cụm "Sự hiểu biết về...", "Khả năng nhận diện...".
+     Mỗi gạch đầu dòng `-` PHẢI xuống dòng riêng.
   - **Năng lực** (3 nhóm bắt buộc, mục `2.1.`, `2.2.`, `2.3.`):
     - `2.1. Năng lực đặc thù (Tin học)`: Ghi mã NLa-NLe kèm tên đầy đủ trong ngoặc.
       VD: `- NLa (Sử dụng và quản lí các phương tiện ICT): Biểu hiện... (HĐ X)`
@@ -176,7 +177,7 @@ II. ĐỒ DÙNG DẠY HỌC
 III. PHƯƠNG PHÁP, KĨ THUẬT DẠY HỌC
 
 IV. CÁC HOẠT ĐỘNG DẠY - HỌC CHỦ YẾU:
-[BẢNG 2 CỘT: Hoạt động của GV | Hoạt động của HS]
+[BẢNG 2 CỘT: HOẠT ĐỘNG CỦA GV – HS | KẾT QUẢ CẦN ĐẠT]
 - Hàng gộp (gridSpan=2) cho mỗi tiêu đề HĐ
 - 4 HĐ: Mở đầu | Hình thành KT | Luyện tập-TH | Vận dụng, Trải nghiệm
 
@@ -185,13 +186,13 @@ V. ĐIỀU CHỈNH - BỔ SUNG SAU TIẾT DẠY  ← COPY NGUYÊN từ template
 
 **Cấu trúc KHBD THCS (đọc chi tiết tại KHBD_THCS.md):**
 ```
-[Table 2×2: Trường/GV/Tổ/Ngày]  ← GIỮ NGUYÊN TABLE GỐC
-TÊN BÀI DẠY: ...
+[Table 2×2: Trường/GV/Tổ/Ngày/Lớp]  ← GIỮ NGUYÊN TABLE GỐC, KHÔNG TRÙNG LẶP
+TÊN BÀI DẠY: ...     ← Chỉ xuất hiện 1 lần
 Tiết theo PPCT: ...
 Tên tiết: ...
 
 I. Mục tiêu
-   1. Kiến thức:               ← KIẾN THỨC TRƯỚC
+   1. Kiến thức:               ← Danh từ trực tiếp, KHÔNG động từ
    2. Năng lực:
       2.1. Năng lực đặc thù (Tin học):  ← Mã NLa-NLe + tên + biểu hiện + #HĐ
       2.2. Năng lực số (TT 02/2025):   ← Miền + thành tố + Bậc + biểu hiện + #HĐ
@@ -203,7 +204,7 @@ II. Thiết bị dạy học và học liệu:
    2. Học liệu
 
 III. Tiến trình dạy học
-   1. Hoạt động 1. Khởi động    ← PARAGRAPHS + BẢNG 3 CỘT
+   1. Hoạt động 1. Khởi động    ← BẢNG 2 CỘT (HOẠT ĐỘNG GV–HS | KẾT QUẢ CẦN ĐẠT)
       a) Mục tiêu  b) Nội dung  c) Sản phẩm  d) Tổ chức thực hiện
       Bước 1. Chuyển giao nhiệm vụ
       Bước 2. Học sinh tiếp nhận
@@ -218,7 +219,7 @@ RÚT KINH NGHIỆM SAU BÀI DẠY   ← GIỮ NGUYÊN
 
 **Quy tắc viền bảng (Table Borders):**
 - **Bảng thông tin đầu trang (Table 2×2):** BẮT BUỘC **NO BORDER** (Không viền - `w:val="nil"`).
-- **Bảng các hoạt động dạy học (Tiến trình 3 cột):** BẮT BUỘC **CÓ VIỀN** (`w:val="single"`, `w:sz="4"`, `w:color="000000"`).
+- **Bảng các hoạt động dạy học (Tiến trình 2 cột):** BẮT BUỘC **CÓ VIỀN** (`w:val="single"`, `w:sz="4"`, `w:color="000000"`).
 - **Bảng chữ ký cuối bài (DUYỆT BGH / DUYỆT TỔ CM / NGƯỜI SOẠN):** BẮT BUỘC **NO BORDER** (Không viền - `w:val="nil"`).
 
 **Quy tắc định dạng paragraph (python-docx EMU):**
@@ -251,7 +252,7 @@ RÚT KINH NGHIỆM SAU BÀI DẠY   ← GIỮ NGUYÊN
 | # | Tiêu chí | Yêu cầu |
 |---|----------|---------|
 | 1 | Kiến thức bám sát SGK? | Nội dung KHBD phải phản ánh đúng kiến thức trong SGK, không thêm bớt sai lệch. |
-| 2 | Mục tiêu dùng Danh từ? | Không dùng động từ mở đầu (Hiểu, Biết...), phải dùng Danh từ (Sự hiểu biết, Khả năng...). |
+| 2 | Mục tiêu dùng Danh từ trực tiếp? | Không dùng động từ (Hiểu, Biết...), không dùng cụm "Sự hiểu biết...", "Khả năng...". Mỗi `-` xuống dòng riêng. |
 | 3 | Năng lực đủ 3 nhóm (2.1/2.2/2.3)? | Đặc thù (NLa-NLe) + Số (Miền I-VI) + Chung, mỗi nhóm có ít nhất 1 mục. |
 | 4 | NL đặc thù đúng format? | Có mã NLa-NLe + tên đầy đủ trong ngoặc + biểu hiện + gắn #HĐ. |
 | 5 | NL số đúng format? | Có `Miền [La Mã]. [Tên] (thành tố X.Y. ... – Bậc N)` + biểu hiện + #HĐ. |
@@ -260,7 +261,7 @@ RÚT KINH NGHIỆM SAU BÀI DẠY   ← GIỮ NGUYÊN
 | 8 | Không ghi "(BẮT BUỘC)"? | Tuyệt đối không xuất hiện chuỗi `(BẮT BUỘC)` trong văn bản. |
 | 9 | Tiến trình đủ 4 Hoạt động? | Khởi động → Hình thành KT → Luyện tập → Vận dụng. |
 | 10 | Indent đều đặn? | Cấp 1/2/bullet đúng EMU: 180340/360045/left_indent=540000. |
-| 11 | Bảng 3 cột đúng format? | `Bước` / `Hoạt động của GV` / `Hoạt động của HS` × 4 hàng có viền. |
+| 11 | Bảng 2 cột đúng format? | `HOẠT ĐỘNG CỦA GV – HS` / `KẾT QUẢ CẦN ĐẠT` có viền. |
 | 12 | Bảng đầu và Bảng chữ ký? | Bảng thông tin đầu trang và Bảng chữ ký cuối trang BẮT BUỘC NO BORDER (không viền). |
 | 13 | Phụ lục ở cuối Phần V? | Phiếu HT, Rubric không nằm trong phần Tiến trình. |
 | 14 | Tổng thời lượng hợp lý? | 7 + 18 + 12 + 8 = 45 phút (điều chỉnh linh hoạt). |
@@ -308,7 +309,7 @@ D:\UNIGO\KHBD_Tin_học\{Khối_lớp}\{Bài_XX}\
   - Header drawings count = 1 (logo không bị mất).
   - Footer paragraphs count ≥ 1 (nội dung chân trang không bị mất).
   - Tổng paragraphs hợp lý (không có 50+ paragraphs rỗng ở đầu).
-  - Các bảng đủ 3 cột × 5 hàng (header + 4 bước).
+  - Các bảng đủ 2 cột (header + nội dung).
 
 **Kết quả bước 6:** File .docx hoàn chỉnh, đường dẫn clickable trả về cho user.
 
