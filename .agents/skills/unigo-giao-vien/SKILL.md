@@ -14,14 +14,17 @@ giảng dạy hoàn chỉnh cho giáo viên trường UNIGO.
 
 ## Luồng xử lý (Pipeline)
 
+> [!IMPORTANT]
+> **QUY TẮC MÔN HỌC:**
+> - **KHBD:** Tạo cho cả 2 môn **Tin học** và **Robotics**.
+> - **Slide bài giảng (.pptx):** **CHỈ TẠO CHO MÔN TIN HỌC**. **TUYỆT ĐỐI KHÔNG TẠO SLIDE CHO MÔN ROBOTICS**.
+
 ```
 User Request → Parse (Môn, Lớp, Bài) → [Đọc SGK + PaddleOCR Engine] → [Đọc PPCT] 
     ↓
-    ├── tao-khbd → KHBD .docx → D:\UNIGO\KHBD\Lớp_{X}\
-    ├── tao-slide-bai-giang → Slide .pptx → D:\UNIGO\Slide_bài_giảng\Lớp_{X}\
+    ├── tao-khbd → KHBD .docx (Tin học + Robotics) → D:\UNIGO\KHBD_Tin_học / KHBD_Robotics\
+    ├── tao-slide-bai-giang → Slide .pptx (CHỈ TIN HỌC) → D:\UNIGO\KHBD_Tin_học\Lớp_{X}\Tuần_{YY}\
     └── (tùy chọn) Phiếu bài tập, Đề kiểm tra
-    ↓
-    Review → Feedback → Cải tiến → Lưu improvement_log.md
 ```
 
 ## Cách sử dụng
@@ -131,6 +134,12 @@ Sau mỗi phiên làm việc:
 | Mẫu KHBD Tiểu học | `Hệ thống mẫu văn bản\Khung  giáo án Unigo 2026-2027 Thang 7.2026.docx` |
 | Mẫu KHBD THCS | `Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx` |
 | Mẫu slide | `Hệ thống mẫu văn bản\Mẫu slide có chân trang.pptx` |
-| Công văn 5512 | `Công_văn_quy_định\Khung Kế hoạch bài dạy_ Theo Phụ lục IV, Công văn 5512_BGDĐT-GDTrH.docx` |
-| CT Tin học | `Công_văn_quy_định\16. CT_Tin hoc.pdf` |
-| PPCT ICT | `Phân phối chương trình\Môn ICT\` |
+| Công văn 5512 | `Công_văn_quy_định\cong-van-5512-bgddt-2020_d8bd32d0a4.docx` |
+| CT Tin học 2018 | `Công_văn_quy_định\16. CT_Tin hoc.docx` |
+| **Khung CT Robotics UNIGO** | `Phân phối chương trình\Robotics\KHUNG CHƯƠNG TRÌNH ROBOTICS TIỂU HỌC & THCS UNIGO.docx` (.pdf) |
+| **Giáo trình Robotics Khối 1-2** | `Phân phối chương trình\Robotics\Giáo trình - OLLO Initiate.docx` (.pdf) |
+| **Giáo trình Robotics Khối 3-4** | `Phân phối chương trình\Robotics\Giáo trình - OLLO Kinder.docx` (.pdf) |
+| **Giáo trình Robotics Khối 5-8** | `Phân phối chương trình\Robotics\Giáo trình - OLLO Excel 1.docx` (.pdf) |
+| **Giáo trình Robotics Nâng cao** | `Phân phối chương trình\Robotics\Giáo trình - OLLO Spark.docx` (.pdf) |
+| **Năng lực đặc thù Robotics** | `.agents\skills\tao-khbd\references\KHBD_NANG_LUC_DAC_THU_ROBOTICS.md` |
+| **Năng lực đặc thù Tin học** | `.agents\skills\tao-khbd\references\KHBD_NANG_LUC_DAC_THU.md` |

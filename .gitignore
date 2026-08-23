@@ -18,3 +18,7 @@ AI_model/
 # Lop 8 scanned PDF tile images (800x1144 tiles - hundreds of useless duplicates)
 # Full pages (full_pages/) are kept
 SGK/Lớp_8/bai1_images/bai1_p*.jpeg
+
+# Large raw robotics scanned textbook PDFs and raw converted DOCXs (>70MB - text is already OCR extracted to skills/references)
+Phân phối chương trình/Robotics/*.docx
+Phân phối chương trình/Robotics/*.pdf

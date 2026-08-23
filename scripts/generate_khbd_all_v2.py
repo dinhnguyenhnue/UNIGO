@@ -33,8 +33,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 TPL_TH = r"D:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx"  # TH template not on disk, use THCS template + TH margins/format
 TPL_THCS = r"D:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx"
 
-PPCT_TIN = r"D:\UNIGO\Phân phối chương trình\Tin học\Kế hoạch dạy học môn Tin học 2026-2027.docx"
-PPCT_ROB = r"D:\UNIGO\Phân phối chương trình\Robotics\Kế hoạch dạy học môn Robotics 2026-2027.docx"
+PPCT_TIN = r"D:\UNIGO\Hệ thống mẫu văn bản\Nguyên đã làm\Kế hoạch dạy học môn Tin học 2026-2027.docx"
+PPCT_ROB = r"D:\UNIGO\Hệ thống mẫu văn bản\Nguyên đã làm\Kế hoạch dạy học môn Robotics 2026-2027.docx"
 
 OUT_TIN = r"D:\UNIGO\KHBD_Tin_học"
 OUT_ROB = r"D:\UNIGO\KHBD_Robotics"
@@ -261,9 +261,9 @@ def get_nls_level_key(grade):
 
 def get_kit_name(grade):
     if grade <= 2:
-        return "OLLO Kinder"
-    elif grade <= 4:
         return "OLLO Initiate"
+    elif grade <= 4:
+        return "OLLO Kinder"
     else:
         return "OLLO Excel 1"
 
@@ -274,6 +274,85 @@ def is_thcs(grade):
 
 def get_to_chuyen_mon(grade):
     return "Tổ chuyên môn THCS" if grade >= 6 else "Tổ chuyên môn Tiểu học"
+
+
+def get_tin_competencies(grade, title, yccd=""):
+    """
+    Map Tin học lesson to 2-3 appropriate competencies (NLa, NLb, NLc, NLd, NLe)
+    with tailored, specific descriptors based on CT GDPT 2018.
+    """
+    t_lower = (title + " " + yccd).lower()
+    
+    # 1. Topic: An toàn, bản quyền, đạo đức, văn hóa mạng, bảo mật (NLb)
+    if any(k in t_lower for k in ['an toàn', 'bản quyền', 'đạo đức', 'văn hóa', 'bảo vệ', 'tài khoản', 'mật khẩu', 'lừa đảo', 'virus', 'mạng xã hội']):
+        c1 = f"- NLb (Ứng xử phù hợp trong môi trường số): Nhận biết và tuân thủ các quy định về an toàn, đạo đức và bản quyền thông tin trong bài {title}. (Đạt được thông qua Hoạt động 2)"
+        c2 = f"- NLa (Sử dụng và quản lí các phương tiện ICT): Sử dụng thiết bị và phần mềm đúng cách, có ý thức bảo vệ dữ liệu và thông tin cá nhân. (Đạt được thông qua Hoạt động 3)"
+        return [c1, c2]
+
+    # 2. Topic: Thuật toán, lập trình, giải quyết vấn đề, tìm kiếm thông tin, bảng tính, dữ liệu (NLc)
+    elif any(k in t_lower for k in ['thuật toán', 'lập trình', 'scratch', 'robot', 'tìm kiếm', 'tìm kiếm thông tin', 'xử lí thông tin', 'xử lý thông tin', 'dữ liệu', 'biểu đồ', 'hàm', 'công thức', 'bảng tính', 'sắp xếp', 'lọc']):
+        c1 = f"- NLc (Giải quyết vấn đề với sự hỗ trợ của ICT): Phân tích vấn đề, xác định quy trình xử lý dữ liệu và giải quyết bài toán trong bài {title}. (Đạt được thông qua Hoạt động 2, Hoạt động 3)"
+        if any(k in t_lower for k in ['bảng tính', 'excel', 'phần mềm', 'scratch']):
+            c2 = f"- NLd (Ứng dụng ICT trong học và tự học): Sử dụng thành thạo các công cụ và phần mềm chuyên dụng để giải quyết nhiệm vụ bài học. (Đạt được thông qua Hoạt động 3)"
+        else:
+            c2 = f"- NLa (Sử dụng và quản lí các phương tiện ICT): Khai thác môi trường số và công cụ tìm kiếm dữ liệu phục vụ học tập. (Đạt được thông qua Hoạt động 2)"
+        return [c1, c2]
+
+    # 3. Topic: Chia sẻ, trao đổi, hợp tác, làm việc nhóm, nghề nghiệp (NLe)
+    elif any(k in t_lower for k in ['chia sẻ', 'hợp tác', 'trao đổi', 'làm việc cùng bạn', 'làm việc nhóm', 'giao tiếp', 'nghề nghiệp']):
+        c1 = f"- NLe (Hợp tác trong môi trường số): Sử dụng công cụ kỹ thuật số để phối hợp nhóm, trao đổi thông tin và chia sẻ sản phẩm số trong bài {title}. (Đạt được thông qua Hoạt động 3, Hoạt động 4)"
+        c2 = f"- NLd (Ứng dụng ICT trong học và tự học): Tự giác hoàn thành phần nhiệm vụ được phân công và học hỏi từ bạn bè. (Đạt được thông qua Hoạt động 2, Hoạt động 3)"
+        return [c1, c2]
+
+    # 4. Topic: Soạn thảo văn bản, trình chiếu, đồ họa, phần mềm học tập, sản phẩm số (NLd)
+    elif any(k in t_lower for k in ['soạn thảo', 'văn bản', 'trình chiếu', 'powerpoint', 'word', 'bài trình chiếu', 'đồ họa', 'vẽ', 'tranh', 'sản phẩm số', 'tạo sản phẩm', 'chữ hoa', 'gõ tiếng việt', 'phím', 'chuột']):
+        c1 = f"- NLd (Ứng dụng ICT trong học và tự học): Sử dụng phần mềm để tạo ra sản phẩm số hoàn chỉnh phục vụ học tập và đời sống trong bài {title}. (Đạt được thông qua Hoạt động 3)"
+        c2 = f"- NLa (Sử dụng và quản lí các phương tiện ICT): Thao tác thành thạo bàn phím, chuột và giao diện chức năng của phần mềm. (Đạt được thông qua Hoạt động 2)"
+        return [c1, c2]
+
+    # 5. Topic: Thiết bị, phần cứng, hệ điều hành, thư mục, tệp, lưu trữ, mạng (NLa)
+    else:
+        c1 = f"- NLa (Sử dụng và quản lí các phương tiện ICT): Nhận diện đúng các bộ phận thiết bị, phần cứng và quản lý tệp/thư mục an toàn trong bài {title}. (Đạt được thông qua Hoạt động 2)"
+        c2 = f"- NLd (Ứng dụng ICT trong học và tự học): Tự khám phá và sử dụng các tính năng cơ bản của hệ thống máy tính. (Đạt được thông qua Hoạt động 3)"
+        return [c1, c2]
+
+
+def get_rob_competencies(grade, title, yccd="", kit_name=""):
+    """
+    Map Robotics lesson to 2-3 appropriate competencies (NL1 - NL5)
+    with tailored, specific descriptors based on Khung CT ROBOHUB.
+    """
+    t_lower = (title + " " + yccd).lower()
+    
+    # 1. Topic: Triển lãm, tổng kết, chia sẻ, giao lưu (NL5)
+    if any(k in t_lower for k in ['triển lãm', 'tổng kết', 'trình bày', 'chia sẻ', 'giới thiệu', 'giao lưu']):
+        c1 = f"- NL5 (Giao tiếp công nghệ): Tự tin thuyết minh nguyên lý hoạt động và giới thiệu sản phẩm robot {title} trước tập thể. (Đạt được thông qua Hoạt động 3, Hoạt động 4)"
+        c2 = f"- NL4 (Đánh giá công nghệ): Lắng nghe, nhận xét và đánh giá sản phẩm robot của nhóm bạn theo tiêu chí kỹ thuật. (Đạt được thông qua Hoạt động 4)"
+        return [c1, c2]
+        
+    # 2. Topic: Thử nghiệm, so sánh, lực, quán tính, tốc độ, góc, vận tốc, gia tốc (NL4)
+    elif any(k in t_lower for k in ['thử nghiệm', 'đo', 'so sánh', 'lực', 'quán tính', 'tốc độ', 'góc', 'vận tốc', 'gia tốc', 'lực hấp dẫn', 'đàn hồi', 'ném', 'chuyển động']):
+        c1 = f"- NL4 (Đánh giá công nghệ): Quan sát, đo đạc thông số và đánh giá hiệu quả vận hành của mô hình robot {title} trong các điều kiện thử nghiệm khác nhau. (Đạt được thông qua Hoạt động 3, Hoạt động 4)"
+        c2 = f"- NL3 (Thiết kế kĩ thuật): Điều chỉnh kết cấu cơ khí và thông số điều khiển để tối ưu hóa khả năng hoạt động của robot. (Đạt được thông qua Hoạt động 3)"
+        return [c1, c2]
+
+    # 3. Topic: Thiết kế, sáng tạo, cải tiến, cánh tay robot, gắp vật, vượt chướng ngại vật (NL3)
+    elif any(k in t_lower for k in ['sáng tạo', 'cải tiến', 'thiết kế', 'cánh tay', 'kẹp', 'gắp', 'tự động', 'domino', 'nhiệm vụ', 'hút bụi']):
+        c1 = f"- NL3 (Thiết kế kĩ thuật): Lắp ráp, phối hợp các cơ cấu truyền động và sáng tạo cải tiến mô hình robot {title} thực hiện nhiệm vụ đặt ra. (Đạt được thông qua Hoạt động 3, Hoạt động 4)"
+        c2 = f"- NL2 (Sử dụng công nghệ): Sử dụng thành thạo các module, khớp nối và linh kiện bộ kit {kit_name} theo đúng tiêu chuẩn an toàn. (Đạt được thông qua Hoạt động 2, Hoạt động 3)"
+        return [c1, c2]
+
+    # 4. Topic: Động cơ, cảm biến, bộ điều khiển, linh kiện, mạch (NL1 & NL2)
+    elif any(k in t_lower for k in ['động cơ', 'cảm biến', 'âm thanh', 'hồng ngoại', 'dynamixel', 'bộ điều khiển', 'linh kiện', 'chốt', 'khung']):
+        c1 = f"- NL1 (Nhận thức công nghệ): Nhận biết chính xác tên gọi, cấu tạo và vai trò của động cơ/cảm biến/bộ điều khiển trong mô hình {title}. (Đạt được thông qua Hoạt động 2)"
+        c2 = f"- NL2 (Sử dụng công nghệ): Thao tác đấu nối đúng kỹ thuật, kiểm tra tín hiệu đầu vào/ra và vận hành robot an toàn. (Đạt được thông qua Hoạt động 3)"
+        return [c1, c2]
+
+    # 5. Default assembly & discovery (NL1 & NL2)
+    else:
+        c1 = f"- NL1 (Nhận thức công nghệ): Nhận biết mô hình {title} mô phỏng sự vật/hiện tượng thực tế và hiểu nguyên lý hoạt động cơ bản. (Đạt được thông qua Hoạt động 2)"
+        c2 = f"- NL2 (Sử dụng công nghệ): Thực hiện lắp ráp đúng quy trình từng bước mô hình {title} từ bộ kit {kit_name}, vận hành chạy thử và kiểm tra hoạt động. (Đạt được thông qua Hoạt động 3)"
+        return [c1, c2]
 
 
 def yccd_to_noun(item):
@@ -441,15 +520,11 @@ def build_khbd_th(mon_hoc, grade, grade_label, ten_lop, title, tiet_ppct,
     add_p(doc, f'2.1. Năng lực đặc thù ({mon_hoc}):', bold=True,
           first_indent=INDENT_TH_2, line_spacing=1.33)
     if mon_hoc == "Tin học":
-        add_p(doc, f'- NLa (Sử dụng và quản lí các phương tiện ICT): Nhận diện và thao tác đúng các công cụ, phần mềm trong bài {title}. (Đạt được thông qua Hoạt động 2)',
-              left_indent=INDENT_BULLET, first_indent=INDENT_0, line_spacing=1.33)
-        add_p(doc, f'- NLd (Ứng dụng ICT trong học và tự học): Sử dụng phần mềm tạo sản phẩm số phục vụ học tập. (Đạt được thông qua Hoạt động 3)',
-              left_indent=INDENT_BULLET, first_indent=INDENT_0, line_spacing=1.33)
+        comps = get_tin_competencies(grade, title, yccd)
     else:
-        add_p(doc, f'- NLa (Sử dụng và quản lí các phương tiện ICT): Nhận biết tên gọi, hình dạng, chức năng các chi tiết bộ kit {kit_name}. (Đạt được thông qua Hoạt động 2)',
-              left_indent=INDENT_BULLET, first_indent=INDENT_0, line_spacing=1.33)
-        add_p(doc, f'- NLd (Ứng dụng ICT trong học và tự học): Thực hiện lắp ráp đúng quy trình mô hình {title}. (Đạt được thông qua Hoạt động 3)',
-              left_indent=INDENT_BULLET, first_indent=INDENT_0, line_spacing=1.33)
+        comps = get_rob_competencies(grade, title, yccd, kit_name)
+    for c_item in comps:
+        add_p(doc, c_item, left_indent=INDENT_BULLET, first_indent=INDENT_0, line_spacing=1.33)
 
     # 2.2. Năng lực số
     add_p(doc, '2.2. Năng lực số (Thông tư 02/2025 – CV 3456):', bold=True,
@@ -648,15 +723,11 @@ def build_khbd_thcs(mon_hoc, grade, grade_label, ten_lop, title, tiet_ppct,
     add_p(doc, f'2.1. Năng lực đặc thù ({mon_hoc}):', bold=True,
           first_indent=INDENT_2, line_spacing=ls)
     if mon_hoc == "Tin học":
-        add_p(doc, f'- NLa (Sử dụng và quản lí các phương tiện ICT): Thao tác đúng quy trình các công cụ, phần mềm trong bài {title}. (Đạt được thông qua Hoạt động 2)',
-              left_indent=INDENT_BULLET, first_indent=INDENT_0, line_spacing=ls)
-        add_p(doc, f'- NLc (Giải quyết vấn đề với sự hỗ trợ của ICT): Hoàn thành nhiệm vụ thực hành và xử lý tình huống thực tế. (Đạt được thông qua Hoạt động 3)',
-              left_indent=INDENT_BULLET, first_indent=INDENT_0, line_spacing=ls)
+        comps = get_tin_competencies(grade, title, yccd)
     else:
-        add_p(doc, f'- NLa (Sử dụng và quản lí các phương tiện ICT): Thiết kế mô phỏng 3D, thao tác lắp ráp chuẩn xác các khớp nối. (Đạt được thông qua Hoạt động 2, Hoạt động 3)',
-              left_indent=INDENT_BULLET, first_indent=INDENT_0, line_spacing=ls)
-        add_p(doc, f'- NLd (Ứng dụng ICT trong học và tự học): Nạp code lập trình và hiệu chỉnh robot {title}. (Đạt được thông qua Hoạt động 3)',
-              left_indent=INDENT_BULLET, first_indent=INDENT_0, line_spacing=ls)
+        comps = get_rob_competencies(grade, title, yccd, kit_name)
+    for c_item in comps:
+        add_p(doc, c_item, left_indent=INDENT_BULLET, first_indent=INDENT_0, line_spacing=ls)
 
     # 2.2. Năng lực số
     add_p(doc, '2.2. Năng lực số (Thông tư 02/2025 – CV 3456):', bold=True,

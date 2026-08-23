@@ -89,22 +89,61 @@ Nếu cấp = Lớp 6 / Lớp 7 / Lớp 8 / Lớp 9:
 
 ---
 
-### Bước 2: Đọc SGK (Sách giáo khoa)
+### Bước 2: Đọc SGK & Tài liệu giáo trình môn học
 
-**Mục đích:** Hiểu chính xác nội dung bài học từ nguồn chính thống.
+**Mục đích:** Hiểu chính xác nội dung bài học từ nguồn chính thống của từng môn học.
+
+**Thực hiện — PHÂN BIỆT NGUỒN TÀI LIỆU THEO MÔN HỌC:**
+
+#### A. Đối với môn TIN HỌC:
+- Đọc SGK tại: `D:\UNIGO\SGK\Lớp_{X}\`
+- SGK dạng PDF: Dùng `pypdf` hoặc `pdfplumber` để trích xuất văn bản.
+- SGK dạng ảnh quét: Dùng RapidOCR / PaddleOCR (`python d:\UNIGO\scripts\sgk_ocr.py <file>`).
+
+#### B. Đối với môn ROBOTICS (TUYỆT ĐỐI KHÔNG ĐỌC SGK TIN HỌC):
+Tất cả tài liệu môn Robotics nằm tại thư mục: `D:\UNIGO\Phân phối chương trình\Robotics\` (hoặc tên file cụ thể dưới đây khi di chuyển):
+1. **Khung chương trình chuẩn:** `KHUNG CHƯƠNG TRÌNH ROBOTICS TIỂU HỌC & THCS UNIGO.docx` (.pdf) — Nguồn chính thức về mục tiêu, thời lượng, chủ đề, YCCĐ cuối khối.
+2. **Dữ liệu bài học đã số hóa:** `D:\UNIGO\.agents\skills\tao-khbd\references\robotics_khung_ct_data.json`
+3. **Giáo trình chi tiết từng khối lớp (chứa mô hình, bài học, bước lắp ráp):**
+   - **Khối 1, 2 (OLLO Initiate):** `Giáo trình - OLLO Initiate.docx` (.pdf) — 32 bài
+   - **Khối 3, 4 (OLLO Kinder):** `Giáo trình - OLLO Kinder.docx` (.pdf) — 32 bài
+   - **Khối 5, 6, 7, 8 (OLLO Excel Level 1):** `Giáo trình - OLLO Excel 1.docx` (.pdf) — 16 bài
+   - **Khối mở rộng / nâng cao (OLLO Spark):** `Giáo trình - OLLO Spark.docx` (.pdf) — 16 bài
+4. **Quy trình bài dạy chuẩn Robotics (theo giáo trình TS. Lê Nguyên Khôi):**
+   - Đặt vấn đề (*Let's Think* / Khởi động)
+   - Khám phá kiến thức (*Let's Learn* / Hình thành kiến thức)
+   - Lắp ráp mô hình (*Let's Build* / Luyện tập)
+   - Sáng tạo & Thử nghiệm (*My Own Robot* / Vận dụng & Sáng tạo)
+   - Tháo lắp & Cất dọn (*Let's Remove* / Đánh giá)
+
+- Xác định chính xác:
+  - Tên bài, số bài, chủ đề cha, thiết bị sử dụng (Initiate / Kinder / Excel / Spark).
+  - Nội dung lý thuyết chính & nguyên lí khoa học/kĩ thuật mô phỏng.
+  - Các bước lắp ráp và hoạt động thử nghiệm, sáng tạo.
+
+**Kết quả bước 2:** Ghi nhận tóm tắt nội dung bài học, nguyên lí kĩ thuật, mô hình robot cần lắp.
+
+---
+
+### Bước 3.0: Tra cứu YCCĐ từ KHDH (BẮT BUỘC — Thực hiện TRƯỚC Bước 3)
+
+**Mục đích:** Lấy chính xác Yêu cầu cần đạt từ Kế hoạch dạy học đã duyệt, đảm bảo KHBD đồng bộ với KHDH.
+
+> [!IMPORTANT]
+> **BẮT BUỘC đọc hướng dẫn chi tiết:** `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_YCCD_LOOKUP.md`
 
 **Thực hiện:**
-- Tìm file SGK tại `D:\UNIGO\SGK\Lớp_{X}\`
-- Đối với SGK dạng PDF: Dùng `pypdf` hoặc `pdfplumber` để trích xuất văn bản.
-- Đối với SGK dạng ảnh quét: Sử dụng PaddleOCR (`python d:\UNIGO\scripts\sgk_ocr.py <file>`) để bóc tách văn bản tiếng Việt.
-- Xác định chính xác:
-  - Tên bài, số bài, chủ đề cha.
-  - Nội dung lý thuyết chính (định nghĩa, khái niệm, quy tắc).
-  - Các hoạt động thực hành/luyện tập trong SGK.
-  - Hình ảnh minh họa quan trọng (ghi nhận vị trí trang để cắt chèn nếu cần).
+1. Đọc file JSON: `D:\UNIGO\.agents\skills\tao-khbd\references\yccd_khdh_data.json`
+2. Tra cứu: `data[môn_học][tên_lớp]` → tìm entry có `"bai"` khớp tên bài cần soạn
+3. Lấy trường `"yccd"` → Đây là **nguồn chính thức** cho:
+   - **Tiểu học:** Các dòng dấu `+` dưới `- Sau bài học này em sẽ:` (giữ nguyên văn)
+   - **THCS:** Mục `1. Kiến thức` (chuyển đổi YCCĐ động từ → danh từ/cụm danh từ)
 
-**Kết quả bước 2:** Ghi nhận tóm tắt nội dung bài học, các khái niệm chốt, bài tập
-mẫu trong SGK.
+> [!CAUTION]
+> **CẤM tự viết YCCĐ** khi đã có trong KHDH. Phải lấy từ JSON trước.
+> Nếu không tìm thấy trong JSON → fallback đọc SGK → ghi chú cho user.
+
+**Kết quả bước 3.0:** YCCĐ chính thức từ KHDH cho bài cần soạn.
 
 ---
 
@@ -113,19 +152,38 @@ mẫu trong SGK.
 **Mục đích:** Thiết lập rõ ràng kiến thức, năng lực, phẩm chất cần đạt sau bài học.
 
 **Thực hiện:**
-- Đọc PPCT (Phân phối chương trình) tại `D:\UNIGO\Phân phối chương trình\` nếu có.
+- Lấy YCCĐ đã tra được ở **Bước 3.0** làm nền tảng cho mục Kiến thức.
 - Đọc Công văn quy định tại `D:\UNIGO\Hệ thống mẫu văn bản\Công_văn_quy_định\`:
-  - `cong-van-5512-bgddt-2020_d8bd32d0a4.pdf` (CV 5512 - Khung KHBD).
-  - `3456-VV_huong_dan_trien_khai_Khung_nang_luc_so_cho_HS_885ca.pdf` (Khung NLS).
-  - `16. CT_Tin hoc.pdf` (Chương trình Tin học 2018).
+  - `cong-van-5512-bgddt-2020_d8bd32d0a4.docx` (CV 5512 - Khung KHBD).
+  - `3456-VV_huong_dan_trien_khai_Khung_nang_luc_so_cho_HS_885ca.docx` (Khung NLS).
+  - `16. CT_Tin hoc.docx` (Chương trình Tin học 2018 — chỉ dùng cho Tin học).
 - Xác định:
    - **Kiến thức:** Dùng Danh từ / Cụm danh từ trực tiếp. KHÔNG dùng động từ (hiểu, nhận diện, vận dụng).
      KHÔNG dùng cụm "Sự hiểu biết về...", "Khả năng nhận diện...".
      Mỗi gạch đầu dòng `-` PHẢI xuống dòng riêng.
+     **Nguồn:** YCCĐ từ Bước 3.0 → chuyển đổi sang danh từ (THCS) hoặc giữ nguyên (TH).
   - **Năng lực** (3 nhóm bắt buộc, mục `2.1.`, `2.2.`, `2.3.`):
-    - `2.1. Năng lực đặc thù (Tin học)`: Ghi mã NLa-NLe kèm tên đầy đủ trong ngoặc.
-      VD: `- NLa (Sử dụng và quản lí các phương tiện ICT): Biểu hiện... (HĐ X)`
-    - `2.2. Năng lực số (Thông tư 02/2025 – CV 3456)`:
+
+    **`2.1. Năng lực đặc thù` — PHÂN BIỆT THEO MÔN:**
+
+    | Môn | Cách viết 2.1 | File tham chiếu chuẩn |
+    |:----|:-------------|:----------------------|
+    | **Tin học** | `2.1. Năng lực đặc thù (Tin học):` — Ghi mã NLa-NLe + biểu hiện cụ thể theo bài | `KHBD_NANG_LUC_DAC_THU.md` |
+    | **Robotics** | `2.1. Năng lực đặc thù (Robotics):` — Ghi mã NL1-NL5 + biểu hiện cụ thể theo bài | `KHBD_NANG_LUC_DAC_THU_ROBOTICS.md` |
+
+    - **Đối với Tin học (NLa - NLe):**
+      - **BẮT BUỘC đọc:** `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_DAC_THU.md`.
+      - Chọn 2-3 NL phù hợp nội dung bài (KHÔNG ghi cả 5 NL cho mỗi bài).
+      - VD: `- NLa (Sử dụng và quản lí các phương tiện ICT): Biết tổ chức, lưu trữ dữ liệu vào thư mục (HĐ 2, HĐ 3).`
+
+    - **Đối với Robotics (NL1 - NL5):**
+      - **BẮT BUỘC đọc:** `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_DAC_THU_ROBOTICS.md`.
+      - 5 nhóm năng lực: **NL1** (Nhận thức công nghệ), **NL2** (Sử dụng công nghệ), **NL3** (Thiết kế kĩ thuật), **NL4** (Đánh giá công nghệ), **NL5** (Giao tiếp công nghệ).
+      - Chọn 2-3 NL phù hợp nhất với bài (VD: bài lắp ráp chọn NL1 + NL2 + NL3; bài thử nghiệm chọn NL3 + NL4).
+      - VD: `- NL1 (Nhận thức công nghệ): Nhận biết động cơ Dynamixel và các linh kiện truyền động (HĐ 2).`
+      - VD: `- NL2 (Sử dụng công nghệ): Sử dụng đúng chốt và linh kiện lắp ráp xe nâng theo hướng dẫn (HĐ 3).`
+
+    **`2.2. Năng lực số (Thông tư 02/2025 – CV 3456)` — Áp dụng cả Tin học & Robotics:**
       **BẮT BUỘC đọc** file `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_SO_CV3456.md` trước.
       **BẮT BUỘC tra** `D:\UNIGO\.agents\skills\tao-khbd\references\cv3456_full_data.json` để lấy descriptor đúng Bậc.
       
@@ -141,7 +199,12 @@ mẫu trong SGK.
 > **CẤM dùng sai Bậc**: Lớp 6-7 = Bậc 3 (KHÔNG phải Bậc 2), Lớp 8-9 = Bậc 4.
 > **CẤM tự bịa descriptor**: Phải lấy từ cv3456_full_data.json.
 
-    - `2.3. Năng lực chung`: Tự chủ & tự học, Giao tiếp & hợp tác, GQVĐ & sáng tạo.
+    **`2.3. Năng lực chung` — Áp dụng cả Tin học & Robotics:**
+      **BẮT BUỘC đọc:** `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_CHUNG.md`
+      - Tự chủ & tự học, Giao tiếp & hợp tác, GQVĐ & sáng tạo.
+      - Chọn 1-2 biểu hiện PHÙ HỢP NHẤT với nội dung bài (không copy nguyên bảng).
+      - CẤM LẶP với nội dung đã ghi ở NLe (mục 2.1).
+
   - **Phẩm chất:** Chăm chỉ, Trách nhiệm, Trung thực, Nhân ái.
   - Mỗi năng lực/phẩm chất PHẢI gắn mốc `(Đạt được thông qua Hoạt động X)`.
 
@@ -299,9 +362,15 @@ RÚT KINH NGHIỆM SAU BÀI DẠY   ← GIỮ NGUYÊN
    bởi Word, lưu sang tên `_new.docx`.
 
 **Quy tắc đặt tên và lưu file:**
+- **Môn Tin học:**
 ```
 D:\UNIGO\KHBD_Tin_học\{Khối_lớp}\{Bài_XX}\
 └── KHBD_Tin_hoc_{Khối_lớp}_Bai{XX}_{Tên_bài_sanitized}.docx
+```
+- **Môn Robotics:**
+```
+D:\UNIGO\KHBD_Robotics\{Khối_lớp}\{Bài_XX}\
+└── KHBD_Robotics_{Khối_lớp}_Bai{XX}_{Tên_bài_sanitized}.docx
 ```
 
 **Kiểm tra sau xuất:**
@@ -317,20 +386,42 @@ D:\UNIGO\KHBD_Tin_học\{Khối_lớp}\{Bài_XX}\
 
 ## TÀI LIỆU THAM CHIẾU
 
-| Tài liệu | Đường dẫn |
-|-----------|-----------|
+### 1. Tài liệu Môn Tin học
+| Tài liệu | Đường dẫn / Tên file |
+|:---|:---|
 | SGK Tin học | `D:\UNIGO\SGK\Lớp_{X}\` |
-| PPCT | `D:\UNIGO\Phân phối chương trình\` |
-| CV 5512 (Khung KHBD) | `D:\UNIGO\Hệ thống mẫu văn bản\Công_văn_quy_định\cong-van-5512-bgddt-2020_d8bd32d0a4.pdf` |
-| CV 3456 (Khung NLS) | `D:\UNIGO\Hệ thống mẫu văn bản\Công_văn_quy_định\3456-VV_huong_dan_trien_khai_Khung_nang_luc_so_cho_HS_885ca.pdf` |
-| CT Tin học 2018 | `D:\UNIGO\Hệ thống mẫu văn bản\Công_văn_quy_định\16. CT_Tin hoc.pdf` |
+| PPCT Tin học | `D:\UNIGO\Phân phối chương trình\` |
+| CT Tin học 2018 | `D:\UNIGO\Hệ thống mẫu văn bản\Công_văn_quy_định\16. CT_Tin hoc.docx` |
+| **NL đặc thù NLa-NLe (Tin học)** | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_DAC_THU.md` |
+
+### 2. Tài liệu Môn Robotics (Thư mục: `D:\UNIGO\Phân phối chương trình\Robotics\`)
+| Tài liệu | Tên file cụ thể |
+|:---|:---|
+| **Khung CT Robotics UNIGO** | `KHUNG CHƯƠNG TRÌNH ROBOTICS TIỂU HỌC & THCS UNIGO.docx` (.pdf) |
+| **Giáo trình Khối 1, 2** | `Giáo trình - OLLO Initiate.docx` (.pdf) — 32 bài |
+| **Giáo trình Khối 3, 4** | `Giáo trình - OLLO Kinder.docx` (.pdf) — 32 bài |
+| **Giáo trình Khối 5, 6, 7, 8** | `Giáo trình - OLLO Excel 1.docx` (.pdf) — 16 bài |
+| **Giáo trình Nâng cao / Mở rộng** | `Giáo trình - OLLO Spark.docx` (.pdf) — 16 bài |
+| **NL đặc thù NL1-NL5 (Robotics)** | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_DAC_THU_ROBOTICS.md` |
+| **Dữ liệu Khung CT Robotics (JSON)** | `D:\UNIGO\.agents\skills\tao-khbd\references\robotics_khung_ct_data.json` |
+| **Mục lục giáo trình Robotics (JSON)** | `D:\UNIGO\.agents\skills\tao-khbd\references\robotics_textbooks_toc.json` |
+
+### 3. Quy chuẩn & Công văn chung
+| Tài liệu | Đường dẫn / Tên file |
+|:---|:---|
+| CV 5512 (Khung KHBD) | `D:\UNIGO\Hệ thống mẫu văn bản\Công_văn_quy_định\cong-van-5512-bgddt-2020_d8bd32d0a4.docx` |
+| CV 3456 (Khung NLS) | `D:\UNIGO\Hệ thống mẫu văn bản\Công_văn_quy_định\3456-VV_huong_dan_trien_khai_Khung_nang_luc_so_cho_HS_885ca.docx` |
 | Mẫu KHBD Tiểu học | `D:\UNIGO\Hệ thống mẫu văn bản\Khung  giáo án Unigo 2026-2027 Thang 7.2026.docx` |
 | Mẫu KHBD THCS | `D:\UNIGO\Hệ thống mẫu văn bản\PL4-Khung kế hoạch bài dạy (THCS).docx` |
 | Mẫu tham chiếu THCS | `C:\Users\bmngu\OneDrive\Documents\slide\bai15_lop_6_Thuat_toan\KHBD_Bai15_Thuattoan_lop6.docx` |
+| **YCCĐ từ KHDH (JSON)** | `D:\UNIGO\.agents\skills\tao-khbd\references\yccd_khdh_data.json` |
+| **Hướng dẫn tra cứu YCCĐ** | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_YCCD_LOOKUP.md` |
+| **NL chung (CV 5512)** | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_CHUNG.md` |
 | Quy tắc Năng lực số (CV 3456) | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_SO_CV3456.md` |
 | Dữ liệu NLS đầy đủ (CV 3456) | `D:\UNIGO\.agents\skills\tao-khbd\references\cv3456_full_data.json` |
 | Quy tắc Ngày/Lớp | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NGAY_LOP.md` |
 | Nhật ký cải tiến | `D:\UNIGO\.agents\skills\tao-khbd\references\improvement_log.md` |
+| Script cập nhật YCCĐ | `D:\UNIGO\scripts\extract_yccd_from_khdh.py` (chạy trước mỗi đợt soạn KHBD) |
 
 ---
 

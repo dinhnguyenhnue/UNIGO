@@ -209,7 +209,35 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
 
 ## VII. Quy định Tạo Slide Bài giảng (.pptx) chuẩn UNIGO
 
-1. **Bảo tồn Slide Master & Vùng An Toàn (VERIFIED từ template):**
+0. **Phạm vi môn học bắt buộc:**
+   - **CHỈ TẠO SLIDE BÀI GIẢNG CHO MÔN TIN HỌC.**
+   - **TUYỆT ĐỐI KHÔNG TẠO SLIDE CHO MÔN ROBOTICS** vì môn Robotics đã có sẵn hệ thống slide/giáo trình riêng.
+   - Hình ảnh phải lấy từ SGK trích xuất hoặc ảnh đồ họa giáo dục thực tế, không bịa ảnh sai chủ đề.
+   - Mỗi bài học BẮT BUỘC có phần **Chốt kiến thức / Ghi nhớ** bám sát SGK và KHBD.
+
+10. **Quy chuẩn Bố cục Visual-First & Hero Image (20 Dạng Bố Cục Chuẩn):**
+    - **Ưu tiên ảnh to, rõ (Hero Image chiếm 50% - 70%):** Nếu một bài có nhiều ý, tách thành nhiều slide riêng biệt, mỗi slide tập trung vào 1 ý trọng tâm + 1 ảnh minh họa lớn.
+    - **20 Dạng Bố Cục Chuẩn:**
+      - *Layout 1 (Mục lục bài học):* Khung cửa sổ tìm kiếm + 4 thẻ La Mã (I-IV) màu Đỏ/Xanh lá/Xanh dương/Vàng cam.
+      - *Layout 2 (Slide chuyển phần):* Banner màu chủ đạo phủ trung tâm, chữ in hoa màu trắng nổi bật.
+      - *Layout 3 (Phiếu bài tập nhóm):* Cột trái (Câu hỏi dẫn dắt) | Cột phải (Phiếu bài tập 2 cột màu).
+      - *Layout 4 (Sơ đồ quy trình / Tương quan):* Cột trái (Ảnh nhân vật minh họa to) | Cột phải (Chuỗi thẻ bước quy trình có mũi tên nối).
+      - *Layout 5 (Ví dụ thực tế):* Cột trái (35% Thẻ tóm tắt ý chính bo góc mây) | Cột phải (65% Tranh minh họa thực tế / truyện tranh).
+      - *Layout 6 (Phân tích tình huống 2 vế kèm Avatar tròn):* 2 Card đối sánh lớn kèm Avatar tròn kẹp mép góc.
+      - *Layout 7 (Thảo luận nhóm & Thẻ đáp án có Sticker đè mép):* Cột tình huống trái + Các thẻ đáp án phải có Sticker 3D đè mép góc.
+      - *Layout 8 (Truyện tranh 2 khung tranh lớn nối mũi tên):* 2 Khung tranh minh họa to chiếm 90% nối bằng mũi tên đỏ lớn ở giữa.
+      - *Layout 9 (Slide Kết luận / Chốt kiến thức tranh đôi):* Cột trái (30% Kết luận) | Cột phải (70% Bộ đôi tranh liên hoàn to rõ).
+      - *Layout 10 (Trắc nghiệm 4 đáp án A-B-C-D kèm Mascot):* Lưới 4 thẻ đáp án 2x2 màu ấm kèm Mascot trang trí góc.
+      - *Layout 11 (Cửa sổ trình duyệt & Câu hỏi mở đầu):* Khung Browser Window + Câu hỏi in nghiêng đậm + Hình thiết bị trung tâm.
+      - *Layout 12 (Sơ đồ thiết bị trung tâm & 4 Nhãn Callout):* Thiết bị lớn ở giữa + 4 Nhãn màu có mũi tên chỉ thẳng vào từng bộ phận kèm chức năng.
+      - *Layout 13 (Đề mục + Badge Hoạt động + Ảnh SGK đánh số 1-2-3-4):* Mascot + Badge Hoạt động + Ảnh SGK đánh số 1-4 kèm nhãn 2 bên.
+      - *Layout 14 (Bóng thoại câu hỏi + Gợi ý + Hộp KẾT LUẬN cam):* Bóng thoại câu hỏi + Icon Gợi ý + Hộp Kết luận màu cam bo góc ở dưới.
+      - *Layout 15 (Chia cột Hướng dẫn & Hình SGK máy tính xách tay):* Cột trái hướng dẫn có từ khóa màu nổi bật | Cột phải hình SGK xách tay có đánh số.
+      - *Layout 16 (Hoạt động nhóm quan sát & Bộ 3 tranh a-b-c):* Khung bo viền ribbon + Icon nhóm + Bộ 3 tranh tư thế a, b, c to rõ ở giữa.
+      - *Layout 17 (Chữa bài với Badge Đúng/Sai ❌ ✅ & Text giải thích màu):* Bộ tranh có gắn dấu tích ❌ ❌ ✅ lớn + Khối text giải thích màu nổi bật.
+      - *Layout 18 (Câu hỏi sức khỏe + Minh họa cột sống + Lời khuyên đỏ gạch):* Icon suy nghĩ + 4 hình cột sống đối sánh + Khối chữ cảnh báo đỏ gạch.
+      - *Layout 19 (Sơ đồ tư thế đúng & 5 Thẻ Arrow Badge màu sắc):* Cột trái (5 Thẻ mũi tên màu: Cam, Xanh, Lá, Vàng, Hồng) + Cột phải (Hình tư thế đúng lớn).
+      - *Layout 20 (Giấy nhớ Sticky Note vàng & Các thẻ câu hỏi mũi tên):* Cột trái (Giấy ghi chú Sticky Note màu vàng) + Cột phải (Các thẻ câu hỏi mũi tên).
    - **Logo UNIGO** = `Picture 7` tại L=0.17in, T=0.15in, W=0.95in, H=0.94in → kết thúc tại **Y=1.09in**
    - **Chân trang UNIGO** = `Picture 9` tại L=0.00in, T=6.43in, W=13.40in, H=1.23in → bắt đầu từ **Y=6.43in**
    - **VÙNG AN TOÀN NỘI DUNG:** Y = **1.15in → 6.35in** (chiều cao 5.20in). Slide size: 13.33×7.50 inches.

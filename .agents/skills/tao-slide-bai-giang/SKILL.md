@@ -9,6 +9,13 @@ description: >
 
 # Skill Tạo Slide Bài Giảng (Student-Facing)
 
+> [!IMPORTANT]
+> **QUY TẮC BẮT BUỘC VỀ PHẠM VI MÔN HỌC:**
+> 1. **CHỈ TẠO SLIDE BÀI GIẢNG CHO MÔN TIN HỌC.**
+> 2. **TUYỆT ĐỐI KHÔNG TẠO SLIDE BÀI GIẢNG CHO MÔN ROBOTICS** vì môn Robotics đã có sẵn hệ thống tài liệu / slide riêng.
+> 3. Hình ảnh minh họa phải trung thực, lấy từ SGK trích xuất hoặc ảnh giáo dục đúng nội dung bài học.
+> 4. Bắt buộc có phần **Chốt kiến thức / Ghi nhớ** bám sát SGK và tiến trình dạy học trong KHBD.
+
 ## Triết lý cốt lõi
 
 > **Slide bài giảng là thứ HỌC SINH nhìn lên màn hình và làm theo.**
@@ -19,6 +26,7 @@ description: >
 2. **Ngôn ngữ hướng tới HS**: Dùng "Em hãy...", "Bước 1: ...", "Quan sát hình...", "Bạn nào biết...?" — KHÔNG dùng ngôn ngữ giáo viên như "HS nhận biết được...", "Mục tiêu: ...", "Năng lực cần đạt: ...".
 3. **Tương tác**: Mỗi slide phải có yếu tố kích thích HS suy nghĩ hoặc hành động (câu hỏi, bài tập, thử thách).
 4. **Phù hợp lứa tuổi**: Tiền TH/Lớp 1-2 dùng ngôn ngữ cực kỳ đơn giản + nhiều hình. Lớp 3-5 tăng dần. Lớp 6-8 có thể dùng thuật ngữ chuyên môn kèm giải thích.
+5. **Chốt kiến thức chuẩn mực**: Mỗi bài học phải có slide Tổng kết / Chốt kiến thức đọng lại các ý cốt lõi từ SGK.
 
 ### ❌ SAI (Slide kiểu mô tả giáo án):
 ```
@@ -104,27 +112,33 @@ Nội dung: [Hình ảnh máy tính với các mũi tên chỉ vào từng bộ 
 - Ảnh kích thước: **2in × 2in** (đủ lớn HS nhìn rõ)
 - Text bên dưới ảnh: **18pt**, căn giữa
 
-**Layout B — Horizontal Row (Lớp 6 → Lớp 8):**
-```
-┌──────────────────────────────────────────────────┐
-│ [Badge Banner]                                    │
-│ Tiêu đề slide                                    │
-│                                                    │
-│  ┌──────┐  ┌────────────────────────────────┐    │
-│  │ẢNH 1 │  │ Text bullet 1                   │    │
-│  │2in×   │  │ Mô tả chi tiết...               │    │
-│  │1.5in  │  └────────────────────────────────┘    │
-│  └──────┘                                         │
-│  ┌──────┐  ┌────────────────────────────────┐    │
-│  │ẢNH 2 │  │ Text bullet 2                   │    │
-│  │2in×   │  │ Mô tả chi tiết...               │    │
-│  │1.5in  │  └────────────────────────────────┘    │
-│  └──────┘                                         │
-└──────────────────────────────────────────────────┘
-```
-- Ảnh bên trái: **2in × 1.5in** + text bên phải
-- Tối đa 3 rows/slide
-- Nếu > 3 bullets → CHIA thành 2 slides
+#### Hệ thống 20 Dạng Bố cục Slide Chuẩn UNIGO (Visual-First & Hero Image):
+
+> [!IMPORTANT]
+> **QUY TẮC BẮT BUỘC VỀ KÍCH THƯỚC ẢNH & BỐ CỤC:**
+> 1. **ƯU TIÊN HÌNH ẢNH TO, RÕ RÀNG (HERO IMAGE):** Ảnh minh họa phải chiếm **50% – 70%** diện tích slide hoặc tách slide riêng cho từng ý lớn.
+> 2. **TEXT NGẮN GỌN — ĐÚNG Ý CHÍNH SGK:** Text trên slide chỉ nêu ý cốt lõi, từ ngữ thân thiện, dễ hiểu cho học sinh.
+> 3. **20 DẠNG BỐ CỤC MẪU CHUẨN:**
+>    - **Dạng 1 (Mục lục bài học):** Cửa sổ tìm kiếm / Search bar + Các thẻ mục La Mã (I, II, III, IV) màu sắc nổi bật (Đỏ, Xanh lá, Xanh dương, Vàng cam).
+>    - **Dạng 2 (Slide chuyển phần / Section Banner):** Banner nền màu chủ đạo cỡ lớn chiếm trọn trung tâm, tiêu đề phần chữ in hoa màu trắng cực to rõ.
+>    - **Dạng 3 (Hoạt động nhóm / Phiếu bài tập):** Khối trái (Câu hỏi dẫn dắt có icon chat) + Khối phải (Bảng phiếu bài tập 2 cột có tiêu đề màu).
+>    - **Dạng 4 (Sơ đồ quy trình / Tương quan bước):** Khối trái (Hình ảnh nhân vật/khái niệm lớn chiếm 40%) + Khối phải (Các thẻ bước quy trình bo góc có mũi tên nối tuần tự).
+>    - **Dạng 5 (Ví dụ thực tế - Hero Image):** Khối trái (35% Thẻ chữ bo góc mây tóm tắt) + Khối phải (65% Tranh minh họa / truyện tranh các bước to rõ, sinh động).
+>    - **Dạng 6 (Phân tích tình huống 2 vế kèm Avatar tròn):** Đề bài trên + 2 Card đối sánh lớn (Vế A ↔ Vế B) kèm **Avatar tròn minh họa kẹp ở góc card**.
+>    - **Dạng 7 (Thảo luận nhóm & Thẻ đáp án kèm sticker/vật thể đè mép):** Khối tình huống bên trái + Các thẻ đáp án bên phải có **sticker minh họa 3D đè lên góc mép card**.
+>    - **Dạng 8 (Truyện tranh 2 khung tranh lớn nối mũi tên):** 2 Khung tranh minh họa to chiếm 90% diện tích nối bằng mũi tên đỏ lớn `Tranh A ──> Tranh B`.
+>    - **Dạng 9 (Slide Kết luận / Chốt kiến thức tranh đôi):** Khối trái (30% Kết luận ngắn gọn + sơ đồ nút) + Khối phải (70% Bộ đôi tranh liên hoàn to rõ).
+>    - **Dạng 10 (Trắc nghiệm 4 đáp án A-B-C-D kèm Mascot):** Câu hỏi trên + Lưới 4 thẻ đáp án (2×2) bo góc màu ấm, có Mascot dễ thương ở góc card.
+>    - **Dạng 11 (Cửa sổ trình duyệt & Câu hỏi mở đầu):** Khung cửa sổ Browser Window (nút điều khiển, search bar) + Câu hỏi nhóm in nghiêng đậm + Hình ảnh thiết bị trung tâm.
+>    - **Dạng 12 (Sơ đồ thiết bị trung tâm & 4 Nhãn Callout chỉ hướng):** Thiết bị lớn ở giữa + 4 Nhãn màu (Xanh lá, Cam, Tím, Xanh dương) có mũi tên chỉ thẳng vào từng bộ phận kèm chức năng.
+>    - **Dạng 13 (Đề mục + Badge Hoạt động + Ảnh SGK đánh số 1-2-3-4):** Tiêu đề mục đỏ đậm + Mascot chú ong kèm Badge Hoạt động + Ảnh SGK trích xuất có đánh số kèm các thẻ nhãn 2 bên.
+>    - **Dạng 14 (Bóng thoại câu hỏi + Gợi ý + Hộp KẾT LUẬN cam nổi bật):** Bóng thoại câu hỏi trên + Khối icon tròn Gợi ý ở giữa + **Hộp KẾT LUẬN màu cam bo góc** chốt kiến thức trọng tâm ở dưới.
+>    - **Dạng 15 (Chia cột Hướng dẫn & Hình SGK máy tính xách tay):** Tiêu đề mục + Badge hoạt động + Cột trái (Đoạn hướng dẫn có từ khóa màu nổi bật) \| Cột phải (Hình SGK xách tay có đánh số).
+>    - **Dạng 16 (Hoạt động nhóm quan sát & Bộ 3 tranh a-b-c):** Khung bo viền ribbon + Icon nhóm học tập + Bộ 3 tranh tư thế a, b, c to rõ ở giữa.
+>    - **Dạng 17 (Chữa bài với Badge Đúng/Sai ❌ ✅ & Text giải thích màu):** Bộ tranh có gắn dấu tích ❌ ❌ ✅ lớn + Khối text giải thích từng hình có tiêu đề màu nổi bật.
+>    - **Dạng 18 (Câu hỏi sức khỏe + Minh họa cột sống + Lời khuyên đỏ gạch):** Icon suy nghĩ hỏi chấm + 4 hình cột sống đối sánh + Khối chữ cảnh báo màu đỏ gạch nổi bật.
+>    - **Dạng 19 (Sơ đồ tư thế đúng & 5 Thẻ Arrow Badge màu sắc):** Cột trái (5 Thẻ mũi tên màu sắc nổi bật: Cam, Xanh dương, Xanh lá, Vàng, Hồng) + Cột phải (Hình tư thế đúng lớn kèm đường dóng).
+>    - **Dạng 20 (Giấy nhớ Sticky Note vàng & Các thẻ câu hỏi mũi tên):** Cột trái (Giấy ghi chú Sticky Note màu vàng cuộn góc) + Cột phải (Các thẻ câu hỏi có đầu mũi tên màu sắc).
 
 ### Bước 3: Sinh nội dung slide bằng AI (THAY ĐỔI QUAN TRỌNG)
 

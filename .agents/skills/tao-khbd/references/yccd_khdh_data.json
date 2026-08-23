@@ -1,0 +1,4004 @@
+{
+  "Tin học": {
+    "Lớp 1": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Em làm quen với máy tính",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "Nhận biết thiết bị, nội quy, thao tác khởi động theo hướng dẫn"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Các bộ phận của máy tính",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "Màn hình, thân máy, chuột, bàn phím"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Tư thế và an toàn khi dùng máy",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "Tư thế, thời gian, bảo vệ thiết bị"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Chuột: di chuyển và nhấp",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Di chuyển, click, double-click"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Chuột: kéo – thả",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Kéo – thả chính xác"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Bàn phím: chữ và số",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Nhận biết phím chữ/số"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Những phím em cần biết",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "Space, Enter, Backspace, Shift"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Gõ tên và từ đơn giản",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "Gõ chữ/số theo mẫu"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Tạo sản phẩm đầu tiên",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "Mở công cụ, tạo, lưu sản phẩm"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Ôn tập kỹ năng số",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Tổng hợp chuột, bàn phím, lưu sản phẩm"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 1",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Tạo tranh số và lưu sản phẩm đúng yêu cầu"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Thông tin quanh em",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Nhận biết chữ, hình, âm thanh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Máy tính làm việc theo lệnh",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Hiểu lệnh và kết quả"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Một việc – nhiều bước",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "Phân rã nhiệm vụ đơn giản"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Chỉ đường cho nhân vật",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "Chuỗi lệnh di chuyển"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Mê cung của em",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Tìm đường và thử nghiệm"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Sửa lỗi đường đi",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Nhận biết lỗi và thay đổi lệnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Làm quen lập trình trực quan",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Nhận biết khối lệnh và ghép lệnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Ôn tập Coding cơ bản",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Tạo chuỗi lệnh hoàn chỉnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 2",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Điều khiển nhân vật đến đích bằng chuỗi lệnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Kể chuyện số",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Xác định mở đầu – diễn biến – kết thúc"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Tạo nhân vật",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Tạo/chọn nhân vật phù hợp"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Tạo bối cảnh",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Thiết kế sân khấu/bối cảnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Nhân vật chuyển động",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tạo chuyển động theo lệnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "25",
+        "bai": "Âm thanh và lời kể",
+        "so_tiet": "1",
+        "ppct": "25",
+        "yccd": "Thêm âm thanh phù hợp"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "26",
+        "bai": "Dự án: Câu chuyện số",
+        "so_tiet": "1",
+        "ppct": "26",
+        "yccd": "Tích hợp nhân vật, bối cảnh, chuyển động"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "27",
+        "bai": "Chia sẻ và làm việc nhóm",
+        "so_tiet": "1",
+        "ppct": "27",
+        "yccd": "Phân công và phản hồi"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "28",
+        "bai": "Hoàn thiện sản phẩm",
+        "so_tiet": "1",
+        "ppct": "28",
+        "yccd": "Kiểm tra và chỉnh sửa"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "29",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 3",
+        "so_tiet": "1",
+        "ppct": "29",
+        "yccd": "Tạo câu chuyện số ngắn"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "30",
+        "bai": "Robot quanh em",
+        "so_tiet": "1",
+        "ppct": "30",
+        "yccd": "Nhận biết robot và nhiệm vụ robot"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "31",
+        "bai": "Điều khiển robot",
+        "so_tiet": "1",
+        "ppct": "31",
+        "yccd": "Thực hiện chuỗi lệnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "32",
+        "bai": "Robot thực hiện nhiệm vụ",
+        "so_tiet": "1",
+        "ppct": "32",
+        "yccd": "Kết hợp lệnh và kiểm tra kết quả"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "33",
+        "bai": "AI quanh em",
+        "so_tiet": "1",
+        "ppct": "33",
+        "yccd": "Nhận biết AI qua ứng dụng quen thuộc"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "34",
+        "bai": "Sử dụng công nghệ an toàn",
+        "so_tiet": "1",
+        "ppct": "34",
+        "yccd": "Không chia sẻ thông tin cá nhân; xin phép người lớn"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "35",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 4",
+        "so_tiet": "1",
+        "ppct": "35",
+        "yccd": "Chọn 1 nhiệm vụ: tranh số/Coding/robot"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "36",
+        "bai": "Ngày hội Em sáng tạo số",
+        "so_tiet": "1",
+        "ppct": "36",
+        "yccd": "Trưng bày, trình bày và phản hồi"
+      }
+    ],
+    "Lớp 2": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Em trở thành nhà sáng tạo số",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "Khảo sát kỹ năng, nội quy, mục tiêu năm học"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Ôn và nâng cấp kỹ năng chuột",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "Chọn, kéo-thả, thao tác chính xác"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bàn phím và gõ câu ngắn",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "Gõ câu theo mẫu; dùng phím chức năng"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Mở, đóng và chuyển đổi ứng dụng",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Thực hiện thao tác cơ bản trong môi trường học tập"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Tệp là gì?",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Nhận biết tệp và sản phẩm số"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Thư mục là gì?",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Hiểu thư mục dùng để tổ chức tệp"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Đặt tên và lưu sản phẩm",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "Đặt tên, lưu đúng vị trí"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Mở lại và sắp xếp sản phẩm",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "Tìm, mở, sắp xếp sản phẩm"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Tạo một sản phẩm có tổ chức",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "Tạo thư mục dự án và lưu sản phẩm"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Ôn tập tệp – thư mục",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Tổng hợp thao tác quản lý sản phẩm"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 1",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Tạo thư mục, tạo sản phẩm, lưu và mở lại đúng vị trí"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Thông tin và dữ liệu",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Phân biệt thông tin và cách biểu diễn"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Thông tin dạng chữ, hình, âm thanh, video",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Nhận biết và lựa chọn dạng phù hợp"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Thu nhận và xử lý thông tin",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "Mô tả đầu vào – xử lý – kết quả ở mức đơn giản"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Một nhiệm vụ thành nhiều bước",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "Phân rã nhiệm vụ"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Thuật toán bằng lời và hình",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Xây dựng trình tự đúng"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Lập trình trực quan: chuỗi lệnh",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Ghép lệnh tạo hành vi"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Lặp lại một hành động",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Nhận biết ý tưởng lặp qua trò chơi"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Chạy thử và sửa lỗi",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Phát hiện lỗi và sửa lệnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 2",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Giải quyết nhiệm vụ bằng thuật toán + Coding + sửa lỗi"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Thiết kế câu chuyện số",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Xây dựng ý tưởng, kịch bản"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Thiết kế nhân vật",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Tạo nhân vật có vai trò"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Thiết kế bối cảnh",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Bố cục và bối cảnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Animation: chuyển động",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Điều khiển chuyển động theo kịch bản"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "25",
+        "bai": "Tương tác và âm thanh",
+        "so_tiet": "1",
+        "ppct": "25",
+        "yccd": "Kết hợp âm thanh/tương tác"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "26",
+        "bai": "Dự án: Hoạt hình ngắn",
+        "so_tiet": "1",
+        "ppct": "26",
+        "yccd": "Tích hợp thiết kế + Coding + Storytelling"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "27",
+        "bai": "Thiết kế sản phẩm nhóm",
+        "so_tiet": "1",
+        "ppct": "27",
+        "yccd": "Phân vai, quản lý tệp dự án"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "28",
+        "bai": "Kiểm thử và hoàn thiện",
+        "so_tiet": "1",
+        "ppct": "28",
+        "yccd": "Kiểm tra lỗi, chỉnh sửa sản phẩm"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "29",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 3",
+        "so_tiet": "1",
+        "ppct": "29",
+        "yccd": "Hoàn thành và trình bày sản phẩm số"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "30",
+        "bai": "Robot và cảm biến",
+        "so_tiet": "1",
+        "ppct": "30",
+        "yccd": "Nhận biết robot, đầu vào/đầu ra, cảm biến ở mức trực quan"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "31",
+        "bai": "Lập trình robot theo nhiệm vụ",
+        "so_tiet": "1",
+        "ppct": "31",
+        "yccd": "Chuỗi lệnh điều khiển robot"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "32",
+        "bai": "Robot giải quyết vấn đề",
+        "so_tiet": "1",
+        "ppct": "32",
+        "yccd": "Thử nghiệm, sửa đường đi/lệnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "33",
+        "bai": "AI có thể làm gì?",
+        "so_tiet": "1",
+        "ppct": "33",
+        "yccd": "Nhận biết ứng dụng AI gần gũi"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "34",
+        "bai": "AI có thể sai – dữ liệu cần kiểm tra",
+        "so_tiet": "1",
+        "ppct": "34",
+        "yccd": "Nhận biết giới hạn, không tin mù quáng; bảo vệ dữ liệu cá nhân"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "35",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 4",
+        "so_tiet": "1",
+        "ppct": "35",
+        "yccd": "Mini Digital Project: Coding/Robotics/Storytelling"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "36",
+        "bai": "Ngày hội Young Innovator",
+        "so_tiet": "1",
+        "ppct": "36",
+        "yccd": "Trưng bày, thuyết trình, phản hồi, nhìn lại tiến bộ"
+      }
+    ],
+    "Lớp 3": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Bài 1: Thông tin và quyết định",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "- Nêu ví dụ đơn giản minh họa vai trò của thông tin trong việc ra quyết định của con người.  - Nhận biết được thông tin và quyết định trong ví dụ cụ thể.  - Nhận biết ba dạng thông tin thường gặp: chữ, âm thanh, hình ảnh."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 2: Xử lí thông tin",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "- Nhận biết thông tin thu nhận, được xử lý và kết quả xử lý.  - Nêu ví dụ minh họa bộ não con người là bộ phận xử lý thông tin.  - Nêu ví dụ máy móc tiếp nhận thông tin để quyết định hành động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 3: Máy tính và em",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "- Nhận diện, phân biệt các dạng máy tính thông dụng và các bộ phận cơ bản (màn hình, thân máy, bàn phím, chuột).  - Nêu sơ lược chức năng các bộ phận, nhận biết màn hình cảm ứng.  - Thực hiện quy tắc an toàn về điện khi dùng máy tính. (Có bài học STEM)."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 4: Làm việc với máy tính",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "- Ngồi đúng tư thế, giữ khoảng cách mắt phù hợp, nêu tác hại ngồi sai tư thế.  - Cầm chuột đúng cách và thực hiện các thao tác chuột cơ bản.  - Khởi động/tắt máy đúng cách; kích hoạt và thoát ứng dụng an toàn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Bài 5: Sử dụng bàn phím",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "- Chỉ ra khu vực chính của bàn phím và gọi tên các hàng phím.  - Biết vị trí đặt ngón tay trên hàng phím cơ sở và thực hiện gõ phím đúng quy định."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 6: Khám phá thông tin trên Internet",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "- Nêu ví dụ về tin tức, chương trình giải trí xem được trên Internet.  - Nêu ví dụ về thông tin không có sẵn trong máy tính nhưng tìm thấy trên Internet.  - Biết không phải thông tin nào trên Internet cũng phù hợp lứa tuổi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 7: Sắp xếp để dễ tìm",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "- Giải thích được nếu sắp xếp đồ vật/dữ liệu hợp lý sẽ tìm nhanh hơn.  - Sắp xếp đồ vật hay dữ liệu hợp lý theo yêu cầu cụ thể."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Bài 8: Sơ đồ hình cây. Tổ chức thông tin trong máy tính",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "- Biểu diễn cách sắp xếp, phân loại bằng sơ đồ hình cây.  - Nhận biết tệp, thư mục và ổ đĩa trong máy tính; mô tả vai trò cấu trúc cây thư mục."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Bài 11: Thực hành với tệp và thư mục trong máy tính",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "- Tìm hiểu cấu trúc cây của thư mục.  - Thực hiện được việc tạo, xóa, đổi tên thư mục và tìm tệp theo yêu cầu. (Có bài học STEM)."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 12: Bảo vệ thông tin khi dùng máy tính",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "- Biết thông tin cá nhân/gia đình được lưu trữ và trao đổi qua máy tính.  - Có ý thức bảo vệ thông tin cá nhân/gia đình khi giao tiếp qua máy tính."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 13: Bài trình chiếu của em",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "- Nhận biết biểu tượng và khởi động/thoát phần mềm trình chiếu.  - Tạo tệp trình chiếu, thêm trang, gõ chữ không dấu, chèn hình ảnh, lưu tệp."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 14: Tìm hiểu về thế giới tự nhiên",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "- Sử dụng máy tính/phần mềm để quan sát thế giới tự nhiên sinh động, trực quan.  - Kể lại được những hiểu biết mới sau khi quan sát."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Bài 15: Luyện tập sử dụng chuột",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "- Cầm chuột đúng cách, thực hành thuần thục các thao tác chuột (di chuyển, nháy, nháy đúp, nháy chuột phải, kéo thả, cuộn)."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Bài 16: Em thực hiện công việc như thế nào?",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "- Nêu được công việc thực hiện theo từng bước, sắp xếp đúng thứ tự.  - Chia một việc thành các việc nhỏ hơn để dễ hiểu và dễ thực hiện."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Ôn tập và luyện tập",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Ôn tập, luyện tập bổ sung kiến thức và kỹ năng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Tổng kết năm học",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tổng kết đánh giá kết quả học tập cả năm."
+      }
+    ],
+    "Lớp 4": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Bài 1: Phần cứng và phần mềm máy tính",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "- Kể tên một số thiết bị phần cứng và phần mềm.  - Nêu vai trò và mối quan hệ phụ thuộc lẫn nhau giữa phần cứng và phần mềm.  - Nêu ví dụ thao tác sai gây ra lỗi phần cứng/phần mềm."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 2: Gõ bàn phím đúng cách",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "- Giải thích lợi ích gõ bàn phím đúng cách.  - Biết vị trí đặt ngón tay gõ hàng phím số và thực hiện gõ đúng quy định.  - Gõ đúng cách đoạn văn bản ngắn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 3: Thông tin trên trang Web",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "- Phân biệt các loại thông tin chính trên trang web (văn bản, hình ảnh, âm thanh, video, siêu liên kết).  - Giải thích tác hại khi cố tình truy cập trang web không phù hợp lứa tuổi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 4: Tìm kiếm thông tin trên Internet",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "- Xác định chủ đề (từ khóa) của thông tin cần tìm.  - Sử dụng máy tìm kiếm để tìm thông tin theo từ khóa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Bài 5: Cây thư mục",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "- Thực hiện thao tác cơ bản với thư mục/tệp: tạo, xóa, di chuyển, sao chép, đổi tên.  - Nêu tác hại khi thao tác nhầm với tệp và thư mục."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 6: Sử dụng phần mềm khi được phép",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "- Nêu ví dụ về phần mềm miễn phí và không miễn phí.  - Hiểu ý nghĩa và tôn trọng bản quyền phần mềm."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 7: Tạo bài trình chiếu",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "- Khởi động/thoát phần mềm trình chiếu.  - Tạo tệp trình chiếu đơn giản bằng tiếng Việt (Telex/VNI) có hoa/thường và ảnh.  - Lưu tệp vào đúng thư mục. (Có bài học STEM)."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Bài 8: Định dạng văn bản trên trang chiếu",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "- Định dạng phông chữ, kiểu chữ, cỡ chữ, màu chữ cho văn bản trên trang chiếu.  - Sử dụng công cụ gạch đầu dòng (Bullets)."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Bài 9: Hiệu ứng chuyển trang",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "- Tạo và sử dụng được một vài hiệu ứng chuyển trang đơn giản (Transitions)."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 12: Phần mềm soạn thảo văn bản",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "- Nhận biết biểu tượng, khởi động phần mềm Word.  - Soạn thảo văn bản tiếng Việt có dấu, thực hiện thao tác chọn, xóa, lưu bài."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 13: Chỉnh sửa văn bản",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "- Mở tệp có sẵn, lưu tệp với tên khác.  - Chỉnh sửa văn bản bằng thao tác sao chép, di chuyển đoạn văn bản; chèn hình ảnh."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 14: Luyện tập gõ bàn phím / Đa phương tiện",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "- Bài 14A: Thực hành đa phương tiện (xem video lịch sử, văn hóa).  - Bài 14B: Sử dụng phần mềm luyện gõ bàn phím nâng cao."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Bài 15: Chơi với máy tính",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "- Nhận ra chương trình máy tính qua các trò chơi.  - Nhận biết các vùng cơ bản trong cửa sổ lập trình trực quan (Scratch).  - Thao tác mở, chạy chương trình và đóng phần mềm."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Bài 16: Khám phá môi trường lập trình trực quan",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "- Nhận biết nhóm lệnh và các lệnh thuộc nhóm.  - Thao tác kéo thả lệnh, xóa lệnh, ghép các lệnh thành khối lệnh."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Ôn tập và luyện tập",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Ôn tập, luyện tập bổ sung kiến thức và kỹ năng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Tổng kết năm học",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tổng kết đánh giá kết quả học tập cả năm."
+      }
+    ],
+    "Lớp 5": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Bài 1: Em có thể làm gì với máy tính?",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "- Nêu ví dụ máy tính giúp học tập, giải trí, tìm kiếm, trao đổi thông tin, hợp tác và tạo sản phẩm số.  - Thể hiện mong muốn sử dụng thành thạo máy tính."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 2: Tìm kiếm thông tin trên website",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "- Tìm được trên website cho trước thông tin phù hợp với nhiệm vụ.  - Hợp tác, chia sẻ thông tin (qua USB/mạng) để hoàn thành công việc."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 3: Tìm kiếm thông tin trong giải quyết vấn đề",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "- Giải thích sự cần thiết và tầm quan trọng của thu thập/tìm kiếm thông tin.  - Tìm kiếm và chọn lọc thông tin phù hợp với vấn đề cần giải quyết."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 4: Cây thư mục",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "- Tạo các thư mục với cấu trúc cây hợp lý.  - Sử dụng công cụ tìm kiếm trên máy tính (Search File Explorer) để tìm tệp/thư mục."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Bài 5: Bản quyền nội dung thông tin",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "- Giải thích khái niệm bản quyền nội dung thông tin.  - Nhận biết vấn đề đạo đức/bảo mật, tôn trọng tính riêng tư và bản quyền."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 6: Định dạng kí tự và bố trí hình ảnh trong văn bản",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "- Định dạng ký tự (phông, kiểu, cỡ, màu chữ) giúp trình bày đẹp.  - Thay đổi cách bố trí hình ảnh trong văn bản (Layout Options)."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 7: Thực hành soạn thảo văn bản",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "- Thực hiện thành thạo thao tác chọn, xóa, sao chép, di chuyển đoạn văn bản.  - Đưa hình ảnh vào văn bản một cách thành thạo."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Bài 8: Sản phẩm đồ họa / Sản phẩm thủ công",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "- Bài 8A: Làm quen phần mềm đồ họa (Paint), sử dụng công cụ tạo sản phẩm.  - Bài 8B: Làm sản phẩm thủ công đơn giản theo video hướng dẫn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Bài 11: Thực hành tạo sản phẩm số",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "- Bài 9A: Sử dụng phần mềm đồ họa tạo sản phẩm số.  - Bài 9B: Thực hành tạo đồ dùng gia đình theo video hướng dẫn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 12: Cấu trúc tuần tự",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "- Nêu ví dụ cụ thể mô tả cấu trúc tuần tự.  - Sử dụng cấu trúc tuần tự trong chương trình Scratch đơn giản."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 13: Cấu trúc lặp",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "- Nêu ví dụ mô tả cấu trúc lặp.  - Phân biệt các lệnh lặp trong Scratch (lặp số lần biết trước, lặp liên tục, lặp có điều kiện)."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 14: Thực hành sử dụng lệnh lặp",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "- Sử dụng thuần thục lệnh lặp trong chương trình đơn giản, chạy thử chương trình."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Bài 15: Cấu trúc rẽ nhánh",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "- Nêu ví dụ mô tả cấu trúc rẽ nhánh dạng thiếu và dạng đủ.  - Sử dụng lệnh rẽ nhánh (nếu... thì, nếu... thì... nếu không thì) trong Scratch."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Bài 16: Sử dụng biến trong chương trình",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "- Hiểu khái niệm biến nhớ, sử dụng biến trả lời và biến tự tạo trong Scratch."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Ôn tập và luyện tập",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Ôn tập, luyện tập bổ sung kiến thức và kỹ năng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Tổng kết năm học",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tổng kết đánh giá kết quả học tập cả năm."
+      }
+    ],
+    "Lớp 6": [
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 1: Máy tính và cộng đồng"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Bài 1. Thông tin và dữ liệu",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "- Nhận biết được sự khác nhau giữa thông tin và dữ liệu.  - Phân biệt được thông tin và vật mang thông tin.  - Nêu được ví dụ minh họa tầm quan trọng của thông tin và ví dụ giữa thông tin và dữ liệu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 2. Xử lí thông tin",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "- Nêu được các bước cơ bản trong xử lí thông tin.  - Giải thích được máy tính là công cụ hiệu quả để xử lí thông tin, nêu ví dụ minh họa cụ thể."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 3. Thông tin trong máy tính",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "- Giải thích được việc có thể biểu diễn thông tin chỉ với hai kí hiệu 0 và 1.  - Biết bit là đơn vị nhỏ nhất trong lưu trữ thông tin.  - Nêu tên, độ lớn các đơn vị đo dung lượng thông tin (Byte, KB, MB, GB), quy đổi gần đúng giữa các đơn vị.  - Ước lượng khả năng lưu trữ của các thiết bị nhớ thông dụng (đĩa quang, đĩa từ, thẻ nhớ,...)."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 2: Mạng máy tính và Internet"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 4. Mạng máy tính",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "- Biết khái niệm mạng máy tính và lợi ích của nó trong cuộc sống.  - Kể tên các thành phần chính của một mạng máy tính.  - Nêu ví dụ về trường hợp mạng không dây tiện dụng hơn mạng có dây."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Bài 5. Internet",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "- Biết Internet là gì.  - Biết một số đặc điểm chính và lợi ích chính của Internet."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 3: Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 6. Mạng thông tin toàn cầu",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "- Trình bày sơ lược các khái niệm World Wide Web (WWW), Website, địa chỉ Website, trình duyệt.  - Xem và nêu thông tin chính trên trang web cho trước.  - Khai thác thông tin trên các trang web thông dụng (tra từ điển, xem thời tiết, thời sự,...)."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 7. Tìm kiếm thông tin trên Internet",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "- Nêu công dụng của máy tìm kiếm; xác định từ khóa ứng với mục đích tìm kiếm cho trước.  - Thực hiện việc tìm kiếm và khai thác thông tin trên Internet."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Bài 8. Thư điện tử",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "- Hiểu dịch vụ thư điện tử, ưu/nhược điểm so với các phương thức liên lạc khác.  - Biết tài khoản, hộp thư điện tử; đăng nhập, soạn, gửi, đăng xuất hộp thư điện tử."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 4: Đạo đức, pháp luật và văn hóa trong môi trường số"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Bài 9. An toàn thông tin trên Internet",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "- Biết tác hại/nguy cơ khi sử dụng Internet; nêu và thực hiện biện pháp phòng ngừa.  - Trình bày tầm quan trọng của sự an toàn và hợp pháp của thông tin cá nhân/tập thể.  - Bảo vệ thông tin/tài khoản cá nhân; nhận diện thông điệp lừa đảo hoặc nội dung xấu."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 5: Ứng dụng tin học"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 10. Sơ đồ tư duy",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "- Sắp xếp logic và trình bày ý tưởng/khái niệm dưới dạng sơ đồ tư duy.  - Giải thích lợi ích và nhu cầu sử dụng phần mềm sơ đồ tư duy.  - Tạo được sơ đồ tư duy đơn giản bằng phần mềm."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 11. Định dạng văn bản",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "- Nêu chức năng đặc trưng của phần mềm soạn thảo văn bản.  - Trình bày tác dụng của công cụ căn lề, định dạng văn bản.  - Định dạng văn bản, trình bày trang văn bản và in."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 12. Trình bày thông tin ở dạng bảng",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "- Biết ưu điểm của việc trình bày thông tin ở dạng bảng.  - Trình bày thông tin dạng bảng bằng phần mềm soạn thảo văn bản."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Bài 13. Tìm kiếm và thay thế",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "- Trình bày tác dụng của công cụ tìm kiếm và thay thế.  - Sử dụng thành thạo công cụ tìm kiếm và thay thế của phần mềm."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Ôn tập và luyện tập",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Ôn tập, luyện tập bổ sung kiến thức và kỹ năng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Tổng kết năm học",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Tổng kết đánh giá kết quả học tập cả năm."
+      }
+    ],
+    "Lớp 7": [
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 1: Máy tính và cộng đồng"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Bài 1. Thiết bị vào - ra",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "- Củng cố, phát triển kiến thức xử lý thông tin.  - Nhận biết thiết bị vào - ra có nhiều loại/hình dạng; hiểu chức năng trong thu nhận, lưu trữ, xử lý, truyền thông tin.  - Nêu ví dụ về thao tác không đúng cách gây lỗi thiết bị."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 2. Phần mềm máy tính",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "- Nhận thức vai trò của phần mềm trong hoạt động của máy tính.  - Phân loại phần mềm thành: hệ điều hành và phần mềm ứng dụng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 3. Quản lý dữ liệu trong máy tính",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "- Biết tệp chương trình cũng là dữ liệu lưu trữ trong máy tính.  - Nêu ví dụ biện pháp an toàn dữ liệu: sao lưu, phòng chống xâm nhập trái phép, virus,..."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 2: Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "- Nêu chức năng cơ bản của mạng xã hội; nhận biết các website mạng xã hội và sử dụng chức năng giao lưu, chia sẻ.  - Nêu tên kênh trao đổi thông tin thông dụng; nêu hậu quả việc dùng thông tin sai trái."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 3: Đạo đức, pháp luật và văn hóa trong môi trường số"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Bài 5. Ứng xử trên mạng",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "- Giao tiếp qua mạng đúng quy tắc, lịch sự, có văn hóa.  - Biết tác hại của bệnh nghiện Internet để phòng tránh; biết nhờ người lớn giúp đỡ khi cần."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 4: Ứng dụng tin học"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 6. Làm quen với phần mềm bảng tính",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "- Nhận biết khái niệm/chức năng cơ bản của phần mềm bảng tính.  - Nhập, điều chỉnh dữ liệu đơn giản; thay đổi phông chữ, màu nền, căn chỉnh ô tính, độ rộng cột."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 7. Tính toán tự động trên bảng tính",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "- Nhận biết kiểu dữ liệu; biết nhập và sao chép công thức trên bảng tính.  - Giải thích việc đưa công thức vào bảng tính là cách điều khiển tính toán tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Bài 8. Công cụ hỗ trợ tính toán",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "- Thực hiện phép toán thông dụng; sử dụng hàm đơn giản: MAX, MIN, AVERAGE, COUNT,..."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Bài 9. Trình bày bảng tính",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "- Định dạng dữ liệu số và trình bày bảng tính.  - Áp dụng các hàm (MAX, MIN, SUM, AVERAGE, COUNT) vào dự án Trường học xanh."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 10. Hoàn thiện bảng tính",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "- Thao tác hoàn thiện và in bảng tính; thực hành hoàn thiện dự án.  - Sử dụng bảng tính điện tử giải quyết công việc cụ thể."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 11. Tạo bài trình chiếu",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "- Nêu chức năng cơ bản của phần mềm trình chiếu.  - Tạo bài trình chiếu có tiêu đề, cấu trúc phân cấp."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 12. Định dạng đối tượng trên trang chiếu",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "- Sao chép dữ liệu từ tệp văn bản sang trang chiếu; chèn hình ảnh minh họa.  - Định dạng văn bản, ảnh minh họa hợp lý."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Bài 13. Thực hành tổng hợp: Hoàn thiện bài trình chiếu",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "- Tạo hiệu ứng động hợp lý; tổng hợp, sắp xếp nội dung thành bài trình chiếu hoàn chỉnh."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Ôn tập và luyện tập",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Ôn tập, luyện tập bổ sung kiến thức và kỹ năng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Tổng kết năm học",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Tổng kết đánh giá kết quả học tập cả năm."
+      }
+    ],
+    "Lớp 8": [
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 1: Máy tính và cộng đồng"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Bài 1. Lược sử công cụ tính toán",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "- Trình bày sơ lược lịch sử phát triển máy tính.  - Nêu ví dụ sự phát triển máy tính đem lại thay đổi lớn lao cho xã hội."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 2: Tổ chức, lưu trữ, tìm kiếm và trao đổi thông tin"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 2. Thông tin trong môi trường số",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "- Nêu đặc điểm thông tin số (đa dạng, thu thập nhanh/nhiều, lưu trữ khổng lồ, có bản quyền, độ tin cậy khác nhau, công cụ tìm kiếm/xử lý hiệu quả).  - Trình bày tầm quan trọng của khai thác nguồn thông tin đáng tin cậy."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 3. Thực hành khai thác thông tin số",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "- Sử dụng công cụ tìm kiếm, xử lý và trao đổi thông tin trong môi trường số.  - Chủ động tìm kiếm thông tin thực hiện nhiệm vụ; đánh giá lợi ích thông tin tìm được."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 3: Đạo đức, pháp luật và văn hóa trong môi trường số"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Bài 4. Đạo đức và văn hóa trong sử dụng công nghệ số",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "- Nhận biết, giải thích biểu hiện vi phạm đạo đức/pháp luật, thiếu văn hóa khi dùng công nghệ số.  - Đảm bảo sản phẩm số do bản thân tạo ra thể hiện tính văn hóa, đạo đức."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 4: Ứng dụng tin học"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Bài 5. Sử dụng bảng tính giải quyết bài toán thực tế",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "- Giải thích sự thay đổi địa chỉ tương đối khi sao chép công thức; phân biệt địa chỉ tương đối và tuyệt đối.  - Sử dụng bảng tính giải quyết bài toán thực tế; sao chép dữ liệu từ tệp văn bản/trang chiếu sang trang tính."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 6. Sắp xếp và lọc dữ liệu",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "- Nêu tình huống thực tế cần sắp xếp/lọc dữ liệu.  - Thực hiện các thao tác lọc, sắp xếp dữ liệu của phần mềm bảng tính."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 7. Trình bày dữ liệu bằng biểu đồ",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "- Nêu tình huống thực tế cần tạo biểu đồ.  - Thực hiện thao tác tạo biểu đồ của phần mềm bảng tính."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Bài 8a. Làm việc với danh sách dạng liệt kê và hình ảnh trong văn bản",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "- Thao tác: tạo danh sách liệt kê, chèn, xóa, co dãn hình ảnh, vẽ hình đồ họa trong văn bản.  - Tạo sản phẩm văn bản có tính thẩm mỹ."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 4a: Soạn thảo văn bản và trình chiếu nâng cao (tiếp)"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Bài 9a. Tạo đầu trang, chân trang cho văn bản",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "- Thực hiện thao tác đánh số trang, thêm đầu trang (Header) và chân trang (Footer) cho văn bản."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 10a. Định dạng nâng cao cho trang chiếu",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "- Chọn màu sắc, cỡ chữ hài hòa với nội dung.  - Đánh số trang, thêm đầu trang và chân trang vào trang chiếu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 11a. Sử dụng bản mẫu cho bài trình chiếu",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "- Sử dụng bản mẫu (template); nhúng đường dẫn đến video/tài liệu khác vào trang chiếu.  - Tạo sản phẩm văn bản/trình chiếu có tính thẩm mỹ phục vụ nhu cầu thực tế."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "chu_de",
+        "ten_chu_de": "Chủ đề 5: Giải quyết vấn đề với sự trợ giúp của máy tính"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Bài 12. Từ thuật toán đến chương trình",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "- Mô tả kịch bản dưới dạng thuật toán; tạo chương trình đơn giản.  - Hiểu chương trình là dãy lệnh điều khiển máy tính thực hiện thuật toán."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Ôn tập và luyện tập",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Ôn tập, luyện tập bổ sung kiến thức và kỹ năng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Kiểm tra đánh giá kết quả học tập."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Bài 16. Tin học với nghề nghiệp",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "- Nêu các nghề nghiệp ứng dụng tin học làm tăng hiệu quả công việc.  - Nêu các nghề thuộc lĩnh vực tin học và liên quan đến tin học.  - Trình bày vấn đề bình đẳng giới trong sử dụng máy tính và ứng dụng tin học."
+      }
+    ],
+    "Tiền tiểu học": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Em làm quen với thế giới công nghệ",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "Nhận biết công nghệ quanh em; quy tắc lớp học số"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Máy tính quanh em",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "Nhận biết máy tính, màn hình, chuột, bàn phím"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Em ngồi máy tính an toàn",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "Tư thế ngồi, khoảng cách, quy tắc sử dụng"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Làm quen với chuột",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Cầm chuột, di chuyển, click"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Kéo – thả thật vui",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Kéo – thả và chọn đối tượng"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Khám phá bàn phím",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Nhận biết phím chữ, số, Space, Enter"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Chữ, hình và âm thanh",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "Nhận biết các dạng thông tin"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Màu sắc và hình dạng",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "Nhận dạng, phân loại, tạo mẫu"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Em tạo bức tranh đầu tiên",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "Ghép hình, tô màu bằng công cụ đơn giản"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Ôn tập: Bé làm chủ chuột",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Tổng hợp thao tác chuột và bàn phím"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 1",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Thực hiện chuỗi nhiệm vụ: chuột – kéo thả – chọn – tạo hình"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Làm việc theo từng bước",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Hiểu công việc gồm các bước"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Trái – phải – trước – sau",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Định hướng không gian"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bạn Robot nghe lệnh",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "Thực hiện lệnh đơn giản"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Đường đi đến kho báu",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "Chuỗi hướng di chuyển"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Robot bị lạc rồi!",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Nhận biết sai và sửa đường đi"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Em tìm quy luật",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Quy luật lặp lại đơn giản"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Em làm Robot bằng giấy",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Thiết kế robot và bộ lệnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Ôn tập tư duy máy tính",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Tổng hợp trình tự, hướng, quy luật"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 2",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Robot tìm kho báu bằng chuỗi lệnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Em kể chuyện bằng hình ảnh",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Sắp xếp hình theo diễn biến"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Nhân vật của em",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Tạo/ghép nhân vật"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Ngôi nhà và khu vườn",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Tạo bối cảnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Nhân vật biết chuyển động",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Mô tả chuyển động trước/sau"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "25",
+        "bai": "Thêm âm thanh cho câu chuyện",
+        "so_tiet": "1",
+        "ppct": "25",
+        "yccd": "Ghép âm thanh phù hợp"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "26",
+        "bai": "Câu chuyện của em",
+        "so_tiet": "1",
+        "ppct": "26",
+        "yccd": "Hoàn thiện câu chuyện"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "27",
+        "bai": "Làm việc cùng bạn",
+        "so_tiet": "1",
+        "ppct": "27",
+        "yccd": "Chia sẻ nhiệm vụ, chờ lượt"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "28",
+        "bai": "Ôn tập sáng tạo số",
+        "so_tiet": "1",
+        "ppct": "28",
+        "yccd": "Hoàn thiện sản phẩm"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "29",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 3",
+        "so_tiet": "1",
+        "ppct": "29",
+        "yccd": "Tạo và kể một câu chuyện bằng hình ảnh"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "30",
+        "bai": "Robot quanh em",
+        "so_tiet": "1",
+        "ppct": "30",
+        "yccd": "Nhận biết robot trong đời sống"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "31",
+        "bai": "Điều khiển Robot",
+        "so_tiet": "1",
+        "ppct": "31",
+        "yccd": "Thực hiện lệnh đi tới/đến đích"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "32",
+        "bai": "Robot vượt mê cung",
+        "so_tiet": "1",
+        "ppct": "32",
+        "yccd": "Kết hợp hướng và trình tự"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "33",
+        "bai": "AI quanh em",
+        "so_tiet": "1",
+        "ppct": "33",
+        "yccd": "Nhận biết AI qua ví dụ gần gũi"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "34",
+        "bai": "Con người và máy thông minh",
+        "so_tiet": "1",
+        "ppct": "34",
+        "yccd": "Nhận biết máy có thể hỗ trợ và có thể sai"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "35",
+        "bai": "ĐÁNH GIÁ ĐỊNH KỲ 4",
+        "so_tiet": "1",
+        "ppct": "35",
+        "yccd": "Trạm công nghệ: chuột – logic – robot"
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "36",
+        "bai": "Ngày hội Em khám phá công nghệ",
+        "so_tiet": "1",
+        "ppct": "36",
+        "yccd": "Trưng bày và chia sẻ sản phẩm"
+      }
+    ]
+  },
+  "Robotics": {
+    "Lớp 1": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Tiết 0: Định hướng môn học",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "Giới thiệu tổng quan môn học Robotics, phương pháp học tập thực hành, quy trình làm việc nhóm, an toàn sử dụng thiết bị và nội quy phòng học bộ môn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 1. Tập thể dục nào!",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "Nhận biết tác dụng của vận động và đu xà; lắp ráp mô hình đu xà."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 2. Chú cún dễ thương",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "Nhận biết đặc điểm loài chó; lắp ráp robot cún con."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 3. Tăng cường sức khỏe",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Tìm hiểu ưu điểm của đi bộ; lắp robot mô phỏng người đi bộ."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Bài 4. Chú ốc sên chậm chạp",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Tìm hiểu cách di chuyển và cấu tạo vỏ ốc sên; lắp robot ốc sên."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Bài 5. Xe cảnh sát tuần tra",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Tìm hiểu phương tiện cảnh sát; lắp xe cảnh sát tuần tra."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Bài 6. Khám phá xe cứu hoả",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "Tìm hiểu bộ phận xe cứu hỏa và nhiệm vụ lính cứu hỏa; lắp xe cứu hỏa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 7. Người giao hàng đã đến",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "Tìm hiểu hình thức giao hàng, vận chuyển; lắp robot giao hàng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 8. Thế giới khủng long",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "Tìm hiểu nguồn gốc khủng long; lắp mô hình khủng long."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Bài 9. Hồ bơi mùa hè",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Tìm hiểu an toàn bơi lội; lắp mô hình người bơi lội."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Bài 10. Khám phá đại dương",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Tìm hiểu đặc điểm cá mập; lắp mô hình cá mập bơi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 11. Chú cua cứng cáp",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "Tìm hiểu nguyên lý cua bò ngang; lắp robot cua bò ngang."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 12. Tôi có thể di chuyển đến bất cứ đâu",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "Tìm hiểu giá trị dinh dưỡng và cấu tạo loài mực; lắp robot mực."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 13. Hoạt động mùa hè",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Tìm hiểu kỹ thuật chèo thuyền; lắp robot chèo thuyền."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Bài 14. Bắt đầu chuyến hành trình cùng tàu hoả",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Tìm hiểu công dụng, cấu tạo tàu hỏa; lắp mô hình tàu hỏa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Bài 15. Phía trên bầu trời",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Phân biệt các loại máy bay; lắp mô hình máy bay."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Bài 16. Khám phá vũ trụ rộng lớn",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Tìm hiểu nguyên lý tàu vũ trụ; lắp mô hình tàu vũ trụ."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Bài 17. Máy bắn đá khổng lồ",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Tìm hiểu cấu tạo máy bắn đá và thử nghiệm tầm bắn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Bài 18. Trò chơi dân gian",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Tìm hiểu kỹ thuật tâng cầu; lắp mô hình trò chơi dân gian."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Bài 19. Khám phá trò chơi truyền thống các nước",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tìm hiểu luật chơi ném mũi tên; lắp mô hình trò chơi truyền thống."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "25",
+        "bai": "Bài 20. Đấu vật thú vị",
+        "so_tiet": "1",
+        "ppct": "25",
+        "yccd": "Phân biệt thể thao đối kháng; lắp robot đấu vật."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "26",
+        "bai": "Bài 21. Sóc nhỏ dễ thương",
+        "so_tiet": "1",
+        "ppct": "26",
+        "yccd": "Tìm hiểu đặc trưng ngoại hình sóc; lắp robot sóc nhỏ."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "27",
+        "bai": "Bài 22. Chú hươu tuyệt đẹp",
+        "so_tiet": "1",
+        "ppct": "27",
+        "yccd": "Tìm hiểu tập tính chú hươu; lắp robot hươu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "28",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "28",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "29",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "29",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "30",
+        "bai": "Bài 23. Chú rùa thông minh",
+        "so_tiet": "1",
+        "ppct": "30",
+        "yccd": "Tìm hiểu vòng đời loài rùa; lắp robot rùa bò."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "31",
+        "bai": "Bài 24. Đôi chân mạnh mẽ của chuột túi",
+        "so_tiet": "1",
+        "ppct": "31",
+        "yccd": "Tìm hiểu cơ chế chuột túi nhảy cao; lắp robot chuột túi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "32",
+        "bai": "Bài 25. Chú sư tử dũng mãnh",
+        "so_tiet": "1",
+        "ppct": "32",
+        "yccd": "Tìm hiểu tập tính sư tử; lắp robot sư tử."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "33",
+        "bai": "Bài 26. Chuột chũi, máy ủi dưới lòng đất",
+        "so_tiet": "1",
+        "ppct": "33",
+        "yccd": "Liên hệ chuột chũi với máy ủi; lắp robot chuột chũi/máy ủi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "34",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "34",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "35",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "35",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "36",
+        "bai": "Tổng kết môn học & Triển lãm Robotics",
+        "so_tiet": "1",
+        "ppct": "36",
+        "yccd": "Tổng kết đánh giá kết quả học tập và trưng bày sản phẩm Robotics."
+      }
+    ],
+    "Lớp 2": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Tiết 0: Định hướng môn học",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "Giới thiệu tổng quan môn học Robotics, phương pháp học tập thực hành, quy trình làm việc nhóm, an toàn sử dụng thiết bị và nội quy phòng học bộ môn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 1. Tập thể dục nào!",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "Nhận biết tác dụng của vận động và đu xà; lắp ráp mô hình đu xà."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 2. Chú cún dễ thương",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "Nhận biết đặc điểm loài chó; lắp ráp robot cún con."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 3. Tăng cường sức khỏe",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Tìm hiểu ưu điểm của đi bộ; lắp robot mô phỏng người đi bộ."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Bài 4. Chú ốc sên chậm chạp",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Tìm hiểu cách di chuyển và cấu tạo vỏ ốc sên; lắp robot ốc sên."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Bài 5. Xe cảnh sát tuần tra",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Tìm hiểu phương tiện cảnh sát; lắp xe cảnh sát tuần tra."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Bài 6. Khám phá xe cứu hoả",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "Tìm hiểu bộ phận xe cứu hỏa và nhiệm vụ lính cứu hỏa; lắp xe cứu hỏa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 7. Người giao hàng đã đến",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "Tìm hiểu hình thức giao hàng, vận chuyển; lắp robot giao hàng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 8. Thế giới khủng long",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "Tìm hiểu nguồn gốc khủng long; lắp mô hình khủng long."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Bài 9. Hồ bơi mùa hè",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Tìm hiểu an toàn bơi lội; lắp mô hình người bơi lội."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Bài 10. Khám phá đại dương",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Tìm hiểu đặc điểm cá mập; lắp mô hình cá mập bơi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 11. Chú cua cứng cáp",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "Tìm hiểu nguyên lý cua bò ngang; lắp robot cua bò ngang."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 12. Tôi có thể di chuyển đến bất cứ đâu",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "Tìm hiểu giá trị dinh dưỡng và cấu tạo loài mực; lắp robot mực."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 13. Hoạt động mùa hè",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Tìm hiểu kỹ thuật chèo thuyền; lắp robot chèo thuyền."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Bài 14. Bắt đầu chuyến hành trình cùng tàu hoả",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Tìm hiểu công dụng, cấu tạo tàu hỏa; lắp mô hình tàu hỏa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Bài 15. Phía trên bầu trời",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Phân biệt các loại máy bay; lắp mô hình máy bay."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Bài 16. Khám phá vũ trụ rộng lớn",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Tìm hiểu nguyên lý tàu vũ trụ; lắp mô hình tàu vũ trụ."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Bài 17. Máy bắn đá khổng lồ",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Tìm hiểu cấu tạo máy bắn đá và thử nghiệm tầm bắn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Bài 18. Trò chơi dân gian",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Tìm hiểu kỹ thuật tâng cầu; lắp mô hình trò chơi dân gian."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Bài 19. Khám phá trò chơi truyền thống các nước",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tìm hiểu luật chơi ném mũi tên; lắp mô hình trò chơi truyền thống."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "25",
+        "bai": "Bài 20. Đấu vật thú vị",
+        "so_tiet": "1",
+        "ppct": "25",
+        "yccd": "Phân biệt thể thao đối kháng; lắp robot đấu vật."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "26",
+        "bai": "Bài 21. Sóc nhỏ dễ thương",
+        "so_tiet": "1",
+        "ppct": "26",
+        "yccd": "Tìm hiểu đặc trưng ngoại hình sóc; lắp robot sóc nhỏ."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "27",
+        "bai": "Bài 22. Chú hươu tuyệt đẹp",
+        "so_tiet": "1",
+        "ppct": "27",
+        "yccd": "Tìm hiểu tập tính chú hươu; lắp robot hươu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "28",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "28",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "29",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "29",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "30",
+        "bai": "Bài 23. Chú rùa thông minh",
+        "so_tiet": "1",
+        "ppct": "30",
+        "yccd": "Tìm hiểu vòng đời loài rùa; lắp robot rùa bò."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "31",
+        "bai": "Bài 24. Đôi chân mạnh mẽ của chuột túi",
+        "so_tiet": "1",
+        "ppct": "31",
+        "yccd": "Tìm hiểu cơ chế chuột túi nhảy cao; lắp robot chuột túi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "32",
+        "bai": "Bài 25. Chú sư tử dũng mãnh",
+        "so_tiet": "1",
+        "ppct": "32",
+        "yccd": "Tìm hiểu tập tính sư tử; lắp robot sư tử."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "33",
+        "bai": "Bài 26. Chuột chũi, máy ủi dưới lòng đất",
+        "so_tiet": "1",
+        "ppct": "33",
+        "yccd": "Liên hệ chuột chũi với máy ủi; lắp robot chuột chũi/máy ủi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "34",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "34",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "35",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "35",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "36",
+        "bai": "Tổng kết môn học & Triển lãm Robotics",
+        "so_tiet": "1",
+        "ppct": "36",
+        "yccd": "Tổng kết đánh giá kết quả học tập và trưng bày sản phẩm Robotics."
+      }
+    ],
+    "Lớp 3": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Tiết 0: Định hướng môn học",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "Giới thiệu tổng quan môn học Robotics, phương pháp học tập thực hành, quy trình làm việc nhóm, an toàn sử dụng thiết bị và nội quy phòng học bộ môn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 1. Hãy nấu những món ăn ngon",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "Tìm hiểu dụng cụ nấu ăn, cấu tạo nồi nấu; lắp robot hỗ trợ nấu ăn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 2. Hàm răng trắng sáng",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "Tìm hiểu cách chăm sóc răng miệng; lắp robot chải răng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 3. Sự phản xạ ánh sáng",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Tìm hiểu hiện tượng phản xạ ánh sáng; lắp mô hình máy ảnh."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Bài 4. Đàn gà con",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Tìm hiểu sinh sản đẻ trứng của gà; lắp robot gà mẹ và gà con."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Bài 5. Những bạn nhỏ lễ phép",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Tìm hiểu văn hóa chào hỏi các nước; lắp robot cúi chào lễ phép."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Bài 6. Động vật thân mềm",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "Tìm hiểu chuyển động động vật thân mềm; lắp robot ốc/mực."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 7. Khu phố của chúng ta",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "Tìm hiểu cảnh quan đô thị và bảo vệ môi trường; lắp robot dọn dẹp."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 8. Rèn luyện sức khỏe",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "Tìm hiểu môn thể thao Kendo; lắp robot võ sĩ Kendo."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Bài 9. Môi trường biển",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Tìm hiểu sinh vật biển; lắp robot cá bơi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Bài 10. Cùng câu cá nào!",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Tìm hiểu cơ cấu cần câu và quy tắc an toàn; lắp robot câu cá."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 11. Thế giới khủng long",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "Tìm hiểu động vật tuyệt chủng; lắp robot khủng long."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 12. Người hiệp sĩ dũng cảm",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "Tìm hiểu trang phục hiệp sĩ; lắp robot hiệp sĩ cưỡi ngựa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 13. Vận chuyển đồ vật",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Tìm hiểu xe nâng và cơ cấu nâng; lắp robot xe nâng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Bài 14. Sức mạnh của máy ủi",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Tìm hiểu cơ cấu máy ủi công trường; lắp robot máy ủi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Bài 15. Máy xúc",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Tìm hiểu an toàn lao động và máy xúc; lắp robot máy xúc."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Bài 16. Cùng nhau đi khắp thế giới",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Tìm hiểu nguyên lý trực thăng; lắp robot trực thăng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Bài 17. Nhắm và bắn!",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Tìm hiểu lực ném và cơ cấu máy bắn đá; lắp robot bắn đá."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Bài 18. Độ đàn hồi, lực đẩy của cung tên",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Tìm hiểu lực đàn hồi và cơ cấu cung tên; lắp robot bắn cung."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Bài 19. Ba! Hai! Một! Bắn!!!",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tìm hiểu quỹ đạo bắn đại bác; lắp robot súng đại bác."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "25",
+        "bai": "Bài 20. Cùng nhau tham quan thành phố",
+        "so_tiet": "1",
+        "ppct": "25",
+        "yccd": "Tìm hiểu phương tiện giao thông công cộng; lắp robot xe buýt."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "26",
+        "bai": "Bài 21. Khám phá trang phục người da đỏ",
+        "so_tiet": "1",
+        "ppct": "26",
+        "yccd": "Tìm hiểu văn hóa và điệu nhảy truyền thống; lắp robot nhảy múa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "27",
+        "bai": "Bài 22. Cá sấu thật ngầu!",
+        "so_tiet": "1",
+        "ppct": "27",
+        "yccd": "Tìm hiểu tập tính cá sấu; lắp robot cá sấu đớp mồi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "28",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "28",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "29",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "29",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "30",
+        "bai": "Bài 23. Những nốt nhạc vui",
+        "so_tiet": "1",
+        "ppct": "30",
+        "yccd": "Tìm hiểu nhạc cụ guitar; lắp robot chơi đàn guitar."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "31",
+        "bai": "Bài 24. Choo Choo! Tàu hỏa",
+        "so_tiet": "1",
+        "ppct": "31",
+        "yccd": "Tìm hiểu năng lượng đường sắt; lắp robot tàu hỏa chạy trạm."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "32",
+        "bai": "Bài 25. Có sáu chân thật tuyệt!!!",
+        "so_tiet": "1",
+        "ppct": "32",
+        "yccd": "Tìm hiểu di chuyển 6 chân của côn trùng; lắp robot bọ sừng 6 chân."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "33",
+        "bai": "Bài 26. Bầu không khí trong lành",
+        "so_tiet": "1",
+        "ppct": "33",
+        "yccd": "Tìm hiểu bảo vệ sinh thái; lắp robot bắt sâu bảo vệ cây."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "34",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "34",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "35",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "35",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "36",
+        "bai": "Tổng kết môn học & Triển lãm Robotics",
+        "so_tiet": "1",
+        "ppct": "36",
+        "yccd": "Tổng kết đánh giá kết quả học tập và trưng bày sản phẩm Robotics."
+      }
+    ],
+    "Lớp 4": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Tiết 0: Định hướng môn học",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "Giới thiệu tổng quan môn học Robotics, phương pháp học tập thực hành, quy trình làm việc nhóm, an toàn sử dụng thiết bị và nội quy phòng học bộ môn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 1. Hãy nấu những món ăn ngon",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "Tìm hiểu dụng cụ nấu ăn, cấu tạo nồi nấu; lắp robot hỗ trợ nấu ăn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 2. Hàm răng trắng sáng",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "Tìm hiểu cách chăm sóc răng miệng; lắp robot chải răng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 3. Sự phản xạ ánh sáng",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Tìm hiểu hiện tượng phản xạ ánh sáng; lắp mô hình máy ảnh."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Bài 4. Đàn gà con",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Tìm hiểu sinh sản đẻ trứng của gà; lắp robot gà mẹ và gà con."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Bài 5. Những bạn nhỏ lễ phép",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Tìm hiểu văn hóa chào hỏi các nước; lắp robot cúi chào lễ phép."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Bài 6. Động vật thân mềm",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "Tìm hiểu chuyển động động vật thân mềm; lắp robot ốc/mực."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 7. Khu phố của chúng ta",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "Tìm hiểu cảnh quan đô thị và bảo vệ môi trường; lắp robot dọn dẹp."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 8. Rèn luyện sức khỏe",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "Tìm hiểu môn thể thao Kendo; lắp robot võ sĩ Kendo."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Bài 9. Môi trường biển",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Tìm hiểu sinh vật biển; lắp robot cá bơi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Bài 10. Cùng câu cá nào!",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Tìm hiểu cơ cấu cần câu và quy tắc an toàn; lắp robot câu cá."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 11. Thế giới khủng long",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "Tìm hiểu động vật tuyệt chủng; lắp robot khủng long."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 12. Người hiệp sĩ dũng cảm",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "Tìm hiểu trang phục hiệp sĩ; lắp robot hiệp sĩ cưỡi ngựa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 13. Vận chuyển đồ vật",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Tìm hiểu xe nâng và cơ cấu nâng; lắp robot xe nâng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Bài 14. Sức mạnh của máy ủi",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Tìm hiểu cơ cấu máy ủi công trường; lắp robot máy ủi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Bài 15. Máy xúc",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Tìm hiểu an toàn lao động và máy xúc; lắp robot máy xúc."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Bài 16. Cùng nhau đi khắp thế giới",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Tìm hiểu nguyên lý trực thăng; lắp robot trực thăng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Bài 17. Nhắm và bắn!",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Tìm hiểu lực ném và cơ cấu máy bắn đá; lắp robot bắn đá."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Bài 18. Độ đàn hồi, lực đẩy của cung tên",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Tìm hiểu lực đàn hồi và cơ cấu cung tên; lắp robot bắn cung."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Bài 19. Ba! Hai! Một! Bắn!!!",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tìm hiểu quỹ đạo bắn đại bác; lắp robot súng đại bác."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "25",
+        "bai": "Bài 20. Cùng nhau tham quan thành phố",
+        "so_tiet": "1",
+        "ppct": "25",
+        "yccd": "Tìm hiểu phương tiện giao thông công cộng; lắp robot xe buýt."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "26",
+        "bai": "Bài 21. Khám phá trang phục người da đỏ",
+        "so_tiet": "1",
+        "ppct": "26",
+        "yccd": "Tìm hiểu văn hóa và điệu nhảy truyền thống; lắp robot nhảy múa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "27",
+        "bai": "Bài 22. Cá sấu thật ngầu!",
+        "so_tiet": "1",
+        "ppct": "27",
+        "yccd": "Tìm hiểu tập tính cá sấu; lắp robot cá sấu đớp mồi."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "28",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "28",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "29",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "29",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "30",
+        "bai": "Bài 23. Những nốt nhạc vui",
+        "so_tiet": "1",
+        "ppct": "30",
+        "yccd": "Tìm hiểu nhạc cụ guitar; lắp robot chơi đàn guitar."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "31",
+        "bai": "Bài 24. Choo Choo! Tàu hỏa",
+        "so_tiet": "1",
+        "ppct": "31",
+        "yccd": "Tìm hiểu năng lượng đường sắt; lắp robot tàu hỏa chạy trạm."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "32",
+        "bai": "Bài 25. Có sáu chân thật tuyệt!!!",
+        "so_tiet": "1",
+        "ppct": "32",
+        "yccd": "Tìm hiểu di chuyển 6 chân của côn trùng; lắp robot bọ sừng 6 chân."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "33",
+        "bai": "Bài 26. Bầu không khí trong lành",
+        "so_tiet": "1",
+        "ppct": "33",
+        "yccd": "Tìm hiểu bảo vệ sinh thái; lắp robot bắt sâu bảo vệ cây."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "34",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "34",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "35",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "35",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "36",
+        "bai": "Tổng kết môn học & Triển lãm Robotics",
+        "so_tiet": "1",
+        "ppct": "36",
+        "yccd": "Tổng kết đánh giá kết quả học tập và trưng bày sản phẩm Robotics."
+      }
+    ],
+    "Lớp 5": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Tiết 0: Định hướng môn học",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "Giới thiệu tổng quan môn học Robotics, phương pháp học tập thực hành, quy trình làm việc nhóm, an toàn sử dụng thiết bị và nội quy phòng học bộ môn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 1. Động cơ là gì?",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "Tìm hiểu động cơ Dynamixel, chốt đặc biệt; lắp và vận hành robot xe nâng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 2. Robot cố định vật",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "Tìm hiểu dụng cụ cố định đồ vật; thiết kế robot xe gắp và di chuyển vật thể."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 3. Robot nhận biết âm thanh",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Tìm hiểu cảm biến âm thanh; lắp robot phản ứng với tiếng vỗ tay."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Bài 4. Bộ điều khiển từ xa",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Tìm hiểu chức năng bộ điều khiển; điều khiển robot pháo bắn mục tiêu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 5. Động cơ Dynamixel hoạt động thế nào?",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "Tìm hiểu cách hoạt động của động cơ servo Dynamixel; lắp robot khuếch đại chuyển động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 6. Phương tiện giao thông qua các thời đại",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "Tìm hiểu cơ cấu chuyển động lặp; chế tạo robot đua ngựa thi đấu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Bài 7. Cơ chế tăng giảm chiều dài tự động",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Tìm hiểu cơ cấu kẹp linh hoạt và cánh tay robot; lắp robot gỡ bom/gắp vật xa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Bài 8. Robot nhận biết vật thể bằng cách nào?",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Tìm hiểu cảm biến hồng ngoại phát hiện vật cản; lắp robot tự động tránh chướng ngại vật."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 9. Số ngẫu nhiên",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "Ứng dụng thuật toán số ngẫu nhiên trong điều khiển robot hoạt động tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 10. Robot hút bụi",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "Tìm hiểu chức năng robot dọn dẹp; lắp và lập trình robot hút bụi tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 11. Lực hấp dẫn",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Tìm hiểu trọng lực và ứng dụng; chế tạo robot Rodeo sử dụng lực hấp dẫn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Bài 12. Domino trong Robotics",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Tìm hiểu chuyển động chính xác; lắp robot xếp khối domino tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Bài 13. Robot phục vụ đời sống",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Tìm hiểu ứng dụng robot trong công nghiệp và đời sống."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Luyện tập & Thực hành sáng tạo Robotics",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Luyện tập nâng cao, mở rộng tính năng và thử nghiệm sản phẩm."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Tổng kết môn học & Triển lãm Robotics",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tổng kết đánh giá kết quả học tập và trưng bày sản phẩm Robotics."
+      }
+    ],
+    "Lớp 6": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Tiết 0: Định hướng môn học",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "Giới thiệu tổng quan môn học Robotics, phương pháp học tập thực hành, quy trình làm việc nhóm, an toàn sử dụng thiết bị và nội quy phòng học bộ môn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 1. Động cơ là gì?",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "Tìm hiểu động cơ Dynamixel, chốt đặc biệt; lắp và vận hành robot xe nâng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 2. Robot cố định vật",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "Tìm hiểu dụng cụ cố định đồ vật; thiết kế robot xe gắp và di chuyển vật thể."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 3. Robot nhận biết âm thanh",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Tìm hiểu cảm biến âm thanh; lắp robot phản ứng với tiếng vỗ tay."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Bài 4. Bộ điều khiển từ xa",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Tìm hiểu chức năng bộ điều khiển; điều khiển robot pháo bắn mục tiêu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 5. Động cơ Dynamixel hoạt động thế nào?",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "Tìm hiểu cách hoạt động của động cơ servo Dynamixel; lắp robot khuếch đại chuyển động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 6. Phương tiện giao thông qua các thời đại",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "Tìm hiểu cơ cấu chuyển động lặp; chế tạo robot đua ngựa thi đấu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Bài 7. Cơ chế tăng giảm chiều dài tự động",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Tìm hiểu cơ cấu kẹp linh hoạt và cánh tay robot; lắp robot gỡ bom/gắp vật xa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Bài 8. Robot nhận biết vật thể bằng cách nào?",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Tìm hiểu cảm biến hồng ngoại phát hiện vật cản; lắp robot tự động tránh chướng ngại vật."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 9. Số ngẫu nhiên",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "Ứng dụng thuật toán số ngẫu nhiên trong điều khiển robot hoạt động tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 10. Robot hút bụi",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "Tìm hiểu chức năng robot dọn dẹp; lắp và lập trình robot hút bụi tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 11. Lực hấp dẫn",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Tìm hiểu trọng lực và ứng dụng; chế tạo robot Rodeo sử dụng lực hấp dẫn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Bài 12. Domino trong Robotics",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Tìm hiểu chuyển động chính xác; lắp robot xếp khối domino tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Bài 13. Robot phục vụ đời sống",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Tìm hiểu ứng dụng robot trong công nghiệp và đời sống."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Luyện tập & Thực hành sáng tạo Robotics",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Luyện tập nâng cao, mở rộng tính năng và thử nghiệm sản phẩm."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Tổng kết môn học & Triển lãm Robotics",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tổng kết đánh giá kết quả học tập và trưng bày sản phẩm Robotics."
+      }
+    ],
+    "Lớp 7": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Tiết 0: Định hướng môn học",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "Giới thiệu tổng quan môn học Robotics, phương pháp học tập thực hành, quy trình làm việc nhóm, an toàn sử dụng thiết bị và nội quy phòng học bộ môn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 1. Động cơ là gì?",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "Tìm hiểu động cơ Dynamixel, chốt đặc biệt; lắp và vận hành robot xe nâng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 2. Robot cố định vật",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "Tìm hiểu dụng cụ cố định đồ vật; thiết kế robot xe gắp và di chuyển vật thể."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 3. Robot nhận biết âm thanh",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Tìm hiểu cảm biến âm thanh; lắp robot phản ứng với tiếng vỗ tay."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Bài 4. Bộ điều khiển từ xa",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Tìm hiểu chức năng bộ điều khiển; điều khiển robot pháo bắn mục tiêu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 5. Động cơ Dynamixel hoạt động thế nào?",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "Tìm hiểu cách hoạt động của động cơ servo Dynamixel; lắp robot khuếch đại chuyển động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 6. Phương tiện giao thông qua các thời đại",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "Tìm hiểu cơ cấu chuyển động lặp; chế tạo robot đua ngựa thi đấu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Bài 7. Cơ chế tăng giảm chiều dài tự động",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Tìm hiểu cơ cấu kẹp linh hoạt và cánh tay robot; lắp robot gỡ bom/gắp vật xa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Bài 8. Robot nhận biết vật thể bằng cách nào?",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Tìm hiểu cảm biến hồng ngoại phát hiện vật cản; lắp robot tự động tránh chướng ngại vật."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 9. Số ngẫu nhiên",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "Ứng dụng thuật toán số ngẫu nhiên trong điều khiển robot hoạt động tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 10. Robot hút bụi",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "Tìm hiểu chức năng robot dọn dẹp; lắp và lập trình robot hút bụi tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 11. Lực hấp dẫn",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Tìm hiểu trọng lực và ứng dụng; chế tạo robot Rodeo sử dụng lực hấp dẫn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Bài 12. Domino trong Robotics",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Tìm hiểu chuyển động chính xác; lắp robot xếp khối domino tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Bài 13. Robot phục vụ đời sống",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Tìm hiểu ứng dụng robot trong công nghiệp và đời sống."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Luyện tập & Thực hành sáng tạo Robotics",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Luyện tập nâng cao, mở rộng tính năng và thử nghiệm sản phẩm."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Tổng kết môn học & Triển lãm Robotics",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tổng kết đánh giá kết quả học tập và trưng bày sản phẩm Robotics."
+      }
+    ],
+    "Lớp 8": [
+      {
+        "type": "bai_hoc",
+        "stt": "1",
+        "bai": "Tiết 0: Định hướng môn học",
+        "so_tiet": "1",
+        "ppct": "1",
+        "yccd": "Giới thiệu tổng quan môn học Robotics, phương pháp học tập thực hành, quy trình làm việc nhóm, an toàn sử dụng thiết bị và nội quy phòng học bộ môn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "2",
+        "bai": "Bài 1. Động cơ là gì?",
+        "so_tiet": "1",
+        "ppct": "2",
+        "yccd": "Tìm hiểu động cơ Dynamixel, chốt đặc biệt; lắp và vận hành robot xe nâng."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "3",
+        "bai": "Bài 2. Robot cố định vật",
+        "so_tiet": "1",
+        "ppct": "3",
+        "yccd": "Tìm hiểu dụng cụ cố định đồ vật; thiết kế robot xe gắp và di chuyển vật thể."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "4",
+        "bai": "Bài 3. Robot nhận biết âm thanh",
+        "so_tiet": "1",
+        "ppct": "4",
+        "yccd": "Tìm hiểu cảm biến âm thanh; lắp robot phản ứng với tiếng vỗ tay."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "5",
+        "bai": "Bài 4. Bộ điều khiển từ xa",
+        "so_tiet": "1",
+        "ppct": "5",
+        "yccd": "Tìm hiểu chức năng bộ điều khiển; điều khiển robot pháo bắn mục tiêu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "6",
+        "bai": "Ôn tập Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "6",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 1."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "7",
+        "bai": "Đánh giá định kỳ 1",
+        "so_tiet": "1",
+        "ppct": "7",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "8",
+        "bai": "Bài 5. Động cơ Dynamixel hoạt động thế nào?",
+        "so_tiet": "1",
+        "ppct": "8",
+        "yccd": "Tìm hiểu cách hoạt động của động cơ servo Dynamixel; lắp robot khuếch đại chuyển động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "9",
+        "bai": "Bài 6. Phương tiện giao thông qua các thời đại",
+        "so_tiet": "1",
+        "ppct": "9",
+        "yccd": "Tìm hiểu cơ cấu chuyển động lặp; chế tạo robot đua ngựa thi đấu."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "10",
+        "bai": "Bài 7. Cơ chế tăng giảm chiều dài tự động",
+        "so_tiet": "1",
+        "ppct": "10",
+        "yccd": "Tìm hiểu cơ cấu kẹp linh hoạt và cánh tay robot; lắp robot gỡ bom/gắp vật xa."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "11",
+        "bai": "Bài 8. Robot nhận biết vật thể bằng cách nào?",
+        "so_tiet": "1",
+        "ppct": "11",
+        "yccd": "Tìm hiểu cảm biến hồng ngoại phát hiện vật cản; lắp robot tự động tránh chướng ngại vật."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "12",
+        "bai": "Ôn tập Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "12",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 2."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "13",
+        "bai": "Đánh giá định kỳ 2",
+        "so_tiet": "1",
+        "ppct": "13",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "14",
+        "bai": "Bài 9. Số ngẫu nhiên",
+        "so_tiet": "1",
+        "ppct": "14",
+        "yccd": "Ứng dụng thuật toán số ngẫu nhiên trong điều khiển robot hoạt động tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "15",
+        "bai": "Bài 10. Robot hút bụi",
+        "so_tiet": "1",
+        "ppct": "15",
+        "yccd": "Tìm hiểu chức năng robot dọn dẹp; lắp và lập trình robot hút bụi tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "16",
+        "bai": "Bài 11. Lực hấp dẫn",
+        "so_tiet": "1",
+        "ppct": "16",
+        "yccd": "Tìm hiểu trọng lực và ứng dụng; chế tạo robot Rodeo sử dụng lực hấp dẫn."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "17",
+        "bai": "Bài 12. Domino trong Robotics",
+        "so_tiet": "1",
+        "ppct": "17",
+        "yccd": "Tìm hiểu chuyển động chính xác; lắp robot xếp khối domino tự động."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "18",
+        "bai": "Ôn tập Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "18",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 3."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "19",
+        "bai": "Đánh giá định kỳ 3",
+        "so_tiet": "1",
+        "ppct": "19",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "20",
+        "bai": "Bài 13. Robot phục vụ đời sống",
+        "so_tiet": "1",
+        "ppct": "20",
+        "yccd": "Tìm hiểu ứng dụng robot trong công nghiệp và đời sống."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "21",
+        "bai": "Luyện tập & Thực hành sáng tạo Robotics",
+        "so_tiet": "1",
+        "ppct": "21",
+        "yccd": "Luyện tập nâng cao, mở rộng tính năng và thử nghiệm sản phẩm."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "22",
+        "bai": "Ôn tập Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "22",
+        "yccd": "Hệ thống hóa kiến thức chuẩn bị Đánh giá định kỳ 4."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "23",
+        "bai": "Đánh giá định kỳ 4",
+        "so_tiet": "1",
+        "ppct": "23",
+        "yccd": "Kiểm tra đánh giá kết quả học tập thực hành Robotics."
+      },
+      {
+        "type": "bai_hoc",
+        "stt": "24",
+        "bai": "Tổng kết môn học & Triển lãm Robotics",
+        "so_tiet": "1",
+        "ppct": "24",
+        "yccd": "Tổng kết đánh giá kết quả học tập và trưng bày sản phẩm Robotics."
+      }
+    ]
+  }
+}

@@ -462,6 +462,7 @@ LESSONS_T4 = [
 ]
 
 def hex_rgb(h):
+    h = h.lstrip('#')
     return RGBColor(int(h[0:2],16), int(h[2:4],16), int(h[4:6],16))
 
 def set_font(run, size_pt, bold=False, color_hex="333333", font_name="Arial"):
@@ -766,43 +767,61 @@ def build_learn_grid(prs, data, pal, lesson, layout, learn_idx=0):
     title_y = SAFE_TOP + 0.6
     add_textbox(slide, 0.5, title_y, SLIDE_W-1, 0.65, data["title"], size_pt=26, bold=True, color_hex=pal["text_on_bg"])
 
-    grid_top = title_y + 0.8
+    grid_top = title_y + 0.75
     grid_bottom = SAFE_BOTTOM - 0.1
     avail_h = grid_bottom - grid_top
 
     cols, rows = (n, 1) if n <= 3 else (2, 2)
-    gap = 0.25
-    total_gap_x = gap * (cols - 1)
+    gap_x, gap_y = 0.35, 0.22
+    total_gap_x = gap_x * (cols - 1)
     card_w = (SLIDE_W - 1.0 - total_gap_x) / cols
-    if rows == 1:
-        img_h, text_h = 2.0, 0.9
-    else:
-        img_h, text_h = 1.1, 0.5
-    card_h = img_h + text_h + 0.15
-    total_gap_y = gap * (rows - 1)
-    start_x = (SLIDE_W - (cols * card_w + total_gap_x)) / 2
-    start_y = grid_top + (avail_h - (rows * card_h + total_gap_y)) / 2
-    start_y = max(start_y, grid_top)
+    card_h = (avail_h - gap_y * (rows - 1)) / rows
+    start_x = 0.5
+    start_y = grid_top
 
     for i, btext in enumerate(bullets):
         col, row = i % cols, i // cols
-        x = start_x + col * (card_w + gap)
-        y = start_y + row * (card_h + gap)
+        x = start_x + col * (card_w + gap_x)
+        y = start_y + row * (card_h + gap_y)
 
         if y + card_h > SAFE_BOTTOM + 0.05:
             break
 
-        add_safe_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, x, y, card_w, card_h, pal["card"], border_hex="D0D5DD")
-        add_safe_shape(slide, MSO_SHAPE.RECTANGLE, x, y, card_w, 0.06, pal["accent"])
+        # Card container with accent left bar
+        add_safe_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, x, y, card_w, card_h, "#FFFFFF", border_hex=pal["accent"])
+        add_safe_shape(slide, MSO_SHAPE.RECTANGLE, x, y, 0.10, card_h, pal["accent"])
 
-        img = find_image(lesson, "learn", learn_idx*3 + i)
-        if img:
-            img_w = min(1.8, card_w - 0.4)
-            img_x = x + (card_w - img_w) / 2
-            add_picture_safe(slide, img, img_x, y + 0.15, img_w, img_h)
+        # Load exact dedicated card asset
+        img_name = f"learn{learn_idx+1}_card{i+1}.png"
+        img_path = os.path.join(KHBD_BASE, lesson["folder"], "Tuần_04", "images", img_name)
+        if not os.path.isfile(img_path):
+            img_path = find_image(lesson, "learn", learn_idx*4 + i)
 
-        text_y = y + img_h + 0.15
-        add_textbox(slide, x + 0.15, text_y, card_w - 0.3, text_h, btext, size_pt=16, bold=False, color_hex=pal["text_on_card"], alignment=PP_ALIGN.CENTER)
+        if rows == 2:
+            # 2x2 Split layout: Left Image (2.4in) | Right Text (3.2in)
+            if img_path and os.path.isfile(img_path):
+                img_w = 2.4
+                img_h = card_h - 0.24
+                add_picture_safe(slide, img_path, x + 0.20, y + 0.12, img_w, img_h)
+                txt_x = x + 0.20 + img_w + 0.20
+                txt_w = card_w - (0.20 + img_w + 0.30)
+            else:
+                txt_x = x + 0.30
+                txt_w = card_w - 0.60
+            
+            add_textbox(slide, txt_x, y + 0.15, txt_w, card_h - 0.30, btext, size_pt=18, bold=True, color_hex="#0F172A", alignment=PP_ALIGN.LEFT)
+        else:
+            # 1 row layout: Top Image | Bottom Text
+            if img_path and os.path.isfile(img_path):
+                img_h = min(2.1, card_h * 0.62)
+                img_w = card_w - 0.4
+                add_picture_safe(slide, img_path, x + 0.2, y + 0.15, img_w, img_h)
+                txt_y = y + img_h + 0.18
+                txt_h = card_h - img_h - 0.25
+            else:
+                txt_y = y + 0.3
+                txt_h = card_h - 0.6
+            add_textbox(slide, x + 0.2, txt_y, card_w - 0.4, txt_h, btext, size_pt=18, bold=True, color_hex="#0F172A", alignment=PP_ALIGN.CENTER)
 
     add_slide_transition(slide, "wipe")
     return slide
@@ -823,9 +842,9 @@ def build_learn_row(prs, data, pal, lesson, layout, learn_idx=0):
 
     row_top = title_y + 0.75
     n = len(bullets)
-    gap = 0.15
+    gap = 0.18
     avail_h = SAFE_BOTTOM - row_top - 0.1
-    row_h = min(1.4, (avail_h - gap*(n-1)) / max(n, 1))
+    row_h = min(1.25, (avail_h - gap*(n-1)) / max(n, 1))
 
     for i, btext in enumerate(bullets[:4]):
         y = row_top + i * (row_h + gap)
@@ -833,22 +852,25 @@ def build_learn_row(prs, data, pal, lesson, layout, learn_idx=0):
         if y + row_h > SAFE_BOTTOM + 0.05:
             break
 
-        img = find_image(lesson, "learn", learn_idx*3 + i)
+        img_name = f"learn{learn_idx+1}_card{i+1}.png"
+        img_path = os.path.join(KHBD_BASE, lesson["folder"], "Tuần_04", "images", img_name)
+        if not os.path.isfile(img_path):
+            img_path = find_image(lesson, "learn", learn_idx*4 + i)
 
-        img_w = 2.0
+        img_w = 2.4
         img_x = 0.5
-        txt_x = img_x + img_w + 0.2
+        txt_x = img_x + img_w + 0.25
         txt_w = SLIDE_W - txt_x - 0.5
 
-        if img:
-            add_picture_safe(slide, img, img_x, y, img_w, row_h)
+        if img_path and os.path.isfile(img_path):
+            add_picture_safe(slide, img_path, img_x, y, img_w, row_h)
         else:
             txt_x = 0.5
             txt_w = SLIDE_W - 1.0
 
-        card = add_safe_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, txt_x, y, txt_w, row_h, pal["card"], border_hex="D0D5DD")
-        add_safe_shape(slide, MSO_SHAPE.RECTANGLE, txt_x, y, 0.08, row_h, pal["accent"])
-        add_textbox(slide, txt_x + 0.25, y + 0.15, txt_w - 0.4, row_h - 0.3, btext, size_pt=18, bold=False, color_hex=pal["text_on_card"])
+        card = add_safe_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, txt_x, y, txt_w, row_h, "#FFFFFF", border_hex=pal["accent"])
+        add_safe_shape(slide, MSO_SHAPE.RECTANGLE, txt_x, y, 0.10, row_h, pal["accent"])
+        add_textbox(slide, txt_x + 0.25, y + 0.15, txt_w - 0.4, row_h - 0.3, btext, size_pt=18, bold=True, color_hex="#0F172A")
 
     add_slide_transition(slide, "wipe")
     return slide
