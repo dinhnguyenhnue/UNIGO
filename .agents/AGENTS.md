@@ -209,10 +209,16 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
 
 ## VII. Quy định Tạo Slide Bài giảng (.pptx) chuẩn UNIGO
 
-0. **Phạm vi môn học bắt buộc:**
+0. **Phạm vi môn học & Quy tắc tạo hình ảnh chuẩn:**
    - **CHỈ TẠO SLIDE BÀI GIẢNG CHO MÔN TIN HỌC.**
    - **TUYỆT ĐỐI KHÔNG TẠO SLIDE CHO MÔN ROBOTICS** vì môn Robotics đã có sẵn hệ thống slide/giáo trình riêng.
-   - Hình ảnh phải lấy từ SGK trích xuất hoặc ảnh đồ họa giáo dục thực tế, không bịa ảnh sai chủ đề.
+   - **QUY TẮC KHỚP NỘI DUNG HÌNH ẢNH (SEMANTIC ALIGNMENT):**
+     * **Slide Quy trình / Các bước thao tác:** Hình ảnh PHẢI là sơ đồ các bước trực quan có mũi tên chỉ đường tuần tự (Bước 1 $\rightarrow$ Bước 2 $\rightarrow$ Bước 3 $\rightarrow$ Bước 4).
+     * **Slide Ví dụ thực tế:** Hình ảnh PHẢI nêu đúng đặc điểm của ví dụ đó (ví dụ cây thư mục học tập `HOC_TAP` có `TOAN`, `TIENG_VIET`, `TIN_HOC` thì ảnh phải thể hiện chính xác các tên thư mục này).
+     * **KHÔNG dùng 1 ảnh chung chung lặp lại cho nhiều slide khác nhau.** Mỗi slide nội dung phải có hình ảnh tương thích 100% với nội dung của slide đó.
+   - **CHỮ VIẾT TRONG ẢNH PHẢI LÀ TIẾNG VIỆT (HOẶC SONG NGỮ CHUẨN):**
+     * Mọi văn bản, nhãn, tên thư mục, chú thích bên trong hình ảnh tạo ra BẮT BUỘC PHẢI LÀ TIẾNG VIỆT (ví dụ: `Ổ đĩa C:`, `Thư mục mẹ`, `Thư mục con`, `Tạo thư mục mới`, `Đổi tên`, `Sao chép`, `Xóa`).
+     * TUYỆT ĐỐI KHÔNG để chữ tiếng Anh ngẫu nhiên không đúng ngữ cảnh như "KNOWLEDGE TREE", "ESSAYS", "PROJECTS".
    - Mỗi bài học BẮT BUỘC có phần **Chốt kiến thức / Ghi nhớ** bám sát SGK và KHBD.
 
 10. **Quy chuẩn Bố cục Visual-First & Hero Image (20 Dạng Bố Cục Chuẩn):**

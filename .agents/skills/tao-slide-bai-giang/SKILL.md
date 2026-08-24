@@ -23,11 +23,18 @@ description: >
 
 ### Nguyên tắc vàng:
 1. **Visual-first & Tự do sáng tạo**: Ưu tiên hình ảnh minh họa 3D/Cartoon sống động (dùng `generate_image`), sơ đồ trực quan, bố cục infographic hiện đại (như Canva/Figma). TUYỆT ĐỐI KHÔNG cắt dán thô các trang sách scan gây khô khan, nhàm chán.
-2. **Linh hoạt & Đặc trưng từng bài**: Mỗi bài học có phong cách bố cục, màu sắc và hình ảnh tương ứng với chủ đề (không rập khuôn máy móc). Tự do sáng tạo thẻ bài tập, sơ đồ tư duy, bảng đối sánh sinh động dựa trên mục tiêu KHBD.
-3. **Ngôn ngữ hướng tới HS**: Dùng "Em hãy...", "Bước 1: ...", "Quan sát hình...", "Bạn nào biết...?" — KHÔNG dùng ngôn ngữ giáo viên như "HS nhận biết được...", "Mục tiêu: ...", "Năng lực cần đạt: ...".
-4. **Tương tác**: Mỗi slide phải có yếu tố kích thích HS suy nghĩ hoặc hành động (câu hỏi, bài tập, thử thách, mascot đố vui).
-5. **Phù hợp lứa tuổi**: Tiền TH/Lớp 1-2 dùng ngôn ngữ cực kỳ đơn giản + hình cartoon 3D dễ thương. Lớp 3-5 hình minh họa tươi sáng, sinh động. Lớp 6-8 infographic công nghệ hiện đại, chuyên nghiệp.
-6. **Chốt kiến thức chuẩn mực**: Mỗi bài học phải có slide Tổng kết / Chốt kiến thức đọng lại các ý cốt lõi từ SGK (Hộp Kết Luận Cam nổi bật).
+2. **Khớp nội dung chính xác từng slide (Semantic Alignment)**:
+   - **Slide Quy trình / Các bước thao tác:** Hình ảnh PHẢI là sơ đồ các bước trực quan có mũi tên chỉ đường tuần tự (Bước 1 $\rightarrow$ Bước 2 $\rightarrow$ Bước 3 $\rightarrow$ Bước 4).
+   - **Slide Ví dụ thực tế:** Hình ảnh PHẢI nêu đúng đặc điểm của ví dụ đó (ví dụ cây thư mục học tập `HOC_TAP` có `TOAN`, `TIENG_VIET`, `TIN_HOC` thì ảnh phải thể hiện chính xác các tên thư mục này).
+   - **TUYỆT ĐỐI KHÔNG dùng 1 ảnh chung chung lặp lại cho nhiều slide khác nhau.** Mỗi slide nội dung phải có hình ảnh tương thích 100% với nội dung của slide đó.
+3. **Chữ viết trong ảnh BẮT BUỘC PHẢI LÀ TIẾNG VIỆT**:
+   - Mọi văn bản, nhãn, tên thư mục, chú thích bên trong hình ảnh tạo ra PHẢI LÀ TIẾNG VIỆT (ví dụ: `Ổ đĩa C:`, `Thư mục mẹ`, `Thư mục con`, `Tạo thư mục mới`, `Đổi tên`, `Sao chép`, `Xóa`).
+   - TUYỆT ĐỐI KHÔNG để chữ tiếng Anh ngẫu nhiên không đúng ngữ cảnh như "KNOWLEDGE TREE", "ESSAYS", "PROJECTS".
+4. **Linh hoạt & Đặc trưng từng bài**: Mỗi bài học có phong cách bố cục, màu sắc và hình ảnh tương ứng với chủ đề (không rập khuôn máy móc). Tự do sáng tạo thẻ bài tập, sơ đồ tư duy, bảng đối sánh sinh động dựa trên mục tiêu KHBD.
+5. **Ngôn ngữ hướng tới HS**: Dùng "Em hãy...", "Bước 1: ...", "Quan sát hình...", "Bạn nào biết...?" — KHÔNG dùng ngôn ngữ giáo viên như "HS nhận biết được...", "Mục tiêu: ...", "Năng lực cần đạt: ...".
+6. **Tương tác**: Mỗi slide phải có yếu tố kích thích HS suy nghĩ hoặc hành động (câu hỏi, bài tập, thử thách, mascot đố vui).
+7. **Phù hợp lứa tuổi**: Tiền TH/Lớp 1-2 dùng ngôn ngữ cực kỳ đơn giản + hình cartoon 3D dễ thương. Lớp 3-5 hình minh họa tươi sáng, sinh động. Lớp 6-8 infographic công nghệ hiện đại, chuyên nghiệp.
+8. **Chốt kiến thức chuẩn mực**: Mỗi bài học phải có slide Tổng kết / Chốt kiến thức đọng lại các ý cốt lõi từ SGK (Hộp Kết Luận Cam nổi bật).
 
 ### ❌ SAI (Slide kiểu mô tả giáo án):
 ```
