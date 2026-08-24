@@ -22,11 +22,12 @@ description: >
 > Đây KHÔNG phải bản mô tả lại Kế hoạch bài dạy cho giáo viên.
 
 ### Nguyên tắc vàng:
-1. **Visual-first**: Ưu tiên hình ảnh, sơ đồ, minh họa trực quan. Chữ trên slide phải ngắn gọn, dễ hiểu.
-2. **Ngôn ngữ hướng tới HS**: Dùng "Em hãy...", "Bước 1: ...", "Quan sát hình...", "Bạn nào biết...?" — KHÔNG dùng ngôn ngữ giáo viên như "HS nhận biết được...", "Mục tiêu: ...", "Năng lực cần đạt: ...".
-3. **Tương tác**: Mỗi slide phải có yếu tố kích thích HS suy nghĩ hoặc hành động (câu hỏi, bài tập, thử thách).
-4. **Phù hợp lứa tuổi**: Tiền TH/Lớp 1-2 dùng ngôn ngữ cực kỳ đơn giản + nhiều hình. Lớp 3-5 tăng dần. Lớp 6-8 có thể dùng thuật ngữ chuyên môn kèm giải thích.
-5. **Chốt kiến thức chuẩn mực**: Mỗi bài học phải có slide Tổng kết / Chốt kiến thức đọng lại các ý cốt lõi từ SGK.
+1. **Visual-first & Tự do sáng tạo**: Ưu tiên hình ảnh minh họa 3D/Cartoon sống động (dùng `generate_image`), sơ đồ trực quan, bố cục infographic hiện đại (như Canva/Figma). TUYỆT ĐỐI KHÔNG cắt dán thô các trang sách scan gây khô khan, nhàm chán.
+2. **Linh hoạt & Đặc trưng từng bài**: Mỗi bài học có phong cách bố cục, màu sắc và hình ảnh tương ứng với chủ đề (không rập khuôn máy móc). Tự do sáng tạo thẻ bài tập, sơ đồ tư duy, bảng đối sánh sinh động dựa trên mục tiêu KHBD.
+3. **Ngôn ngữ hướng tới HS**: Dùng "Em hãy...", "Bước 1: ...", "Quan sát hình...", "Bạn nào biết...?" — KHÔNG dùng ngôn ngữ giáo viên như "HS nhận biết được...", "Mục tiêu: ...", "Năng lực cần đạt: ...".
+4. **Tương tác**: Mỗi slide phải có yếu tố kích thích HS suy nghĩ hoặc hành động (câu hỏi, bài tập, thử thách, mascot đố vui).
+5. **Phù hợp lứa tuổi**: Tiền TH/Lớp 1-2 dùng ngôn ngữ cực kỳ đơn giản + hình cartoon 3D dễ thương. Lớp 3-5 hình minh họa tươi sáng, sinh động. Lớp 6-8 infographic công nghệ hiện đại, chuyên nghiệp.
+6. **Chốt kiến thức chuẩn mực**: Mỗi bài học phải có slide Tổng kết / Chốt kiến thức đọng lại các ý cốt lõi từ SGK (Hộp Kết Luận Cam nổi bật).
 
 ### ❌ SAI (Slide kiểu mô tả giáo án):
 ```
