@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Hệ thống Tạo Slide Bài Giảng Chuẩn UNIGO - Tin học Lớp 5 & Lớp 7 (Tuần 04)
-Đạt chuẩn 100% về Khớp nối Ngữ nghĩa (Semantic Alignment) & Chữ viết Tiếng Việt trong ảnh:
-- Mỗi slide có hình ảnh minh họa khớp 100% với nội dung giảng dạy.
-- Slide Quy trình có sơ đồ các bước và mũi tên chỉ đường.
-- Slide Ví dụ thể hiện chính xác các đối tượng của ví dụ.
-- Toàn bộ văn bản trong sơ đồ / ảnh là TIẾNG VIỆT chuẩn mực.
+Hệ thống Tạo Slide Bài Giảng Nghệ Thuật Cao Cấp - Tin học Lớp 5 & Lớp 7 (Tuần 04)
+Đạt chuẩn 100% UNIGO:
+- Sử dụng Hình ảnh AI 3D/Cartoon sinh động, mô tả trực quan chính xác từng nội dung/quy trình.
+- Slide Quy trình có tranh minh họa các bước nối tiếp có mũi tên chỉ đường sinh động.
+- Slide Ví dụ có tranh minh họa đúng tên thư mục, biểu tượng của ví dụ.
+- Tuân thủ Vùng An Toàn (Y: 1.15in -> 6.35in), bảo tồn Logo & Chân trang UNIGO.
 """
 import sys, os
 sys.stdout.reconfigure(encoding='utf-8')
@@ -173,7 +173,7 @@ def build_full_hero_slide(prs, data, pal, layout):
     add_textbox(slide, SAFE_LEFT + 0.35, 5.25, 11.6, 0.85, data["question"], size_pt=15, bold=True, color_hex=pal["text_on_card"])
 
 def build_process_diagram_slide(prs, data, pal, layout):
-    """Layout Sơ đồ quy trình chuyên dụng: Cột trái (Badges) | Cột phải (Sơ đồ các bước có mũi tên chỉ đường Tiếng Việt)"""
+    """Layout Sơ đồ quy trình: Cột trái (Badges) | Cột phải (Hình AI 3D trực quan các bước có mũi tên)"""
     slide = prs.slides.add_slide(layout)
     add_slide_transition(slide, "fade")
     add_safe_shape(slide, MSO_SHAPE.RECTANGLE, 0, SAFE_TOP, SLIDE_W, SAFE_BOTTOM - SAFE_TOP, pal["bg"], send_to_back=True)
@@ -194,7 +194,7 @@ def build_process_diagram_slide(prs, data, pal, layout):
         add_textbox(slide, SAFE_LEFT + 0.25, cur_top + 0.08, 4.2, card_h - 0.15, b, size_pt=14, bold=True, color_hex="FFFFFF", alignment=PP_ALIGN.LEFT)
         cur_top += (card_h + 0.12)
         
-    # Right column: Dedicated Process Diagram Image (7.3in width)
+    # Right column: 3D AI Process Flow Image (7.3in width)
     img_path = data.get("img")
     if img_path and os.path.exists(img_path):
         add_safe_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, SAFE_LEFT + 5.1, 1.8, 7.3, 4.35, "FFFFFF", border_hex="CBD5E1")
@@ -292,7 +292,7 @@ def build_thanks(prs, data, pal, layout):
     add_textbox(slide, 2.2, 3.1, 8.93, 1.2, data["content"], size_pt=17, bold=False, color_hex=pal["text_on_card"], alignment=PP_ALIGN.CENTER)
     add_textbox(slide, 2.2, 4.5, 8.93, 0.6, "Hẹn gặp lại các em ở bài học tuần sau! 🚀", size_pt=16, bold=True, color_hex=pal["accent"], alignment=PP_ALIGN.CENTER)
 
-# ─── MASTER DECK CONFIGURATIONS (VỚI ẢNH KHỚP NỘI DUNG 100%) ───
+# ─── MASTER DECK CONFIGURATIONS (VỚI ẢNH 3D MINH HỌA NỘI DUNG 100%) ───
 
 DECKS_MASTER = [
     # ── 1. LỚP 5 - TIẾT 3 (BÀI 3) ──
@@ -320,14 +320,14 @@ DECKS_MASTER = [
                 "img": os.path.join(IMG5_DIR, "ai_lop5_bai3_search.jpg")
             }),
             ("process_diagram", {
-                "title": "Sơ đồ 4 bước tìm kiếm thông tin chính xác",
+                "title": "Quy trình 4 bước tìm kiếm thông tin chính xác",
                 "badges": [
                     "Bước 1: Xác định thông tin",
                     "Bước 2: Chọn từ khóa \" \"",
                     "Bước 3: Chọn nguồn uy tín",
                     "Bước 4: Tổng hợp & áp dụng"
                 ],
-                "img": os.path.join(IMG5_DIR, "lop5_bai3_quy_trinh_tim_kiem_4buoc.png")
+                "img": os.path.join(IMG5_DIR, "ai_lop5_bai3_search_flow.jpg")
             }),
             ("conclusion_orange", {
                 "question": "Thu thập và tìm kiếm thông tin giúp ích gì cho em?",
@@ -381,12 +381,12 @@ DECKS_MASTER = [
                     "3. Sao chép / Cắt & Dán",
                     "4. Xóa thư mục rác (Delete)"
                 ],
-                "img": os.path.join(IMG5_DIR, "lop5_bai4_4_operations_flow.png")
+                "img": os.path.join(IMG5_DIR, "ai_lop5_bai4_4steps_flow.jpg")
             }),
             ("hero_example", {
                 "title": "Thực hành xây dựng Cây thư mục học tập",
                 "text": "• Tạo thư mục mẹ HOC_TAP trên ổ đĩa D:\n• Tạo 3 thư mục con: TOAN, TIENG_VIET, TIN_HOC\n• Lưu bài tập vào đúng thư mục tương ứng\n• Cấu trúc chuẩn Tiếng Việt rõ ràng, ngăn nắp!",
-                "img": os.path.join(IMG5_DIR, "lop5_bai4_cay_thuc_hanh_hoctap.png")
+                "img": os.path.join(IMG5_DIR, "ai_lop5_bai4_hoctap_folders.jpg")
             }),
             ("conclusion_orange", {
                 "question": "Tổ chức tệp tin theo Cây thư mục mang lại lợi ích gì?",
@@ -394,7 +394,7 @@ DECKS_MASTER = [
                     "👉 Sắp xếp dữ liệu ngăn nắp, khoa học theo từng phân cấp.",
                     "👉 Tìm kiếm bài tập nhanh chóng, không bị thất lạc hay xóa nhầm."
                 ],
-                "img": os.path.join(IMG5_DIR, "lop5_bai4_cay_thuc_hanh_hoctap.png"),
+                "img": os.path.join(IMG5_DIR, "ai_lop5_bai4_hoctap_folders.jpg"),
                 "conclusion": "Cây thư mục là phương pháp quản lý dữ liệu hình cây phân cấp chuẩn mực giúp máy tính của em luôn ngăn nắp và khoa học!"
             }),
             ("quiz_mascot", {
@@ -426,14 +426,14 @@ DECKS_MASTER = [
                 "question": "👉 An đi biển Nha Trang (nắng nóng), Khoa đi Đà Lạt (se lạnh), Minh đi Úc (mùa đông tuyết).\nVì sao mỗi bạn phải chuẩn bị hành lý hoàn toàn khác nhau?"
             }),
             ("process_diagram", {
-                "title": "Sơ đồ 4 bước tìm kiếm thông tin chính xác",
+                "title": "Quy trình 4 bước tìm kiếm thông tin chính xác",
                 "badges": [
                     "Bước 1: Xác định thông tin",
                     "Bước 2: Chọn từ khóa \" \"",
                     "Bước 3: Chọn nguồn uy tín",
                     "Bước 4: Tổng hợp & áp dụng"
                 ],
-                "img": os.path.join(IMG5_DIR, "lop5_bai3_quy_trinh_tim_kiem_4buoc.png")
+                "img": os.path.join(IMG5_DIR, "ai_lop5_bai3_search_flow.jpg")
             }),
             ("section_banner", {"title": "TIẾT 4: BÀI 4. CÂY THƯ MỤC TRONG MÁY TÍNH", "desc": "Tổ chức lưu trữ dữ liệu khoa học theo cấu trúc hình cây phân cấp"}),
             ("process_diagram", {
@@ -444,12 +444,12 @@ DECKS_MASTER = [
                     "3. Sao chép / Cắt & Dán",
                     "4. Xóa thư mục rác (Delete)"
                 ],
-                "img": os.path.join(IMG5_DIR, "lop5_bai4_4_operations_flow.png")
+                "img": os.path.join(IMG5_DIR, "ai_lop5_bai4_4steps_flow.jpg")
             }),
             ("hero_example", {
                 "title": "Thực hành xây dựng Cây thư mục học tập",
                 "text": "• Tạo thư mục mẹ HOC_TAP trên ổ đĩa D:\n• Tạo 3 thư mục con: TOAN, TIENG_VIET, TIN_HOC\n• Lưu bài tập vào đúng thư mục tương ứng\n• Cấu trúc chuẩn Tiếng Việt rõ ràng, ngăn nắp!",
-                "img": os.path.join(IMG5_DIR, "lop5_bai4_cay_thuc_hanh_hoctap.png")
+                "img": os.path.join(IMG5_DIR, "ai_lop5_bai4_hoctap_folders.jpg")
             }),
             ("conclusion_orange", {
                 "question": "Tổng kết kiến thức trọng tâm Tuần 04 (Lớp 5)",
@@ -457,7 +457,7 @@ DECKS_MASTER = [
                     "👉 Tiết 3: Thu thập và tìm kiếm thông tin chính xác bằng từ khóa \" \".",
                     "👉 Tiết 4: Sắp xếp dữ liệu ngăn nắp theo cấu trúc Cây thư mục."
                 ],
-                "img": os.path.join(IMG5_DIR, "lop5_bai4_cay_thuc_hanh_hoctap.png"),
+                "img": os.path.join(IMG5_DIR, "ai_lop5_bai4_hoctap_folders.jpg"),
                 "conclusion": "Làm chủ kỹ năng tìm kiếm và tổ chức dữ liệu giúp em trở thành người sử dụng máy tính thông minh và hiệu quả!"
             }),
             ("quiz_mascot", {
@@ -496,7 +496,7 @@ DECKS_MASTER = [
                 ]
             }),
             ("process_diagram", {
-                "title": "Bảng phím tắt thao tác nhanh trên tệp & thư mục",
+                "title": "Bộ phím tắt thao tác nhanh trên tệp & thư mục",
                 "badges": [
                     "F2: Đổi tên (Rename)",
                     "Ctrl+Shift+N: Tạo mới",
@@ -504,7 +504,7 @@ DECKS_MASTER = [
                     "Ctrl+V: Dán tệp (Paste)",
                     "Delete: Xóa vào Thùng rác"
                 ],
-                "img": os.path.join(IMG7_DIR, "lop7_bai3_phim_tat_thao_tac.png")
+                "img": os.path.join(IMG7_DIR, "ai_lop7_bai3_shortcuts.jpg")
             }),
             ("hero_example", {
                 "title": "Chiến lược Sao lưu dữ liệu & Phòng chống Virus",
@@ -572,7 +572,7 @@ DECKS_MASTER = [
                     "4. Ứng xử văn minh",
                     "5. Báo cáo nguy hiểm"
                 ],
-                "img": os.path.join(IMG7_DIR, "lop7_bai4_quy_tac_5k_an_toan_so.png")
+                "img": os.path.join(IMG7_DIR, "ai_lop7_bai4_5k_safety.jpg")
             }),
             ("conclusion_orange", {
                 "question": "Em cần làm gì để sử dụng Mạng xã hội an toàn và văn minh?",
@@ -580,7 +580,7 @@ DECKS_MASTER = [
                     "👉 Bảo vệ danh tính số: Đặt mật khẩu mạnh, bảo mật 2 lớp.",
                     "👉 Sử dụng điều độ, ứng xử văn minh và luôn tôn trọng pháp luật."
                 ],
-                "img": os.path.join(IMG7_DIR, "lop7_bai4_quy_tac_5k_an_toan_so.png"),
+                "img": os.path.join(IMG7_DIR, "ai_lop7_bai4_5k_safety.jpg"),
                 "conclusion": "Mạng xã hội là công cụ kết nối tuyệt vời. Hãy là người dùng thông thái, văn minh và luôn biết bảo vệ bản thân trên không gian mạng!"
             }),
             ("quiz_mascot", {
@@ -612,7 +612,7 @@ DECKS_MASTER = [
                 "question": "👉 Nhận diện phần mở rộng (.docx, .xlsx, .pptx, .jpg, .mp4) & Sao lưu dự phòng an toàn!"
             }),
             ("process_diagram", {
-                "title": "Bảng phím tắt thao tác nhanh trên tệp & thư mục",
+                "title": "Bộ phím tắt thao tác nhanh trên tệp & thư mục",
                 "badges": [
                     "F2: Đổi tên (Rename)",
                     "Ctrl+Shift+N: Tạo mới",
@@ -620,7 +620,7 @@ DECKS_MASTER = [
                     "Ctrl+V: Dán tệp (Paste)",
                     "Delete: Xóa vào Thùng rác"
                 ],
-                "img": os.path.join(IMG7_DIR, "lop7_bai3_phim_tat_thao_tac.png")
+                "img": os.path.join(IMG7_DIR, "ai_lop7_bai3_shortcuts.jpg")
             }),
             ("section_banner", {"title": "TIẾT 4: BÀI 4. MẠNG XÃ HỘI & KÊNH TRAO ĐỔI THÔNG TIN", "desc": "Hiểu rõ 2 mặt của Mạng xã hội, kỹ năng giao tiếp văn minh và bảo mật thông tin"}),
             ("process_diagram", {
@@ -632,7 +632,7 @@ DECKS_MASTER = [
                     "4. Ứng xử văn minh",
                     "5. Báo cáo nguy hiểm"
                 ],
-                "img": os.path.join(IMG7_DIR, "lop7_bai4_quy_tac_5k_an_toan_so.png")
+                "img": os.path.join(IMG7_DIR, "ai_lop7_bai4_5k_safety.jpg")
             }),
             ("three_cards", {
                 "title": "Nhận diện 2 mặt của Mạng xã hội",
@@ -648,7 +648,7 @@ DECKS_MASTER = [
                     "👉 Tiết 3: Tổ chức tệp ngăn nắp, sao lưu dữ liệu và diệt virus định kỳ.",
                     "👉 Tiết 4: Khai thác tiện ích mạng xã hội, ứng xử văn minh và bảo vệ danh tính số."
                 ],
-                "img": os.path.join(IMG7_DIR, "lop7_bai4_quy_tac_5k_an_toan_so.png"),
+                "img": os.path.join(IMG7_DIR, "ai_lop7_bai4_5k_safety.jpg"),
                 "conclusion": "Quản lý dữ liệu máy tính khoa học kết hợp với văn hóa ứng xử số văn minh là nền tảng của công dân số thời đại 4.0!"
             }),
             ("quiz_mascot", {
@@ -681,7 +681,7 @@ BUILDERS_MAP = {
 }
 
 def generate_master_decks():
-    print("=== TẠO BỘ SLIDE CHUẨN SEMANTIC & TIẾNG VIỆT 100% ===")
+    print("=== TẠO BỘ SLIDE CAO CẤP VỚI TRANH AI 3D TRỰC QUAN 100% ===")
     for config in DECKS_MASTER:
         prs = Presentation(TEMPLATE)
         while len(prs.slides) > 0:
