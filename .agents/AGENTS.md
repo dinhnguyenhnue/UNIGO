@@ -244,61 +244,32 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
       - *Layout 18 (Câu hỏi sức khỏe + Minh họa cột sống + Lời khuyên đỏ gạch):* Icon suy nghĩ + 4 hình cột sống đối sánh + Khối chữ cảnh báo đỏ gạch.
       - *Layout 19 (Sơ đồ tư thế đúng & 5 Thẻ Arrow Badge màu sắc):* Cột trái (5 Thẻ mũi tên màu: Cam, Xanh, Lá, Vàng, Hồng) + Cột phải (Hình tư thế đúng lớn).
       - *Layout 20 (Giấy nhớ Sticky Note vàng & Các thẻ câu hỏi mũi tên):* Cột trái (Giấy ghi chú Sticky Note màu vàng) + Cột phải (Các thẻ câu hỏi mũi tên).
-   - **Logo UNIGO** = `Picture 7` tại L=0.17in, T=0.15in, W=0.95in, H=0.94in → kết thúc tại **Y=1.09in**
-   - **Chân trang UNIGO** = `Picture 9` tại L=0.00in, T=6.43in, W=13.40in, H=1.23in → bắt đầu từ **Y=6.43in**
-   - **VÙNG AN TOÀN NỘI DUNG:** Y = **1.15in → 6.35in** (chiều cao 5.20in). Slide size: 13.33×7.50 inches.
-   - **TUYỆT ĐỐI CẤM:**
-     - Vẽ shape/rectangle/background có `top < 1.15in` (che logo)
-     - Vẽ shape/rectangle/background có `top + height > 6.35in` (che chân trang)
-     - Dùng `add_shape(RECTANGLE, 0, 0, SLIDE_W, SLIDE_H)` phủ toàn bộ slide
-   - **Kỹ thuật clamp bắt buộc:** `actual_top = max(top, 1.15)`, `actual_bottom = min(top+height, 6.35)`
 
-2. **KHÔNG thêm footer tự tạo:**
-   - Template master ĐÃ CÓ chân trang `Picture 9` (thanh xanh + thông tin trường + SĐT + địa chỉ).
-   - KHÔNG thêm shape footer mới — chân trang tự động hiển thị trên mọi slide nhờ slide master.
+---
 
-3. **Z-Order & Tương phản (QUAN TRỌNG):**
-   - **Background shapes phải `send_to_back`:** Gọi `spTree = sp.getparent(); spTree.remove(sp); spTree.insert(2, sp)` để đẩy xuống dưới cùng (sau `nvGrpSpPr` và `grpSpPr`). TUYỆT ĐỐI KHÔNG gọi `insert(0, sp)` vì sẽ làm hỏng cấu trúc XML làm PowerPoint báo lỗi repair.
-   - **Text luôn ở trên:** Textbox phải được thêm SAU background shape.
-   - **Tương phản cao bắt buộc:**
-     - Chữ trắng (`FFFFFF`) trên nền tối (primary/accent đậm)
-     - Chữ tối (`1A2744`, `2E1065`...) trên nền nhạt (bg/card trắng)
-     - KHÔNG dùng chữ nhạt trên nền nhạt hoặc chữ tối trên nền tối
-   - **Palette bắt buộc có 3 loại text color:** `text_on_primary`, `text_on_bg`, `text_on_card`
+## VIII. Quy trình & Quy chuẩn Pipeline OCR Sách Giáo Khoa (SGK) → DOCX
 
-4. **Quy chuẩn Font chữ & Cỡ chữ:**
-   - Tiêu đề slide chính / Giới thiệu: **24pt - 28pt** (Bold).
-   - Nội dung thường (Bullet text): **18pt - 20pt**.
-   - Ký tự đầu dòng (●): **14pt**, Giãn dòng (Line spacing): **28pt**, Khoảng cách sau đoạn (Space after): **8pt**.
-   - Giới hạn nội dung mỗi slide ngắn gọn (tối đa 3 - 4 dòng bullet).
+1. **Tổng quan hệ thống:**
+   - Hệ thống số hóa tự động chuyển đổi Sách Giáo Khoa (PDF các khối Lớp 3 đến Lớp 8) thành các file tài liệu Word (.docx) được phân tách chính xác theo từng bài học, tích hợp đầy đủ văn bản, định dạng tiêu đề, bảng biểu, hộp ghi nhớ, bài tập và hình ảnh minh họa trích xuất từ PDF gốc kèm phụ lục trang scan.
+   - Phục vụ trực tiếp làm nguồn dữ liệu chuẩn xác cho việc soạn Giáo án (KHBD) và Slide Bài giảng PowerPoint.
 
-5. **Cấu trúc Group Card & Accent Bar:**
-   - **Thanh Accent Bar khít tuyệt đối:** `bar.top = card.top`, `bar.height = card.height`.
-   - **Bắt buộc Grouping:** Card + accent bar nhóm thành một khối (`group_shapes` qua `<p:grpSp>`).
+2. **Kiến trúc Pipeline 4 Giai đoạn (Stage 1 - 4):**
+   - **Stage 1 (Render & Asset Extraction - scripts/sgk_renderer.py):** Dùng PyMuPDF (fitz) chuyển đổi toàn bộ trang PDF thành ảnh PNG 300 DPI (ocr_output/pages/page_XXX.png) và trích xuất toàn bộ hình ảnh minh họa vector/raster (ocr_output/images/).
+   - **Stage 2 (Layout & OCR Analysis - scripts/sgk_analyzer.py):** Dùng **Gemini 2.5 Flash Vision** phân tích bố cục, nhận diện văn bản tiếng Việt có dấu, cấu trúc bài học, các khối hoạt động, hộp ghi nhớ, bài tập và bảng biểu. Kết quả lưu cache theo từng trang dạng JSON (ocr_output/analysis/page_XXX.json).
+   - **Stage 3 (Lesson Boundary Splitting - scripts/sgk_splitter.py):** Thu thập các điểm mốc (marker) bài học từ JSON và quy tắc regex mục lục để tạo file ánh xạ lesson_manifest.json (danh sách từng bài học kèm dải trang tương ứng).
+   - **Stage 4 (DOCX Generation - scripts/sgk_docx_builder.py):** Sử dụng python-docx tạo các file Word chuẩn theo từng bài học (ocr_output/docx/Bai_XX_[Tên_Bài].docx), áp dụng định dạng Times New Roman 13pt, viền bảng XML chuẩn, hộp ghi nhớ viền xanh, và đính kèm Phụ lục ảnh toàn trang SGK gốc.
 
-6. **Slide Tổng kết & Màu sắc:**
-   - Panel màu chỉ nằm gọn trong Vùng An Toàn (Y 1.15in → 6.35in).
-   - KHÔNG gọi `set_slide_bg(primary)` phủ toàn slide.
-   - Áp dụng hệ thống xoay vòng 8+ bộ màu (Color Palette rotation).
+3. **Cơ chế chịu lỗi, xoay vòng Key & Tự động tiếp tục (Resumable):**
+   - **Engine:** Do Windows Application Control Policy chặn load C-extension DLLs của PaddleOCR/pandas/chardet, hệ thống bắt buộc sử dụng **Gemini 2.5 Flash Vision**.
+   - **4-Key Rotation:** Tự động nạp 4 API key từ D:\AI\local-ai-agent\.env và chuyển key lập tức khi gặp lỗi 429 (ResourceExhausted) hoặc 503 (Unavailable), có cơ chế retry tối đa 3 lần cho mỗi trang.
+   - **Smart Caching:** Trang nào đã có file JSON trong ocr_output/analysis/ sẽ tự động được bỏ qua (skip), cho phép dừng và tiếp tục (resume) bất kỳ lúc nào mà không lãng phí token hay thời gian.
 
-7. **Per-Bullet Images (BẮT BUỘC từ v3):**
-   - **Mỗi bullet point trong slide nội dung (`learn`, `warmup`) PHẢI có ảnh minh họa riêng.**
-   - Tạo prompt AI từ chính nội dung text bullet + context phù hợp lứa tuổi.
-   - Layout phân cấp:
-     - **Tiền TH → Lớp 5:** Layout A — Grid Flashcard (ảnh 2in×2in trên + text dưới)
-     - **Lớp 6 → Lớp 8:** Layout B — Horizontal Row (ảnh 2in×1.5in trái + text phải)
-   - Tối đa 3-4 bullets/slide. Nếu > 4 bullets → chia thành 2 slides.
-   - Chuỗi fallback: SGK → AI-generated → Ảnh chung.
-
-8. **Animation tuần tự cho slide Câu hỏi / Ghép nối (BẮT BUỘC từ v3):**
-   - Slide `practice`/`activity` có `items` PHẢI animation từng item theo click.
-   - Mỗi item (card text + ảnh) = 1 nhóm animation. HS suy nghĩ trước khi GV click hiện tiếp.
-   - Slide ghép nối (chứa `↔`/`→`): vế A + ảnh hiện trước → click → vế B hiện.
-   - Ảnh minh họa mỗi item xuất hiện CÙNG LÚC với text (cùng 1 click).
-   - Hàm bắt buộc: `add_appear_animation(slide, shape, click_index)`, `add_group_animation(slide, shapes_list, click_index)`.
-
-9. **Slide Trò chơi BẮT BUỘC có ảnh minh họa (từ v3):**
-   - MỌI slide trò chơi / hoạt động (`activity`) PHẢI có ảnh minh họa đủ lớn (~2in×2in) để HS nhìn rõ.
-   - Bảng loại trò chơi: Đúng/Sai, Ghép nối, Sắp xếp, Vẽ, Thảo luận, Nhận diện → mỗi loại có prompt AI mẫu riêng.
-   - Layout: Phần trên (40%) = tiêu đề + hướng dẫn; Phần dưới (60%) = grid ảnh + card tương tác.
-   - Animation tuần tự: ảnh + card item hiện lần lượt theo click.
+4. **Lệnh thực thi chuẩn:**
+   - **Chạy toàn bộ một lớp:** python scripts/sgk_pipeline.py --grade [3|4|5|6|7|8]
+   - **Chạy theo dải trang:** python scripts/sgk_pipeline.py --grade 3 --pages 5-30
+   - **Chạy tự động batch nhiều lớp nối tiếp:** python scripts/sgk_batch_analyze.py --grades 3 4 5 6 7 8
+   - **Chạy từng giai đoạn riêng biệt:**
+     * python scripts/sgk_pipeline.py --grade [X] --stage render
+     * python scripts/sgk_pipeline.py --grade [X] --stage analyze
+     * python scripts/sgk_pipeline.py --grade [X] --stage split
+     * python scripts/sgk_pipeline.py --grade [X] --stage build-docx
