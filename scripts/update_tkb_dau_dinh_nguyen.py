@@ -13,7 +13,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 DIR_WORD = r'D:\UNIGO\Thời khóa biểu giáo viên'
 DIR_MAU = r'D:\UNIGO\Hệ thống mẫu văn bản\Nguyên đã làm\Thời khóa biểu'
-TKB_EXCEL_SOURCE = r'D:\UNIGO\TKB toàn trường lần 4 - 12.8.xlsx'
+TKB_EXCEL_SOURCE = r'D:\UNIGO\TKB toàn trường lần 5 - 22.8.2026.xlsx'
 
 os.makedirs(DIR_WORD, exist_ok=True)
 os.makedirs(DIR_MAU, exist_ok=True)
@@ -521,21 +521,19 @@ def create_excel_tkb(data, save_path):
 
 
 def main():
-    print("Đọc dữ liệu Đậu Đình Nguyên từ TKB toàn trường lần 4...")
+    print("Đọc dữ liệu Đậu Đình Nguyên từ TKB toàn trường lần 5...")
     data = get_nguyen_data()
     print(f"  → {len(data['slots'])} tiết dạy / tuần")
 
     word1 = os.path.join(DIR_WORD, "Thời khóa biểu - Đậu Đình Nguyên.docx")
     word2 = os.path.join(DIR_MAU,  "Thời khóa biểu - Đậu Đình Nguyên.docx")
     excel1 = os.path.join(DIR_WORD, "Thời khóa biểu - Đậu Đình Nguyên.xlsx")
-    excel2 = os.path.join(DIR_WORD, "Thời khóa biểu - Đậu Đình Nguyên (NEW).xlsx")
     excel3 = os.path.join(DIR_MAU,  "Thời khóa biểu - Đậu Đình Nguyên.xlsx")
 
     create_docx_tkb(data, [word1, word2])
     create_excel_tkb(data, excel1)
-    create_excel_tkb(data, excel2)
     create_excel_tkb(data, excel3)
-    print("XONG! Thời khóa biểu Đậu Đình Nguyên đã được cập nhật chính xác theo TKB toàn trường Lần 4!")
+    print("XONG! Thời khóa biểu Đậu Đình Nguyên đã được cập nhật chính xác theo TKB toàn trường Lần 5!")
 
 if __name__ == '__main__':
     main()

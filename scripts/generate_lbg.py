@@ -16,15 +16,15 @@ QUY TAC PPCT (Khong offset):
       Tuan 3 (Le - Robotics): PPCT 1, 2; Tuan 5: PPCT 3, 4...
 
 MASTER SCHEDULE (Tu 'Thoi khoa bieu - Dau Dinh Nguyen.xlsx'):
-  SANG (13 tiet):
+  SANG (14 tiet):
     - Thu Hai: T3 Rob 4C1, T4 Tin 1A1
     - Thu Ba: T1 Tin 1C1, T3-T4 Tin-Rob 5C1
     - Thu Tu: T2 Rob 3A1, T4 Tin 3C1
     - Thu Nam: T1 Tin TT3, T2 Rob 1A1, T4 Rob 2C1
-    - Thu Sau: T1 Rob 3C1, T4-T5 Tin-Rob 6A1
-  CHIEU (12 tiet):
+    - Thu Sau: T1 Tin 2A1, T2 Rob 3C1, T4-T5 Tin-Rob 6A1
+  CHIEU (11 tiet):
     - Thu Hai: T3 Tin 2C1
-    - Thu Ba: T1 Tin 2A1, T3-T4 Tin-Rob 7A1
+    - Thu Ba: T3-T4 Tin-Rob 7A1
     - Thu Tu: T3 Tin 4C1, T4 Rob 2A1
     - Thu Nam: T1 Tin 3A1, T2 Tin TTH 1, T3 Tin TTH2, T4 Rob 1C1
     - Thu Sau: T1-T2 Tin-Rob 8A1
@@ -35,6 +35,7 @@ import os
 import re
 from docx import Document
 from docx.shared import Pt
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from datetime import date, timedelta
@@ -42,7 +43,9 @@ from datetime import date, timedelta
 sys.stdout.reconfigure(encoding='utf-8')
 
 LBG_DIR = r'D:\UNIGO\Hệ thống mẫu văn bản\Nguyên đã làm\Lịch báo giảng'
-TEMPLATE = os.path.join(LBG_DIR, 'Lịch báo giảng - Tuần 01.docx')
+TEMPLATE = os.path.join(LBG_DIR, 'template_lbg_goc.docx')
+if not os.path.exists(TEMPLATE):
+    TEMPLATE = os.path.join(LBG_DIR, 'Lịch báo giảng - Tuần 01.docx')
 TUAN_01_START = date(2026, 8, 3)
 
 ROTATION_PREFIXES = ('5', '6', '7', '8')
@@ -65,34 +68,34 @@ PPCT_TIN = {
         5: 'Kéo – thả thật vui',
         6: 'Khám phá bàn phím',
         7: 'Chữ, hình và âm thanh',
-        8: 'Màu sắc và hình dạng',
-        9: 'Em tạo bức tranh đầu tiên',
-        10: 'Ôn tập kỹ năng số',
-        11: 'ĐÁNH GIÁ ĐỊNH KỲ 1',
+        8: 'Ôn tập Đánh giá định kỳ 1',
+        9: 'Đánh giá định kỳ 1',
+        10: 'Màu sắc và hình dạng',
+        11: 'Em tạo bức tranh đầu tiên',
         12: 'Thông tin quanh em',
         13: 'Máy tính làm việc theo lệnh',
         14: 'Một việc – nhiều bước',
         15: 'Chỉ đường cho nhân vật',
         16: 'Mê cung của em',
-        17: 'Sửa lỗi đường đi',
-        18: 'Làm quen lập trình trực quan',
-        19: 'Ôn tập Coding cơ bản',
-        20: 'ĐÁNH GIÁ ĐỊNH KỲ 2',
+        17: 'Ôn tập Đánh giá định kỳ 2',
+        18: 'Đánh giá định kỳ 2',
+        19: 'Sửa lỗi đường đi',
+        20: 'Làm quen lập trình trực quan',
         21: 'Kể chuyện số',
         22: 'Tạo nhân vật',
         23: 'Tạo bối cảnh',
         24: 'Nhân vật chuyển động',
         25: 'Âm thanh và lời kể',
-        26: 'Dự án: Câu chuyện số',
-        27: 'Chia sẻ và làm việc nhóm',
-        28: 'Hoàn thiện sản phẩm',
-        29: 'ĐÁNH GIÁ ĐỊNH KỲ 3',
+        26: 'Ôn tập Đánh giá định kỳ 3',
+        27: 'Đánh giá định kỳ 3',
+        28: 'Dự án: Câu chuyện số',
+        29: 'Chia sẻ và làm việc nhóm',
         30: 'Robot quanh em',
         31: 'Điều khiển robot',
-        32: 'Robot thực hiện nhiệm vụ',
-        33: 'AI quanh em',
-        34: 'Sử dụng công nghệ an toàn',
-        35: 'ĐÁNH GIÁ ĐỊNH KỲ 4',
+        32: 'Ôn tập Đánh giá định kỳ 4',
+        33: 'Đánh giá định kỳ 4',
+        34: 'Tổng kết năm học',
+        35: 'Tổng kết năm học',
     },
     '1': {
         0: 'Tiết 0: Định hướng môn học',
@@ -103,34 +106,34 @@ PPCT_TIN = {
         5: 'Tệp là gì?',
         6: 'Thư mục là gì?',
         7: 'Đặt tên và lưu sản phẩm',
-        8: 'Mở lại và sắp xếp sản phẩm',
-        9: 'Tạo một sản phẩm có tổ chức',
-        10: 'Ôn tập tệp – thư mục',
-        11: 'ĐÁNH GIÁ ĐỊNH KỲ 1',
+        8: 'Ôn tập Đánh giá định kỳ 1',
+        9: 'Đánh giá định kỳ 1',
+        10: 'Mở lại và sắp xếp sản phẩm',
+        11: 'Tạo một sản phẩm có tổ chức',
         12: 'Thông tin và dữ liệu',
         13: 'Thông tin dạng chữ, hình, âm thanh, video',
         14: 'Thu nhận và xử lý thông tin',
         15: 'Một nhiệm vụ thành nhiều bước',
         16: 'Thuật toán bằng lời và hình',
-        17: 'Lập trình trực quan: chuỗi lệnh',
-        18: 'Lặp lại một hành động',
-        19: 'Chạy thử và sửa lỗi',
-        20: 'ĐÁNH GIÁ ĐỊNH KỲ 2',
-        21: 'Thiết kế câu chuyện số',
-        22: 'Thiết kế nhân vật',
-        23: 'Thiết kế bối cảnh',
-        24: 'Animation: chuyển động',
-        25: 'Tương tác và âm thanh',
-        26: 'Dự án: Hoạt hình ngắn',
-        27: 'Thiết kế sản phẩm nhóm',
-        28: 'Kiểm thử và hoàn thiện',
-        29: 'ĐÁNH GIÁ ĐỊNH KỲ 3',
-        30: 'Robot và cảm biến',
-        31: 'Lập trình robot theo nhiệm vụ',
-        32: 'Robot giải quyết vấn đề',
-        33: 'AI có thể làm gì?',
-        34: 'AI có thể sai – dữ liệu cần kiểm tra',
-        35: 'ĐÁNH GIÁ ĐỊNH KỲ 4',
+        17: 'Ôn tập Đánh giá định kỳ 2',
+        18: 'Đánh giá định kỳ 2',
+        19: 'Lập trình trực quan: chuỗi lệnh',
+        20: 'Lặp lại một hành động',
+        21: 'Chạy thử và sửa lỗi',
+        22: 'Thiết kế câu chuyện số',
+        23: 'Thiết kế nhân vật',
+        24: 'Thiết kế bối cảnh',
+        25: 'Animation: chuyển động',
+        26: 'Ôn tập Đánh giá định kỳ 3',
+        27: 'Đánh giá định kỳ 3',
+        28: 'Tương tác và âm thanh',
+        29: 'Dự án: Hoạt hình ngắn',
+        30: 'Thiết kế sản phẩm nhóm',
+        31: 'Kiểm thử và hoàn thiện',
+        32: 'Ôn tập Đánh giá định kỳ 4',
+        33: 'Đánh giá định kỳ 4',
+        34: 'Tổng kết năm học',
+        35: 'Tổng kết năm học',
     },
     '2': {
         0: 'Tiết 0: Định hướng môn học',
@@ -141,192 +144,262 @@ PPCT_TIN = {
         5: 'Tệp là gì?',
         6: 'Thư mục là gì?',
         7: 'Đặt tên và lưu sản phẩm',
-        8: 'Mở lại và sắp xếp sản phẩm',
-        9: 'Tạo một sản phẩm có tổ chức',
-        10: 'Ôn tập tệp – thư mục',
-        11: 'ĐÁNH GIÁ ĐỊNH KỲ 1',
+        8: 'Ôn tập Đánh giá định kỳ 1',
+        9: 'Đánh giá định kỳ 1',
+        10: 'Mở lại và sắp xếp sản phẩm',
+        11: 'Tạo một sản phẩm có tổ chức',
         12: 'Thông tin và dữ liệu',
         13: 'Thông tin dạng chữ, hình, âm thanh, video',
         14: 'Thu nhận và xử lý thông tin',
         15: 'Một nhiệm vụ thành nhiều bước',
         16: 'Thuật toán bằng lời và hình',
-        17: 'Lập trình trực quan: chuỗi lệnh',
-        18: 'Lặp lại một hành động',
-        19: 'Chạy thử và sửa lỗi',
-        20: 'ĐÁNH GIÁ ĐỊNH KỲ 2',
-        21: 'Thiết kế câu chuyện số',
-        22: 'Thiết kế nhân vật',
-        23: 'Thiết kế bối cảnh',
-        24: 'Animation: chuyển động',
-        25: 'Tương tác và âm thanh',
-        26: 'Dự án: Hoạt hình ngắn',
-        27: 'Thiết kế sản phẩm nhóm',
-        28: 'Kiểm thử và hoàn thiện',
-        29: 'ĐÁNH GIÁ ĐỊNH KỲ 3',
-        30: 'Robot và cảm biến',
-        31: 'Lập trình robot theo nhiệm vụ',
-        32: 'Robot giải quyết vấn đề',
-        33: 'AI có thể làm gì?',
-        34: 'AI có thể sai – dữ liệu cần kiểm tra',
-        35: 'ĐÁNH GIÁ ĐỊNH KỲ 4',
+        17: 'Ôn tập Đánh giá định kỳ 2',
+        18: 'Đánh giá định kỳ 2',
+        19: 'Lập trình trực quan: chuỗi lệnh',
+        20: 'Lặp lại một hành động',
+        21: 'Chạy thử và sửa lỗi',
+        22: 'Thiết kế câu chuyện số',
+        23: 'Thiết kế nhân vật',
+        24: 'Thiết kế bối cảnh',
+        25: 'Animation: chuyển động',
+        26: 'Ôn tập Đánh giá định kỳ 3',
+        27: 'Đánh giá định kỳ 3',
+        28: 'Tương tác và âm thanh',
+        29: 'Dự án: Hoạt hình ngắn',
+        30: 'Thiết kế sản phẩm nhóm',
+        31: 'Kiểm thử và hoàn thiện',
+        32: 'Ôn tập Đánh giá định kỳ 4',
+        33: 'Đánh giá định kỳ 4',
+        34: 'Tổng kết năm học',
+        35: 'Tổng kết năm học',
     },
     '3': {
         0: 'Tiết 0: Định hướng môn học',
-        1: 'Bài 1: Thông tin và quyết định',
-        2: 'Bài 2: Xử lí thông tin',
-        3: 'Bài 3: Máy tính và em',
-        4: 'Bài 4: Làm việc với máy tính',
-        5: 'Ôn tập Đánh giá định kỳ 1',
-        6: 'Đánh giá định kỳ 1',
-        7: 'Bài 5: Sử dụng bàn phím',
-        8: 'Bài 6: Khám phá thông tin trên Internet',
-        9: 'Bài 7: Sắp xếp để dễ tìm',
-        10: 'Bài 8: Sơ đồ hình cây. Tổ chức thông tin trong máy tính',
-        11: 'Ôn tập Đánh giá định kỳ 2',
-        12: 'Đánh giá định kỳ 2',
-        13: 'Bài 11: Thực hành với tệp và thư mục trong máy tính',
-        14: 'Bài 12: Bảo vệ thông tin khi dùng máy tính',
-        15: 'Bài 13: Bài trình chiếu của em',
-        16: 'Bài 14: Tìm hiểu về thế giới tự nhiên',
-        17: 'Bài 15: Luyện tập sử dụng chuột',
-        18: 'Ôn tập Đánh giá định kỳ 3',
-        19: 'Đánh giá định kỳ 3',
-        20: 'Bài 16: Em thực hiện công việc như thế nào?',
-        21: 'Ôn tập và luyện tập',
-        22: 'Ôn tập Đánh giá định kỳ 4',
-        23: 'Đánh giá định kỳ 4',
-        24: 'Tổng kết năm học',
+        1: 'Bài 1: Thông tin và quyết định (Tiết 1)',
+        2: 'Bài 1: Thông tin và quyết định (Tiết 2)',
+        3: 'Bài 2: Xử lí thông tin (Tiết 1)',
+        4: 'Bài 2: Xử lí thông tin (Tiết 2)',
+        5: 'Bài 3: Máy tính và em (Tiết 1)',
+        6: 'Bài 3: Máy tính và em (Tiết 2)',
+        7: 'Bài 4: Làm việc với máy tính (Tiết 1)',
+        8: 'Ôn tập Đánh giá định kỳ 1',
+        9: 'Đánh giá định kỳ 1',
+        10: 'Bài 4: Làm việc với máy tính (Tiết 2)',
+        11: 'Bài 5: Sử dụng bàn phím (Tiết 1)',
+        12: 'Bài 5: Sử dụng bàn phím (Tiết 2)',
+        13: 'Bài 6: Khám phá thông tin trên Internet (Tiết 1)',
+        14: 'Bài 6: Khám phá thông tin trên Internet (Tiết 2)',
+        15: 'Bài 7: Sắp xếp để dễ tìm (Tiết 1)',
+        16: 'Bài 7: Sắp xếp để dễ tìm (Tiết 2)',
+        17: 'Ôn tập Đánh giá định kỳ 2',
+        18: 'Đánh giá định kỳ 2',
+        19: 'Bài 8: Sơ đồ hình cây. Tổ chức thông tin trong máy tính (Tiết 1)',
+        20: 'Bài 8: Sơ đồ hình cây. Tổ chức thông tin trong máy tính (Tiết 2)',
+        21: 'Bài 9: Thực hành với tệp và thư mục trong máy tính (Tiết 1)',
+        22: 'Bài 9: Thực hành với tệp và thư mục trong máy tính (Tiết 2)',
+        23: 'Bài 10: Bảo vệ thông tin khi dùng máy tính',
+        24: 'Bài 11: Bài trình chiếu của em (Tiết 1)',
+        25: 'Bài 11: Bài trình chiếu của em (Tiết 2)',
+        26: 'Ôn tập Đánh giá định kỳ 3',
+        27: 'Đánh giá định kỳ 3',
+        28: 'Bài 12: Tìm hiểu về thế giới tự nhiên',
+        29: 'Bài 13: Luyện tập sử dụng chuột',
+        30: 'Bài 14: Em thực hiện công việc như thế nào? (Tiết 1)',
+        31: 'Bài 14: Em thực hiện công việc như thế nào? (Tiết 2)',
+        32: 'Ôn tập Đánh giá định kỳ 4',
+        33: 'Đánh giá định kỳ 4',
+        34: 'Tổng kết năm học',
+        35: 'Tổng kết năm học',
     },
     '4': {
         0: 'Tiết 0: Định hướng môn học',
-        1: 'Bài 1: Phần cứng và phần mềm máy tính',
-        2: 'Bài 2: Gõ bàn phím đúng cách',
-        3: 'Bài 3: Thông tin trên trang Web',
-        4: 'Bài 4: Tìm kiếm thông tin trên Internet',
-        5: 'Ôn tập Đánh giá định kỳ 1',
-        6: 'Đánh giá định kỳ 1',
-        7: 'Bài 5: Cây thư mục',
-        8: 'Bài 6: Sử dụng phần mềm khi được phép',
-        9: 'Bài 7: Tạo bài trình chiếu',
-        10: 'Bài 8: Định dạng văn bản trên trang chiếu',
-        11: 'Bài 9: Hiệu ứng chuyển trang',
-        12: 'Ôn tập Đánh giá định kỳ 2',
-        13: 'Đánh giá định kỳ 2',
-        14: 'Bài 12: Phần mềm soạn thảo văn bản',
-        15: 'Bài 13: Chỉnh sửa văn bản',
-        16: 'Bài 14: Luyện tập gõ bàn phím / Đa phương tiện',
-        17: 'Bài 15: Chơi với máy tính',
-        18: 'Ôn tập Đánh giá định kỳ 3',
-        19: 'Đánh giá định kỳ 3',
-        20: 'Bài 16: Khám phá môi trường lập trình trực quan',
-        21: 'Ôn tập và luyện tập',
-        22: 'Ôn tập Đánh giá định kỳ 4',
-        23: 'Đánh giá định kỳ 4',
-        24: 'Tổng kết năm học',
+        1: 'Bài 1: Phần cứng và phần mềm máy tính (Tiết 1)',
+        2: 'Bài 1: Phần cứng và phần mềm máy tính (Tiết 2)',
+        3: 'Bài 2: Gõ bàn phím đúng cách (Tiết 1)',
+        4: 'Bài 2: Gõ bàn phím đúng cách (Tiết 2)',
+        5: 'Bài 3: Thông tin trên trang Web (Tiết 1)',
+        6: 'Bài 3: Thông tin trên trang Web (Tiết 2)',
+        7: 'Bài 4: Tìm kiếm thông tin trên Internet (Tiết 1)',
+        8: 'Ôn tập Đánh giá định kỳ 1',
+        9: 'Đánh giá định kỳ 1',
+        10: 'Bài 4: Tìm kiếm thông tin trên Internet (Tiết 2)',
+        11: 'Bài 5: Thao tác với tệp và thư mục (Tiết 1)',
+        12: 'Bài 5: Thao tác với tệp và thư mục (Tiết 2)',
+        13: 'Bài 6: Sử dụng phần mềm khi được phép',
+        14: 'Bài 7: Tạo bài trình chiếu (Tiết 1)',
+        15: 'Bài 7: Tạo bài trình chiếu (Tiết 2)',
+        16: 'Bài 8: Định dạng văn bản trên trang chiếu (Tiết 1)',
+        17: 'Ôn tập Đánh giá định kỳ 2',
+        18: 'Đánh giá định kỳ 2',
+        19: 'Bài 8: Định dạng văn bản trên trang chiếu (Tiết 2)',
+        20: 'Bài 9: Hiệu ứng chuyển trang (Tiết 1)',
+        21: 'Bài 9: Hiệu ứng chuyển trang (Tiết 2)',
+        22: 'Bài 10: Phần mềm soạn thảo văn bản (Tiết 1)',
+        23: 'Bài 10: Phần mềm soạn thảo văn bản (Tiết 2)',
+        24: 'Bài 11: Chỉnh sửa văn bản (Tiết 1)',
+        25: 'Bài 11: Chỉnh sửa văn bản (Tiết 2)',
+        26: 'Ôn tập Đánh giá định kỳ 3',
+        27: 'Đánh giá định kỳ 3',
+        28: 'Bài 13: Chơi với máy tính (Tiết 1)',
+        29: 'Bài 13: Chơi với máy tính (Tiết 2)',
+        30: 'Bài 14: Khám phá môi trường lập trình trực quan (Tiết 1)',
+        31: 'Bài 14: Khám phá môi trường lập trình trực quan (Tiết 2)',
+        32: 'Ôn tập Đánh giá định kỳ 4',
+        33: 'Đánh giá định kỳ 4',
+        34: 'Tổng kết năm học',
+        35: 'Tổng kết năm học',
     },
     '5': {
         0: 'Tiết 0: Định hướng môn học',
-        1: 'Bài 1: Em có thể làm gì với máy tính?',
-        2: 'Bài 2: Tìm kiếm thông tin trên website',
-        3: 'Bài 3: Tìm kiếm thông tin trong giải quyết vấn đề',
-        4: 'Bài 4: Cây thư mục',
-        5: 'Ôn tập Đánh giá định kỳ 1',
-        6: 'Đánh giá định kỳ 1',
-        7: 'Bài 5: Bản quyền nội dung thông tin',
-        8: 'Bài 6: Định dạng kí tự và bố trí hình ảnh trong văn bản',
-        9: 'Bài 7: Thực hành soạn thảo văn bản',
-        10: 'Bài 8: Sản phẩm đồ họa / Sản phẩm thủ công',
-        11: 'Ôn tập Đánh giá định kỳ 2',
-        12: 'Đánh giá định kỳ 2',
-        13: 'Bài 11: Thực hành tạo sản phẩm số',
-        14: 'Bài 12: Cấu trúc tuần tự',
-        15: 'Bài 13: Cấu trúc lặp',
-        16: 'Bài 14: Thực hành sử dụng lệnh lặp',
-        17: 'Ôn tập Đánh giá định kỳ 3',
-        18: 'Đánh giá định kỳ 3',
-        19: 'Bài 15: Cấu trúc rẽ nhánh',
-        20: 'Bài 16: Sử dụng biến trong chương trình',
-        21: 'Ôn tập và luyện tập',
-        22: 'Ôn tập Đánh giá định kỳ 4',
-        23: 'Đánh giá định kỳ 4',
-        24: 'Tổng kết năm học',
+        1: 'Bài 1: Em có thể làm gì với máy tính? (Tiết 1)',
+        2: 'Bài 1: Em có thể làm gì với máy tính? (Tiết 2)',
+        3: 'Bài 2: Tìm kiếm thông tin trên website (Tiết 1)',
+        4: 'Bài 2: Tìm kiếm thông tin trên website (Tiết 2)',
+        5: 'Bài 3: Tìm kiếm thông tin trong giải quyết vấn đề (Tiết 1)',
+        6: 'Bài 3: Tìm kiếm thông tin trong giải quyết vấn đề (Tiết 2)',
+        7: 'Bài 4: Cây thư mục (Tiết 1)',
+        8: 'Bài 4: Cây thư mục (Tiết 2)',
+        9: 'Ôn tập Đánh giá định kỳ 1',
+        10: 'Đánh giá định kỳ 1',
+        11: 'Bài 5: Bản quyền nội dung thông tin (Tiết 1)',
+        12: 'Bài 5: Bản quyền nội dung thông tin (Tiết 2)',
+        13: 'Bài 6: Định dạng kí tự và bố trí hình ảnh trong văn bản (Tiết 1)',
+        14: 'Bài 6: Định dạng kí tự và bố trí hình ảnh trong văn bản (Tiết 2)',
+        15: 'Bài 7: Thực hành soạn thảo văn bản (Tiết 1)',
+        16: 'Bài 7: Thực hành soạn thảo văn bản (Tiết 2)',
+        17: 'Bài 8A: Làm quen với phần mềm đồ họa',
+        18: 'Ôn tập Đánh giá định kỳ 2',
+        19: 'Đánh giá định kỳ 2',
+        20: 'Bài 9A: Sử dụng phần mềm đồ hoạ tạo sản phẩm số',
+        21: 'Bài 10: Cấu trúc tuần tự (Tiết 1)',
+        22: 'Bài 10: Cấu trúc tuần tự (Tiết 2)',
+        23: 'Bài 11: Cấu trúc lặp (Tiết 1)',
+        24: 'Bài 11: Cấu trúc lặp (Tiết 2)',
+        25: 'Bài 12: Thực hành sử dụng lệnh lặp (Tiết 1)',
+        26: 'Bài 12: Thực hành sử dụng lệnh lặp (Tiết 2)',
+        27: 'Ôn tập Đánh giá định kỳ 3',
+        28: 'Đánh giá định kỳ 3',
+        29: 'Bài 13: Cấu trúc rẽ nhánh (Tiết 1)',
+        30: 'Bài 13: Cấu trúc rẽ nhánh (Tiết 2)',
+        31: 'Bài 14: Sử dụng biến trong chương trình (Tiết 1)',
+        32: 'Bài 14: Sử dụng biến trong chương trình (Tiết 2)',
+        33: 'Ôn tập Đánh giá định kỳ 4',
+        34: 'Đánh giá định kỳ 4',
+        35: 'Tổng kết năm học',
     },
     '6': {
         0: 'Tiết 0: Định hướng môn học',
-        1: 'Bài 1. Thông tin và dữ liệu',
-        2: 'Bài 2. Xử lí thông tin',
-        3: 'Bài 3. Thông tin trong máy tính',
-        4: 'Bài 4. Mạng máy tính',
-        5: 'Ôn tập Đánh giá định kỳ 1',
-        6: 'Đánh giá định kỳ 1',
-        7: 'Bài 5. Internet',
-        8: 'Bài 6. Mạng thông tin toàn cầu',
-        9: 'Bài 7. Tìm kiếm thông tin trên Internet',
-        10: 'Bài 8. Thư điện tử',
-        11: 'Ôn tập Đánh giá định kỳ 2',
-        12: 'Đánh giá định kỳ 2',
-        13: 'Bài 9. An toàn thông tin trên Internet',
-        14: 'Bài 10. Sơ đồ tư duy',
-        15: 'Bài 11. Định dạng văn bản',
-        16: 'Bài 12. Trình bày thông tin ở dạng bảng',
-        17: 'Ôn tập Đánh giá định kỳ 3',
-        18: 'Đánh giá định kỳ 3',
-        19: 'Bài 13. Tìm kiếm và thay thế',
-        20: 'Ôn tập và luyện tập',
-        21: 'Ôn tập Đánh giá định kỳ 4',
-        22: 'Đánh giá định kỳ 4',
-        23: 'Tổng kết năm học',
+        1: 'Bài 1. Thông tin và dữ liệu (Tiết 1)',
+        2: 'Bài 1. Thông tin và dữ liệu (Tiết 2)',
+        3: 'Bài 2. Xử lí thông tin (Tiết 1)',
+        4: 'Bài 2. Xử lí thông tin (Tiết 2)',
+        5: 'Bài 3. Thông tin trong máy tính (Tiết 1)',
+        6: 'Bài 3. Thông tin trong máy tính (Tiết 2)',
+        7: 'Bài 4. Mạng máy tính (Tiết 1)',
+        8: 'Bài 4. Mạng máy tính (Tiết 2)',
+        9: 'Ôn tập Đánh giá định kỳ 1',
+        10: 'Đánh giá định kỳ 1',
+        11: 'Bài 5. Internet (Tiết 1)',
+        12: 'Bài 5. Internet (Tiết 2)',
+        13: 'Bài 6. Mạng thông tin toàn cầu (Tiết 1)',
+        14: 'Bài 6. Mạng thông tin toàn cầu (Tiết 2)',
+        15: 'Bài 7. Tìm kiếm thông tin trên Internet (Tiết 1)',
+        16: 'Bài 7. Tìm kiếm thông tin trên Internet (Tiết 2)',
+        17: 'Bài 8. Thư điện tử (Tiết 1)',
+        18: 'Ôn tập Đánh giá định kỳ 2',
+        19: 'Đánh giá định kỳ 2',
+        20: 'Bài 8. Thư điện tử (Tiết 2)',
+        21: 'Bài 9. An toàn thông tin trên Internet (Tiết 1)',
+        22: 'Bài 9. An toàn thông tin trên Internet (Tiết 2)',
+        23: 'Bài 10. Sơ đồ tư duy (Tiết 1)',
+        24: 'Bài 10. Sơ đồ tư duy (Tiết 2)',
+        25: 'Bài 11. Định dạng văn bản (Tiết 1)',
+        26: 'Bài 11. Định dạng văn bản (Tiết 2)',
+        27: 'Ôn tập Đánh giá định kỳ 3',
+        28: 'Đánh giá định kỳ 3',
+        29: 'Bài 12. Trình bày thông tin ở dạng bảng (Tiết 1)',
+        30: 'Bài 12. Trình bày thông tin ở dạng bảng (Tiết 2)',
+        31: 'Bài 13. Thực hành: Tìm kiếm và thay thế',
+        32: 'Bài 14. Thực hành tổng hợp',
+        33: 'Ôn tập Đánh giá định kỳ 4',
+        34: 'Đánh giá định kỳ 4',
+        35: 'Tổng kết năm học',
     },
     '7': {
         0: 'Tiết 0: Định hướng môn học',
-        1: 'Bài 1. Thiết bị vào - ra',
-        2: 'Bài 2. Phần mềm máy tính',
-        3: 'Bài 3. Quản lý dữ liệu trong máy tính',
-        4: 'Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet',
-        5: 'Ôn tập Đánh giá định kỳ 1',
-        6: 'Đánh giá định kỳ 1',
-        7: 'Bài 5. Ứng xử trên mạng',
-        8: 'Bài 6. Làm quen với phần mềm bảng tính',
-        9: 'Bài 7. Tính toán tự động trên bảng tính',
-        10: 'Bài 8. Công cụ hỗ trợ tính toán',
-        11: 'Ôn tập Đánh giá định kỳ 2',
-        12: 'Đánh giá định kỳ 2',
-        13: 'Bài 9. Trình bày bảng tính',
-        14: 'Bài 10. Hoàn thiện bảng tính',
-        15: 'Bài 11. Tạo bài trình chiếu',
-        16: 'Bài 12. Định dạng đối tượng trên trang chiếu',
-        17: 'Bài 13. Thực hành tổng hợp: Hoàn thiện bài trình chiếu',
-        18: 'Ôn tập Đánh giá định kỳ 3',
-        19: 'Đánh giá định kỳ 3',
-        20: 'Ôn tập và luyện tập',
-        21: 'Ôn tập Đánh giá định kỳ 4',
-        22: 'Đánh giá định kỳ 4',
-        23: 'Tổng kết năm học',
+        1: 'Bài 1. Thiết bị vào - ra (Tiết 1)',
+        2: 'Bài 1. Thiết bị vào - ra (Tiết 2)',
+        3: 'Bài 2. Phần mềm máy tính (Tiết 1)',
+        4: 'Bài 2. Phần mềm máy tính (Tiết 2)',
+        5: 'Bài 3. Quản lý dữ liệu trong máy tính (Tiết 1)',
+        6: 'Bài 3. Quản lý dữ liệu trong máy tính (Tiết 2)',
+        7: 'Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet (Tiết 1)',
+        8: 'Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet (Tiết 2)',
+        9: 'Ôn tập Đánh giá định kỳ 1',
+        10: 'Đánh giá định kỳ 1',
+        11: 'Bài 5. Ứng xử trên mạng (Tiết 1)',
+        12: 'Bài 5. Ứng xử trên mạng (Tiết 2)',
+        13: 'Bài 6. Làm quen với phần mềm bảng tính (Tiết 1)',
+        14: 'Bài 6. Làm quen với phần mềm bảng tính (Tiết 2)',
+        15: 'Bài 7. Tính toán tự động trên bảng tính (Tiết 1)',
+        16: 'Bài 7. Tính toán tự động trên bảng tính (Tiết 2)',
+        17: 'Bài 8. Công cụ hỗ trợ tính toán (Tiết 1)',
+        18: 'Ôn tập Đánh giá định kỳ 2',
+        19: 'Đánh giá định kỳ 2',
+        20: 'Bài 8. Công cụ hỗ trợ tính toán (Tiết 2)',
+        21: 'Bài 9. Trình bày bảng tính (Tiết 1)',
+        22: 'Bài 9. Trình bày bảng tính (Tiết 2)',
+        23: 'Bài 10. Hoàn thiện bảng tính (Tiết 1)',
+        24: 'Bài 10. Hoàn thiện bảng tính (Tiết 2)',
+        25: 'Bài 11. Tạo bài trình chiếu (Tiết 1)',
+        26: 'Bài 11. Tạo bài trình chiếu (Tiết 2)',
+        27: 'Ôn tập Đánh giá định kỳ 3',
+        28: 'Đánh giá định kỳ 3',
+        29: 'Bài 12. Định dạng đối tượng trên trang chiếu (Tiết 1)',
+        30: 'Bài 12. Định dạng đối tượng trên trang chiếu (Tiết 2)',
+        31: 'Bài 13. Thực hành tổng hợp: Hoàn thiện bài trình chiếu',
+        32: 'Bài 14. Thuật toán tìm kiếm tuần tự',
+        33: 'Ôn tập Đánh giá định kỳ 4',
+        34: 'Đánh giá định kỳ 4',
+        35: 'Tổng kết năm học',
     },
     '8': {
         0: 'Tiết 0: Định hướng môn học',
-        1: 'Bài 1. Lược sử công cụ tính toán',
-        2: 'Bài 2. Thông tin trong môi trường số',
-        3: 'Bài 3. Thực hành khai thác thông tin số',
-        4: 'Ôn tập Đánh giá định kỳ 1',
-        5: 'Đánh giá định kỳ 1',
-        6: 'Bài 4. Đạo đức và văn hóa trong sử dụng công nghệ số',
-        7: 'Bài 5. Sử dụng bảng tính giải quyết bài toán thực tế',
-        8: 'Bài 6. Sắp xếp và lọc dữ liệu',
-        9: 'Bài 7. Trình bày dữ liệu bằng biểu đồ',
-        10: 'Ôn tập Đánh giá định kỳ 2',
-        11: 'Đánh giá định kỳ 2',
-        12: 'Bài 8a. Làm việc với danh sách dạng liệt kê và hình ảnh trong văn bản',
-        13: 'Bài 9a. Tạo đầu trang, chân trang cho văn bản',
-        14: 'Bài 10a. Định dạng nâng cao cho trang chiếu',
-        15: 'Bài 11a. Sử dụng bản mẫu cho bài trình chiếu',
-        16: 'Ôn tập Đánh giá định kỳ 3',
-        17: 'Đánh giá định kỳ 3',
-        18: 'Bài 12. Từ thuật toán đến chương trình',
-        19: 'Ôn tập và luyện tập',
-        20: 'Ôn tập Đánh giá định kỳ 4',
-        21: 'Đánh giá định kỳ 4',
-        22: 'Bài 16. Tin học với nghề nghiệp',
+        1: 'Bài 1. Lược sử công cụ tính toán (Tiết 1)',
+        2: 'Bài 1. Lược sử công cụ tính toán (Tiết 2)',
+        3: 'Bài 2. Thông tin trong môi trường số (Tiết 1)',
+        4: 'Bài 2. Thông tin trong môi trường số (Tiết 2)',
+        5: 'Bài 3. Thực hành khai thác thông tin số (Tiết 1)',
+        6: 'Bài 3. Thực hành khai thác thông tin số (Tiết 2)',
+        7: 'Bài 4. Đạo đức và văn hóa trong sử dụng công nghệ số',
+        8: 'Bài 5. Sử dụng bảng tính giải quyết bài toán thực tế (Tiết 1)',
+        9: 'Ôn tập Đánh giá định kỳ 1',
+        10: 'Đánh giá định kỳ 1',
+        11: 'Bài 5. Sử dụng bảng tính giải quyết bài toán thực tế (Tiết 2)',
+        12: 'Bài 6. Sắp xếp và lọc dữ liệu (Tiết 1)',
+        13: 'Bài 6. Sắp xếp và lọc dữ liệu (Tiết 2)',
+        14: 'Bài 7. Trình bày dữ liệu bằng biểu đồ (Tiết 1)',
+        15: 'Bài 7. Trình bày dữ liệu bằng biểu đồ (Tiết 2)',
+        16: 'Bài 8a. Làm việc với danh sách dạng liệt kê và hình ảnh trong văn bản (Tiết 1)',
+        17: 'Bài 8a. Làm việc với danh sách dạng liệt kê và hình ảnh trong văn bản (Tiết 2)',
+        18: 'Ôn tập Đánh giá định kỳ 2',
+        19: 'Đánh giá định kỳ 2',
+        20: 'Bài 9a. Tạo đầu trang, chân trang cho văn bản (Tiết 1)',
+        21: 'Bài 9a. Tạo đầu trang, chân trang cho văn bản (Tiết 2)',
+        22: 'Bài 10a. Định dạng nâng cao cho trang chiếu (Tiết 1)',
+        23: 'Bài 10a. Định dạng nâng cao cho trang chiếu (Tiết 2)',
+        24: 'Bài 11a. Sử dụng bản mẫu cho bài trình chiếu (Tiết 1)',
+        25: 'Bài 11a. Sử dụng bản mẫu cho bài trình chiếu (Tiết 2)',
+        26: 'Bài 12. Từ thuật toán đến chương trình (Tiết 1)',
+        27: 'Ôn tập Đánh giá định kỳ 3',
+        28: 'Đánh giá định kỳ 3',
+        29: 'Bài 12. Từ thuật toán đến chương trình (Tiết 2)',
+        30: 'Bài 13. Biểu diễn dữ liệu (Tiết 1)',
+        31: 'Bài 13. Biểu diễn dữ liệu (Tiết 2)',
+        32: 'Bài 16. Tin học với nghề nghiệp',
+        33: 'Ôn tập Đánh giá định kỳ 4',
+        34: 'Đánh giá định kỳ 4',
+        35: 'Tổng kết năm học',
     },
 }
 
@@ -340,33 +413,33 @@ PPCT_ROB = {
         5: 'Bài 5. Xe cảnh sát tuần tra',
         6: 'Bài 6. Khám phá xe cứu hoả',
         7: 'Bài 7. Người giao hàng đã đến',
-        8: 'Bài 8. Thế giới khủng long',
-        9: 'Ôn tập Đánh giá định kỳ 1',
-        10: 'Đánh giá định kỳ 1',
+        8: 'Ôn tập Đánh giá định kỳ 1',
+        9: 'Đánh giá định kỳ 1',
+        10: 'Bài 8. Thế giới khủng long',
         11: 'Bài 9. Hồ bơi mùa hè',
         12: 'Bài 10. Khám phá đại dương',
         13: 'Bài 11. Chú cua cứng cáp',
         14: 'Bài 12. Tôi có thể di chuyển đến bất cứ đâu',
         15: 'Bài 13. Hoạt động mùa hè',
         16: 'Bài 14. Bắt đầu chuyến hành trình cùng tàu hoả',
-        17: 'Bài 15. Phía trên bầu trời',
-        18: 'Ôn tập Đánh giá định kỳ 2',
-        19: 'Đánh giá định kỳ 2',
+        17: 'Ôn tập Đánh giá định kỳ 2',
+        18: 'Đánh giá định kỳ 2',
+        19: 'Bài 15. Phía trên bầu trời',
         20: 'Bài 16. Khám phá vũ trụ rộng lớn',
         21: 'Bài 17. Máy bắn đá khổng lồ',
         22: 'Bài 18. Trò chơi dân gian',
         23: 'Bài 19. Khám phá trò chơi truyền thống các nước',
         24: 'Bài 20. Đấu vật thú vị',
         25: 'Bài 21. Sóc nhỏ dễ thương',
-        26: 'Bài 22. Chú hươu tuyệt đẹp',
-        27: 'Ôn tập Đánh giá định kỳ 3',
-        28: 'Đánh giá định kỳ 3',
+        26: 'Ôn tập Đánh giá định kỳ 3',
+        27: 'Đánh giá định kỳ 3',
+        28: 'Bài 22. Chú hươu tuyệt đẹp',
         29: 'Bài 23. Chú rùa thông minh',
         30: 'Bài 24. Đôi chân mạnh mẽ của chuột túi',
         31: 'Bài 25. Chú sư tử dũng mãnh',
-        32: 'Bài 26. Chuột chũi, máy ủi dưới lòng đất',
-        33: 'Ôn tập Đánh giá định kỳ 4',
-        34: 'Đánh giá định kỳ 4',
+        32: 'Ôn tập Đánh giá định kỳ 4',
+        33: 'Đánh giá định kỳ 4',
+        34: 'Tổng kết môn học & Triển lãm Robotics',
         35: 'Tổng kết môn học & Triển lãm Robotics',
     },
     '2': {
@@ -378,143 +451,84 @@ PPCT_ROB = {
         5: 'Bài 5. Những bạn nhỏ lễ phép',
         6: 'Bài 6. Động vật thân mềm',
         7: 'Bài 7. Khu phố của chúng ta',
-        8: 'Bài 8. Rèn luyện sức khỏe',
-        9: 'Ôn tập Đánh giá định kỳ 1',
-        10: 'Đánh giá định kỳ 1',
+        8: 'Ôn tập Đánh giá định kỳ 1',
+        9: 'Đánh giá định kỳ 1',
+        10: 'Bài 8. Rèn luyện sức khỏe',
         11: 'Bài 9. Môi trường biển',
         12: 'Bài 10. Cùng câu cá nào!',
         13: 'Bài 11. Thế giới khủng long',
         14: 'Bài 12. Người hiệp sĩ dũng cảm',
         15: 'Bài 13. Vận chuyển đồ vật',
         16: 'Bài 14. Sức mạnh của máy ủi',
-        17: 'Bài 15. Máy xúc',
-        18: 'Ôn tập Đánh giá định kỳ 2',
-        19: 'Đánh giá định kỳ 2',
+        17: 'Ôn tập Đánh giá định kỳ 2',
+        18: 'Đánh giá định kỳ 2',
+        19: 'Bài 15. Máy xúc',
         20: 'Bài 16. Cùng nhau đi khắp thế giới',
         21: 'Bài 17. Nhắm và bắn!',
         22: 'Bài 18. Độ đàn hồi, lực đẩy của cung tên',
         23: 'Bài 19. Ba! Hai! Một! Bắn!!!',
         24: 'Bài 20. Cùng nhau tham quan thành phố',
         25: 'Bài 21. Khám phá trang phục người da đỏ',
-        26: 'Bài 22. Cá sấu thật ngầu!',
-        27: 'Ôn tập Đánh giá định kỳ 3',
-        28: 'Đánh giá định kỳ 3',
+        26: 'Ôn tập Đánh giá định kỳ 3',
+        27: 'Đánh giá định kỳ 3',
+        28: 'Bài 22. Cá sấu thật ngầu!',
         29: 'Bài 23. Những nốt nhạc vui',
         30: 'Bài 24. Choo Choo! Tàu hỏa',
         31: 'Bài 25. Có sáu chân thật tuyệt!!!',
-        32: 'Bài 26. Bầu không khí trong lành',
-        33: 'Ôn tập Đánh giá định kỳ 4',
-        34: 'Đánh giá định kỳ 4',
+        32: 'Ôn tập Đánh giá định kỳ 4',
+        33: 'Đánh giá định kỳ 4',
+        34: 'Tổng kết môn học & Triển lãm Robotics',
         35: 'Tổng kết môn học & Triển lãm Robotics',
     },
-    '3': {
-        0: 'Tiết 0: Định hướng môn học',
-        1: 'Bài 1. Hãy nấu những món ăn ngon',
-        2: 'Bài 2. Hàm răng trắng sáng',
-        3: 'Bài 3. Sự phản xạ ánh sáng',
-        4: 'Bài 4. Đàn gà con',
-        5: 'Bài 5. Những bạn nhỏ lễ phép',
-        6: 'Bài 6. Động vật thân mềm',
-        7: 'Bài 7. Khu phố của chúng ta',
-        8: 'Bài 8. Rèn luyện sức khỏe',
-        9: 'Ôn tập Đánh giá định kỳ 1',
-        10: 'Đánh giá định kỳ 1',
-        11: 'Bài 9. Môi trường biển',
-        12: 'Bài 10. Cùng câu cá nào!',
-        13: 'Bài 11. Thế giới khủng long',
-        14: 'Bài 12. Người hiệp sĩ dũng cảm',
-        15: 'Bài 13. Vận chuyển đồ vật',
-        16: 'Bài 14. Sức mạnh của máy ủi',
-        17: 'Bài 15. Máy xúc',
-        18: 'Ôn tập Đánh giá định kỳ 2',
-        19: 'Đánh giá định kỳ 2',
-        20: 'Bài 16. Cùng nhau đi khắp thế giới',
-        21: 'Bài 17. Nhắm và bắn!',
-        22: 'Bài 18. Độ đàn hồi, lực đẩy của cung tên',
-        23: 'Bài 19. Ba! Hai! Một! Bắn!!!',
-        24: 'Bài 20. Cùng nhau tham quan thành phố',
-        25: 'Bài 21. Khám phá trang phục người da đỏ',
-        26: 'Bài 22. Cá sấu thật ngầu!',
-        27: 'Ôn tập Đánh giá định kỳ 3',
-        28: 'Đánh giá định kỳ 3',
-        29: 'Bài 23. Những nốt nhạc vui',
-        30: 'Bài 24. Choo Choo! Tàu hỏa',
-        31: 'Bài 25. Có sáu chân thật tuyệt!!!',
-        32: 'Bài 26. Bầu không khí trong lành',
-        33: 'Ôn tập Đánh giá định kỳ 4',
-        34: 'Đánh giá định kỳ 4',
-        35: 'Tổng kết môn học & Triển lãm Robotics',
-    },
-    '4': {
-        0: 'Tiết 0: Định hướng môn học',
-        1: 'Bài 1. Hãy nấu những món ăn ngon',
-        2: 'Bài 2. Hàm răng trắng sáng',
-        3: 'Bài 3. Sự phản xạ ánh sáng',
-        4: 'Bài 4. Đàn gà con',
-        5: 'Bài 5. Những bạn nhỏ lễ phép',
-        6: 'Bài 6. Động vật thân mềm',
-        7: 'Bài 7. Khu phố của chúng ta',
-        8: 'Bài 8. Rèn luyện sức khỏe',
-        9: 'Ôn tập Đánh giá định kỳ 1',
-        10: 'Đánh giá định kỳ 1',
-        11: 'Bài 9. Môi trường biển',
-        12: 'Bài 10. Cùng câu cá nào!',
-        13: 'Bài 11. Thế giới khủng long',
-        14: 'Bài 12. Người hiệp sĩ dũng cảm',
-        15: 'Bài 13. Vận chuyển đồ vật',
-        16: 'Bài 14. Sức mạnh của máy ủi',
-        17: 'Bài 15. Máy xúc',
-        18: 'Ôn tập Đánh giá định kỳ 2',
-        19: 'Đánh giá định kỳ 2',
-        20: 'Bài 16. Cùng nhau đi khắp thế giới',
-        21: 'Bài 17. Nhắm và bắn!',
-        22: 'Bài 18. Độ đàn hồi, lực đẩy của cung tên',
-        23: 'Bài 19. Ba! Hai! Một! Bắn!!!',
-        24: 'Bài 20. Cùng nhau tham quan thành phố',
-        25: 'Bài 21. Khám phá trang phục người da đỏ',
-        26: 'Bài 22. Cá sấu thật ngầu!',
-        27: 'Ôn tập Đánh giá định kỳ 3',
-        28: 'Đánh giá định kỳ 3',
-        29: 'Bài 23. Những nốt nhạc vui',
-        30: 'Bài 24. Choo Choo! Tàu hỏa',
-        31: 'Bài 25. Có sáu chân thật tuyệt!!!',
-        32: 'Bài 26. Bầu không khí trong lành',
-        33: 'Ôn tập Đánh giá định kỳ 4',
-        34: 'Đánh giá định kỳ 4',
-        35: 'Tổng kết môn học & Triển lãm Robotics',
-    },
-    '5': {
-        0: 'Tiết 0: Định hướng môn học',
-        1: 'Bài 1. Động cơ là gì?',
-        2: 'Bài 2. Robot cố định vật',
-        3: 'Bài 3. Robot nhận biết âm thanh',
-        4: 'Bài 4. Bộ điều khiển từ xa',
-        5: 'Ôn tập Đánh giá định kỳ 1',
-        6: 'Đánh giá định kỳ 1',
-        7: 'Bài 5. Động cơ Dynamixel hoạt động thế nào?',
-        8: 'Bài 6. Phương tiện giao thông qua các thời đại',
-        9: 'Bài 7. Cơ chế tăng giảm chiều dài tự động',
-        10: 'Bài 8. Robot nhận biết vật thể bằng cách nào?',
-        11: 'Ôn tập Đánh giá định kỳ 2',
-        12: 'Đánh giá định kỳ 2',
-        13: 'Bài 9. Số ngẫu nhiên',
-        14: 'Bài 10. Robot hút bụi',
-        15: 'Bài 11. Lực hấp dẫn',
-        16: 'Bài 12. Domino trong Robotics',
-        17: 'Ôn tập Đánh giá định kỳ 3',
-        18: 'Đánh giá định kỳ 3',
-        19: 'Bài 13. Robot phục vụ đời sống',
-        20: 'Luyện tập & Thực hành sáng tạo Robotics',
-        21: 'Ôn tập Đánh giá định kỳ 4',
-        22: 'Đánh giá định kỳ 4',
-        23: 'Tổng kết môn học & Triển lãm Robotics',
-    },
+}
+
+PPCT_ROB['3'] = PPCT_ROB['2'].copy()
+PPCT_ROB['4'] = PPCT_ROB['2'].copy()
+PPCT_ROB['TT'] = PPCT_ROB['1'].copy()
+
+# Rotation Robotics (5, 6, 7, 8) - Taught on ODD weeks (Tuần 3, 5, 7, 9... 2 tiết/tuần)
+PPCT_ROB['5'] = {
+    0: 'Tiết 0: Định hướng môn học',
+    1: 'Bài 1. Động cơ là gì?',
+    2: 'Bài 2. Robot cố định vật',
+    3: 'Bài 3. Robot nhận biết âm thanh',
+    4: 'Bài 4. Bộ điều khiển từ xa',
+    5: 'Bài 5. Động cơ Dynamixel hoạt động thế nào?',
+    6: 'Bài 6. Phương tiện giao thông qua các thời đại',
+    7: 'Ôn tập Đánh giá định kỳ 1',
+    8: 'Đánh giá định kỳ 1',
+    9: 'Bài 7. Cơ chế tăng giảm chiều dài tự động',
+    10: 'Bài 8. Robot nhận biết vật thể bằng cách nào?',
+    11: 'Bài 9. Số ngẫu nhiên',
+    12: 'Bài 10. Robot hút bụi',
+    13: 'Bài 11. Lực hấp dẫn',
+    14: 'Bài 12. Domino trong Robotics',
+    15: 'Bài 13. Robot phục vụ đời sống',
+    16: 'Luyện tập & Thực hành sáng tạo Robotics',
+    17: 'Ôn tập Đánh giá định kỳ 2',
+    18: 'Đánh giá định kỳ 2',
+    19: 'Bài 14. Robot thám hiểm',
+    20: 'Bài 15. Cảm biến siêu âm',
+    21: 'Bài 16. Tránh vật cản tự động',
+    22: 'Bài 17. Robot theo dõi đường line',
+    23: 'Bài 18. Lập trình vòng lặp trong điều khiển robot',
+    24: 'Bài 19. Khám phá cánh tay robot',
+    25: 'Ôn tập Đánh giá định kỳ 3',
+    26: 'Đánh giá định kỳ 3',
+    27: 'Bài 20. Robot phân loại sản phẩm',
+    28: 'Bài 21. Cơ chế kẹp gắp vật thể',
+    29: 'Bài 22. Dự án sáng tạo robot tự hành',
+    30: 'Bài 23. Tối ưu hóa thuật toán điều khiển robot',
+    31: 'Ôn tập Đánh giá định kỳ 4',
+    32: 'Đánh giá định kỳ 4',
+    33: 'Tổng kết môn học & Triển lãm Robotics',
+    34: 'Tổng kết môn học & Triển lãm Robotics',
+    35: 'Tổng kết môn học & Triển lãm Robotics',
 }
 
 PPCT_ROB['6'] = PPCT_ROB['5'].copy()
 PPCT_ROB['7'] = PPCT_ROB['5'].copy()
 PPCT_ROB['8'] = PPCT_ROB['5'].copy()
-PPCT_ROB['TT'] = PPCT_ROB['1'].copy()
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -533,14 +547,14 @@ MASTER_SCHEDULE_SANG = {
     (3, 1): ('TT3', 'Tin học', False),
     (3, 2): ('1A1', 'Robotics', False),
     (3, 4): ('2C1', 'Robotics', False),
-    (4, 1): ('3C1', 'Robotics', False),
+    (4, 1): ('2A1', 'Tin học', False),
+    (4, 2): ('3C1', 'Robotics', False),
     (4, 4): ('6A1', 'Tin - Robotics', True),
     (4, 5): ('6A1', 'Tin - Robotics', True),
 }
 
 MASTER_SCHEDULE_CHIEU = {
     (0, 3): ('2C1', 'Tin học', False),
-    (1, 1): ('2A1', 'Tin học', False),
     (1, 3): ('7A1', 'Tin - Robotics', True),
     (1, 4): ('7A1', 'Tin - Robotics', True),
     (2, 3): ('4C1', 'Tin học', False),
@@ -573,6 +587,8 @@ def day_label(d):
 def classify_lop(lop):
     s = lop.strip().upper()
     if not s:
+        return None
+    if 'NGHỈ' in s or 'KHAI GIẢNG' in s or 'TỔNG DUYỆT' in s or 'LỄ' in s:
         return None
     if re.match(r'^[6789]', s):
         return 'THCS'
@@ -700,7 +716,46 @@ def update_headers(doc, tuan_so, start_date, end_date):
             p.text = new
 
 
-def populate_lbg_table(tbl, schedule_map, tuan_so, start_date):
+def merge_and_format_block(tbl, start_row, end_row, start_col, end_col, text):
+    """Merge a rectangular block of cells in tbl (from start_row..end_row and start_col..end_col)
+    and format the resulting cell with centered text in Times New Roman 13pt.
+    """
+    for r in range(start_row, end_row + 1):
+        if r >= len(tbl.rows):
+            continue
+        for c in range(start_col, min(end_col + 1, len(tbl.rows[r].cells))):
+            cell = tbl.cell(r, c)
+            for p in cell.paragraphs:
+                p.clear()
+
+    top_left = tbl.cell(start_row, start_col)
+    bottom_right = tbl.cell(end_row, end_col)
+    try:
+        merged = top_left.merge(bottom_right)
+    except Exception:
+        merged = top_left
+
+    while len(merged.paragraphs) > 1:
+        p = merged.paragraphs[-1]
+        p._element.getparent().remove(p._element)
+
+    p = merged.paragraphs[0]
+    p.clear()
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = p.add_run(text)
+    run.font.name = 'Times New Roman'
+    run.font.size = Pt(13)
+
+    tcPr = merged._tc.get_or_add_tcPr()
+    for existing_va in tcPr.findall(qn('w:vAlign')):
+        tcPr.remove(existing_va)
+    vAlign = OxmlElement('w:vAlign')
+    vAlign.set(qn('w:val'), 'center')
+    tcPr.append(vAlign)
+    return merged
+
+
+def populate_lbg_table(tbl, schedule_map, tuan_so, start_date, is_sang=True):
     is_even = (tuan_so % 2 == 0)
     for day_idx in range(5):
         d = start_date + timedelta(days=day_idx)
@@ -742,6 +797,16 @@ def populate_lbg_table(tbl, schedule_map, tuan_so, start_date):
                 set_cell_text(row.cells[5], '')
                 set_cell_text(row.cells[6], '')
 
+    # ── Tuần 5: Block merge Nghỉ lễ 02/09 & Tổng duyệt khai giảng ──
+    if tuan_so == 5:
+        # Thứ 2, 3, 4 (Dòng 1..15, Cột 2..6): Nghỉ lễ 02/09 (cả Sáng và Chiều)
+        merge_and_format_block(tbl, start_row=1, end_row=15, start_col=2, end_col=6, text='Nghỉ lễ 02/09')
+
+        # Sáng Thứ 5, 6 (Dòng 16..25, Cột 2..6): Tổng duyệt khai giảng
+        if is_sang:
+            merge_and_format_block(tbl, start_row=16, end_row=25, start_col=2, end_col=6, text='Tổng duyệt khai giảng')
+        # Chiều Thứ 5, 6: giữ nguyên lịch dạy bình thường theo TKB
+
 
 def update_table_data(doc, tuan_so, start_date=None):
     if start_date is None:
@@ -750,9 +815,9 @@ def update_table_data(doc, tuan_so, start_date=None):
                 if len(t.columns) == 7
                 and 'Lớp' in [c.text.strip() for c in t.rows[0].cells]]
     if len(lbg_tbls) >= 1:
-        populate_lbg_table(lbg_tbls[0], MASTER_SCHEDULE_SANG, tuan_so, start_date)
+        populate_lbg_table(lbg_tbls[0], MASTER_SCHEDULE_SANG, tuan_so, start_date, is_sang=True)
     if len(lbg_tbls) >= 2:
-        populate_lbg_table(lbg_tbls[1], MASTER_SCHEDULE_CHIEU, tuan_so, start_date)
+        populate_lbg_table(lbg_tbls[1], MASTER_SCHEDULE_CHIEU, tuan_so, start_date, is_sang=False)
 
 
 def update_ky_ten(doc, start_date):
@@ -769,38 +834,68 @@ def update_ky_ten(doc, start_date):
                     for p in cell.paragraphs:
                         for r in p.runs:
                             if 'Ngày' in r.text and 'tháng' in r.text:
-                                m = re.search(r'Ngày\s+\d+\s+tháng\s+\d+\s+năm\s+\d+', r.text)
+                                m = re.search(r'Ngày\s*\d*\s*tháng\s*\d*\s*năm\s*\d+', r.text)
                                 if m:
                                     r.text = r.text[:m.start()] + ngay_str + r.text[m.end():]
 
 
-def update_sign_names(doc, to_truong_name):
-    """Insert tổ trưởng name below 'Tổ trưởng' in all sign tables (1r x 2c).
-
-    Sign table cell [0,1] run structure:
-      Run 0: 'Ngày X tháng Y năm Z'
-      Run 1: '\nTổ trưởng'
-      Run 2: '\n' or '\n(Ký tên, đóng dấu)'
-    We insert the name by modifying Run 1 to append '\n<name>'
-    or adding a new run after Run 1.
+def update_sign_names(doc, to_truong_name, start_date=None):
+    """Cập nhật phần ký tên của Tổ trưởng trong tất cả bảng chữ ký (1 hàng x 2 cột):
+    - Dòng 1: Ngày tháng soạn (nếu có start_date thì tính Ngày d tháng m năm y, hoặc giữ ngày đã có)
+    - Dòng 2: Tổ trưởng
+    - Khoảng cách dòng trống cho chữ ký (3 dòng trống)
+    - Dòng cuối: Tên tổ trưởng (Nguyễn Thị Ngọc cho TH / Nguyễn Thị Ngọc Ánh cho THCS)
+    - TUYỆT ĐỐI BỎ chữ '(Ký tên, đóng dấu)'
+    - Căn giữa toàn bộ, font Times New Roman 13pt
     """
+    default_ngay = None
+    if start_date is not None:
+        ngay_soan = start_date - timedelta(days=3)
+        default_ngay = f'Ngày {ngay_soan.day} tháng {ngay_soan.month} năm {ngay_soan.year}'
+
     for tbl in doc.tables:
         if len(tbl.rows) != 1 or len(tbl.columns) != 2:
             continue
-        cell = tbl.rows[0].cells[1]  # Right cell (Tổ trưởng)
-        for p in cell.paragraphs:
-            runs = p.runs
-            if not runs:
-                continue
-            # Find the run containing 'Tổ trưởng'
-            for ri, r in enumerate(runs):
-                if 'Tổ trưởng' in r.text:
-                    # Check if name is already present
-                    if to_truong_name in cell.text:
-                        break
-                    # Append name below 'Tổ trưởng'
-                    r.text = r.text.rstrip() + '\n' + to_truong_name
-                    break
+        cell = tbl.rows[0].cells[1]  # Ô bên phải (Tổ trưởng)
+        txt = cell.text
+        if 'Tổ trưởng' not in txt:
+            continue
+
+        # Tìm chuỗi ngày tháng soạn
+        m = re.search(r'Ngày\s*\d*\s*tháng\s*\d*\s*năm\s*\d+', txt)
+        if default_ngay:
+            ngay_str = default_ngay
+        elif m and re.search(r'\d+', m.group(0).split('tháng')[0]):
+            ngay_str = m.group(0).strip()
+        else:
+            ngay_str = 'Ngày   tháng  năm 2026'
+
+        # Xóa sạch các paragraph cũ, chỉ giữ 1 paragraph
+        while len(cell.paragraphs) > 1:
+            p_extra = cell.paragraphs[-1]
+            p_extra._element.getparent().remove(p_extra._element)
+
+        p = cell.paragraphs[0]
+        p.clear()
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+        # Run 1: Ngày tháng năm
+        r1 = p.add_run(ngay_str + '\n')
+        r1.font.name = 'Times New Roman'
+        r1.font.size = Pt(13)
+
+        # Run 2: 'Tổ trưởng' + 3 dòng trống (tổng 4 dấu xuống dòng) để chỗ cho chữ ký
+        # BỎ HOÀN TOÀN '(Ký tên, đóng dấu)'
+        spacing = '\n\n\n\n' if to_truong_name else '\n\n\n'
+        r2 = p.add_run('Tổ trưởng' + spacing)
+        r2.font.name = 'Times New Roman'
+        r2.font.size = Pt(13)
+
+        # Run 3: Tên tổ trưởng (nếu có)
+        if to_truong_name:
+            r3 = p.add_run(to_truong_name)
+            r3.font.name = 'Times New Roman'
+            r3.font.size = Pt(13)
 
 
 def compact_sign_tables(doc):
@@ -902,6 +997,46 @@ def remove_second_copy(doc):
     return removed
 
 
+def remove_cover_page(doc):
+    """Xóa trang bìa đầu (bảng thông tin giáo viên và các đoạn văn trước tiêu đề TUẦN)."""
+    body = doc.element.body
+    children = list(body)
+    tuan_el = None
+    for c in children:
+        tag = c.tag.split('}')[-1] if '}' in c.tag else c.tag
+        if tag == 'p':
+            txt = ''.join(t.text or '' for t in c.findall('.//' + qn('w:t')))
+            if 'TUẦN' in txt.upper() and 'từ ngày' in txt:
+                tuan_el = c
+                break
+    if tuan_el is not None:
+        idx = children.index(tuan_el)
+        for el in children[:idx]:
+            tag = el.tag.split('}')[-1] if '}' in el.tag else el.tag
+            if tag != 'sectPr':
+                body.remove(el)
+
+
+def remove_end_evaluation_table(doc):
+    """Xóa bảng nhận xét tiến độ cuối cùng (tiêu đề + bảng 42 dòng x 3 cột + các đoạn sau đó)."""
+    body = doc.element.body
+    children = list(body)
+    nhanxet_el = None
+    for c in children:
+        tag = c.tag.split('}')[-1] if '}' in c.tag else c.tag
+        if tag == 'p':
+            txt = ''.join(t.text or '' for t in c.findall('.//' + qn('w:t')))
+            if 'nhận xét' in txt.lower() and 'bgh' in txt.lower():
+                nhanxet_el = c
+                break
+    if nhanxet_el is not None:
+        idx = children.index(nhanxet_el)
+        for el in children[idx:]:
+            tag = el.tag.split('}')[-1] if '}' in el.tag else el.tag
+            if tag != 'sectPr':
+                body.remove(el)
+
+
 def fix_all_fonts(doc):
     fixed = 0
     for tbl in doc.tables:
@@ -924,6 +1059,12 @@ def fix_all_fonts(doc):
 
 
 def add_page_break_after_table(tbl_element):
+    nxt = tbl_element.getnext()
+    if nxt is not None and (nxt.tag.split('}')[-1] if '}' in nxt.tag else nxt.tag) == 'p':
+        brs = nxt.findall('.//' + qn('w:br'))
+        for b in brs:
+            if b.get(qn('w:type')) == 'page':
+                return
     p = OxmlElement('w:p')
     r = OxmlElement('w:r')
     br = OxmlElement('w:br')
@@ -979,7 +1120,8 @@ def fix_page_breaks(doc):
         remove_empty_between(sign_chieu, nhanxet_el)
 
     add_page_break_after_table(sign_sang)
-    add_page_break_after_table(sign_chieu)
+    if nhanxet_el is not None:
+        add_page_break_after_table(sign_chieu)
 
 
 def clear_row_data(row):
@@ -1001,6 +1143,9 @@ def filter_for_cap(doc, keep_cap):
         for ri in range(1, len(tbl.rows)):
             row = tbl.rows[ri]
             lop = row.cells[4].text.strip()
+            # Bỏ qua nếu là ô nghỉ lễ hoặc tổng duyệt / sự kiện
+            if any(kw in lop.upper() for kw in ['NGHỈ', 'LỄ', 'TỔNG DUYỆT', 'KHAI GIẢNG']):
+                continue
             cap = classify_lop(lop)
             if cap is not None and cap != keep_cap:
                 clear_row_data(row)
@@ -1013,11 +1158,18 @@ def generate_lbg(tuan_so):
 
     doc = Document(TEMPLATE)
     remove_second_copy(doc)
+
+    # User yêu cầu: các tuần lẻ không cần để bìa và bảng nhận xét cuối (chỉ file gộp cả năm mới cần)
+    remove_cover_page(doc)
+    remove_end_evaluation_table(doc)
+
     update_headers(doc, tuan_so, start_date, end_date)
     update_table_data(doc, tuan_so, start_date)
     fix_all_fonts(doc)
     update_ky_ten(doc, start_date)
+    update_sign_names(doc, '', start_date)
     compact_sign_tables(doc)
+    fix_page_breaks(doc)
 
     main_name = f'Lịch báo giảng - Tuần {tuan_so:02d}.docx'
     main_path = os.path.join(LBG_DIR, main_name)
@@ -1029,7 +1181,7 @@ def generate_lbg(tuan_so):
     ]:
         d2 = Document(saved_main)
         filter_for_cap(d2, keep_cap)
-        update_sign_names(d2, to_truong)
+        update_sign_names(d2, to_truong, start_date)
         compact_sign_tables(d2)
         fix_page_breaks(d2)
         split_name = f'Lịch báo giảng - Tuần {tuan_so:02d} ({suffix}).docx'
