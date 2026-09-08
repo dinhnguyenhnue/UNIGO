@@ -89,39 +89,56 @@ Nếu cấp = Lớp 6 / Lớp 7 / Lớp 8 / Lớp 9:
 
 ---
 
-### Bước 2: Đọc SGK & Tài liệu giáo trình môn học
+### Bước 2: Đọc SGK & Tài liệu giáo trình môn học (NÂNG CẤP)
 
-**Mục đích:** Hiểu chính xác nội dung bài học từ nguồn chính thống của từng môn học.
+**Mục đích:** Hiểu chính xác nội dung bài học từ nguồn chính thống, bám sát SGK.
 
 **Thực hiện — PHÂN BIỆT NGUỒN TÀI LIỆU THEO MÔN HỌC:**
 
 #### A. Đối với môn TIN HỌC:
-- Đọc SGK tại: `D:\UNIGO\SGK\Lớp_{X}\`
+- **Nguồn chính:** SGK tại `D:\UNIGO\SGK\Lớp_{X}\`
+- **Nguồn bổ sung — SGV (Sách giáo viên):** Truy vấn từ **NotebookLM** (Notebook "Notebook dùng chung UNIGO"):
+  - ID: `f6c754f2-0291-40f3-bdc8-8b8cd37ef396`
+  - SGV Lớp 3: source `758b8616-8e91-4e0d-9756-0596287a2298`
+  - SGV Lớp 6: source `d50aac9c-91b3-4ae8-a5ea-a0227761ce3c`
+  - SGK Lớp 3: source `7c79c430-0e40-4a91-92af-53ee80c06644`
+  - SGK Lớp 6: source `7a8ae116-e5cb-474e-a08e-ad4628bd3fd1`
+- **KHBD tham khảo (KHÔNG phải bản tiên quyết, CHỈ tham khảo):**
+  - `D:\UNIGO\Phân phối chương trình\Tin học\KHBD TIN HỌC 3,4,5 KNTT (1)\`
 - SGK dạng PDF: Dùng `pypdf` hoặc `pdfplumber` để trích xuất văn bản.
 - SGK dạng ảnh quét: Dùng RapidOCR / PaddleOCR (`python d:\UNIGO\scripts\sgk_ocr.py <file>`).
 
+#### Quy trình đọc SGK chi tiết (BẮT BUỘC):
+
+1. **Trích xuất nội dung bài học** — Xác định chính xác:
+   - **Mục tiêu bài học** (khung "Sau bài học này em sẽ")
+   - **Tiêu đề các mục** (Mục 1, Mục 2, Mục 3...)
+   - **Hoạt động** (Hoạt động 1, 2, 3... với câu hỏi dẫn dắt)
+   - **Hộp kiến thức** (phần chốt kiến thức / ghi nhớ — QUAN TRỌNG NHẤT)
+   - **Câu hỏi củng cố** (ngay sau mỗi mục kiến thức)
+   - **Luyện tập** (câu hỏi, bài tập cuối bài)
+   - **Vận dụng** (câu hỏi thực tế, trò chơi)
+
+2. **Tương tác với user khi cần:** Nếu SGK dạng scan/ảnh khó đọc, HỎI user cung cấp ảnh SGK cụ thể để nhận diện chính xác:
+   - "Anh có thể chụp/gửi ảnh trang X của SGK Lớp Y để em xác nhận nội dung không?"
+   - Dùng ảnh để nhận diện: mục tiêu, chốt kiến thức, câu hỏi, hình minh họa.
+
+3. **Ghi tham chiếu trang SGK:** Mỗi hoạt động trong KHBD PHẢI ghi rõ `(Trang SGK: X)` để đối chiếu.
+
 #### B. Đối với môn ROBOTICS (TUYỆT ĐỐI KHÔNG ĐỌC SGK TIN HỌC):
-Tất cả tài liệu môn Robotics nằm tại thư mục: `D:\UNIGO\Phân phối chương trình\Robotics\` (hoặc tên file cụ thể dưới đây khi di chuyển):
-1. **Khung chương trình chuẩn:** `KHUNG CHƯƠNG TRÌNH ROBOTICS TIỂU HỌC & THCS UNIGO.docx` (.pdf) — Nguồn chính thức về mục tiêu, thời lượng, chủ đề, YCCĐ cuối khối.
+Tất cả tài liệu môn Robotics nằm tại thư mục: `D:\UNIGO\Phân phối chương trình\Robotics\`:
+1. **Khung chương trình chuẩn:** `KHUNG CHƯƠNG TRÌNH ROBOTICS TIỂU HỌC & THCS UNIGO.docx` (.pdf)
 2. **Dữ liệu bài học đã số hóa:** `D:\UNIGO\.agents\skills\tao-khbd\references\robotics_khung_ct_data.json`
-3. **Giáo trình chi tiết từng khối lớp (chứa mô hình, bài học, bước lắp ráp):**
+3. **Giáo trình chi tiết từng khối lớp:**
    - **Khối 1, 2 (OLLO Initiate):** `Giáo trình - OLLO Initiate.docx` (.pdf) — 32 bài
    - **Khối 3, 4 (OLLO Kinder):** `Giáo trình - OLLO Kinder.docx` (.pdf) — 32 bài
    - **Khối 5, 6, 7, 8 (OLLO Excel Level 1):** `Giáo trình - OLLO Excel 1.docx` (.pdf) — 16 bài
    - **Khối mở rộng / nâng cao (OLLO Spark):** `Giáo trình - OLLO Spark.docx` (.pdf) — 16 bài
-4. **Quy trình bài dạy chuẩn Robotics (theo giáo trình TS. Lê Nguyên Khôi):**
-   - Đặt vấn đề (*Let's Think* / Khởi động)
-   - Khám phá kiến thức (*Let's Learn* / Hình thành kiến thức)
-   - Lắp ráp mô hình (*Let's Build* / Luyện tập)
-   - Sáng tạo & Thử nghiệm (*My Own Robot* / Vận dụng & Sáng tạo)
-   - Tháo lắp & Cất dọn (*Let's Remove* / Đánh giá)
+4. **Quy trình bài dạy chuẩn Robotics:**
+   - Đặt vấn đề (*Let's Think*) → Khám phá (*Let's Learn*) → Lắp ráp (*Let's Build*)
+   - Sáng tạo (*My Own Robot*) → Tháo lắp (*Let's Remove*)
 
-- Xác định chính xác:
-  - Tên bài, số bài, chủ đề cha, thiết bị sử dụng (Initiate / Kinder / Excel / Spark).
-  - Nội dung lý thuyết chính & nguyên lí khoa học/kĩ thuật mô phỏng.
-  - Các bước lắp ráp và hoạt động thử nghiệm, sáng tạo.
-
-**Kết quả bước 2:** Ghi nhận tóm tắt nội dung bài học, nguyên lí kĩ thuật, mô hình robot cần lắp.
+**Kết quả bước 2:** Ghi nhận tóm tắt: (1) Nội dung bài, (2) Hộp kiến thức/chốt KT, (3) Câu hỏi LT/VD, (4) Trang SGK tham chiếu.
 
 ---
 
@@ -306,7 +323,7 @@ RÚT KINH NGHIỆM SAU BÀI DẠY   ← GIỮ NGUYÊN
 
 ---
 
-### Bước 5: Kiểm tra & Tự đánh giá chất lượng
+### Bước 5: Kiểm tra & Tự đánh giá chất lượng (MỞ RỘNG)
 
 **Mục đích:** Đảm bảo KHBD đạt chuẩn trước khi xuất file .docx.
 
@@ -314,24 +331,34 @@ RÚT KINH NGHIỆM SAU BÀI DẠY   ← GIỮ NGUYÊN
 
 | # | Tiêu chí | Yêu cầu |
 |---|----------|---------|
-| 1 | Kiến thức bám sát SGK? | Nội dung KHBD phải phản ánh đúng kiến thức trong SGK, không thêm bớt sai lệch. |
-| 2 | Mục tiêu dùng Danh từ trực tiếp? | Không dùng động từ (Hiểu, Biết...), không dùng cụm "Sự hiểu biết...", "Khả năng...". Mỗi `-` xuống dòng riêng. |
-| 3 | Năng lực đủ 3 nhóm (2.1/2.2/2.3)? | Đặc thù (NLa-NLe) + Số (Miền I-VI) + Chung, mỗi nhóm có ít nhất 1 mục. |
-| 4 | NL đặc thù đúng format? | Có mã NLa-NLe + tên đầy đủ trong ngoặc + biểu hiện + gắn #HĐ. |
-| 5 | NL số đúng format? | Có `Miền [La Mã]. [Tên] (thành tố X.Y. ... – Bậc N)` + biểu hiện + #HĐ. |
-| 6 | Không lặp nội dung? | Mỗi NL/PC chỉ xuất hiện 1 lần duy nhất. KHÔNG tổng quát + chi tiết. |
-| 7 | Gắn mốc #Hoạt động? | Mỗi năng lực/phẩm chất đều chỉ rõ Hoạt động đạt được. |
-| 8 | Không ghi "(BẮT BUỘC)"? | Tuyệt đối không xuất hiện chuỗi `(BẮT BUỘC)` trong văn bản. |
-| 9 | Tiến trình đủ 4 Hoạt động? | Khởi động → Hình thành KT → Luyện tập → Vận dụng. |
-| 10 | Indent đều đặn? | Cấp 1/2/bullet đúng EMU: 180340/360045/left_indent=540000. |
-| 11 | Bảng 2 cột đúng format? | `HOẠT ĐỘNG CỦA GV – HS` / `KẾT QUẢ CẦN ĐẠT` có viền. |
-| 12 | Bảng đầu và Bảng chữ ký? | Bảng thông tin đầu trang và Bảng chữ ký cuối trang BẮT BUỘC NO BORDER (không viền). |
-| 13 | Phụ lục ở cuối Phần V? | Phiếu HT, Rubric không nằm trong phần Tiến trình. |
-| 14 | Tổng thời lượng hợp lý? | 7 + 18 + 12 + 8 = 45 phút (điều chỉnh linh hoạt). |
+| 1 | Kiến thức bám sát SGK? | Nội dung KHBD phản ánh đúng kiến thức SGK, có tham chiếu trang SGK. |
+| 2 | Mục tiêu dùng Danh từ trực tiếp? | Không dùng động từ. Mỗi `-` xuống dòng riêng. |
+| 3 | Năng lực đủ 4 nhóm (2.1/2.2/2.3/2.4)? | Đặc thù + Số + Chung + AI, mỗi nhóm ≥ 1 mục. |
+| 4 | NL đặc thù đúng format? | Có mã NLa-NLe + tên + biểu hiện + gắn #HĐ. |
+| 5 | NL số đúng format? | Có `Miền [La Mã]. [Tên] (thành tố – Bậc)` + biểu hiện + #HĐ. |
+| 6 | NL AI (2.4) đúng format? | Có mã `[Bậc].[Chủ đề].[Mã]` + biểu hiện từ CV 3439 + #HĐ. |
+| 7 | Không lặp nội dung? | Mỗi NL/PC chỉ xuất hiện 1 lần duy nhất. |
+| 8 | Gắn mốc #Hoạt động? | Mỗi năng lực/phẩm chất đều chỉ rõ Hoạt động đạt được. |
+| 9 | Không ghi "(BẮT BUỘC)"? | Tuyệt đối không xuất hiện chuỗi `(BẮT BUỘC)`. |
+| 10 | Tiến trình đủ 4 Hoạt động? | Khởi động → Hình thành KT → Luyện tập → Vận dụng. |
+| 11 | Phần Chốt kiến thức bám SGK? | Mỗi HĐ hình thành KT có phần chốt lấy từ Hộp kiến thức SGK. |
+| 12 | Tham chiếu trang SGK? | Mỗi HĐ ghi rõ `(Trang SGK: X)` để đối chiếu. |
+| 13 | Indent đều đặn? | Cấp 1/2/bullet đúng EMU: 180340/360045/left_indent=540000. |
+| 14 | Bảng 2 cột đúng format? | `HOẠT ĐỘNG CỦA GV – HS` / `KẾT QUẢ CẦN ĐẠT` có viền. |
+| 15 | Bảng đầu và Bảng chữ ký? | NO BORDER cho bảng thông tin đầu và bảng chữ ký. |
+| 16 | Phụ lục ở cuối Phần V? | Phiếu HT, Rubric không nằm trong phần Tiến trình. |
+| 17 | Tổng thời lượng hợp lý? | 7 + 18 + 12 + 8 = 45 phút (linh hoạt). |
 
-**Nếu phát hiện lỗi:** Quay lại Bước 4 sửa trước khi chuyển sang Bước 6.
+**QUY TRÌNH LẶP (Iterative Loop):**
+1. Nếu phát hiện lỗi ở bất kỳ tiêu chí nào → Quay lại Bước 4 sửa.
+2. Sau Bước 6 (xuất file KHBD) → Chuyển sang tạo **Slide bài giảng** (skill `tao-slide-bai-giang`).
+3. Sau tạo Slide → Chạy **kiểm tra khớp KHBD ↔ Slide**:
+   - Mỗi Hoạt động trong KHBD → phải có slide tương ứng.
+   - Phần Chốt kiến thức → phải có slide Tổng kết/Ghi nhớ.
+   - Câu hỏi Luyện tập/Vận dụng → phải có slide tương tác.
+4. Nếu không khớp → Quay lại sửa KHBD hoặc Slide cho đến khi đồng bộ.
 
-**Kết quả bước 5:** Checklist 10/10 đạt → Cho phép xuất file.
+**Kết quả bước 5:** Checklist 17/17 đạt → Cho phép xuất file.
 
 ---
 

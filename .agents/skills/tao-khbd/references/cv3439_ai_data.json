@@ -1,0 +1,325 @@
+{
+  "lop_1": {
+    "grade": 1,
+    "pages": "14-15",
+    "themes_found": [
+      "C",
+      "D",
+      "A"
+    ],
+    "themes": {
+      "C": {
+        "match": "C. Cfic ki",
+        "yccd_count": 6,
+        "yccd": [
+          "- Nhan biet dugc AI trong met so vi du cu the va don",
+          "- Nhan dien duac met so ding cu AI quen thuec va",
+          "- Nhan biet dirge cac thiet bi AI co cac be phan 4i6ng",
+          "- Hieu &roc AI co kha nang hien cac menh lenh don",
+          "- Hieu ducyc AI co kha Wang xir ly hinh anh nhan duot",
+          "- Hieu dirge AI co kha nang xir ly am thanh de phan"
+        ],
+        "raw_excerpt": "C. Cfic ki thu4 Ira *rig dung AI \nCl. DOc diem \nchinh cim AI \nNhan Wet AI va \nUng dung AI \n- Nhan biet dugc AI trong met so vi du cu the va don \ngian ve AI. \n- Nhan dien duac met so ding cu AI quen thuec va \nphe Wen ten dien thoai hoac may tinh bang (vi du: \nto 13% an, nhan dien khuon mat, ...). \nChirc nang va \ncong cu AI \n- Nhan biet dirge cac thiet bi AI co cac be phan 4i6ng \nvai be phan dm con nguai (vi du: camera la 'mat' va \nmicro la `tai dm cac thiet bi d6). Cac vi du c6 the tim \ntau qua c"
+      },
+      "D": {
+        "match": "D. Thiel",
+        "yccd_count": 0,
+        "yccd": [],
+        "raw_excerpt": "D. Thiel ke he theing AI \nChit de D1 . Nhan dien & hinh thanh giai pita]) \nChu de D2. Cu\na trite & ttrcmg tac, cai tien he thong \nLOP I \nChit d \nNOi dung \nYeu cau can d#t \n"
+      },
+      "A": {
+        "match": "A. Ty duy",
+        "yccd_count": 12,
+        "yccd": [
+          "- Nhan biet va mo to dugc rang con ngued c6 nhieu",
+          "- Biet dugc rang cam Vic la dac tnrng dm con ngtrOi",
+          "- Biet dugc rang AI kh6ng co cam laic that, chi co",
+          "- Biet dugc rang viec AI the hien cam Vic (vi du:",
+          "- Neu dupe mot s6 vi du minh hoa (nhu robot mai",
+          "- Biet dirge cac each ma AI the hien cam ,xiic qua",
+          "- Hieu dugc rang nhung bieu hien nay giiip AI giao",
+          "- Nhan biet va ke ten dugc met s6 san phim hoac",
+          "- M6 to dtroc cong dung chinh dm tong san phim va",
+          "- Nhan biet va neu duoc vi du met s6 bath vi sir dung",
+          "- Biet dtroc rang khong throe phep sir dung AI vai",
+          "- Neu dirge vi du ve viec con nguai sir dung AI dimg"
+        ],
+        "raw_excerpt": "A. Ty duy lay con nguiri lam trung tam \n, \nAl. Tinh chii \nOng cita con \nngtroi \nCon \t\nngtroi \t\nco \ncam Vic, AI thi \nkitting \n- Nhan biet va mo to dugc rang con ngued c6 nhieu \nloci cam xne khdc nhau (vi du: vui, Wen, gian az, sg \nhai, ngac nhien...), dong tiled neu vi du cu the cho \ntirng loci cam Vic. \n- Biet dugc rang cam Vic la dac tnrng dm con ngtrOi \n(va sinh vat co N than kinh), ginp con nguOi phan \nimg, giao tiep va dua ra quyat dinh trong cac tinh \nhuong khac nhau. \n- Biet dugc rang AI k"
+      }
+    },
+    "full_text": "Chit de B3. Nguyen tac dao dire va trach nhiem xa hoi \nC. Cfic ki thuat va tirng dung AI \nChit de C 1 . DSc diem chinh dm AI \nChit de C2. fing dung AI trong hoc tap va cu6c song \nChit de C3. Cong nghe AI \nChu de C4. Du lieu trong Al \nChit de C5. KT thuat va thuat town AI \nD. Thiel ke he theing AI \nChit de D1 . Nhan dien & hinh thanh giai pita]) \nChu de D2. Cu\na trite & ttrcmg tac, cai tien he thong \nLOP I \nChit d \nNOi dung \nYeu cau can d#t \nA. Ty duy lay con nguiri lam trung tam \n, \nAl. Tinh chii \nOng cita con \nngtroi \nCon \t\nngtroi \t\nco \ncam Vic, AI thi \nkitting \n- Nhan biet va mo to dugc rang con ngued c6 nhieu \nloci cam xne khdc nhau (vi du: vui, Wen, gian az, sg \nhai, ngac nhien...), dong tiled neu vi du cu the cho \ntirng loci cam Vic. \n- Biet dugc rang cam Vic la dac tnrng dm con ngtrOi \n(va sinh vat co N than kinh), ginp con nguOi phan \nimg, giao tiep va dua ra quyat dinh trong cac tinh \nhuong khac nhau. \n- Biet dugc rang AI kh6ng co cam laic that, chi co \nthe mo phong hoac nhan dien cam Vic cila con nguOi \nth6ng qua dit lieu, chic khong trai nghiem cam xiic \nnhu con ngue(i. \nAI the hien cam \nKite \t\ndo \t\ncon \nnguOi lap trinh \n- Biet dugc rang viec AI the hien cam Vic (vi du: \ncued, buen, ngac nhien, tire gian tren man hinh hoac \nqua gi9ng noi) la do con nguOi lap trinh hoac thiet ke \ntrtrac, chic AI khong that su co cam xiic nhu con \nngtrOi. \n- Neu dupe mot s6 vi du minh hoa (nhu robot mai \nkhi ngtroi cliing ke chuyen vui, hose trg ly ao noi \"Toi \nrat vui dugc giiip ban\"), va giai thich dirge rang \nnhang Melt hien nay chi la phan img dirge lap trinh \nsan. \nA2. AI vi sty \ntien hi) dm \ncon nproi \n)\"( nghTa cam xiic \nma AI the hien \n- Biet dirge cac each ma AI the hien cam ,xiic qua \nhinh anh, gi9ng noi hoac hanh vi (vi du: bieu tugng \nkhuon mat vui, gi9ng noi than thien, hoac loi chao de\" \nthuong). \n\nChii de \nNOi dung \nYen au an 44t \n- Hieu dugc rang nhung bieu hien nay giiip AI giao \ntiep to nhien han vai con ngu6i, khien ngu6i dimg \ncam thay thoai mai, gin OH va a hop tac ham \nNhan \t\ndien , AI \ntrong cuec song \n- Nhan biet va ke ten dugc met s6 san phim hoac \nthiet bi co sir dung tri tue nhan tap (vi du: loa thong \nminh, dien thoai co to ly do, robot hitt btu, xe tu lai, \ncamera nhan dien khuon mat, irng dung dich ngon \nngir...). \n- M6 to dtroc cong dung chinh dm tong san phim va \neach AI giup san phim hog &Ong thong minh han (vi \ndu: loa thong minh hieu lenh bang giong noi; robot \nhitt bui to tim &rang va tranh chuang ngai vat). \nB. D3o dik AI \nBl. Cie khia \nc#nh 4o dfiT \nciia AI \nViec lam tot va \nviec lam xau \n- Nhan biet va neu duoc vi du met s6 bath vi sir dung \nAl c6 the gay hai cho nguai khac. \nB3. Nguyen \ntie d#o dire va \ntrach nhiem \nxi hei \nMay thOng minh \nlam viec tot \n- Biet dtroc rang khong throe phep sir dung AI vai \nflute dich lam hg ngu6i khac. \n- Neu dirge vi du ve viec con nguai sir dung AI dimg \neach, vi rime dich tot dep. \nC. Cfic ki thu4 Ira *rig dung AI \nCl. DOc diem \nchinh cim AI \nNhan Wet AI va \nUng dung AI \n- Nhan biet dugc AI trong met so vi du cu the va don \ngian ve AI. \n- Nhan dien duac met so ding cu AI quen thuec va \nphe Wen ten dien thoai hoac may tinh bang (vi du: \nto 13% an, nhan dien khuon mat, ...). \nChirc nang va \ncong cu AI \n- Nhan biet dirge cac thiet bi AI co cac be phan 4i6ng \nvai be phan dm con nguai (vi du: camera la 'mat' va \nmicro la `tai dm cac thiet bi d6). Cac vi du c6 the tim \ntau qua cac thiet bi dien tir hoac mo hinh (kheng can \nsir dung dien) dm ro-bet. \t\n, \n- Hieu &roc AI co kha nang hien cac menh lenh don \ngian dm con nguai, trO chuyen theo kich ban Binh \nsan. \n- Hieu ducyc AI co kha Wang xir ly hinh anh nhan duot \nde nhan dien cac do vat. \n- Hieu dirge AI co kha nang xir ly am thanh de phan \nbiet cac loai am thanh khac nhau. \nD. Thief ke he thong AI \nDl. NhOn dien \n& hinh thanh \ngiai phap \nMay thOng minh - Neu ducfc vi du ye met tinh hu6ng ma AI \"hoc\" tir \nhinh anh hoac thong tin do con ngtr6i cung cap (vi \ndu: AI hoc nhan biet con meo, qua tao...). \n119c tir vi du \n14 \n\n"
+  },
+  "lop_2": {
+    "grade": 2,
+    "pages": "16-18",
+    "themes_found": [
+      "C",
+      "D"
+    ],
+    "themes": {
+      "C": {
+        "match": "C. Cac ki thu",
+        "yccd_count": 5,
+        "yccd": [
+          "- So sanh dugc 6 mire da co ban gift each hoc dm",
+          "- Giai thich dugc 'Ur lieu' la nhitng vi du (hinh anh,",
+          "- \"Met dugc AI c6 the phan loai do vat bang each sir",
+          "- So sanh dugc cach AI phan loai so vgi cach con",
+          "- Biel dugc rang AI c6 the plait loai sai."
+        ],
+        "raw_excerpt": "C. Cac ki thu4t va ling dung AI \nCl. D4c diem \nchinh cita AI \nCach AI hoc va \nhoc lieu dm AI \n- So sanh dugc 6 mire da co ban gift each hoc dm \ncon ngtr6i va AI. \n- Giai thich dugc 'Ur lieu' la nhitng vi du (hinh anh, \nam thanh) ma con ngu6i &nig a day cho AI. \nC3. Ging \nnghe AI \nSi lugc each AI \nphan loai 6 vat \n- \"Met dugc AI c6 the phan loai do vat bang each sir \ndung cac cong cu ma ngu6n mor ho4c mien phi, \nchang han: Teachable Machine, Google Colab hoac \ncac img dung AI hoc may truc tuyen t"
+      },
+      "D": {
+        "match": "D. Thiet ke",
+        "yccd_count": 4,
+        "yccd": [
+          "- Thuc hanh lua digit vi du phit hop de \"day\" AI",
+          "- Giai thich dugc 6 mire dO ca ban ve vai tro dm. chi",
+          "- Giai thich dirge 6 mire da co. ban rang can cung cap",
+          "- Thgc hanh lua chon dugc mat so vi du ca ban phit"
+        ],
+        "raw_excerpt": "D. Thiet ke he thtong AI \nDl. Nh4n dien \n& hinh thanh \ngiai phap \nMay thOng minh - Neu dugc mat so van de don gian, gall' \t\ngili trong \nd6i sang co the ap dung AI de giai quy'et. \ngiiip giai guy& \nvan de quanh em \n'C7 \t\ntu6ng \t\nmay \nthong minh \n- Thuc hanh lua digit vi du phit hop de \"day\" AI \ntrong mat tinh hung cu the. \nD2. Cu\na true \n& ttromg tac, \ncai tien he \nthong \nVai trO dm du \nlieu \n- Giai thich dugc 6 mire dO ca ban ve vai tro dm. chi \nlieu trong viec \"day\" AI trong mat tinh huong cu t"
+      }
+    },
+    "full_text": "Chii d' \nNei dung \nYeu cAu an dat \n- Trinh bay dugc bang led rang a AI tra led dung \nhoac nhan biet chinh xac, can c6 nhieu vi du dung va \nkhac nhau a AI hoc. \nD2. Ciu true \n& twang tic, \ncai den he \ntilting \nNhieu loci may \nthong minh \n- Nhan Wet va so sanh dirge cac vi du cu the ve he \nthong AI: c6 Ioai chi lam dugc met viec (nhu nhan \nbiet hinh anh), co loci CO the lam nhieu viec khac \nnhau (nhu Lang nghe - tra led, thoc hien theo lenh...). \nLOP 2 \nChii a \nNei dungYe \n,, n ca x  u can dat \nA. Tir duy lAy con nguiri lam trung tam \n, \nAl. Tinh chi' \nOng cila con \nngtroi \nKhi nao nen va \nkhong nen dung \nAI \n- Nhan Wet va me to dirge met se tinh hung trong \ncuec sang ma AI c6 the h8 trg con ngtrei hieu qua, \nchang han nhu: sir dung AI de dich ngon ngt-r, tim \nkiem thong tin nhanh, phat hien 18i chinh ta, hoac \ndieu khien thiet bi thong minh trong nha, ... \n- Nhan biet va mo to dugc met se tinh hung trong \nell& song ma khOng nen hoac can than trong khi sir \ndung AI, vi du: khi AI c6 the lam 10 thong tin ca. nhan \n(nhu khuon mat, dia chi, du lieu giong noi); khi AI \nthay the hoan toan so cam xdc cila con ngtroi, d'an \nden so thieu trach nhiem. \nAI lam viec, con \nngtroi kiem soat \n- Neu duge vi du cu the ve tinh hueng can con ngtreri \ngiam sat AI (vi du: ngued lai xe van can quan sat khi \nxe to lai hog &Ong; bac si can kiem tra lai ket qua do \nAI ggi 7). \n- The hien dugc thai de dung dan khi sir dung AI: \nbiet tin tueng vao cong nghe a mire hgp 13'7, nhung \nvan co trach nhiem va so kiem soat dm con ngtroi. \nA2. AI vi sir \ntin bi5 dm \ncon ngwai \nAI \t\ntrong \t\ngia \ndinh \n- Nhan biet va mo to dugc met se thiet hi hoac frng \ndung trong gia dinh co sir dung tri tue nhan taco (AI), \nchang han nhu loa thOng minh, robot hut bpi, may \ndieu Ilea to deng dieu chinh nhiet do, camera nhan \ndien nguei trong nha, hoac tivi thong minh ggi 3'7 \nchucmg trinh yeu thich. \n- Biet dugc rang mix dich dm cac cong nghe va san \npharn c6 Al trong gia dinh la ho trg con nguOri trong \nsinh hoat hang ngay, ginp tit kiem tiled gian, giam \nding viec nha, va nang cao so tien nghi, an toan. \n\nChii a \nNOi dung \nYeu au an d#t \nAI h6 trg moi - Nhan Net va ke ten dirge cac doi tugng trong gia \nnguai \ndinh ma AI co the h6 trg, bao g6m: nguai lan tuoi, \ncha me, tre em, ca gia dinh. \n- Biet dugc rang mix tieu dm AI trong bei canh gia \ndinh la 116 trg con nguai trong cuOc song hang ngay, \nginp moi thanh vien tien nghi lion, an toan hon va có \nnhieu thai gian cho nhau hon. \nA3. Cong dan \nCon nguini day - Nhan biet Ira mo to dugc rang moi lan con nguai \ntrong ki \nAI qua Wong tac not chuyen, dat cau hoi, tim kiena, hods dua ra lga \nnguyen AI \nchon vai cac N thong AI (nhu trg Vi au, chatbot, img \ndung ggi y video hoac nhac), thi AI se- ghi nhan dir \nlieu a hoc hOi each con nguai suy nghi va phan hei. \n- Hieu dugc rang con nguai co vai tro quan trong \ntrong viec \"day\" AI thong qua each Wang tac: khi \ncon nguOi dua ra phan Woi dimg, lich sg, va co trach \nnhiem, AI se hoc dugc cac mau thong tin tich cuc; \nngugc 14i, neu dir lieu sai lech hoac thieu chinh xac, \nAI co the hoc sai. \n16 \n\nB. Dao dfrc AI \nBl. Cac khia \ncqnh d‘a.o dfrc \nciia AI \nSu dai xir khong \ncong bang \n- Nhan Met va neu dugc rang AI doi khi c6 the thien \nkien, tire la dai xir kh8ng cong bang voi mat so nh6m \nngu6i. \n- Neu dugc vi du ve cac tinh huang the hien su thien \nkien dm AI. \n- Nhan Wet va neu dugc vi du rang neu &I lieu chua \nda dang hoac chua cong bang thi AI co the hoc theo \neach thien vi. \nB3. Nguyen \ntac dao (Inv va \ntrack nhiem \nxa hi)i \nCtia ban va Gila \nto \n- Nhan biet va neu dugc vi du ve quyen s6 hitu gi \nv6i san pham do con ngu6i hoac AI tao ra. \nC. Cac ki thu4t va ling dung AI \nCl. D4c diem \nchinh cita AI \nCach AI hoc va \nhoc lieu dm AI \n- So sanh dugc 6 mire da co ban gift each hoc dm \ncon ngtr6i va AI. \n- Giai thich dugc 'Ur lieu' la nhitng vi du (hinh anh, \nam thanh) ma con ngu6i &nig a day cho AI. \nC3. Ging \nnghe AI \nSi lugc each AI \nphan loai 6 vat \n- \"Met dugc AI c6 the phan loai do vat bang each sir \ndung cac cong cu ma ngu6n mor ho4c mien phi, \nchang han: Teachable Machine, Google Colab hoac \ncac img dung AI hoc may truc tuyen tircmg tu. \n- So sanh dugc cach AI phan loai so vgi cach con \nngtrai phan loai. \n- Biel dugc rang AI c6 the plait loai sai. \nD. Thiet ke he thtong AI \nDl. Nh4n dien \n& hinh thanh \ngiai phap \nMay thOng minh - Neu dugc mat so van de don gian, gall' \t\ngili trong \nd6i sang co the ap dung AI de giai quy'et. \ngiiip giai guy& \nvan de quanh em \n'C7 \t\ntu6ng \t\nmay \nthong minh \n- Thuc hanh lua digit vi du phit hop de \"day\" AI \ntrong mat tinh hung cu the. \nD2. Cu\na true \n& ttromg tac, \ncai tien he \nthong \nVai trO dm du \nlieu \n- Giai thich dugc 6 mire dO ca ban ve vai tro dm. chi \nlieu trong viec \"day\" AI trong mat tinh huong cu the. \n- Giai thich dirge 6 mire da co. ban rang can cung cap \ncho AI du lieu chinh xac, CO rang a AI dua ra kat \nqua dimg. \n- Thgc hanh lua chon dugc mat so vi du ca ban phit \nhap a \"day\" AI trong mat tinh hung cu the. \n\n"
+  },
+  "lop_3": {
+    "grade": 3,
+    "pages": "19-20",
+    "themes_found": [
+      "B",
+      "C",
+      "D"
+    ],
+    "themes": {
+      "B": {
+        "match": "B. Duo d",
+        "yccd_count": 3,
+        "yccd": [
+          "- Nhan biet va neu dugc vi du ve viec thong tin hoac",
+          "- Biet dugc rang con nguoi can cung cap dir lieu",
+          "- Biet dugc rang khong nen tao ra hoac sir dung AI"
+        ],
+        "raw_excerpt": "B. Duo dire AI \nB2. Sir dung \nAI an town va \nco trfich \nnhiesm \nPhan b* that va \ngia \n- Nhan biet va neu dugc vi du ve viec thong tin hoac \nsan pham do AI tao ra có the khong dimg vOi su that. \nB3. Nguyen \n-lac dao dire va \ntrfich nhi?in \nxi 1gli \nCimg may thong \nminh lam viec \n- Biet dugc rang con nguoi can cung cap dir lieu \ndimg va da clang a AI boat &ling chinh xac, cong \nbang. \n- Biet dugc rang khong nen tao ra hoac sir dung AI \ncho cac time dich xdu nhu lira dao, bat nat hay gay \nhai cho n"
+      },
+      "C": {
+        "match": "C. Cfic ki",
+        "yccd_count": 5,
+        "yccd": [
+          "- Phan biet dugc dac trung va thu6c tinh cita dir lieu.",
+          "- Hieu dugc cau trite neu ... thi ... trong viec giai",
+          "- Hieu dugc met se ding cu AI don gian sir dung cau",
+          "- Neu dugc met se tinh hung co the ap dung h9c",
+          "- Biet bai town hoc may phan loai Ira bai toan hoc"
+        ],
+        "raw_excerpt": "C. Cfic ki thulat va ling dung AI \nC4. De 1141 \ntrong AI \nDa lieu hoc may - Hieu ve khai niem dit lieu thong qua met so vi du. \n- Phan biet dugc dac trung va thu6c tinh cita dir lieu. \nC5. Ki thuat \nva thuat toil' \nAI \nKT thuat AI Oa \ntren luat \n- Hieu dugc cau trite neu ... thi ... trong viec giai \nguy& tinh hung hoac phan loai. \n- Hieu dugc met se ding cu AI don gian sir dung cau \ntrue neu ... thi ... \nKi thuat hoc may - Hieu dugc dac diem chinh dm hoc may la hoc tren \ndir lieu. \n- Neu dugc me"
+      },
+      "D": {
+        "match": "D. Thiet ke",
+        "yccd_count": 1,
+        "yccd": [
+          "- Trinh bay dugc qua trinh don gian de hudn luyen"
+        ],
+        "raw_excerpt": "D. Thiet ke h'' thilng AI \nDl. Nh41 dien \n& hinh thanh \ngifii phap \nQua trinh hudn \nluyen may thong \nminh \n- Trinh bay dugc qua trinh don gian de hudn luyen \nAI gem cac buac: thu thap vi du va cho AI h9c tir \ncac vi du dO. \n\n"
+      }
+    },
+    "full_text": "LOT 3 \nChu de \nNi)i dung \nYeu can can chat \nA. Tir duy lay con nproi lam trung tam \nAl. Tinh chii \ndOng ciia con \nnguiri \nCach sir clung AI \ntrong h9c tap \n- Nhan biet va neu dirge mot se) each ma Al c6 the \nho trg h9c sinh trong qua trinh hoc tap, chang han \nnhu: Trg 13'T h9c tap thong minh, irng dung h9c ngon \nngfr. \nKhong \t\nphi \nthuOc hoan toan \nvao AI \n- Biet duge hau qua cila viec phi thuOc qua mire vao \nAI, nhu: giam kha nang tu duy dOe lap va sang tap; \nmat clan ky nang giai quy6t van d; anh huemg den \nsu tu tin va ban linh ca nhan. \n- Phan biet duge gift viec sir dung AI nhu ding cu \nh8 trg (dung dan, chil dOng, co kiem sok) va viec de \nAI lam thay toan bi) (thp dOng, thieu to lap). \nSuy \t\nnglif \t\nky \ntruck khi dung \nAI \n- Nhan biet va giai thich duge rang truce khi sir dung \nAI, con ngued can xem xet can than nhfing tinh \nhuong co the gay rui ro hose hau qua khong mong \nmain, vi AI khong luon clang va khong hieu duge \ngia tri dao dirc hay cam xiic eila con ngueri. \n- Hieu duge rang viec suy nglif va kiern tra truck khi \ndung AI giiip con nguOi phOng tranh rdi ro, bao ve \nan toan va quy'dri rieng tu, deng thai dam bao AI \nduge sir dpng vi mpc dich Cot. \nA2. AI vi sir \ntien b0 cfia \ncon nguoi \nAI trong trueing \nh9c \n- Nhan biet va mo to duge mot so irng dung hip& \nthi6t bi c6 sir dung AI trong truong h9c, chang han \nnhu: robot hoSe bang thOng minh, irng dung cham \nbai hoac nhan clang chit viet. \n- Biet dugc rang mpc dich ciia viec sir dung AI trong \ntruemg hoc la h.6 trg giao vien va hoc sinh 119c tap \nhien qua han, giiip: ca nhan h6a viec h9c theo nang \nlitre tong hoc sinh; tang hirng thii hoc tap thong qua \ncac hog &Ong tucmg tac. \nAI ho trg mcd \nngued \n- Nhan biet va neu dugc cac ai tugng trong truemg \nhoc ma AI co the h8 trg, bao Om: h9c sinh, giao \nvien, ... \n- Biet duge rang lupe tieu dm AI trong bei canh \ntruemg hoc la h6 trg tat ca the thanh vien trong cong \ndOng gido due — giup viec day va hoc tra nen de \nBang, ca nhan hoa, hien qua va cong bang han. \nA3. Cling dan \ntrong ki \nnguyen AI \nKiem tra va phan \nb*n ke't qua dm \nAI \n- Biet duge mot so vi dp cu the ve viec AI co the sai, \nnhu: Aug dpng dich sai nghia ter hoac cau; AI nhan \n18 \n\nChii (t \nNCii dung \nYeu au an dut \ndien nham hinh anh hoac khuon mat; chatbot dua ra \nthong tin khong &mg su that. \n- Biel dugc rang khi sir dung AI, hoc sinh can kiem \ntra lai ket qua, so sanh voi nhieu nguen thong tin \nkhac nhau va trao doi voi giao vien hoac nguoi 16n \nde xac minh. \nB. Duo dire AI \nB2. Sir dung \nAI an town va \nco trfich \nnhiesm \nPhan b* that va \ngia \n- Nhan biet va neu dugc vi du ve viec thong tin hoac \nsan pham do AI tao ra có the khong dimg vOi su that. \nB3. Nguyen \n-lac dao dire va \ntrfich nhi?in \nxi 1gli \nCimg may thong \nminh lam viec \n- Biet dugc rang con nguoi can cung cap dir lieu \ndimg va da clang a AI boat &ling chinh xac, cong \nbang. \n- Biet dugc rang khong nen tao ra hoac sir dung AI \ncho cac time dich xdu nhu lira dao, bat nat hay gay \nhai cho ngu6i khac. \ntot \nC. Cfic ki thulat va ling dung AI \nC4. De 1141 \ntrong AI \nDa lieu hoc may - Hieu ve khai niem dit lieu thong qua met so vi du. \n- Phan biet dugc dac trung va thu6c tinh cita dir lieu. \nC5. Ki thuat \nva thuat toil' \nAI \nKT thuat AI Oa \ntren luat \n- Hieu dugc cau trite neu ... thi ... trong viec giai \nguy& tinh hung hoac phan loai. \n- Hieu dugc met se ding cu AI don gian sir dung cau \ntrue neu ... thi ... \nKi thuat hoc may - Hieu dugc dac diem chinh dm hoc may la hoc tren \ndir lieu. \n- Neu dugc met se tinh hung co the ap dung h9c \nmay nhu phan loai rau cu trong n6ng trai thong \nminh, du bao mua lil 6 mien Trung, nhan clang tieng \nnot dm hoc sinh noi cac tieng dia phtrung hoac ng6n \nngit dan tee, va ggi 3\", bai hat hoac video phii hop \\TM \nlira tu6i. \n- Biet bai town hoc may phan loai Ira bai toan hoc \nmay du doan thong qua tinh hung cu the va minh \nhoa bang cac cong cu ma nguen m6 hoac mien phi, \nchang han• Teachable Machine, Google Colab hoac \ncac img dung AI hoc may Ulm tuyen tuung tu. \nD. Thiet ke h'' thilng AI \nDl. Nh41 dien \n& hinh thanh \ngifii phap \nQua trinh hudn \nluyen may thong \nminh \n- Trinh bay dugc qua trinh don gian de hudn luyen \nAI gem cac buac: thu thap vi du va cho AI h9c tir \ncac vi du dO. \n\n"
+  },
+  "lop_4": {
+    "grade": 4,
+    "pages": "21-21",
+    "themes_found": [],
+    "themes": {},
+    "full_text": "Chii de \nNei dung \nYen au can dat \nD2. au true \n& tirung tic, \ncai tien he \nthong \nMr\" lieu tot cho \nmay thong minh \n- Neu dirge rang du lieu dung a day AI di the bi \nthieu, nham lan hoac khong dung su that. \n- Neu dugc met se yeu can ca ban d6i vai du lieu \ndung de huan luyen AI. \nMay thong minh \nca the h9c sai \n- Trinh bay dugc C'r mire do don gian rang AI hoc 'lir \ncac vi du va dir lieu do con nguai cung cap, nen neu \n(lit lieu sai hoac khong tot thi AI se kh6ng hieu qua, \ntham chi hoat Ong sai. \nLOP 4 \nChti de \nNei dung \nYeu au can dat \nA. Tir duy lay con nguiri lam trung tam \n. \nAl. Tinh chili \ndeng ciia con \nnguai \nAI trong dog \nviec hang ngay \n- Nhan biet va neu dugc met se lihh vuc hoac ding \nviec cu the ma tri tue nhan tao (AI) c6 the he) trg con \nnguai, chang han nhu nong nghiep, y te, giao thong, \n... Vi du AI giup phat hien sau benh qua hinh anh, du \ndoan thai tiet, dieu khien may mac thu hoach tu Ong. \nAI h8 trg, con \nnguai suy nghi \n- Hieu va giai thich dugc rang tri tue nhan tao (AI) \ndirge tao ra de he) trg con nguai hoc tap va lam viec \nhieu qua hon, giup tra ciru thong tin, ggi Y. Yr tuang, \nsira lei hoac minh 119a not dung, nhung khong the \nthay the tu duy, cam xiic va su sang tao cua con \nnguai. \n- Neu dugc vi du cu the ye viec AI ho trg trong hoc \ntap (vi du: AI giiip giai thich bai toan, sira 143i chinh \nta, ggi y each viet doan van), va giai thich dugc vi sao \nnguai hoc van can tu suy nghi, kiem tra va hieu bai \nthay vi chi chop lc& qua do AI dua ra. \nA2. AI vi sly \ntien be cila \ncon ngutri \nAl vi cuec song \ntot dcp han \n- Biet dugc rang tri tue nhan tao (AI) dugc con nguai \ntao ra de ho trg cac hog Ong trong dai song xa hei, \ngifip giai quy& van\n\" \t\nde, tiet kiem thei gian va nang \ncao chat lugng men song. \nAI trong xa hei \n- Nhan biet va neu dugc cac diii tucmg trong xa hei \nma tri tue nhan tao (AI) c6 the he trg, bao gem: nguai \nlao Ong, nguai yeu the, ... \nA3. Cong din \ntrong ki \nnguyen AI \nCon \t\nnguai \nguy& dinh khi \n&mg AI \n- Biet dirge rang viec quyet dinh ea sir dung AI hay \nkhong phu thuec vao muc dich, nhu cau va su an toan \nciia con nguai. Neu AI mang lai lgi ich, gifip tiet kiem \nthai gian, tang hieu qua hoac dam bao an toan, con \nnguai c6 the lua ch9n sir dung. Neu AI gay rat ro, \nxam pham quy&I rieng tu, hoac anh huang den gia tri \n20 \n\n"
+  },
+  "lop_5": {
+    "grade": 5,
+    "pages": "22-23",
+    "themes_found": [
+      "C",
+      "D"
+    ],
+    "themes": {
+      "C": {
+        "match": "C. Cfic ki",
+        "yccd_count": 2,
+        "yccd": [
+          "- Trinh bay dugc cac img dung dm AI trong h9c tap",
+          "- Lam quen cac Gong cu trai nghiem AI true quan dua"
+        ],
+        "raw_excerpt": "C. Cfic ki thu4t va irng dting Al \nC2. irng dyng \nAI trong hoc \ntap va cui)c \nsong \nKit \t\nso \t\nirng \ndung AI quen \nthu6c \n- Trinh bay dugc cac img dung dm AI trong h9c tap \nva dad song, dac biet la cac irng dung gan gui ved b6i \ncanh Viet Nam nhu: AI trong nong nghiep, gido duc, \ndu bao Ili, dich ngon ngir dan t6c, ... \nC5. KT thu4t \nva thua‘t town \nAI \nLam quen v6i \nmot so cong cu \ntrai nghiem ki \nthuat hoc may \n- Lam quen cac Gong cu trai nghiem AI true quan dua \ntren hoc may c6 giant sat, nhu"
+      },
+      "D": {
+        "match": "D. Thiel",
+        "yccd_count": 14,
+        "yccd": [
+          "- Neu dugc vi du cu the, don gian ve cac van'",
+          "- Neu dirge vi du 3'T twang ban dam ve each AI c6 the",
+          "- Trinh bay dirge rang con ngtroi can lien tpc danh gia",
+          "- Nhan biet va mo to dirge rang AI c6 the thgc hie'n",
+          "- Biet dirge rang dit AI di the lam viec nhanh va",
+          "- Neu dugc vi du Cu the: neu AI chan doan nham",
+          "- Hien doge rang mpe dich chinh dm AI la WO trg",
+          "- Biet dirge rang du AI lam dugc nhieu viec, nhung",
+          "- Nhan biet va giai thich doge rang AI dugc con",
+          "- Neu dugc vi du cu the ve viec AI mang lai lgi ich",
+          "- Nhan biet va giai thich dugc rang AI dang ngay",
+          "- Biet duge rang vice sir dung AI phai phi' hgp voi",
+          "- Biet dugc mot so vi du ve su cong bang hoac khong",
+          "- Hieu dugc rang AI can phpc vu con nguai met each"
+        ],
+        "raw_excerpt": "D. Thiel k'e he th4ng AI \nDl. Nh4n dien \n& hinh thinh \ngiai phi') \nTir van de den y \nWong AI \n- Neu dugc vi du cu the, don gian ve cac van' \t\nde giai \nguy& bang AI, tru tien cac van a gan gili ved bei \ncanh Viet Nam nhu: AI trong n6ng nghiep, gide, due, \ndu bao la, dich ngon nglt dan tOc thieu s6, ... \n- Neu dirge vi du 3'T twang ban dam ve each AI c6 the \nhoc hoac giup giai guy& van d do. \nD2. Ciu true \n& bran tic, \ncai tien he \nthilng \nLien Ale cai tien \nAI \n- Trinh bay dirge rang con ngtroi c"
+      }
+    },
+    "full_text": "Chii de \nN(ii dung \nYeu au can d#t \ndao dire, con ngtr6i c6 quyen tir chi hoac dimg sir \ndung. \nB. No dfic AI \nB2. Sir citing \nAI an town va \nco tra.ch \nnhiem \nBao ve thOng tin \nca nhan \n- Biet dugc rang viec chia se thong tin ca nhan (nhu \nho ten, so dien thoai, dia chi, mat khau, anh rieng tu, \n...) cho AI co the khien thong tin do bi ngued khac \nbiet hoac bi lgi dung. \n- Neu dirgc vi du ve mot s6 loci thong tin ca nhan can \ndirge gilt bi mat va khong chia se cho AI a dam bao \nan toan va sir dung AI c6 trach nhiem. \nC. Cfic ki thu4t va irng dting Al \nC2. irng dyng \nAI trong hoc \ntap va cui)c \nsong \nKit \t\nso \t\nirng \ndung AI quen \nthu6c \n- Trinh bay dugc cac img dung dm AI trong h9c tap \nva dad song, dac biet la cac irng dung gan gui ved b6i \ncanh Viet Nam nhu: AI trong nong nghiep, gido duc, \ndu bao Ili, dich ngon ngir dan t6c, ... \nC5. KT thu4t \nva thua‘t town \nAI \nLam quen v6i \nmot so cong cu \ntrai nghiem ki \nthuat hoc may \n- Lam quen cac Gong cu trai nghiem AI true quan dua \ntren hoc may c6 giant sat, nhu: Teachable Machine \nhoac cac extension AI (vi du: \"ML for Kids\" tich hop \ntrong Scratch). \nD. Thiel k'e he th4ng AI \nDl. Nh4n dien \n& hinh thinh \ngiai phi') \nTir van de den y \nWong AI \n- Neu dugc vi du cu the, don gian ve cac van' \t\nde giai \nguy& bang AI, tru tien cac van a gan gili ved bei \ncanh Viet Nam nhu: AI trong n6ng nghiep, gide, due, \ndu bao la, dich ngon nglt dan tOc thieu s6, ... \n- Neu dirge vi du 3'T twang ban dam ve each AI c6 the \nhoc hoac giup giai guy& van d do. \nD2. Ciu true \n& bran tic, \ncai tien he \nthilng \nLien Ale cai tien \nAI \n- Trinh bay dirge rang con ngtroi can lien tpc danh gia \nva nang cap san pham de he thong AI cho ra ket qua \ntot hon. \nLOP 5 \nChii de \nN(li dung \nYeu eau can dat \nA. Tir duy lay con nguiri lam trung tam \n, \nAl. Tinh chfi \nOng cfia con \nnguivi \nCon nguai chill \ntrach nhiem \n- Nhan biet va mo to dirge rang AI c6 the thgc hie'n \nmot s6 cong viec thay con ngtred, dac biet la flitting \nviec lap di lap lai, nguy hiem hoac doi h6i tinh chinh \nxac cao, nhu: robot lap rap san phana trong nhu may; \nAI kiem tra Iiii trong san xuat; xe to lai ch6 hang h6a. \n- Biet dirge rang dit AI di the lam viec nhanh va \nchinh xac hon con ngtred, nhung AI khong hieu dugs \n\nChii de \nNOi dung \nYeu au can slat \nhau qua hay dao dire dm hanh Ong. Vi vay, con \nnguai van la nguai chiu trach nhiem cuai ding ve \nmoi guy& dinh hoac ket qua do AI tao ra. \n- Neu dugc vi du Cu the: neu AI chan doan nham \nbenh, bac si can kiem tra lai va chiu trach nhiem dieu \nchinh; nL xe to lai gay tai nan, ky su hoac nguai \ndieu khien phai chiu trach nhiem. \nA2. AI vi si \ntien 138 cita \ncon ngtroi \nAI \t\nkitting thay \nthe con ngu6i \n- Hien doge rang mpe dich chinh dm AI la WO trg \ncon nguai, chir khong thay the vai tro, to duy, cam \nxite va trach. nhiem dm con ngtr6i trong xa hOi. \n- Biet dirge rang du AI lam dugc nhieu viec, nhung \nchi con ngtrOi mai CO kha 'fang suy nghi sang tao, \nhieu cam xitc va dua ra guy& dinh dao dire — vi vay, \ncon nguai phai luon kiem soat, dinh huong va chiu \ntrach nhiem ve each AI dugc sir dung. \nAI phpc IT lgi \nich chung \n- Nhan biet va giai thich doge rang AI dugc con \nnguai tao ra nham phpc vu lgi ich chung cda xa hOi, \nginp cai thien chat lugng cuOc sang, giai quyet cac \nvan de phirc tap va ho trg con nguai trong nhieu rtnh \nwe khac nhau. \n- Neu dugc vi du cu the ve viec AI mang lai lgi ich \ncho cong 'Jong: y te\", gido dpc, moi truemg. \nA3. C8ng dan \ntrong ki \nnguyen AI \nCon ngu6i trong \nki nguyen Al \n- Nhan biet va giai thich dugc rang AI dang ngay \ncAng to. nen pha bin trong cuOc song, vi vay moi \nnguoi — du la tre em, nguai lon hay nglayi cao tuai — \ndeu can hieu va biet cach sir dung AI a phpc vu \ncuee sang, hoc tap va cong viec mot each an town, \nhieu qua. \n- Biet duge rang vice sir dung AI phai phi' hgp voi \nnhu au, kha nang va mpe dich dm tong nguOi, tranh \nlam dung hoac sir dung khong an town (vi du: chia se \nthong tin ca nhan, tin tuOng tuyet d6i vao AI). \nB. Dao dfrc AI \nBl. Cac khia \ncanh 4o Mk \ncda AI \nHe \t\nthong \t\nAI \ncong bang \n- Biet dugc mot so vi du ve su cong bang hoac khong \ncong bang trong met so tinh huang dun gian, trong \ndOi song va. khi AI phpc vu con nguai. \n- Hieu dugc rang AI can phpc vu con nguai met each \ncong bang, khong phan biet giai tinh, vimg mien, \ndieu kien kinh to hay hoan canh khac nhau. \n22 \n\n"
+  },
+  "lop_6": {
+    "grade": 6,
+    "pages": "24-25",
+    "themes_found": [
+      "C"
+    ],
+    "themes": {
+      "C": {
+        "match": "C. Cat ki",
+        "yccd_count": 15,
+        "yccd": [
+          "- Sir dung dugc du true neu ... thi ... trong lap trinh",
+          "- Sir dung dirge cong cii trai nghiem AI true quan",
+          "- MO ta. dirge a mde (10 don gidn ve cac bit& co. ban",
+          "- Gidi thich dirge bang vi du rang he thong AI c6 the",
+          "- Nhan biat va giai thich dirge rang AI khong to sinh",
+          "- Neu dirge mot so vi du quen thuOc va cac cong eu",
+          "- Trinh bay dugc AI hoat &Ong theo lap trinh dm con",
+          "- Neu dugc vi du cu the ve cac tinh hueng ra quyet",
+          "- Nhan biet va giai thich dugc rang AI c6 the giiip",
+          "- Nhan Wet va giai thich dugc rang du lieu ca nhan",
+          "- Hieu dugc khai niem ca ban ye quyen rieng Pr,",
+          "- Hieu va giai thich dugc rang dir lieu ca nhan (nhtr",
+          "- Giai thich dugc rang quyen rieng tu la quyen dugc",
+          "- Nhan biet va phan tich dugc mg tich ctrc va han",
+          "- Neu dugc met se cau hoi ca ban a kiem tra tinh"
+        ],
+        "raw_excerpt": "C. Cat ki thuat va ung dung AI \nC4. Dir lieu \ntrong AI \nThuat town AI \ndip teen lust \n- Sir dung dugc du true neu ... thi ... trong lap trinh \nAI don gian. \nLam quen voi \nmot so cong cu \nirng \t\ndung \t\nhoc \nmay true quan \n- Sir dung dirge cong cii trai nghiem AI true quan \ndira tren hoc may c6 giam sat nhu: Scratch, \nTeachabe Machine, ... Trong truarng hgp bi han the \nvi thiau thiat bi hoac dien nang, co the mo phong thil \ncong each AI phan loai do vat. \nD. Thiet lee he thOng AI \nDl. Nhan dien \n&"
+      }
+    },
+    "full_text": "Chit de \nNOi dung \nYeu eau can dvt \nB2. Sir dung \nAl an -Wan va \ncó frith \nnhiem \nGrin) \t\nAI \t\nding \nbang \n- Neu dugc mot se) each giiip AI hog dOng cong bang \nhem, chang WI nhu sir dung dir lieu da dang, tranh \ndinh kin hoac kiam tra lai kat qua do AI OD ra. \nB3. Nguyen \ntic dvo dire Ira \nfrith nhiem \nxi hOi \nCan hiau each AI \nsuy nghi \n- Giai thich dugc vi sao con ngu6i can hieu 1ST do AI \ndira ra (ply& dinh, nham dam bao tinh minh bach va \nclang tin cay khi sir dung AI. \nC. Cat ki thuat va ung dung AI \nC4. Dir lieu \ntrong AI \nThuat town AI \ndip teen lust \n- Sir dung dugc du true neu ... thi ... trong lap trinh \nAI don gian. \nLam quen voi \nmot so cong cu \nirng \t\ndung \t\nhoc \nmay true quan \n- Sir dung dirge cong cii trai nghiem AI true quan \ndira tren hoc may c6 giam sat nhu: Scratch, \nTeachabe Machine, ... Trong truarng hgp bi han the \nvi thiau thiat bi hoac dien nang, co the mo phong thil \ncong each AI phan loai do vat. \nD. Thiet lee he thOng AI \nDl. Nhan dien \n& hinh thanh \ngiai phap \nQuy trinh huan\n\" \nluyen AI \n- MO ta. dirge a mde (10 don gidn ve cac bit& co. ban \ntrong qua trinh huan luyen mO hinh AI: xac dinh van \nda, thu thap (lir lieu, day may h9c, kiam tra va danh \ngia kat qud. \nD2. Cali true \n& tirong tac, \ncai tien he \nthong \nCdi tien he thong \nAI bang du lieu \n- Gidi thich dirge bang vi du rang he thong AI c6 the \ndugc cai tier' va hoat dOng vet hon khi dir lieu dugc \nba sung va cap nhat thuerng xuyen. \nLOP 6 \nChit de \nNOi dung \nYeu can can slat \nA. Tir duy lay con nguiri lam trung tam \nAl. Tinh chii \nOng dm con \nnguiri \nCon ngir6i tao \nva diau khian AI \n- Nhan biat va giai thich dirge rang AI khong to sinh \nra hoac hog &Ong mot each dOc lap, ma dugc con \nngu6i tao ra, lap trinh ya diau khien a thus hien \nnhang nhiem vu cu the. \n- Neu dirge mot so vi du quen thuOc va cac cong eu \nAI ma h9c sinh c6 the gap trong dai sang hang ngay, \nchang han nhu: Trg IS7 do — hiau va tra 16i eau h6i \ndo con nguai lap trinh san. Robot hut bpi, xe to lai \n— di chuyen va tranh vat can nher cac cam bin dirge \nthiat ka bed ky sir. \n\nChu dt \nNi)i dung \nYeu can can dat \nAI \t\nhoat \t\n&Ong \ntheo lap trinh \n- Trinh bay dugc AI hoat &Ong theo lap trinh dm con \nnguai va chi la ding cu he trg, con nguai dimg la \nngutd guy& dinh cuei ding. \nA3. Cong dan \ntrong ki \nnguyen AI \nCon \t\nnguai \t\nra \nguy& dinh ved \nAI \n- Neu dugc vi du cu the ve cac tinh hueng ra quyet \ndinh c6 su he trg cila AI, chang han nhu: trong y V& \nAI ggi 3- chart doan benh, bac si xem xet va guy& \ndinh phuang an dieu tri. Trong giao thong: AI de xuat \nduang di nhanh han, nguai lai xe can nhac truac khi \nchon 10 trinh. \nH9C hei va plat \ntrien vai AI \n- Nhan biet va giai thich dugc rang AI c6 the giiip \ncon nguai h9c heti, ran luyen ky nang va ma rang \nhien biet, nen con nguai biet sir dung AI dung cach \nva c6 mix dich re rang. \nQuyen sa htru va \nquyen rieng to \n- Nhan Wet va giai thich dugc rang du lieu ca nhan \n(nhu hinh anh, giong noi, ten, dia chi, thong tin h9c \ntap, th6i quen sir dung mang) la tai san dm miii \nngutd, va chi chit. sa ht-tu mai CO quyen quyet dinh \nchia se hoac cho pi-top sir dung nhang du lieu do. \n- Hieu dugc khai niem ca ban ye quyen rieng Pr, \nnghia la quyen dugc bao ve thong tin ca nhan va cuOc \nsong rieng, kitting bi nguai khac hoac he thong AI \nthu thap, sir dung hoac chia se trai phep. \nBao ve ca. nhan \ntrong that dai AI \n- Hieu va giai thich dugc rang dir lieu ca nhan (nhtr \nten, hinh anh, giong noi, dia chi, ket qua hoc tap, tiled \nquen sir dung mpg...) la tai san rieng dm miii nguai, \nva neu bi sit'. dung sai muc dich, c6 the gay anh hung \nxau den an toan, danh tieng va cuOc song. \n- Giai thich dugc rang quyen rieng tu la quyen dugc \ngilt bi mat thong tin ca nhan, va viec bao ve quyen \nnay giitp con nguai an toan, dugc ton trong va tu do \ntrong mei twang so. \nB. Dao dire AI \nBl. Cac khia \ncanh ciao dire \ndm AI \nMal tot va mat \nxau \n- Nhan biet va phan tich dugc mg tich ctrc va han \nthe cila met se tinh nang AI cu the (vi du: AI thu thap \nat lieu giitp ggi y chinh xac han nhung CO the anh \nhuang den quyen rieng tu). \nB2. Sir dung \nAI an toan va \nco trach \nnhiem \nAn toan khi sir \ndung AI \n- Neu dugc met se cau hoi ca ban a kiem tra tinh \nan tog.' va minh bach dm img dung AI (nhu \"Cong \ncu nay c6 an toan kitting?\", \"Co lay thong tin ca nhan \nkhong?\", \"Co the tat dtrac khong?\") va ap dung cac \n24 \n\n"
+  },
+  "lop_7": {
+    "grade": 7,
+    "pages": "26-27",
+    "themes_found": [
+      "C",
+      "B"
+    ],
+    "themes": {
+      "C": {
+        "match": "C. Cfic ki",
+        "yccd_count": 1,
+        "yccd": [
+          "- Phan tich dugc cac van de dao dire c6 the nay sinh"
+        ],
+        "raw_excerpt": "C. Cfic ki thufit va trng dung AI \nC4. Dit lieu \ntrong AI \nCac khia canh \ndao \t\ndire \t\nlien \nquan den du lieu \nhudn luyen AI \n- Phan tich dugc cac van de dao dire c6 the nay sinh \ntir du lieu hudn luyen AI (vi du: du lieu thieu da dang \nddn den phan biet d6i xir, dit lieu rieng to bi xam \npham). \n26 \n\n"
+      },
+      "B": {
+        "match": "B. Duo d",
+        "yccd_count": 3,
+        "yccd": [
+          "- Neu dugc met so tieu chi dorn gian (Oa tren cac",
+          "- Trinh bay dirge vi du ve cac hanh Ong cu the nham",
+          "- The hien dirge thai de va cam ket ca nhan trong"
+        ],
+        "raw_excerpt": "B. Duo dire AI \nB2. Sir dung \nAI an town va. \ncó trfich \nnhiem \nDanh \t\ngia \t\nva \nhanh \t\nOng vi \nmet AI bet dcp \nlicni \n- Neu dugc met so tieu chi dorn gian (Oa tren cac \nnguyen tac dao dire) a danh gia mire de phit hgp, an \ntoan cita met Prig dung AI. \n- Trinh bay dirge vi du ve cac hanh Ong cu the nham \ngop phan xay dtmg mei truerng AI c6 dao dire (nhu \nbao cao 16i, khong sir dung img dpng dec WI, yeu \ncau sir minh Bach). \nB3. Nguyen \ntic duo dirc va \ntrfich nhiem \nx5 h(li \nTrach nhiem khi \nsir"
+      }
+    },
+    "full_text": "Chia a \nNei dung \nYeu eau can slat \ncau hOi dO a nhan xet don gian ve mire dO an toan, \nphi' hep cila met so cong cu. AI. \nC. Cac ki thuat Ara irng dung AI \nCl. Bac diem \nchinh dm AI \nCac thanh phan \nco \t\nban \t\ntrong \nkien trite AI va \neach hoat dOng \nco ban dm AI \n- Giai thich ducic hai thanh phan chinh de \"day\" cho \nAl la Dir lieu (sach ve, hinh anh) va Thuat toan \n(phuong phap hoc). \n- Mo to three vi du co ban ve met se buOc hog Ong \nchinh dm cong cu AI. \nTac \t\ndeng tich \nc9c va tieu cuc \ncita AI \n- Neu duet met vi du ve tac deng tich cIrc (mat tot) \nva met vi du ve tac deng tieu cue (mat xan) dm AI \ndel vOi cuec sting dm em hoac gia dinh. \nC2. ffng dting \nAI trong hoc \ntap va cuec \nsting \nLam quen vai \nirng dung AI \n- Trinh bay dugc vi du ve met so cong cg/tinh nang \nUng dung AI va met se ding cu/tinh Wang kitting timg \ndung AI gan gui trong cuec sang va bei canh Viet \nNam nhu: AI trong n8ng nghiep, gido chic, du bao lit, \ndich ngon ngir dan tee... \n- Ke dugc ten met so ding cu AI va mo to dugc chirc \nnang chinh dia. chung. \nC3. Cong \nnghe AI \nMet \t\ns8 \t\ncong \nnghe AI quen \nthuec \t\nva \t\ndon \ngian \n- Ke &rev ten met s8 cong nghe AI don gian (vi du: \nAI nhan clang hinh anh, am thanh, ...) \nD. Thie't lite he tilting AI \nDl. Nhen dien \n& hinh thanh \ngiai phap \nNen hay kh8ng \nnen sir dung AI? \n- Trinh bay dugc 3', kien ca nhan ve viec nen hay \nkitting nen sir dung AI trong met so tinh hung tlurc \nto cu the va giai thich dugc 13\"T do 19a ellen bang each \nneu lei ich hoac tac hai tuong irng. \nD2. Cau trtic \n& tirong tic, \ncai tien he \nthOng \nKhi nao khong \nnen dung AI? \n- Neu dugc met se tinh hung hoac ding viec ma con \nngu6i phi' hgp ham AI. \n- Trinh bay dirge met so tinh hang khong nen sir \ndung AI, vi du khi CO each khac dan gian, an toan \nhan hoac khi viec dung AI CO the khien con ngued \nluei suy nghi. \nLOP 7 \nChit de \nNei dung \nYen eau can d#t \nA. Tut duy lay con ngtroi lam trung tam \nAl. Tinh chit \ndeng ctia con \nnguiri \nQuyen ra quyet \ndinh \n- Giai thich dugc lyi do vi sao con ngtred can. \t\ngill \nquyen ra quyet dinh, chang han nhtr: Dam bao cong \nbang: con ngtrei co the xem x6-I hoan earth va cam \nVic ma AI kitting hien dugc; dam bao an toan: con \nngu6i có the ngan than cac hanh &Ong sai lech hoac \n\nChit as \nNifli dung \nYeu eau can (10 \nnguy hiem do AI gay ra; bao ve quyen lgi con ngtred: \nkhong a AI xam pham quyen rieng tu, to do hoac \npham gia ca. nhan. \nXac thtrc ket qua - Neu dirge Ilan qua xay ra khi khong c6 sir xac thpc \ndm con ngued ve de chinh xac dm ket qua ma AI \ndua ra trong met se tnrong hgp thus ye. \nA2. AI vi str \nLien b0 cita \ncon ngtred \nHau qua khi AI \nguy& dinh \n- Phan tich dirge cac tae hai c6 the xay ra nett con \nnguiri sir dung AI a ra guy& dinh cuei cimg trong \nse tinh huong thpc te. \nNgan than ding \ncu Al CO hai \n- Neu dugc cac hau qua c6 the xay ra nett khong c6 \ncac quy dinh phap 137/ nham ngan than viec thiet ke \nya san xuat cac cong cu AI co hai trong met so tinh \nhuong thpc te. \nA3. Ging dan \ntrong ki \nnguyen AI \nQuyen \t\ntu \t\nchit \ncita. AI va con \nngtred \n- Biet ve xung 0.1 giita quyen ttr chit dm con ngtroi \nva quyen to chit dm AI, chi ra dirge cac tinh huong \ntrong do c6 the can den met mire de, nhdt dinh quyen \ntir chit oh AI, vi dp: Kiem tra chinh to tp Ong va to \ndeng sira 18i khi con nguei sown thao bao cao. \nBao ve quyen to \nchit \t\ndia \t\ncon \nngued \n- Hieu doge rang quyen to chit dm con nguoi phai \ndugc bao ye khi sir dung AI a dua ra cac quye't dinh \nquan tong va mire de tp chit dm AI can dirge ddnh \ngia dua ten cac nhu cau va yen te bei canh cu the. \nB. Duo dire AI \nB2. Sir dung \nAI an town va. \ncó trfich \nnhiem \nDanh \t\ngia \t\nva \nhanh \t\nOng vi \nmet AI bet dcp \nlicni \n- Neu dugc met so tieu chi dorn gian (Oa tren cac \nnguyen tac dao dire) a danh gia mire de phit hgp, an \ntoan cita met Prig dung AI. \n- Trinh bay dirge vi du ve cac hanh Ong cu the nham \ngop phan xay dtmg mei truerng AI c6 dao dire (nhu \nbao cao 16i, khong sir dung img dpng dec WI, yeu \ncau sir minh Bach). \nB3. Nguyen \ntic duo dirc va \ntrfich nhiem \nx5 h(li \nTrach nhiem khi \nsir dung AI \n- The hien dirge thai de va cam ket ca nhan trong \nviec sir dung AI co trach nhiem thong qua bai viec, \nphat bieu hoac san pham hoc tap cu the. \nC. Cfic ki thufit va trng dung AI \nC4. Dit lieu \ntrong AI \nCac khia canh \ndao \t\ndire \t\nlien \nquan den du lieu \nhudn luyen AI \n- Phan tich dugc cac van de dao dire c6 the nay sinh \ntir du lieu hudn luyen AI (vi du: du lieu thieu da dang \nddn den phan biet d6i xir, dit lieu rieng to bi xam \npham). \n26 \n\n"
+  },
+  "lop_8": {
+    "grade": 8,
+    "pages": "28-29",
+    "themes_found": [
+      "D",
+      "A",
+      "C"
+    ],
+    "themes": {
+      "D": {
+        "match": "D. Thiet ke",
+        "yccd_count": 3,
+        "yccd": [
+          "- Neu dugc vi du cu th6 v0 mot van de trong tru6ng",
+          "- Neu dugc vi chi va phan tich dugc tinh kha thi cila",
+          "- Lap dugc ke hoach cho mot du an sang tao co sir"
+        ],
+        "raw_excerpt": "D. Thiet ke he thtong AI \nDl. Nhan then \n& hinh thanh \ngiii phap \nl'iT tugng du an \nAI tir thuc tien \n- Neu dugc vi du cu th6 v0 mot van de trong tru6ng \nh9c hoac cong d6ng co the dugc giai quy6t hoac cai \nthin bang AI, va mo to dugc pham vi dm van de dO. \n- Neu dugc vi chi va phan tich dugc tinh kha thi cila \ny Wong du an AI bang each tra 16i cac cau h6i nhu: \ndin liOu co d6 thu thap khong, co rili ro dao dire hay \nkhong, mire d6 phirc tap, chi phi c6 pita hgp hay \nkhong... \nD2. Cau true \n& ttr"
+      },
+      "A": {
+        "match": "A. Tu duy",
+        "yccd_count": 12,
+        "yccd": [
+          "- Neu dugc mot s6 linh we ma AI kh6ng nen thay",
+          "- Nhan Mat dugc v0 nhang rill ro dm vi0c lam dung",
+          "- Nhan bi6t va giai thich dugc rang mOt s6 110 thong",
+          "- Hieu duoc khai niem \"lam dung AI a kiem soat",
+          "- Phan biet &roc vai tre dm ngtred diing va ngtr6i",
+          "- Hieu va giai thich dirge rang nhirng ngtred sang tao",
+          "- Hieu ro trach nhiem giai trinh cila con ngtroi khi",
+          "- Neu dirge mOt so riii ro khi sir dung AI trong mOt",
+          "- Phan loai duoc cac loai riii ro an toan khac nhau",
+          "- Neu &roc hanh vi to gide trong viec back ve du lieu",
+          "- De xuat dirge WA vai each don gian a phong tranh",
+          "- Neu dirge cac van a dao dim can luu y dOi vai viec"
+        ],
+        "raw_excerpt": "A. Tu duy lay con ngiroi lam trung tam \nAl. Tinh chii \nOng elm con \nngtrol \nAI khong thay \nth6 con ngu6i \n- Neu dugc mot s6 linh we ma AI kh6ng nen thay \nthe con ngtrgi, chang han nhu: \n+ Gido due: gido vien hi6u tam ly hoc sinh, bi6t \nkhich 10, huong dan va day dao dire. \n+ Y t6: bac si khong chi china bOnh ma con d'6ng \nvien, lang nghe bOnh nhan. \n+ Ngh0 thuat: ngh0 si th6 hiOn cam Vic va. Y Wong \nrieng ma AI khong th6 cam nhan, ... \nRili ro khi lam \ndung AI \n- Nhan Mat dugc v0 nhang rill ro d"
+      },
+      "C": {
+        "match": "C. Cfic ki",
+        "yccd_count": 1,
+        "yccd": [
+          "- Trinh bay ducic each AI thuc hien melt s6 chirc nang"
+        ],
+        "raw_excerpt": "C. Cfic ki thuat Ara ting dung AI \nCl. Bac diem \nchinh cila AI \nCach AI dux \nhen mOt so chirc \nnang ca ban. \n- Trinh bay ducic each AI thuc hien melt s6 chirc nang \nco ban nhu \"doe\", \"nghe\", \"nhin\" va lien he phan \ntich dirge mOt so cong nghe/ky thuat darn nhiem cac \nchirc nang do. \n28 \n\n"
+      }
+    },
+    "full_text": "Chu a \nNii dung \nYen eau can dat \n- Phan tich dugc tam quan,trgng cita vi0c sir dung 1)0 \ndinliOu \"sach\" va \"cong bang\" a tan ra cac cong cu \nAI co dao dire. \nC5. KT thuat \nva thuat than \nAI \nTim hi6u mot s6 \neach hoc dm AI \n- Neu dugc vi du v6 qua trinh huan luyen AI mOt \neach don gian. \n- Trinh bay va phan bit dugc ba phuong phap hoc \nmay co ban (hoc c45 giarn sat, hoc kh8ng giant sat, \nhgc tang cu6ng). Neu dugc mot s6 img dung AI sir \ndung cac phuong phap hoc may dO. \nD. Thiet ke he thtong AI \nDl. Nhan then \n& hinh thanh \ngiii phap \nl'iT tugng du an \nAI tir thuc tien \n- Neu dugc vi du cu th6 v0 mot van de trong tru6ng \nh9c hoac cong d6ng co the dugc giai quy6t hoac cai \nthin bang AI, va mo to dugc pham vi dm van de dO. \n- Neu dugc vi chi va phan tich dugc tinh kha thi cila \ny Wong du an AI bang each tra 16i cac cau h6i nhu: \ndin liOu co d6 thu thap khong, co rili ro dao dire hay \nkhong, mire d6 phirc tap, chi phi c6 pita hgp hay \nkhong... \nD2. Cau true \n& ttrong tic, \ncai tien he \nMing \nDv an tao sari \npham tir AI \n- Lap dugc ke hoach cho mot du an sang tao co sir \ndung AI theo nhOm nho va thuc hanh tan sin pham \ndon gian theo k6 hoach di xay dung. \nLOT 8 \nChti de \nNtii dung \nYen c'au can d3t \nA. Tu duy lay con ngiroi lam trung tam \nAl. Tinh chii \nOng elm con \nngtrol \nAI khong thay \nth6 con ngu6i \n- Neu dugc mot s6 linh we ma AI kh6ng nen thay \nthe con ngtrgi, chang han nhu: \n+ Gido due: gido vien hi6u tam ly hoc sinh, bi6t \nkhich 10, huong dan va day dao dire. \n+ Y t6: bac si khong chi china bOnh ma con d'6ng \nvien, lang nghe bOnh nhan. \n+ Ngh0 thuat: ngh0 si th6 hiOn cam Vic va. Y Wong \nrieng ma AI khong th6 cam nhan, ... \nRili ro khi lam \ndung AI \n- Nhan Mat dugc v0 nhang rill ro dm vi0c lam dung \ncac cong cu AI sang tao (AI tao van ban, hinh anh), \nlien he d6n nguy co lam suy giam to duy phan bin \nIra ky nang sang tao cita con ngtr6i. \nA2. AI vi sty \ntien 13,5 cfia \ncon ngtrei \nNguy co bi AI \nki6m soat \n- Nhan bi6t va giai thich dugc rang mOt s6 110 thong \nhoac dich vu sir dung AI co the thu thap, phan tich \nva sir dung dir liOu ca nhan cna ngu6i dimg (nhu vi \n\nChit cl• \nNOi dung \nYeu c'au an dat \ntri, th6i quen, hinh anh, giong noi, s6 thich...) de \nkiem soat hanh vi, gay anh huemg hoac thao timg \nguy& dinh dm con ngued. \n- Hieu duoc khai niem \"lam dung AI a kiem soat \nnguoi dung\", ngliia la viec sir dung AI khong minh \nbach hoac sai muc dich, khien ngtred dimg: bi theo \ndOi ma khong biet, bi de xuat thOng tin, quang cao \nhoac not dung snot chieu, bi thao tong suy nghi hoac \nhanh dOng, bi mat quyen kiem soat du lieu ca nhan. \nA3. Cong dan \ntrong ki \nnguyen AI \nNgtroi dimg va \nngtred tao AI \n- Phan biet &roc vai tre dm ngtred diing va ngtr6i \nphat trien khi Wong tac vai AI. \nTrach \t\nnhiem \nphap ly \n- Hieu va giai thich dirge rang nhirng ngtred sang tao \nra cung cu AI, nha cung cap c6ng cu AI hoac ngtrOd \nsir dung cong cu AI phai chiu trach nhiem phap 13'T \nd6i vai cac hau qua ma he thong hoac cong cu AI co \nthe gay ra. \nTrach nhiem giai \ntrinh \n- Hieu ro trach nhiem giai trinh cila con ngtroi khi \nhoc each tao hoac thiet ke Al. \nB. Dao (Ilk AI \nBl. Cac khia \ncanh dao dire \ndm AI \nRill ro vai AI \n- Neu dirge mOt so riii ro khi sir dung AI trong mOt \ns6 truemg hop cu the nhu nhan clang cam xiic c6 the \n'cam pham quyen rieng tu, dua ra ket luan sai. \n- Phan loai duoc cac loai riii ro an toan khac nhau \nelm AI (vi du: riii ro ve du lieu, Ali ro ve thuat toan \nthien vi, rili ro bi lira dao). \nB2. Sir dung \nAI an toan va \nco -filch \nnhiOm \nPhong tranh rili \nro du lieu \n- Neu &roc hanh vi to gide trong viec back ve du lieu \nca nhan va ton trong ban quyen trong cac du an hoc \ntap co sir dung AI. \n- De xuat dirge WA vai each don gian a phong tranh \nhoac giam thieu rai ro khi sir dung va phat trien AI. \nB3. Nguyen \ntic d#o dire va \ntrach nhqm \nxa 41 \nTrach \t\nnhiem \nphat trien AI \n- Neu dirge cac van a dao dim can luu y dOi vai viec \n0161 trien AI (136.0 mat thong tin, kh6ng cung cap \nthong tin sai lech, khOng xiic pham). \nC. Cfic ki thuat Ara ting dung AI \nCl. Bac diem \nchinh cila AI \nCach AI dux \nhen mOt so chirc \nnang ca ban. \n- Trinh bay ducic each AI thuc hien melt s6 chirc nang \nco ban nhu \"doe\", \"nghe\", \"nhin\" va lien he phan \ntich dirge mOt so cong nghe/ky thuat darn nhiem cac \nchirc nang do. \n28 \n\n"
+  },
+  "lop_9": {
+    "grade": 9,
+    "pages": "30-31",
+    "themes_found": [
+      "A",
+      "C"
+    ],
+    "themes": {
+      "A": {
+        "match": "A. Tu duy",
+        "yccd_count": 11,
+        "yccd": [
+          "- Hinh thanh nhan th*c va pith trien quan diem phan",
+          "- Neu dugc cac don chirng a giai thich dugc tai sao",
+          "- Giai thich dugc cac van de \"thien vi\", \"thanh kien\"",
+          "- Hieu dugc rang trong the giai c6 AI, con ngtrai",
+          "- Thuc hanh xac dinh rime tieu hoc tap ca nhan trong",
+          "- Neu dugc each sir dung AI nhu la cong cu giup the",
+          "- Phan tich dugc nhang thay Mi ma AI c6 the mang",
+          "- Trinh bay dugc vai tro dm nguai ding trong kiem",
+          "- Neu (lucre vai tro dm ca nhan va cong &Ong trong",
+          "- Giai thich dirge tam quan trong dm viec huan luyen",
+          "- Neu va giai thich dugc met se each thu thap du lieu"
+        ],
+        "raw_excerpt": "A. Tu duy lay con ngtroi lam trung tam \nAl. Tinh chit \nOng cfia con \nngtrin \nThach \t\ntittle \t\nxa \nhOi \t\ntrong \t\nki \nnguyen AI \n- Hinh thanh nhan th*c va pith trien quan diem phan \nbin ve flitting thach thirc ma xa hOi Bang do'i mat, \nchang han nhu: U'u tien tang t6c d'Oi mai AI trong \nkhi by sinh su an toan dm ngtrai citing. \nA2. AI vi say \ntier' 14 dm \ncon nguiri \nAI tac &ling den \nxa hOi \n- Neu dugc cac don chirng a giai thich dugc tai sao \nAI lai c6 tac dOng lan den xa hOi. \nThien vi va thanh"
+      },
+      "C": {
+        "match": "C. Cfic ki",
+        "yccd_count": 3,
+        "yccd": [
+          "- De xuat dugc nhing Y Wang mai, sang tao de giai",
+          "- Van dung dugc kien thirc da hoc de tax) ra mot cong",
+          "- Thgc hien dugc viec cai thien b0 dir  lieu (them,"
+        ],
+        "raw_excerpt": "C. Cfic ki\" thuat va frng dung AI \nC2. trng dung \nAI trong hue \n-rap va cu§c \nsling \nThuc hanh van \ndung \t\nAI \t\ngiai \nguy& van de, tao \nra san pham don \ngian \n- De xuat dugc nhing Y Wang mai, sang tao de giai \nquyet met van de bang AI. \n- Van dung dugc kien thirc da hoc de tax) ra mot cong \ncu AI don gian (vi du: mot chatbot, mot m6 hinh \nnhan clang hinh anh) Oa tren cac cong cu hoac nen \ntang co san. Liu tien viec sir dung cac cong cu m6, \nde ding nhu Teachable Machine, QuickDraw, \nScratch AI, "
+      }
+    },
+    "full_text": "Chit de \nNOi dung \nYeu eau can dot \nC5. Ki thuat \nva thuat tofin \nAI \nCach AI nhan \ndien cam Vic \n- Neu dugc each AI nhan dien cam xilc Oa vao cac \ndac diem, chang han: \n+ Net mat \n+ Tir kh6a trong van ban va lai not \n+ NO dieu cita lai nOi \n+ Cir chi (nhu gat au, lac dau, ...) \nD. Thiet ice he thong AI \nDl. Nhan dien \n& hinh thanh \ngiii phfip \nKe hoach du an \nAI \n- Xac dinh dugc mot van de thgc to co the giai guy& \nbang AI va lap dugc ke hoach so 1)0 cho du an tuung \nimg. \nD2. Cu\na true \n& tirong tac, \ncai Wen he \nthong \nDu an AI don \ngian dm em \n- Trinh bay dugc vi du ve mot kith ban hOi thoai cho \nmot tinh hung cu the irng dung AI (nhu chatbot \nhoac try ly ao). \n- MO to dugc mot so dac diem co ban dm mot trai \nnghiem nguai dung (UX) Vet khi tuong tac vai AI. \n- Lap dugc ke hoach va trien khai tiurc hien lam vice \nnhorn a phat trien mot san pham AI don gian (nhu \nchatbot, mo hinh nhan dung) bang cac cong cu co \nz.• \nsan. \nLOP 9 \nChit de \nNOi dung \nYeu cau can slat \n \nA. Tu duy lay con ngtroi lam trung tam \nAl. Tinh chit \nOng cfia con \nngtrin \nThach \t\ntittle \t\nxa \nhOi \t\ntrong \t\nki \nnguyen AI \n- Hinh thanh nhan th*c va pith trien quan diem phan \nbin ve flitting thach thirc ma xa hOi Bang do'i mat, \nchang han nhu: U'u tien tang t6c d'Oi mai AI trong \nkhi by sinh su an toan dm ngtrai citing. \nA2. AI vi say \ntier' 14 dm \ncon nguiri \nAI tac &ling den \nxa hOi \n- Neu dugc cac don chirng a giai thich dugc tai sao \nAI lai c6 tac dOng lan den xa hOi. \nThien vi va thanh \nkien trong AI \n- Giai thich dugc cac van de \"thien vi\", \"thanh kien\" \nma AI c6 the gay ra dei vai xa hOi; ding nhu tac \ndOng dm AI dOi vai cac mei quan he xa hOi, chuan \nmac va call trite xa hOi. \nA3. Cong dan \ntrong ki \nnguyen AI \nDinh huang h9c \ntap \t\ntrong \t\nki \nnguyen AI \n- Hieu dugc rang trong the giai c6 AI, con ngtrai \ncan: \n+ Biet hoc each hoc — ren luyen kha nang to h9c, \nhoc suet M. \n+ Pith trien to duy phan bien — Wet phan tich, danh \ngia thong tin do AI cung cap. \n+ Gift vting tinh sang tax) va cam xfic con ngtrai —\nlam flitting vice AI khong the lam. \n\nChili de \nN6i dung \nYeu eau can flat \n+ Nang cao ky nang hop tac va giao tip — lam viec \nhieu qua vai con nguai va AI. \n- Thuc hanh xac dinh rime tieu hoc tap ca nhan trong \nthe giai co AI, chang han nhu: hoc each sir dung AI \nde tim kiem va torn tat thong tin, sir dung AI a ren \nluyen ky nang viet, doc, ve, to duy logic, luyen tap \ngiao tiep hoac h9c ngon ngir mai vai cong cu AI, to \ndat muc tieu phat trien ky nang mem ma AI kitting \nthay the dugc (dong cam, sang tao, lanh dao...). \nAI &Li) the hien \nban than \n- Neu dugc each sir dung AI nhu la cong cu giup the \nhien ban than va theo du6i dam me. \nNghe \t\nnghiep \ntuorng lai \n- Phan tich dugc nhang thay Mi ma AI c6 the mang \nlai cho cac nganh nghe trong tuang lai. Liet ke dirge \nnhimg ky nang quan trong can trang bi de song va \nlam vice hieu qua cimg vai AI. \nB. Bao dirt AI \nB2. Sir dung \nAI an town va \ncó trach \nnhiem \nTrach nhiem khi \nsir dung AI \n- Trinh bay dugc vai tro dm nguai ding trong kiem \nsoat va chiu trach nhiem doi vii ket qua cu6i cong \ndo AI tao ra. \n- Neu (lucre vai tro dm ca nhan va cong &Ong trong \nviec giam sat, phan h6i va de xuat giai phap a sir \ndung AI met each an toan, cong bang va hgp lY. \nB3. Nguyen \ntac dao chic va \ntrach nhiem \nxa h6i \nKien OD AI cong \nbang \n- Giai thich dirge tam quan trong dm viec huan luyen \nAI theo hiring killing plan biet d6i xir va ton trong \nsg da clang. \n- Neu va giai thich dugc met se each thu thap du lieu \nbao dam cong bang, khong b6 sot hay thien vi cac \nnhOrn nguai khac nhau. \nC. Cfic ki\" thuat va frng dung AI \nC2. trng dung \nAI trong hue \n-rap va cu§c \nsling \nThuc hanh van \ndung \t\nAI \t\ngiai \nguy& van de, tao \nra san pham don \ngian \n- De xuat dugc nhing Y Wang mai, sang tao de giai \nquyet met van de bang AI. \n- Van dung dugc kien thirc da hoc de tax) ra mot cong \ncu AI don gian (vi du: mot chatbot, mot m6 hinh \nnhan clang hinh anh) Oa tren cac cong cu hoac nen \ntang co san. Liu tien viec sir dung cac cong cu m6, \nde ding nhu Teachable Machine, QuickDraw, \nScratch AI, CoSpaces, ... \nC3. Cfing \nnghe AI \nCach cai thien dir \nlieu, \t\nnang \t\ncao \nchat lugng cna \nsan pham AI. \n- Thgc hien dugc viec cai thien b0 dir  lieu (them, \nVia, sira dir lieu) d8 nang cao chat lugng cila san \npham AI. \n30 \n\n"
+  }
+}
