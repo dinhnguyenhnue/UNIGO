@@ -273,3 +273,45 @@ Tài liệu này quy định quy trình, quy chuẩn kỹ thuật và các yêu 
      * python scripts/sgk_pipeline.py --grade [X] --stage analyze
      * python scripts/sgk_pipeline.py --grade [X] --stage split
      * python scripts/sgk_pipeline.py --grade [X] --stage build-docx
+
+---
+
+## IX. Quy trình & Quy chuẩn Thống kê Cuộc thi Học sinh (Vòng điều phối Check Cuộc thi)
+
+1. **Mục tiêu & Cơ chế vận hành Vòng điều phối:**
+   - Tự động hóa toàn diện quy trình kiểm tra, so khớp và thống kê tình hình học sinh toàn trường UNIGO tham gia các cuộc thi trực tuyến (IOE, Violympic, ITE, Trạng Nguyên...).
+   - Khép kín vòng điều phối (Coordination Loop): Nhận file kết quả thi thô $\rightarrow$ So khớp danh sách học sinh gốc $\rightarrow$ Xuất file thống kê đợt thi theo từng folder lần $\rightarrow$ Cập nhật Master file tổng thể $\rightarrow$ Xuất danh sách đôn đốc gửi GVCN và bảng xếp hạng vinh danh.
+
+2. **Cấu trúc lưu trữ thư mục chuẩn (`D:\UNIGO\Check_các_cuộc_thi\`):**
+   ```
+   D:\UNIGO\Check_các_cuộc_thi\
+   ├── DANH SÁCH HỌC SINH NĂM HỌC 2026 - 2027.xlsx   ← Danh sách gốc (11 lớp, 128 HS)
+   ├── [Tên_cuộc_thi]\ (VD: IOE\, Violympic\, ITE\)
+   │   ├── Lần 1\
+   │   │   ├── [File_raw_từ_hệ_thống].xlsx
+   │   │   └── Thống kê [Tên_cuộc_thi] - Lần 1.xlsx  ← Output chi tiết từng lần (4 sheets)
+   │   ├── Lần 2\
+   │   └── Lần 3\
+   └── Thống kê cuộc thi.xlsx                        ← Master Output tổng thể toàn trường
+   ```
+
+3. **Thuật toán So khớp & Xử lý Dữ liệu đặc thù (Matching Algorithm):**
+   - **Chuẩn hóa chuỗi (Normalization):** Chuyển họ tên về chữ thường, loại bỏ khoảng trắng thừa (`normalize_name`). Tên lớp chuyển in hoa (`4c1` $\rightarrow$ `4C1`).
+   - **Ưu tiên so khớp cùng lớp (Class-first matching):** Khớp chính xác `(họ tên, lớp)`.
+   - **Fallback tên duy nhất (School-wide Unique Name Fallback):** Nếu học sinh nhập sai tên lớp trên hệ thống thi, chỉ tự động gán lớp nếu tên học sinh đó là **duy nhất** trên toàn trường. Nếu trùng tên khác lớp (VD: hai bạn "Nguyễn Đức Minh" ở 1A1 và 2A1), bắt buộc đối soát theo đúng lớp được đăng ký.
+   - **Xử lý tài khoản trùng lặp (Multiple Accounts / Retries):** Nếu một học sinh thi nhiều lần hoặc có 2 tài khoản (VD: Nguyễn Hương Mộc Lan), hệ thống tự động sắp xếp ưu tiên lấy bản ghi có **Vòng thi cao nhất** và **Điểm thi cao nhất**.
+
+4. **Quy chuẩn 4 Sheet trong File Thống kê từng lần thi (`Thống kê [Cuộc thi] - Lần [X].xlsx`):**
+   - **Sheet 1: "Tổng hợp toàn trường"**: Danh sách toàn bộ 128 học sinh chia theo từng khối lớp. Cột Trạng thái thể hiện rõ `✅ Đã thi` (màu xanh lá) / `❌ Chưa thi` (màu đỏ gạch), kèm Vòng tự luyện, Tổng điểm, Thời gian (giây). Có dòng tổng kết toàn trường.
+   - **Sheet 2: "Bảng xếp hạng (Đã thi)"**: Chỉ lọc các học sinh đã hoàn thành, sắp xếp thứ tự ưu tiên: Vòng giảm dần $\rightarrow$ Điểm giảm dần $\rightarrow$ Thời gian tăng dần. Tự động gắn danh hiệu vinh danh: `🥇 Thủ khoa toàn trường` (Top 1 - màu vàng Gold), `🥈 Top 2-3 toàn trường` (Màu bạc Silver), `🥉 Top 4-5 toàn trường` (Màu đồng Bronze).
+   - **Sheet 3: "Nhắc nhở GVCN (Chưa thi)"**: Gom nhóm theo từng lớp, chỉ liệt kê học sinh chưa thi, tiêu đề từng lớp nêu rõ tỷ lệ `[Đã thi]/[Sĩ số] ([%]) | [Chưa thi]/[Sĩ số]` để GVCN dễ dàng sao chép gửi phụ huynh đôn đốc.
+   - **Sheet 4: "Thống kê theo lớp"**: Bảng so sánh 11 lớp gồm STT, Lớp, Sĩ số, Đã thi, Chưa thi, Tỷ lệ tham gia %, Điểm cao nhất kèm vòng, Thủ khoa của lớp.
+
+5. **Quy chuẩn Master File (`Thống kê cuộc thi.xlsx`):**
+   - **Sheet "Tổng hợp"**: Ma trận theo dõi toàn diện học sinh toàn trường $\times$ tất cả các đợt thi (IOE Lần 1, Lần 2, Lần 3, Violympic...), cột tổng số cuộc thi đã tham gia, hàng tỷ lệ % tham gia ở cuối.
+   - **Sheet "Chi tiết [Tên cuộc thi]"**: Lưu trữ chi tiết điểm số, vòng thi, thời gian theo từng lần.
+   - **Sheet "Nhắc nhở GV"**: Tổng hợp danh sách nhắc nhở theo từng lớp cho toàn bộ các cuộc thi.
+
+6. **Lệnh thực thi & Điều phối tự động:**
+   - Chạy script: `python scripts/check_cuoc_thi.py`
+   - Báo cáo kết quả: Luôn cung cấp tóm tắt số liệu (tổng số HS, tỷ lệ tham gia so với các lần trước, Top 5 vinh danh, phân tích theo lớp) kèm đường dẫn file clickable `file:///...`.

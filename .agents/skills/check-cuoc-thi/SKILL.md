@@ -48,24 +48,22 @@ D:\UNIGO\Check_các_cuộc_thi\
 python D:\UNIGO\scripts\check_cuoc_thi.py
 ```
 
-## 5. Output: Thống kê cuộc thi.xlsx
+## 5. Output 2 cấp độ chuyên nghiệp
 
-File output có **3 loại sheet**:
+Hệ thống tự động sinh 2 cấp file Excel thống kê:
 
-### Sheet "Tổng hợp"
-- Mỗi hàng = 1 học sinh, gom theo lớp
-- Các cột = cuộc thi × lần thi → `✅ Đã thi` / `❌ Chưa thi`
-- Cột tổng: Số cuộc thi đã tham gia
-- Conditional formatting: Xanh = đã thi, Đỏ = chưa thi
+### Cấp 1: File thống kê đợt thi (`Thống kê [Cuộc thi] - Lần [X].xlsx`)
+Lưu trực tiếp trong thư mục của lần thi đó (VD: `IOE/Lần 3/Thống kê IOE - Lần 3.xlsx`), gồm **4 sheets chuyên biệt**:
+1. **Sheet "Tổng hợp toàn trường"**: Danh sách 128 học sinh gom theo 11 lớp, trạng thái `✅ Đã thi` (Xanh) / `❌ Chưa thi` (Đỏ), Vòng, Điểm, Thời gian (s).
+2. **Sheet "Bảng xếp hạng (Đã thi)"**: Xếp hạng học sinh hoàn thành (Vòng desc, Điểm desc, Thời gian asc) kèm danh hiệu `🥇 Thủ khoa toàn trường` (Top 1), `🥈 Top 2-3`, `🥉 Top 4-5`.
+3. **Sheet "Nhắc nhở GVCN (Chưa thi)"**: Gom theo lớp, chỉ hiển thị HS chưa thi, ghi rõ tỷ lệ `[Đã thi]/[Sĩ số] ([%]) | [Chưa thi]/[Sĩ số]` để GVCN copy gửi phụ huynh đôn đốc.
+4. **Sheet "Thống kê theo lớp"**: 11 lớp, Sĩ số, Đã thi, Chưa thi, Tỷ lệ %, Điểm cao nhất kèm vòng, Thủ khoa của lớp.
 
-### Sheet "Chi tiết [Tên cuộc thi]"
-- Chi tiết kết quả: Vòng, Điểm, Thời gian tự luyện
-- Phân tách theo từng lần thi
-
-### Sheet "Nhắc nhở GV"
-- Gom theo lớp + cuộc thi
-- Chỉ liệt kê HS **chưa thi** → copy gửi GV chủ nhiệm
-- Có thống kê tỷ lệ: `(đã thi/tổng, chưa thi/tổng)`
+### Cấp 2: Master File (`Thống kê cuộc thi.xlsx`)
+Lưu tại thư mục gốc `Check_các_cuộc_thi/`, gồm **3 sheets tổng hợp**:
+1. **Sheet "Tổng hợp"**: Ma trận theo dõi toàn bộ HS $\times$ tất cả các đợt thi (IOE Lần 1, 2, 3...), cột tổng số cuộc thi đã tham gia, hàng tỷ lệ % toàn trường.
+2. **Sheet "Chi tiết [Tên cuộc thi]"**: Chi tiết điểm, vòng, thời gian theo từng lần.
+3. **Sheet "Nhắc nhở GV"**: Tổng hợp danh sách nhắc nhở theo từng lớp cho toàn bộ các cuộc thi.
 
 ## 6. Danh sách HS gốc
 
@@ -78,12 +76,12 @@ Cấu trúc:
 
 **Tổng: 128 học sinh, 11 lớp** (năm học 2026-2027)
 
-## 7. Logic so khớp tên HS
+## 7. Logic so khớp học sinh thông minh
 
-1. Normalize: lowercase, collapse spaces, strip
-2. Match exact normalized name
-3. Ưu tiên match cùng lớp, fallback match khác lớp (cùng tên)
-4. Tên lớp normalize uppercase (VD: `4c1` → `4C1`)
+1. **Chuẩn hóa chuỗi (Normalization):** Lowercase, strip, gộp nhiều dấu cách thành một. Tên lớp in hoa (`4c1` → `4C1`).
+2. **Ưu tiên cùng lớp (Class-first):** So khớp chính xác cả họ tên lẫn lớp đăng ký.
+3. **Fallback tên duy nhất (Unique Name Fallback):** Chỉ tự động gán lớp nếu tên học sinh là **duy nhất** trên quy mô toàn trường (tránh gán nhầm giữa các học sinh trùng tên ở các khối lớp khác nhau, ví dụ Nguyễn Đức Minh 1A1 và Nguyễn Đức Minh 2A1).
+4. **Xử lý tài khoản trùng lặp (Multi-account / Multiple attempts):** Nếu học sinh có nhiều tài khoản hoặc thi lại (như Nguyễn Hương Mộc Lan 4C1), hệ thống tự động ưu tiên lấy bản ghi có **Vòng thi cao nhất** và **Điểm thi cao nhất**.
 
 ## 8. Xử lý lỗi
 
@@ -92,9 +90,11 @@ Cấu trúc:
 - File output đang mở trong Excel → lưu bản `(new)` thay thế
 - Console Windows không hỗ trợ Unicode → đã reconfigure UTF-8
 
-## 9. Quy trình Agent khi user yêu cầu
+## 9. Quy trình Agent khi nhận lệnh (Vòng điều phối khép kín)
 
-1. Kiểm tra có file mới trong các thư mục cuộc thi không
-2. Chạy `python D:\UNIGO\scripts\check_cuoc_thi.py`
-3. Mở file output và báo cáo kết quả cho user
-4. Nếu user muốn gửi nhắc nhở → trích sheet "Nhắc nhở GV" theo lớp cần thiết
+1. Kiểm tra có file raw mới trong các thư mục lần thi (`Check_các_cuộc_thi/[Cuộc thi]/Lần [X]/`)
+2. Chạy script: `python D:\UNIGO\scripts\check_cuoc_thi.py`
+3. Xác nhận đã tạo file thống kê đợt thi (4 sheets) và cập nhật Master File tổng thể
+4. Trình bày báo cáo tổng quan: Số lượng tham gia, so sánh tiến độ với các lần trước, vinh danh Top 5, thống kê theo lớp
+5. Cung cấp đường dẫn clickable `file:///...` và sẵn sàng trích xuất danh sách đôn đốc gửi GVCN theo yêu cầu
+

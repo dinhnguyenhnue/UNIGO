@@ -15,33 +15,38 @@ giảng dạy hoàn chỉnh cho giáo viên trường UNIGO.
 ## Luồng xử lý (Pipeline)
 
 > [!IMPORTANT]
-> **QUY TẮC MÔN HỌC:**
+> **QUY TẮC MÔN HỌC & ĐIỀU PHỐI:**
 > - **KHBD:** Tạo cho cả 2 môn **Tin học** và **Robotics**.
 > - **Slide bài giảng (.pptx):** **CHỈ TẠO CHO MÔN TIN HỌC**. **TUYỆT ĐỐI KHÔNG TẠO SLIDE CHO MÔN ROBOTICS**.
+> - **Thống kê Cuộc thi:** Tự động điều phối qua `check-cuoc-thi` khi có dữ liệu IOE, Violympic, ITE...
 
 ```
-User Request → Parse (Môn, Lớp, Bài) → [Đọc SGK + PaddleOCR Engine] → [Đọc PPCT] 
+User Request
     ↓
-    ├── tao-khbd → KHBD .docx (Tin học + Robotics) → D:\UNIGO\KHBD_Tin_học / KHBD_Robotics\
-    ├── tao-slide-bai-giang → Slide .pptx (CHỈ TIN HỌC) → D:\UNIGO\KHBD_Tin_học\Lớp_{X}\Tuần_{YY}\
-    └── (tùy chọn) Phiếu bài tập, Đề kiểm tra
+    ├── [Tài liệu bài dạy]: Parse (Môn, Lớp, Bài) → [Đọc SGK OCR] → [Đọc PPCT]
+    │       ├── tao-khbd → KHBD .docx (Tin học + Robotics) → D:\UNIGO\KHBD_[Môn]\
+    │       ├── tao-slide-bai-giang → Slide .pptx (CHỈ TIN HỌC) → D:\UNIGO\KHBD_Tin_học\
+    │       └── (tùy chọn) Phiếu bài tập, Đề kiểm tra
+    │
+    └── [Thống kê cuộc thi]: Check folder Check_các_cuộc_thi/ → So khớp danh sách 128 HS
+            └── check-cuoc-thi → Xuất file Excel đợt thi (4 sheets) & Master file tổng thể
 ```
 
 ## Cách sử dụng
 
-### Lệnh đơn giản:
+### Lệnh tạo bài dạy:
 ```
 Tạo KHBD và slide cho Bài 1 Lớp 3 Tin học
-```
-
-### Lệnh batch:
-```
 Tạo KHBD và slide cho tất cả bài Lớp 3 Tin học
+Tạo KHBD Bài 5 Lớp 6 Tin học
+Tạo slide Bài 3 Lớp 4 Tin học
 ```
 
-### Lệnh chỉ KHBD:
+### Lệnh điều phối thống kê cuộc thi:
 ```
-Tạo KHBD Bài 5 Lớp 6 Tin học
+Thống kê cuộc thi IOE lần 3
+Check tình hình học sinh thi IOE/Violympic
+Xuất danh sách nhắc nhở GVCN học sinh chưa thi
 ```
 
 ### Lệnh chỉ slide:
