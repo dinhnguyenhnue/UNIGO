@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIGO | Hệ thống Ôn tập Năng lực & Phẩm chất — Giáo viên</title>
+    <meta name="description" content="Website ôn tập toàn diện về 5 loại Năng lực và 5 Phẩm chất theo Công văn 5512, Thông tư 02/2025, Công văn 3456, Quyết định 3439 và CT GDPT 2018 dành cho giáo viên UNIGO.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating subtle particles background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon">🎯</span>
+                <span class="logo-text">UNIGO <span class="logo-sub">NL & PC</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Mở menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#overview" class="nav-link" data-section="overview">Tổng quan</a></li>
+                <li><a href="#nls" class="nav-link" data-section="nls">NL Số (CV 3456)</a></li>
+                <li><a href="#nlai" class="nav-link" data-section="nlai">NL AI (QĐ 3439)</a></li>
+                <li><a href="#nldacthu" class="nav-link" data-section="nldacthu">NL Đặc thù</a></li>
+                <li><a href="#nlchung" class="nav-link" data-section="nlchung">NL Chung</a></li>
+                <li><a href="#phamchat" class="nav-link" data-section="phamchat">5 Phẩm chất</a></li>
+                <li><a href="#practice" class="nav-link" data-section="practice">Tra cứu</a></li>
+                <li><a href="#quiz" class="nav-link nav-link-cta" data-section="quiz">📝 Bộ Đề Kiểm Tra</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">📚 Cẩm nang & Hệ thống Ôn tập Chuẩn hóa — UNIGO</div>
+            <h1 class="hero-title">
+                Năng lực & Phẩm chất
+                <span class="hero-gradient">Chuẩn Văn Bản Pháp Quy</span>
+            </h1>
+            <p class="hero-desc">
+                Nắm vững <strong>5 nhóm năng lực</strong> và <strong>5 phẩm chất chủ yếu</strong> theo Công văn 5512, Thông tư 02/2025, Công văn 3456, Quyết định 3439 và CT GDPT 2018 — Tích hợp công cụ tra cứu khái niệm và hệ thống câu hỏi kiểm tra phân theo từng văn bản.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-label">Phẩm chất cốt lõi</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="6">0</span>
+                    <span class="stat-label">Miền NLS (CV 3456)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="24">0</span>
+                    <span class="stat-label">Thành tố NLS</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="4">0</span>
+                    <span class="stat-label">Chủ đề NL AI (QĐ 3439)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="3">0</span>
+                    <span class="stat-label">Năng lực Chung</span>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <a href="#practice" class="btn btn-primary">🔍 Tra cứu NLS & Khái niệm</a>
+                <a href="#quiz" class="btn btn-secondary">📝 Làm bài kiểm tra theo Công văn</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="orbit-ring orbit-1"></div>
+            <div class="orbit-ring orbit-2"></div>
+            <div class="orbit-ring orbit-3"></div>
+            <div class="orbit-center">
+                <div class="center-badge">
+                    <span class="badge-icon">🏫</span>
+                    <span class="badge-title">UNIGO</span>
+                    <span class="badge-sub">2026 – 2027</span>
+                </div>
+            </div>
+            <div class="orbit-item item-nls" title="Năng lực Số">💻 NLS</div>
+            <div class="orbit-item item-ai" title="Năng lực AI">🤖 AI</div>
+            <div class="orbit-item item-dt" title="Đặc thù">🎯 Đặc thù</div>
+            <div class="orbit-item item-ch" title="NL Chung">🤝 Chung</div>
+            <div class="orbit-item item-pc" title="Phẩm chất">⭐ 5 Phẩm chất</div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="section" id="overview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge badge-blue">🗺️ Bức tranh Tổng quan</span>
+                <h2 class="section-title">Hệ thống Năng lực & Phẩm chất trong KHBD</h2>
+                <p class="section-desc">Cấu trúc chuẩn mục tiêu theo Công văn 5512/BGDĐT, Thông tư 02/2025, QĐ 3439 và CT GDPT 2018.</p>
+            </div>
+
+            <!-- Overview Dashboard (Cân đối 3 cột chuẩn) -->
+            <div class="overview-dashboard">
+                <!-- Cột 1: Mục 1 - Kiến thức -->
+                <div class="dash-card card-knowledge">
+                    <div class="dash-header">
+                        <span class="dash-badge badge-blue">Mục 1</span>
+                        <span class="dash-icon">📖</span>
+                    </div>
+                    <h4>1. Kiến thức</h4>
+                    <p class="dash-desc">Xác định trọng tâm kiến thức của bài học theo chương trình môn học.</p>
+                    <div class="dash-rule-box">
+                        <strong>⚠️ Quy tắc bắt buộc:</strong>
+                        Sử dụng <strong>Danh từ / Cụm danh từ</strong> trực tiếp. TUYỆT ĐỐI KHÔNG dùng động từ (hiểu, biết, nhận diện, nêu...).
+                    </div>
+                    <div class="dash-example">
+                        <em>Ví dụ:</em> "Khái niệm số nguyên tố; tính chất chia hết" (Toán) hoặc "Khái niệm văn bản và đoạn văn" (Ngữ văn).
+                    </div>
+                </div>
+
+                <!-- Cột 2: Mục 2 - Năng lực -->
+                <div class="dash-card card-competency-main">
+                    <div class="dash-header">
+                        <span class="dash-badge badge-purple">Mục 2</span>
+                        <span class="dash-icon">🎯</span>
+                    </div>
+                    <h4>2. Năng lực (4 Nhóm chuẩn)</h4>
+                    <p class="dash-desc">Phát triển năng lực người học qua từng hoạt động học tập cụ thể.</p>
+                    
+                    <div class="sub-competency-grid">
+                        <a href="#nldacthu" class="sub-comp-item comp-dacthu">
+                            <div class="sub-comp-head">
+                                <span class="sub-tag tag-green">Mục 2.1</span>
+                                <h5>NL Đặc thù</h5>
+                            </div>
+                            <p>Theo CT môn học (Tin học: NLa–NLe, Robotics: NL1–NL5, KHTN, Toán...)</p>
+                        </a>
+                        
+                        <a href="#nls" class="sub-comp-item comp-nls">
+                            <div class="sub-comp-head">
+                                <span class="sub-tag tag-blue">Mục 2.2</span>
+                                <h5>NL Số (CV 3456)</h5>
+                            </div>
+                            <p>6 Miền — 24 Thành tố — 5 Bậc (Mã Chuẩn Bậc: CB1 → CB5)</p>
+                        </a>
+
+                        <a href="#nlchung" class="sub-comp-item comp-nlchung">
+                            <div class="sub-comp-head">
+                                <span class="sub-tag tag-purple">Mục 2.3</span>
+                                <h5>NL Chung (CV 5512)</h5>
+                            </div>
+                            <p>Tự chủ & Tự học • Giao tiếp & Hợp tác • GQVĐ & Sáng tạo</p>
+                        </a>
+
+                        <a href="#nlai" class="sub-comp-item comp-nlai">
+                            <div class="sub-comp-head">
+                                <span class="sub-tag tag-orange">Mục 2.4</span>
+                                <h5>NL AI (QĐ 3439)</h5>
+                            </div>
+                            <p>4 Chủ đề A–D (Tư duy con người, Đạo đức, Kỹ thuật, Thiết kế)</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cột 3: Mục 3 - Phẩm chất -->
+                <div class="dash-card card-quality">
+                    <div class="dash-header">
+                        <span class="dash-badge badge-gold">Mục 3</span>
+                        <span class="dash-icon">⭐</span>
+                    </div>
+                    <h4>3. 5 Phẩm chất Cốt lõi</h4>
+                    <p class="dash-desc">Chương trình GDPT 2018 (Thông tư 32/2018/TT-BGDĐT).</p>
+                    <div class="quality-pills">
+                        <span class="q-pill q-yn">🇻🇳 Yêu nước</span>
+                        <span class="q-pill q-na">❤️ Nhân ái</span>
+                        <span class="q-pill q-cc">📚 Chăm chỉ</span>
+                        <span class="q-pill q-tt">⚖️ Trung thực</span>
+                        <span class="q-pill q-tn">🛡️ Trách nhiệm</span>
+                    </div>
+                    <div class="dash-rule-box mt-2">
+                        <strong>📌 Quy tắc bắt buộc:</strong>
+                        Mỗi phẩm chất phải gắn mốc: <em>(Đạt được thông qua Hoạt động X)</em>.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order note -->
+            <div class="order-note">
+                <div class="order-card order-thcs">
+                    <h4>📐 Thứ tự THCS (Lớp 6–8)</h4>
+                    <div class="order-flow">
+                        <span class="order-step">1. Kiến thức</span>
+                        <span class="order-arrow">→</span>
+                        <span class="order-step active">2. Năng lực (2.1 - 2.4)</span>
+                        <span class="order-arrow">→</span>
+                        <span class="order-step">3. Phẩm chất</span>
+                    </div>
+                </div>
+                <div class="order-card order-th">
+                    <h4>🏫 Thứ tự Tiểu học (Lớp 1–5)</h4>
+                    <div class="order-flow">
+                        <span class="order-step active">1. Yêu cầu cần đạt (Kiến thức/Kĩ năng)</span>
+                        <span class="order-arrow">→</span>
+                        <span class="order-step">2. Phẩm chất</span>
+                        <span class="order-arrow">→</span>
+                        <span class="order-step">3. Năng lực</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NLS Section -->
+    <section class="section section-alt" id="nls">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge badge-blue">💻 Năng lực Số</span>
+                <h2 class="section-title">Khung Năng lực Số — TT 02/2025 & CV 3456</h2>
+                <p class="section-desc">Khung Năng lực số gồm chính xác <strong>6 Miền</strong>, <strong>24 Thành tố</strong>, phân thành <strong>5 Bậc chuẩn</strong> theo khối lớp.</p>
+            </div>
+
+            <!-- Bậc Table -->
+            <div class="card card-glow">
+                <h3 class="card-title">📊 Bảng phân Bậc theo Khối lớp (Ký hiệu Chuẩn Bậc: CB1 → CB5)</h3>
+                <div class="table-responsive">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Khối lớp áp dụng</th>
+                                <th>Bậc</th>
+                                <th>Tên Bậc</th>
+                                <th>Ký hiệu CB</th>
+                                <th>Mức độ tự chủ của học sinh</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="level-badge level-1">Tiền TH + Lớp 1, 2, 3</span></td>
+                                <td><strong>Bậc 1</strong></td>
+                                <td>Cơ bản 1</td>
+                                <td><code>CB1</code></td>
+                                <td>Dưới sự hướng dẫn của giáo viên/người lớn</td>
+                            </tr>
+                            <tr>
+                                <td><span class="level-badge level-2">Lớp 4, 5</span></td>
+                                <td><strong>Bậc 2</strong></td>
+                                <td>Cơ bản 2</td>
+                                <td><code>CB2</code></td>
+                                <td>Tự chủ trong nhiệm vụ quen thuộc + hướng dẫn khi cần</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><span class="level-badge level-3">Lớp 6, 7</span></td>
+                                <td><strong>Bậc 3</strong></td>
+                                <td>Trung cấp 1</td>
+                                <td><code>CB3</code></td>
+                                <td>Tự chủ hoàn toàn trong các nhiệm vụ số thông thường</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><span class="level-badge level-4">Lớp 8, 9</span></td>
+                                <td><strong>Bậc 4</strong></td>
+                                <td>Trung cấp 2</td>
+                                <td><code>CB4</code></td>
+                                <td>Độc lập, chủ động lựa chọn công cụ theo nhu cầu riêng</td>
+                            </tr>
+                            <tr>
+                                <td><span class="level-badge level-5">Lớp 10, 11, 12</span></td>
+                                <td><strong>Bậc 5</strong></td>
+                                <td>Nâng cao 1</td>
+                                <td><code>CB5</code></td>
+                                <td>Làm chủ, đề xuất giải pháp mới và hướng dẫn người khác</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="alert alert-danger">
+                    <strong>⚠️ Lưu ý bắt buộc tránh nhầm lẫn:</strong> Lớp 6–7 = <code>CB3</code> (KHÔNG phải CB2). Lớp 8–9 = <code>CB4</code> (KHÔNG phải CB3).
+                </div>
+            </div>
+
+            <!-- Direct Component Quick Inspector -->
+            <div class="card card-glow mt-3">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <h3 class="card-title" style="margin-bottom: 4px;">📖 Tra cứu trực tiếp Khái niệm 24 Thành tố (CV 3456)</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Chọn bất kỳ thành tố nào để đọc ngay định nghĩa pháp quy và bảng yêu cầu cần đạt 5 Bậc.</p>
+                    </div>
+                </div>
+                <div style="margin-top: 14px;">
+                    <select id="directComponentSelect" class="lookup-select" onchange="onDirectComponentChange()" style="width: 100%;">
+                        <option value="">-- Đang nạp danh sách 24 thành tố... --</option>
+                    </select>
+                </div>
+                <div id="directComponentResult"></div>
+            </div>
+
+            <!-- 6 Miền Grid -->
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 36px; margin-bottom: 14px;">
+                <h3 class="subsection-title" style="margin: 0;">🌐 6 Miền NLS & 24 Thành tố cốt lõi</h3>
+                <span style="font-size: 0.9rem; color: var(--accent-blue); font-weight: 600;">👉 Nhấp vào thẻ Miền hoặc Thành tố để xem chi tiết</span>
+            </div>
+
+            <div class="mien-grid" id="mienGrid">
+                <!-- Miền I -->
+                <div class="mien-card mien-1" data-mien="1">
+                    <div class="mien-header">
+                        <span class="mien-number">I</span>
+                        <h4>Khai thác dữ liệu & thông tin</h4>
+                    </div>
+                    <p class="mien-concept-preview">Xác định nhu cầu thông tin; tìm kiếm, truy cập, đánh giá độ tin cậy; lưu trữ và tổ chức dữ liệu có cấu trúc.</p>
+                    <div class="thanh-to-list">
+                        <div class="thanh-to-item" data-code="1.1">
+                            <span class="tt-code">1.1</span>
+                            <span class="tt-name">Duyệt, tìm kiếm và lọc dữ liệu, thông tin và nội dung số</span>
+                        </div>
+                        <div class="thanh-to-item" data-code="1.2">
+                            <span class="tt-code">1.2</span>
+                            <span class="tt-name">Đánh giá dữ liệu, thông tin và nội dung số</span>
+                        </div>
+                        <div class="thanh-to-item" data-code="1.3">
+                            <span class="tt-code">1.3</span>
+                            <span class="tt-name">Quản lý dữ liệu, thông tin và nội dung số</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miền II -->
+                <div class="mien-card mien-2" data-mien="2">
+                    <div class="mien-header">
+                        <span class="mien-number">II</span>
+                        <h4>Giao tiếp & Hợp tác</h4>
+                    </div>
+                    <p class="mien-concept-preview">Tương tác và chia sẻ qua công nghệ số; thực hiện trách nhiệm công dân; tuân thủ Netiquette và quản lý danh tính số.</p>
+                    <div class="thanh-to-list">
+                        <div class="thanh-to-item" data-code="2.1"><span class="tt-code">2.1</span><span class="tt-name">Tương tác thông qua công nghệ số</span></div>
+                        <div class="thanh-to-item" data-code="2.2"><span class="tt-code">2.2</span><span class="tt-name">Chia sẻ thông tin và nội dung thông qua công nghệ số</span></div>
+                        <div class="thanh-to-item" data-code="2.3"><span class="tt-code">2.3</span><span class="tt-name">Sử dụng công nghệ số để thực hiện trách nhiệm công dân</span></div>
+                        <div class="thanh-to-item" data-code="2.4"><span class="tt-code">2.4</span><span class="tt-name">Hợp tác thông qua công nghệ số</span></div>
+                        <div class="thanh-to-item" data-code="2.5"><span class="tt-code">2.5</span><span class="tt-name">Quy tắc ứng xử trên mạng (Netiquette)</span></div>
+                        <div class="thanh-to-item" data-code="2.6"><span class="tt-code">2.6</span><span class="tt-name">Quản lý danh tính số</span></div>
+                    </div>
+                </div>
+
+                <!-- Miền III -->
+                <div class="mien-card mien-3" data-mien="3">
+                    <div class="mien-header">
+                        <span class="mien-number">III</span>
+                        <h4>Sáng tạo nội dung số</h4>
+                    </div>
+                    <p class="mien-concept-preview">Tạo và chỉnh sửa nội dung đa phương tiện; tích hợp nội dung; thực thi bản quyền & giấy phép; lập trình thuật toán.</p>
+                    <div class="thanh-to-list">
+                        <div class="thanh-to-item" data-code="3.1"><span class="tt-code">3.1</span><span class="tt-name">Phát triển nội dung số</span></div>
+                        <div class="thanh-to-item" data-code="3.2"><span class="tt-code">3.2</span><span class="tt-name">Tích hợp và tạo lập lại nội dung số</span></div>
+                        <div class="thanh-to-item" data-code="3.3"><span class="tt-code">3.3</span><span class="tt-name">Thực thi bản quyền và giấy phép</span></div>
+                        <div class="thanh-to-item" data-code="3.4"><span class="tt-code">3.4</span><span class="tt-name">Lập trình</span></div>
+                    </div>
+                </div>
+
+                <!-- Miền IV -->
+                <div class="mien-card mien-4" data-mien="4">
+                    <div class="mien-header">
+                        <span class="mien-number">IV</span>
+                        <h4>An toàn</h4>
+                    </div>
+                    <p class="mien-concept-preview">Bảo vệ thiết bị và nội dung số; bảo vệ dữ liệu cá nhân & quyền riêng tư; bảo vệ sức khỏe và môi trường sống.</p>
+                    <div class="thanh-to-list">
+                        <div class="thanh-to-item" data-code="4.1"><span class="tt-code">4.1</span><span class="tt-name">Bảo vệ thiết bị</span></div>
+                        <div class="thanh-to-item" data-code="4.2"><span class="tt-code">4.2</span><span class="tt-name">Bảo vệ dữ liệu cá nhân và quyền riêng tư</span></div>
+                        <div class="thanh-to-item" data-code="4.3"><span class="tt-code">4.3</span><span class="tt-name">Bảo vệ sức khỏe và an sinh số</span></div>
+                        <div class="thanh-to-item" data-code="4.4"><span class="tt-code">4.4</span><span class="tt-name">Bảo vệ môi trường</span></div>
+                    </div>
+                </div>
+
+                <!-- Miền V -->
+                <div class="mien-card mien-5" data-mien="5">
+                    <div class="mien-header">
+                        <span class="mien-number">V</span>
+                        <h4>Giải quyết vấn đề</h4>
+                    </div>
+                    <p class="mien-concept-preview">Xác định và xử lý sự cố kỹ thuật; chọn giải pháp công nghệ; sử dụng sáng tạo công nghệ; nâng cao năng lực số.</p>
+                    <div class="thanh-to-list">
+                        <div class="thanh-to-item" data-code="5.1"><span class="tt-code">5.1</span><span class="tt-name">Giải quyết các vấn đề kỹ thuật</span></div>
+                        <div class="thanh-to-item" data-code="5.2"><span class="tt-code">5.2</span><span class="tt-name">Xác định nhu cầu và giải pháp công nghệ</span></div>
+                        <div class="thanh-to-item" data-code="5.3"><span class="tt-code">5.3</span><span class="tt-name">Sử dụng sáng tạo công nghệ số</span></div>
+                        <div class="thanh-to-item" data-code="5.4"><span class="tt-code">5.4</span><span class="tt-name">Xác định các vấn đề cần cải thiện về NLS</span></div>
+                    </div>
+                </div>
+
+                <!-- Miền VI -->
+                <div class="mien-card mien-6" data-mien="6">
+                    <div class="mien-header">
+                        <span class="mien-number">VI</span>
+                        <h4>Ứng dụng trí tuệ nhân tạo (AI)</h4>
+                    </div>
+                    <p class="mien-concept-preview">Hiểu biết về khái niệm và giới hạn của AI; sử dụng công cụ AI phục vụ học tập; đánh giá tác động và đạo đức AI.</p>
+                    <div class="thanh-to-list">
+                        <div class="thanh-to-item" data-code="6.1"><span class="tt-code">6.1</span><span class="tt-name">Hiểu biết về trí tuệ nhân tạo</span></div>
+                        <div class="thanh-to-item" data-code="6.2"><span class="tt-code">6.2</span><span class="tt-name">Sử dụng trí tuệ nhân tạo</span></div>
+                        <div class="thanh-to-item" data-code="6.3"><span class="tt-code">6.3</span><span class="tt-name">Đánh giá trí tuệ nhân tạo</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NLS Code Anatomy -->
+            <div class="card card-glow mt-3">
+                <h3 class="card-title">🔑 Cấu trúc giải phẫu mã Chuẩn Bậc (Mã CB) trong KHBD</h3>
+                <div class="code-anatomy">
+                    <div class="anatomy-visual">
+                        <span class="anatomy-part part-1" data-tooltip="Mã thành tố (Miền.Thành tố)">3.4</span>
+                        <span class="anatomy-dot">.</span>
+                        <span class="anatomy-part part-2" data-tooltip="Viết tắt Chuẩn Bậc">CB</span>
+                        <span class="anatomy-part part-3" data-tooltip="Số Bậc theo lớp (1-5)">3</span>
+                        <span class="anatomy-part part-4" data-tooltip="Thứ tự descriptor (a, b, c...)">a</span>
+                    </div>
+                    <div class="anatomy-legend">
+                        <div class="legend-item"><span class="legend-dot dot-1"></span> Mã thành tố (VD: 3.4 = Lập trình)</div>
+                        <div class="legend-item"><span class="legend-dot dot-2"></span> Ký hiệu cố định "CB"</div>
+                        <div class="legend-item"><span class="legend-dot dot-3"></span> Số Bậc (1: Lớp 1-3 | 2: Lớp 4-5 | 3: Lớp 6-7 | 4: Lớp 8-9 | 5: Lớp 10-12)</div>
+                        <div class="legend-item"><span class="legend-dot dot-4"></span> Ký tự gạch đầu dòng descriptor (a: ý 1, b: ý 2...)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NL AI Section -->
+    <section class="section" id="nlai">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge badge-orange">🤖 Năng lực AI</span>
+                <h2 class="section-title">Khung Năng lực Trí tuệ nhân tạo — QĐ 3439/QĐ-BGDĐT</h2>
+                <p class="section-desc">Ban hành kèm Quyết định 3439/QĐ-BGDĐT về Khung giáo dục AI cho học sinh phổ thông với <strong>4 chủ đề trụ cột</strong>.</p>
+            </div>
+
+            <div class="ai-components-grid">
+                <!-- Theme A -->
+                <div class="ai-card ai-card-a">
+                    <div class="ai-card-header">
+                        <span class="ai-letter">A</span>
+                        <h4>Tư duy lấy con người làm trung tâm</h4>
+                    </div>
+                    <p class="ai-concept">Khẳng định con người là chủ thể sáng tạo, kiểm soát và thụ hưởng; AI chỉ mô phỏng phản ứng; con người chịu trách nhiệm tối thượng.</p>
+                    <div class="ai-sub-box">
+                        <div class="ai-sub-item"><strong>A1. Tính chủ động của con người:</strong> Con người có cảm xúc thật, AI thì không có cảm xúc thật mà chỉ mô phỏng theo dữ liệu.</div>
+                        <div class="ai-sub-item"><strong>A2. AI vì sự tiến bộ của con người:</strong> Nhận diện AI trong đời sống; AI hỗ trợ nâng cao năng suất, không thay thế giá trị cốt lõi của con người.</div>
+                    </div>
+                </div>
+
+                <!-- Theme B -->
+                <div class="ai-card ai-card-b">
+                    <div class="ai-card-header">
+                        <span class="ai-letter">B</span>
+                        <h4>Đạo đức AI (Ethics of AI)</h4>
+                    </div>
+                    <p class="ai-concept">Các chuẩn mực đạo đức, công bằng, minh bạch, bảo vệ quyền riêng tư và trách nhiệm giải trình khi sử dụng trí tuệ nhân tạo.</p>
+                    <div class="ai-sub-box">
+                        <div class="ai-sub-item"><strong>B1. Khía cạnh đạo đức:</strong> Phân biệt việc tốt/xấu; không sử dụng AI để lừa đảo, giả mạo hay gây tổn hại.</div>
+                        <div class="ai-sub-item"><strong>B2. Tác động xã hội:</strong> Hiểu về sự thiên vị dữ liệu (data bias), phân biệt đối xử và tác động việc làm.</div>
+                        <div class="ai-sub-item"><strong>B3. Nguyên tắc đạo đức:</strong> Máy thông minh làm việc tốt; minh bạch nguồn gốc và tôn trọng bản quyền.</div>
+                    </div>
+                </div>
+
+                <!-- Theme C -->
+                <div class="ai-card ai-card-c">
+                    <div class="ai-card-header">
+                        <span class="ai-letter">C</span>
+                        <h4>Kỹ thuật & Ứng dụng AI</h4>
+                    </div>
+                    <p class="ai-concept">Nền tảng công nghệ của AI: Học máy, thị giác máy tính, NLP, xử lý ngôn ngữ lớn và ứng dụng thực tiễn trong học tập.</p>
+                    <div class="ai-sub-box">
+                        <div class="ai-sub-item"><strong>C1. Đặc điểm chính:</strong> Nhận biết AI, chức năng xử lý hình ảnh, âm thanh, văn bản.</div>
+                        <div class="ai-sub-item"><strong>C2. Ứng dụng thực tế:</strong> Trợ lý ảo, dịch thuật thời gian thực, gợi ý học tập cá nhân hóa.</div>
+                        <div class="ai-sub-item"><strong>C3 - C5. Công nghệ & Thuật toán:</strong> Học máy (ML), Mạng nơ-ron, vai trò của dữ liệu huấn luyện và thuật toán dự đoán.</div>
+                    </div>
+                </div>
+
+                <!-- Theme D -->
+                <div class="ai-card ai-card-d">
+                    <div class="ai-card-header">
+                        <span class="ai-letter">D</span>
+                        <h4>Thiết kế hệ thống AI</h4>
+                    </div>
+                    <p class="ai-concept">Năng lực phân tích bài toán thực tế, thu thập dữ liệu, huấn luyện mô hình đơn giản, đánh giá độ chính xác và cải tiến hệ thống.</p>
+                    <div class="ai-sub-box">
+                        <div class="ai-sub-item"><strong>D1. Nhận diện & hình thành giải pháp:</strong> Xác định bài toán thực tiễn có thể giải quyết bằng AI (phân loại rác, nhận diện ảnh...).</div>
+                        <div class="ai-sub-item"><strong>D2. Cấu trúc, tương tác & cải tiến:</strong> Quy trình: Thu thập mẫu → Huấn luyện → Kiểm thử với dữ liệu mới → Tinh chỉnh mô hình.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Code Format -->
+            <div class="card card-glow mt-3">
+                <h3 class="card-title">✍️ Cú pháp viết mã NL AI trong KHBD — Mục 2.4</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>📝 Format chuẩn — Mục 2.4 KHBD</span>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                    </div>
+                    <pre><code>2.4. Năng lực Trí tuệ nhân tạo (AI) được phát triển:
+- [Lớp].[Chủ đề A-D][Số].[Mã cụ thể]: [Yêu cầu cần đạt từ QĐ 3439]
+  (Đạt được thông qua Hoạt động X, Hoạt động Y).</code></pre>
+                </div>
+                <div class="code-block code-example mt-2">
+                    <pre><code>Ví dụ thực tế Lớp 6:
+2.4. Năng lực Trí tuệ nhân tạo (AI) được phát triển:
+- 6.A1.1: Nhận biết vai trò của con người trong việc thiết kế và sử dụng AI; biết rằng con người chịu trách nhiệm tối thượng về các phản hồi của AI (Đạt được thông qua Hoạt động 2).
+- 6.C1.1: Giải thích được hai thành phần chính để "dạy" cho AI là Dữ liệu và Thuật toán (Đạt được thông qua Hoạt động 2, Hoạt động 3).</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NL Đặc thù Section -->
+    <section class="section section-alt" id="nldacthu">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge badge-green">🎯 NL Đặc thù</span>
+                <h2 class="section-title">Năng lực Đặc thù môn Tin học & Robotics</h2>
+                <p class="section-desc">Tin học sử dụng <strong>NLa – NLe</strong> (CT GDPT 2018), Robotics sử dụng <strong>NL1 – NL5</strong> (Khung kỹ thuật chuẩn UNIGO).</p>
+            </div>
+
+            <!-- Subject Toggle Switch -->
+            <div class="toggle-switch-container">
+                <button class="toggle-btn active" data-subject="tinhoc">💻 Tin học (NLa – NLe)</button>
+                <button class="toggle-btn" data-subject="robotics">🤖 Robotics (NL1 – NL5)</button>
+            </div>
+
+            <!-- Tin học Panel -->
+            <div class="subject-panel active" id="panel-tinhoc">
+                <div class="nl-grid">
+                    <div class="nl-card nl-a">
+                        <div class="nl-header"><span class="nl-code">NLa</span></div>
+                        <h4>Sử dụng và quản lý các phương tiện CNTT và truyền thông</h4>
+                        <p>Thành thạo thiết bị phần cứng, hệ điều hành, phần mềm ứng dụng và dịch vụ mạng thông dụng trong học tập và đời sống.</p>
+                        <div class="nl-example">VD: Khởi động máy, gõ phím đúng quy cách, mở và lưu tệp tin an toàn.</div>
+                    </div>
+                    <div class="nl-card nl-b">
+                        <div class="nl-header"><span class="nl-code">NLb</span></div>
+                        <h4>Ứng xử phù hợp trong môi trường số</h4>
+                        <p>Tuân thủ pháp luật, đạo đức, chuẩn mực văn hóa khi giao tiếp trên mạng; tôn trọng quyền tác giả và bảo mật thông tin.</p>
+                        <div class="nl-example">VD: Không phát tán tin giả, không vi phạm bản quyền phần mềm, lịch sự trên diễn đàn.</div>
+                    </div>
+                    <div class="nl-card nl-c">
+                        <div class="nl-header"><span class="nl-code">NLc</span></div>
+                        <h4>Khám phá tri thức, giải quyết vấn đề với sự trợ giúp của CNTT</h4>
+                        <p>Sử dụng máy tính và mạng Internet như công cụ hỗ trợ tư duy, tìm kiếm, phân tích dữ liệu và mô hình hóa vấn đề.</p>
+                        <div class="nl-example">VD: Dùng bảng tính để biểu diễn dữ liệu thống kê, lập sơ đồ tư duy số.</div>
+                    </div>
+                    <div class="nl-card nl-d">
+                        <div class="nl-header"><span class="nl-code">NLd</span></div>
+                        <h4>Ứng dụng CNTT và truyền thông trong học và tự học</h4>
+                        <p>Chủ động khai thác phần mềm tự học, khóa học trực tuyến và tài nguyên số để mở rộng tri thức cá nhân.</p>
+                        <div class="nl-example">VD: Tự học gõ 10 ngón với TypingMaster, tra cứu tài liệu học tập trực tuyến.</div>
+                    </div>
+                    <div class="nl-card nl-e">
+                        <div class="nl-header"><span class="nl-code">NLe</span></div>
+                        <h4>Hợp tác trong môi trường số</h4>
+                        <p>Sử dụng các công cụ đám mây và truyền thông mạng để làm việc nhóm, chia sẻ dữ liệu và hoàn thành dự án học tập chung.</p>
+                        <div class="nl-example">VD: Cùng soạn thảo slide trên Google Slides, chia sẻ thư mục bài tập nhóm.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Robotics Panel -->
+            <div class="subject-panel" id="panel-robotics">
+                <div class="nl-grid">
+                    <div class="nl-card nl-rob-1">
+                        <div class="nl-header"><span class="nl-code nl-code-rob">NL1</span></div>
+                        <h4>Nhận thức công nghệ và cơ chế robot</h4>
+                        <p>Hiểu nguyên lý hoạt động của các linh kiện cơ khí, động cơ servo/DC, mạch điều khiển và các cảm biến thông minh.</p>
+                    </div>
+                    <div class="nl-card nl-rob-2">
+                        <div class="nl-header"><span class="nl-code nl-code-rob">NL2</span></div>
+                        <h4>Lắp ráp và chế tạo mô hình robot</h4>
+                        <p>Đọc bản vẽ kỹ thuật, chọn đúng linh kiện và lắp ráp mô hình robot chắc chắn, chính xác, vận hành trơn tru.</p>
+                    </div>
+                    <div class="nl-card nl-rob-3">
+                        <div class="nl-header"><span class="nl-code nl-code-rob">NL3</span></div>
+                        <h4>Lập trình điều khiển robot</h4>
+                        <p>Xây dựng thuật toán, viết chương trình khối lệnh hoặc văn bản để điều khiển robot tự động di chuyển và xử lý tình huống.</p>
+                    </div>
+                    <div class="nl-card nl-rob-4">
+                        <div class="nl-header"><span class="nl-code nl-code-rob">NL4</span></div>
+                        <h4>Thử nghiệm, tinh chỉnh & Troubleshooting</h4>
+                        <p>Chạy thử sa bàn, phát hiện nguyên nhân lỗi kỹ thuật (phần cứng/phần mềm), đo đạc thông số và tối ưu hóa hệ thống.</p>
+                    </div>
+                    <div class="nl-card nl-rob-5">
+                        <div class="nl-header"><span class="nl-code nl-code-rob">NL5</span></div>
+                        <h4>Hợp tác, giải quyết vấn đề kỹ thuật & sáng tạo</h4>
+                        <p>Làm việc nhóm ăn ý, phân công vai trò cơ khí - lập trình và sáng tạo giải pháp vượt qua thử thách nhiệm vụ thi đấu robot.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NL Chung Section -->
+    <section class="section" id="nlchung">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge badge-purple">🤝 NL Chung</span>
+                <h2 class="section-title">3 Năng lực Chung — Công văn 5512 & CT GDPT 2018</h2>
+                <p class="section-desc">Hệ thống 3 năng lực chung xuyên suốt mọi môn học, gắn trực tiếp với từng hoạt động dạy học.</p>
+            </div>
+
+            <div class="nlc-grid">
+                <div class="nlc-card nlc-1">
+                    <div class="nlc-icon">🧠</div>
+                    <h4>Tự chủ và tự học <span class="nlc-abbr">(TC&TH)</span></h4>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 12px;">
+                        Khả năng tự quản lý bản thân, chủ động thực hiện nhiệm vụ học tập mà không cần chờ nhắc nhở; tự đặt mục tiêu và kiên trì thực hiện.
+                    </p>
+                    <div class="nlc-levels">
+                        <div class="nlc-level">
+                            <span class="nlc-level-tag tag-th">Tiểu học</span>
+                            <p>Tự hoàn thành nhiệm vụ được giao; tự sắp xếp đồ dùng học tập; kiên trì làm bài; chủ động hỏi thầy cô khi chưa hiểu.</p>
+                        </div>
+                        <div class="nlc-level">
+                            <span class="nlc-level-tag tag-thcs">THCS</span>
+                            <p>Chủ động nghiên cứu SGK trước giờ học; tự khám phá tính năng phần mềm; lập kế hoạch tự học; tự đánh giá kết quả.</p>
+                        </div>
+                    </div>
+                    <div class="nlc-mapping">📌 Thường gắn: <strong>Hoạt động 1</strong> (Khởi động) & <strong>Hoạt động 2</strong> (Hình thành kiến thức)</div>
+                </div>
+
+                <div class="nlc-card nlc-2">
+                    <div class="nlc-icon">💬</div>
+                    <h4>Giao tiếp và hợp tác <span class="nlc-abbr">(GT&HT)</span></h4>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 12px;">
+                        Khả năng diễn đạt rõ ràng ý tưởng, biết lắng nghe tôn trọng ý kiến bạn bè, phối hợp ăn ý để cùng hoàn thành mục tiêu nhóm.
+                    </p>
+                    <div class="nlc-levels">
+                        <div class="nlc-level">
+                            <span class="nlc-level-tag tag-th">Tiểu học</span>
+                            <p>Chia sẻ kết quả với bạn cùng bàn; trao đổi sôi nổi trong nhóm; biết phân chia việc và lắng nghe bạn trình bày.</p>
+                        </div>
+                        <div class="nlc-level">
+                            <span class="nlc-level-tag tag-thcs">THCS</span>
+                            <p>Trình bày lập luận thuyết phục; phản biện văn minh; phối hợp nhịp nhàng trong dự án nhóm; giải quyết bất đồng tích cực.</p>
+                        </div>
+                    </div>
+                    <div class="nlc-mapping">📌 Thường gắn: <strong>Hoạt động 2</strong> (Thảo luận nhóm) & <strong>Hoạt động 3</strong> (Thực hành nhóm)</div>
+                </div>
+
+                <div class="nlc-card nlc-3">
+                    <div class="nlc-icon">💡</div>
+                    <h4>Giải quyết vấn đề và sáng tạo <span class="nlc-abbr">(GQVĐ&ST)</span></h4>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 12px;">
+                        Phát hiện vấn đề mới, phân tích nguyên nhân, đề xuất giải pháp độc đáo, tối ưu và kiểm chứng kết quả trong thực tế.
+                    </p>
+                    <div class="nlc-levels">
+                        <div class="nlc-level">
+                            <span class="nlc-level-tag tag-th">Tiểu học</span>
+                            <p>Đặt câu hỏi khi gặp tình huống lạ; thử nghiệm nhiều cách vẽ hoặc thao tác khác nhau; tự nghĩ ý tưởng mới cho bài vẽ số.</p>
+                        </div>
+                        <div class="nlc-level">
+                            <span class="nlc-level-tag tag-thcs">THCS</span>
+                            <p>Phát hiện lỗi logic trong thuật toán; đề xuất giải pháp tối ưu số dòng code; thiết kế mô hình robot giải quyết bài toán thực tiễn.</p>
+                        </div>
+                    </div>
+                    <div class="nlc-mapping">📌 Thường gắn: <strong>Hoạt động 3</strong> (Luyện tập) & <strong>Hoạt động 4</strong> (Vận dụng mở rộng)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phẩm chất Section (Full 5 Phẩm chất) -->
+    <section class="section section-alt" id="phamchat">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge badge-gold">⭐ 5 Phẩm chất Chủ yếu</span>
+                <h2 class="section-title">5 Phẩm chất — Chương trình GDPT 2018</h2>
+                <p class="section-desc">Theo Thông tư 32/2018/TT-BGDĐT, mỗi phẩm chất trong KHBD bắt buộc gắn mốc <strong>(Đạt được thông qua Hoạt động X)</strong>.</p>
+            </div>
+
+            <div class="pc-grid">
+                <!-- 1. Yêu nước -->
+                <div class="pc-card pc-yeu-nuoc">
+                    <div class="pc-emoji">🇻🇳</div>
+                    <h4>1. Yêu nước</h4>
+                    <p class="pc-concept">Tình yêu đối với quê hương, đất nước, thiên nhiên; niềm tự hào về truyền thống dựng nước và giữ nước; bảo vệ di sản văn hóa.</p>
+                    <div class="pc-manifest">
+                        <div><strong>Tiểu học:</strong> Yêu thiên nhiên, có hành động bảo vệ cây xanh; yêu quê hương, tôn trọng Quốc kì, Quốc ca; biết ơn người có công.</div>
+                        <div class="mt-1"><strong>THCS:</strong> Tự hào về truyền thống lịch sử vẻ vang của dân tộc; có ý thức tìm hiểu, giữ gìn bản sắc văn hóa và tham gia xây dựng quê hương.</div>
+                    </div>
+                    <div class="pc-example">
+                        <strong>Ứng dụng KHBD:</strong> Giới thiệu danh lam thắng cảnh quê hương qua bài trình chiếu số; tôn trọng bản sắc văn hóa dân tộc khi thiết kế sản phẩm số (Đạt được thông qua Hoạt động 3, Hoạt động 4).
+                    </div>
+                </div>
+
+                <!-- 2. Nhân ái -->
+                <div class="pc-card pc-nhan-ai">
+                    <div class="pc-emoji">❤️</div>
+                    <h4>2. Nhân ái</h4>
+                    <p class="pc-concept">Yêu quý mọi người; tôn trọng sự khác biệt; sẵn sàng chia sẻ, cảm thông, giúp đỡ người khác; văn minh và không gây tổn thương trên không gian mạng.</p>
+                    <div class="pc-manifest">
+                        <div><strong>Tiểu học:</strong> Yêu quý bạn bè, kính trọng thầy cô; không phân biệt đối xử; biết nói lời cảm ơn, xin lỗi và biết tha thứ cho bạn.</div>
+                        <div class="mt-1"><strong>THCS:</strong> Tôn trọng danh dự, nhân phẩm và quyền riêng tư của người khác; đấu tranh chống bạo lực mạng; sẵn sàng hỗ trợ bạn bè học tập.</div>
+                    </div>
+                    <div class="pc-example">
+                        <strong>Ứng dụng KHBD:</strong> Tôn trọng ý kiến bạn trong làm việc nhóm, không dùng mạng xâm phạm người khác, nhiệt tình hỗ trợ bạn bè gỡ lỗi máy tính (Đạt được thông qua Hoạt động 2, Hoạt động 3).
+                    </div>
+                </div>
+
+                <!-- 3. Chăm chỉ -->
+                <div class="pc-card pc-cham-chi">
+                    <div class="pc-emoji">📚</div>
+                    <h4>3. Chăm chỉ</h4>
+                    <p class="pc-concept">Chăm học, chăm làm, có tinh thần tự giác; kiên trì vượt khó, say mê tìm tòi khám phá tri thức và nỗ lực hoàn thành nhiệm vụ.</p>
+                    <div class="pc-manifest">
+                        <div><strong>Tiểu học:</strong> Đi học đầy đủ, đúng giờ; hoàn thành bài tập về nhà; thích đọc sách; tự giác làm việc nhà vừa sức.</div>
+                        <div class="mt-1"><strong>THCS:</strong> Luôn cố gắng đạt kết quả cao; kiên trì thực hành thao tác máy tính; không nản lòng khi gặp bài lập trình khó hoặc robot bị lỗi.</div>
+                    </div>
+                    <div class="pc-example">
+                        <strong>Ứng dụng KHBD:</strong> Kiên trì thực hành thao tác máy tính, nỗ lực tìm lỗi và sửa lỗi lập trình (debugging) cho đến khi chương trình chạy đúng (Đạt được thông qua Hoạt động 3).
+                    </div>
+                </div>
+
+                <!-- 4. Trung thực -->
+                <div class="pc-card pc-trung-thuc">
+                    <div class="pc-emoji">⚖️</div>
+                    <h4>4. Trung thực</h4>
+                    <p class="pc-concept">Thật thà, ngay thẳng trong học tập và cuộc sống; tôn trọng sự thật, lẽ phải; dũng cảm nhận lỗi và tôn trọng bản quyền sở hữu trí tuệ.</p>
+                    <div class="pc-manifest">
+                        <div><strong>Tiểu học:</strong> Thật thà, không nói dối; không tự tiện lấy đồ dùng của bạn; biết nhận lỗi và sửa sai khi làm hỏng thiết bị.</div>
+                        <div class="mt-1"><strong>THCS:</strong> Thống nhất giữa lời nói và việc làm; nghiêm túc trong kiểm tra, không sao chép bài làm; tôn trọng bản quyền phần mềm và trích dẫn rõ nguồn Internet.</div>
+                    </div>
+                    <div class="pc-example">
+                        <strong>Ứng dụng KHBD:</strong> Tự giác hoàn thành bài tập thực hành cá nhân; tôn trọng quyền tác giả và trích dẫn đầy đủ nguồn gốc thông tin khi tìm kiếm trên mạng (Đạt được thông qua Hoạt động 3, Hoạt động 4).
+                    </div>
+                </div>
+
+                <!-- 5. Trách nhiệm -->
+                <div class="pc-card pc-trach-nhiem">
+                    <div class="pc-emoji">🛡️</div>
+                    <h4>5. Trách nhiệm</h4>
+                    <p class="pc-concept">Có trách nhiệm với bản thân, tập thể, cộng đồng và môi trường; giữ lời hứa; bảo vệ của công và giữ an toàn trên không gian mạng.</p>
+                    <div class="pc-manifest">
+                        <div><strong>Tiểu học:</strong> Giữ gìn đồ dùng học tập của mình và của trường lớp; giữ vệ sinh phòng học; chấp hành nội quy phòng máy tính.</div>
+                        <div class="mt-1"><strong>THCS:</strong> Có ý thức bảo vệ thiết bị phòng máy và bộ Kit Robotics; dọn dẹp vị trí học tập sau giờ học; tuân thủ quy định an toàn mạng và bảo mật tài khoản.</div>
+                    </div>
+                    <div class="pc-example">
+                        <strong>Ứng dụng KHBD:</strong> Có ý thức bảo vệ thiết bị máy tính, cất dọn bộ Kit Robotics gọn gàng sau giờ học; tuân thủ nội quy an toàn dữ liệu và phòng máy (Đạt được thông qua Hoạt động 2, Hoạt động 4).
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-glow mt-3">
+                <h3 class="card-title">✍️ Mẫu soạn chuẩn mục 3 — Phẩm chất trong KHBD UNIGO</h3>
+                <div class="code-block code-example">
+                    <pre><code>3. Phẩm chất:
+- Chăm chỉ: Tích cực, kiên trì thực hành thao tác trên máy tính, chủ động sửa lỗi lập trình (Đạt được thông qua Hoạt động 3).
+- Trách nhiệm: Sử dụng thiết bị máy tính đúng quy trình, giữ gìn tài sản chung và dọn dẹp gọn gàng sau giờ học (Đạt được thông qua Hoạt động 2, Hoạt động 4).
+- Trung thực: Tự thực hiện bài tập thực hành cá nhân, không sao chép bài của bạn; trích dẫn nguồn khi tìm kiếm tư liệu (Đạt được thông qua Hoạt động 3, Hoạt động 4).
+- Nhân ái: Lịch sự, hòa nhã trong thảo luận nhóm; tích cực hỗ trợ bạn bè khi bạn gặp sự cố kỹ thuật (Đạt được thông qua Hoạt động 2, Hoạt động 3).</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Section -->
+    <section class="section" id="practice">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge badge-teal">🔧 Công Cụ Tra Cứu</span>
+                <h2 class="section-title">Tra cứu NLS & Khái niệm Chuẩn xác</h2>
+                <p class="section-desc">Tự động đối chiếu Khối lớp & Nhóm bài học để xuất ra Khái niệm pháp quy từ CV 3456, Descriptor Bậc chuẩn và Đoạn văn KHBD hoàn chỉnh.</p>
+            </div>
+
+            <!-- Interactive lookup tool -->
+            <div class="card card-glow">
+                <h3 class="card-title">🔍 Tra cứu NLS theo Khối lớp & Nội dung bài dạy</h3>
+                <div class="lookup-tool">
+                    <div class="lookup-row">
+                        <label for="lookupClass"><strong>1. Chọn khối lớp:</strong></label>
+                        <select id="lookupClass" class="lookup-select" onchange="lookupNLS()">
+                            <option value="L1-3">Tiền TH / Lớp 1, 2, 3 (Bậc 1 — CB1)</option>
+                            <option value="L4-5">Lớp 4, 5 (Bậc 2 — CB2)</option>
+                            <option value="L6-7" selected>Lớp 6, 7 (Bậc 3 — CB3)</option>
+                            <option value="L8-9">Lớp 8, 9 (Bậc 4 — CB4)</option>
+                            <option value="L10-12">Lớp 10, 11, 12 (Bậc 5 — CB5)</option>
+                        </select>
+                    </div>
+                    <div class="lookup-row">
+                        <label for="lookupTopic"><strong>2. Chọn nhóm bài học:</strong></label>
+                        <select id="lookupTopic" class="lookup-select" onchange="lookupNLS()">
+                            <option value="computer">Làm quen máy tính, thiết bị số</option>
+                            <option value="programming" selected>Lập trình, thuật toán (Scratch, Python, Blockly...)</option>
+                            <option value="internet">Internet, mạng máy tính, tìm kiếm thông tin</option>
+                            <option value="safety">An toàn thông tin, đạo đức & văn hóa mạng</option>
+                            <option value="office">Soạn thảo văn bản, bài trình chiếu đa phương tiện</option>
+                            <option value="data">Bảng tính điện tử, tổ chức & quản lý dữ liệu</option>
+                            <option value="robotics">Robotics (Lắp ráp cơ chế, cảm biến, thử nghiệm)</option>
+                            <option value="ai">Trí tuệ nhân tạo (AI), công nghệ tương lai</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="lookupNLS()" style="margin-top: 8px;">🔍 Tra cứu ngay</button>
+                </div>
+
+                <div id="lookupResult" style="margin-top: 20px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section (Redesigned System by Official Documents) -->
+    <section class="section section-alt" id="quiz">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge badge-red">📝 Hệ thống Ôn tập & Kiểm tra</span>
+                <h2 class="section-title">Hệ thống Câu hỏi Ôn tập theo từng Văn bản</h2>
+                <p class="section-desc">Bộ câu hỏi chuẩn hóa bám sát từng điều khoản pháp quy của CV 3456, QĐ 3439, CV 5512, CT GDPT 2018 và Khung Robotics UNIGO.</p>
+            </div>
+
+            <!-- Quiz Document Selector Tabs -->
+            <div class="quiz-doc-tabs" id="quizDocTabs"></div>
+
+            <!-- Quiz Sub-section Selector Pills -->
+            <div class="quiz-sub-tabs" id="quizSubTabs"></div>
+
+            <!-- Quiz Container Box -->
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quizProgressBar"></div>
+                </div>
+                <div class="quiz-score" id="quizScore" style="display:none;"></div>
+                <div id="quizContent"></div>
+                <div class="quiz-actions">
+                    <button class="btn btn-outline" id="prevBtn" onclick="prevQuestion()" style="display:none;">← Câu trước</button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Câu tiếp theo →</button>
+                    <button class="btn btn-primary" id="submitBtn" onclick="submitQuiz()" style="display:none;">📊 Xem kết quả & Đối chiếu</button>
+                    <button class="btn btn-primary" id="restartBtn" onclick="restartQuiz()" style="display:none;">🔄 Làm lại phần này</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🎯</span>
+                    <span>UNIGO — Hệ thống Ôn tập Chuẩn hóa Năng lực & Phẩm chất</span>
+                </div>
+                <div class="footer-links">
+                    <span>Căn cứ pháp quy: CV 5512/BGDĐT • TT 02/2025/TT-BGDĐT • CV 3456/BGDĐT-CNTT • QĐ 3439/QĐ-BGDĐT • TT 32/2018/TT-BGDĐT</span>
+                </div>
+                <div class="footer-copy">© 2026 Trường Tiểu học & THCS UNIGO — Tài liệu Nghiệp vụ Sư phạm Dành cho Giáo viên</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="backToTop" aria-label="Lên đầu trang">↑</button>
+
+    <!-- Scripts (Data first, App second) -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

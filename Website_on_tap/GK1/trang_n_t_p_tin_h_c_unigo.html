@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cổng Ôn Tập Tin Học UNIGO - Lớp 3, 4, 5, 6, 7, 8</title>
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a0ca3;
+      --secondary: #4cc9f0;
+      --accent: #f72585;
+      --warning: #ffb703;
+      --success: #2ec4b6;
+      --danger: #e63946;
+      --grade3-color: #10b981;
+      --grade4-color: #06b6d4;
+      --grade5-color: #3b82f6;
+      --grade6-color: #8b5cf6;
+      --grade7-color: #ec4899;
+      --grade8-color: #f97316;
+      --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 50%, #fce7f3 100%);
+      --card-bg: rgba(255, 255, 255, 0.96);
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
+      overflow-x: hidden;
+      padding: 12px;
+    }
+
+    .bg-bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -60px;
+      background: rgba(255, 255, 255, 0.45);
+      border-radius: 50%;
+      animation: rise 14s infinite ease-in;
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0) scale(0.8); opacity: 0.2; }
+      50% { opacity: 0.6; }
+      100% { transform: translateY(-115vh) scale(1.3); opacity: 0; }
+    }
+
+    #app-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 980px;
+      background: var(--card-bg);
+      border-radius: 26px;
+      box-shadow: 0 20px 45px rgba(67, 97, 238, 0.15), 0 4px 14px rgba(0,0,0,0.06);
+      border: 4px solid #ffffff;
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 640px;
+      transition: all 0.3s ease;
+    }
+
+    .top-header {
+      background: linear-gradient(90deg, #4361ee, #3a0ca3);
+      color: white;
+      padding: 12px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .header-badges {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .badge-pill {
+      background: rgba(255, 255, 255, 0.22);
+      padding: 5px 12px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .controls-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-icon {
+      background: rgba(255, 255, 255, 0.22);
+      border: none;
+      color: white;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+    }
+
+    .btn-icon:hover {
+      background: rgba(255, 255, 255, 0.45);
+      transform: scale(1.08);
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 7px;
+      background: #e2e8f0;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #f72585, #ffb703, #2ec4b6);
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .screen {
+      padding: 26px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-grow: 1;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .byte-avatar {
+      font-size: 4.5rem;
+      line-height: 1;
+      filter: drop-shadow(0 8px 16px rgba(67, 97, 238, 0.25));
+      animation: floatRobot 3s ease-in-out infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes floatRobot {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+
+    h1.game-title {
+      font-size: 2.1rem;
+      color: #3a0ca3;
+      margin-bottom: 4px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    p.game-subtitle {
+      font-size: 1.1rem;
+      color: #475569;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .grade-selector-container {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      width: 100%;
+      max-width: 820px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .grade-selector-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .btn-grade-tab {
+      background: white;
+      border: 3px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 12px 6px;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #334155;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-grade-tab:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      border-color: var(--primary);
+    }
+
+    .btn-grade-tab.active {
+      color: white;
+      background: linear-gradient(135deg, #4361ee, #3a0ca3);
+      border-color: #3a0ca3;
+      box-shadow: 0 8px 18px rgba(67, 97, 238, 0.35);
+      transform: scale(1.04);
+    }
+
+    .stage-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      width: 100%;
+      max-width: 850px;
+      margin-bottom: 20px;
+    }
+
+    .stage-card {
+      background: white;
+      border: 3px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: left;
+    }
+
+    .stage-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(67, 97, 238, 0.15);
+    }
+
+    .stage-card.selected {
+      border-color: var(--primary);
+      background: #eff6ff;
+      box-shadow: 0 4px 14px rgba(67, 97, 238, 0.2);
+    }
+
+    .stage-card h4 {
+      color: var(--primary-dark);
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stage-card p {
+      font-size: 0.82rem;
+      color: #64748b;
+    }
+
+    .input-box {
+      width: 100%;
+      max-width: 380px;
+      margin-bottom: 18px;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 3px solid #cbd5e1;
+      font-size: 1.1rem;
+      outline: none;
+      text-align: center;
+      font-weight: 700;
+      color: #1e293b;
+      transition: 0.25s;
+    }
+
+    .input-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.2);
+    }
+
+    .btn-action {
+      background: linear-gradient(135deg, #4361ee, #3a0ca3);
+      color: white;
+      border: none;
+      padding: 13px 30px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      border-radius: 35px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(67, 97, 238, 0.35);
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 22px rgba(67, 97, 238, 0.45);
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      box-shadow: none;
+      border: 2px solid #cbd5e1;
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    .quiz-layout {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .quiz-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .topic-tag {
+      background: #ede9fe;
+      color: #6d28d9;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lifelines-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-lifeline {
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: 0.2s;
+    }
+
+    .btn-lifeline:hover:not(:disabled) {
+      background: #e0f2fe;
+      border-color: #38bdf8;
+      color: #0369a1;
+      transform: translateY(-2px);
+    }
+
+    .btn-lifeline:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .question-card {
+      background: linear-gradient(135deg, #ffffff, #f8faff);
+      border: 3px solid #e0e7ff;
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+      position: relative;
+    }
+
+    .question-number {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #4361ee;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .question-text {
+      font-size: 1.38rem;
+      font-weight: 800;
+      color: #1e1b4b;
+      line-height: 1.45;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+    }
+
+    @media (max-width: 680px) {
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .option-btn {
+      background: #ffffff;
+      border: 3px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 14px 18px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1e293b;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .option-btn:hover:not(.disabled) {
+      border-color: #4361ee;
+      background: #f0f7ff;
+      transform: translateY(-2px);
+    }
+
+    .opt-letter {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+      transition: 0.2s;
+    }
+
+    .option-btn:hover:not(.disabled) .opt-letter {
+      background: #4361ee;
+      color: white;
+    }
+
+    .option-btn.correct {
+      border-color: #10b981 !important;
+      background: #d1fae5 !important;
+      color: #065f46 !important;
+    }
+    .option-btn.correct .opt-letter {
+      background: #10b981 !important;
+      color: white !important;
+    }
+
+    .option-btn.wrong {
+      border-color: #ef4444 !important;
+      background: #fee2e2 !important;
+      color: #991b1b !important;
+    }
+    .option-btn.wrong .opt-letter {
+      background: #ef4444 !important;
+      color: white !important;
+    }
+
+    .option-btn.faded {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+
+    .option-btn.disabled {
+      cursor: default;
+    }
+
+    .explanation-box {
+      display: none;
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 18px;
+      border: 3px solid #cbd5e1;
+      animation: fadeIn 0.3s ease;
+      position: relative;
+    }
+
+    .explanation-box.correct-feedback {
+      background: #f0fdf4;
+      border-color: #86efac;
+    }
+
+    .explanation-box.wrong-feedback {
+      background: #fff1f2;
+      border-color: #fca5a5;
+    }
+
+    .feedback-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .correct-feedback .feedback-title { color: #166534; }
+    .wrong-feedback .feedback-title { color: #991b1b; }
+
+    .knowledge-box {
+      margin-top: 8px;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 1rem;
+      color: #1e293b;
+      line-height: 1.5;
+      border-left: 5px solid #4361ee;
+    }
+
+    .robot-speech {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      font-weight: 700;
+      color: #2563eb;
+      font-size: 0.95rem;
+    }
+
+    .btn-next {
+      margin-top: 14px;
+      align-self: flex-end;
+    }
+
+    /* Results */
+    .result-summary-card {
+      background: white;
+      border-radius: 22px;
+      padding: 24px;
+      width: 100%;
+      border: 3px solid #e2e8f0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    .rank-badge {
+      display: inline-block;
+      padding: 8px 24px;
+      border-radius: 30px;
+      color: white;
+      font-weight: 900;
+      font-size: 1.25rem;
+      margin: 10px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .stat-item {
+      background: #f8fafc;
+      padding: 14px;
+      border-radius: 14px;
+      border: 2px solid #e2e8f0;
+    }
+
+    .stat-val {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .analysis-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      text-align: left;
+    }
+
+    .analysis-table th, .analysis-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.92rem;
+    }
+
+    .analysis-table th {
+      background: #f1f5f9;
+      color: #475569;
+      font-weight: 800;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 16px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 24px;
+      padding: 26px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      border: 4px solid #38bdf8;
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    /* Presentation mode */
+    body.presentation-mode {
+      padding: 0;
+      background: #f1f5f9;
+    }
+
+    body.presentation-mode #app-container {
+      max-width: 100vw;
+      min-height: 100vh;
+      border-radius: 0;
+      border: none;
+    }
+
+    body.presentation-mode .question-text {
+      font-size: 2rem;
+    }
+
+    body.presentation-mode .option-btn {
+      font-size: 1.35rem;
+      padding: 18px 22px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-bubbles">
+    <div class="bubble" style="width: 70px; height: 70px; left: 8%; animation-delay: 0s;"></div>
+    <div class="bubble" style="width: 45px; height: 45px; left: 28%; animation-delay: 2.5s;"></div>
+    <div class="bubble" style="width: 90px; height: 90px; left: 58%; animation-delay: 1.2s;"></div>
+    <div class="bubble" style="width: 55px; height: 55px; left: 84%; animation-delay: 4s;"></div>
+  </div>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <div id="app-container">
+    <!-- Header thông tin chính -->
+    <header class="top-header">
+      <div class="header-badges">
+        <div class="badge-pill">🏫 <span id="display-grade-label">Lớp 3</span></div>
+        <div class="badge-pill">👤 <span id="display-player-name">Học sinh</span></div>
+        <div class="badge-pill">⭐ <span id="display-score">0</span></div>
+        <div class="badge-pill">❤️ <span id="display-lives">❤️❤️❤️</span></div>
+        <div class="badge-pill" id="display-combo-box" style="display: none; background: #ea580c;">🔥 x<span id="display-combo">1</span></div>
+      </div>
+      <div class="controls-group">
+        <button class="btn-icon" id="btn-sound" title="Bật / Tắt âm thanh">🔊</button>
+        <button class="btn-icon" id="btn-teacher-view" title="Bảng tra cứu giáo viên">👨‍🏫</button>
+        <button class="btn-icon" id="btn-fullscreen" title="Chế độ Trình chiếu / Toàn màn hình">🖥️</button>
+      </div>
+    </header>
+
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progress-bar"></div>
+    </div>
+
+    <!-- 1. MÀN HÌNH BẮT ĐẦU -->
+    <section class="screen active" id="screen-start">
+      <div class="byte-avatar" id="robot-home">🤖</div>
+      <h1 class="game-title">CỔNG ÔN TẬP TIN HỌC UNIGO</h1>
+      <p class="game-subtitle">Hành trình Chinh phục Đánh giá Định kỳ 1 • Năm học 2026 - 2027</p>
+
+      <!-- Thanh chọn 6 Khối Lớp -->
+      <div style="font-weight: 800; color: #475569; margin-bottom: 8px;">CHỌN KHỐI LỚP CỦA EM:</div>
+      <div class="grade-selector-container">
+        <button class="btn-grade-tab active" data-grade="3">
+          <span style="font-size: 1.4rem;">🌱</span>
+          <span>LỚP 3</span>
+        </button>
+        <button class="btn-grade-tab" data-grade="4">
+          <span style="font-size: 1.4rem;">💻</span>
+          <span>LỚP 4</span>
+        </button>
+        <button class="btn-grade-tab" data-grade="5">
+          <span style="font-size: 1.4rem;">📂</span>
+          <span>LỚP 5</span>
+        </button>
+        <button class="btn-grade-tab" data-grade="6">
+          <span style="font-size: 1.4rem;">🌐</span>
+          <span>LỚP 6</span>
+        </button>
+        <button class="btn-grade-tab" data-grade="7">
+          <span style="font-size: 1.4rem;">📱</span>
+          <span>LỚP 7</span>
+        </button>
+        <button class="btn-grade-tab" data-grade="8">
+          <span style="font-size: 1.4rem;">🤖</span>
+          <span>LỚP 8</span>
+        </button>
+      </div>
+
+      <div class="input-box">
+        <input type="text" id="player-name-input" placeholder="Nhập họ và tên học sinh..." maxlength="25">
+      </div>
+
+      <div style="font-weight: 800; color: #475569; margin-bottom: 8px;">CHỌN CHẶNG THỬ THÁCH:</div>
+      <div class="stage-selector" id="stage-cards-container">
+        <!-- Render tự động theo khối lớp qua JS -->
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 6px;">
+        <button class="btn-action" id="btn-start-game">▶️ BẮT ĐẦU CHINH PHỤC</button>
+        <button class="btn-action btn-secondary" id="btn-open-rules">📖 Hướng Dẫn</button>
+      </div>
+    </section>
+
+    <!-- 2. MÀN HÌNH CÂU HỎI -->
+    <section class="screen" id="screen-quiz">
+      <div class="quiz-layout">
+        <div class="quiz-info-row">
+          <div class="topic-tag" id="quiz-topic-badge">📘 Bài 1</div>
+          <div class="lifelines-row">
+            <button class="btn-lifeline" id="btn-life-5050" title="Loại 2 đáp án sai">💡 50/50 (<span id="count-5050">2</span>)</button>
+            <button class="btn-lifeline" id="btn-life-robot" title="Hỏi Robot gợi ý">🤖 Hỏi BYTE (<span id="count-robot">2</span>)</button>
+            <button class="btn-lifeline" id="btn-life-skip" title="Bỏ qua câu">⏭️ Bỏ qua (<span id="count-skip">1</span>)</button>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-number">
+            <span id="quiz-counter">CÂU 1 / 40</span>
+            <span id="quiz-difficulty" style="color: #64748b; font-size: 0.88rem;">Nhận biết</span>
+          </div>
+          <div class="question-text" id="quiz-question-text">Nội dung câu hỏi...</div>
+        </div>
+
+        <div class="options-grid" id="quiz-options-container">
+          <!-- 4 Lựa chọn qua JS -->
+        </div>
+
+        <!-- Hộp giải thích & kiến thức ghi nhớ -->
+        <div class="explanation-box" id="quiz-explanation-box">
+          <div class="feedback-title" id="quiz-feedback-title">🎉 Chính xác!</div>
+          <div class="knowledge-box" id="quiz-knowledge-text">...</div>
+          <div class="robot-speech" id="quiz-robot-cheer">🤖 BYTE: Giỏi lắm! Em nắm rất chắc bài.</div>
+          <button class="btn-action btn-next" id="btn-next-question">▶️ CÂU TIẾP THEO</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MÀN HÌNH KẾT QUẢ -->
+    <section class="screen" id="screen-result">
+      <div class="byte-avatar" id="robot-result">🏆</div>
+      <h1 class="game-title">XUẤT SẮC HOÀN THÀNH!</h1>
+      <p class="game-subtitle" id="result-greeting">Chúc mừng bạn đã hoàn thành chặng ôn tập!</p>
+
+      <div class="result-summary-card">
+        <div class="rank-badge" id="result-rank-badge" style="background: #4361ee;">👑 HUYỀN THOẠI TIN HỌC</div>
+        
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-val" id="res-score">0</div>
+            <div class="stat-label">TỔNG ĐIỂM</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val" style="color: #10b981;" id="res-correct">0/0</div>
+            <div class="stat-label">CÂU TRẢ LỜI ĐÚNG</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val" style="color: #f59e0b;" id="res-accuracy">0%</div>
+            <div class="stat-label">TỈ LỆ CHÍNH XÁC</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val" style="color: #ef4444;" id="res-combo">0</div>
+            <div class="stat-label">COMBO CAO NHẤT</div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 14px; color: #1e293b; text-align: left;">📊 Phân tích kiến thức theo chủ đề:</h3>
+        <table class="analysis-table">
+          <thead>
+            <tr>
+              <th>Chủ đề bài học</th>
+              <th>Kết quả</th>
+              <th>Đánh giá của Robot BYTE</th>
+            </tr>
+          </thead>
+          <tbody id="analysis-table-body">
+            <!-- Render qua JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+        <button class="btn-action" id="btn-replay">🔄 CHƠI LẠI LẦN NỮA</button>
+        <button class="btn-action btn-secondary" id="btn-back-home">🏠 CHỌN LỚP KHÁC</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- MODAL GỢI Ý & BẢNG TRA CỨU GIÁO VIÊN -->
+  <div class="modal-overlay" id="custom-modal">
+    <div class="modal-content">
+      <div style="font-size: 3.2rem; margin-bottom: 8px;" id="modal-icon">🤖</div>
+      <h2 style="color: #1e293b; margin-bottom: 10px;" id="modal-title">Gợi ý từ Robot BYTE</h2>
+      <div style="font-size: 1.05rem; color: #475569; line-height: 1.5; margin-bottom: 18px; max-height: 380px; overflow-y: auto; text-align: left;" id="modal-message">
+        Nội dung...
+      </div>
+      <button class="btn-action" id="btn-close-modal" style="padding: 10px 26px; font-size: 1rem;">Đã hiểu!</button>
+    </div>
+  </div>
+
+  <script>
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.enabled = true;
+      }
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+      }
+      playClick() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(440, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(120, this.ctx.currentTime + 0.08);
+          gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.08);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.08);
+        } catch(e) {}
+      }
+      playCorrect() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(523.25, now);
+          osc.frequency.setValueAtTime(659.25, now + 0.09);
+          osc.frequency.setValueAtTime(783.99, now + 0.18);
+          osc.frequency.setValueAtTime(1046.50, now + 0.27);
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(now + 0.5);
+        } catch(e) {}
+      }
+      playWrong() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = "sawtooth";
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.setValueAtTime(164.81, now + 0.14);
+          gain.gain.setValueAtTime(0.22, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(now + 0.35);
+        } catch(e) {}
+      }
+      playVictory() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+          const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+          notes.forEach((freq, idx) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            const startTime = this.ctx.currentTime + idx * 0.1;
+            osc.frequency.setValueAtTime(freq, startTime);
+            gain.gain.setValueAtTime(0.25, startTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, startTime + 0.3);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(startTime);
+            osc.stop(startTime + 0.3);
+          });
+        } catch(e) {}
+      }
+    }
+    const sound = new SoundEngine();
+
+    const canvas = document.getElementById("confetti-canvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function fireConfetti(count = 60) {
+      const colors = ["#f72585", "#7209b7", "#3a0ca3", "#4361ee", "#4cc9f0", "#ffb703", "#2ec4b6"];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: canvas.width / 2 + (Math.random() - 0.5) * 180,
+          y: canvas.height / 2 + (Math.random() - 0.5) * 80,
+          vx: (Math.random() - 0.5) * 13,
+          vy: Math.random() * -11 - 4,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 10,
+          alpha: 1,
+          decay: Math.random() * 0.02 + 0.015
+        });
+      }
+    }
+
+    function updateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.35;
+        p.rotation += p.rotationSpeed;
+        p.alpha -= p.decay;
+        if (p.alpha <= 0 || p.y > canvas.height) {
+          particles.splice(i, 1);
+          continue;
+        }
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.restore();
+      }
+      requestAnimationFrame(updateConfetti);
+    }
+    updateConfetti();
+
+    // Ngân hàng câu hỏi chuẩn xác 100% từ 6 file đề cương UNIGO (Lớp 3, 4, 5, 6, 7, 8)
+    const QUESTION_BANK_BY_GRADE = {
+      // ===== LỚP 3 =====
+      3: [
+        { id: 1, topic: "Bài 1. Thông tin và quyết định", topicKey: "b1", difficulty: "Nhận biết", question: "Thông tin là gì?", options: ["Là những đồ vật xung quanh chúng ta", "Là những hiểu biết về thế giới xung quanh và về chính bản thân mình", "Là các loại máy tính hiện đại", "Là sách vở và bút viết"], answer: 1, explanation: "Thông tin là hiểu biết của con người về thế giới xung quanh và chính mình.", remember: "Mọi điều em nghe, thấy, đọc được đều là thông tin!", hint: "Gắn liền với sự hiểu biết của con người." },
+        { id: 2, topic: "Bài 1. Thông tin và quyết định", topicKey: "b1", difficulty: "Nhận biết", question: "Khi nghe thấy tiếng chuông trường reo, em biết được điều gì?", options: ["Trời sắp mưa", "Đến giờ vào lớp hoặc ra chơi", "Có người gõ cửa", "Xe cứu thương đi qua"], answer: 1, explanation: "Tiếng chuông trường là tín hiệu thông báo giờ vào lớp hoặc ra chơi.", remember: "Tiếng chuông mang thông tin về thời gian biểu nhà trường.", hint: "Chuông trường reo báo hiệu giờ học." },
+        { id: 3, topic: "Bài 1. Thông tin và quyết định", topicKey: "b1", difficulty: "Thông hiểu", question: "Biển báo giao thông hình tròn, viền đỏ, có hình người đi bộ gạch chéo cho em biết điều gì?", options: ["Được phép đi bộ qua đường", "Cấm người đi bộ", "Đường dành cho xe máy", "Khu vực trường học"], answer: 1, explanation: "Biển tròn viền đỏ có gạch chéo là biển cấm: Cấm người đi bộ.", remember: "Biển báo đỏ gạch chéo mang ý nghĩa cấm.", hint: "Dấu gạch chéo thể hiện sự cấm đoán." },
+        { id: 4, topic: "Bài 1. Thông tin và quyết định", topicKey: "b1", difficulty: "Nhận biết", question: "Em nhận biết thông tin bằng cách nào?", options: ["Chỉ bằng mắt nhìn", "Chỉ bằng tai nghe", "Bằng các giác quan: mắt, tai, mũi, lưỡi, da", "Chỉ bằng tay sờ"], answer: 2, explanation: "Con người tiếp nhận thông tin bằng 5 giác quan: thị giác, thính giác, khứu giác, vị giác, xúc giác.", remember: "5 giác quan là cửa sổ tiếp nhận thông tin thế giới.", hint: "Con người có 5 giác quan để cảm nhận." },
+        { id: 5, topic: "Bài 1. Thông tin và quyết định", topicKey: "b1", difficulty: "Thông hiểu", question: "Thông tin giúp con người làm được điều gì?", options: ["Chạy nhanh hơn", "Ra quyết định đúng đắn", "Bơi giỏi hơn", "Hát hay hơn"], answer: 1, explanation: "Có thông tin đầy đủ giúp con người suy nghĩ và đưa ra quyết định đúng đắn.", remember: "Thông tin chính xác → Quyết định đúng đắn.", hint: "Thông tin giúp em biết phải làm gì cho phù hợp." },
+        { id: 6, topic: "Bài 1. Thông tin và quyết định", topicKey: "b1", difficulty: "Vận dụng", question: "Khi xem dự báo thời tiết, em biết trời sẽ mưa. Đây là ví dụ về điều gì?", options: ["Thông tin giúp em ra quyết định mang áo mưa", "Thông tin không có ích gì", "Dự báo luôn luôn sai", "Em thích xem thời tiết cho vui"], answer: 0, explanation: "Thông tin trời mưa giúp em đưa ra hành động mang áo mưa.", remember: "Thông tin hướng dẫn hành động thực tế của con người.", hint: "Biết trời mưa thì em mang theo vật dụng gì?" },
+        { id: 7, topic: "Bài 1. Thông tin và quyết định", topicKey: "b1", difficulty: "Vận dụng", question: "Khi nhìn thấy đèn giao thông màu đỏ, em cần làm gì?", options: ["Đi nhanh qua đường", "Dừng lại chờ đèn xanh", "Rẽ sang đường khác", "Nhắm mắt đi tiếp"], answer: 1, explanation: "Đèn đỏ là tín hiệu yêu cầu người tham gia giao thông dừng lại an toàn.", remember: "Đèn đỏ dừng lại - Đèn xanh được đi.", hint: "Quy tắc an toàn giao thông khi gặp đèn đỏ." },
+        { id: 8, topic: "Bài 1. Thông tin và quyết định", topicKey: "b1", difficulty: "Thông hiểu", question: "Trong các vật sau, vật nào KHÔNG phải là vật mang tin?", options: ["Sách giáo khoa", "Tờ báo", "Chiếc bàn học", "Bảng thông báo"], answer: 2, explanation: "Chiếc bàn học là đồ dùng, không chứa nội dung thông tin được ghi chép.", remember: "Vật mang tin phải chứa chữ, tranh ảnh, số liệu...", hint: "Vật nào không có chữ viết hoặc thông báo?" },
+        { id: 9, topic: "Bài 1. Thông tin và quyết định", topicKey: "b1", difficulty: "Nhận biết", question: "Bạn An đọc bảng thời khóa biểu và biết hôm nay có tiết Tin học. Bạn An đã thu nhận thông tin bằng giác quan nào?", options: ["Tai (thính giác)", "Mắt (thị giác)", "Mũi (khứu giác)", "Tay (xúc giác)"], answer: 1, explanation: "Đọc thời khóa biểu là dùng mắt (thị giác) để nhìn chữ.", remember: "Mắt giúp con người đọc chữ và nhìn hình ảnh.", hint: "Để đọc chữ, em dùng cơ quan nào?" },
+        { id: 10, topic: "Bài 1. Thông tin và quyết định", topicKey: "b1", difficulty: "Thông hiểu", question: "Vì sao thông tin quan trọng trong cuộc sống?", options: ["Vì thông tin giúp em chơi game", "Vì thông tin giúp con người hiểu biết và đưa ra quyết định phù hợp", "Vì thông tin là đồ chơi", "Vì thông tin chỉ có trên Internet"], answer: 1, explanation: "Thông tin mở rộng hiểu biết và giúp đưa ra quyết định đúng đắn.", remember: "Không có thông tin, con người không thể hiểu biết và hành động đúng.", hint: "Ý nghĩa to lớn nhất của thông tin với con người." },
+        { id: 11, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Nhận biết", question: "Quy trình xử lí thông tin gồm mấy bước?", options: ["2 bước", "3 bước", "4 bước: Thu nhận → Lưu trữ → Xử lí → Truyền", "5 bước"], answer: 2, explanation: "Quy trình chuẩn gồm 4 bước: Thu nhận → Lưu trữ → Xử lí → Truyền.", remember: "4 bước: Thu nhận - Lưu trữ - Xử lí - Truyền.", hint: "Gồm 4 bước tuần tự." },
+        { id: 12, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Nhận biết", question: "Bước đầu tiên trong quy trình xử lí thông tin là gì?", options: ["Truyền thông tin", "Xử lí thông tin", "Lưu trữ thông tin", "Thu nhận thông tin"], answer: 3, explanation: "Bước đầu tiên luôn là Thu nhận thông tin từ môi trường bên ngoài.", remember: "Phải thu nhận thông tin trước tiên!", hint: "Bước mở đầu của toàn bộ quy trình." },
+        { id: 13, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Thông hiểu", question: "Khi bạn Minh nghe cô giáo giảng bài, bạn Minh đang thực hiện bước nào?", options: ["Thu nhận thông tin", "Truyền thông tin", "Xử lí thông tin", "Lưu trữ thông tin"], answer: 0, explanation: "Lắng nghe qua tai là hành động thu nhận thông tin dạng âm thanh.", remember: "Tai nghe, mắt thấy là hành động Thu nhận.", hint: "Lắng nghe là tiếp nhận thông tin vào." },
+        { id: 14, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Nhận biết", question: "Con người thu nhận thông tin bằng gì?", options: ["Bằng máy tính", "Bằng điện thoại", "Bằng các giác quan", "Bằng sách vở"], answer: 2, explanation: "Con người thu nhận thông tin thế giới tự nhiên qua các giác quan.", remember: "Mắt, tai, mũi, lưỡi, da là các giác quan thu nhận thông tin.", hint: "Các bộ phận cảm giác trên cơ thể người." },
+        { id: 15, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Thông hiểu", question: "Não của con người thực hiện bước nào trong quy trình xử lí thông tin?", options: ["Thu nhận", "Xử lí", "Lưu trữ", "Cả xử lí và lưu trữ"], answer: 3, explanation: "Bộ não con người vừa ghi nhớ (lưu trữ) vừa suy nghĩ, phân tích (xử lí).", remember: "Bộ não vừa lưu trữ vừa xử lí thông tin.", hint: "Não vừa nhớ bài vừa tính toán được." },
+        { id: 16, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Thông hiểu", question: "Máy tính xử lí thông tin nhanh hơn con người vì sao?", options: ["Vì máy tính rất đẹp", "Vì máy tính có bộ xử lí (CPU) tính toán cực nhanh", "Vì máy tính dùng điện", "Vì máy tính có màn hình to"], answer: 1, explanation: "Máy tính có CPU tính toán được hàng tỷ phép tính mỗi giây.", remember: "CPU là bộ não tính toán siêu tốc của máy tính.", hint: "Nhờ có chip vi xử lý bên trong máy tính." },
+        { id: 17, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Vận dụng", question: "Khi em ghi bài vào vở, em đang thực hiện bước nào?", options: ["Thu nhận thông tin", "Xử lí thông tin", "Lưu trữ thông tin", "Truyền thông tin"], answer: 2, explanation: "Ghi chép vào vở là giữ lại thông tin lâu dài, tức là Lưu trữ.", remember: "Viết vào vở, chụp ảnh, lưu file đều là Lưu trữ.", hint: "Giữ lại thông tin trên trang giấy để sau này xem lại." },
+        { id: 18, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Vận dụng", question: "Khi em kể lại câu chuyện cho bạn nghe, em đang thực hiện bước nào?", options: ["Thu nhận thông tin", "Xử lí thông tin", "Lưu trữ thông tin", "Truyền thông tin"], answer: 3, explanation: "Kể chuyện cho bạn là gửi thông tin từ mình sang người khác (Truyền).", remember: "Nói chuyện, gửi thư, gửi tin nhắn là Truyền thông tin.", hint: "Chuyển thông tin từ mình đến người khác." },
+        { id: 19, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Nhận biết", question: "Thông tin có thể được lưu trữ ở đâu?", options: ["Chỉ trong sách vở", "Chỉ trong máy tính", "Trong sách, vở, USB, ổ cứng, đám mây và nhiều nơi khác", "Chỉ trên Internet"], answer: 2, explanation: "Thông tin có thể lưu trên nhiều phương tiện truyền thống và số hóa.", remember: "Thông tin lưu trữ rất đa dạng ở nhiều vật mang tin.", hint: "Chọn phương án bao quát và đầy đủ nhất." },
+        { id: 20, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Nhận biết", question: "Ở bước 'Xử lí thông tin', con người sử dụng bộ phận nào để suy nghĩ?", options: ["Tim", "Não", "Tay", "Mắt"], answer: 1, explanation: "Não bộ là trung khu thần kinh phụ trách suy nghĩ và tính toán.", remember: "Bộ não con người thực hiện việc xử lí thông tin.", hint: "Cơ quan trong đầu giúp em tư duy giải toán." },
+        { id: 21, topic: "Bài 3. Máy tính và em", topicKey: "b3", difficulty: "Nhận biết", question: "Máy tính để bàn thường gồm những bộ phận chính nào?", options: ["Màn hình, chuột, bàn phím, thân máy", "Chỉ có màn hình và chuột", "Chỉ có thân máy", "Chỉ có bàn phím và loa"], answer: 0, explanation: "Máy tính để bàn gồm 4 bộ phận: Màn hình, Chuột, Bàn phím, Thân máy.", remember: "4 bộ phận cơ bản: Màn hình, Chuột, Bàn phím, Thân máy.", hint: "Đầy đủ 4 bộ phận thường thấy trên bàn học." },
+        { id: 22, topic: "Bài 3. Máy tính và em", topicKey: "b3", difficulty: "Nhận biết", question: "Bộ phận nào của máy tính hiển thị hình ảnh, chữ viết?", options: ["Thân máy", "Chuột", "Màn hình", "Bàn phím"], answer: 2, explanation: "Màn hình hiển thị kết quả làm việc, chữ viết và hình ảnh.", remember: "Màn hình giúp em nhìn thấy nội dung từ máy tính.", hint: "Bộ phận phát sáng hiển thị hình ảnh." },
+        { id: 23, topic: "Bài 3. Máy tính và em", topicKey: "b3", difficulty: "Thông hiểu", question: "Chuột máy tính dùng để làm gì?", options: ["Để gõ chữ", "Để chỉ, chọn và di chuyển trên màn hình", "Để phát âm thanh", "Để sạc pin"], answer: 1, explanation: "Chuột máy tính điều khiển con trỏ để chỉ, chọn và di chuyển đối tượng.", remember: "Chuột dùng để điều khiển con trỏ, nhấp chọn.", hint: "Thiết bị cầm tay để nhấp chọn biểu tượng." },
+        { id: 24, topic: "Bài 3. Máy tính và em", topicKey: "b3", difficulty: "Nhận biết", question: "Bàn phím máy tính dùng để làm gì?", options: ["Để hiển thị hình ảnh", "Để nghe nhạc", "Để gõ chữ, số và ra lệnh cho máy tính", "Để chụp ảnh"], answer: 2, explanation: "Bàn phím chứa các phím bấm để nhập chữ, số và gửi lệnh vào máy.", remember: "Bàn phím dùng để nhập văn bản và số liệu.", hint: "Nơi có nhiều nút chữ cái và chữ số." },
+        { id: 25, topic: "Bài 3. Máy tính và em", topicKey: "b3", difficulty: "Thông hiểu", question: "Thân máy (CPU) chứa bộ phận nào quan trọng nhất?", options: ["Loa phát nhạc", "Bộ xử lí – 'bộ não' của máy tính", "Màn hình phụ", "Pin dự phòng"], answer: 1, explanation: "Bên trong thân máy có CPU – được coi là bộ não xử lý của máy tính.", remember: "CPU là bộ não của máy tính nằm trong thân máy.", hint: "Bộ phận được ví như bộ não máy tính." },
+        { id: 26, topic: "Bài 3. Máy tính và em", topicKey: "b3", difficulty: "Thông hiểu", question: "Máy tính xách tay (laptop) khác máy tính để bàn ở điểm nào?", options: ["Laptop không có bàn phím", "Laptop gọn nhẹ, dễ mang theo, tích hợp màn hình và bàn phím", "Laptop không có màn hình", "Laptop không thể kết nối Internet"], answer: 1, explanation: "Laptop tích hợp bàn phím, màn hình, chuột thành một khối gọn nhẹ, tiện di chuyển.", remember: "Laptop gọn nhẹ và dễ mang theo bên mình.", hint: "Có thể gập lại và để trong ba lô." },
+        { id: 27, topic: "Bài 3. Máy tính và em", topicKey: "b3", difficulty: "Nhận biết", question: "Thiết bị nào sau đây KHÔNG phải là máy tính?", options: ["Máy tính bảng (tablet)", "Điện thoại thông minh", "Bàn là điện", "Máy tính xách tay"], answer: 2, explanation: "Bàn là điện là thiết bị sinh nhiệt gia dụng, không phải máy tính xử lý dữ liệu.", remember: "Bàn là, nồi cơm, quạt máy không phải là máy tính.", hint: "Dụng cụ dùng để là phẳng quần áo." },
+        { id: 28, topic: "Bài 3. Máy tính và em", topicKey: "b3", difficulty: "Nhận biết", question: "Loa máy tính dùng để làm gì?", options: ["Để gõ chữ", "Để phát ra âm thanh", "Để hiển thị hình ảnh", "Để di chuyển con trỏ"], answer: 1, explanation: "Loa là thiết bị xuất âm thanh, giúp nghe nhạc, lời bài giảng.", remember: "Loa dùng để phát âm thanh từ máy tính.", hint: "Thiết bị phát ra tiếng nhạc." },
+        { id: 29, topic: "Bài 3. Máy tính và em", topicKey: "b3", difficulty: "Vận dụng", question: "Máy tính có thể giúp em làm những việc gì?", options: ["Chỉ chơi game", "Học tập, vẽ tranh, nghe nhạc, tìm kiếm thông tin và nhiều việc khác", "Chỉ xem phim", "Chỉ gõ văn bản"], answer: 1, explanation: "Máy tính là công cụ đa năng phục vụ học tập, giải trí và làm việc.", remember: "Máy tính là người bạn đa năng hỗ trợ học tập.", hint: "Chọn phương án có nhiều ứng dụng học tập hữu ích." },
+        { id: 30, topic: "Bài 3. Máy tính và em", topicKey: "b3", difficulty: "Nhận biết", question: "Webcam là thiết bị dùng để làm gì?", options: ["Để gõ chữ", "Để chụp ảnh và quay video", "Để phát nhạc", "Để in giấy"], answer: 1, explanation: "Webcam là camera thu hình ảnh và video trực tiếp trên máy tính.", remember: "Webcam giúp thầy cô và bạn bè nhìn thấy em khi học online.", hint: "Có chức năng như chiếc máy quay phim nhỏ." },
+        { id: 31, topic: "Bài 4. Làm việc với máy tính", topicKey: "b4", difficulty: "Nhận biết", question: "Tư thế ngồi đúng khi dùng máy tính là gì?", options: ["Nằm trên giường, để máy tính trên bụng", "Ngồi thẳng lưng, mắt cách màn hình khoảng 50 cm, hai chân chạm đất", "Ngồi xổm trên ghế", "Cúi sát mặt vào màn hình"], answer: 1, explanation: "Ngồi thẳng lưng, mắt cách màn hình khoảng 50-70cm, chân chạm đất vững chãi.", remember: "Lưng thẳng - Mắt cách xa 50-70cm - Chân chạm đất.", hint: "Tư thế ngồi học chuẩn để không vẹo cột sống." },
+        { id: 32, topic: "Bài 4. Làm việc với máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Khi dùng máy tính, em nên nghỉ mắt sau mỗi bao lâu?", options: ["Sau mỗi 5 giờ", "Không cần nghỉ", "Sau mỗi 30-45 phút", "Sau mỗi 3 giờ"], answer: 2, explanation: "Nên nghỉ mắt sau mỗi 30-45 phút để phòng ngừa cận thị và mỏi mắt.", remember: "Quy tắc: Cứ 30-45 phút phải để mắt nghỉ ngơi 5-10 phút.", hint: "Tương đương thời gian của một tiết học." },
+        { id: 33, topic: "Bài 4. Làm việc với máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Để tắt máy tính đúng cách, em cần làm gì?", options: ["Rút phích cắm điện ngay", "Vào menu Start → chọn Shut Down (Tắt máy)", "Bấm giữ nút nguồn thật lâu", "Đóng nắp laptop rồi bỏ đi"], answer: 1, explanation: "Tắt máy an toàn: Bấm Start → chọn Nguồn (Power) → Shut Down.", remember: "Luôn tắt máy qua lệnh Start → Shut Down để bảo vệ dữ liệu.", hint: "Tuyệt đối không rút điện đột ngột." },
+        { id: 34, topic: "Bài 4. Làm việc với máy tính", topicKey: "b4", difficulty: "Nhận biết", question: "Khi sử dụng máy tính, em KHÔNG nên làm điều gì?", options: ["Rửa tay sạch trước khi dùng", "Ăn uống gần máy tính và đổ nước lên bàn phím", "Ngồi đúng tư thế", "Nghỉ mắt thường xuyên"], answer: 1, explanation: "Không ăn uống gần máy tính vì nước đổ vào có thể làm chập cháy thiết bị.", remember: "Tuyệt đối không ăn uống gần máy tính!", hint: "Hành động dễ gây chập điện hư hỏng thiết bị." },
+        { id: 35, topic: "Bài 4. Làm việc với máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Vì sao em cần ngồi đúng tư thế khi dùng máy tính?", options: ["Để máy tính chạy nhanh hơn", "Để bảo vệ sức khỏe mắt, cột sống và cổ tay", "Để máy tính không bị hỏng", "Để cô giáo khen"], answer: 1, explanation: "Ngồi đúng tư thế bảo vệ cột sống, cổ tay và chống cận thị.", remember: "Ngồi đúng tư thế để bảo vệ đôi mắt và cột sống của em.", hint: "Liên quan trực tiếp đến sức khỏe cơ thể." },
+        { id: 36, topic: "Bài 4. Làm việc với máy tính", topicKey: "b4", difficulty: "Nhận biết", question: "Để khởi động (bật) máy tính, em cần nhấn nút nào?", options: ["Nút Reset", "Nút nguồn (Power)", "Nút Caps Lock", "Nút Enter"], answer: 1, explanation: "Nhấn nút nguồn (Power) trên thân máy để khởi động máy tính.", remember: "Nút Power dùng để bật nguồn máy tính.", hint: "Nút có biểu tượng vòng tròn kèm vạch thẳng đứng." },
+        { id: 37, topic: "Bài 4. Làm việc với máy tính", topicKey: "b4", difficulty: "Vận dụng", question: "Khi đang dùng máy tính mà mất điện đột ngột, em nên làm gì?", options: ["Bấm nút nguồn liên tục", "Bình tĩnh chờ có điện lại, sau đó khởi động máy bình thường", "Rút hết dây cáp", "Gõ bàn phím liên tục"], answer: 1, explanation: "Bình tĩnh chờ nguồn điện ổn định trở lại rồi mới khởi động lại máy.", remember: "Luôn giữ bình tĩnh khi có sự cố điện.", hint: "Không nghịch dây điện hoặc bấm loạn xạ." },
+        { id: 38, topic: "Bài 4. Làm việc với máy tính", topicKey: "b4", difficulty: "Nhận biết", question: "Khoảng cách từ mắt đến màn hình nên là bao nhiêu?", options: ["Khoảng 10 cm", "Khoảng 50 - 70 cm", "Khoảng 200 cm", "Càng gần càng tốt"], answer: 1, explanation: "Khoảng cách an toàn nhất cho mắt là 50 - 70 cm (khoảng một sải tay).", remember: "Mắt cách màn hình 50-70 cm.", hint: "Khoảng cách bằng một cánh tay duỗi thẳng." },
+        { id: 39, topic: "Bài 4. Làm việc với máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Em cần giữ vệ sinh máy tính bằng cách nào?", options: ["Dùng nước lau màn hình", "Dùng khăn mềm, khô lau bụi nhẹ nhàng", "Dùng xà phòng rửa bàn phím", "Không cần vệ sinh"], answer: 1, explanation: "Dùng khăn mềm, khô hoặc dung dịch chuyên dụng, tuyệt đối không dùng nước ướt.", remember: "Chỉ lau máy tính bằng khăn mềm và khô.", hint: "Thiết bị điện tử rất sợ nước." },
+        { id: 40, topic: "Bài 4. Làm việc với máy tính", topicKey: "b4", difficulty: "Vận dụng cao", question: "Theo quy tắc an toàn, em nên dùng máy tính bao lâu mỗi ngày?", options: ["Cả ngày không nghỉ", "Sử dụng có giới hạn, tối đa 1-2 giờ mỗi ngày đối với trẻ em", "Chỉ 5 phút mỗi tuần", "Không giới hạn thời gian"], answer: 1, explanation: "Học sinh tiểu học chỉ nên dùng máy tính 1-2 giờ mỗi ngày để cân bằng sức khỏe.", remember: "Dùng máy tính điều độ: không quá 1-2 giờ mỗi ngày.", hint: "Trẻ em không nên dùng máy tính liên tục cả ngày." }
+      ],
+
+      // ===== LỚP 4 =====
+      4: [
+        { id: 1, topic: "Bài 1. Phần cứng và phần mềm", topicKey: "b1", difficulty: "Nhận biết", question: "Phần cứng máy tính là gì?", options: ["Là các chương trình cài đặt trong máy tính", "Là các bộ phận vật lí có thể nhìn thấy và chạm vào được", "Là hệ điều hành Windows", "Là các trò chơi trên máy tính"], answer: 1, explanation: "Phần cứng là các thiết bị vật lý cụ thể, có thể cầm nắm, chạm vào được.", remember: "Phần cứng = Thiết bị vật lí (chạm vào được).", hint: "Các thiết bị em có thể sờ và nhìn thấy." },
+        { id: 2, topic: "Bài 1. Phần cứng và phần mềm", topicKey: "b1", difficulty: "Nhận biết", question: "Phần mềm máy tính là gì?", options: ["Là các thiết bị ngoại vi", "Là bàn phím và chuột", "Là các chương trình giúp máy tính hoạt động và thực hiện công việc", "Là dây cáp kết nối"], answer: 2, explanation: "Phần mềm là tập hợp các chương trình, lệnh điều khiển máy tính hoạt động.", remember: "Phần mềm = Các chương trình chỉ dẫn máy tính làm việc.", hint: "Chương trình cài đặt bên trong máy tính." },
+        { id: 3, topic: "Bài 1. Phần cứng và phần mềm", topicKey: "b1", difficulty: "Nhận biết", question: "Thiết bị nào sau đây là thiết bị nhập (Input)?", options: ["Màn hình", "Loa", "Bàn phím", "Máy in"], answer: 2, explanation: "Bàn phím đưa thông tin, chữ viết từ người dùng vào máy tính (Thiết bị nhập).", remember: "Bàn phím, chuột, micro, máy quét là thiết bị nhập.", hint: "Dùng để nhập dữ liệu vào máy tính." },
+        { id: 4, topic: "Bài 1. Phần cứng và phần mềm", topicKey: "b1", difficulty: "Nhận biết", question: "Thiết bị nào sau đây là thiết bị xuất (Output)?", options: ["Chuột", "Bàn phím", "Máy quét (Scanner)", "Máy in (Printer)"], answer: 3, explanation: "Máy in xuất văn bản, hình ảnh từ máy tính ra giấy (Thiết bị xuất).", remember: "Màn hình, máy in, loa là thiết bị xuất.", hint: "Thiết bị in tài liệu ra ngoài giấy." },
+        { id: 5, topic: "Bài 1. Phần cứng và phần mềm", topicKey: "b1", difficulty: "Nhận biết", question: "CPU là viết tắt của cụm từ nào?", options: ["Central Processing Unit", "Computer Personal Unit", "Central Power Unit", "Computer Program Utility"], answer: 0, explanation: "CPU = Central Processing Unit (Bộ xử lí trung tâm).", remember: "CPU = Central Processing Unit.", hint: "Bắt đầu bằng Central Processing..." },
+        { id: 6, topic: "Bài 1. Phần cứng và phần mềm", topicKey: "b1", difficulty: "Thông hiểu", question: "Ổ cứng (Hard Disk) thuộc loại thiết bị nào?", options: ["Thiết bị nhập", "Thiết bị xuất", "Thiết bị lưu trữ", "Thiết bị xử lí"], answer: 2, explanation: "Ổ cứng dùng để lưu trữ lâu dài dữ liệu và hệ điều hành.", remember: "Ổ cứng là thiết bị lưu trữ dữ liệu chính của máy tính.", hint: "Nơi chứa các tệp và phần mềm lâu dài." },
+        { id: 7, topic: "Bài 1. Phần cứng và phần mềm", topicKey: "b1", difficulty: "Nhận biết", question: "Phần mềm nào sau đây là phần mềm soạn thảo văn bản?", options: ["Paint", "Microsoft Word", "Calculator", "Chrome"], answer: 1, explanation: "Microsoft Word là phần mềm chuyên dùng để soạn thảo văn bản.", remember: "Microsoft Word = Soạn thảo văn bản.", hint: "Phần mềm có biểu tượng chữ W màu xanh dương." },
+        { id: 8, topic: "Bài 1. Phần cứng và phần mềm", topicKey: "b1", difficulty: "Thông hiểu", question: "RAM là bộ nhớ dùng để làm gì?", options: ["Lưu trữ dữ liệu vĩnh viễn", "Lưu trữ dữ liệu tạm thời khi máy đang hoạt động", "Hiển thị hình ảnh", "Kết nối Internet"], answer: 1, explanation: "RAM lưu trữ dữ liệu tạm thời, khi tắt máy dữ liệu trong RAM sẽ biến mất.", remember: "RAM = Bộ nhớ tạm thời khi máy đang bật.", hint: "Bộ nhớ tạm thời bị mất khi mất điện." },
+        { id: 9, topic: "Bài 1. Phần cứng và phần mềm", topicKey: "b1", difficulty: "Thông hiểu", question: "Hệ điều hành Windows thuộc loại nào?", options: ["Phần cứng", "Thiết bị ngoại vi", "Phần mềm hệ thống", "Thiết bị lưu trữ"], answer: 2, explanation: "Windows là phần mềm hệ thống, quản lý toàn bộ phần cứng và phần mềm.", remember: "Windows là phần mềm hệ thống quan trọng nhất.", hint: "Phần mềm nền tảng điều khiển cả máy tính." },
+        { id: 10, topic: "Bài 1. Phần cứng và phần mềm", topicKey: "b1", difficulty: "Vận dụng", question: "Thiết bị nào vừa là thiết bị nhập vừa là thiết bị xuất?", options: ["Bàn phím", "Loa", "Màn hình cảm ứng", "Máy in"], answer: 2, explanation: "Màn hình cảm ứng vừa hiển thị (xuất) vừa nhận chạm ngón tay (nhập).", remember: "Màn hình cảm ứng: Vừa nhập vừa xuất.", hint: "Màn hình trên điện thoại thông minh." },
+        { id: 11, topic: "Bài 2. Gõ bàn phím đúng cách", topicKey: "b2", difficulty: "Nhận biết", question: "Hàng phím cơ sở (Home Row) gồm những phím nào?", options: ["Q W E R T Y U I O P", "A S D F G H J K L ;", "Z X C V B N M", "1 2 3 4 5 6 7 8 9 0"], answer: 1, explanation: "Hàng cơ sở gồm: A, S, D, F, G, H, J, K, L, ;", remember: "Hàng cơ sở: A S D F G H J K L ;", hint: "Hàng phím ở giữa có chứa phím F và J có gờ." },
+        { id: 12, topic: "Bài 2. Gõ bàn phím đúng cách", topicKey: "b2", difficulty: "Nhận biết", question: "Khi gõ phím cơ sở, ngón trỏ tay trái đặt ở phím nào?", options: ["Phím A", "Phím S", "Phím F", "Phím D"], answer: 2, explanation: "Ngón trỏ tay trái đặt ở phím F (phím có gờ nổi).", remember: "Ngón trỏ trái đặt tại phím F.", hint: "Phím có gờ nổi bên tay trái." },
+        { id: 13, topic: "Bài 2. Gõ bàn phím đúng cách", topicKey: "b2", difficulty: "Nhận biết", question: "Khi gõ phím cơ sở, ngón trỏ tay phải đặt ở phím nào?", options: ["Phím J", "Phím K", "Phím L", "Phím H"], answer: 0, explanation: "Ngón trỏ tay phải đặt ở phím J (phím có gờ nổi).", remember: "Ngón trỏ phải đặt tại phím J.", hint: "Phím có gờ nổi bên tay phải." },
+        { id: 14, topic: "Bài 2. Gõ bàn phím đúng cách", topicKey: "b2", difficulty: "Nhận biết", question: "Phím nào dùng để viết chữ hoa?", options: ["Enter", "Shift hoặc Caps Lock", "Tab", "Backspace"], answer: 1, explanation: "Dùng Shift (giữ phím) hoặc Caps Lock (bật/tắt) để gõ chữ hoa.", remember: "Shift và Caps Lock dùng để viết hoa.", hint: "Hai phím chuyên dụng để viết hoa kí tự." },
+        { id: 15, topic: "Bài 2. Gõ bàn phím đúng cách", topicKey: "b2", difficulty: "Nhận biết", question: "Phím Backspace dùng để làm gì?", options: ["Xuống dòng mới", "Xóa kí tự phía trước con trỏ", "In đậm chữ", "Chuyển ngôn ngữ"], answer: 1, explanation: "Backspace xóa kí tự nằm ngay trước (bên trái) con trỏ soạn thảo.", remember: "Backspace = Xóa kí tự phía trước con trỏ.", hint: "Phím mũi tên quay sang trái dùng để xóa." },
+        { id: 16, topic: "Bài 2. Gõ bàn phím đúng cách", topicKey: "b2", difficulty: "Nhận biết", question: "Phím Enter dùng để làm gì?", options: ["Xóa kí tự", "Viết chữ hoa", "Xuống dòng mới hoặc xác nhận lệnh", "Tắt máy tính"], answer: 2, explanation: "Enter dùng để xuống dòng khi gõ văn bản hoặc xác nhận thực thi lệnh.", remember: "Enter = Xuống dòng mới hoặc thực hiện lệnh.", hint: "Phím lớn dùng để xuống hàng." },
+        { id: 17, topic: "Bài 2. Gõ bàn phím đúng cách", topicKey: "b2", difficulty: "Nhận biết", question: "Phím Space dùng để làm gì?", options: ["Xóa chữ", "Tạo khoảng trắng giữa các từ", "In đậm", "Gạch chân"], answer: 1, explanation: "Phím Space (phím cách dài nhất) dùng để tạo khoảng trắng giữa các từ.", remember: "Phím cách dài nhất dùng để cách từ.", hint: "Thanh dài nhất nằm ở dưới cùng bàn phím." },
+        { id: 18, topic: "Bài 2. Gõ bàn phím đúng cách", topicKey: "b2", difficulty: "Thông hiểu", question: "Khi gõ 10 ngón, hai ngón cái dùng để gõ phím nào?", options: ["Phím Shift", "Phím Enter", "Phím Space (phím cách)", "Phím Tab"], answer: 2, explanation: "Hai ngón cái luôn phụ trách bấm phím Space (cách).", remember: "Ngón cái phụ trách phím Space.", hint: "Ngón tay to nhất đặt lên thanh dài nhất." },
+        { id: 19, topic: "Bài 2. Gõ bàn phím đúng cách", topicKey: "b2", difficulty: "Thông hiểu", question: "Lợi ích của việc gõ bàn phím đúng cách là gì?", options: ["Gõ nhanh hơn và ít mỏi tay", "Máy tính chạy nhanh hơn", "Màn hình sáng hơn", "Internet nhanh hơn"], answer: 0, explanation: "Gõ 10 ngón giúp tăng tốc độ gõ, giảm sai sót và không bị mỏi tay.", remember: "Gõ 10 ngón: Nhanh, chuẩn xác, ít mỏi tay.", hint: "Nâng cao tốc độ làm việc của chính em." },
+        { id: 20, topic: "Bài 2. Gõ bàn phím đúng cách", topicKey: "b2", difficulty: "Vận dụng", question: "Khi gõ phím, em nên nhìn vào đâu?", options: ["Nhìn vào bàn phím liên tục", "Nhìn vào màn hình", "Nhìn vào tay", "Nhắm mắt"], answer: 1, explanation: "Khi đã quen vị trí phím, em nên nhìn vào màn hình để kiểm tra văn bản.", remember: "Tập nhìn màn hình khi gõ phím.", hint: "Nhìn vào nơi hiển thị chữ vừa gõ." },
+        { id: 21, topic: "Bài 3. Thông tin trên trang Web", topicKey: "b3", difficulty: "Nhận biết", question: "Trang web là gì?", options: ["Là một cuốn sách in trên giấy", "Là trang thông tin được hiển thị trên trình duyệt web", "Là một phần mềm cài trong máy tính", "Là một loại máy tính"], answer: 1, explanation: "Trang web là trang chứa thông tin đa phương tiện mở bằng trình duyệt web.", remember: "Trang web là trang thông tin trên Internet.", hint: "Được xem qua trình duyệt web." },
+        { id: 22, topic: "Bài 3. Thông tin trên trang Web", topicKey: "b3", difficulty: "Nhận biết", question: "Trình duyệt web nào sau đây phổ biến nhất?", options: ["Microsoft Word", "Google Chrome", "Paint", "Calculator"], answer: 1, explanation: "Google Chrome là trình duyệt web được sử dụng rộng rãi nhất thế giới.", remember: "Google Chrome, Microsoft Edge, Cốc Cốc là trình duyệt web.", hint: "Biểu tượng hình tròn 3 màu đỏ, vàng, xanh lá." },
+        { id: 23, topic: "Bài 3. Thông tin trên trang Web", topicKey: "b3", difficulty: "Thông hiểu", question: "Thanh địa chỉ trên trình duyệt dùng để làm gì?", options: ["Gõ văn bản", "Nhập địa chỉ trang web cần truy cập", "Vẽ tranh", "Tính toán"], answer: 1, explanation: "Thanh địa chỉ dùng để gõ đường dẫn URL của trang web (ví dụ: google.com).", remember: "Thanh địa chỉ = Nhập URL trang web.", hint: "Nơi gõ địa chỉ trang web ở phía trên cùng." },
+        { id: 24, topic: "Bài 3. Thông tin trên trang Web", topicKey: "b3", difficulty: "Thông hiểu", question: "Liên kết (Hyperlink) trên trang web có đặc điểm gì?", options: ["Luôn có màu đen, không gạch chân", "Thường có màu xanh, gạch chân, click vào sẽ chuyển sang trang khác", "Không thể nhấn vào được", "Là hình ảnh không có chữ"], answer: 1, explanation: "Liên kết (Hyperlink) chuyển con trỏ thành hình bàn tay, bấm vào sẽ nhảy sang trang mới.", remember: "Hyperlink: bấm vào để chuyển sang trang web khác.", hint: "Chữ đổi màu khi rê chuột và bấm chuyển trang được." },
+        { id: 25, topic: "Bài 3. Thông tin trên trang Web", topicKey: "b3", difficulty: "Nhận biết", question: "Thông tin trên trang web có những dạng nào?", options: ["Chỉ có chữ", "Chỉ có hình ảnh", "Văn bản, hình ảnh, âm thanh, video", "Chỉ có video"], answer: 2, explanation: "Thông tin trên web rất phong phú: văn bản, hình ảnh, âm thanh và video.", remember: "Thông tin trên web là thông tin đa phương tiện.", hint: "Gồm đầy đủ tất cả các dạng thông tin." },
+        { id: 26, topic: "Bài 3. Thông tin trên trang Web", topicKey: "b3", difficulty: "Thông hiểu", question: "Để truy cập trang web, em cần gì?", options: ["Chỉ cần có máy tính", "Máy tính hoặc điện thoại có kết nối Internet và trình duyệt web", "Chỉ cần có bàn phím", "Chỉ cần có loa"], answer: 1, explanation: "Cần thiết bị (máy tính/điện thoại) kết nối Internet và có trình duyệt web.", remember: "Cần: Thiết bị + Mạng Internet + Trình duyệt web.", hint: "Phải có mạng và phần mềm duyệt web." },
+        { id: 27, topic: "Bài 3. Thông tin trên trang Web", topicKey: "b3", difficulty: "Nhận biết", question: "Website của trường học thường có địa chỉ kết thúc bằng gì?", options: [".com", ".edu.vn", ".xyz", ".game"], answer: 1, explanation: "Đuôi .edu.vn dành riêng cho các cơ quan, tổ chức giáo dục tại Việt Nam.", remember: ".edu là viết tắt của Education (Giáo dục).", hint: "Chứa chữ edu viết tắt của giáo dục." },
+        { id: 28, topic: "Bài 3. Thông tin trên trang Web", topicKey: "b3", difficulty: "Thông hiểu", question: "Khi truy cập trang web, biểu tượng ổ khóa trên thanh địa chỉ nghĩa là gì?", options: ["Trang web bị khóa, không truy cập được", "Kết nối an toàn, thông tin được bảo mật", "Trang web có virus", "Máy tính bị hỏng"], answer: 1, explanation: "Biểu tượng ổ khóa chứng nhận giao thức HTTPS an toàn, dữ liệu được mã hóa.", remember: "Ổ khóa = Trang web có kết nối bảo mật an toàn.", hint: "Báo hiệu kết nối an toàn bảo mật." },
+        { id: 29, topic: "Bài 3. Thông tin trên trang Web", topicKey: "b3", difficulty: "Nhận biết", question: "Nút Back (←) trên trình duyệt dùng để làm gì?", options: ["Tắt trình duyệt", "Quay lại trang web trước đó", "Tải trang web nhanh hơn", "In trang web"], answer: 1, explanation: "Nút Back quay trở lại trang web em vừa xem trước đó.", remember: "Back (←) = Trở về trang trước.", hint: "Mũi tên chỉ sang trái." },
+        { id: 30, topic: "Bài 3. Thông tin trên trang Web", topicKey: "b3", difficulty: "Nhận biết", question: "Tab trên trình duyệt cho phép em làm gì?", options: ["Mở nhiều trang web cùng lúc", "Tắt Internet", "Xóa lịch sử duyệt web", "Tải game"], answer: 0, explanation: "Các tab (thẻ) cho phép mở và chuyển đổi linh hoạt giữa nhiều trang web trong một cửa sổ.", remember: "Tab giúp mở song song nhiều trang web.", hint: "Mở nhiều trang cùng lúc trên 1 cửa sổ." },
+        { id: 31, topic: "Bài 4. Tìm kiếm trên Internet", topicKey: "b4", difficulty: "Nhận biết", question: "Công cụ tìm kiếm phổ biến nhất hiện nay là gì?", options: ["Yahoo", "Google", "Bing", "Ask"], answer: 1, explanation: "Google (google.com) là cỗ máy tìm kiếm lớn nhất và phổ biến nhất thế giới.", remember: "Google là công cụ tìm kiếm phổ biến nhất.", hint: "Trang tìm kiếm lớn nhất hiện nay." },
+        { id: 32, topic: "Bài 4. Tìm kiếm trên Internet", topicKey: "b4", difficulty: "Nhận biết", question: "Để tìm kiếm thông tin, em gõ gì vào ô tìm kiếm?", options: ["Địa chỉ nhà em", "Từ khóa liên quan đến nội dung cần tìm", "Số điện thoại", "Mật khẩu email"], answer: 1, explanation: "Gõ từ khóa (keywords) ngắn gọn, súc tích liên quan trực tiếp đến nội dung cần tìm.", remember: "Gõ từ khóa chính xác vào ô tìm kiếm.", hint: "Các từ quan trọng thể hiện nội dung tìm kiếm." },
+        { id: 33, topic: "Bài 4. Tìm kiếm trên Internet", topicKey: "b4", difficulty: "Vận dụng", question: "Khi tìm kiếm 'Thủ đô của Việt Nam', kết quả đúng nhất là gì?", options: ["TP. Hồ Chí Minh", "Đà Nẵng", "Hà Nội", "Huế"], answer: 2, explanation: "Hà Nội là thủ đô của nước Cộng hòa Xã hội Chủ nghĩa Việt Nam.", remember: "Thủ đô của Việt Nam là Hà Nội.", hint: "Thành phố ngàn năm văn hiến." },
+        { id: 34, topic: "Bài 4. Tìm kiếm trên Internet", topicKey: "b4", difficulty: "Thông hiểu", question: "Để tìm chính xác một cụm từ trên Google, em nên làm gì?", options: ["Gõ từng chữ một", "Đặt cụm từ trong dấu ngoặc kép \" \"", "Gõ bằng chữ hoa", "Bấm Enter nhiều lần"], answer: 1, explanation: "Đặt cụm từ trong ngoặc kép \"...\" yêu cầu Google tìm chính xác thứ tự các từ đó.", remember: "Dấu ngoặc kép \"...\" = Tìm chính xác cụm từ.", hint: "Đặt trong dấu ngoặc kép." },
+        { id: 35, topic: "Bài 4. Tìm kiếm trên Internet", topicKey: "b4", difficulty: "Thông hiểu", question: "Kết quả tìm kiếm trên Google hiển thị những gì?", options: ["Chỉ có hình ảnh", "Tiêu đề trang web, mô tả ngắn và đường liên kết", "Chỉ có video", "Chỉ có số liệu"], answer: 1, explanation: "Mỗi kết quả gồm: Tiêu đề trang, đoạn trích mô tả ngắn và đường dẫn liên kết.", remember: "Gồm Tiêu đề, Mô tả và Link trang web.", hint: "Hiển thị tóm tắt giúp em lựa chọn bài viết." },
+        { id: 36, topic: "Bài 4. Tìm kiếm trên Internet", topicKey: "b4", difficulty: "Vận dụng", question: "Từ khóa nào phù hợp khi tìm kiếm về động vật quý hiếm ở Việt Nam?", options: ["'Game hay nhất 2026'", "'Động vật quý hiếm Việt Nam'", "'Thời tiết hôm nay'", "'Công thức nấu phở'"], answer: 1, explanation: "Từ khóa sát với chủ đề nhất là 'Động vật quý hiếm Việt Nam'.", remember: "Chọn từ khóa sát với chủ đề cần tìm.", hint: "Chứa đúng tên chủ đề cần tra cứu." },
+        { id: 37, topic: "Bài 4. Tìm kiếm trên Internet", topicKey: "b4", difficulty: "Thông hiểu", question: "Khi tìm kiếm thông tin, em nên chọn kết quả từ nguồn nào?", options: ["Trang web lạ, không rõ tác giả", "Nguồn uy tín như Wikipedia, báo chính thống, trang .edu", "Trang có nhiều quảng cáo nhấp nháy", "Trang yêu cầu tải phần mềm lạ"], answer: 1, explanation: "Luôn chọn thông tin từ các trang báo chí chính thống, website giáo dục (.edu) và bách khoa uy tín.", remember: "Chọn nguồn uy tín để đảm bảo thông tin chính xác.", hint: "Nguồn chính thống, đáng tin cậy." },
+        { id: 38, topic: "Bài 4. Tìm kiếm trên Internet", topicKey: "b4", difficulty: "Nhận biết", question: "Tìm kiếm bằng hình ảnh trên Google gọi là gì?", options: ["Google Maps", "Google Images (Tìm kiếm hình ảnh)", "Google Drive", "Google Mail"], answer: 1, explanation: "Google Images (Google Hình ảnh) chuyên tìm kiếm kho ảnh trên toàn mạng.", remember: "Google Images = Tìm kiếm hình ảnh.", hint: "Chứa từ Images (hình ảnh)." },
+        { id: 39, topic: "Bài 4. Tìm kiếm trên Internet", topicKey: "b4", difficulty: "Thông hiểu", question: "Vì sao em cần kiểm tra thông tin từ nhiều nguồn khi tìm kiếm?", options: ["Để mất thời gian", "Để chắc chắn thông tin chính xác và đáng tin cậy", "Để máy tính chạy nhanh hơn", "Để có nhiều trang web hơn"], answer: 1, explanation: "Kiểm tra chéo giữa nhiều trang web giúp em lọc bỏ tin giả và tìm được dữ liệu chính xác nhất.", remember: "Kiểm tra nhiều nguồn để xác thực độ tin cậy.", hint: "Tránh tin tức giả mạo hoặc sai lệch." },
+        { id: 40, topic: "Bài 4. Tìm kiếm trên Internet", topicKey: "b4", difficulty: "Vận dụng cao", question: "Khi gặp trang web yêu cầu nhập thông tin cá nhân, em nên làm gì?", options: ["Nhập ngay mọi thông tin", "Hỏi ý kiến thầy cô hoặc phụ huynh trước khi nhập", "Tắt máy tính", "Chia sẻ link cho bạn bè cùng nhập"], answer: 1, explanation: "Tuyệt đối không tự ý điền họ tên, địa chỉ, số điện thoại; luôn hỏi người lớn trước.", remember: "Luôn hỏi ý kiến người lớn trước khi nhập thông tin cá nhân.", hint: "Quy tắc an toàn bảo vệ bản thân trên mạng." }
+      ],
+
+      // ===== LỚP 5 =====
+      5: [
+        { id: 1, topic: "Bài 1. Em làm gì với máy tính?", topicKey: "b1", difficulty: "Nhận biết", question: "Máy tính có thể giúp em làm gì trong học tập?", options: ["Chỉ chơi game", "Soạn bài, tìm kiếm tài liệu, làm bài trình chiếu", "Chỉ xem phim", "Chỉ nghe nhạc"], answer: 1, explanation: "Máy tính hỗ trợ soạn thảo, tìm kiếm tài liệu và làm bài thuyết trình.", remember: "Máy tính hỗ trợ toàn diện các môn học.", hint: "Chọn phương án có nhiều ứng dụng học tập." },
+        { id: 2, topic: "Bài 1. Em làm gì với máy tính?", topicKey: "b1", difficulty: "Nhận biết", question: "Ứng dụng nào giúp em soạn thảo văn bản?", options: ["Paint", "Microsoft Word", "Calculator", "Notepad chỉ gõ được text thuần"], answer: 1, explanation: "Microsoft Word là phần mềm soạn thảo văn bản chuyên nghiệp nhất.", remember: "Microsoft Word dùng để soạn thảo văn bản.", hint: "Phần mềm gõ văn bản thông dụng." },
+        { id: 3, topic: "Bài 1. Em làm gì với máy tính?", topicKey: "b1", difficulty: "Thông hiểu", question: "Máy tính giúp con người giao tiếp qua phương tiện nào?", options: ["Thư tay", "Email, chat, video call", "Chỉ gọi điện thoại bàn", "Chỉ viết thư"], answer: 1, explanation: "Máy tính kết nối mạng giúp liên lạc qua thư điện tử (email), nhắn tin và gọi video.", remember: "Giao tiếp số: Email, chat, video call.", hint: "Các hình thức liên lạc qua Internet." },
+        { id: 4, topic: "Bài 1. Em làm gì với máy tính?", topicKey: "b1", difficulty: "Nhận biết", question: "Phần mềm trình chiếu phổ biến là gì?", options: ["Microsoft Excel", "Microsoft PowerPoint", "Microsoft Access", "Paint"], answer: 1, explanation: "Microsoft PowerPoint là ứng dụng tạo bài thuyết trình đa phương tiện.", remember: "Microsoft PowerPoint = Trình chiếu bài thuyết trình.", hint: "Có biểu tượng chữ P màu cam đỏ." },
+        { id: 5, topic: "Bài 1. Em làm gì với máy tính?", topicKey: "b1", difficulty: "Thông hiểu", question: "Máy tính có thể giúp bác sĩ làm gì?", options: ["Chỉ chơi game", "Chụp X-quang, lưu trữ hồ sơ bệnh nhân, hỗ trợ phẫu thuật", "Chỉ gõ văn bản", "Chỉ nghe nhạc"], answer: 1, explanation: "Trong y tế, máy tính điều khiển máy chụp chiếu, lưu hồ sơ bệnh án và trợ giúp phẫu thuật.", remember: "Máy tính có ứng dụng to lớn trong y tế và cứu chữa bệnh nhân.", hint: "Hỗ trợ khám chữa bệnh hiện đại." },
+        { id: 6, topic: "Bài 1. Em làm gì với máy tính?", topicKey: "b1", difficulty: "Thông hiểu", question: "Máy tính có thể thay thế hoàn toàn con người không?", options: ["Có, máy tính làm được mọi thứ", "Không, máy tính là công cụ hỗ trợ, con người vẫn cần sáng tạo và ra quyết định", "Có, nếu là máy tính đời mới", "Máy tính không giúp ích gì"], answer: 1, explanation: "Máy tính là công cụ hỗ trợ thông minh, con người vẫn là chủ thể ra quyết định và sáng tạo.", remember: "Máy tính là công cụ, con người làm chủ và sáng tạo.", hint: "Con người có cảm xúc và tư duy sáng tạo độc lập." },
+        { id: 7, topic: "Bài 1. Em làm gì với máy tính?", topicKey: "b1", difficulty: "Nhận biết", question: "Phần mềm vẽ tranh trên máy tính là gì?", options: ["Word", "Paint / Canva", "Excel", "Chrome"], answer: 1, explanation: "Paint hoặc Canva là phần mềm vẽ và thiết kế đồ họa hình ảnh.", remember: "Paint dùng để vẽ tranh trên máy tính.", hint: "Có hộp màu và cọ vẽ." },
+        { id: 8, topic: "Bài 1. Em làm gì với máy tính?", topicKey: "b1", difficulty: "Nhận biết", question: "Internet giúp em làm gì?", options: ["Chỉ tải game", "Tìm kiếm thông tin, học trực tuyến, giao tiếp", "Chỉ xem quảng cáo", "Chỉ đọc truyện"], answer: 1, explanation: "Internet mở ra kho tàng tri thức, lớp học trực tuyến và kết nối bạn bè.", remember: "Internet là kho tàng tri thức kết nối toàn cầu.", hint: "Giúp em tra cứu và học bài khắp mọi nơi." },
+        { id: 9, topic: "Bài 1. Em làm gì với máy tính?", topicKey: "b1", difficulty: "Vận dụng", question: "Để tạo một bài báo cáo, em dùng phần mềm nào?", options: ["Paint", "Word hoặc Google Docs", "Calculator", "Camera"], answer: 1, explanation: "Word hoặc Google Docs giúp soạn thảo văn bản bài báo cáo chuẩn mực.", remember: "Dùng Word hoặc Google Docs để làm báo cáo.", hint: "Phần mềm soạn văn bản." },
+        { id: 10, topic: "Bài 1. Em làm gì với máy tính?", topicKey: "b1", difficulty: "Thông hiểu", question: "Lưu trữ đám mây (Cloud) có nghĩa là gì?", options: ["Lưu dữ liệu trên mây thật", "Lưu dữ liệu trên máy chủ Internet, truy cập từ mọi nơi", "Lưu dữ liệu trên USB", "Lưu dữ liệu trên giấy"], answer: 1, explanation: "Lưu trữ đám mây là lưu trên hệ thống máy chủ mạng (như Google Drive, OneDrive).", remember: "Cloud Storage: Lưu trên máy chủ mạng, mở được mọi nơi.", hint: "Lưu trên mạng Internet không sợ hỏng ổ cứng." },
+        { id: 11, topic: "Bài 2. Tìm kiếm trên website", topicKey: "b2", difficulty: "Nhận biết", question: "Để tìm kiếm thông tin trên website, em cần sử dụng gì?", options: ["Máy in", "Công cụ tìm kiếm (Google, Bing)", "Máy quét", "Loa"], answer: 1, explanation: "Cần các công cụ tìm kiếm chuyên dụng như Google, Bing...", remember: "Dùng công cụ tìm kiếm để tra cứu thông tin.", hint: "Cỗ máy tìm kiếm như Google." },
+        { id: 12, topic: "Bài 2. Tìm kiếm trên website", topicKey: "b2", difficulty: "Thông hiểu", question: "Từ khóa tìm kiếm hiệu quả cần đảm bảo yêu cầu gì?", options: ["Càng dài càng tốt", "Ngắn gọn, chính xác, liên quan đến nội dung cần tìm", "Viết bằng tiếng nước ngoài", "Gõ ngẫu nhiên"], answer: 1, explanation: "Từ khóa tốt phải ngắn gọn, trọng tâm, chứa các danh từ chính của chủ đề.", remember: "Từ khóa phải ngắn gọn, đúng trọng tâm.", hint: "Đúc kết đúng ý cốt lõi." },
+        { id: 13, topic: "Bài 2. Tìm kiếm trên website", topicKey: "b2", difficulty: "Thông hiểu", question: "Nguồn thông tin nào trên Internet đáng tin cậy?", options: ["Bài đăng ẩn danh trên mạng xã hội", "Trang .edu, .gov, báo chính thống, Wikipedia", "Video quảng cáo sản phẩm", "Tin nhắn chuyển tiếp trên Zalo"], answer: 1, explanation: "Trang giáo dục (.edu), chính phủ (.gov) và cơ quan báo chí là nguồn đáng tin cậy.", remember: "Ưu tiên trang .gov, .edu và báo chính thống.", hint: "Cơ quan nhà nước và trường học." },
+        { id: 14, topic: "Bài 2. Tìm kiếm trên website", topicKey: "b2", difficulty: "Thông hiểu", question: "Khi tìm kiếm thấy nhiều kết quả, em nên làm gì?", options: ["Chọn kết quả đầu tiên mà không đọc", "Đọc tiêu đề và mô tả, chọn kết quả phù hợp nhất từ nguồn uy tín", "Tải hết tất cả", "Bỏ qua tất cả"], answer: 1, explanation: "Quan sát lướt tiêu đề và đoạn trích mô tả để chọn bài viết chuẩn xác nhất.", remember: "Đọc chọn lọc trước khi bấm vào trang.", hint: "Đọc tóm tắt để chọn bài đúng nhất." },
+        { id: 15, topic: "Bài 2. Tìm kiếm trên website", topicKey: "b2", difficulty: "Nhận biết", question: "Google Images dùng để làm gì?", options: ["Gửi email", "Tìm kiếm hình ảnh", "Soạn văn bản", "Tạo bảng tính"], answer: 1, explanation: "Google Images dùng để tra cứu hình ảnh minh họa trên mạng.", remember: "Google Images = Tìm kiếm hình ảnh.", hint: "Tìm các bức ảnh." },
+        { id: 16, topic: "Bài 2. Tìm kiếm trên website", topicKey: "b2", difficulty: "Thông hiểu", question: "Khi tìm kiếm \"Hồ Gươm\", dấu ngoặc kép giúp gì?", options: ["Xóa kết quả", "Tìm chính xác cụm từ \"Hồ Gươm\"", "Mở trang web mới", "Tắt Internet"], answer: 1, explanation: "Ngoặc kép yêu cầu công cụ tìm kiếm khớp chính xác cả cụm từ liền nhau.", remember: "Dấu ngoặc kép cố định cụm từ tìm kiếm.", hint: "Tìm chính xác không tách rời từ." },
+        { id: 17, topic: "Bài 2. Tìm kiếm trên website", topicKey: "b2", difficulty: "Nhận biết", question: "Phím tắt Ctrl + F dùng để làm gì trên trang web?", options: ["Tắt trình duyệt", "Tìm kiếm từ khóa trong trang web đang mở", "In trang web", "Sao chép trang web"], answer: 1, explanation: "Ctrl + F (Find) mở hộp tìm nhanh một từ khóa trong trang web hiện tại.", remember: "Ctrl + F = Tìm từ khóa trong trang.", hint: "F là viết tắt của Find (tìm kiếm)." },
+        { id: 18, topic: "Bài 2. Tìm kiếm trên website", topicKey: "b2", difficulty: "Nhận biết", question: "Bookmark (Đánh dấu trang) dùng để làm gì?", options: ["Xóa trang web", "Lưu lại địa chỉ trang web yêu thích để truy cập nhanh sau này", "Tải file", "Chụp ảnh màn hình"], answer: 1, explanation: "Bookmark giúp lưu lại địa chỉ các trang web hay vào thanh dấu trang để mở lại nhanh.", remember: "Bookmark = Lưu trang web yêu thích.", hint: "Đánh dấu như kẹp sách." },
+        { id: 19, topic: "Bài 2. Tìm kiếm trên website", topicKey: "b2", difficulty: "Thông hiểu", question: "Em không nên làm gì khi tìm kiếm trên Internet?", options: ["Dùng từ khóa rõ ràng", "Nhấp vào quảng cáo lạ hoặc trang web yêu cầu tải phần mềm bất thường", "Chọn nguồn uy tín", "Kiểm tra thông tin từ nhiều nguồn"], answer: 1, explanation: "Bấm vào quảng cáo lạ hoặc tải phần mềm bất thường dễ làm máy tính nhiễm virus.", remember: "Cảnh giác với quảng cáo và link tải lạ.", hint: "Nguy cơ dính virus và mất thông tin." },
+        { id: 20, topic: "Bài 2. Tìm kiếm trên website", topicKey: "b2", difficulty: "Nhận biết", question: "Lịch sử duyệt web (History) lưu lại điều gì?", options: ["Mật khẩu email", "Danh sách các trang web em đã truy cập", "File tải về", "Số điện thoại"], answer: 1, explanation: "History lưu lại danh sách các đường link trang web em đã mở trong quá khứ.", remember: "History = Lịch sử các trang web đã xem.", hint: "Nhật ký các trang web đã xem." },
+        { id: 21, topic: "Bài 3. Tìm kiếm GQ vấn đề", topicKey: "b3", difficulty: "Nhận biết", question: "Bước đầu tiên khi giải quyết vấn đề bằng tìm kiếm thông tin là gì?", options: ["Tải phần mềm", "Xác định rõ vấn đề cần giải quyết", "Mở game", "Tắt máy tính"], answer: 1, explanation: "Phải xác định rõ mục tiêu và vấn đề cần giải quyết trước khi tìm kiếm.", remember: "Bước 1: Xác định rõ vấn đề cần giải quyết.", hint: "Phải biết mình đang cần tìm cái gì." },
+        { id: 22, topic: "Bài 3. Tìm kiếm GQ vấn đề", topicKey: "b3", difficulty: "Vận dụng", question: "Khi cần tìm hiểu về thời tiết cho chuyến đi dã ngoại, em nên tìm ở đâu?", options: ["Trang bán hàng online", "Trang dự báo thời tiết (weather.com.vn)", "Trang game", "Trang mạng xã hội"], answer: 1, explanation: "Nên tìm tại các trang trung tâm dự báo khí tượng thủy văn chính thống.", remember: "Tìm kiếm ở chuyên trang dự báo thời tiết.", hint: "Chuyên trang thời tiết chính xác." },
+        { id: 23, topic: "Bài 3. Tìm kiếm GQ vấn đề", topicKey: "b3", difficulty: "Thông hiểu", question: "Quy trình giải quyết vấn đề bằng tìm kiếm gồm những bước nào?", options: ["Chỉ gõ Google rồi đọc", "Xác định vấn đề → Tìm kiếm → Đánh giá → Tổng hợp → Giải quyết", "Chỉ hỏi bạn bè", "Chỉ đọc sách"], answer: 1, explanation: "Quy trình chuẩn: Xác định vấn đề → Tìm kiếm → Đánh giá nguồn → Tổng hợp → Đưa ra giải pháp.", remember: "Xác định → Tìm kiếm → Đánh giá → Tổng hợp → Giải quyết.", hint: "Chuỗi 5 bước giải quyết vấn đề khoa học." },
+        { id: 24, topic: "Bài 3. Tìm kiếm GQ vấn đề", topicKey: "b3", difficulty: "Thông hiểu", question: "Khi thông tin tìm được mâu thuẫn nhau, em nên làm gì?", options: ["Tin tất cả", "So sánh nhiều nguồn và chọn nguồn uy tín nhất", "Bỏ qua tất cả", "Tự bịa đáp án"], answer: 1, explanation: "So sánh, đối chiếu giữa nhiều nguồn tài liệu uy tín để xác minh sự thật.", remember: "Đối chiếu chéo nhiều nguồn thông tin tin cậy.", hint: "Kiểm tra chéo và chọn nguồn chính thống." },
+        { id: 25, topic: "Bài 3. Tìm kiếm GQ vấn đề", topicKey: "b3", difficulty: "Thông hiểu", question: "Tìm kiếm thông tin giúp em phát triển kỹ năng gì?", options: ["Chỉ kỹ năng gõ phím", "Tư duy phản biện, đánh giá và giải quyết vấn đề", "Chỉ kỹ năng vẽ", "Chỉ kỹ năng hát"], answer: 1, explanation: "Rèn luyện tư duy phản biện, óc phân tích và kỹ năng tự học suốt đời.", remember: "Phát triển tư duy phản biện và giải quyết vấn đề.", hint: "Kỹ năng tư duy bậc cao." },
+        { id: 26, topic: "Bài 3. Tìm kiếm GQ vấn đề", topicKey: "b3", difficulty: "Vận dụng", question: "Em cần làm bài thuyết trình về 'Bảo vệ môi trường'. Bước đầu tiên em nên làm gì?", options: ["Mở PowerPoint ngay", "Xác định nội dung cần trình bày và tìm kiếm tài liệu liên quan", "Vẽ tranh", "In ấn"], answer: 1, explanation: "Lập dàn ý, xác định các luận điểm cần nói rồi mới đi thu thập tài liệu.", remember: "Lên kế hoạch và tìm tư liệu trước khi thiết kế slide.", hint: "Chuẩn bị nội dung trước." },
+        { id: 27, topic: "Bài 3. Tìm kiếm GQ vấn đề", topicKey: "b3", difficulty: "Thông hiểu", question: "Khi tìm được thông tin hữu ích, em nên làm gì?", options: ["Sao chép nguyên văn", "Ghi chú lại nguồn và tóm tắt nội dung chính", "Xóa đi", "Gửi cho tất cả bạn"], answer: 1, explanation: "Tóm tắt theo văn phong của mình và lưu lại link trích dẫn nguồn tác giả.", remember: "Ghi chú nguồn và tóm tắt nội dung chính.", hint: "Tôn trọng bản quyền tác giả." },
+        { id: 28, topic: "Bài 3. Tìm kiếm GQ vấn đề", topicKey: "b3", difficulty: "Nhận biết", question: "Trích dẫn nguồn tham khảo nghĩa là gì?", options: ["Xóa tên tác giả", "Ghi rõ tên tác giả và đường liên kết khi sử dụng thông tin", "Đổi tên tác giả", "Tự nhận là của mình"], answer: 1, explanation: "Ghi chú tên tác giả và đường link nơi em lấy tư liệu tham khảo.", remember: "Trích dẫn nguồn = Ghi rõ tác giả và nguồn bài viết.", hint: "Thể hiện sự trung thực học thuật." },
+        { id: 29, topic: "Bài 3. Tìm kiếm GQ vấn đề", topicKey: "b3", difficulty: "Thông hiểu", question: "Sử dụng thông tin trên mạng cần tuân thủ quy tắc gì?", options: ["Sao chép thoải mái", "Tôn trọng bản quyền, trích dẫn nguồn, kiểm chứng thông tin", "Không cần ghi nguồn", "Tin tất cả thông tin trên mạng"], answer: 1, explanation: "Tuân thủ luật bản quyền sở hữu trí tuệ và đạo đức số.", remember: "Tôn trọng bản quyền và kiểm chứng thông tin.", hint: "Đạo đức và luật pháp trên không gian số." },
+        { id: 30, topic: "Bài 3. Tìm kiếm GQ vấn đề", topicKey: "b3", difficulty: "Thông hiểu", question: "Kỹ năng tìm kiếm thông tin quan trọng vì sao?", options: ["Chỉ để chơi game", "Giúp em học tập hiệu quả, giải quyết vấn đề trong cuộc sống", "Chỉ để xem phim", "Không quan trọng"], answer: 1, explanation: "Kỹ năng tìm kiếm giúp học sinh tự giải quyết khó khăn và mở rộng tri thức không giới hạn.", remember: "Là chìa khóa để học tập hiệu quả và giải quyết vấn đề.", hint: "Giúp tự học suốt đời." },
+        { id: 31, topic: "Bài 4. Cây thư mục", topicKey: "b4", difficulty: "Nhận biết", question: "Tệp (File) là gì?", options: ["Là thư mục", "Là đơn vị lưu trữ dữ liệu trên máy tính (văn bản, hình ảnh, nhạc...)", "Là ổ cứng", "Là màn hình"], answer: 1, explanation: "Tệp (File) là tập hợp dữ liệu được đặt tên và lưu trên bộ nhớ máy tính.", remember: "Tệp = Đơn vị chứa dữ liệu (văn bản, ảnh, nhạc...).", hint: "Các bài tập, bài hát, bức ảnh cụ thể." },
+        { id: 32, topic: "Bài 4. Cây thư mục", topicKey: "b4", difficulty: "Nhận biết", question: "Thư mục (Folder) dùng để làm gì?", options: ["Hiển thị hình ảnh", "Chứa và sắp xếp các tệp cho gọn gàng", "Phát nhạc", "Kết nối Internet"], answer: 1, explanation: "Thư mục như chiếc cặp sách dùng để phân loại và chứa các tệp tin ngăn nắp.", remember: "Thư mục dùng để gom nhóm và sắp xếp tệp tin.", hint: "Biểu tượng kẹp giấy màu vàng." },
+        { id: 33, topic: "Bài 4. Cây thư mục", topicKey: "b4", difficulty: "Thông hiểu", question: "Cây thư mục là gì?", options: ["Một loại cây trong sân trường", "Cách tổ chức thư mục theo cấp bậc: thư mục mẹ chứa thư mục con", "Một trò chơi", "Một phần mềm"], answer: 1, explanation: "Cấu trúc phân cấp hình cây: thư mục gốc/mẹ chứa các thư mục con và tệp.", remember: "Cây thư mục = Tổ chức thư mục theo dạng phân nhánh.", hint: "Phân cấp mẹ - con như cành cây." },
+        { id: 34, topic: "Bài 4. Cây thư mục", topicKey: "b4", difficulty: "Nhận biết", question: "Đuôi tệp .docx cho biết tệp đó là loại gì?", options: ["Hình ảnh", "Tệp văn bản Word", "Tệp nhạc", "Tệp video"], answer: 1, explanation: ".docx là phần mở rộng định dạng văn bản Microsoft Word.", remember: ".docx = Tệp Word.", hint: "Tệp tạo từ Microsoft Word." },
+        { id: 35, topic: "Bài 4. Cây thư mục", topicKey: "b4", difficulty: "Nhận biết", question: "Đuôi tệp .jpg hoặc .png cho biết tệp đó là loại gì?", options: ["Văn bản", "Hình ảnh", "Âm thanh", "Video"], answer: 1, explanation: ".jpg và .png là các định dạng tệp hình ảnh phổ biến nhất.", remember: ".jpg, .png = Tệp hình ảnh.", hint: "Tệp lưu trữ bức ảnh." },
+        { id: 36, topic: "Bài 4. Cây thư mục", topicKey: "b4", difficulty: "Nhận biết", question: "Để tạo thư mục mới, em nhấp chuột phải và chọn gì?", options: ["Delete", "New → Folder", "Copy", "Rename"], answer: 1, explanation: "Nhấp chuột phải vào vùng trống → chọn New → Folder.", remember: "Tạo thư mục: Chuột phải → New → Folder.", hint: "Menu New rồi chọn Folder." },
+        { id: 37, topic: "Bài 4. Cây thư mục", topicKey: "b4", difficulty: "Nhận biết", question: "Để đổi tên tệp hoặc thư mục, em nhấp chuột phải và chọn gì?", options: ["Delete", "Copy", "Rename", "New"], answer: 2, explanation: "Nhấp chuột phải vào đối tượng và chọn lệnh Rename (hoặc ấn F2).", remember: "Rename = Đổi tên.", hint: "Từ tiếng Anh nghĩa là đặt lại tên." },
+        { id: 38, topic: "Bài 4. Cây thư mục", topicKey: "b4", difficulty: "Thông hiểu", question: "Thùng rác (Recycle Bin) dùng để làm gì?", options: ["Lưu trữ vĩnh viễn", "Chứa tạm các tệp/thư mục đã xóa, có thể khôi phục", "Tạo tệp mới", "Kết nối Internet"], answer: 1, explanation: "Recycle Bin chứa các tệp đã xóa tạm thời, có thể phục hồi lại (Restore) khi cần.", remember: "Recycle Bin chứa file tạm xóa, có thể khôi phục.", hint: "Nơi chứa đồ xóa tạm thời." },
+        { id: 39, topic: "Bài 4. Cây thư mục", topicKey: "b4", difficulty: "Nhận biết", question: "Thư mục gốc trong ổ đĩa C gọi là gì?", options: ["Thư mục con", "Thư mục mẹ (thư mục gốc)", "Tệp tin", "Ổ USB"], answer: 1, explanation: "C: là thư mục gốc cao nhất chứa tất cả các thư mục con trong ổ đĩa.", remember: "Thư mục gốc nằm ở bậc cao nhất của ổ đĩa.", hint: "Thư mục khởi đầu cao nhất." },
+        { id: 40, topic: "Bài 4. Cây thư mục", topicKey: "b4", difficulty: "Thông hiểu", question: "Vì sao cần tổ chức tệp và thư mục gọn gàng?", options: ["Để máy tính đẹp hơn", "Để dễ tìm kiếm và quản lí dữ liệu", "Để máy tính chạy nhanh hơn", "Để ổ cứng rộng hơn"], answer: 1, explanation: "Sắp xếp khoa học giúp tiết kiệm thời gian tìm kiếm và tránh thất lạc dữ liệu.", remember: "Tổ chức gọn gàng giúp tìm nhanh và quản lí dễ dàng.", hint: "Dễ tìm kiếm tài liệu khi cần." }
+      ],
+
+      // ===== LỚP 6 =====
+      6: [
+        { id: 1, topic: "Bài 1. Thông tin và dữ liệu", topicKey: "b1", difficulty: "Nhận biết", question: "Thông tin là gì?", options: ["Là thiết bị máy tính", "Là những hiểu biết về thế giới xung quanh và bản thân", "Là phần mềm", "Là ổ cứng"], answer: 1, explanation: "Thông tin là toàn bộ hiểu biết của con người về thế giới và chính mình.", remember: "Thông tin mang lại hiểu biết cho con người.", hint: "Hiểu biết về thế giới xung quanh." },
+        { id: 2, topic: "Bài 1. Thông tin và dữ liệu", topicKey: "b1", difficulty: "Nhận biết", question: "Dữ liệu là gì?", options: ["Là thông tin được ghi lên vật mang tin dưới dạng cụ thể", "Là máy tính", "Là Internet", "Là phần cứng"], answer: 0, explanation: "Dữ liệu là hình thức thể hiện của thông tin trên vật mang tin (chữ, số, ký hiệu...).", remember: "Dữ liệu là thông tin được lưu cụ thể trên vật mang tin.", hint: "Thông tin được ghi lại cụ thể." },
+        { id: 3, topic: "Bài 1. Thông tin và dữ liệu", topicKey: "b1", difficulty: "Nhận biết", question: "Vật mang tin là gì?", options: ["Là thông tin", "Là phương tiện chứa dữ liệu (sách, USB, đĩa CD)", "Là phần mềm", "Là bàn phím"], answer: 1, explanation: "Vật mang tin là vật chứa dữ liệu như sách vở, USB, thẻ nhớ...", remember: "Vật mang tin là vật chứa dữ liệu.", hint: "Vật thể chứa đựng dữ liệu." },
+        { id: 4, topic: "Bài 1. Thông tin và dữ liệu", topicKey: "b1", difficulty: "Nhận biết", question: "Thông tin có mấy dạng cơ bản?", options: ["1 dạng", "2 dạng", "3 dạng: văn bản, hình ảnh, âm thanh", "5 dạng"], answer: 2, explanation: "3 dạng cơ bản: Văn bản, Hình ảnh, Âm thanh.", remember: "3 dạng cơ bản: Văn bản - Hình ảnh - Âm thanh.", hint: "Gồm 3 dạng thông dụng." },
+        { id: 5, topic: "Bài 1. Thông tin và dữ liệu", topicKey: "b1", difficulty: "Thông hiểu", question: "Ví dụ nào thể hiện thông tin dạng hình ảnh?", options: ["Bài hát", "Tấm bản đồ", "Bài văn", "Đoạn hội thoại"], answer: 1, explanation: "Tấm bản đồ truyền tải thông tin bằng hình vẽ, ký hiệu địa lý.", remember: "Bản đồ, tranh vẽ là thông tin dạng hình ảnh.", hint: "Nhìn thấy qua đường nét, màu sắc." },
+        { id: 6, topic: "Bài 1. Thông tin và dữ liệu", topicKey: "b1", difficulty: "Thông hiểu", question: "Khi đọc bảng điểm, em tiếp nhận thông tin dạng gì?", options: ["Âm thanh", "Hình ảnh", "Văn bản (số liệu)", "Video"], answer: 2, explanation: "Bảng điểm gồm các con số và chữ cái, thuộc dạng thông tin văn bản.", remember: "Chữ số và chữ viết thuộc dạng Văn bản.", hint: "Dạng số và chữ viết." },
+        { id: 7, topic: "Bài 1. Thông tin và dữ liệu", topicKey: "b1", difficulty: "Thông hiểu", question: "Thông tin giúp con người làm gì?", options: ["Chơi game", "Ra quyết định chính xác", "Tăng dung lượng máy", "Làm đẹp máy tính"], answer: 1, explanation: "Thông tin có vai trò quyết định trong việc chỉ dẫn hành động đúng đắn.", remember: "Thông tin giúp con người ra quyết định chính xác.", hint: "Căn cứ để đưa ra quyết định." },
+        { id: 8, topic: "Bài 1. Thông tin và dữ liệu", topicKey: "b1", difficulty: "Nhận biết", question: "USB là ví dụ của gì?", options: ["Thông tin", "Vật mang tin", "Phần mềm", "Internet"], answer: 1, explanation: "USB là thiết bị phần cứng lưu trữ dữ liệu, đóng vai trò là vật mang tin.", remember: "USB, thẻ nhớ, ổ đĩa là vật mang tin.", hint: "Phương tiện phần cứng lưu trữ dữ liệu." },
+        { id: 9, topic: "Bài 1. Thông tin và dữ liệu", topicKey: "b1", difficulty: "Thông hiểu", question: "Dữ liệu và thông tin khác nhau thế nào?", options: ["Giống nhau hoàn toàn", "Dữ liệu là thông tin được biểu diễn cụ thể trên vật mang tin", "Thông tin nằm trong dữ liệu", "Không liên quan"], answer: 1, explanation: "Dữ liệu là biểu diễn vật lý cụ thể của thông tin trên vật mang tin.", remember: "Dữ liệu là dạng biểu diễn của thông tin.", hint: "Dữ liệu ghi lại thông tin." },
+        { id: 10, topic: "Bài 1. Thông tin và dữ liệu", topicKey: "b1", difficulty: "Vận dụng", question: "Biển báo cấm hút thuốc mang thông tin dạng gì?", options: ["Văn bản", "Âm thanh", "Hình ảnh (kí hiệu)", "Video"], answer: 2, explanation: "Biển cấm hút thuốc dùng biểu tượng điếu thuốc gạch chéo (hình ảnh/ký hiệu).", remember: "Biển báo hình vẽ là dạng thông tin Hình ảnh.", hint: "Biểu tượng hình vẽ điếu thuốc gạch chéo." },
+        { id: 11, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Nhận biết", question: "Quy trình xử lí thông tin gồm mấy bước?", options: ["2", "3", "4: Thu nhận → Lưu trữ → Xử lí → Truyền", "5"], answer: 2, explanation: "Gồm 4 bước: Thu nhận → Lưu trữ → Xử lí → Truyền.", remember: "4 bước tuần tự trong xử lý thông tin.", hint: "Gồm 4 bước chuẩn." },
+        { id: 12, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Nhận biết", question: "Bộ phận nào của máy tính xử lí thông tin?", options: ["Màn hình", "Bàn phím", "CPU (bộ vi xử lí)", "Loa"], answer: 2, explanation: "CPU (Bộ vi xử lí) là nơi thực thi các phép tính và xử lý toàn bộ dữ liệu.", remember: "CPU = Bộ vi xử lí thông tin của máy tính.", hint: "Bộ vi xử lý trung tâm." },
+        { id: 13, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Thông hiểu", question: "Bước 'Thu nhận' thông tin ở con người thực hiện qua gì?", options: ["Tay chân", "Các giác quan", "Ổ cứng", "Chuột máy tính"], answer: 1, explanation: "Con người tiếp nhận thông tin từ thế giới qua 5 giác quan.", remember: "Giác quan giúp con người thu nhận thông tin.", hint: "Thị giác, thính giác..." },
+        { id: 14, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Nhận biết", question: "Thiết bị nào là thiết bị nhập liệu?", options: ["Màn hình", "Bàn phím", "Loa", "Máy in"], answer: 1, explanation: "Bàn phím đưa văn bản và lệnh vào máy tính (Input).", remember: "Bàn phím là thiết bị nhập dữ liệu.", hint: "Gõ chữ đưa vào máy." },
+        { id: 15, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Nhận biết", question: "Thiết bị nào là thiết bị xuất dữ liệu?", options: ["Chuột", "Bàn phím", "Máy in", "Webcam"], answer: 2, explanation: "Máy in xuất dữ liệu văn bản từ máy tính ra bản giấy in (Output).", remember: "Máy in là thiết bị xuất dữ liệu.", hint: "In dữ liệu ra ngoài giấy." },
+        { id: 16, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Thông hiểu", question: "Ổ cứng trong máy tính thực hiện bước nào?", options: ["Thu nhận", "Xử lí", "Lưu trữ", "Truyền"], answer: 2, explanation: "Ổ cứng giữ nhiệm vụ lưu trữ toàn bộ dữ liệu máy tính lâu dài.", remember: "Ổ cứng thực hiện chức năng Lưu trữ.", hint: "Giữ file lâu dài." },
+        { id: 17, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Nhận biết", question: "CPU viết tắt của cụm từ nào?", options: ["Central Processing Unit", "Computer Personal Unit", "Central Power Unit", "Computer Program Utility"], answer: 0, explanation: "CPU = Central Processing Unit.", remember: "CPU = Central Processing Unit.", hint: "Bắt đầu với Central Processing Unit." },
+        { id: 18, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Thông hiểu", question: "Máy tính xử lí thông tin vượt trội vì sao?", options: ["Vì rất đẹp", "Vì tính toán nhanh, lưu trữ nhiều, không mệt", "Vì dùng điện", "Vì có màn hình to"], answer: 1, explanation: "Máy tính tính toán siêu tốc, lưu trữ khổng lồ và hoạt động liên tục.", remember: "Máy tính nhanh, chính xác, dung lượng lớn.", hint: "Tốc độ và sự bền bỉ không biết mệt mỏi." },
+        { id: 19, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Vận dụng", question: "Bước 'Truyền thông tin' thể hiện qua ví dụ nào?", options: ["Ghi bài vào vở", "Gửi email cho bạn", "Đọc sách", "Nghĩ trong đầu"], answer: 1, explanation: "Gửi thư điện tử là chuyển dữ liệu từ người gửi đến người nhận (Truyền).", remember: "Gửi email là hành động Truyền thông tin.", hint: "Chuyển thư qua mạng cho bạn." },
+        { id: 20, topic: "Bài 2. Xử lí thông tin", topicKey: "b2", difficulty: "Thông hiểu", question: "RAM dùng để làm gì?", options: ["Lưu trữ lâu dài", "Lưu trữ tạm thời khi máy hoạt động", "Hiển thị hình", "Kết nối mạng"], answer: 1, explanation: "RAM lưu dữ liệu tạm thời trong lúc máy tính đang chạy các ứng dụng.", remember: "RAM = Bộ nhớ tạm thời.", hint: "Bộ nhớ biến mất khi ngắt điện." },
+        { id: 21, topic: "Bài 3. Thông tin trong MT", topicKey: "b3", difficulty: "Nhận biết", question: "Bit là gì?", options: ["Đơn vị đo trọng lượng", "Đơn vị nhỏ nhất của thông tin trong máy tính, có giá trị 0 hoặc 1", "Loại virus", "Tên phần mềm"], answer: 1, explanation: "Bit (Binary digit) là đơn vị nhỏ nhất, mang giá trị 0 hoặc 1.", remember: "Bit là đơn vị đo thông tin nhỏ nhất (0 hoặc 1).", hint: "Chỉ mang 2 giá trị 0 hoặc 1." },
+        { id: 22, topic: "Bài 3. Thông tin trong MT", topicKey: "b3", difficulty: "Nhận biết", question: "1 Byte bằng bao nhiêu bit?", options: ["4 bit", "8 bit", "16 bit", "32 bit"], answer: 1, explanation: "1 Byte = 8 bit.", remember: "1 Byte = 8 bit.", hint: "Bằng 8 bit." },
+        { id: 23, topic: "Bài 3. Thông tin trong MT", topicKey: "b3", difficulty: "Thông hiểu", question: "1 KB bằng bao nhiêu Byte?", options: ["100 Byte", "512 Byte", "1024 Byte", "2048 Byte"], answer: 2, explanation: "1 KB = 1024 Byte (tương ứng 2^10).", remember: "1 KB = 1024 Byte.", hint: "Hệ số lũy thừa của 2: 1024." },
+        { id: 24, topic: "Bài 3. Thông tin trong MT", topicKey: "b3", difficulty: "Thông hiểu", question: "Thứ tự đúng của đơn vị đo dung lượng từ nhỏ đến lớn là gì?", options: ["MB < KB < GB < TB", "B < KB < MB < GB < TB", "TB < GB < MB < KB", "KB < B < MB < GB"], answer: 1, explanation: "Thứ tự: Byte (B) < Kilobyte (KB) < Megabyte (MB) < Gigabyte (GB) < Terabyte (TB).", remember: "B < KB < MB < GB < TB.", hint: "Bắt đầu từ B đến KB, MB..." },
+        { id: 25, topic: "Bài 3. Thông tin trong MT", topicKey: "b3", difficulty: "Vận dụng", question: "USB 4GB có thể lưu trữ khoảng bao nhiêu bức ảnh 2MB?", options: ["500", "1000", "2000", "4000"], answer: 2, explanation: "4 GB = 4096 MB. 4096 ÷ 2 ≈ 2048 (khoảng 2000 bức ảnh).", remember: "4 GB = 4096 MB → 4096 / 2 = 2048 ảnh.", hint: "Đổi 4GB ra MB rồi chia cho 2." },
+        { id: 26, topic: "Bài 3. Thông tin trong MT", topicKey: "b3", difficulty: "Nhận biết", question: "Thông tin trong máy tính được biểu diễn dưới dạng gì?", options: ["Chữ viết tay", "Dãy bit (0 và 1)", "Hình vẽ", "Âm thanh tự nhiên"], answer: 1, explanation: "Mọi thông tin trong máy tính đều được mã hóa thành dãy bit gồm các số 0 và 1.", remember: "Máy tính chỉ hiểu và xử lý dãy bit (0 và 1).", hint: "Hệ nhị phân chỉ gồm 0 và 1." },
+        { id: 27, topic: "Bài 3. Thông tin trong MT", topicKey: "b3", difficulty: "Nhận biết", question: "1 MB bằng bao nhiêu KB?", options: ["100 KB", "512 KB", "1024 KB", "2048 KB"], answer: 2, explanation: "1 MB = 1024 KB.", remember: "1 MB = 1024 KB.", hint: "Bằng 1024 KB." },
+        { id: 28, topic: "Bài 3. Thông tin trong MT", topicKey: "b3", difficulty: "Nhận biết", question: "1 GB bằng bao nhiêu MB?", options: ["100 MB", "512 MB", "1024 MB", "2048 MB"], answer: 2, explanation: "1 GB = 1024 MB.", remember: "1 GB = 1024 MB.", hint: "Bằng 1024 MB." },
+        { id: 29, topic: "Bài 3. Thông tin trong MT", topicKey: "b3", difficulty: "Vận dụng cao", question: "Ổ cứng 500 GB lưu được khoảng bao nhiêu bộ phim 2 GB?", options: ["100", "200", "250", "500"], answer: 2, explanation: "500 GB ÷ 2 GB = 250 bộ phim.", remember: "500 / 2 = 250 bộ phim.", hint: "Lấy 500 chia cho 2." },
+        { id: 30, topic: "Bài 3. Thông tin trong MT", topicKey: "b3", difficulty: "Nhận biết", question: "Chữ 'A' trong bảng mã ASCII được biểu diễn bằng dãy bit nào?", options: ["0100 0001", "1111 1111", "0000 0000", "1010 1010"], answer: 0, explanation: "Mã ASCII của 'A' là 65, đổi ra nhị phân là 01000001.", remember: "Kí tự 'A' = 01000001.", hint: "Số 65 trong hệ nhị phân." },
+        { id: 31, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Nhận biết", question: "Mạng máy tính là gì?", options: ["Một máy tính đơn lẻ", "Hệ thống các máy tính được kết nối với nhau để chia sẻ tài nguyên", "Một loại phần mềm", "Một loại ổ cứng"], answer: 1, explanation: "Mạng máy tính là tập hợp các máy tính kết nối truyền thông để chia sẻ dữ liệu và thiết bị.", remember: "Mạng máy tính = Kết nối để chia sẻ tài nguyên.", hint: "Kết nối nhiều máy lại với nhau." },
+        { id: 32, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Nhận biết", question: "Mạng LAN là gì?", options: ["Mạng toàn cầu", "Mạng cục bộ, phạm vi nhỏ (phòng, tòa nhà)", "Mạng vệ tinh", "Mạng điện thoại"], answer: 1, explanation: "LAN (Local Area Network) là mạng cục bộ trong phạm vi hẹp như trường học, gia đình.", remember: "LAN = Mạng cục bộ trong phạm vi nhỏ.", hint: "Local Area Network." },
+        { id: 33, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Nhận biết", question: "Mạng WAN là gì?", options: ["Mạng cục bộ", "Mạng diện rộng, kết nối nhiều LAN ở xa nhau", "Mạng Bluetooth", "Mạng trong 1 phòng"], answer: 1, explanation: "WAN (Wide Area Network) là mạng diện rộng kết nối nhiều mạng cục bộ qua thành phố, quốc gia.", remember: "WAN = Mạng diện rộng.", hint: "Wide Area Network." },
+        { id: 34, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Router (bộ định tuyến) dùng để làm gì?", options: ["Hiển thị hình ảnh", "Kết nối và điều hướng dữ liệu giữa các mạng", "Gõ văn bản", "Phát nhạc"], answer: 1, explanation: "Router định tuyến và truyền các gói tin giữa các mạng máy tính khác nhau.", remember: "Router = Định tuyến và điều hướng dữ liệu.", hint: "Điều hướng dữ liệu giữa các mạng." },
+        { id: 35, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Switch (bộ chuyển mạch) dùng để làm gì?", options: ["Tắt máy tính", "Kết nối các máy tính trong cùng mạng LAN", "In tài liệu", "Quét virus"], answer: 1, explanation: "Switch kết nối các đoạn mạng hoặc các máy tính trong cùng một mạng LAN.", remember: "Switch = Kết nối các máy trong mạng LAN.", hint: "Bộ chia cổng mạng nội bộ." },
+        { id: 36, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Lợi ích của mạng máy tính là gì?", options: ["Chỉ để chơi game online", "Chia sẻ dữ liệu, máy in, Internet và làm việc nhóm", "Làm máy chạy chậm hơn", "Không có lợi ích gì"], answer: 1, explanation: "Mạng máy tính giúp dùng chung thiết bị (máy in), trao đổi tệp và truy cập Internet chung.", remember: "Chia sẻ dữ liệu, dùng chung thiết bị và Internet.", hint: "Chia sẻ tài nguyên chung." },
+        { id: 37, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Nhận biết", question: "Cáp mạng (Ethernet) dùng để làm gì?", options: ["Sạc pin", "Kết nối máy tính với mạng qua dây", "Phát Wi-Fi", "Hiển thị hình ảnh"], answer: 1, explanation: "Cáp mạng truyền tín hiệu dữ liệu qua dây dẫn vật lý.", remember: "Cáp Ethernet = Kết nối mạng có dây.", hint: "Dây cắm vào cổng mạng máy tính." },
+        { id: 38, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Nhận biết", question: "Wi-Fi là gì?", options: ["Dây cáp mạng", "Công nghệ kết nối mạng không dây", "Loại phần mềm", "Tên máy tính"], answer: 1, explanation: "Wi-Fi là phương thức truyền thông mạng không dây qua sóng vô tuyến.", remember: "Wi-Fi = Kết nối mạng không dây.", hint: "Mạng không cần cắm dây." },
+        { id: 39, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Server (máy chủ) trong mạng dùng để làm gì?", options: ["Chỉ để chơi game", "Cung cấp tài nguyên và dịch vụ cho các máy tính khác", "Chỉ để soạn văn bản", "Chỉ để xem phim"], answer: 1, explanation: "Máy chủ (Server) quản lý dữ liệu và cung cấp các dịch vụ cho các máy khách (Client).", remember: "Server = Cung cấp dịch vụ và tài nguyên mạng.", hint: "Máy chủ phục vụ các máy khác." },
+        { id: 40, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Mạng Internet thuộc loại mạng nào?", options: ["LAN", "MAN", "WAN (mạng diện rộng toàn cầu)", "PAN"], answer: 2, explanation: "Internet là mạng diện rộng (WAN) lớn nhất kết nối toàn cầu.", remember: "Internet là mạng WAN toàn cầu.", hint: "Mạng diện rộng lớn nhất hành tinh." }
+      ],
+
+      // ===== LỚP 7 =====
+      7: [
+        { id: 1, topic: "Bài 1. Thiết bị vào - ra", topicKey: "b1", difficulty: "Nhận biết", question: "Thiết bị nhập (Input) dùng để làm gì?", options: ["Hiển thị kết quả", "Đưa dữ liệu vào máy tính", "Phát âm thanh", "In tài liệu"], answer: 1, explanation: "Thiết bị nhập chuyển thông tin từ người dùng/môi trường vào máy tính.", remember: "Thiết bị nhập = Đưa dữ liệu vào máy tính.", hint: "Chuyển dữ liệu vào trong máy." },
+        { id: 2, topic: "Bài 1. Thiết bị vào - ra", topicKey: "b1", difficulty: "Nhận biết", question: "Thiết bị xuất (Output) dùng để làm gì?", options: ["Nhập dữ liệu", "Hiển thị hoặc đưa kết quả ra ngoài", "Lưu trữ", "Xử lí"], answer: 1, explanation: "Thiết bị xuất đưa kết quả xử lý ra môi trường ngoài dưới dạng dễ tiếp nhận.", remember: "Thiết bị xuất = Đưa kết quả ra ngoài.", hint: "Đưa kết quả ra cho người dùng." },
+        { id: 3, topic: "Bài 1. Thiết bị vào - ra", topicKey: "b1", difficulty: "Nhận biết", question: "Bàn phím thuộc loại thiết bị gì?", options: ["Xuất", "Nhập", "Lưu trữ", "Xử lí"], answer: 1, explanation: "Bàn phím đưa ký tự vào máy tính nên là thiết bị nhập.", remember: "Bàn phím là thiết bị nhập.", hint: "Dùng để nhập chữ vào máy." },
+        { id: 4, topic: "Bài 1. Thiết bị vào - ra", topicKey: "b1", difficulty: "Nhận biết", question: "Màn hình thuộc loại thiết bị gì?", options: ["Nhập", "Xuất", "Lưu trữ", "Xử lí"], answer: 1, explanation: "Màn hình hiển thị hình ảnh xuất ra cho mắt người nhìn.", remember: "Màn hình là thiết bị xuất.", hint: "Hiển thị kết quả ra ngoài." },
+        { id: 5, topic: "Bài 1. Thiết bị vào - ra", topicKey: "b1", difficulty: "Thông hiểu", question: "Thiết bị nào vừa nhập vừa xuất?", options: ["Bàn phím", "Loa", "Màn hình cảm ứng", "Máy in"], answer: 2, explanation: "Màn hình cảm ứng vừa hiển thị (xuất) vừa nhận tín hiệu chạm (nhập).", remember: "Màn hình cảm ứng: Vừa nhập vừa xuất.", hint: "Màn hình chạm trên điện thoại/tablet." },
+        { id: 6, topic: "Bài 1. Thiết bị vào - ra", topicKey: "b1", difficulty: "Nhận biết", question: "Webcam thuộc loại thiết bị gì?", options: ["Xuất", "Nhập", "Lưu trữ", "Xử lí"], answer: 1, explanation: "Webcam thu hình ảnh bên ngoài đưa vào máy tính (nhập).", remember: "Webcam là thiết bị nhập hình ảnh/video.", hint: "Thu hình đưa vào máy tính." },
+        { id: 7, topic: "Bài 1. Thiết bị vào - ra", topicKey: "b1", difficulty: "Nhận biết", question: "Máy in thuộc loại thiết bị gì?", options: ["Nhập", "Xuất", "Lưu trữ", "Xử lí"], answer: 1, explanation: "Máy in xuất tài liệu từ máy ra giấy.", remember: "Máy in là thiết bị xuất.", hint: "Đưa dữ liệu ra giấy in." },
+        { id: 8, topic: "Bài 1. Thiết bị vào - ra", topicKey: "b1", difficulty: "Nhận biết", question: "Micro thuộc loại thiết bị gì?", options: ["Xuất", "Nhập", "Lưu trữ", "Xử lí"], answer: 1, explanation: "Micro thu sóng âm thanh từ giọng nói đưa vào máy (nhập).", remember: "Micro là thiết bị nhập âm thanh.", hint: "Thu tiếng nói vào máy tính." },
+        { id: 9, topic: "Bài 1. Thiết bị vào - ra", topicKey: "b1", difficulty: "Nhận biết", question: "Loa thuộc loại thiết bị gì?", options: ["Nhập", "Xuất", "Lưu trữ", "Xử lí"], answer: 1, explanation: "Loa phát âm thanh từ máy tính ra bên ngoài (xuất).", remember: "Loa là thiết bị xuất âm thanh.", hint: "Phát âm thanh ra ngoài tai nghe." },
+        { id: 10, topic: "Bài 1. Thiết bị vào - ra", topicKey: "b1", difficulty: "Nhận biết", question: "Máy quét (Scanner) thuộc loại thiết bị gì?", options: ["Xuất", "Nhập", "Lưu trữ", "Xử lí"], answer: 1, explanation: "Máy quét chụp tài liệu trên giấy đưa thành file ảnh vào máy tính (nhập).", remember: "Scanner là thiết bị nhập văn bản/hình ảnh số.", hint: "Quét giấy tờ số hóa vào máy tính." },
+        { id: 11, topic: "Bài 2. Phần mềm máy tính", topicKey: "b2", difficulty: "Nhận biết", question: "Phần mềm hệ thống là gì?", options: ["Game", "Phần mềm quản lí và điều khiển phần cứng (hệ điều hành, driver)", "Word", "Chrome"], answer: 1, explanation: "Phần mềm hệ thống quản lý, giám sát và điều khiển tài nguyên phần cứng máy tính.", remember: "Phần mềm hệ thống quản trị phần cứng.", hint: "Gồm hệ điều hành và driver." },
+        { id: 12, topic: "Bài 2. Phần mềm máy tính", topicKey: "b2", difficulty: "Nhận biết", question: "Phần mềm ứng dụng là gì?", options: ["Hệ điều hành", "Phần mềm phục vụ nhu cầu cụ thể (Word, Excel, Chrome)", "Driver", "BIOS"], answer: 1, explanation: "Phần mềm ứng dụng đáp ứng một công việc cụ thể của người dùng.", remember: "Phần mềm ứng dụng phục vụ nhu cầu làm việc cụ thể.", hint: "Word, Excel, trình duyệt..." },
+        { id: 13, topic: "Bài 2. Phần mềm máy tính", topicKey: "b2", difficulty: "Thông hiểu", question: "Windows là loại phần mềm gì?", options: ["Ứng dụng", "Hệ thống (hệ điều hành)", "Game", "Tiện ích"], answer: 1, explanation: "Windows là hệ điều hành máy tính, thuộc nhóm phần mềm hệ thống.", remember: "Windows là phần mềm hệ thống.", hint: "Hệ điều hành của Microsoft." },
+        { id: 14, topic: "Bài 2. Phần mềm máy tính", topicKey: "b2", difficulty: "Thông hiểu", question: "Microsoft Word là loại phần mềm gì?", options: ["Hệ thống", "Ứng dụng", "Driver", "BIOS"], answer: 1, explanation: "Word phục vụ soạn văn bản nên là phần mềm ứng dụng.", remember: "Word là phần mềm ứng dụng.", hint: "Ứng dụng soạn thảo văn phòng." },
+        { id: 15, topic: "Bài 2. Phần mềm máy tính", topicKey: "b2", difficulty: "Thông hiểu", question: "Hệ điều hành có vai trò gì?", options: ["Soạn văn bản", "Quản lí phần cứng, phần mềm và cung cấp giao diện", "Tạo bảng tính", "Chỉ để chơi game"], answer: 1, explanation: "Hệ điều hành làm trung gian quản lý phần cứng và làm môi trường chạy các phần mềm.", remember: "Hệ điều hành quản lý tài nguyên và cung cấp giao diện.", hint: "Bộ não quản trị toàn bộ máy tính." },
+        { id: 16, topic: "Bài 2. Phần mềm máy tính", topicKey: "b2", difficulty: "Thông hiểu", question: "Phần mềm diệt virus thuộc loại gì?", options: ["Hệ thống", "Ứng dụng (tiện ích)", "Game", "Hệ điều hành"], answer: 1, explanation: "Phần mềm diệt virus là phần mềm ứng dụng dạng tiện ích bảo mật hệ thống.", remember: "Diệt virus là phần mềm tiện ích ứng dụng.", hint: "Tiện ích bảo vệ máy tính." },
+        { id: 17, topic: "Bài 2. Phần mềm máy tính", topicKey: "b2", difficulty: "Thông hiểu", question: "Driver (trình điều khiển) dùng để làm gì?", options: ["Soạn văn bản", "Giúp hệ điều hành giao tiếp với thiết bị phần cứng", "Duyệt web", "Chơi game"], answer: 1, explanation: "Driver là cầu nối để hệ điều hành nhận diện và điều khiển thiết bị phần cứng (máy in, card mạng...).", remember: "Driver giúp HĐH điều khiển phần cứng.", hint: "Trình điều khiển thiết bị phần cứng." },
+        { id: 18, topic: "Bài 2. Phần mềm máy tính", topicKey: "b2", difficulty: "Thông hiểu", question: "Google Chrome là loại phần mềm gì?", options: ["Hệ thống", "Ứng dụng (trình duyệt web)", "Driver", "BIOS"], answer: 1, explanation: "Google Chrome là phần mềm ứng dụng duyệt web.", remember: "Chrome là phần mềm ứng dụng.", hint: "Trình duyệt web phổ biến." },
+        { id: 19, topic: "Bài 2. Phần mềm máy tính", topicKey: "b2", difficulty: "Vận dụng", question: "Khi cài phần mềm mới, em nên tải từ đâu?", options: ["Trang web lạ", "Trang chính thức của nhà phát triển hoặc cửa hàng ứng dụng uy tín", "Link người lạ gửi", "Email spam"], answer: 1, explanation: "Chỉ tải từ trang chủ chính thức hoặc kho ứng dụng có kiểm duyệt để tránh mã độc.", remember: "Tải từ trang chính thức để đảm bảo an toàn.", hint: "Website chính hãng của nhà sản xuất." },
+        { id: 20, topic: "Bài 2. Phần mềm máy tính", topicKey: "b2", difficulty: "Thông hiểu", question: "Phần mềm có bản quyền nghĩa là gì?", options: ["Miễn phí tùy ý", "Được bảo vệ pháp luật, cần mua hoặc xin phép sử dụng", "Không cần cài đặt", "Chỉ dùng 1 lần"], answer: 1, explanation: "Phần mềm bản quyền thuộc quyền tác giả, người dùng phải tuân thủ giấy phép sử dụng.", remember: "Phần mềm bản quyền được pháp luật bảo vệ.", hint: "Phải mua hoặc được cấp phép hợp pháp." },
+        { id: 21, topic: "Bài 3. Quản lý dữ liệu", topicKey: "b3", difficulty: "Nhận biết", question: "Đường dẫn (path) là gì?", options: ["Đường đi trên bản đồ", "Địa chỉ xác định vị trí tệp/thư mục trong cây thư mục", "Tên tệp", "Tên phần mềm"], answer: 1, explanation: "Đường dẫn mô tả chuỗi thư mục dẫn từ ổ đĩa đến tệp tin cần tìm.", remember: "Đường dẫn = Tọa độ vị trí tệp trong cây thư mục.", hint: "Chỉ rõ vị trí của tệp trên ổ đĩa." },
+        { id: 22, topic: "Bài 3. Quản lý dữ liệu", topicKey: "b3", difficulty: "Thông hiểu", question: "Đường dẫn C:\\Users\\HocSinh\\BaiTap.docx cho biết gì?", options: ["BaiTap.docx nằm trong thư mục HocSinh trên ổ C:", "BaiTap.docx nằm trên Desktop", "BaiTap.docx là thư mục", "BaiTap.docx bị xóa"], answer: 0, explanation: "Tệp BaiTap.docx nằm trong thư mục HocSinh (con của Users) trên ổ C:.", remember: "Tệp nằm ở cuối đường dẫn bên trong các thư mục trước đó.", hint: "Đọc theo thứ tự từ trái qua phải." },
+        { id: 23, topic: "Bài 3. Quản lý dữ liệu", topicKey: "b3", difficulty: "Nhận biết", question: "Phím tắt Ctrl+C dùng để làm gì?", options: ["Dán", "Sao chép", "Cắt", "Xóa"], answer: 1, explanation: "Ctrl + C (Copy) dùng để sao chép đối tượng vào bộ nhớ tạm.", remember: "Ctrl + C = Sao chép (Copy).", hint: "C viết tắt của Copy." },
+        { id: 24, topic: "Bài 3. Quản lý dữ liệu", topicKey: "b3", difficulty: "Nhận biết", question: "Phím tắt Ctrl+V dùng để làm gì?", options: ["Sao chép", "Dán", "Cắt", "Xóa"], answer: 1, explanation: "Ctrl + V (Paste) dùng để dán nội dung từ clipboard ra vị trí mới.", remember: "Ctrl + V = Dán (Paste).", hint: "Dán nội dung vừa chép." },
+        { id: 25, topic: "Bài 3. Quản lý dữ liệu", topicKey: "b3", difficulty: "Nhận biết", question: "Phím tắt Ctrl+X dùng để làm gì?", options: ["Sao chép", "Dán", "Cắt (di chuyển)", "Xóa"], answer: 2, explanation: "Ctrl + X (Cut) cắt đối tượng khỏi vị trí cũ để di chuyển đến nơi khác.", remember: "Ctrl + X = Cắt / Di chuyển.", hint: "Biểu tượng hình cây kéo." },
+        { id: 26, topic: "Bài 3. Quản lý dữ liệu", topicKey: "b3", difficulty: "Nhận biết", question: "Phím Delete dùng để làm gì?", options: ["Sao chép", "Xóa tệp/thư mục vào Recycle Bin", "Đổi tên", "Dán"], answer: 1, explanation: "Delete xóa tệp đưa vào thùng rác Recycle Bin.", remember: "Delete = Xóa vào thùng rác.", hint: "Xóa tệp tin vào thùng rác." },
+        { id: 27, topic: "Bài 3. Quản lý dữ liệu", topicKey: "b3", difficulty: "Thông hiểu", question: "Shift + Delete dùng để làm gì?", options: ["Sao chép", "Xóa vĩnh viễn không qua Recycle Bin", "Đổi tên", "Dán"], answer: 1, explanation: "Shift + Delete xóa triệt để khỏi ổ cứng mà không lưu lại trong thùng rác.", remember: "Shift + Delete = Xóa vĩnh viễn.", hint: "Xóa vĩnh viễn không thể khôi phục từ thùng rác." },
+        { id: 28, topic: "Bài 3. Quản lý dữ liệu", topicKey: "b3", difficulty: "Nhận biết", question: "File Explorer dùng để làm gì?", options: ["Duyệt web", "Quản lí tệp và thư mục trên máy tính", "Soạn văn bản", "Chơi game"], answer: 1, explanation: "File Explorer là công cụ quản lý cây thư mục và tệp tin trong Windows.", remember: "File Explorer = Trình quản lý tệp và thư mục.", hint: "Trình duyệt thư mục tệp tin." },
+        { id: 29, topic: "Bài 3. Quản lý dữ liệu", topicKey: "b3", difficulty: "Nhận biết", question: "Đuôi mở rộng .xlsx là loại tệp gì?", options: ["Văn bản Word", "Bảng tính Excel", "Hình ảnh", "Video"], answer: 1, explanation: ".xlsx là phần mở rộng của bảng tính Microsoft Excel.", remember: ".xlsx = Tệp bảng tính Excel.", hint: "Tệp tạo từ Excel." },
+        { id: 30, topic: "Bài 3. Quản lý dữ liệu", topicKey: "b3", difficulty: "Nhận biết", question: "Để tìm kiếm tệp trong File Explorer, em dùng gì?", options: ["Thanh địa chỉ", "Ô Search (tìm kiếm) góc phải trên", "Nút Start", "Taskbar"], answer: 1, explanation: "Ô Search ở góc trên bên phải giúp quét tìm tên tệp nhanh chóng.", remember: "Dùng ô Search góc trên phải File Explorer.", hint: "Hộp có kính lúp ở góc trên phải." },
+        { id: 31, topic: "Bài 4. Mạng xã hội", topicKey: "b4", difficulty: "Nhận biết", question: "Mạng xã hội phổ biến nào em biết?", options: ["Word", "Facebook, Zalo, TikTok", "Excel", "Paint"], answer: 1, explanation: "Facebook, Zalo, TikTok là các nền tảng mạng xã hội kết nối trực tuyến.", remember: "Facebook, Zalo, TikTok là mạng xã hội.", hint: "Các ứng dụng giao lưu trực tuyến." },
+        { id: 32, topic: "Bài 4. Mạng xã hội", topicKey: "b4", difficulty: "Thông hiểu", question: "Ưu điểm của mạng xã hội là gì?", options: ["Gây nghiện", "Kết nối, chia sẻ thông tin, học tập nhanh chóng", "Mất thời gian", "Lộ thông tin cá nhân"], answer: 1, explanation: "Mạng xã hội giúp kết nối người thân, chia sẻ kiến thức và học tập nhóm.", remember: "Ưu điểm: Kết nối và lan tỏa thông tin nhanh.", hint: "Lợi ích tích cực kết nối cộng đồng." },
+        { id: 33, topic: "Bài 4. Mạng xã hội", topicKey: "b4", difficulty: "Thông hiểu", question: "Nhược điểm của mạng xã hội là gì?", options: ["Kết nối bạn bè", "Nguy cơ nghiện, lộ thông tin, bắt nạt trực tuyến", "Học tập hiệu quả", "Tìm kiếm nhanh"], answer: 1, explanation: "Có nguy cơ gây xao nhãng học tập, rò rỉ dữ liệu cá nhân và bạo lực mạng.", remember: "Mặt trái: Nghiện mạng, lộ bí mật, bạo lực mạng.", hint: "Tác hại khi sử dụng thiếu kiểm soát." },
+        { id: 34, topic: "Bài 4. Mạng xã hội", topicKey: "b4", difficulty: "Vận dụng", question: "Em KHÔNG nên làm gì trên mạng xã hội?", options: ["Chia sẻ bài học hay", "Đăng ảnh, số điện thoại, địa chỉ nhà cá nhân", "Kết bạn với người quen", "Hỏi bài thầy cô"], answer: 1, explanation: "Tuyệt đối không công khai số điện thoại, địa chỉ nhà kẻ xấu có thể lợi dụng.", remember: "Bảo vệ thông tin cá nhân trên mạng xã hội.", hint: "Hành động dễ dẫn tới nguy hiểm cho gia đình." },
+        { id: 35, topic: "Bài 4. Mạng xã hội", topicKey: "b4", difficulty: "Thông hiểu", question: "Bắt nạt trực tuyến (Cyberbullying) là gì?", options: ["Giúp đỡ bạn trên mạng", "Hành vi đe dọa, xúc phạm, lan truyền tin xấu về người khác qua mạng", "Chia sẻ bài học", "Tìm kiếm thông tin"], answer: 1, explanation: "Bắt nạt trực tuyến là hành vi xúc phạm, đe dọa, bôi nhọ người khác qua Internet.", remember: "Cyberbullying là hành vi xấu cần lên án và ngăn chặn.", hint: "Dùng lời lẽ xúc phạm đe dọa bạn bè." },
+        { id: 36, topic: "Bài 4. Mạng xã hội", topicKey: "b4", difficulty: "Vận dụng", question: "Khi bị bắt nạt trên mạng, em nên làm gì?", options: ["Bắt nạt lại", "Báo ngay cho thầy cô, phụ huynh và chặn tài khoản đó", "Im lặng chịu đựng", "Xóa tài khoản"], answer: 1, explanation: "Báo ngay cho người lớn tin cậy, chụp bằng chứng và chặn kẻ quấy rối.", remember: "Báo cho phụ huynh/thầy cô và chặn đối tượng xấu.", hint: "Tìm sự trợ giúp từ người lớn." },
+        { id: 37, topic: "Bài 4. Mạng xã hội", topicKey: "b4", difficulty: "Nhận biết", question: "Email là gì?", options: ["Mạng xã hội", "Thư điện tử gửi qua Internet", "Phần mềm game", "Trang web"], answer: 1, explanation: "Email (Electronic Mail) là thư điện tử truyền gửi dữ liệu qua mạng.", remember: "Email = Thư điện tử.", hint: "Thư gửi bằng phương tiện điện tử." },
+        { id: 38, topic: "Bài 4. Mạng xã hội", topicKey: "b4", difficulty: "Nhận biết", question: "Blog là gì?", options: ["Mạng cục bộ", "Nhật kí trực tuyến, trang web cá nhân chia sẻ bài viết", "Phần mềm diệt virus", "Hệ điều hành"], answer: 1, explanation: "Blog là dạng nhật ký web cá nhân chia sẻ góc nhìn, bài viết của tác giả.", remember: "Blog = Nhật kí trực tuyến cá nhân.", hint: "Trang nhật ký trên web." },
+        { id: 39, topic: "Bài 4. Mạng xã hội", topicKey: "b4", difficulty: "Nhận biết", question: "Kênh YouTube dùng để làm gì?", options: ["Soạn văn bản", "Chia sẻ và xem video trực tuyến", "Tạo bảng tính", "Gửi email"], answer: 1, explanation: "YouTube là nền tảng chia sẻ và phát trực tuyến video lớn nhất thế giới.", remember: "YouTube = Nền tảng chia sẻ video trực tuyến.", hint: "Trang xem video." },
+        { id: 40, topic: "Bài 4. Mạng xã hội", topicKey: "b4", difficulty: "Thông hiểu", question: "Để bảo vệ tài khoản mạng xã hội, em nên làm gì?", options: ["Dùng mật khẩu đơn giản '123456'", "Đặt mật khẩu mạnh, bật xác thực 2 bước, không chia sẻ mật khẩu", "Đăng mật khẩu lên Facebook", "Dùng chung tài khoản với bạn"], answer: 1, explanation: "Dùng mật khẩu phức tạp, kích hoạt 2FA và giữ kín tuyệt đối thông tin đăng nhập.", remember: "Mật khẩu mạnh + Xác thực 2 bước.", hint: "Bảo mật tài khoản đa lớp." }
+      ],
+
+      // ===== LỚP 8 =====
+      8: [
+        { id: 1, topic: "Bài 1. Lược sử công cụ tính toán", topicKey: "b1", difficulty: "Nhận biết", question: "Máy tính thế hệ 1 sử dụng linh kiện gì?", options: ["Đèn chân không", "Transistor", "IC", "VLSI"], answer: 0, explanation: "Thế hệ thứ nhất (1945-1955) sử dụng đèn chân không điện tử.", remember: "Thế hệ 1: Đèn chân không.", hint: "Linh kiện thủy tinh phát sáng thời kỳ đầu." },
+        { id: 2, topic: "Bài 1. Lược sử công cụ tính toán", topicKey: "b1", difficulty: "Nhận biết", question: "Máy tính điện tử đầu tiên tên gì?", options: ["Apple I", "ENIAC", "IBM PC", "Pascaline"], answer: 1, explanation: "ENIAC (1946) là chiếc máy tính điện tử đa năng đầu tiên.", remember: "ENIAC là máy tính điện tử đầu tiên.", hint: "Ra đời năm 1946 tại Mỹ." },
+        { id: 3, topic: "Bài 1. Lược sử công cụ tính toán", topicKey: "b1", difficulty: "Nhận biết", question: "Máy tính thế hệ 2 dùng linh kiện gì?", options: ["Đèn chân không", "Transistor (bóng bán dẫn)", "IC", "VLSI"], answer: 1, explanation: "Thế hệ thứ hai (1955-1965) sử dụng bóng bán dẫn (transistor).", remember: "Thế hệ 2: Transistor (bóng bán dẫn).", hint: "Bóng bán dẫn thay thế đèn chân không." },
+        { id: 4, topic: "Bài 1. Lược sử công cụ tính toán", topicKey: "b1", difficulty: "Nhận biết", question: "Máy tính thế hệ 3 dùng linh kiện gì?", options: ["Đèn chân không", "Transistor", "Mạch tích hợp IC", "VLSI"], answer: 2, explanation: "Thế hệ thứ ba (1965-1971) sử dụng mạch tích hợp (Integrated Circuit - IC).", remember: "Thế hệ 3: Mạch tích hợp IC.", hint: "Mạch tích hợp tích tụ nhiều bóng bán dẫn." },
+        { id: 5, topic: "Bài 1. Lược sử công cụ tính toán", topicKey: "b1", difficulty: "Nhận biết", question: "Máy tính thế hệ 4 gắn liền với gì?", options: ["Đèn chân không", "Vi xử lý (Microprocessor)", "Rơ le", "Ống tia âm cực"], answer: 1, explanation: "Thế hệ 4 (1971 đến nay) dùng vi xử lý với công nghệ vi mạch mật độ siêu cao (VLSI).", remember: "Thế hệ 4: Vi xử lý (Microprocessor).", hint: "Thời kỳ máy tính cá nhân PC ra đời." },
+        { id: 6, topic: "Bài 1. Lược sử công cụ tính toán", topicKey: "b1", difficulty: "Thông hiểu", question: "Máy tính thế hệ 5 hướng tới gì?", options: ["Tốc độ chậm hơn", "Trí tuệ nhân tạo (AI)", "Dùng đèn chân không", "Không có mạng"], answer: 1, explanation: "Thế hệ 5 phát triển trí tuệ nhân tạo (AI), tính toán lượng tử và nhận thức thông minh.", remember: "Thế hệ 5: Trí tuệ nhân tạo (AI).", hint: "Hướng tới sự thông minh nhân tạo." },
+        { id: 7, topic: "Bài 1. Lược sử công cụ tính toán", topicKey: "b1", difficulty: "Nhận biết", question: "Bàn tính (Abacus) là gì?", options: ["Máy tính điện tử", "Công cụ tính toán thủ công cổ xưa nhất", "Phần mềm", "Robot"], answer: 1, explanation: "Bàn tính gảy cơ học là công cụ tính toán thủ công có từ hàng ngàn năm trước.", remember: "Bàn tính (Abacus) là công cụ tính toán thủ công cổ xưa.", hint: "Khung gỗ có hạt xâu qua các que sắt." },
+        { id: 8, topic: "Bài 1. Lược sử công cụ tính toán", topicKey: "b1", difficulty: "Nhận biết", question: "Máy Pascaline do ai phát minh?", options: ["Alan Turing", "Blaise Pascal", "Steve Jobs", "Bill Gates"], answer: 1, explanation: "Nhà bác học Blaise Pascal phát minh ra máy tính cơ học Pascaline năm 1642.", remember: "Blaise Pascal sáng chế ra máy Pascaline.", hint: "Tên máy đặt theo tên của chính ông." },
+        { id: 9, topic: "Bài 1. Lược sử công cụ tính toán", topicKey: "b1", difficulty: "Nhận biết", question: "ENIAC ra đời năm nào?", options: ["1920", "1946", "1970", "2000"], answer: 1, explanation: "ENIAC hoàn thành và công bố vào năm 1946.", remember: "ENIAC ra đời năm 1946.", hint: "Ngay sau khi Thế chiến 2 kết thúc." },
+        { id: 10, topic: "Bài 1. Lược sử công cụ tính toán", topicKey: "b1", difficulty: "Thông hiểu", question: "Xu hướng phát triển máy tính là gì?", options: ["Ngày càng to hơn", "Nhỏ gọn, nhanh hơn, thông minh hơn", "Chậm hơn", "Đắt hơn và khó dùng"], answer: 1, explanation: "Kích thước ngày càng thu nhỏ, tốc độ tăng gấp bội và tích hợp trí thông minh.", remember: "Xu hướng: Nhỏ gọn, tốc độ siêu nhanh, thông minh.", hint: "Nhỏ hơn nhưng mạnh mẽ hơn." },
+        { id: 11, topic: "Bài 2. Thông tin trong MT số", topicKey: "b2", difficulty: "Thông hiểu", question: "Đặc điểm của thông tin trong môi trường số là gì?", options: ["Ít và chậm", "Khối lượng lớn, đa dạng, lan truyền nhanh", "Luôn chính xác 100%", "Không thể lưu trữ"], answer: 1, explanation: "Thông tin số hóa có dung lượng cực lớn, nhiều thể loại và lan tỏa khắp thế giới trong tích tắc.", remember: "Khối lượng khổng lồ, đa dạng, lan truyền nhanh chóng.", hint: "Quy mô khổng lồ và tốc độ cực nhanh." },
+        { id: 12, topic: "Bài 2. Thông tin trong MT số", topicKey: "b2", difficulty: "Thông hiểu", question: "Đâu KHÔNG phải đặc điểm TT số?", options: ["Khối lượng khổng lồ", "Đa dạng dạng TT", "Hoàn toàn chính xác không cần kiểm chứng", "Lan truyền nhanh"], answer: 2, explanation: "Thông tin trên mạng có cả tin rác, tin giả nên bắt buộc phải kiểm chứng.", remember: "Thông tin số KHÔNG PHẢI luôn luôn đúng.", hint: "Điều khẳng định sai lầm về tin trên mạng." },
+        { id: 13, topic: "Bài 2. Thông tin trong MT số", topicKey: "b2", difficulty: "Thông hiểu", question: "Tác động tích cực của TT số?", options: ["Nghiện mạng", "Truy cập tri thức nhanh, học tập hiệu quả", "Lộ thông tin cá nhân", "Mất thời gian"], answer: 1, explanation: "Tạo cơ hội tiếp cận tri thức nhân loại bình đẳng và thúc đẩy chuyển đổi số học tập.", remember: "Tiếp cận tri thức nhanh chóng và học tập hiệu quả.", hint: "Mặt tích cực nâng cao hiểu biết." },
+        { id: 14, topic: "Bài 2. Thông tin trong MT số", topicKey: "b2", difficulty: "Thông hiểu", question: "Tác động tiêu cực của TT số?", options: ["Học tập hiệu quả", "Nghiện mạng, tiếp xúc thông tin xấu", "Kết nối bạn bè", "Truy cập tri thức"], answer: 1, explanation: "Gây lãng phí thời gian, hội chứng nghiện màn hình và rủi ro tiếp xúc độc hại.", remember: "Mặt trái: Nghiện internet, tin xấu độc hại.", hint: "Hậu quả xấu khi sử dụng quá đà." },
+        { id: 15, topic: "Bài 2. Thông tin trong MT số", topicKey: "b2", difficulty: "Thông hiểu", question: "Bước đầu tiên đánh giá độ tin cậy TT?", options: ["Chia sẻ ngay", "Kiểm tra tác giả và nguồn gốc", "Like", "Tin tuyệt đối"], answer: 1, explanation: "Xem xét ai là tác giả, tổ chức nào xuất bản thông tin đó có uy tín không.", remember: "Kiểm tra danh tính tác giả và nguồn gốc trước tiên.", hint: "Xem bài viết do ai viết và đăng ở đâu." },
+        { id: 16, topic: "Bài 2. Thông tin trong MT số", topicKey: "b2", difficulty: "Nhận biết", question: "Tên miền .gov thuộc loại tổ chức nào?", options: ["Thương mại", "Chính phủ", "Giải trí", "Cá nhân"], answer: 1, explanation: ".gov là viết tắt của Government (cơ quan chính phủ nhà nước).", remember: ".gov = Website chính phủ (Government).", hint: "Cơ quan công quyền nhà nước." },
+        { id: 17, topic: "Bài 2. Thông tin trong MT số", topicKey: "b2", difficulty: "Thông hiểu", question: "Tin giả (Fake News) có đặc điểm gì?", options: ["Có tên tác giả rõ ràng", "Giật gân, không rõ nguồn, kêu gọi chia sẻ gấp", "Từ báo chính thống", "Từ Bộ GD&ĐT"], answer: 1, explanation: "Tin giả thường dùng tít giật gân, tạo nỗi sợ hãi hoặc tò mò và hối thúc chia sẻ.", remember: "Tin giả giật gân, mập mờ nguồn gốc và kêu gọi share gấp.", hint: "Tiêu đề sốc không có căn cứ xác thực." },
+        { id: 18, topic: "Bài 2. Thông tin trong MT số", topicKey: "b2", difficulty: "Thông hiểu", question: "Kiểm chứng chéo nghĩa là gì?", options: ["Tin 1 nguồn duy nhất", "So sánh thông tin từ nhiều nguồn khác nhau", "Xóa thông tin", "Chia sẻ ngay"], answer: 1, explanation: "Đối chiếu sự kiện từ ít nhất 2 đến 3 nguồn báo chí độc lập để kiểm tra tính xác thực.", remember: "Kiểm chứng chéo = Đối chiếu giữa nhiều nguồn.", hint: "So sánh nhiều nguồn xem có trùng khớp." },
+        { id: 19, topic: "Bài 2. Thông tin trong MT số", topicKey: "b2", difficulty: "Nhận biết", question: "Trang .edu thuộc loại tổ chức nào?", options: ["Thương mại", "Giáo dục", "Giải trí", "Quân sự"], answer: 1, explanation: ".edu là viết tắt của Education (Trường học, viện nghiên cứu, giáo dục).", remember: ".edu = Giáo dục (Education).", hint: "Lĩnh vực học tập giảng dạy." },
+        { id: 20, topic: "Bài 2. Thông tin trong MT số", topicKey: "b2", difficulty: "Vận dụng", question: "Khi thấy thông tin giật gân trên mạng xã hội, em nên làm gì?", options: ["Chia sẻ ngay", "Kiểm tra nguồn gốc trước khi tin", "Like", "Comment khen"], answer: 1, explanation: "Bình tĩnh tra cứu lại từ các báo chính thống, không vội vàng tương tác chia sẻ.", remember: "Bình tĩnh kiểm tra tính xác thực trước khi tin.", hint: "Không vội tin và chia sẻ ngay." },
+        { id: 21, topic: "Bài 3. Thực hành khai thác TTS", topicKey: "b3", difficulty: "Thông hiểu", question: "Khi tìm kiếm trên Google, dùng dấu ngoặc kép để làm gì?", options: ["Xóa kết quả", "Tìm chính xác cụm từ", "Mở tab mới", "Tắt Google"], answer: 1, explanation: "Ép công cụ tìm đúng nguyên văn thứ tự cụm từ.", remember: "Dấu ngoặc kép \"...\" dùng tìm chính xác cụm từ.", hint: "Tìm khớp hoàn toàn cụm từ." },
+        { id: 22, topic: "Bài 3. Thực hành khai thác TTS", topicKey: "b3", difficulty: "Thông hiểu", question: "Trích dẫn nguồn tham khảo nghĩa là?", options: ["Xóa tên tác giả", "Ghi rõ tên tác giả, nguồn gốc khi sử dụng", "Tự nhận là của mình", "Không cần ghi"], answer: 1, explanation: "Tôn trọng tác quyền bằng cách ghi rõ tên người tạo ra và đường dẫn tài liệu.", remember: "Ghi rõ tác giả và nguồn gốc tài liệu tham khảo.", hint: "Ghi rõ nguồn tài liệu tham khảo." },
+        { id: 23, topic: "Bài 3. Thực hành khai thác TTS", topicKey: "b3", difficulty: "Thông hiểu", question: "Vi phạm bản quyền là hành vi nào?", options: ["Ghi rõ nguồn", "Sao chép tác phẩm người khác rồi tự nhận", "Dùng Creative Commons", "Chia sẻ link gốc"], answer: 1, explanation: "Tự ý sử dụng, phát hành hoặc nhận vơ tác phẩm của người khác là vi phạm luật bản quyền.", remember: "Sao chép không xin phép hoặc tự nhận là của mình vi phạm bản quyền.", hint: "Nhận vơ công sức của người khác." },
+        { id: 24, topic: "Bài 3. Thực hành khai thác TTS", topicKey: "b3", difficulty: "Nhận biết", question: "Creative Commons là gì?", options: ["Virus", "Giấy phép cho phép sử dụng tác phẩm với điều kiện nhất định", "Phần mềm", "Mạng xã hội"], answer: 1, explanation: "Creative Commons (CC) là tổ chức cung cấp các giấy phép bản quyền mở chuẩn hóa cho tác giả.", remember: "Creative Commons = Giấy phép bản quyền công cộng.", hint: "Giấy phép chia sẻ tài nguyên hợp pháp." },
+        { id: 25, topic: "Bài 3. Thực hành khai thác TTS", topicKey: "b3", difficulty: "Vận dụng", question: "Toán tử site: trên Google dùng để?", options: ["Tắt Google", "Tìm kết quả chỉ trong 1 trang web cụ thể", "Xóa kết quả", "Mở email"], answer: 1, explanation: "Ví dụ: 'Tin học site:unigo.edu.vn' chỉ tìm trong website unigo.", remember: "site: = Giới hạn tìm kiếm trong trang web cụ thể.", hint: "Giới hạn phạm vi trang web." },
+        { id: 26, topic: "Bài 3. Thực hành khai thác TTS", topicKey: "b3", difficulty: "Thông hiểu", question: "Toán tử - (trừ) trên Google dùng để?", options: ["Cộng kết quả", "Loại bỏ từ khóa không mong muốn", "Nhân kết quả", "Chia kết quả"], answer: 1, explanation: "Đặt dấu trừ ngay trước từ khóa muốn loại trừ khỏi kết quả tìm kiếm.", remember: "Dấu trừ (-) loại bỏ từ khóa không mong muốn.", hint: "Loại trừ kết quả không liên quan." },
+        { id: 27, topic: "Bài 3. Thực hành khai thác TTS", topicKey: "b3", difficulty: "Nhận biết", question: "Google Scholar dùng để tìm gì?", options: ["Game", "Tài liệu học thuật, nghiên cứu khoa học", "Video giải trí", "Nhạc"], answer: 1, explanation: "Google Scholar là dịch vụ tìm kiếm các bài báo khoa học, luận án và sách học thuật.", remember: "Google Scholar = Tìm tài liệu học thuật khoa học.", hint: "Scholar có nghĩa là học giả." },
+        { id: 28, topic: "Bài 3. Thực hành khai thác TTS", topicKey: "b3", difficulty: "Thông hiểu", question: "Khi sử dụng ảnh từ Internet, em cần?", options: ["Thoải mái không cần xin phép", "Kiểm tra bản quyền và ghi rõ nguồn", "Xóa tên tác giả", "Đổi tên thành của mình"], answer: 1, explanation: "Cần kiểm tra giấy phép sử dụng của hình ảnh và ghi chú tác giả minh bạch.", remember: "Luôn kiểm tra bản quyền và ghi nguồn ảnh.", hint: "Kiểm tra giấy phép tác quyền ảnh." },
+        { id: 29, topic: "Bài 3. Thực hành khai thác TTS", topicKey: "b3", difficulty: "Vận dụng", question: "Filetype:pdf trên Google dùng để?", options: ["Xóa PDF", "Tìm chỉ tệp PDF", "Mở PDF", "In PDF"], answer: 1, explanation: "filetype: định dạng chỉ lọc các tệp tin có đuôi mở rộng tương ứng.", remember: "filetype:pdf = Tìm tệp định dạng PDF.", hint: "Lọc riêng tệp tài liệu PDF." },
+        { id: 30, topic: "Bài 4-5. Đạo đức và bảng tính", topicKey: "b4", difficulty: "Nhận biết", question: "Đạo đức số là gì?", options: ["Chơi game", "Chuẩn mực hành vi khi sử dụng công nghệ số", "Phần mềm", "Phần cứng"], answer: 1, explanation: "Đạo đức số là hệ thống các quy tắc ứng xử văn minh, đúng đắn trên không gian mạng.", remember: "Đạo đức số = Chuẩn mực hành vi văn minh trên môi trường số.", hint: "Quy chuẩn ứng xử có văn hóa trên mạng." },
+        { id: 31, topic: "Bài 4-5. Đạo đức và bảng tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Hành vi nào vi phạm đạo đức số?", options: ["Ghi nguồn trích dẫn", "Hack tài khoản người khác", "Dùng phần mềm có bản quyền", "Bảo vệ thông tin cá nhân"], answer: 1, explanation: "Xâm phạm tài khoản, đánh cắp mật khẩu là hành vi vi phạm đạo đức và pháp luật.", remember: "Hack tài khoản là hành vi vi phạm pháp luật và đạo đức số.", hint: "Hành vi xâm nhập trái phép dữ liệu người khác." },
+        { id: 32, topic: "Bài 4-5. Đạo đức và bảng tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Bản quyền phần mềm nghĩa là gì?", options: ["Miễn phí hoàn toàn", "Quyền sở hữu trí tuệ của tác giả đối với phần mềm", "Không ai sở hữu", "Chỉ dùng 1 ngày"], answer: 1, explanation: "Quyền sở hữu hợp pháp bảo vệ công sức sáng tạo của lập trình viên và công ty phần mềm.", remember: "Bản quyền bảo hộ quyền sở hữu trí tuệ tác giả.", hint: "Quyền sở hữu trí tuệ của người tạo ra." },
+        { id: 33, topic: "Bài 4-5. Đạo đức và bảng tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Phần mềm mã nguồn mở là gì?", options: ["Phần mềm không dùng được", "Phần mềm cho phép xem, sửa đổi và chia sẻ mã nguồn miễn phí", "Phần mềm rất đắt", "Phần mềm chỉ chạy trên hệ điều hành Mac"], answer: 1, explanation: "Open source software công khai mã nguồn cho cộng đồng cùng phát triển và sử dụng.", remember: "Mã nguồn mở = Cho phép xem, sửa và chia sẻ mã nguồn.", hint: "Mã nguồn công khai tự do." },
+        { id: 34, topic: "Bài 4-5. Đạo đức và bảng tính", topicKey: "b4", difficulty: "Nhận biết", question: "Ô trong bảng tính Excel được xác định bởi gì?", options: ["Chỉ hàng", "Giao điểm của cột và hàng (ví dụ: A1, B2)", "Chỉ cột", "Tên tệp"], answer: 1, explanation: "Địa chỉ ô = Tên cột kết hợp số hàng (Ví dụ ô C5 nằm ở cột C hàng 5).", remember: "Địa chỉ ô = Giao của Cột và Hàng (Cột trước, Hàng sau).", hint: "Kết hợp giữa chữ cái cột và số thứ tự hàng." },
+        { id: 35, topic: "Bài 4-5. Đạo đức và bảng tính", topicKey: "b4", difficulty: "Nhận biết", question: "Cột trong Excel được đánh tên bằng gì?", options: ["Số (1, 2, 3)", "Chữ cái (A, B, C)", "Kí hiệu đặc biệt", "Ngày tháng"], answer: 1, explanation: "Các cột trong Excel được ký hiệu bằng các chữ cái A, B, C, D...", remember: "Cột = Ký hiệu bằng chữ cái A, B, C...", hint: "Các chữ cái từ A đến Z." },
+        { id: 36, topic: "Bài 4-5. Đạo đức và bảng tính", topicKey: "b4", difficulty: "Nhận biết", question: "Hàng trong Excel được đánh số bằng gì?", options: ["Chữ cái", "Số (1, 2, 3...)", "Tên tháng", "Ký hiệu"], answer: 1, explanation: "Các hàng ngang trong bảng tính Excel được đánh số 1, 2, 3, 4...", remember: "Hàng = Đánh số thứ tự 1, 2, 3...", hint: "Dãy số tự nhiên từ trên xuống." },
+        { id: 37, topic: "Bài 4-5. Đạo đức và bảng tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Thanh công thức trong Excel dùng để?", options: ["Vẽ tranh", "Nhập và hiển thị nội dung/công thức của ô đang chọn", "In tài liệu", "Tắt Excel"], answer: 1, explanation: "Formula Bar hiển thị dữ liệu hoặc công thức toán học tính toán của ô đang chọn.", remember: "Thanh công thức = Nhập và xem công thức trong ô.", hint: "Nơi xem và chỉnh sửa công thức tính." },
+        { id: 38, topic: "Bài 4-5. Đạo đức và bảng tính", topicKey: "b4", difficulty: "Nhận biết", question: "Để nhập dữ liệu vào ô Excel, em cần?", options: ["Click vào ô → gõ nội dung → Enter", "Rút USB", "Tắt máy", "Xóa Excel"], answer: 0, explanation: "Nhấp chuột chọn ô đích → gõ văn bản/số liệu → nhấn Enter để hoàn tất.", remember: "Click ô → Gõ dữ liệu → Nhấn Enter.", hint: "Chọn ô rồi gõ và nhấn Enter." },
+        { id: 39, topic: "Bài 4-5. Đạo đức và bảng tính", topicKey: "b4", difficulty: "Nhận biết", question: "Sheet (trang tính) trong Excel là gì?", options: ["Trang web", "Một bảng tính chứa các ô dữ liệu", "Phần mềm Word", "File hình ảnh"], answer: 1, explanation: "Mỗi Sheet là một bảng tính lưới gồm các hàng và cột ô dữ liệu.", remember: "Sheet = Một bảng tính làm việc trong tệp Excel.", hint: "Bảng tính con trong tệp sách bài tập." },
+        { id: 40, topic: "Bài 4-5. Đạo đức và bảng tính", topicKey: "b4", difficulty: "Nhận biết", question: "Để mở Excel, em click vào biểu tượng nào?", options: ["Biểu tượng W (Word)", "Biểu tượng X (Excel) màu xanh lá", "Biểu tượng P (PowerPoint)", "Biểu tượng Chrome"], answer: 1, explanation: "Microsoft Excel có biểu tượng chữ X màu xanh lá cây đặc trưng.", remember: "Excel = Biểu tượng chữ X màu xanh lá cây.", hint: "Chữ X màu xanh lục." }
+      ]
+    };
+
+    const GRADE_METADATA = {
+      3: {
+        title: "Tin Học 3 - Hành Trình Khám Phá Công Nghệ",
+        stages: [
+          { key: "all", name: "🌟 Toàn Bộ 40 Câu", desc: "Trọn vẹn 4 bài học học kì 1" },
+          { key: "b1", name: "🟢 Bài 1: Thông tin", desc: "Thông tin & Quyết định (10 câu)" },
+          { key: "b2", name: "🔵 Bài 2: Xử lí tin", desc: "Quy trình xử lí thông tin (10 câu)" },
+          { key: "b3", name: "🟣 Bài 3: Máy tính", desc: "Các bộ phận máy tính (10 câu)" },
+          { key: "b4", name: "🏆 Bài 4: An toàn", desc: "Tư thế ngồi & Bảo vệ máy (10 câu)" }
+        ]
+      },
+      4: {
+        title: "Tin Học 4 - Chinh Phục Thế Giới Số",
+        stages: [
+          { key: "all", name: "🌟 Toàn Bộ 40 Câu", desc: "Trọn vẹn 4 bài học học kì 1" },
+          { key: "b1", name: "🟢 Bài 1: Phần cứng", desc: "Phần cứng & Phần mềm (10 câu)" },
+          { key: "b2", name: "🔵 Bài 2: Bàn phím", desc: "Kỹ năng gõ 10 ngón (10 câu)" },
+          { key: "b3", name: "🟣 Bài 3: Trang web", desc: "Thông tin trên trang web (10 câu)" },
+          { key: "b4", name: "🏆 Bài 4: Tìm kiếm", desc: "Tìm kiếm trên Google (10 câu)" }
+        ]
+      },
+      5: {
+        title: "Tin Học 5 - Giải Quyết Vấn Đề Công Nghệ",
+        stages: [
+          { key: "all", name: "🌟 Toàn Bộ 40 Câu", desc: "Trọn vẹn 4 bài học học kì 1" },
+          { key: "b1", name: "🟢 Bài 1: Làm việc MT", desc: "Em có thể làm gì với máy tính (10 câu)" },
+          { key: "b2", name: "🔵 Bài 2: Tìm website", desc: "Tìm kiếm thông tin web (10 câu)" },
+          { key: "b3", name: "🟣 Bài 3: GQ Vấn đề", desc: "Tìm kiếm giải quyết vấn đề (10 câu)" },
+          { key: "b4", name: "🏆 Bài 4: Cây thư mục", desc: "Quản lý tệp và thư mục (10 câu)" }
+        ]
+      },
+      6: {
+        title: "Tin Học 6 - Khám Phá Dữ Liệu & Mạng Máy Tính",
+        stages: [
+          { key: "all", name: "🌟 Toàn Bộ 40 Câu", desc: "Trọn vẹn 4 bài học học kì 1" },
+          { key: "b1", name: "🟢 Bài 1: Dữ liệu", desc: "Thông tin & Vật mang tin (10 câu)" },
+          { key: "b2", name: "🔵 Bài 2: Xử lí thông tin", desc: "Quy trình & vai trò CPU (10 câu)" },
+          { key: "b3", name: "🟣 Bài 3: Đơn vị Bit", desc: "Biểu diễn bit & dung lượng (10 câu)" },
+          { key: "b4", name: "🏆 Bài 4: Mạng LAN/WAN", desc: "Mạng máy tính & Router/Switch (10 câu)" }
+        ]
+      },
+      7: {
+        title: "Tin Học 7 - Phần Mềm & Không Gian Số An Toàn",
+        stages: [
+          { key: "all", name: "🌟 Toàn Bộ 40 Câu", desc: "Trọn vẹn 4 bài học học kì 1" },
+          { key: "b1", name: "🟢 Bài 1: Thiết bị vào/ra", desc: "Phân loại Input - Output (10 câu)" },
+          { key: "b2", name: "🔵 Bài 2: Phần mềm", desc: "Phần mềm hệ thống & ứng dụng (10 câu)" },
+          { key: "b3", name: "🟣 Bài 3: Quản lý tệp", desc: "Đường dẫn & phím tắt (10 câu)" },
+          { key: "b4", name: "🏆 Bài 4: Mạng xã hội", desc: "Ứng xử & An toàn mạng (10 câu)" }
+        ]
+      },
+      8: {
+        title: "Tin Học 8 - Lịch Sử Máy Tính & Đạo Đức Số",
+        stages: [
+          { key: "all", name: "🌟 Toàn Bộ 40 Câu", desc: "Trọn vẹn 5 bài học học kì 1" },
+          { key: "b1", name: "🟢 Bài 1: 5 Thế hệ MT", desc: "Lược sử công cụ tính toán (10 câu)" },
+          { key: "b2", name: "🔵 Bài 2: Môi trường số", desc: "Đặc điểm & Tin giả (10 câu)" },
+          { key: "b3", name: "🟣 Bài 3: Khai thác số", desc: "Tìm kiếm nâng cao & Bản quyền (9 câu)" },
+          { key: "b4", name: "🏆 Bài 4-5: Đạo đức & Excel", desc: "Đạo đức số & Bảng tính (11 câu)" }
+        ]
+      }
+    };
+
+    const state = {
+      currentGrade: 3,
+      selectedStage: "all",
+      playerName: "Học sinh UNIGO",
+      questions: [],
+      currentIndex: 0,
+      score: 0,
+      lives: 3,
+      combo: 0,
+      maxCombo: 0,
+      answered: false,
+      correctCount: 0,
+      lifelines: { fiftyFifty: 2, robotHint: 2, skip: 1 },
+      topicStats: {}
+    };
+
+    /* DOM elements */
+    const screenStart = document.getElementById("screen-start");
+    const screenQuiz = document.getElementById("screen-quiz");
+    const screenResult = document.getElementById("screen-result");
+
+    const stageCardsContainer = document.getElementById("stage-cards-container");
+    const playerNameInput = document.getElementById("player-name-input");
+    const displayGradeLabel = document.getElementById("display-grade-label");
+    const displayPlayerName = document.getElementById("display-player-name");
+    const displayScore = document.getElementById("display-score");
+    const displayLives = document.getElementById("display-lives");
+    const displayComboBox = document.getElementById("display-combo-box");
+    const displayCombo = document.getElementById("display-combo");
+    const progressBar = document.getElementById("progress-bar");
+
+    const quizTopicBadge = document.getElementById("quiz-topic-badge");
+    const quizCounter = document.getElementById("quiz-counter");
+    const quizDifficulty = document.getElementById("quiz-difficulty");
+    const quizQuestionText = document.getElementById("quiz-question-text");
+    const quizOptionsContainer = document.getElementById("quiz-options-container");
+    const quizExplanationBox = document.getElementById("quiz-explanation-box");
+    const quizFeedbackTitle = document.getElementById("quiz-feedback-title");
+    const quizKnowledgeText = document.getElementById("quiz-knowledge-text");
+    const quizRobotCheer = document.getElementById("quiz-robot-cheer");
+    const btnNextQuestion = document.getElementById("btn-next-question");
+
+    const btnLife5050 = document.getElementById("btn-life-5050");
+    const btnLifeRobot = document.getElementById("btn-life-robot");
+    const btnLifeSkip = document.getElementById("btn-life-skip");
+    const count5050 = document.getElementById("count-5050");
+    const countRobot = document.getElementById("count-robot");
+    const countSkip = document.getElementById("count-skip");
+
+    const customModal = document.getElementById("custom-modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalMessage = document.getElementById("modal-message");
+    const modalIcon = document.getElementById("modal-icon");
+    const btnCloseModal = document.getElementById("btn-close-modal");
+
+    function renderStagesForGrade(grade) {
+      state.currentGrade = grade;
+      state.selectedStage = "all";
+      displayGradeLabel.textContent = `Lớp ${grade}`;
+
+      const meta = GRADE_METADATA[grade];
+      stageCardsContainer.innerHTML = "";
+
+      meta.stages.forEach((st, idx) => {
+        const div = document.createElement("div");
+        div.className = `stage-card ${idx === 0 ? "selected" : ""}`;
+        div.dataset.stage = st.key;
+        div.innerHTML = `
+          <h4>${st.name}</h4>
+          <p>${st.desc}</p>
+        `;
+        div.addEventListener("click", () => {
+          sound.playClick();
+          stageCardsContainer.querySelectorAll(".stage-card").forEach(c => c.classList.remove("selected"));
+          div.classList.add("selected");
+          state.selectedStage = st.key;
+        });
+        stageCardsContainer.appendChild(div);
+      });
+    }
+
+    // Gắn sự kiện chuyển tab 6 khối lớp
+    document.querySelectorAll(".btn-grade-tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        sound.playClick();
+        document.querySelectorAll(".btn-grade-tab").forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        const g = parseInt(tab.dataset.grade, 10);
+        renderStagesForGrade(g);
+      });
+    });
+
+    // Mặc định nạp Lớp 3
+    renderStagesForGrade(3);
+
+    function switchScreen(screen) {
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+      screen.classList.add("active");
+    }
+
+    document.getElementById("btn-start-game").addEventListener("click", () => {
+      sound.playClick();
+      const enteredName = playerNameInput.value.trim();
+      state.playerName = enteredName || `Học sinh Lớp ${state.currentGrade}`;
+      displayPlayerName.textContent = state.playerName;
+
+      const fullBank = QUESTION_BANK_BY_GRADE[state.currentGrade] || [];
+      let pool = [];
+
+      if (state.selectedStage === "all") {
+        pool = [...fullBank];
+      } else {
+        pool = fullBank.filter(q => q.topicKey === state.selectedStage);
+      }
+
+      state.questions = pool;
+      state.currentIndex = 0;
+      state.score = 0;
+      state.lives = 3;
+      state.combo = 0;
+      state.maxCombo = 0;
+      state.correctCount = 0;
+      state.lifelines = { fiftyFifty: 2, robotHint: 2, skip: 1 };
+
+      // Khởi tạo bảng thống kê chủ đề
+      state.topicStats = {};
+      state.questions.forEach(q => {
+        if (!state.topicStats[q.topic]) {
+          state.topicStats[q.topic] = { total: 0, correct: 0 };
+        }
+        state.topicStats[q.topic].total++;
+      });
+
+      updateLifelineButtons();
+      updateTopBar();
+      loadQuestion(state.currentIndex);
+      switchScreen(screenQuiz);
+    });
+
+    function updateTopBar() {
+      displayScore.textContent = state.score;
+      displayLives.textContent = "❤️".repeat(Math.max(0, state.lives));
+      if (state.combo >= 2) {
+        displayComboBox.style.display = "flex";
+        displayCombo.textContent = state.combo;
+      } else {
+        displayComboBox.style.display = "none";
+      }
+      const progress = ((state.currentIndex) / state.questions.length) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+
+    function updateLifelineButtons() {
+      count5050.textContent = state.lifelines.fiftyFifty;
+      countRobot.textContent = state.lifelines.robotHint;
+      countSkip.textContent = state.lifelines.skip;
+      btnLife5050.disabled = state.lifelines.fiftyFifty <= 0;
+      btnLifeRobot.disabled = state.lifelines.robotHint <= 0;
+      btnLifeSkip.disabled = state.lifelines.skip <= 0;
+    }
+
+    const letters = ["A", "B", "C", "D"];
+
+    function loadQuestion(index) {
+      state.answered = false;
+      quizExplanationBox.style.display = "none";
+
+      const q = state.questions[index];
+      quizTopicBadge.textContent = "📘 " + q.topic;
+      quizCounter.textContent = `CÂU ${index + 1} / ${state.questions.length}`;
+      quizDifficulty.textContent = `Mức độ: ${q.difficulty}`;
+      quizQuestionText.textContent = q.question;
+
+      quizOptionsContainer.innerHTML = "";
+      q.options.forEach((optText, i) => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.dataset.index = i;
+        btn.innerHTML = `
+          <div class="opt-letter">${letters[i]}</div>
+          <div style="flex-grow: 1;">${optText}</div>
+        `;
+        btn.addEventListener("click", () => handleSelectAnswer(i, btn));
+        quizOptionsContainer.appendChild(btn);
+      });
+
+      updateTopBar();
+    }
+
+    function handleSelectAnswer(selectedIndex, selectedBtn) {
+      if (state.answered) return;
+      state.answered = true;
+
+      const q = state.questions[state.currentIndex];
+      const allBtns = quizOptionsContainer.querySelectorAll(".option-btn");
+      allBtns.forEach(b => b.classList.add("disabled"));
+
+      const isCorrect = selectedIndex === q.answer;
+
+      if (isCorrect) {
+        sound.playCorrect();
+        fireConfetti(55);
+        selectedBtn.classList.add("correct");
+
+        state.combo++;
+        if (state.combo > state.maxCombo) state.maxCombo = state.combo;
+
+        let basePoints = 100;
+        if (q.difficulty === "Thông hiểu") basePoints = 120;
+        if (q.difficulty === "Vận dụng" || q.difficulty === "Vận dụng cao") basePoints = 150;
+
+        let comboBonus = 0;
+        if (state.combo === 2) comboBonus = 20;
+        else if (state.combo === 3) comboBonus = 30;
+        else if (state.combo >= 4) comboBonus = 50;
+
+        state.score += (basePoints + comboBonus);
+        state.correctCount++;
+        if (state.topicStats[q.topic]) state.topicStats[q.topic].correct++;
+
+        quizExplanationBox.className = "explanation-box correct-feedback";
+        quizFeedbackTitle.innerHTML = `🎉 CHÍNH XÁC! (+${basePoints}${comboBonus > 0 ? " + " + comboBonus + " Combo" : ""} điểm)`;
+        quizKnowledgeText.innerHTML = `<strong>💡 Ghi nhớ:</strong> ${q.remember}<br><span style="color:#475569; font-size: 0.95rem;">${q.explanation}</span>`;
+        quizRobotCheer.innerHTML = `🤖 BYTE: Xuất sắc lắm ${state.playerName}! Em đã nắm rất vững kiến thức này.`;
+      } else {
+        sound.playWrong();
+        selectedBtn.classList.add("wrong");
+        allBtns[q.answer].classList.add("correct");
+
+        state.combo = 0;
+        state.lives--;
+
+        quizExplanationBox.className = "explanation-box wrong-feedback";
+        quizFeedbackTitle.innerHTML = `❌ CHƯA CHÍNH XÁC!`;
+        quizKnowledgeText.innerHTML = `<strong>Đáp án đúng là ${letters[q.answer]}:</strong> ${q.options[q.answer]}<br><strong>💡 Giải thích:</strong> ${q.explanation}<br><strong>🧠 Ghi nhớ:</strong> ${q.remember}`;
+        quizRobotCheer.innerHTML = `🤖 BYTE: Đừng nản lòng nhé! Đọc kỹ ghi nhớ ở trên để làm đúng ở các câu tiếp theo!`;
+
+        if (state.lives <= 0) {
+          setTimeout(() => {
+            showModal("🤖 Tiếp Sức Từ BYTE!", "Em đã tạm thời dùng hết 3 mạng, nhưng BYTE vừa tặng thêm cho em 2 trái tim ❤️❤️ để hoàn thành chặng đường ôn tập nhé!", "💖");
+            state.lives = 2;
+            updateTopBar();
+          }, 600);
+        }
+      }
+
+      quizExplanationBox.style.display = "block";
+      updateTopBar();
+      quizExplanationBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    btnNextQuestion.addEventListener("click", () => {
+      sound.playClick();
+      state.currentIndex++;
+      if (state.currentIndex < state.questions.length) {
+        loadQuestion(state.currentIndex);
+      } else {
+        showFinalResult();
+      }
+    });
+
+    btnLife5050.addEventListener("click", () => {
+      if (state.answered || state.lifelines.fiftyFifty <= 0) return;
+      sound.playClick();
+      state.lifelines.fiftyFifty--;
+      updateLifelineButtons();
+
+      const q = state.questions[state.currentIndex];
+      const wrongIndices = [0, 1, 2, 3].filter(idx => idx !== q.answer);
+      wrongIndices.sort(() => Math.random() - 0.5);
+      const toHide = wrongIndices.slice(0, 2);
+
+      const allBtns = quizOptionsContainer.querySelectorAll(".option-btn");
+      toHide.forEach(idx => {
+        allBtns[idx].classList.add("faded");
+        allBtns[idx].style.pointerEvents = "none";
+      });
+    });
+
+    btnLifeRobot.addEventListener("click", () => {
+      if (state.answered || state.lifelines.robotHint <= 0) return;
+      sound.playClick();
+      state.lifelines.robotHint--;
+      updateLifelineButtons();
+
+      const q = state.questions[state.currentIndex];
+      showModal("🤖 Robot BYTE Gợi Ý", q.hint || "Hãy đọc thật kỹ từ khóa trong câu hỏi nhé!", "💡");
+    });
+
+    btnLifeSkip.addEventListener("click", () => {
+      if (state.answered || state.lifelines.skip <= 0) return;
+      sound.playClick();
+      state.lifelines.skip--;
+      updateLifelineButtons();
+
+      state.currentIndex++;
+      if (state.currentIndex < state.questions.length) {
+        loadQuestion(state.currentIndex);
+      } else {
+        showFinalResult();
+      }
+    });
+
+    function showFinalResult() {
+      sound.playVictory();
+      fireConfetti(120);
+      switchScreen(screenResult);
+
+      const totalQ = state.questions.length;
+      const accuracy = totalQ > 0 ? Math.round((state.correctCount / totalQ) * 100) : 0;
+
+      document.getElementById("res-score").textContent = state.score;
+      document.getElementById("res-correct").textContent = `${state.correctCount} / ${totalQ}`;
+      document.getElementById("res-accuracy").textContent = `${accuracy}%`;
+      document.getElementById("res-combo").textContent = state.maxCombo;
+
+      document.getElementById("result-greeting").textContent = `Chúc mừng ${state.playerName} đã hoàn thành chặng ôn tập Tin học Lớp ${state.currentGrade}!`;
+
+      const rankBadge = document.getElementById("result-rank-badge");
+      let rankTitle = "🌱 ĐANG TIẾN BỘ";
+      let rankColor = "#64748b";
+
+      if (accuracy >= 90) {
+        rankTitle = "👑 HUYỀN THOẠI TIN HỌC";
+        rankColor = "#3a0ca3";
+      } else if (accuracy >= 80) {
+        rankTitle = "🥇 CAO THỦ TIN HỌC";
+        rankColor = "#2563eb";
+      } else if (accuracy >= 65) {
+        rankTitle = "🥈 CHIẾN BINH TIN HỌC";
+        rankColor = "#059669";
+      } else if (accuracy >= 50) {
+        rankTitle = "⭐ NHÀ KHÁM PHÁ";
+        rankColor = "#d97706";
+      }
+
+      rankBadge.textContent = rankTitle;
+      rankBadge.style.background = rankColor;
+
+      const tbody = document.getElementById("analysis-table-body");
+      tbody.innerHTML = "";
+
+      Object.entries(state.topicStats).forEach(([topicName, stats]) => {
+        if (stats.total === 0) return;
+        const rate = Math.round((stats.correct / stats.total) * 100);
+        let note = "Em nắm rất chắc!";
+        let icon = "✅";
+
+        if (rate < 60) {
+          note = "Cần đọc lại sách giáo khoa và ôn thêm";
+          icon = "🔴";
+        } else if (rate < 85) {
+          note = "Khá tốt, chú ý các từ khóa";
+          icon = "⚠️";
+        }
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><strong>${topicName}</strong></td>
+          <td><strong>${stats.correct}/${stats.total}</strong> (${rate}%) ${icon}</td>
+          <td>${note}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    document.getElementById("btn-replay").addEventListener("click", () => {
+      sound.playClick();
+      document.getElementById("btn-start-game").click();
+    });
+
+    document.getElementById("btn-back-home").addEventListener("click", () => {
+      sound.playClick();
+      switchScreen(screenStart);
+    });
+
+    function showModal(title, msg, icon = "🤖") {
+      modalTitle.textContent = title;
+      modalMessage.innerHTML = msg;
+      modalIcon.textContent = icon;
+      customModal.classList.add("active");
+    }
+
+    btnCloseModal.addEventListener("click", () => {
+      sound.playClick();
+      customModal.classList.remove("active");
+    });
+
+    document.getElementById("btn-open-rules").addEventListener("click", () => {
+      sound.playClick();
+      showModal(
+        "Hướng Dẫn Chinh Phục Kiến Thức",
+        `<p style="margin-bottom:8px;">1. Chọn <strong>Khối lớp (Lớp 3 - 8)</strong> và chọn <strong>Chặng ôn tập</strong> mong muốn.</p>
+         <p style="margin-bottom:8px;">2. Nhập tên học sinh để ghi nhận kết quả và xếp hạng.</p>
+         <p style="margin-bottom:8px;">3. Nhấn vào 1 trong 4 đáp án (A, B, C, D) của mỗi câu hỏi.</p>
+         <p style="margin-bottom:8px;">4. Sử dụng 3 quyền trợ giúp: <strong>50/50</strong>, <strong>Hỏi Robot BYTE</strong>, hoặc <strong>Bỏ qua</strong>.</p>
+         <p>5. Đọc kỹ phần <strong>Ghi nhớ</strong> sau mỗi câu để khắc sâu kiến thức trước khi kiểm tra.</p>`,
+        "📖"
+      );
+    });
+
+    // Chế độ tra cứu nhanh dành cho Giáo viên
+    document.getElementById("btn-teacher-view").addEventListener("click", () => {
+      sound.playClick();
+      const currentList = QUESTION_BANK_BY_GRADE[state.currentGrade] || [];
+      let html = `<div style="margin-bottom: 12px; font-weight: 700; color: #1e293b;">Bảng đáp án trắc nghiệm chuẩn - Tin Học Lớp ${state.currentGrade} (40 câu):</div>`;
+      html += `<div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; font-size: 0.9rem;">`;
+      currentList.forEach((q, idx) => {
+        html += `<div style="background: #f1f5f9; padding: 6px; border-radius: 8px; border: 1px solid #cbd5e1; text-align: center;"><strong>C${idx + 1}:</strong> <span style="color: #2563eb; font-weight: 800;">${letters[q.answer]}</span></div>`;
+      });
+      html += `</div>`;
+      html += `<p style="margin-top: 14px; font-size: 0.88rem; color: #64748b;">* Thầy cô có thể dùng bảng này để đối chiếu nhanh bài làm của học sinh trên lớp.</p>`;
+      showModal(`👨‍🏫 Chế Độ Giáo Viên - Tin Học ${state.currentGrade}`, html, "📋");
+    });
+
+    const btnSound = document.getElementById("btn-sound");
+    btnSound.addEventListener("click", () => {
+      sound.enabled = !sound.enabled;
+      btnSound.textContent = sound.enabled ? "🔊" : "🔇";
+      btnSound.title = sound.enabled ? "Âm thanh: Đang BẬT" : "Âm thanh: Đang TẮT";
+    });
+
+    const btnFullscreen = document.getElementById("btn-fullscreen");
+    btnFullscreen.addEventListener("click", () => {
+      sound.playClick();
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+        document.body.classList.add("presentation-mode");
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+        document.body.classList.remove("presentation-mode");
+      }
+    });
+
+    document.addEventListener("fullscreenchange", () => {
+      if (!document.fullscreenElement) {
+        document.body.classList.remove("presentation-mode");
+      }
+    });
+  </script>
+</body>
+</html>
