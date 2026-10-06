@@ -83,6 +83,16 @@ def normalize_name(name: str) -> str:
     return name
 
 
+def strip_accents(s: str) -> str:
+    """Remove Vietnamese diacritics for fallback matching."""
+    if not s:
+        return ""
+    s = unicodedata.normalize("NFD", str(s))
+    s = re.sub(r"[\u0300-\u036f]", "", s)
+    s = s.replace("đ", "d").replace("Đ", "d")
+    return re.sub(r"\s+", " ", s).lower().strip()
+
+
 def normalize_class(cls: str) -> str:
     """Normalize class name: uppercase, strip."""
     if not cls:
@@ -160,7 +170,18 @@ def read_master_students(filepath: Path) -> dict:
         classes_order.append(class_name)
         by_class[class_name] = []
 
-        for row in ws.iter_rows(min_row=3, max_row=ws.max_row, values_only=True):
+        # Dynamically detect name column and header row
+        name_col_idx = 2
+        header_row_idx = 2
+        for r_idx, row_vals in enumerate(ws.iter_rows(min_row=1, max_row=3, values_only=True), start=1):
+            for c_i, v in enumerate(row_vals):
+                val_str = str(v or "").strip().lower()
+                if any(kw in val_str for kw in ["họ tên", "họ và tên", "ho ten"]):
+                    name_col_idx = c_i
+                    header_row_idx = r_idx
+                    break
+
+        for row in ws.iter_rows(min_row=header_row_idx + 1, max_row=ws.max_row, values_only=True):
             stt = row[0]
             if stt is None:
                 continue
@@ -168,7 +189,9 @@ def read_master_students(filepath: Path) -> dict:
             if not stt_str.isdigit():
                 continue
 
-            ho_ten = str(row[2] or "").strip()
+            if name_col_idx >= len(row):
+                continue
+            ho_ten = str(row[name_col_idx] or "").strip()
             if not ho_ten:
                 continue
 
@@ -300,36 +323,47 @@ def match_students(master_students: list, contest_results: list) -> dict:
     Match contest results to master student list accurately.
     Returns: {(họ_tên, lớp): {extra_info} or None}
     """
-    # Count frequency of normalized name across all master students
+    # Count frequency of normalized name and unaccented name across all master students
     name_counts = Counter(normalize_name(h) for h, _ in master_students)
+    no_acc_counts = Counter(strip_accents(h) for h, _ in master_students)
 
     # Build lookup from contest results
     contest_lookup = {}
+    contest_lookup_no_acc = {}
     for norm_name, cls, info in contest_results:
         if norm_name not in contest_lookup:
             contest_lookup[norm_name] = []
         contest_lookup[norm_name].append((cls, info))
 
+        no_acc = strip_accents(norm_name)
+        if no_acc not in contest_lookup_no_acc:
+            contest_lookup_no_acc[no_acc] = []
+        contest_lookup_no_acc[no_acc].append((cls, info))
+
+    def get_score_key(item):
+        info = item[1]
+        try:
+            v = int(info.get("vòng", 0) or 0)
+        except (ValueError, TypeError):
+            v = 0
+        try:
+            d = int(info.get("điểm", 0) or 0)
+        except (ValueError, TypeError):
+            d = 0
+        return (v, d)
+
     # For students with multiple attempts (e.g. 2 accounts), sort candidates by (vong desc, diem desc)
     for n in contest_lookup:
-        def get_score_key(item):
-            info = item[1]
-            try:
-                v = int(info.get("vòng", 0) or 0)
-            except (ValueError, TypeError):
-                v = 0
-            try:
-                d = int(info.get("điểm", 0) or 0)
-            except (ValueError, TypeError):
-                d = 0
-            return (v, d)
         contest_lookup[n].sort(key=get_score_key, reverse=True)
+    for n in contest_lookup_no_acc:
+        contest_lookup_no_acc[n].sort(key=get_score_key, reverse=True)
 
     matched = {}
     used_records = set()
 
     for ho_ten, lop in master_students:
         norm = normalize_name(ho_ten)
+        no_acc = strip_accents(ho_ten)
         key = (ho_ten, lop)
         found = None
 
@@ -345,6 +379,24 @@ def match_students(master_students: list, contest_results: list) -> dict:
             # 2. Fallback only if name is completely unique across the whole school
             if found is None and name_counts[norm] == 1:
                 for cls, info in candidates:
+                    if id(info) not in used_records:
+                        found = info
+                        used_records.add(id(info))
+                        break
+
+        # 3. Unaccented matching fallback (for names typed without Vietnamese diacritics in contest system)
+        if found is None and no_acc in contest_lookup_no_acc:
+            candidates_no_acc = contest_lookup_no_acc[no_acc]
+            # 3a. Same class
+            for cls, info in candidates_no_acc:
+                if cls == lop and id(info) not in used_records:
+                    found = info
+                    used_records.add(id(info))
+                    break
+
+            # 3b. Fallback only if unaccented name is completely unique across the whole school
+            if found is None and no_acc_counts[no_acc] == 1:
+                for cls, info in candidates_no_acc:
                     if id(info) not in used_records:
                         found = info
                         used_records.add(id(info))

@@ -10,7 +10,7 @@ import sys, io, os
 sys.stdout.reconfigure(encoding='utf-8')
 from docx import Document
 from docx.shared import Pt, Inches, RGBColor
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_TAB_ALIGNMENT
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import nsdecls, qn
@@ -50,6 +50,41 @@ def format_para(p, text="", align=WD_ALIGN_PARAGRAPH.LEFT, bold=False, italic=Fa
         set_font(run, size_pt=size_pt, bold=bold, italic=italic, color_rgb=color_rgb)
         return run
     return None
+
+def add_question_options(doc, opt_a, opt_b, opt_c, opt_d, size_pt=12):
+    opts = [opt_a, opt_b, opt_c, opt_d]
+    max_len = max(len(o) for o in opts)
+
+    if max_len <= 15:
+        p = doc.add_paragraph()
+        p.paragraph_format.space_before = Pt(0)
+        p.paragraph_format.space_after = Pt(2.5)
+        p.paragraph_format.line_spacing = 1.15
+        p.paragraph_format.tab_stops.add_tab_stop(Inches(0.25), WD_TAB_ALIGNMENT.LEFT)
+        p.paragraph_format.tab_stops.add_tab_stop(Inches(1.85), WD_TAB_ALIGNMENT.LEFT)
+        p.paragraph_format.tab_stops.add_tab_stop(Inches(3.45), WD_TAB_ALIGNMENT.LEFT)
+        p.paragraph_format.tab_stops.add_tab_stop(Inches(5.05), WD_TAB_ALIGNMENT.LEFT)
+        r = p.add_run(f"\t{opt_a}\t{opt_b}\t{opt_c}\t{opt_d}")
+        set_font(r, size_pt=size_pt)
+    elif max_len <= 35 and max(len(opt_a), len(opt_c)) <= 28:
+        for idx, (o1, o2) in enumerate([(opt_a, opt_b), (opt_c, opt_d)]):
+            p = doc.add_paragraph()
+            p.paragraph_format.space_before = Pt(0)
+            p.paragraph_format.space_after = Pt(1 if idx == 0 else 2.5)
+            p.paragraph_format.line_spacing = 1.15
+            p.paragraph_format.tab_stops.add_tab_stop(Inches(0.25), WD_TAB_ALIGNMENT.LEFT)
+            p.paragraph_format.tab_stops.add_tab_stop(Inches(3.55), WD_TAB_ALIGNMENT.LEFT)
+            r = p.add_run(f"\t{o1}\t{o2}")
+            set_font(r, size_pt=size_pt)
+    else:
+        for idx, opt in enumerate(opts):
+            p = doc.add_paragraph()
+            p.paragraph_format.space_before = Pt(0)
+            p.paragraph_format.space_after = Pt(1 if idx < 3 else 2.5)
+            p.paragraph_format.line_spacing = 1.15
+            p.paragraph_format.left_indent = Inches(0.25)
+            r = p.add_run(opt)
+            set_font(r, size_pt=size_pt)
 
 def generate_de_on_tap():
     print("[+] Tạo file Đề ôn tập ĐGĐK 1 Lớp 8...")
@@ -134,8 +169,7 @@ def generate_de_on_tap():
     for q_text, opt_a, opt_b, opt_c, opt_d, _ in mcq_questions:
         p_q = doc.add_paragraph()
         format_para(p_q, q_text, bold=True, size_pt=12, space_before=4)
-        p_opts = doc.add_paragraph()
-        format_para(p_opts, f"    {opt_a}         {opt_b}\n    {opt_c}         {opt_d}", size_pt=12)
+        add_question_options(doc, opt_a, opt_b, opt_c, opt_d, size_pt=12)
 
     # ─── 4. PHẦN II: TỰ LUẬN & BÀI TẬP TÌNH HUỐNG (4.0 ĐIỂM - 2 CÂU) ───
     p_sec3 = doc.add_paragraph()

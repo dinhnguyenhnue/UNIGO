@@ -14,7 +14,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 from docx import Document
 from docx.shared import Pt, Inches, RGBColor, Cm, Emu
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_TAB_ALIGNMENT
 from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ALIGN_VERTICAL
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import nsdecls, qn
@@ -94,17 +94,67 @@ def set_font(run, name="Times New Roman", size_pt=13, bold=False, italic=False, 
     rPr.append(rFonts)
 
 def add_para(doc, text="", align=WD_ALIGN_PARAGRAPH.LEFT, bold=False, italic=False,
-             size_pt=13, space_before=0, space_after=4, color_rgb=None, line_spacing=1.15):
+             size_pt=13, space_before=0, space_after=4, color_rgb=None, line_spacing=1.15, keep_with_next=False):
     p = doc.add_paragraph()
     p.alignment = align
     p.paragraph_format.space_before = Pt(space_before)
     p.paragraph_format.space_after = Pt(space_after)
     p.paragraph_format.line_spacing = line_spacing
+    if keep_with_next:
+        p.paragraph_format.keep_with_next = True
     if text:
         run = p.add_run(text)
         set_font(run, size_pt=size_pt, bold=bold, italic=italic, color_rgb=color_rgb)
         return p, run
     return p, None
+
+def add_question_options(doc, opt_a, opt_b, opt_c, opt_d, size_pt=12):
+    """
+    Căn chỉnh đáp án trắc nghiệm A, B, C, D đều đẹp chuẩn văn bản đề thi:
+    - 4 cột (1 dòng): nếu tất cả đáp án ngắn (<= 15 ký tự)
+    - 2 cột (2 dòng): nếu độ dài vừa phải (<= 35 ký tự và opt_a, opt_c <= 28 ký tự),
+      cột 1 (A, C) căn lề trái 0.25 inch, cột 2 (B, D) căn tab stop 3.55 inch thẳng hàng tuyệt đối.
+    - 1 cột (4 dòng): nếu có đáp án dài (> 35 ký tự hoặc opt_a/opt_c > 28 ký tự),
+      mỗi đáp án 1 dòng riêng thụt lề 0.25 inch thẳng hàng.
+    Giữ các dòng trong cùng 1 câu hỏi không bị ngắt trang giữa chừng (keep_with_next).
+    """
+    opts = [opt_a, opt_b, opt_c, opt_d]
+    max_len = max(len(o) for o in opts)
+
+    if max_len <= 15:
+        p = doc.add_paragraph()
+        p.paragraph_format.space_before = Pt(0)
+        p.paragraph_format.space_after = Pt(2.5)
+        p.paragraph_format.line_spacing = 1.15
+        p.paragraph_format.tab_stops.add_tab_stop(Inches(0.25), WD_TAB_ALIGNMENT.LEFT)
+        p.paragraph_format.tab_stops.add_tab_stop(Inches(1.85), WD_TAB_ALIGNMENT.LEFT)
+        p.paragraph_format.tab_stops.add_tab_stop(Inches(3.45), WD_TAB_ALIGNMENT.LEFT)
+        p.paragraph_format.tab_stops.add_tab_stop(Inches(5.05), WD_TAB_ALIGNMENT.LEFT)
+        r = p.add_run(f"\t{opt_a}\t{opt_b}\t{opt_c}\t{opt_d}")
+        set_font(r, size_pt=size_pt)
+    elif max_len <= 35 and max(len(opt_a), len(opt_c)) <= 28:
+        for idx, (o1, o2) in enumerate([(opt_a, opt_b), (opt_c, opt_d)]):
+            p = doc.add_paragraph()
+            p.paragraph_format.space_before = Pt(0)
+            p.paragraph_format.space_after = Pt(1 if idx == 0 else 2.5)
+            p.paragraph_format.line_spacing = 1.15
+            if idx == 0:
+                p.paragraph_format.keep_with_next = True
+            p.paragraph_format.tab_stops.add_tab_stop(Inches(0.25), WD_TAB_ALIGNMENT.LEFT)
+            p.paragraph_format.tab_stops.add_tab_stop(Inches(3.55), WD_TAB_ALIGNMENT.LEFT)
+            r = p.add_run(f"\t{o1}\t{o2}")
+            set_font(r, size_pt=size_pt)
+    else:
+        for idx, opt in enumerate(opts):
+            p = doc.add_paragraph()
+            p.paragraph_format.space_before = Pt(0)
+            p.paragraph_format.space_after = Pt(1 if idx < 3 else 2.5)
+            p.paragraph_format.line_spacing = 1.15
+            if idx < 3:
+                p.paragraph_format.keep_with_next = True
+            p.paragraph_format.left_indent = Inches(0.25)
+            r = p.add_run(opt)
+            set_font(r, size_pt=size_pt)
 
 def format_cell_para(cell, text, align=WD_ALIGN_PARAGRAPH.CENTER, bold=False, italic=False, size_pt=12, color_rgb=None):
     p = cell.paragraphs[0]
@@ -1592,9 +1642,8 @@ def generate_on_tap(grade_data):
     add_para(doc, "Khoanh tròn vào chữ cái (A, B, C hoặc D) đứng trước câu trả lời đúng nhất:", italic=True, size_pt=12, space_after=4)
 
     for q_text, opt_a, opt_b, opt_c, opt_d, _ in grade_data['on_tap_tn']:
-        add_para(doc, q_text, bold=True, size_pt=12, space_before=4, space_after=2)
-        add_para(doc, f"    {opt_a}         {opt_b}", size_pt=12, space_after=1)
-        add_para(doc, f"    {opt_c}         {opt_d}", size_pt=12, space_after=2)
+        add_para(doc, q_text, bold=True, size_pt=12, space_before=4, space_after=2, keep_with_next=True)
+        add_question_options(doc, opt_a, opt_b, opt_c, opt_d, size_pt=12)
 
     # 6. Phần II: Tự luận
     add_para(doc, f"PHẦN II. TỰ LUẬN (5 câu)", bold=True, size_pt=13, space_before=8)
@@ -1664,9 +1713,8 @@ def generate_kiem_tra(grade_data):
     add_para(doc, "Khoanh tròn vào chữ cái (A, B, C hoặc D) đứng trước câu trả lời đúng nhất:", italic=True, size_pt=12, space_after=4)
 
     for q_text, opt_a, opt_b, opt_c, opt_d, _ in grade_data['kiem_tra_tn']:
-        add_para(doc, q_text, bold=True, size_pt=12, space_before=4, space_after=2)
-        add_para(doc, f"    {opt_a}         {opt_b}", size_pt=12, space_after=1)
-        add_para(doc, f"    {opt_c}         {opt_d}", size_pt=12, space_after=2)
+        add_para(doc, q_text, bold=True, size_pt=12, space_before=4, space_after=2, keep_with_next=True)
+        add_question_options(doc, opt_a, opt_b, opt_c, opt_d, size_pt=12)
 
     # 5. Phần II: Thực hành (2 câu - 4.75đ)
     add_para(doc, "PHẦN II. THỰC HÀNH (2 câu – 5,0 điểm)", bold=True, size_pt=13, space_before=8)

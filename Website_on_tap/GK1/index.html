@@ -709,6 +709,462 @@
       font-size: 1.35rem;
       padding: 18px 22px;
     }
+  
+    /* =========================================================
+       CHẾ ĐỘ KIỂM TRA CHÍNH THỨC & BẢNG ĐIỂM GIÁO VIÊN UNIGO
+       ========================================================= */
+    .mode-switch-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 12px 0 16px 0;
+    }
+    .mode-switch-container {
+      display: inline-flex;
+      background: #e2e8f0;
+      padding: 5px;
+      border-radius: 40px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+      gap: 6px;
+    }
+    .btn-mode-tab {
+      padding: 10px 22px;
+      border-radius: 30px;
+      border: none;
+      font-size: 0.98rem;
+      font-weight: 800;
+      cursor: pointer;
+      background: transparent;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+    .btn-mode-tab.active {
+      background: linear-gradient(135deg, #4361ee, #3a0ca3);
+      color: white;
+      box-shadow: 0 4px 14px rgba(67, 97, 238, 0.35);
+      transform: translateY(-1px);
+    }
+    .btn-mode-tab:hover:not(.active) {
+      color: #1e293b;
+      background: rgba(255,255,255,0.7);
+    }
+
+    /* Exam Setup Card */
+    .exam-setup-card {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: 20px;
+      padding: 22px;
+      margin: 12px 0 18px 0;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+      text-align: left;
+    }
+    .form-grid-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .form-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-field-group label {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+    .form-input-control {
+      padding: 11px 14px;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 0.98rem;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      background: #f8fafc;
+    }
+    .form-input-control:focus {
+      border-color: #4361ee;
+      background: #ffffff;
+    }
+    .exam-badge-preview {
+      background: #eff6ff;
+      border: 1px dashed #3b82f6;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      color: #1e40af;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Exam Screen Layout */
+    .exam-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 18px;
+      text-align: left;
+    }
+    @media (max-width: 860px) {
+      .exam-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .exam-header-bar {
+      background: #1e293b;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .exam-student-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .exam-timer-badge {
+      background: #0f172a;
+      border: 2px solid #38bdf8;
+      color: #38bdf8;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    }
+    .exam-timer-badge.warning {
+      border-color: #f59e0b;
+      color: #f59e0b;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.35);
+    }
+    .exam-timer-badge.danger {
+      border-color: #ef4444;
+      color: #ef4444;
+      animation: pulse-danger 1s infinite alternate;
+    }
+    @keyframes pulse-danger {
+      from { box-shadow: 0 0 5px rgba(239, 68, 68, 0.4); transform: scale(1); }
+      to { box-shadow: 0 0 20px rgba(239, 68, 68, 0.8); transform: scale(1.05); }
+    }
+
+    /* Exam Question Card */
+    .exam-question-card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      border: 2px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      margin-bottom: 16px;
+    }
+    .exam-q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .exam-q-number {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #2563eb;
+    }
+    .btn-flag-q {
+      background: #fef3c7;
+      color: #d97706;
+      border: 1px solid #fde68a;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      transition: 0.2s;
+    }
+    .btn-flag-q.active {
+      background: #f59e0b;
+      color: white;
+      border-color: #d97706;
+    }
+
+    /* Options for Exam */
+    .exam-options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .exam-opt-btn {
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #1e293b;
+      text-align: left;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      width: 100%;
+    }
+    .exam-opt-btn:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+    .exam-opt-btn.selected {
+      background: #eff6ff;
+      border-color: #2563eb;
+      color: #1d4ed8;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15);
+    }
+    .exam-opt-btn.selected .opt-letter {
+      background: #2563eb;
+      color: white;
+    }
+
+    /* Exam Navigation Actions */
+    .exam-nav-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Palette on Sidebar */
+    .exam-palette-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      border: 2px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin: 12px 0 16px 0;
+    }
+    .palette-btn {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #475569;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+    .palette-btn:hover {
+      background: #e2e8f0;
+    }
+    .palette-btn.current {
+      border: 2.5px solid #2563eb !important;
+      transform: scale(1.06);
+    }
+    .palette-btn.answered {
+      background: #2563eb;
+      color: white;
+      border-color: #1d4ed8;
+    }
+    .palette-btn.flagged::after {
+      content: '🚩';
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      font-size: 0.65rem;
+    }
+
+    /* Exam Result Screen */
+    .exam-result-badge-card {
+      background: white;
+      border-radius: 24px;
+      padding: 28px;
+      border: 2px solid #e2e8f0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .score-big-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 16px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #4361ee, #3a0ca3);
+      color: white;
+      box-shadow: 0 10px 25px rgba(67, 97, 238, 0.35);
+    }
+    .score-number {
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .score-scale {
+      font-size: 0.92rem;
+      opacity: 0.85;
+      font-weight: 600;
+    }
+
+    /* Review Detailed List */
+    .review-list-container {
+      margin-top: 18px;
+      text-align: left;
+    }
+    .review-question-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .review-question-card.correct {
+      border-left: 6px solid #10b981;
+    }
+    .review-question-card.wrong {
+      border-left: 6px solid #ef4444;
+    }
+
+    /* Dashboard Modal */
+    .dashboard-modal-content {
+      max-width: 960px !important;
+      width: 95vw !important;
+      max-height: 88vh;
+      overflow-y: auto;
+    }
+    .dashboard-tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 16px;
+    }
+    .dash-tab-btn {
+      padding: 10px 18px;
+      border: none;
+      background: transparent;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #64748b;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: 0.2s;
+      font-family: inherit;
+    }
+    .dash-tab-btn.active {
+      color: #2563eb;
+      border-color: #2563eb;
+    }
+    .stats-summary-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .stat-mini-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+    }
+    .stat-mini-val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1e293b;
+    }
+    .stat-mini-label {
+      font-size: 0.78rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .table-filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .custom-scores-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: left;
+    }
+    .custom-scores-table th {
+      background: #f1f5f9;
+      padding: 10px 12px;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 2px solid #cbd5e1;
+    }
+    .custom-scores-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .custom-scores-table tr:hover {
+      background: #f8fafc;
+    }
+    .tag-rank {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+    .tag-rank-excellent { background: #dcfce7; color: #15803d; }
+    .tag-rank-good { background: #dbeafe; color: #1d4ed8; }
+    .tag-rank-pass { background: #fef3c7; color: #b45309; }
+    .tag-rank-effort { background: #fee2e2; color: #b91c1c; }
+
+    /* Print styles */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #print-area, #print-area * {
+        visibility: visible;
+      }
+      #print-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -734,6 +1190,7 @@
       </div>
       <div class="controls-group">
         <button class="btn-icon" id="btn-sound" title="Bật / Tắt âm thanh">🔊</button>
+        <button class="btn-icon" id="btn-leaderboard" title="Bảng điểm học sinh">📊</button>
         <button class="btn-icon" id="btn-teacher-view" title="Bảng tra cứu giáo viên">👨‍🏫</button>
         <button class="btn-icon" id="btn-fullscreen" title="Chế độ Trình chiếu / Toàn màn hình">🖥️</button>
       </div>
@@ -750,7 +1207,22 @@
       <p class="game-subtitle">Hành trình Chinh phục Đánh giá Định kỳ 1 • Năm học 2026 - 2027</p>
 
       <!-- Thanh chọn 6 Khối Lớp -->
-      <div style="font-weight: 800; color: #475569; margin-bottom: 8px;">CHỌN KHỐI LỚP CỦA EM:</div>
+      
+      <!-- Chuyển đổi Chế độ: Ôn Tập vs Kiểm Tra Tính Điểm -->
+      <div class="mode-switch-wrapper">
+        <div class="mode-switch-container">
+          <button class="btn-mode-tab active" id="tab-mode-practice">
+            <span>🎮</span>
+            <span>LUYỆN TẬP TỰ DO</span>
+          </button>
+          <button class="btn-mode-tab" id="tab-mode-exam">
+            <span>📝</span>
+            <span>KIỂM TRA TÍNH ĐIỂM (ĐGĐK1)</span>
+          </button>
+        </div>
+      </div>
+
+      <div style="font-weight: 800; color: #475569; margin-bottom: 8px;">CHỌN KHỐI LỚP:</div>
       <div class="grade-selector-container">
         <button class="btn-grade-tab active" data-grade="3">
           <span style="font-size: 1.4rem;">🌱</span>
@@ -778,18 +1250,84 @@
         </button>
       </div>
 
-      <div class="input-box">
-        <input type="text" id="player-name-input" placeholder="Nhập họ và tên học sinh..." maxlength="25">
+      <!-- KHU VỰC CHẾ ĐỘ 1: LUYỆN TẬP (Mặc định) -->
+      <div id="section-practice-mode">
+        <div class="input-box" style="margin-top: 12px;">
+          <input type="text" id="player-name-input" placeholder="Nhập tên học sinh để ôn tập..." maxlength="25">
+        </div>
+
+        <div style="font-weight: 800; color: #475569; margin-bottom: 8px; margin-top: 12px;">CHỌN CHẶNG THỬ THÁCH:</div>
+        <div class="stage-selector" id="stage-cards-container">
+          <!-- Render tự động theo khối lớp qua JS -->
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 10px;">
+          <button class="btn-action" id="btn-start-game">▶️ BẮT ĐẦU ÔN TẬP</button>
+          <button class="btn-action btn-secondary" id="btn-open-rules">📖 Hướng Dẫn</button>
+        </div>
       </div>
 
-      <div style="font-weight: 800; color: #475569; margin-bottom: 8px;">CHỌN CHẶNG THỬ THÁCH:</div>
-      <div class="stage-selector" id="stage-cards-container">
-        <!-- Render tự động theo khối lớp qua JS -->
-      </div>
+      <!-- KHU VỰC CHẾ ĐỘ 2: KIỂM TRA CHÍNH THỨC -->
+      <div id="section-exam-mode" style="display: none;">
+        <div class="exam-setup-card">
+          <h3 style="color: #1e293b; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            <span>📋</span> THÔNG TIN THÍ SINH DỰ THI
+          </h3>
+          <div class="form-grid-row">
+            <div class="form-field-group">
+              <label for="exam-student-name">Họ và tên học sinh (*):</label>
+              <input type="text" id="exam-student-name" class="form-input-control" placeholder="Ví dụ: Nguyễn Văn An" maxlength="35">
+            </div>
+            <div class="form-field-group">
+              <label for="exam-student-class">Lớp học (*):</label>
+              <input type="text" id="exam-student-class" class="form-input-control" placeholder="Ví dụ: 5A1" value="5A1" maxlength="10">
+            </div>
+            <div class="form-field-group">
+              <label for="exam-student-pc">Số máy / STT:</label>
+              <input type="text" id="exam-student-pc" class="form-input-control" placeholder="Ví dụ: Máy 05" maxlength="15">
+            </div>
+          </div>
 
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 6px;">
-        <button class="btn-action" id="btn-start-game">▶️ BẮT ĐẦU CHINH PHỤC</button>
-        <button class="btn-action btn-secondary" id="btn-open-rules">📖 Hướng Dẫn</button>
+          <div class="form-grid-row">
+            <div class="form-field-group">
+              <label for="exam-duration">Thời gian làm bài:</label>
+              <select id="exam-duration" class="form-input-control">
+                <option value="15">15 Phút</option>
+                <option value="20" selected>20 Phút (Chuẩn đề 20 câu)</option>
+                <option value="30">30 Phút</option>
+                <option value="40">40 Phút</option>
+              </select>
+            </div>
+            <div class="form-field-group">
+              <label for="exam-q-count">Số lượng câu hỏi:</label>
+              <select id="exam-q-count" class="form-input-control">
+                <option value="20" selected>20 Câu (Chuẩn ĐGĐK1 - 5.0đ)</option>
+                <option value="10">10 Câu (Kiểm tra nhanh)</option>
+                <option value="40">40 Câu (Toàn bộ ngân hàng đề)</option>
+              </select>
+            </div>
+            <div class="form-field-group" style="justify-content: flex-end;">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 0;">
+                <input type="checkbox" id="exam-shuffle-opt" checked style="width: 18px; height: 18px; cursor: pointer;">
+                <span>Xáo trộn câu hỏi & đáp án (Chống nhìn bài)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="exam-badge-preview">
+            <span>💡</span>
+            <span><strong>Quy chế thi:</strong> Khi bắt đầu làm bài, đồng hồ đếm ngược sẽ chạy. Các tính năng trợ giúp (50/50, gợi ý robot) bị khóa. Điểm số thang 10 sẽ được chấm và lưu tự động vào bảng điểm ngay khi nộp bài.</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 10px;">
+          <button class="btn-action" id="btn-start-exam" style="background: linear-gradient(135deg, #10b981, #059669); font-size: 1.1rem; padding: 14px 34px;">
+            🚀 BẮT ĐẦU LÀM BÀI THI
+          </button>
+          <button class="btn-action btn-secondary" id="btn-view-board-quick">
+            📊 Xem Bảng Điểm Đã Thi
+          </button>
+        </div>
       </div>
     </section>
 
@@ -877,6 +1415,157 @@
     </section>
   </div>
 
+  
+    <!-- 4. MÀN HÌNH LÀM BÀI KIỂM TRA CHÍNH THỨC -->
+    <section class="screen" id="screen-exam">
+      <div class="exam-header-bar">
+        <div class="exam-student-badge">
+          <span style="font-size: 1.3rem;">🧑‍🎓</span>
+          <div>
+            <div id="exam-cur-student-name" style="font-size: 1.05rem; color: #f8fafc;">Nguyễn Văn An</div>
+            <div id="exam-cur-student-info" style="font-size: 0.82rem; color: #94a3b8;">Lớp 5A1 • Số máy: Máy 01 • Lớp 5</div>
+          </div>
+        </div>
+        <div class="exam-timer-badge" id="exam-timer-badge">
+          <span>⏱️</span>
+          <span id="exam-timer-text">20:00</span>
+        </div>
+        <div>
+          <button class="btn-action" id="btn-submit-exam" style="padding: 10px 20px; font-size: 0.95rem; background: #10b981;">
+            ✔️ NỘP BÀI THI
+          </button>
+        </div>
+      </div>
+
+      <div class="exam-layout">
+        <!-- Cột trái: Câu hỏi & 4 Đáp án -->
+        <div>
+          <div class="exam-question-card">
+            <div class="exam-q-header">
+              <div class="exam-q-number" id="exam-q-number">CÂU 1 / 20</div>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span id="exam-q-topic" style="font-size: 0.88rem; color: #64748b; font-weight: 600;">Bài 1. Máy tính</span>
+                <button class="btn-flag-q" id="btn-flag-current-q">
+                  <span>🚩</span> <span id="flag-text">Đánh dấu</span>
+                </button>
+              </div>
+            </div>
+            <div class="question-text" id="exam-q-text" style="font-size: 1.15rem; font-weight: 700; color: #1e293b; margin-bottom: 20px; line-height: 1.5;">
+              Nội dung câu hỏi thi...
+            </div>
+            <div class="exam-options-grid" id="exam-options-container">
+              <!-- 4 lựa chọn qua JS -->
+            </div>
+          </div>
+
+          <div class="exam-nav-actions">
+            <button class="btn-action btn-secondary" id="btn-exam-prev" style="padding: 10px 20px;">
+              ⬅️ Câu trước
+            </button>
+            <div style="font-size: 0.92rem; color: #64748b; font-weight: 700;" id="exam-answered-count-text">
+              Đã làm: 0 / 20 câu
+            </div>
+            <button class="btn-action" id="btn-exam-next" style="padding: 10px 24px;">
+              Câu tiếp theo ➡️
+            </button>
+          </div>
+        </div>
+
+        <!-- Cột phải: Bảng số câu (Palette) -->
+        <div>
+          <div class="exam-palette-card">
+            <h4 style="color: #1e293b; margin-bottom: 6px; font-size: 0.95rem; display: flex; justify-content: space-between;">
+              <span>DANH SÁCH CÂU HỎI</span>
+              <span id="palette-completion-badge" style="color: #2563eb; font-weight: 800;">0%</span>
+            </h4>
+            <div style="font-size: 0.78rem; color: #64748b; margin-bottom: 8px;">
+              Nhấn số để chuyển nhanh tới câu hỏi:
+            </div>
+            <div class="palette-grid" id="exam-palette-grid">
+              <!-- Render các nút câu hỏi 1..N qua JS -->
+            </div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 10px; font-size: 0.8rem; color: #64748b; display: flex; flex-direction: column; gap: 5px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="display:inline-block; width: 14px; height: 14px; background: #2563eb; border-radius: 4px;"></span>
+                <span>Đã làm</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="display:inline-block; width: 14px; height: 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 4px;"></span>
+                <span>Chưa làm</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="display:inline-block; width: 14px; height: 14px; background: #fef3c7; border: 1px solid #fde68a; border-radius: 4px; text-align: center; font-size: 8px; line-height: 14px;">🚩</span>
+                <span>Đánh dấu xem lại</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MÀN HÌNH KẾT QUẢ BÀI THI CHÍNH THỨC -->
+    <section class="screen" id="screen-exam-result">
+      <div class="exam-result-badge-card">
+        <div class="byte-avatar" style="margin-bottom: 10px;">🏆</div>
+        <h1 class="game-title" style="margin-bottom: 4px;">KẾT QUẢ KIỂM TRA TIN HỌC</h1>
+        <p class="game-subtitle" id="exam-res-subtitle">Bài kiểm tra Đánh giá Định kỳ 1 • Năm học 2026 - 2027</p>
+
+        <div style="background: #f1f5f9; padding: 12px 20px; border-radius: 16px; display: inline-flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 12px 0 18px 0; font-size: 0.95rem; font-weight: 700; color: #334155;">
+          <div>Thí sinh: <span id="exam-res-name" style="color: #2563eb;">Nguyễn Văn An</span></div>
+          <div>Lớp: <span id="exam-res-class" style="color: #2563eb;">5A1</span></div>
+          <div>Số máy: <span id="exam-res-pc" style="color: #2563eb;">Máy 01</span></div>
+          <div>Thời gian làm: <span id="exam-res-timespent" style="color: #2563eb;">12:45</span></div>
+        </div>
+
+        <div class="score-big-circle" id="exam-res-score-circle">
+          <div class="score-number" id="exam-res-score-10">9.0</div>
+          <div class="score-scale">THANG ĐIỂM 10</div>
+        </div>
+
+        <div class="rank-badge" id="exam-res-rank-tag" style="background: #10b981; display: inline-block; margin-bottom: 16px;">
+          XUẤT SẮC
+        </div>
+
+        <div class="stats-grid" style="max-width: 600px; margin: 0 auto;">
+          <div class="stat-item">
+            <div class="stat-val" style="color: #10b981;" id="exam-res-correct-count">18/20</div>
+            <div class="stat-label">SỐ CÂU ĐÚNG</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val" style="color: #ef4444;" id="exam-res-wrong-count">2/20</div>
+            <div class="stat-label">SỐ CÂU SAI</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val" style="color: #2563eb;" id="exam-res-accuracy-rate">90%</div>
+            <div class="stat-label">TỈ LỆ CHÍNH XÁC</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+          <button class="btn-action" id="btn-toggle-exam-review" style="background: #4361ee;">
+            🔍 XEM CHI TIẾT BÀI LÀM
+          </button>
+          <button class="btn-action" id="btn-open-scoreboard-from-result" style="background: #0ea5e9;">
+            📊 BẢNG ĐIỂM CẢ LỚP
+          </button>
+          <button class="btn-action btn-secondary" id="btn-exam-next-student">
+            🔄 THÍ SINH TIẾP THEO
+          </button>
+        </div>
+
+        <!-- Chi tiết bài thi từng câu (Ẩn mặc định, bật khi bấm nút) -->
+        <div id="exam-detailed-review-box" class="review-list-container" style="display: none;">
+          <h3 style="color: #1e293b; margin: 20px 0 12px 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">
+            📝 ĐỐI CHIẾU ĐÁP ÁN CHI TIẾT TỪNG CÂU:
+          </h3>
+          <div id="exam-review-cards-list">
+            <!-- Render qua JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
   <!-- MODAL GỢI Ý & BẢNG TRA CỨU GIÁO VIÊN -->
   <div class="modal-overlay" id="custom-modal">
     <div class="modal-content">
@@ -888,6 +1577,43 @@
       <button class="btn-action" id="btn-close-modal" style="padding: 10px 26px; font-size: 1rem;">Đã hiểu!</button>
     </div>
   </div>
+
+  <!-- MODAL BẢNG ĐIỂM & TRUNG TÂM GIÁO VIÊN -->
+  <div class="modal-overlay" id="dashboard-modal">
+    <div class="modal-content dashboard-modal-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <h2 style="color: #1e293b; display: flex; align-items: center; gap: 8px; margin: 0;">
+          <span>👨‍🏫</span> BẢNG ĐIỂM & TRUNG TÂM QUẢN TRỊ UNIGO
+        </h2>
+        <button id="btn-close-dashboard" style="background: none; border: none; font-size: 1.6rem; cursor: pointer; color: #64748b;">✖️</button>
+      </div>
+
+      <div class="dashboard-tabs">
+        <button class="dash-tab-btn active" data-tab="tab-scores">📊 Bảng Điểm Học Sinh</button>
+        <button class="dash-tab-btn" data-tab="tab-answerkey">📋 Bảng Đáp Án Chuẩn</button>
+        <button class="dash-tab-btn" data-tab="tab-sync">☁️ Đồng Bộ Google Sheets</button>
+      </div>
+
+      <!-- TAB 1: BẢNG ĐIỂM -->
+      <div id="tab-scores-view">
+        <div class="stats-summary-bar">
+          <div class="stat-mini-card">
+            <div class="stat-mini-val" id="db-total-students">0</div>
+            <div class="stat-mini-label">SĨ SỐ ĐÃ THI</div>
+          </div>
+          <div class="stat-mini-card">
+            <div class="stat-mini-val" style="color: #2563eb;" id="db-avg-score">0.0</div>
+            <div class="stat-mini-label">ĐIỂM TRUNG BÌNH</div>
+          </div>
+          <div class="stat-mini-card">
+            <div class="stat-mini-val" style="color: #10b981;" id="db-max-score">0.0</div>
+            <div class="stat-mini-label">ĐIỂM CAO NHẤT</div>
+          </div>
+          <div class="stat-mini-card">
+            <div class="stat-mini-val" style="color: #f59e0b;" id="db-pass-rate">0%</div>
+            <div class="stat-mini-label">TỶ LỆ ĐẠT (≥5.0đ)</div>
+          </div>
+        </div>
 
   <script>
     class SoundEngine {
@@ -1766,19 +2492,848 @@
       );
     });
 
-    // Chế độ tra cứu nhanh dành cho Giáo viên
-    document.getElementById("btn-teacher-view").addEventListener("click", () => {
+
+    // =========================================================================
+    // LOGIC CHẾ ĐỘ KIỂM TRA CHÍNH THỨC (EXAM MODE) & BẢNG ĐIỂM GIÁO VIÊN
+    // =========================================================================
+
+    const screenExam = document.getElementById("screen-exam");
+    const screenExamResult = document.getElementById("screen-exam-result");
+    const dashboardModal = document.getElementById("dashboard-modal");
+
+    const tabModePractice = document.getElementById("tab-mode-practice");
+    const tabModeExam = document.getElementById("tab-mode-exam");
+    const sectionPracticeMode = document.getElementById("section-practice-mode");
+    const sectionExamMode = document.getElementById("section-exam-mode");
+
+    let currentAppMode = "practice"; // 'practice' | 'exam'
+
+    // Chuyển đổi tab Chế độ Luyện Tập vs Kiểm Tra
+    tabModePractice.addEventListener("click", () => {
       sound.playClick();
-      const currentList = QUESTION_BANK_BY_GRADE[state.currentGrade] || [];
-      let html = `<div style="margin-bottom: 12px; font-weight: 700; color: #1e293b;">Bảng đáp án trắc nghiệm chuẩn - Tin Học Lớp ${state.currentGrade} (40 câu):</div>`;
-      html += `<div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; font-size: 0.9rem;">`;
-      currentList.forEach((q, idx) => {
-        html += `<div style="background: #f1f5f9; padding: 6px; border-radius: 8px; border: 1px solid #cbd5e1; text-align: center;"><strong>C${idx + 1}:</strong> <span style="color: #2563eb; font-weight: 800;">${letters[q.answer]}</span></div>`;
-      });
-      html += `</div>`;
-      html += `<p style="margin-top: 14px; font-size: 0.88rem; color: #64748b;">* Thầy cô có thể dùng bảng này để đối chiếu nhanh bài làm của học sinh trên lớp.</p>`;
-      showModal(`👨‍🏫 Chế Độ Giáo Viên - Tin Học ${state.currentGrade}`, html, "📋");
+      currentAppMode = "practice";
+      tabModePractice.classList.add("active");
+      tabModeExam.classList.remove("active");
+      sectionPracticeMode.style.display = "block";
+      sectionExamMode.style.display = "none";
     });
+
+    tabModeExam.addEventListener("click", () => {
+      sound.playClick();
+      currentAppMode = "exam";
+      tabModeExam.classList.add("active");
+      tabModePractice.classList.remove("active");
+      sectionPracticeMode.style.display = "none";
+      sectionExamMode.style.display = "block";
+      // Điền sẵn lớp theo khối hiện tại nếu chưa sửa
+      const classInput = document.getElementById("exam-student-class");
+      if (!classInput.value || classInput.value.match(/^[3-8]A1$/)) {
+        classInput.value = `${state.currentGrade}A1`;
+      }
+    });
+
+    // Cập nhật gợi ý lớp khi đổi khối ở màn hình bắt đầu
+    const originalRenderStages = renderStagesForGrade;
+    renderStagesForGrade = function(grade) {
+      originalRenderStages(grade);
+      const classInput = document.getElementById("exam-student-class");
+      if (classInput && (!classInput.value || classInput.value.match(/^[3-8]A1$/))) {
+        classInput.value = `${grade}A1`;
+      }
+    };
+
+    // Quản lý trạng thái bài thi (Exam State)
+    const examState = {
+      studentName: "",
+      studentClass: "5A1",
+      machineNumber: "Máy 01",
+      grade: 5,
+      totalQuestions: 20,
+      durationMinutes: 20,
+      timeRemaining: 20 * 60,
+      timerInterval: null,
+      startTime: null,
+      endTime: null,
+      questions: [],
+      userAnswers: {},  // { index: selectedOptionIndex }
+      flagged: {},      // { index: true/false }
+      currentIndex: 0,
+      isSubmitted: false
+    };
+
+    // Bắt đầu làm bài thi chính thức
+    document.getElementById("btn-start-exam").addEventListener("click", () => {
+      sound.playClick();
+      const sName = document.getElementById("exam-student-name").value.trim();
+      const sClass = document.getElementById("exam-student-class").value.trim();
+      const sPc = document.getElementById("exam-student-pc").value.trim() || "Máy 01";
+      const duration = parseInt(document.getElementById("exam-duration").value, 10) || 20;
+      const qCount = parseInt(document.getElementById("exam-q-count").value, 10) || 20;
+      const isShuffle = document.getElementById("exam-shuffle-opt").checked;
+
+      if (!sName) {
+        showModal("⚠️ Thiếu Thông Tin", "Em vui lòng nhập đầy đủ <strong>Họ và tên học sinh</strong> để hệ thống ghi nhận vào bảng điểm nhé!", "📝");
+        document.getElementById("exam-student-name").focus();
+        return;
+      }
+      if (!sClass) {
+        showModal("⚠️ Thiếu Thông Tin", "Vui lòng nhập <strong>Lớp học</strong> (ví dụ: 5A1, 5A2...) để phân loại bảng điểm!", "🏫");
+        document.getElementById("exam-student-class").focus();
+        return;
+      }
+
+      examState.studentName = sName;
+      examState.studentClass = sClass;
+      examState.machineNumber = sPc;
+      examState.grade = state.currentGrade;
+      examState.totalQuestions = qCount;
+      examState.durationMinutes = duration;
+      examState.timeRemaining = duration * 60;
+      examState.startTime = new Date();
+      examState.userAnswers = {};
+      examState.flagged = {};
+      examState.currentIndex = 0;
+      examState.isSubmitted = false;
+
+      // Chuẩn bị câu hỏi từ ngân hàng
+      const fullBank = QUESTION_BANK_BY_GRADE[examState.grade] || [];
+      let pool = fullBank.map((q, idx) => ({ ...q, originalIndex: idx }));
+
+      if (isShuffle) {
+        pool.sort(() => Math.random() - 0.5);
+      }
+
+      // Giới hạn số lượng câu hỏi
+      pool = pool.slice(0, Math.min(qCount, pool.length));
+
+      // Xáo trộn đáp án nếu chọn shuffle
+      if (isShuffle) {
+        pool = pool.map(q => {
+          const originalAnswerText = q.options[q.answer];
+          const shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
+          const newAnswerIndex = shuffledOptions.indexOf(originalAnswerText);
+          return {
+            ...q,
+            options: shuffledOptions,
+            answer: newAnswerIndex
+          };
+        });
+      }
+
+      examState.questions = pool;
+      examState.totalQuestions = pool.length;
+
+      // Cập nhật thông tin thí sinh lên header bài thi
+      document.getElementById("exam-cur-student-name").textContent = examState.studentName;
+      document.getElementById("exam-cur-student-info").textContent = `Lớp ${examState.studentClass} • ${examState.machineNumber} • Khối ${examState.grade}`;
+
+      // Bắt đầu đồng hồ đếm ngược
+      startExamTimer();
+
+      // Render bảng Palette bên phải
+      renderExamPalette();
+
+      // Nạp câu hỏi đầu tiên
+      loadExamQuestion(0);
+
+      // Chuyển sang màn hình thi
+      switchScreen(screenExam);
+    });
+
+    // Đồng hồ đếm ngược
+    function startExamTimer() {
+      if (examState.timerInterval) clearInterval(examState.timerInterval);
+
+      const timerBadge = document.getElementById("exam-timer-badge");
+      const timerText = document.getElementById("exam-timer-text");
+
+      timerBadge.className = "exam-timer-badge";
+
+      function updateTimerDisplay() {
+        const m = Math.floor(examState.timeRemaining / 60);
+        const s = examState.timeRemaining % 60;
+        timerText.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+
+        if (examState.timeRemaining <= 120 && examState.timeRemaining > 60) {
+          timerBadge.className = "exam-timer-badge warning";
+        } else if (examState.timeRemaining <= 60) {
+          timerBadge.className = "exam-timer-badge danger";
+        }
+
+        if (examState.timeRemaining <= 0) {
+          clearInterval(examState.timerInterval);
+          showModal("⏰ Hết Giờ Làm Bài!", "Đã hết thời gian làm bài kiểm tra. Hệ thống sẽ tự động nộp bài và chấm điểm của em!", "⏱️");
+          setTimeout(() => {
+            submitExam(true);
+          }, 1500);
+        }
+      }
+
+      updateTimerDisplay();
+      examState.timerInterval = setInterval(() => {
+        examState.timeRemaining--;
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    // Nạp câu hỏi thi
+    function loadExamQuestion(index) {
+      if (index < 0 || index >= examState.questions.length) return;
+      examState.currentIndex = index;
+
+      const q = examState.questions[index];
+      document.getElementById("exam-q-number").textContent = `CÂU ${index + 1} / ${examState.questions.length}`;
+      document.getElementById("exam-q-topic").textContent = q.topic || `Chủ đề ${q.topicKey}`;
+      document.getElementById("exam-q-text").textContent = q.question;
+
+      // Cập nhật nút Đánh dấu cờ
+      const flagBtn = document.getElementById("btn-flag-current-q");
+      const flagText = document.getElementById("flag-text");
+      if (examState.flagged[index]) {
+        flagBtn.classList.add("active");
+        flagText.textContent = "Đã đánh dấu";
+      } else {
+        flagBtn.classList.remove("active");
+        flagText.textContent = "Đánh dấu";
+      }
+
+      // Render 4 đáp án
+      const container = document.getElementById("exam-options-container");
+      container.innerHTML = "";
+
+      const currentChosen = examState.userAnswers[index];
+
+      q.options.forEach((optText, optIdx) => {
+        const btn = document.createElement("button");
+        btn.className = `exam-opt-btn ${currentChosen === optIdx ? "selected" : ""}`;
+        btn.innerHTML = `
+          <div class="opt-letter">${letters[optIdx]}</div>
+          <div style="flex-grow: 1;">${optText}</div>
+        `;
+        btn.addEventListener("click", () => {
+          sound.playClick();
+          examState.userAnswers[index] = optIdx;
+          // Cập nhật giao diện nút
+          container.querySelectorAll(".exam-opt-btn").forEach(b => b.classList.remove("selected"));
+          btn.classList.add("selected");
+          // Cập nhật palette
+          updatePaletteState();
+          updateExamNavStatus();
+        });
+        container.appendChild(btn);
+      });
+
+      // Cập nhật trạng thái Palette và nút điều hướng
+      updatePaletteState();
+      updateExamNavStatus();
+    }
+
+    // Toggle cờ đánh dấu
+    document.getElementById("btn-flag-current-q").addEventListener("click", () => {
+      sound.playClick();
+      const idx = examState.currentIndex;
+      examState.flagged[idx] = !examState.flagged[idx];
+      loadExamQuestion(idx);
+    });
+
+    // Điều hướng câu trước / câu sau
+    document.getElementById("btn-exam-prev").addEventListener("click", () => {
+      if (examState.currentIndex > 0) {
+        sound.playClick();
+        loadExamQuestion(examState.currentIndex - 1);
+      }
+    });
+
+    document.getElementById("btn-exam-next").addEventListener("click", () => {
+      if (examState.currentIndex < examState.questions.length - 1) {
+        sound.playClick();
+        loadExamQuestion(examState.currentIndex + 1);
+      }
+    });
+
+    function updateExamNavStatus() {
+      const answeredCount = Object.keys(examState.userAnswers).length;
+      const total = examState.questions.length;
+      document.getElementById("exam-answered-count-text").textContent = `Đã làm: ${answeredCount} / ${total} câu`;
+
+      document.getElementById("btn-exam-prev").disabled = (examState.currentIndex === 0);
+      document.getElementById("btn-exam-next").disabled = (examState.currentIndex === total - 1);
+    }
+
+    // Render lưới số câu Palette
+    function renderExamPalette() {
+      const grid = document.getElementById("exam-palette-grid");
+      grid.innerHTML = "";
+
+      examState.questions.forEach((_, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "palette-btn";
+        btn.id = `palette-item-${idx}`;
+        btn.textContent = idx + 1;
+        btn.addEventListener("click", () => {
+          sound.playClick();
+          loadExamQuestion(idx);
+        });
+        grid.appendChild(btn);
+      });
+      updatePaletteState();
+    }
+
+    function updatePaletteState() {
+      const total = examState.questions.length;
+      let answeredCount = 0;
+
+      for (let i = 0; i < total; i++) {
+        const btn = document.getElementById(`palette-item-${i}`);
+        if (!btn) continue;
+
+        btn.className = "palette-btn";
+        if (i === examState.currentIndex) {
+          btn.classList.add("current");
+        }
+        if (examState.userAnswers[i] !== undefined) {
+          btn.classList.add("answered");
+          answeredCount++;
+        }
+        if (examState.flagged[i]) {
+          btn.classList.add("flagged");
+        }
+      }
+
+      const percent = total > 0 ? Math.round((answeredCount / total) * 100) : 0;
+      document.getElementById("palette-completion-badge").textContent = `${percent}%`;
+    }
+
+    // Nộp bài thi
+    document.getElementById("btn-submit-exam").addEventListener("click", () => {
+      sound.playClick();
+      const answeredCount = Object.keys(examState.userAnswers).length;
+      const total = examState.questions.length;
+      const remaining = total - answeredCount;
+
+      let confirmMsg = `<p style="margin-bottom:10px;">Em đã hoàn thành <strong>${answeredCount}/${total}</strong> câu hỏi.</p>`;
+      if (remaining > 0) {
+        confirmMsg += `<p style="color: #ef4444; font-weight: 700; margin-bottom: 12px;">⚠️ Vẫn còn ${remaining} câu chưa trả lời!</p>`;
+      }
+      confirmMsg += `<p>Em có chắc chắn muốn nộp bài để chấm điểm ngay bây giờ không?</p>`;
+
+      modalTitle.textContent = "Xác Nhận Nộp Bài Thi";
+      modalMessage.innerHTML = confirmMsg;
+      modalIcon.textContent = "📝";
+
+      // Thay đổi nút đóng thành nút nộp
+      const originalCloseText = btnCloseModal.textContent;
+      btnCloseModal.textContent = "Quay Lại Làm Tiếp";
+
+      // Tạo nút Nộp Ngay trong modal
+      let btnConfirmSubmit = document.getElementById("btn-confirm-submit-exam");
+      if (!btnConfirmSubmit) {
+        btnConfirmSubmit = document.createElement("button");
+        btnConfirmSubmit.id = "btn-confirm-submit-exam";
+        btnConfirmSubmit.className = "btn-action";
+        btnConfirmSubmit.style.background = "#10b981";
+        btnConfirmSubmit.style.marginLeft = "10px";
+        btnConfirmSubmit.textContent = "✔️ Nộp Bài Ngay";
+        btnCloseModal.parentNode.appendChild(btnConfirmSubmit);
+      }
+      btnConfirmSubmit.style.display = "inline-block";
+
+      btnConfirmSubmit.onclick = () => {
+        customModal.classList.remove("active");
+        btnConfirmSubmit.style.display = "none";
+        btnCloseModal.textContent = "Đã hiểu!";
+        submitExam(false);
+      };
+
+      customModal.classList.add("active");
+    });
+
+    // Hàm chấm điểm & lưu kết quả thi
+    function submitExam(isTimeout = false) {
+      if (examState.isSubmitted) return;
+      examState.isSubmitted = true;
+
+      if (examState.timerInterval) clearInterval(examState.timerInterval);
+      examState.endTime = new Date();
+
+      // Tính thời gian làm bài
+      const elapsedSeconds = Math.max(1, Math.round((examState.endTime - examState.startTime) / 1000));
+      const elapsedM = Math.floor(elapsedSeconds / 60);
+      const elapsedS = elapsedSeconds % 60;
+      const timeSpentFormatted = `${elapsedM} phút ${elapsedS.toString().padStart(2, '0')} giây`;
+
+      // Chấm điểm
+      let correctCount = 0;
+      examState.questions.forEach((q, idx) => {
+        const chosen = examState.userAnswers[idx];
+        if (chosen === q.answer) {
+          correctCount++;
+        }
+      });
+
+      const totalQ = examState.questions.length;
+      const wrongCount = totalQ - correctCount;
+      const rawScore10 = (correctCount / totalQ) * 10;
+      const finalScore10 = Math.round(rawScore10 * 10) / 10; // Làm tròn 1 chữ số thập phân (VD: 8.5)
+      const accuracyRate = Math.round((correctCount / totalQ) * 100);
+
+      // Xếp loại học lực
+      let rank = "CẦN CỐ GẮNG";
+      let rankColor = "#ef4444";
+      let rankTagClass = "tag-rank-effort";
+
+      if (finalScore10 >= 9.0) {
+        rank = "XUẤT SẮC";
+        rankColor = "#10b981";
+        rankTagClass = "tag-rank-excellent";
+      } else if (finalScore10 >= 8.0) {
+        rank = "GIỎI";
+        rankColor = "#2563eb";
+        rankTagClass = "tag-rank-good";
+      } else if (finalScore10 >= 6.5) {
+        rank = "KHÁ";
+        rankColor = "#0284c7";
+        rankTagClass = "tag-rank-good";
+      } else if (finalScore10 >= 5.0) {
+        rank = "ĐẠT";
+        rankColor = "#d97706";
+        rankTagClass = "tag-rank-pass";
+      }
+
+      // Tạo bản ghi kết quả
+      const now = new Date();
+      const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')} ${now.getDate().toString().padStart(2, '0')}/${(now.getMonth()+1).toString().padStart(2, '0')}/${now.getFullYear()}`;
+
+      const examRecord = {
+        id: Date.now(),
+        timestamp: timeStr,
+        studentName: examState.studentName,
+        studentClass: examState.studentClass,
+        grade: examState.grade,
+        machineNumber: examState.machineNumber,
+        score: finalScore10.toFixed(1),
+        correctCount: correctCount,
+        totalQuestions: totalQ,
+        timeSpent: timeSpentFormatted,
+        rank: rank,
+        rankTagClass: rankTagClass
+      };
+
+      // Lưu vào LocalStorage
+      saveExamRecord(examRecord);
+
+      // Gửi ngầm về Google Sheets nếu có cài đặt
+      syncToGoogleSheets(examRecord);
+
+      // Hiệu ứng hoàn thành
+      sound.playVictory();
+      fireConfetti(150);
+
+      // Cập nhật màn hình kết quả
+      document.getElementById("exam-res-name").textContent = examState.studentName;
+      document.getElementById("exam-res-class").textContent = examState.studentClass;
+      document.getElementById("exam-res-pc").textContent = examState.machineNumber;
+      document.getElementById("exam-res-timespent").textContent = timeSpentFormatted;
+      document.getElementById("exam-res-score-10").textContent = finalScore10.toFixed(1);
+      
+      const rankTag = document.getElementById("exam-res-rank-tag");
+      rankTag.textContent = rank;
+      rankTag.style.background = rankColor;
+
+      document.getElementById("exam-res-correct-count").textContent = `${correctCount}/${totalQ}`;
+      document.getElementById("exam-res-wrong-count").textContent = `${wrongCount}/${totalQ}`;
+      document.getElementById("exam-res-accuracy-rate").textContent = `${accuracyRate}%`;
+
+      // Chuẩn bị danh sách đối chiếu chi tiết
+      renderDetailedReview();
+
+      // Chuyển màn hình
+      switchScreen(screenExamResult);
+    }
+
+    // Hiển thị danh sách đối chiếu câu đúng/sai chi tiết
+    function renderDetailedReview() {
+      const container = document.getElementById("exam-review-cards-list");
+      container.innerHTML = "";
+
+      examState.questions.forEach((q, idx) => {
+        const chosen = examState.userAnswers[idx];
+        const isCorrect = (chosen === q.answer);
+        const card = document.createElement("div");
+        card.className = `review-question-card ${isCorrect ? "correct" : "wrong"}`;
+
+        let statusText = isCorrect 
+          ? `<span style="color: #10b981; font-weight: 800;">✅ Đúng</span>` 
+          : `<span style="color: #ef4444; font-weight: 800;">❌ Sai</span>`;
+
+        let chosenText = chosen !== undefined 
+          ? `<strong>${letters[chosen]}:</strong> ${q.options[chosen]}` 
+          : `<span style="color: #94a3b8; font-style: italic;">Chưa chọn đáp án</span>`;
+
+        let correctText = `<strong>${letters[q.answer]}:</strong> ${q.options[q.answer]}`;
+
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-weight: 800; color: #2563eb;">Câu ${idx + 1} (${q.topic}):</span>
+            ${statusText}
+          </div>
+          <div style="font-size: 1rem; font-weight: 600; color: #1e293b; margin-bottom: 8px;">${q.question}</div>
+          <div style="font-size: 0.9rem; margin-bottom: 4px;">• Đáp án em chọn: <span style="color: ${isCorrect ? '#10b981' : '#ef4444'};">${chosenText}</span></div>
+          ${!isCorrect ? `<div style="font-size: 0.9rem; margin-bottom: 6px; color: #15803d;">• Đáp án chính xác: ${correctText}</div>` : ''}
+          <div style="font-size: 0.85rem; color: #475569; background: #ffffff; padding: 8px 12px; border-radius: 8px; margin-top: 6px; border: 1px dashed #cbd5e1;">
+            💡 <strong>Giải thích:</strong> ${q.explanation || 'Nắm vững kiến thức trọng tâm trong sách giáo khoa.'}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Toggle xem chi tiết bài làm
+    const reviewBox = document.getElementById("exam-detailed-review-box");
+    document.getElementById("btn-toggle-exam-review").addEventListener("click", () => {
+      sound.playClick();
+      if (reviewBox.style.display === "none") {
+        reviewBox.style.display = "block";
+        reviewBox.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById("btn-toggle-exam-review").textContent = "🔼 Thu Gọn Chi Tiết";
+      } else {
+        reviewBox.style.display = "none";
+        document.getElementById("btn-toggle-exam-review").textContent = "🔍 Xem Chi Tiết Bài Làm";
+      }
+    });
+
+    // Thí sinh tiếp theo
+    document.getElementById("btn-exam-next-student").addEventListener("click", () => {
+      sound.playClick();
+      document.getElementById("exam-student-name").value = "";
+      switchScreen(screenStart);
+    });
+
+    // =========================================================================
+    // QUẢN LÝ DỮ LIỆU ĐIỂM (LOCALSTORAGE & GOOGLE SHEETS)
+    // =========================================================================
+
+    const STORAGE_KEY = "UNIGO_EXAM_RESULTS_V1";
+    const WEBHOOK_KEY = "UNIGO_GSHEET_WEBHOOK_URL";
+
+    function getExamRecords() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveExamRecord(record) {
+      try {
+        const list = getExamRecords();
+        list.unshift(record); // Thêm vào đầu danh sách
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      } catch (e) {
+        console.error("Lỗi lưu kết quả thi:", e);
+      }
+    }
+
+    function syncToGoogleSheets(record) {
+      const webhookUrl = localStorage.getItem(WEBHOOK_KEY);
+      if (!webhookUrl || !webhookUrl.startsWith("http")) return;
+
+      try {
+        fetch(webhookUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(record)
+        }).catch(err => console.log("Google Sheets sync background error:", err));
+      } catch (e) {}
+    }
+
+    // BẬT MODAL BẢNG ĐIỂM & TRUNG TÂM GIÁO VIÊN
+    function openDashboardModal(targetTab = "tab-scores") {
+      sound.playClick();
+      renderScoresTable();
+      renderAnswerKeyTable(state.currentGrade);
+      switchDashboardTab(targetTab);
+      // Nạp webhook url vào input
+      const savedWebhook = localStorage.getItem(WEBHOOK_KEY) || "";
+      document.getElementById("input-gsheet-webhook").value = savedWebhook;
+      dashboardModal.classList.add("active");
+    }
+
+    document.getElementById("btn-leaderboard").addEventListener("click", () => openDashboardModal("tab-scores"));
+    document.getElementById("btn-teacher-view").addEventListener("click", () => openDashboardModal("tab-answerkey"));
+    document.getElementById("btn-view-board-quick").addEventListener("click", () => openDashboardModal("tab-scores"));
+    document.getElementById("btn-open-scoreboard-from-result").addEventListener("click", () => openDashboardModal("tab-scores"));
+
+    document.getElementById("btn-close-dashboard").addEventListener("click", () => {
+      sound.playClick();
+      dashboardModal.classList.remove("active");
+    });
+
+    // Chuyển tab trong Dashboard
+    function switchDashboardTab(tabId) {
+      document.querySelectorAll(".dash-tab-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.tab === tabId);
+      });
+      document.getElementById("tab-scores-view").style.display = (tabId === "tab-scores") ? "block" : "none";
+      document.getElementById("tab-answerkey-view").style.display = (tabId === "tab-answerkey") ? "block" : "none";
+      document.getElementById("tab-sync-view").style.display = (tabId === "tab-sync") ? "block" : "none";
+    }
+
+    document.querySelectorAll(".dash-tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        sound.playClick();
+        switchDashboardTab(btn.dataset.tab);
+      });
+    });
+
+    // Render Bảng điểm học sinh
+    function renderScoresTable() {
+      const records = getExamRecords();
+      const gradeFilter = document.getElementById("filter-grade").value;
+      const classFilter = document.getElementById("filter-class").value.trim().toLowerCase();
+
+      let filtered = records.filter(r => {
+        if (gradeFilter !== "all" && r.grade != gradeFilter) return false;
+        if (classFilter && !r.studentClass.toLowerCase().includes(classFilter)) return false;
+        return true;
+      });
+
+      // Thống kê
+      const totalStudents = filtered.length;
+      document.getElementById("db-total-students").textContent = totalStudents;
+
+      if (totalStudents > 0) {
+        const scores = filtered.map(r => parseFloat(r.score) || 0);
+        const avg = scores.reduce((a, b) => a + b, 0) / totalStudents;
+        const max = Math.max(...scores);
+        const passCount = scores.filter(s => s >= 5.0).length;
+        const passRate = Math.round((passCount / totalStudents) * 100);
+
+        document.getElementById("db-avg-score").textContent = avg.toFixed(1);
+        document.getElementById("db-max-score").textContent = max.toFixed(1);
+        document.getElementById("db-pass-rate").textContent = `${passRate}%`;
+      } else {
+        document.getElementById("db-avg-score").textContent = "0.0";
+        document.getElementById("db-max-score").textContent = "0.0";
+        document.getElementById("db-pass-rate").textContent = "0%";
+      }
+
+      // Render hàng
+      const tbody = document.getElementById("scores-table-body");
+      tbody.innerHTML = "";
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; padding: 24px; color: #94a3b8;">Chưa có dữ liệu bài thi nào được ghi nhận.</td></tr>`;
+        return;
+      }
+
+      filtered.forEach((r, idx) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td style="text-align: center; font-weight: 700;">${idx + 1}</td>
+          <td style="font-size: 0.85rem; color: #64748b;">${r.timestamp}</td>
+          <td><strong>${r.studentName}</strong></td>
+          <td style="text-align: center;"><span style="background: #e2e8f0; padding: 2px 8px; border-radius: 6px; font-weight: 700;">${r.studentClass}</span></td>
+          <td style="text-align: center; color: #64748b;">${r.machineNumber}</td>
+          <td style="text-align: center; font-weight: 800; font-size: 1.1rem; color: #2563eb;">${r.score}</td>
+          <td style="text-align: center;">${r.correctCount}/${r.totalQuestions}</td>
+          <td style="text-align: center; font-size: 0.85rem; color: #64748b;">${r.timeSpent}</td>
+          <td style="text-align: center;"><span class="tag-rank ${r.rankTagClass || ''}">${r.rank}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    document.getElementById("filter-grade").addEventListener("change", renderScoresTable);
+    document.getElementById("filter-class").addEventListener("input", renderScoresTable);
+
+    // Xuất file CSV (Excel)
+    document.getElementById("btn-export-csv").addEventListener("click", () => {
+      sound.playClick();
+      const records = getExamRecords();
+      if (records.length === 0) {
+        showModal("Thông báo", "Chưa có dữ liệu học sinh nào để xuất file!", "ℹ️");
+        return;
+      }
+
+      let csv = "﻿STT,Thời Gian Nộp,Họ Và Tên,Lớp,Khối,Số Máy,Điểm (Thang 10),Số Câu Đúng,Tổng Số Câu,Thời Gian Làm,Xếp Loại\n";
+      records.forEach((r, idx) => {
+        csv += `${idx + 1},"${r.timestamp}","${r.studentName}","${r.studentClass}",${r.grade},"${r.machineNumber}",${r.score},${r.correctCount},${r.totalQuestions},"${r.timeSpent}","${r.rank}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `Bang_diem_Tin_hoc_UNIGO_${new Date().toISOString().slice(0,10)}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    });
+
+    // In bảng điểm chuẩn form UNIGO
+    document.getElementById("btn-print-table").addEventListener("click", () => {
+      sound.playClick();
+      const records = getExamRecords();
+      if (records.length === 0) {
+        showModal("Thông báo", "Chưa có dữ liệu học sinh nào để in!", "ℹ️");
+        return;
+      }
+
+      let rowsHtml = "";
+      records.forEach((r, idx) => {
+        rowsHtml += `
+          <tr>
+            <td style="border: 1px solid #000; padding: 6px; text-align: center;">${idx + 1}</td>
+            <td style="border: 1px solid #000; padding: 6px; text-align: left;">${r.studentName}</td>
+            <td style="border: 1px solid #000; padding: 6px; text-align: center;">${r.studentClass}</td>
+            <td style="border: 1px solid #000; padding: 6px; text-align: center;">${r.machineNumber}</td>
+            <td style="border: 1px solid #000; padding: 6px; text-align: center; font-weight: bold;">${r.score}</td>
+            <td style="border: 1px solid #000; padding: 6px; text-align: center;">${r.correctCount}/${r.totalQuestions}</td>
+            <td style="border: 1px solid #000; padding: 6px; text-align: center;">${r.timeSpent}</td>
+            <td style="border: 1px solid #000; padding: 6px; text-align: center;">${r.rank}</td>
+          </tr>
+        `;
+      });
+
+      const printWindow = window.open("", "_blank");
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Bảng Điểm Kiểm Tra Tin Học UNIGO</title>
+          <style>
+            body { font-family: 'Times New Roman', serif; padding: 20px; color: #000; font-size: 13pt; }
+            .header { display: flex; justify-content: space-between; margin-bottom: 20px; }
+            .title { text-align: center; margin: 20px 0; font-weight: bold; font-size: 15pt; }
+            table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+            th { border: 1px solid #000; padding: 8px; background: #f0f0f0; }
+            .signatures { display: flex; justify-content: space-between; margin-top: 40px; text-align: center; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div>
+              <strong>TRƯỜNG TIỂU HỌC & THCS UNIGO</strong><br>
+              TỔ CHUYÊN MÔN
+            </div>
+            <div style="text-align: right;">
+              <strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong><br>
+              Độc lập - Tự do - Hạnh phúc
+            </div>
+          </div>
+          <div class="title">
+            BẢNG TỔNG HỢP KẾT QUẢ ĐÁNH GIÁ ĐỊNH KỲ 1 - MÔN TIN HỌC<br>
+            <span style="font-size: 12pt; font-weight: normal; font-style: italic;">Năm học: 2026 - 2027</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 40px;">STT</th>
+                <th>Họ và Tên Học Sinh</th>
+                <th style="width: 70px;">Lớp</th>
+                <th style="width: 80px;">Số Máy</th>
+                <th style="width: 80px;">Điểm Số</th>
+                <th style="width: 90px;">Đúng/Tổng</th>
+                <th style="width: 100px;">Thời Gian</th>
+                <th style="width: 100px;">Xếp Loại</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+          </table>
+          <div class="signatures">
+            <div>
+              <strong>DUYỆT CỦA BGH</strong><br><br><br><br>
+            </div>
+            <div>
+              <strong>TỔ CHUYÊN MÔN</strong><br><br><br><br>
+            </div>
+            <div>
+              <em>Ngày ...... tháng ...... năm 2026</em><br>
+              <strong>GIÁO VIÊN BÁO CÁO</strong><br><br><br><br>
+              <strong>Đậu Đình Nguyên</strong>
+            </div>
+          </div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+      printWindow.focus();
+      setTimeout(() => {
+        printWindow.print();
+      }, 500);
+    });
+
+    // Xóa bảng điểm
+    document.getElementById("btn-clear-scores").addEventListener("click", () => {
+      sound.playClick();
+      if (confirm("⚠️ CẢNH BÁO: Thầy/Cô có chắc chắn muốn xóa toàn bộ danh sách điểm học sinh đã lưu để bắt đầu đợt thi mới không?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        renderScoresTable();
+        showModal("Thành công", "Đã xóa toàn bộ bảng điểm dữ liệu cũ!", "🗑️");
+      }
+    });
+
+    // Render Bảng Đáp án chuẩn
+    function renderAnswerKeyTable(grade) {
+      const container = document.getElementById("anskey-grid-container");
+      container.innerHTML = "";
+      const currentList = QUESTION_BANK_BY_GRADE[grade] || [];
+
+      currentList.forEach((q, idx) => {
+        const item = document.createElement("div");
+        item.style.background = "#f1f5f9";
+        item.style.padding = "8px";
+        item.style.borderRadius = "8px";
+        item.style.border = "1px solid #cbd5e1";
+        item.style.textAlign = "center";
+        item.innerHTML = `<strong>C${idx + 1}:</strong> <span style="color: #2563eb; font-weight: 800; font-size: 1.05rem;">${letters[q.answer]}</span>`;
+        container.appendChild(item);
+      });
+    }
+
+    document.getElementById("anskey-grade-select").addEventListener("change", (e) => {
+      renderAnswerKeyTable(parseInt(e.target.value, 10));
+    });
+
+    // Lưu Webhook URL Google Sheets
+    document.getElementById("btn-save-webhook").addEventListener("click", () => {
+      sound.playClick();
+      const url = document.getElementById("input-gsheet-webhook").value.trim();
+      localStorage.setItem(WEBHOOK_KEY, url);
+      showModal("Đã Lưu Cấu Hình", "Đã lưu đường dẫn Google Apps Script Webhook. Khi học sinh nộp bài, điểm sẽ tự động đồng bộ về Google Sheets!", "💾");
+    });
+
+    // Test gửi webhook
+    document.getElementById("btn-test-webhook").addEventListener("click", () => {
+      sound.playClick();
+      const url = document.getElementById("input-gsheet-webhook").value.trim();
+      if (!url) {
+        showModal("Chưa có URL", "Vui lòng nhập đường dẫn Google Apps Script Webhook trước!", "⚠️");
+        return;
+      }
+      const testRecord = {
+        id: Date.now(),
+        timestamp: new Date().toLocaleString("vi-VN"),
+        studentName: "Học Sinh Mẫu (Test)",
+        studentClass: "5A1",
+        grade: 5,
+        machineNumber: "Máy 99",
+        score: "10.0",
+        correctCount: 20,
+        totalQuestions: 20,
+        timeSpent: "10 phút 00 giây",
+        rank: "XUẤT SẮC"
+      };
+      syncToGoogleSheets(testRecord);
+      showModal("Đã Gửi Thử", "Đã gửi dữ liệu mẫu về Google Sheets. Thầy/Cô mở file Sheet kiểm tra xem dòng mới đã xuất hiện chưa nhé!", "🧪");
+    });
+
 
     const btnSound = document.getElementById("btn-sound");
     btnSound.addEventListener("click", () => {
@@ -1805,5 +3360,115 @@
       }
     });
   </script>
+
+  
+
+        <div class="table-filter-bar">
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <select id="filter-grade" class="form-input-control" style="padding: 7px 12px; font-size: 0.9rem;">
+              <option value="all">Tất cả Khối lớp</option>
+              <option value="3">Khối 3</option>
+              <option value="4">Khối 4</option>
+              <option value="5">Khối 5</option>
+              <option value="6">Khối 6</option>
+              <option value="7">Khối 7</option>
+              <option value="8">Khối 8</option>
+            </select>
+            <input type="text" id="filter-class" class="form-input-control" placeholder="Lọc Lớp (VD: 5A1)..." style="padding: 7px 12px; font-size: 0.9rem; width: 140px;">
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-action" id="btn-export-csv" style="padding: 8px 16px; font-size: 0.88rem; background: #10b981;">
+              📥 Xuất File Excel (.CSV)
+            </button>
+            <button class="btn-action" id="btn-print-table" style="padding: 8px 16px; font-size: 0.88rem; background: #6366f1;">
+              🖨️ In Bảng Điểm
+            </button>
+            <button class="btn-action btn-secondary" id="btn-clear-scores" style="padding: 8px 14px; font-size: 0.88rem; color: #ef4444; border-color: #fca5a5;">
+              🗑️ Xóa Dữ Liệu
+            </button>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto; max-height: 400px; border: 1px solid #e2e8f0; border-radius: 12px;">
+          <table class="custom-scores-table" id="table-student-scores">
+            <thead>
+              <tr>
+                <th style="width: 45px; text-align: center;">STT</th>
+                <th>Thời Gian</th>
+                <th>Họ và Tên</th>
+                <th style="text-align: center;">Lớp</th>
+                <th style="text-align: center;">Số Máy</th>
+                <th style="text-align: center;">Điểm /10</th>
+                <th style="text-align: center;">Số Câu Đúng</th>
+                <th style="text-align: center;">Thời Gian Làm</th>
+                <th style="text-align: center;">Xếp Loại</th>
+              </tr>
+            </thead>
+            <tbody id="scores-table-body">
+              <!-- Render danh sách qua JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: ĐÁP ÁN CHUẨN -->
+      <div id="tab-answerkey-view" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="color: #1e293b; margin: 0;">Đáp án trắc nghiệm chuẩn (40 câu):</h3>
+          <select id="anskey-grade-select" class="form-input-control" style="padding: 6px 12px; font-size: 0.9rem;">
+            <option value="3">Khối 3</option>
+            <option value="4">Khối 4</option>
+            <option value="5" selected>Khối 5</option>
+            <option value="6">Khối 6</option>
+            <option value="7">Khối 7</option>
+            <option value="8">Khối 8</option>
+          </select>
+        </div>
+        <div id="anskey-grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; font-size: 0.9rem;">
+          <!-- Render qua JS -->
+        </div>
+      </div>
+
+      <!-- TAB 3: ĐỒNG BỘ GOOGLE SHEETS -->
+      <div id="tab-sync-view" style="display: none; text-align: left;">
+        <div class="exam-setup-card" style="margin-top: 0;">
+          <h3 style="color: #1e293b; margin-bottom: 10px;">☁️ Tự động gửi điểm về Google Sheets</h3>
+          <p style="font-size: 0.92rem; color: #475569; line-height: 1.5; margin-bottom: 12px;">
+            Khi học sinh bấm <strong>Nộp bài</strong> trên bất kỳ máy nào trong phòng Tin học, kết quả sẽ tự động gửi ngay về file Google Sheets của Thầy/Cô qua Internet theo thời gian thực!
+          </p>
+          <div class="form-field-group" style="margin-bottom: 12px;">
+            <label for="input-gsheet-webhook">Đường dẫn Google Apps Script Webhook URL:</label>
+            <input type="text" id="input-gsheet-webhook" class="form-input-control" placeholder="https://script.google.com/macros/s/..." style="font-family: monospace; font-size: 0.88rem;">
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn-action" id="btn-save-webhook" style="padding: 9px 20px; font-size: 0.92rem; background: #2563eb;">
+              💾 Lưu Cấu Hình URL
+            </button>
+            <button class="btn-action btn-secondary" id="btn-test-webhook" style="padding: 9px 18px; font-size: 0.92rem;">
+              🧪 Gửi Thử 1 Điểm Mẫu
+            </button>
+          </div>
+
+          <details style="margin-top: 16px; background: #f8fafc; padding: 12px; border-radius: 10px; font-size: 0.88rem; color: #334155;">
+            <summary style="font-weight: 700; cursor: pointer; color: #2563eb;">👉 Hướng dẫn tạo Google Sheets nhận điểm trong 2 phút (Bấm để xem mã mẫu)</summary>
+            <ol style="margin-top: 10px; padding-left: 20px; line-height: 1.6;">
+              <li>Mở một trang Google Sheets mới, đặt tên: <em>Bảng điểm Tin học UNIGO</em>.</li>
+              <li>Vào menu <strong>Tiện ích mở rộng (Extensions)</strong> &rarr; <strong>Apps Script</strong>.</li>
+              <li>Dán đoạn mã dưới đây vào rồi bấm <strong>Triển khai (Deploy) &rarr; Triển khai mới (New deployment)</strong>:
+                <pre style="background: #1e293b; color: #f8fafc; padding: 10px; border-radius: 8px; margin: 8px 0; overflow-x: auto; font-family: monospace; font-size: 0.82rem;">function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  sheet.appendRow([new Date(), data.studentName, data.studentClass, data.grade, data.machineNumber, data.score, data.correctCount, data.totalQuestions, data.timeSpent, data.rank]);
+  return ContentService.createTextOutput(JSON.stringify({status: "success"})).setMimeType(ContentService.MimeType.JSON);
+}</pre>
+              </li>
+              <li>Chọn <em>Người có quyền truy cập: <strong>Bất kỳ ai (Anyone)</strong></em> &rarr; Sao chép URL Web App và dán vào ô bên trên!</li>
+            </ol>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

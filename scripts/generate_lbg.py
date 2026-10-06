@@ -705,18 +705,27 @@ def update_headers(doc, tuan_so, start_date, end_date):
         elif re.match(r'^Ngày\s+\d+\s+tháng\s+\d+\s+năm\s+\d+', txt) and len(txt) < 45:
             new = f'Ngày {ngay_soan.day:02d} tháng {ngay_soan.month:02d} năm {ngay_soan.year}'
         elif 'sáng' in txt.lower() and 'tuần' in txt.lower():
-            new = f'Buổi…sáng……..Tuần…{tuan_so:02d}…(Từ ngày…{fs} …đến ngày:… {fe}….)'
+            new = f'Buổi sáng    Tuần {tuan_so:02d} (Từ ngày {fs} đến ngày {fe})'
         elif 'chiều' in txt.lower() and 'tuần' in txt.lower():
-            new = f'Buổi…chiều…..Tuần…{tuan_so:02d}…(Từ ngày…{fs}…đến ngày:… {fe}….)'
+            new = f'Buổi chiều    Tuần {tuan_so:02d} (Từ ngày {fs} đến ngày {fe})'
         else:
             continue
 
+        is_session_head = ('sáng' in txt.lower() or 'chiều' in txt.lower()) and 'tuần' in txt.lower()
         if p.runs:
             p.runs[0].text = new
             for r in p.runs[1:]:
                 r.text = ''
+            p.runs[0].font.name = 'Times New Roman'
+            p.runs[0].font.size = Pt(13)
+            if is_session_head:
+                p.runs[0].font.italic = True
         else:
             p.text = new
+            p.runs[0].font.name = 'Times New Roman'
+            p.runs[0].font.size = Pt(13)
+            if is_session_head:
+                p.runs[0].font.italic = True
 
 
 def merge_and_format_block(tbl, start_row, end_row, start_col, end_col, text):
@@ -1077,54 +1086,90 @@ def add_page_break_after_table(tbl_element):
     tbl_element.addnext(p)
 
 
-def fix_page_breaks(doc):
+def remove_morning_sign_table(doc):
+    """Xóa hoàn toàn bảng nhận xét / ký tên (1x2) ở Buổi sáng.
+    Phần nhận xét và chữ ký duyệt của Tổ trưởng chỉ để ở cuối Buổi chiều.
+    Đồng thời chèn ngắt trang ngay sau bảng lịch buổi sáng để tách 2 buổi thành 2 trang riêng biệt.
+    """
     body = doc.element.body
-    children = list(body)
-    sign_tables = []
-    for c in children:
-        tag = c.tag.split('}')[-1] if '}' in c.tag else c.tag
-        if tag == 'tbl':
-            for tbl in doc.tables:
-                if tbl._element is c and len(tbl.rows) == 1 and len(tbl.columns) == 2:
-                    sign_tables.append(c)
-                    break
-    if len(sign_tables) < 2:
+    lbg_tbls = [t for t in doc.tables
+                if len(t.columns) == 7
+                and 'Lớp' in [c.text.strip() for c in t.rows[0].cells]]
+    if len(lbg_tbls) < 2:
         return
-    sign_sang = sign_tables[0]
-    sign_chieu = sign_tables[1]
 
-    def find_para(keyword):
-        for c in list(body):
-            if (c.tag.split('}')[-1] if '}' in c.tag else c.tag) == 'p':
-                txt = ''.join(t.text or '' for t in c.findall('.//' + qn('w:t')))
-                if keyword.lower() in txt.lower():
-                    return c
-        return None
+    sang_tbl_el = lbg_tbls[0]._element
+    chieu_p_el = None
+    for c in list(body):
+        tag = c.tag.split('}')[-1] if '}' in c.tag else c.tag
+        if tag == 'p':
+            txt = ''.join(t.text or '' for t in c.findall('.//' + qn('w:t')))
+            if 'chiều' in txt.lower() and 'tuần' in txt.lower():
+                chieu_p_el = c
+                break
 
-    chieu_el = find_para('chiều')
-    nhanxet_el = find_para('nhận xét của bgh')
+    if chieu_p_el is None:
+        return
 
-    def remove_empty_between(el_a, el_b):
-        ch = list(body)
-        if el_a not in ch or el_b not in ch:
-            return 0
-        ia, ib = ch.index(el_a), ch.index(el_b)
-        removed = 0
-        for c in ch[ia + 1:ib]:
-            if (c.tag.split('}')[-1] if '}' in c.tag else c.tag) == 'p':
-                if not ''.join(t.text or '' for t in c.findall('.//' + qn('w:t'))).strip():
-                    body.remove(c)
-                    removed += 1
-        return removed
+    children = list(body)
+    if sang_tbl_el not in children or chieu_p_el not in children:
+        return
 
-    if chieu_el is not None:
-        remove_empty_between(sign_sang, chieu_el)
-    if nhanxet_el is not None:
-        remove_empty_between(sign_chieu, nhanxet_el)
+    idx_sang = children.index(sang_tbl_el)
+    idx_chieu = children.index(chieu_p_el)
 
-    add_page_break_after_table(sign_sang)
-    if nhanxet_el is not None:
-        add_page_break_after_table(sign_chieu)
+    # Xóa toàn bộ phần tử giữa bảng sáng và tiêu đề buổi chiều
+    # (bao gồm bảng nhận xét / ký tên buổi sáng và các paragraph trống thừa)
+    for el in children[idx_sang + 1 : idx_chieu]:
+        tag = el.tag.split('}')[-1] if '}' in el.tag else el.tag
+        if tag != 'sectPr':
+            body.remove(el)
+
+    # Chèn đúng 1 paragraph ngắt trang (page break) ngay trước tiêu đề buổi chiều
+    p = OxmlElement('w:p')
+    pPr = OxmlElement('w:pPr')
+    sp = OxmlElement('w:spacing')
+    sp.set(qn('w:before'), '0')
+    sp.set(qn('w:after'), '0')
+    pPr.append(sp)
+    p.append(pPr)
+    r = OxmlElement('w:r')
+    br = OxmlElement('w:br')
+    br.set(qn('w:type'), 'page')
+    r.append(br)
+    p.append(r)
+    chieu_p_el.addprevious(p)
+
+
+def fix_page_breaks(doc):
+    """Đảm bảo khoảng cách giữa bảng lịch buổi chiều và bảng nhận xét/ký tên
+    cuối cùng chỉ có tối đa 1 đoạn văn rỗng, giữ trọn vẹn trong 1 trang.
+    """
+    body = doc.element.body
+    lbg_tbls = [t for t in doc.tables
+                if len(t.columns) == 7
+                and 'Lớp' in [c.text.strip() for c in t.rows[0].cells]]
+    if len(lbg_tbls) >= 2:
+        chieu_tbl_el = lbg_tbls[1]._element
+        sign_tbl_el = None
+        for tbl in doc.tables:
+            if len(tbl.rows) == 1 and len(tbl.columns) == 2:
+                sign_tbl_el = tbl._element
+                break
+        if sign_tbl_el is not None:
+            children = list(body)
+            if chieu_tbl_el in children and sign_tbl_el in children:
+                idx_c = children.index(chieu_tbl_el)
+                idx_s = children.index(sign_tbl_el)
+                empty_paras = []
+                for el in children[idx_c + 1 : idx_s]:
+                    tag = el.tag.split('}')[-1] if '}' in el.tag else el.tag
+                    if tag == 'p':
+                        txt = ''.join(t.text or '' for t in el.findall('.//' + qn('w:t')))
+                        if not txt.strip():
+                            empty_paras.append(el)
+                for el in empty_paras[1:]:
+                    body.remove(el)
 
 
 def clear_row_data(row):
@@ -1169,6 +1214,7 @@ def generate_lbg(tuan_so):
     update_headers(doc, tuan_so, start_date, end_date)
     update_table_data(doc, tuan_so, start_date)
     fix_all_fonts(doc)
+    remove_morning_sign_table(doc)
     update_ky_ten(doc, start_date)
     update_sign_names(doc, '', start_date)
     compact_sign_tables(doc)

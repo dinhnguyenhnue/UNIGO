@@ -42,6 +42,7 @@ from generate_lbg import (
     TO_TRUONG_TH, TO_TRUONG_THCS,
     update_sign_names, compact_sign_tables,
     remove_cover_page, remove_end_evaluation_table,
+    remove_morning_sign_table,
 )
 
 TOTAL_WEEKS = 35
@@ -68,6 +69,7 @@ def generate_week_doc(tuan_so):
     update_headers(doc, tuan_so, start_date, end_date)
     update_table_data(doc, tuan_so, start_date)
     fix_all_fonts(doc)
+    remove_morning_sign_table(doc)
     update_ky_ten(doc, start_date)
     update_sign_names(doc, '', start_date)
     compact_sign_tables(doc)
