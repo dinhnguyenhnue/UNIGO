@@ -3015,6 +3015,7 @@
 
     const STORAGE_KEY = "UNIGO_EXAM_RESULTS_V1";
     const WEBHOOK_KEY = "UNIGO_GSHEET_WEBHOOK_URL";
+    const DEFAULT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxdFxPYPnGL4vaW5gi7rYRh1Mz6UDrOUhlhKGInWrHhET8g90jONtXmXfS9wQ1dwe6j/exec";
 
     function getExamRecords() {
       try {
@@ -3036,7 +3037,7 @@
     }
 
     function syncToGoogleSheets(record) {
-      const webhookUrl = localStorage.getItem(WEBHOOK_KEY);
+      const webhookUrl = localStorage.getItem(WEBHOOK_KEY) || DEFAULT_WEBHOOK_URL;
       if (!webhookUrl || !webhookUrl.startsWith("http")) return;
 
       try {
@@ -3056,7 +3057,7 @@
       renderAnswerKeyTable(state.currentGrade);
       switchDashboardTab(targetTab);
       // Nạp webhook url vào input
-      const savedWebhook = localStorage.getItem(WEBHOOK_KEY) || "";
+      const savedWebhook = localStorage.getItem(WEBHOOK_KEY) || DEFAULT_WEBHOOK_URL;
       document.getElementById("input-gsheet-webhook").value = savedWebhook;
       dashboardModal.classList.add("active");
     }
