@@ -533,13 +533,103 @@ PPCT_ROB['6'] = PPCT_ROB['5'].copy()
 PPCT_ROB['7'] = PPCT_ROB['5'].copy()
 PPCT_ROB['8'] = PPCT_ROB['5'].copy()
 
+# ─────────────────────────────────────────────────────────────────────────────
+# LỚP 5C1 TỪ TUẦN 14 TRỞ ĐI (Tách 1 tiết Tin học + 1 tiết Robotics mỗi tuần)
+# Hết Tuần 13, 5C1 đã học xong PPCT 12 cả Tin học và Robotics.
+# Từ Tuần 14..35 (22 tuần), mỗi tuần 5C1 học 1 tiết Tin (T5 Chiều T2) + 1 tiết Rob (T6 Chiều T3),
+# tương ứng PPCT 13..34, đồng bộ mốc ĐGĐK 2 (Tuần 18-19), ĐGĐK 3 (Tuần 27-28), ĐGĐK 4 (Tuần 33-34).
+# ─────────────────────────────────────────────────────────────────────────────
+
+PPCT_TIN_5C1_NEW = {
+    13: 'Bài 6: Định dạng kí tự và bố trí hình ảnh trong văn bản (Tiết 1)',
+    14: 'Bài 6: Định dạng kí tự và bố trí hình ảnh trong văn bản (Tiết 2)',
+    15: 'Bài 7: Thực hành soạn thảo văn bản (Tiết 1, 2)',
+    16: 'Bài 8A: Làm quen với phần mềm đồ họa',
+    17: 'Ôn tập Đánh giá định kỳ 2',
+    18: 'Đánh giá định kỳ 2',
+    19: 'Bài 9A: Sử dụng phần mềm đồ hoạ tạo sản phẩm số',
+    20: 'Bài 10: Cấu trúc tuần tự (Tiết 1)',
+    21: 'Bài 10: Cấu trúc tuần tự (Tiết 2)',
+    22: 'Bài 11: Cấu trúc lặp (Tiết 1)',
+    23: 'Bài 11: Cấu trúc lặp (Tiết 2)',
+    24: 'Bài 12: Thực hành sử dụng lệnh lặp (Tiết 1)',
+    25: 'Bài 12: Thực hành sử dụng lệnh lặp (Tiết 2)',
+    26: 'Ôn tập Đánh giá định kỳ 3',
+    27: 'Đánh giá định kỳ 3',
+    28: 'Bài 13: Cấu trúc rẽ nhánh (Tiết 1)',
+    29: 'Bài 13: Cấu trúc rẽ nhánh (Tiết 2)',
+    30: 'Bài 14: Sử dụng biến trong chương trình (Tiết 1)',
+    31: 'Bài 14: Sử dụng biến trong chương trình (Tiết 2)',
+    32: 'Ôn tập Đánh giá định kỳ 4',
+    33: 'Đánh giá định kỳ 4',
+    34: 'Tổng kết năm học',
+    35: 'Tổng kết năm học',
+}
+
+PPCT_ROB_5C1_NEW = {
+    13: 'Bài 11. Lực hấp dẫn',
+    14: 'Bài 12. Domino trong Robotics',
+    15: 'Bài 13. Robot phục vụ đời sống',
+    16: 'Luyện tập & Thực hành sáng tạo Robotics',
+    17: 'Ôn tập Đánh giá định kỳ 2',
+    18: 'Đánh giá định kỳ 2',
+    19: 'Bài 14. Robot thám hiểm',
+    20: 'Bài 15. Cảm biến siêu âm',
+    21: 'Bài 16. Tránh vật cản tự động',
+    22: 'Bài 17. Robot theo dõi đường line',
+    23: 'Bài 18. Lập trình vòng lặp trong điều khiển robot',
+    24: 'Bài 19. Khám phá cánh tay robot',
+    25: 'Luyện tập & Thực hành điều khiển cánh tay Robot',
+    26: 'Ôn tập Đánh giá định kỳ 3',
+    27: 'Đánh giá định kỳ 3',
+    28: 'Bài 20. Robot phân loại sản phẩm',
+    29: 'Bài 21. Cơ chế kẹp gắp vật thể',
+    30: 'Bài 22. Dự án sáng tạo robot tự hành',
+    31: 'Bài 23. Tối ưu hóa thuật toán điều khiển robot',
+    32: 'Ôn tập Đánh giá định kỳ 4',
+    33: 'Đánh giá định kỳ 4',
+    34: 'Tổng kết môn học & Triển lãm Robotics',
+    35: 'Tổng kết môn học & Triển lãm Robotics',
+}
 
 # ─────────────────────────────────────────────────────────────────────────────
-# MASTER SCHEDULE (Tu 'Thoi khoa bieu - Dau Dinh Nguyen.xlsx')
+# ĐIỀU CHỈNH BÙ TIẾT DO SỰ KIỆN TUẦN 10, 12, 13 (Áp dụng từ Tuần 14)
+# Key: (tuan_so, lop, mon_int, ppct) -> Tên bài dạy nối tiếp & gộp bài đuổi kịp trước ĐGĐK 2
+# ─────────────────────────────────────────────────────────────────────────────
+
+CATCHUP_LESSON_OVERRIDES = {
+    # 1. Lớp 2A1 - Tin học (Bù 1 tiết nghỉ Dã ngoại Tuần 12)
+    (14, '2A1', 'Tin học', 13): 'Thông tin và dữ liệu & Thông tin dạng chữ, hình, âm thanh, video',
+
+    # 2. Lớp 3C1 - Robotics (Bù 1 tiết nghỉ Dã ngoại Tuần 12)
+    (14, '3C1', 'Robotics', 13): 'Bài 10. Cùng câu cá nào! & Bài 11. Thế giới khủng long',
+
+    # 3. Lớp 6A1 - Tin học (Bù Bài 5. Internet bị nghỉ Dã ngoại Tuần 12, đuổi kịp ở Tuần 16)
+    (14, '6A1', 'Tin học', 13): 'Bài 5. Internet (Tiết 1, 2)',
+    (14, '6A1', 'Tin học', 14): 'Bài 6. Mạng thông tin toàn cầu (Tiết 1)',
+    (16, '6A1', 'Tin học', 15): 'Bài 6. Mạng thông tin toàn cầu (Tiết 2)',
+    (16, '6A1', 'Tin học', 16): 'Bài 7. Tìm kiếm thông tin trên Internet (Tiết 1, 2)',
+
+    # 4. Lớp 8A1 - Tin học (Bù Bài 5 Tiết 2 & Bài 6 Tiết 1 bị nghỉ Dã ngoại Tuần 12, đuổi kịp ở Tuần 16)
+    (14, '8A1', 'Tin học', 13): 'Bài 5. Sử dụng bảng tính giải quyết bài toán thực tế (Tiết 2)',
+    (14, '8A1', 'Tin học', 14): 'Bài 6. Sắp xếp và lọc dữ liệu (Tiết 1, 2)',
+    (16, '8A1', 'Tin học', 15): 'Bài 7. Trình bày dữ liệu bằng biểu đồ (Tiết 1, 2)',
+    (16, '8A1', 'Tin học', 16): 'Bài 8a. Làm việc với danh sách dạng liệt kê và hình ảnh trong văn bản (Tiết 1)',
+
+    # 5. Lớp 8A1 - Robotics (Bù Bài 9 & Bài 10 bị nghỉ Lễ hội Halloween Tuần 13, đuổi kịp ở Tuần 17)
+    (15, '8A1', 'Robotics', 13): 'Bài 9. Số ngẫu nhiên',
+    (15, '8A1', 'Robotics', 14): 'Bài 10. Robot hút bụi',
+    (17, '8A1', 'Robotics', 15): 'Bài 11. Lực hấp dẫn & Bài 12. Domino trong Robotics',
+    (17, '8A1', 'Robotics', 16): 'Bài 13. Robot phục vụ đời sống',
+}
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# MASTER SCHEDULE TUẦN 1..13 (TKB Cũ) & TUẦN 14..35 (TKB Mới 26/10)
 # (day_idx 0..4, tiet_tkb 1..5): (lop, mon_display, is_rotation)
 # ─────────────────────────────────────────────────────────────────────────────
 
-MASTER_SCHEDULE_SANG = {
+MASTER_SCHEDULE_SANG_OLD = {
     (0, 3): ('4C1', 'Robotics', False),
     (0, 4): ('1A1', 'Tin học', False),
     (1, 1): ('1C1', 'Tin học', False),
@@ -556,7 +646,7 @@ MASTER_SCHEDULE_SANG = {
     (4, 5): ('6A1', 'Tin - Robotics', True),
 }
 
-MASTER_SCHEDULE_CHIEU = {
+MASTER_SCHEDULE_CHIEU_OLD = {
     (0, 3): ('2C1', 'Tin học', False),
     (1, 3): ('7A1', 'Tin - Robotics', True),
     (1, 4): ('7A1', 'Tin - Robotics', True),
@@ -569,6 +659,41 @@ MASTER_SCHEDULE_CHIEU = {
     (4, 1): ('8A1', 'Tin - Robotics', True),
     (4, 2): ('8A1', 'Tin - Robotics', True),
 }
+
+# TKB Mới 26/10 (Áp dụng từ Tuần 14 trở đi)
+MASTER_SCHEDULE_SANG_NEW = {
+    (0, 3): ('4C1', 'Tin học', False),
+    (0, 4): ('1A1', 'Tin học', False),
+    (1, 1): ('1C1', 'Tin học', False),
+    (1, 2): ('TTH2', 'Tin học', False),
+    (2, 2): ('3A1', 'Robotics', False),
+    (2, 4): ('3C1', 'Robotics', False),
+    (3, 1): ('TT3', 'Tin học', False),
+    (3, 2): ('TTH 1', 'Tin học', False),
+    (3, 4): ('1A1', 'Robotics', False),
+    (4, 1): ('2A1', 'Tin học', False),
+    (4, 2): ('3C1', 'Tin học', False),
+    (4, 4): ('6A1', 'Tin - Robotics', True),
+    (4, 5): ('6A1', 'Tin - Robotics', True),
+}
+
+MASTER_SCHEDULE_CHIEU_NEW = {
+    (0, 3): ('2C1', 'Tin học', False),
+    (0, 4): ('3A1', 'Tin học', False),
+    (1, 3): ('7A1', 'Tin - Robotics', True),
+    (1, 4): ('7A1', 'Tin - Robotics', True),
+    (2, 3): ('4C1', 'Robotics', False),
+    (2, 4): ('2A1', 'Robotics', False),
+    (3, 2): ('5C1', 'Tin học', False),
+    (3, 3): ('2C1', 'Robotics', False),
+    (3, 4): ('1C1', 'Robotics', False),
+    (4, 1): ('8A1', 'Tin - Robotics', True),
+    (4, 2): ('8A1', 'Tin - Robotics', True),
+    (4, 3): ('5C1', 'Robotics', False),
+}
+
+MASTER_SCHEDULE_SANG = MASTER_SCHEDULE_SANG_NEW
+MASTER_SCHEDULE_CHIEU = MASTER_SCHEDULE_CHIEU_NEW
 
 
 def week_dates(tuan_so):
@@ -621,10 +746,20 @@ def get_grade_key(lop):
     return None
 
 
-def get_ppct_lesson(lop, mon, ppct_num):
+def get_ppct_lesson(lop, mon, ppct_num, tuan_so=None):
+    lop_clean = lop.strip().upper()
+    if tuan_so is not None and (tuan_so, lop_clean, mon, ppct_num) in CATCHUP_LESSON_OVERRIDES:
+        return CATCHUP_LESSON_OVERRIDES[(tuan_so, lop_clean, mon, ppct_num)]
+
     grade = get_grade_key(lop)
     if grade is None:
         return ''
+    if grade == '5' and tuan_so is not None and tuan_so >= 14:
+        if mon == 'Tin học' and ppct_num in PPCT_TIN_5C1_NEW:
+            return PPCT_TIN_5C1_NEW[ppct_num]
+        if mon == 'Robotics' and ppct_num in PPCT_ROB_5C1_NEW:
+            return PPCT_ROB_5C1_NEW[ppct_num]
+
     if mon == 'Tin học':
         data = PPCT_TIN.get(grade, {})
     elif mon == 'Robotics':
@@ -788,12 +923,12 @@ def populate_lbg_table(tbl, schedule_map, tuan_so, start_date, is_sang=True):
                     mon_lbl = 'Tin - Robotics'
                     p_idx = 0 if (day_idx, tiet - 1) not in schedule_map else 1
                     ppct = compute_rotation_ppct(tuan_so, day_idx, is_even, p_idx)
-                    lesson = get_ppct_lesson(lop, mon_int, ppct) if tuan_so > 1 else 'Tiết 0: Định hướng môn học'
+                    lesson = get_ppct_lesson(lop, mon_int, ppct, tuan_so=tuan_so) if tuan_so > 1 else 'Tiết 0: Định hướng môn học'
                 else:
                     mon_lbl = mon_display
                     dd = 'Phòng Tin học' if 'Tin' in mon_lbl else 'Bộ Kit Robotics'
                     ppct = compute_ppct(tuan_so, day_idx) if tuan_so > 1 else 0
-                    lesson = get_ppct_lesson(lop, mon_lbl, ppct) if tuan_so > 1 else 'Tiết 0: Định hướng môn học'
+                    lesson = get_ppct_lesson(lop, mon_lbl, ppct, tuan_so=tuan_so) if tuan_so > 1 else 'Tiết 0: Định hướng môn học'
                 ppct_str = str(ppct) if tuan_so > 1 else '1'
                 if not lesson and ppct == 0:
                     lesson = 'Tiết 0: Định hướng môn học'
@@ -823,13 +958,15 @@ def populate_lbg_table(tbl, schedule_map, tuan_so, start_date, is_sang=True):
 def update_table_data(doc, tuan_so, start_date=None):
     if start_date is None:
         start_date, _ = week_dates(tuan_so)
+    sched_sang = MASTER_SCHEDULE_SANG_OLD if tuan_so <= 13 else MASTER_SCHEDULE_SANG_NEW
+    sched_chieu = MASTER_SCHEDULE_CHIEU_OLD if tuan_so <= 13 else MASTER_SCHEDULE_CHIEU_NEW
     lbg_tbls = [t for t in doc.tables
                 if len(t.columns) == 7
                 and 'Lớp' in [c.text.strip() for c in t.rows[0].cells]]
     if len(lbg_tbls) >= 1:
-        populate_lbg_table(lbg_tbls[0], MASTER_SCHEDULE_SANG, tuan_so, start_date, is_sang=True)
+        populate_lbg_table(lbg_tbls[0], sched_sang, tuan_so, start_date, is_sang=True)
     if len(lbg_tbls) >= 2:
-        populate_lbg_table(lbg_tbls[1], MASTER_SCHEDULE_CHIEU, tuan_so, start_date, is_sang=False)
+        populate_lbg_table(lbg_tbls[1], sched_chieu, tuan_so, start_date, is_sang=False)
 
 
 def update_ky_ten(doc, start_date):
