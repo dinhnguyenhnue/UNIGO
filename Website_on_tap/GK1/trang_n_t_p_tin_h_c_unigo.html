@@ -1165,7 +1165,315 @@
       }
     }
 
+  
+    /* ===== PHONG CÁCH TƯƠNG TÁC NÂNG CAO UNIGO EDTECH ===== */
+    .scenario-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ede9fe;
+      color: #6d28d9;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      border: 1px solid #c4b5fd;
+    }
+
+    .true-false-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .tf-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 22px 18px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      border-radius: 16px;
+      border: 3px solid #cbd5e1;
+      background: #ffffff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #1e293b;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    }
+    .tf-btn:hover:not(.disabled) {
+      transform: translateY(-2px);
+    }
+    .tf-btn.tf-btn-true:hover:not(.disabled) {
+      border-color: #10b981;
+      background: #ecfdf5;
+      color: #047857;
+    }
+    .tf-btn.tf-btn-false:hover:not(.disabled) {
+      border-color: #ef4444;
+      background: #fef2f2;
+      color: #b91c1c;
+    }
+    .tf-btn.correct {
+      border-color: #10b981 !important;
+      background: #d1fae5 !important;
+      color: #065f46 !important;
+    }
+    .tf-btn.wrong {
+      border-color: #ef4444 !important;
+      background: #fee2e2 !important;
+      color: #991b1b !important;
+    }
+
+    /* Ghép nối (Matching) */
+    .matching-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .matching-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .matching-col-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #475569;
+      text-align: center;
+      padding: 6px;
+      background: #f1f5f9;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+    .matching-card {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #1e293b;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 54px;
+      user-select: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .matching-card:hover:not(.disabled) {
+      border-color: #8b5cf6;
+      background: #f5f3ff;
+      transform: translateY(-1px);
+    }
+    .matching-card.selected {
+      border-color: #6366f1 !important;
+      background: #e0e7ff !important;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.35);
+    }
+    .matching-card.paired {
+      border-width: 2px;
+      font-weight: 700;
+    }
+    .pair-badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: white;
+      margin-left: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Kéo thả / Phân loại (Classify) */
+    .classify-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .classify-pool {
+      background: #f8fafc;
+      border: 2px dashed #cbd5e1;
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 64px;
+      align-items: center;
+      justify-content: center;
+    }
+    .classify-chip {
+      background: #ffffff;
+      border: 2px solid #8b5cf6;
+      color: #5b21b6;
+      border-radius: 20px;
+      padding: 8px 14px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(139, 92, 246, 0.15);
+    }
+    .classify-chip:hover:not(.disabled) {
+      transform: scale(1.03);
+      background: #ede9fe;
+    }
+    .classify-chip.selected {
+      background: #7c3aed !important;
+      color: white !important;
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.4);
+    }
+    .classify-zones-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .classify-zone {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px;
+      min-height: 130px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .classify-zone:hover:not(.disabled) {
+      border-color: #8b5cf6;
+      background: #faf5ff;
+    }
+    .classify-zone.zone-active {
+      border-color: #6366f1;
+      background: #eef2ff;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    }
+    .classify-zone-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #334155;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Sắp xếp trình tự (Order) */
+    .order-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .order-item-card {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 0.96rem;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .order-item-card:hover:not(.disabled) {
+      border-color: #8b5cf6;
+      background: #faf5ff;
+    }
+    .order-num-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #8b5cf6;
+      color: white;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.88rem;
+      flex-shrink: 0;
+    }
+    .order-btn-group {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .btn-move {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: 0.15s;
+    }
+    .btn-move:hover:not(:disabled) {
+      background: #8b5cf6;
+      color: white;
+      border-color: #8b5cf6;
+    }
+    .btn-move:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* Nút kiểm tra tương tác */
+    .btn-check-interactive {
+      width: 100%;
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      color: white;
+      font-weight: 800;
+      font-size: 1.05rem;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      margin-top: 14px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-check-interactive:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
+    }
+    .btn-check-interactive:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 680px) {
+      .matching-container, .classify-zones-grid, .true-false-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
+
 </head>
 <body>
 
@@ -1374,21 +1682,29 @@
       <div class="result-summary-card">
         <div class="rank-badge" id="result-rank-badge" style="background: #4361ee;">👑 HUYỀN THOẠI TIN HỌC</div>
         
-        <div class="stats-grid">
+        <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));">
           <div class="stat-item">
             <div class="stat-val" id="res-score">0</div>
             <div class="stat-label">TỔNG ĐIỂM</div>
           </div>
           <div class="stat-item">
+            <div class="stat-val" style="color: #8b5cf6;" id="res-score-10">0.0</div>
+            <div class="stat-label">ĐIỂM THANG 10</div>
+          </div>
+          <div class="stat-item">
             <div class="stat-val" style="color: #10b981;" id="res-correct">0/0</div>
-            <div class="stat-label">CÂU TRẢ LỜI ĐÚNG</div>
+            <div class="stat-label">SỐ CÂU ĐÚNG</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val" style="color: #ef4444;" id="res-wrong">0</div>
+            <div class="stat-label">SỐ CÂU SAI</div>
           </div>
           <div class="stat-item">
             <div class="stat-val" style="color: #f59e0b;" id="res-accuracy">0%</div>
             <div class="stat-label">TỈ LỆ CHÍNH XÁC</div>
           </div>
           <div class="stat-item">
-            <div class="stat-val" style="color: #ef4444;" id="res-combo">0</div>
+            <div class="stat-val" style="color: #06b6d4;" id="res-combo">0</div>
             <div class="stat-label">COMBO CAO NHẤT</div>
           </div>
         </div>
@@ -1938,7 +2254,62 @@
         { id: 37, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Nhận biết", question: "Cáp mạng (Ethernet) dùng để làm gì?", options: ["Sạc pin", "Kết nối máy tính với mạng qua dây", "Phát Wi-Fi", "Hiển thị hình ảnh"], answer: 1, explanation: "Cáp mạng truyền tín hiệu dữ liệu qua dây dẫn vật lý.", remember: "Cáp Ethernet = Kết nối mạng có dây.", hint: "Dây cắm vào cổng mạng máy tính." },
         { id: 38, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Nhận biết", question: "Wi-Fi là gì?", options: ["Dây cáp mạng", "Công nghệ kết nối mạng không dây", "Loại phần mềm", "Tên máy tính"], answer: 1, explanation: "Wi-Fi là phương thức truyền thông mạng không dây qua sóng vô tuyến.", remember: "Wi-Fi = Kết nối mạng không dây.", hint: "Mạng không cần cắm dây." },
         { id: 39, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Server (máy chủ) trong mạng dùng để làm gì?", options: ["Chỉ để chơi game", "Cung cấp tài nguyên và dịch vụ cho các máy tính khác", "Chỉ để soạn văn bản", "Chỉ để xem phim"], answer: 1, explanation: "Máy chủ (Server) quản lý dữ liệu và cung cấp các dịch vụ cho các máy khách (Client).", remember: "Server = Cung cấp dịch vụ và tài nguyên mạng.", hint: "Máy chủ phục vụ các máy khác." },
-        { id: 40, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Mạng Internet thuộc loại mạng nào?", options: ["LAN", "MAN", "WAN (mạng diện rộng toàn cầu)", "PAN"], answer: 2, explanation: "Internet là mạng diện rộng (WAN) lớn nhất kết nối toàn cầu.", remember: "Internet là mạng WAN toàn cầu.", hint: "Mạng diện rộng lớn nhất hành tinh." }
+        { id: 40, topic: "Bài 4. Mạng máy tính", topicKey: "b4", difficulty: "Thông hiểu", question: "Mạng Internet thuộc loại mạng nào?", options: ["LAN", "MAN", "WAN (mạng diện rộng toàn cầu)", "PAN"], answer: 2, explanation: "Internet là mạng diện rộng (WAN) lớn nhất kết nối toàn cầu.", remember: "Internet là mạng WAN toàn cầu.", hint: "Mạng diện rộng lớn nhất hành tinh." },
+        // ===== BÀI 5: INTERNET (BỔ SUNG GDPT 2018) =====
+        {"id": 60501, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Nhận biết", "type": "choice", "question": "Internet là gì?", "options": ["Mạng liên kết các mạng máy tính trên khắp thế giới", "Mạng máy tính nội bộ trong một phòng học", "Thiết bị phần cứng giúp máy tính chạy nhanh hơn", "Phần mềm dùng để soạn thảo văn bản và vẽ tranh"], "answer": 0, "explanation": "Theo SGK Tin học 6: Internet là mạng liên kết các mạng máy tính trên khắp thế giới, hình thành một mạng lưới công cộng toàn cầu.", "remember": "Internet là mạng liên kết các mạng máy tính trên phạm vi toàn thế giới.", "hint": "Đây là mạng lưới kết nối các mạng máy tính trên phạm vi toàn cầu."},
+        {"id": 60502, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Nhận biết", "type": "choice", "question": "Để máy tính kết nối được với Internet, người sử dụng cần thông qua đơn vị nào?", "options": ["Nhà cung cấp dịch vụ Internet (ISP)", "Cửa hàng bán sách giáo khoa", "Hội liên hiệp thanh niên", "Công ty sản xuất bàn ghế học sinh"], "answer": 0, "explanation": "Máy tính có thể được kết nối với Internet thông qua một nhà cung cấp dịch vụ Internet (ISP - Internet Service Provider như VNPT, Viettel, FPT...).", "remember": "Máy tính kết nối Internet thông qua một nhà cung cấp dịch vụ Internet (ISP).", "hint": "Cần đăng ký dịch vụ mạng với nhà mạng viễn thông (ISP)."},
+        {"id": 60503, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Nhận biết", "type": "choice", "question": "Đâu là một trong bốn đặc điểm chính của Internet theo SGK Tin học 6?", "options": ["Tính không chủ sở hữu", "Tính phụ thuộc vào một quốc gia duy nhất", "Chỉ phục vụ cho người lớn", "Chỉ truyền tải được văn bản đen trắng"], "answer": 0, "explanation": "Bốn đặc điểm chính của Internet là: Tính toàn cầu, Tính tương tác, Tính dễ tiếp cận, Tính không chủ sở hữu.", "remember": "4 đặc điểm chính của Internet: Tính toàn cầu, Tính tương tác, Tính dễ tiếp cận, Tính không chủ sở hữu.", "hint": "Internet là mạng công cộng, không ai là ông chủ duy nhất."},
+        {"id": 60504, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Nhận biết", "type": "choice", "question": "Ai là người sở hữu hay điều hành toàn bộ mạng Internet?", "options": ["Không thuộc sở hữu hay do bất kì tổ chức, cá nhân nào điều hành", "Thuộc sở hữu duy nhất của tập đoàn Microsoft", "Do chính phủ một quốc gia phát triển nhất nắm quyền", "Do các nhà khoa học sáng lập máy tính độc quyền quản lý"], "answer": 0, "explanation": "Internet là mạng máy tính công cộng toàn cầu, không thuộc sở hữu hay do bất kì một tổ chức hoặc cá nhân nào điều hành (Tính không chủ sở hữu).", "remember": "Internet là tài sản chung toàn cầu, không thuộc quyền sở hữu của riêng ai.", "hint": "Đặc điểm 'Tính không chủ sở hữu' của mạng Internet."},
+        {"id": 60505, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Nhận biết", "type": "true_false", "question": "Người sử dụng truy cập Internet có thể dùng bí danh (nickname) thay cho tên thật thể hiện tính ẩn danh của Internet.", "options": ["Đúng", "Sai"], "answer": 0, "explanation": "Đúng. Tính ẩn danh cho phép người sử dụng truy cập Internet dùng bí danh hoặc biệt danh thay cho họ tên thật của mình.", "remember": "Tính ẩn danh: người dùng có thể sử dụng bí danh khi tham gia các hoạt động trên Internet.", "hint": "Bí danh thay thế cho họ tên thật chính là biểu hiện của tính ẩn danh."},
+        {"id": 60506, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Nhận biết", "type": "choice", "question": "Dịch vụ nào sau đây là dịch vụ thông tin phổ biến trên Internet?", "options": ["World Wide Web (WWW), thư điện tử (email), tìm kiếm thông tin", "Chuyển phát bưu phẩm bằng xe đạp truyền thống", "In ấn sách báo trên giấy thủ công", "Chiếu phim nhựa bằng máy chiếu cơ học"], "answer": 0, "explanation": "Trên Internet có nhiều dịch vụ thông tin phong phú như: WWW, tìm kiếm thông tin, thư điện tử, hội họp trực tuyến, mạng xã hội...", "remember": "Có nhiều dịch vụ thông tin khác nhau trên Internet: WWW, tìm kiếm, thư điện tử...", "hint": "WWW và email là các dịch vụ thông tin tiêu biểu trên Internet."},
+        {"id": 60507, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Nhận biết", "type": "true_false", "question": "Mạng Internet thuộc quyền sở hữu riêng của một tập đoàn công nghệ lớn nhất thế giới.", "options": ["Đúng", "Sai"], "answer": 1, "explanation": "Sai. Internet có đặc điểm 'Tính không chủ sở hữu': là mạng công cộng toàn cầu, không một quốc gia hay tập đoàn nào sở hữu nó.", "remember": "Internet KHÔNG thuộc sở hữu của bất kỳ quốc gia hay tổ chức nào.", "hint": "Hãy nhớ lại đặc điểm 'Tính không chủ sở hữu'."},
+        {"id": 60508, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Nhận biết", "type": "matching", "question": "Em hãy ghép mỗi đặc điểm chính của Internet ở cột A với mô tả tương ứng ở cột B:", "pairs": [{"left": "1) Tính toàn cầu", "right": "Phục vụ dân số ở hầu hết các quốc gia trên thế giới"}, {"left": "2) Tính tương tác", "right": "Người dùng có thể tức thời gửi và nhận thông tin hai chiều"}, {"left": "3) Tính dễ tiếp cận", "right": "Tìm kiếm, chia sẻ thông tin thuận lợi mọi lúc, mọi nơi"}, {"left": "4) Tính không chủ sở hữu", "right": "Là mạng công cộng, không thuộc về một cá nhân hay tổ chức nào"}], "explanation": "Bốn đặc điểm chính của Internet gồm: Toàn cầu (phủ khắp thế giới), Tương tác (gửi nhận tức thời), Dễ tiếp cận (mọi lúc mọi nơi), Không chủ sở hữu (mạng công cộng chung).", "remember": "Ghi nhớ 4 đặc điểm cốt lõi của Internet: Toàn cầu, Tương tác, Dễ tiếp cận, Không chủ sở hữu.", "hint": "Nối từng đặc điểm với từ khóa bản chất của nó."},
+        {"id": 60509, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Thông hiểu", "type": "choice", "question": "Điểm khác biệt nổi bật nhất giữa truyền thông trên Internet và truyền thông truyền thống (sách báo in, truyền hình) là gì?", "options": ["Internet có tính tương tác hai chiều, cho phép tức thời gửi và nhận phản hồi", "Truyền hình truyền thống có tốc độ truyền tin nhanh hơn Internet", "Sách báo in có thể chứa video và âm thanh sinh động hơn Internet", "Internet chỉ cho phép truyền thông tin một chiều từ đài phát sóng"], "answer": 0, "explanation": "Truyền thông truyền thống (phát thanh, báo in, tivi) truyền tin một chiều; trong khi Internet có tính tương tác cao: người dùng có thể tức thời nhận và phản hồi thông tin.", "remember": "Tính tương tác của Internet cho phép gửi và nhận thông tin tức thời hai chiều.", "hint": "Người dùng Internet vừa là người nhận tin vừa có thể phản hồi, tương tác ngay."},
+        {"id": 60510, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Thông hiểu", "type": "choice", "question": "Hoạt động nào sau đây KHÔNG THỂ thực hiện được thông qua mạng Internet?", "options": ["Đá bóng trực tiếp ngoài sân cỏ cùng các bạn để rèn luyện thể lực", "Học ngoại ngữ trực tuyến với giáo viên nước ngoài", "Trao đổi thư điện tử và tài liệu học tập với bạn bè", "Xem các đoạn phim tư liệu lịch sử trên kênh giáo dục"], "answer": 0, "explanation": "Đá bóng ngoài sân là hoạt động vận động thể chất ngoài đời thực, không thể thực hiện qua mạng Internet.", "remember": "Internet hỗ trợ học tập, làm việc và giải trí số, nhưng các hoạt động thể chất thực tế cần rèn luyện ngoài đời.", "hint": "Hoạt động rèn luyện thể chất trực tiếp trên sân cỏ."},
+        {"id": 60511, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Thông hiểu", "type": "classify", "question": "Phân loại các hoạt động sau vào đúng hai nhóm:", "categories": ["Cần sử dụng Internet", "Không cần sử dụng Internet"], "items": [{"text": "Gửi thư điện tử (email) cho thầy cô", "category": "Cần sử dụng Internet"}, {"text": "Tra cứu tư liệu học tập trên trang web", "category": "Cần sử dụng Internet"}, {"text": "Học tiếng Anh trực tuyến qua Zoom", "category": "Cần sử dụng Internet"}, {"text": "Chơi đá bóng ở sân trường cùng bạn", "category": "Không cần sử dụng Internet"}, {"text": "Quét dọn vệ sinh góc học tập", "category": "Không cần sử dụng Internet"}, {"text": "Tập thể dục buổi sáng rèn sức khỏe", "category": "Không cần sử dụng Internet"}], "explanation": "Các hoạt động giao tiếp trực tuyến, tra cứu web, gửi email cần Internet. Hoạt động thể thao thực tế, dọn dẹp vệ sinh là hoạt động đời thường không cần mạng.", "remember": "Phân biệt rõ hoạt động số trên môi trường mạng và hoạt động thể chất đời thực.", "hint": "Hoạt động nào cần truyền dữ liệu qua máy tính thì cần Internet."},
+        {"id": 60512, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Thông hiểu", "type": "choice", "question": "Tính dễ tiếp cận của Internet được thể hiện rõ nhất qua nhận định nào?", "options": ["Người dùng có thể tìm kiếm, lưu trữ và chia sẻ thông tin mọi lúc, mọi nơi", "Chỉ các trường đại học lớn mới được quyền kết nối Internet", "Chỉ có thể vào mạng Internet vào ban ngày", "Mỗi người chỉ được tải một tệp dữ liệu duy nhất mỗi tuần"], "answer": 0, "explanation": "Tính dễ tiếp cận: người sử dụng có thể tìm kiếm, lưu trữ, trao đổi và chia sẻ thông tin một cách thuận lợi, nhanh chóng ở mọi lúc, mọi nơi trên thế giới.", "remember": "Tính dễ tiếp cận: truy cập thuận lợi, nhanh chóng, ở mọi lúc và mọi nơi.", "hint": "Từ khóa: 'Mọi lúc, mọi nơi'."},
+        {"id": 60513, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Thông hiểu", "type": "true_false", "question": "Chỉ những máy tính để bàn và máy tính xách tay mới kết nối được Internet, còn điện thoại thông minh thì không thể.", "options": ["Đúng", "Sai"], "answer": 1, "explanation": "Sai. Điện thoại thông minh, máy tính bảng, đồng hồ thông minh, tivi thông minh... đều có thể kết nối Internet qua Wi-Fi hoặc mạng di động (3G/4G/5G).", "remember": "Nhiều thiết bị thông minh hiện nay đều có thể kết nối Internet.", "hint": "Điện thoại thông minh kết nối mạng qua Wi-Fi hoặc 4G/5G hàng ngày."},
+        {"id": 60514, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Thông hiểu", "type": "choice", "question": "Đặc điểm 'Tính đa dạng' của Internet thể hiện ở điều nào sau đây?", "options": ["Truyền tải thông tin dưới nhiều dạng khác nhau: văn bản, hình ảnh, âm thanh, video...", "Chỉ hỗ trợ một ngôn ngữ duy nhất là tiếng Anh", "Chỉ dùng cho việc mua sắm hàng hóa", "Mỗi máy tính chỉ được kết nối với một máy tính khác"], "answer": 0, "explanation": "Tính đa dạng của Internet thể hiện qua khả năng truyền tải thông tin phong phú dưới nhiều định dạng: văn bản, hình ảnh, âm thanh, video, hoạt hình...", "remember": "Tính đa dạng: thông tin được truyền tải qua văn bản, hình ảnh, âm thanh, video,...", "hint": "Nhiều dạng thông tin kết hợp: chữ, hình, âm thanh, phim ảnh."},
+        {"id": 60515, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Thông hiểu", "type": "choice", "question": "Internet mang lại lợi ích gì nổi bật nhất cho việc học tập của học sinh?", "options": ["Cung cấp kho tài liệu phong phú, học tập trực tuyến và trao đổi bài tập nhóm thuận tiện", "Giúp học sinh không cần phải suy nghĩ hay làm bài kiểm tra nữa", "Thay thế hoàn toàn vai trò của thầy cô giáo và trường học", "Tự động làm hộ bài tập về nhà để học sinh đi chơi"], "answer": 0, "explanation": "Internet là công cụ đắc lực hỗ trợ học tập: mở rộng kho tri thức, cho phép học trực tuyến mọi lúc mọi nơi và hợp tác học tập nhóm hiệu quả.", "remember": "Lợi ích học tập: tra cứu tài liệu phong phú, học trực tuyến, hợp tác nhóm nhanh chóng.", "hint": "Internet là công cụ hỗ trợ mở rộng tri thức và học tập."},
+        {"id": 60516, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Thông hiểu", "type": "true_false", "question": "Theo lời khuyên trong SGK Tin học 6, học sinh nên truy cập Internet liên tục trong nhiều giờ liền để nắm bắt được nhiều thông tin nhất.", "options": ["Đúng", "Sai"], "answer": 1, "explanation": "Sai. Hộp lưu ý trong SGK ghi rõ: 'Không nên truy cập Internet liên tục trong nhiều giờ' vì gây hại cho thị lực, sức khỏe và giảm khả năng tập trung.", "remember": "Lưu ý SGK: KHÔNG NÊN truy cập Internet liên tục trong nhiều giờ liền.", "hint": "Chú ý lời khuyên trong tờ giấy note vàng ở SGK trang 22."},
+        {"id": 60517, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Thông hiểu", "type": "matching", "question": "Ghép mỗi hoạt động cụ thể ở cột A với nhóm lợi ích tương ứng của Internet ở cột B:", "pairs": [{"left": "1) Tra cứu bài giảng và sách tham khảo số", "right": "Học tập và làm việc trực tuyến"}, {"left": "2) Gửi email và gọi video cho người thân", "right": "Trao đổi thông tin nhanh chóng, hiệu quả"}, {"left": "3) Mua vé tàu xe và sách trực tuyến", "right": "Cung cấp các tiện ích phục vụ đời sống"}, {"left": "4) Nghe nhạc và xem phim hoạt hình bổ ích", "right": "Phương tiện vui chơi, giải trí lành mạnh"}], "explanation": "Internet đáp ứng đa dạng nhu cầu: học tập (tra tài liệu), giao tiếp (gửi email/gọi điện), đời sống (mua sắm/thanh toán) và giải trí (nghe nhạc/xem phim).", "remember": "Internet có 5 nhóm lợi ích chính: trao đổi tin tức, học tập, kho tài liệu, tiện ích đời sống, giải trí.", "hint": "Nối hoạt động với mục đích tương ứng của nó."},
+        {"id": 60518, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Thông hiểu", "type": "choice", "question": "Điền từ thích hợp vào chỗ trống (SGK trang 21): 'Internet là mạng ...(1)... các ...(2)... máy tính trên khắp thế giới.'", "options": ["(1) liên kết, (2) mạng", "(1) phân phối, (2) màn hình", "(1) ngắt quãng, (2) sợi dây", "(1) tập hợp, (2) con chuột"], "answer": 0, "explanation": "Câu nguyên văn trong SGK: 'Internet là mạng liên kết các mạng máy tính trên khắp thế giới.'", "remember": "Internet là mạng LIÊN KẾT các MẠNG máy tính trên khắp thế giới.", "hint": "Từ khóa: 'liên kết' và 'mạng'."},
+        {"id": 60519, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Vận dụng", "type": "scenario", "question": "Tình huống: Bạn An cần cùng bạn Bình hoàn thành bài thuyết trình nhóm môn Tin học 6, nhưng Bình đang ở quê nghỉ hè. An nên chọn cách nào sau đây để hai bạn cùng làm việc hiệu quả nhất qua Internet?", "options": ["Sử dụng thư điện tử hoặc tài liệu chia sẻ trực tuyến để cùng soạn thảo và trao đổi ý kiến", "Chờ đến khi hết kì nghỉ hè gặp mặt trực tiếp rồi mới bắt đầu làm", "Viết nội dung ra giấy rồi gửi qua đường bưu điện mất nhiều ngày", "Tự làm một mình và gạch tên bạn Bình ra khỏi nhóm"], "answer": 0, "explanation": "Internet hỗ trợ làm việc nhóm trực tuyến từ xa rất thuận lợi nhờ thư điện tử, cuộc gọi video và các phần mềm làm việc cộng tác trực tuyến.", "remember": "Lợi ích học tập trực tuyến: làm việc nhóm từ xa nhanh chóng, không bị cản trở bởi khoảng cách địa lý.", "hint": "Giải pháp ứng dụng dịch vụ Internet để làm việc chung từ xa."},
+        {"id": 60520, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Vận dụng", "type": "scenario", "question": "Tình huống: Bạn Nam say sưa chơi game trực tuyến liên tục 5 tiếng đồng hồ từ trưa đến chiều tối mà không rời màn hình. Theo em, việc làm này vi phạm lưu ý nào của SGK và gây tác hại gì?", "options": ["Vi phạm lưu ý 'Không nên truy cập Internet liên tục nhiều giờ', gây hại mắt, mệt mỏi và ảnh hưởng sức khỏe", "Việc này rất tốt vì chơi càng lâu sẽ càng rèn luyện phản xạ cho mắt", "Không vi phạm gì vì Internet sinh ra là để chơi game thoải mái không giới hạn", "Vi phạm bản quyền trò chơi vì chơi quá nhiều giờ quy định"], "answer": 0, "explanation": "SGK lưu ý: 'Không nên truy cập Internet liên tục trong nhiều giờ'. Ngồi quá lâu trước màn hình gây suy giảm thị lực, mệt mỏi, đau cột sống và giảm khả năng học tập.", "remember": "Cần sử dụng Internet hợp lý, có thời gian biểu khoa học và nghỉ ngơi xen kẽ.", "hint": "Nhớ lại lưu ý vàng về bảo vệ sức khỏe khi sử dụng Internet."},
+        {"id": 60521, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Vận dụng", "type": "order", "question": "Sắp xếp các bước đúng trình tự để một gia đình có thể bắt đầu sử dụng Internet trên máy tính:", "steps": ["1. Đăng ký dịch vụ với Nhà cung cấp dịch vụ Internet (ISP)", "2. Kỹ thuật viên của ISP kéo dây cáp và lắp đặt thiết bị modem/Wi-Fi", "3. Kết nối máy tính gia đình với modem qua dây mạng hoặc Wi-Fi", "4. Khởi động trình duyệt web và bắt đầu tra cứu, học tập"], "correctOrder": [0, 1, 2, 3], "explanation": "Trình tự chuẩn: Trước hết đăng ký với ISP -> Lắp đặt đường truyền/modem -> Kết nối máy tính vào mạng -> Sử dụng dịch vụ thông tin.", "remember": "Các bước: Đăng ký ISP → Lắp đặt thiết bị mạng → Kết nối thiết bị → Khai thác sử dụng.", "hint": "Bắt đầu từ việc đăng ký dịch vụ trước tiên."},
+        {"id": 60522, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Vận dụng", "type": "choice", "question": "Khi tham gia các diễn đàn học tập trên Internet, tính ẩn danh cho phép em dùng bí danh. Tuy nhiên, em cần có thái độ và hành vi như thế nào?", "options": ["Luôn giao tiếp lịch sự, tôn trọng người khác, tuân thủ pháp luật và không chia sẻ thông tin nhạy cảm", "Có thể tự do nói xấu, trêu chọc người khác vì không ai biết tên thật của mình", "Đăng tải thông tin sai sự thật để gây sự chú ý", "Tự tiện chia sẻ mật khẩu tài khoản cá nhân cho bất kỳ ai hỏi"], "answer": 0, "explanation": "Dù có tính ẩn danh, công dân số văn minh luôn phải ứng xử có văn hóa, tôn trọng bạn bè, trung thực và bảo vệ an toàn thông tin của chính mình.", "remember": "Tính ẩn danh đòi hỏi người dùng càng phải nâng cao ý thức trách nhiệm và văn hóa số.", "hint": "Ứng xử lịch sự, văn minh và tôn trọng mọi người trên mạng."},
+        {"id": 60523, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Vận dụng", "type": "scenario", "question": "Tình huống: Lan tự làm được nhiều kẹp tóc handmade xinh xắn và muốn giới thiệu cho các bạn ở trường khác biết đến. Lan nên tận dụng lợi ích nào của Internet?", "options": ["Quảng cáo và giới thiệu sản phẩm thủ công tự làm qua mạng xã hội hoặc website phù hợp", "Gửi kẹp tóc qua bưu phẩm đến từng nhà mà không cần hỏi trước", "Chỉ giữ kẹp tóc ở nhà vì Internet không thể chia sẻ hình ảnh sản phẩm", "Tải trò chơi điện tử về máy để giải trí thay vì làm kẹp tóc"], "answer": 0, "explanation": "Như tranh minh họa SGK trang 22: 'Tớ sẽ dùng Internet để quảng cáo và bán sản phẩm do tớ tự tay làm', Internet là công cụ hữu ích để giới thiệu, lan tỏa sáng tạo cá nhân.", "remember": "Internet hỗ trợ giao thương, quảng bá sáng tạo và các tiện ích đời sống.", "hint": "Xem hình vẽ các bạn học sinh thảo luận trong SGK trang 22."},
+        {"id": 60524, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Vận dụng", "type": "choice", "question": "Khi tìm kiếm tư liệu trên Internet để làm bài thuyết trình, hành động nào sau đây là ĐÚNG ĐẮN NHẤT?", "options": ["Tìm từ các nguồn tin cậy, đọc hiểu, chọn lọc thông tin và ghi rõ nguồn gốc trích dẫn", "Sao chép y nguyên toàn bộ bài viết của người khác rồi đề tên mình vào", "Tin tưởng 100% mọi thông tin xuất hiện trên Internet mà không cần kiểm chứng", "Chỉ chọn những thông tin giật gân, thiếu căn cứ khoa học"], "answer": 0, "explanation": "Thông tin trên Internet rất phong phú nhưng cần được chọn lọc từ nguồn đáng tin cậy, đọc hiểu và tôn trọng quyền tác giả.", "remember": "Khai thác Internet thông minh: Chọn lọc nguồn tin cậy, đọc hiểu và trích dẫn rõ ràng.", "hint": "Chọn lọc thông tin và tôn trọng quyền tác giả."},
+        {"id": 60525, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Vận dụng", "type": "true_false", "question": "Thông tin trên Internet có đặc điểm là được lưu trữ thường trực và cập nhật thường xuyên, giúp con người tiếp cận tri thức mới một cách nhanh chóng.", "options": ["Đúng", "Sai"], "answer": 0, "explanation": "Đúng. 'Tính cập nhật' (thường xuyên đổi mới) và 'Tính lưu trữ' (lưu giữ thường trực, sao chép thuận tiện) là những đặc điểm ưu việt của Internet.", "remember": "Internet lưu trữ thường trực và cập nhật liên tục mọi tri thức nhân loại.", "hint": "Các đặc điểm bổ trợ của Internet: cập nhật và lưu trữ."},
+        {"id": 60526, "topic": "Bài 5. Internet", "topicKey": "b5", "difficulty": "Vận dụng", "type": "scenario", "question": "Tình huống: Khi chuẩn bị vào tiết học trực tuyến, máy tính của em báo mất kết nối Internet. Thao tác kiểm tra ban đầu nào sau đây là hợp lý nhất?", "options": ["Kiểm tra lại dây cáp mạng hoặc sóng Wi-Fi và đèn tín hiệu trên thiết bị modem/router", "Đập mạnh vào màn hình máy tính để khởi động lại mạng", "Cài đặt lại toàn bộ hệ điều hành Windows của máy tính ngay lập tức", "Ngắt nguồn điện trong toàn bộ ngôi nhà"], "answer": 0, "explanation": "Khi mất mạng, bước đầu tiên là kiểm tra kết nối vật lý (cáp mạng, Wi-Fi) và trạng thái đèn tín hiệu của modem/router kết nối với ISP.", "remember": "Xử lý sự cố mạng: kiểm tra cáp mạng, Wi-Fi và modem trước tiên.", "hint": "Kiểm tra thiết bị phát Wi-Fi và cáp kết nối."},
+        // ===== BÀI 6: MẠNG THÔNG TIN TOÀN CẦU (BỔ SUNG GDPT 2018) =====
+        {"id": 60601, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Nhận biết", "type": "choice", "question": "WWW là chữ viết tắt của cụm từ tiếng Anh nào sau đây?", "options": ["World Wide Web", "World Wide Window", "Word Wide Web", "World Wide Wire"], "answer": 0, "explanation": "Theo SGK Tin học 6: WWW là viết tắt của World Wide Web, có nghĩa là Mạng thông tin toàn cầu.", "remember": "WWW = World Wide Web (Mạng thông tin toàn cầu).", "hint": "Cụm từ tiếng Anh phổ biến nhất bắt đầu bằng World Wide..."},
+        {"id": 60602, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Nhận biết", "type": "choice", "question": "Mạng thông tin toàn cầu (World Wide Web) là gì?", "options": ["Hệ thống các website liên kết với nhau trên Internet", "Một loại dây cáp mạng dùng để nối hai máy tính", "Phần mềm dùng để diệt virus trên máy tính", "Một trò chơi điện tử trực tuyến nhiều người chơi"], "answer": 0, "explanation": "Theo SGK Tin học 6: Hệ thống các website trên Internet tạo thành Mạng thông tin toàn cầu (World Wide Web, viết tắt là WWW).", "remember": "World Wide Web (WWW) là mạng thông tin toàn cầu, liên kết các website trên Internet.", "hint": "Mạng lưới liên kết các website trên Internet."},
+        {"id": 60603, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Nhận biết", "type": "choice", "question": "Trang siêu văn bản (hypertext) là gì?", "options": ["Trang văn bản đặc biệt tích hợp nhiều dạng dữ liệu khác nhau và chứa các liên kết", "Một trang sách giáo khoa được in màu đẹp mắt", "Một văn bản thông thường chỉ chứa chữ đen trắng và không có liên kết nào", "Tập tin chỉ chứa các con số để tính toán"], "answer": 0, "explanation": "Trang siêu văn bản là trang văn bản đặc biệt tích hợp nhiều dạng dữ liệu (văn bản, hình ảnh, âm thanh, video...) và chứa các liên kết dẫn đến vị trí hoặc trang khác.", "remember": "Trang siêu văn bản tích hợp đa dạng dữ liệu và chứa các liên kết.", "hint": "Văn bản đặc biệt kết hợp đa phương tiện và có chứa siêu liên kết."},
+        {"id": 60604, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Nhận biết", "type": "choice", "question": "Trang được mở ra đầu tiên khi truy cập vào một website được gọi là gì?", "options": ["Trang chủ (homepage)", "Trang kết thúc (endpage)", "Trang siêu liên kết (hyperlink)", "Trang quảng cáo (adpage)"], "answer": 0, "explanation": "Trang chủ (homepage) của website là trang được mở ra đầu tiên khi truy cập website đó. Địa chỉ của trang chủ chính là địa chỉ của website.", "remember": "Trang mở ra đầu tiên của website gọi là Trang chủ (Homepage).", "hint": "Trang 'nhà' đầu tiên khi bước vào website."},
+        {"id": 60605, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Nhận biết", "type": "choice", "question": "Phần mềm ứng dụng nào sau đây là trình duyệt web (web browser)?", "options": ["Google Chrome", "Microsoft Word", "Windows Media Player", "Unikey"], "answer": 0, "explanation": "Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, Cốc Cốc là các trình duyệt web phổ biến dùng để truy cập các website.", "remember": "Trình duyệt web phổ biến: Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, Cốc Cốc.", "hint": "Phần mềm có biểu tượng vòng tròn 3 màu đỏ - vàng - xanh lá quen thuộc."},
+        {"id": 60606, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Nhận biết", "type": "true_false", "question": "Địa chỉ của trang chủ chính là địa chỉ của website.", "options": ["Đúng", "Sai"], "answer": 0, "explanation": "Đúng. SGK Tin học 6 khẳng định: 'Địa chỉ của trang chủ chính là địa chỉ của website.'", "remember": "Địa chỉ của trang chủ chính là địa chỉ của website.", "hint": "Xem hộp ghi nhớ đỏ trong SGK trang 24."},
+        {"id": 60607, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Nhận biết", "type": "choice", "question": "Khi di chuyển con trỏ chuột vào một liên kết trên trang web, con trỏ chuột thường chuyển thành hình gì?", "options": ["Hình bàn tay có ngón trỏ chỉ vào", "Hình đồng hồ cát đang quay", "Hình dấu thập màu đỏ", "Hình chiếc bút chì đang viết"], "answer": 0, "explanation": "Khi di chuyển con trỏ chuột vào liên kết (link), biểu tượng con trỏ thường chuyển từ hình mũi tên thành hình bàn tay có ngón chỉ (👆).", "remember": "Con trỏ chuột chuyển thành hình bàn tay khi trỏ vào liên kết.", "hint": "Hình bàn tay chỉ vào để báo hiệu đây là một liên kết có thể nhấp chuột."},
+        {"id": 60608, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Nhận biết", "type": "matching", "question": "Ghép mỗi thuật ngữ ở cột A với định nghĩa tương ứng ở cột B theo SGK:", "pairs": [{"left": "1) Website", "right": "Tập hợp các trang web liên quan được truy cập qua một địa chỉ chung"}, {"left": "2) WWW", "right": "Mạng thông tin toàn cầu liên kết các website trên Internet"}, {"left": "3) Trình duyệt web", "right": "Phần mềm ứng dụng giúp người dùng truy cập và xem các website"}, {"left": "4) Siêu liên kết", "right": "Cầu nối giúp chuyển từ nội dung này sang trang web khác khi nháy chuột"}], "explanation": "Đây là 4 khái niệm nền tảng trong Bài 6: Website (tập hợp trang web), WWW (hệ thống liên kết website), Trình duyệt (phần mềm mở web), Siêu liên kết (đường dẫn liên kết).", "remember": "Nắm vững mối quan hệ giữa Website, WWW, Trình duyệt web và Siêu liên kết.", "hint": "Nối từng thuật ngữ với định nghĩa tương ứng trong SGK."},
+        {"id": 60609, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Thông hiểu", "type": "choice", "question": "Phát biểu nào sau đây phân biệt chính xác nhất giữa Internet và Mạng thông tin toàn cầu (WWW)?", "options": ["Internet là hạ tầng mạng kết nối các máy tính, còn WWW là dịch vụ thông tin gồm các website hoạt động trên Internet", "Internet và WWW là hai tên gọi hoàn toàn giống nhau của cùng một phần mềm", "WWW là mạng vật lý rộng hơn, chứa toàn bộ mạng Internet bên trong nó", "Internet chỉ hoạt động khi có máy in, còn WWW chỉ dùng để nghe nhạc"], "answer": 0, "explanation": "Internet là mạng lưới phần cứng/kết nối các máy tính trên thế giới. WWW là một dịch vụ thông tin hoạt động trên nền Internet, bao gồm các trang web kết nối với nhau.", "remember": "Internet là cơ sở hạ tầng mạng, WWW là dịch vụ thông tin toàn cầu chạy trên Internet.", "hint": "Internet là cái nền tảng mạng lớn, WWW là dịch vụ thông tin hoạt động bên trên."},
+        {"id": 60610, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Thông hiểu", "type": "choice", "question": "Trong địa chỉ 'https://vi.wikipedia.org/wiki/Internet', phần 'https://vi.wikipedia.org' đóng vai trò là gì?", "options": ["Địa chỉ của trang chủ (địa chỉ website Bách khoa toàn thư mở Wikipedia tiếng Việt)", "Tên của một thư mục nằm trên máy tính cá nhân", "Mật khẩu để đăng nhập vào hòm thư điện tử", "Tên của nhà sản xuất màn hình máy tính"], "answer": 0, "explanation": "Theo ví dụ SGK trang 24: 'https://vi.wikipedia.org' là địa chỉ trang chủ của website, còn '/wiki/Internet' là đường dẫn đến trang web cụ thể bên trong website đó.", "remember": "Địa chỉ trang chủ (https://vi.wikipedia.org) chính là địa chỉ của website.", "hint": "Xem ví dụ phân tích địa chỉ web trong SGK trang 24."},
+        {"id": 60611, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Thông hiểu", "type": "classify", "question": "Phân loại các phần mềm sau đây vào đúng hai nhóm:", "categories": ["Trình duyệt web", "Phần mềm ứng dụng khác"], "items": [{"text": "Google Chrome", "category": "Trình duyệt web"}, {"text": "Mozilla Firefox", "category": "Trình duyệt web"}, {"text": "Microsoft Edge", "category": "Trình duyệt web"}, {"text": "Cốc Cốc", "category": "Trình duyệt web"}, {"text": "Microsoft Word (Soạn thảo văn bản)", "category": "Phần mềm ứng dụng khác"}, {"text": "Unikey (Bộ gõ tiếng Việt)", "category": "Phần mềm ứng dụng khác"}], "explanation": "Google Chrome, Firefox, Edge, Cốc Cốc, Safari là trình duyệt web dùng để duyệt Internet. Word, Unikey, Paint là các phần mềm ứng dụng phục vụ mục đích văn phòng, gõ chữ.", "remember": "Nhận biết chính xác các biểu tượng và tên gọi của các trình duyệt web thông dụng.", "hint": "Phần mềm nào dùng để lướt web là trình duyệt web."},
+        {"id": 60612, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Thông hiểu", "type": "choice", "question": "Tính năng Bookmark (Đánh dấu trang) trên trình duyệt web có công dụng gì?", "options": ["Lưu lại địa chỉ các trang web yêu thích để truy cập lại nhanh chóng khi cần", "Tự động in trang web ra máy in giấy", "Xóa vĩnh viễn trang web khỏi mạng Internet", "Tăng tốc độ bộ xử lý CPU của máy tính"], "answer": 0, "explanation": "Lưu ý SGK trang 25: Em có thể lưu địa chỉ trang web vào thanh Bookmark của trình duyệt để truy cập lại khi cần bằng một cú nhấp chuột.", "remember": "Bookmark giúp lưu địa chỉ trang web yêu thích để truy cập lại nhanh chóng.", "hint": "Bookmark giống như một chiếc thẻ đánh dấu trang sách để mở lại nhanh."},
+        {"id": 60613, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Thông hiểu", "type": "true_false", "question": "Trên một máy tính, người dùng chỉ có thể cài đặt duy nhất một trình duyệt web.", "options": ["Đúng", "Sai"], "answer": 1, "explanation": "Sai. SGK khẳng định: 'Người sử dụng có thể cài đặt và sử dụng nhiều trình duyệt trên một máy tính' (ví dụ có thể cài đồng thời Chrome, Edge, Firefox, Cốc Cốc).", "remember": "Người dùng có thể cài đặt và sử dụng nhiều trình duyệt web trên cùng một máy tính.", "hint": "Máy tính có thể cài cùng lúc cả Chrome, Cốc Cốc và Edge."},
+        {"id": 60614, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Thông hiểu", "type": "choice", "question": "Điểm khác biệt rõ rệt giữa cách tổ chức thông tin trong một cuốn sách giáo khoa và trên Internet là gì?", "options": ["Sách tổ chức thông tin tuần tự (tuyến tính), còn Internet tổ chức thành mạng lưới siêu văn bản liên kết linh hoạt", "Sách chứa được nhiều hình ảnh động và video clip hơn Internet", "Internet không cho phép tìm kiếm bất kỳ thông tin nào", "Sách có thể cập nhật thông tin mới tức thời từng giây từng phút"], "answer": 0, "explanation": "Trong sách giáo khoa, thông tin được tổ chức tuyến tính từ trang này sang trang tiếp theo. Trên Internet, thông tin được tổ chức dưới dạng siêu văn bản kết nối chéo nhau qua các liên kết.", "remember": "Internet tổ chức thông tin phi tuyến tính dưới dạng các siêu văn bản kết nối với nhau.", "hint": "Sách đọc tuần tự từng trang, còn Web nhấp liên kết nhảy sang bất kỳ trang nào."},
+        {"id": 60615, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Thông hiểu", "type": "true_false", "question": "Mỗi trang web trên Internet đều có một địa chỉ truy cập riêng biệt.", "options": ["Đúng", "Sai"], "answer": 0, "explanation": "Đúng. SGK ghi nhớ: 'Thông tin trên Internet được tạo nên từ nhiều trang web kết nối với nhau bởi các liên kết. Mỗi trang web có địa chỉ truy cập riêng.'", "remember": "Mỗi trang web trên Internet đều có một địa chỉ truy cập riêng biệt (URL).", "hint": "Mỗi trang web giống như một ngôi nhà có số nhà riêng biệt."},
+        {"id": 60616, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Thông hiểu", "type": "choice", "question": "Hoạt động di chuyển từ trang web này sang trang web khác bằng cách nhấp chuột vào các liên kết được gọi là gì?", "options": ["Duyệt web (lướt web)", "Lập trình trang web", "Quét dọn hệ điều hành", "Soạn thảo thư viện số"], "answer": 0, "explanation": "SGK trang 24: 'Hoạt động di chuyển theo các liên kết được gọi là duyệt web. Quá trình này cho phép người sử dụng xem các trang web để lấy thông tin.'", "remember": "Duyệt web là hoạt động di chuyển theo các liên kết giữa các trang web để xem thông tin.", "hint": "Hành động di chuyển giữa các trang web bằng liên kết."},
+        {"id": 60617, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Thông hiểu", "type": "matching", "question": "Ghép các địa chỉ website mẫu trong SGK Tin học 6 ở cột A với nội dung mô tả ở cột B:", "pairs": [{"left": "1) http://thieunien.vn", "right": "Địa chỉ website Báo Thiếu niên Tiền phong"}, {"left": "2) https://vi.wikipedia.org", "right": "Địa chỉ trang chủ Bách khoa toàn thư mở tiếng Việt"}, {"left": "3) http://vtv7.vtv.vn", "right": "Kênh truyền hình giáo dục quốc gia trên Internet"}, {"left": "4) http://hoahoctro.tienphong.vn", "right": "Trang tin điện tử báo Hoa học trò"}], "explanation": "Đây là các địa chỉ website giáo dục và báo chí thiếu nhi được giới thiệu trong phần Khám phá và Vận dụng của SGK Bài 6.", "remember": "Nắm rõ các địa chỉ website học tập và báo đội thiếu nhi trong SGK.", "hint": "Nối tên miền của website với đơn vị quản lý tương ứng."},
+        {"id": 60618, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Thông hiểu", "type": "true_false", "question": "Từ 'web' trong cụm từ World Wide Web có nguồn gốc từ 'spider-web', nghĩa là mạng nhện trong tiếng Anh.", "options": ["Đúng", "Sai"], "answer": 0, "explanation": "Đúng. Mục 'Em có biết?' ở SGK trang 24 nêu: 'web có nguồn gốc từ spider-web, nghĩa là mạng nhện trong tiếng Anh', gợi tả mạng lưới liên kết thông tin như mạng nhện.", "remember": "Web bắt nguồn từ 'spider-web' (mạng nhện), mô tả sự liên kết chằng chịt giữa các trang web.", "hint": "Xem hộp 'Em có biết?' hình tờ giấy hồng ở góc trên SGK trang 24."},
+        {"id": 60619, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Vận dụng", "type": "order", "question": "Sắp xếp các bước đúng trình tự để truy cập vào một trang web học tập bằng trình duyệt web:", "steps": ["1. Khởi động phần mềm trình duyệt web (ví dụ: Google Chrome)", "2. Nháy chuột vào thanh địa chỉ của trình duyệt web", "3. Nhập chính xác địa chỉ website (ví dụ: http://hoahoctro.tienphong.vn)", "4. Nhấn phím Enter trên bàn phím để trình duyệt tải trang web"], "correctOrder": [0, 1, 2, 3], "explanation": "Quy trình truy cập chuẩn: Mở trình duyệt -> Nhấp thanh địa chỉ -> Gõ địa chỉ trang web -> Nhấn Enter để truy cập.", "remember": "Mở trình duyệt → Nháy thanh địa chỉ → Nhập URL → Nhấn phím Enter.", "hint": "Bước đầu tiên luôn là mở phần mềm trình duyệt web."},
+        {"id": 60620, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Vận dụng", "type": "order", "question": "Sắp xếp các bước để lưu một trang web đang xem vào thanh Bookmark của trình duyệt:", "steps": ["1. Đang mở trang web em yêu thích trên trình duyệt", "2. Nháy chuột vào biểu tượng ngôi sao ⭐️ ở góc phải thanh địa chỉ", "3. Đặt tên gợi nhớ cho trang web và chọn thư mục lưu trên Bookmark", "4. Nhấn nút Xong (Done) để hoàn tất việc lưu trang web"], "correctOrder": [0, 1, 2, 3], "explanation": "Trình tự lưu Bookmark: Mở trang web -> Bấm biểu tượng ngôi sao ⭐️ -> Đặt tên/chọn vị trí -> Nhấn Done/Xong.", "remember": "Mở trang web → Bấm ngôi sao ⭐️ trên thanh địa chỉ → Đặt tên → Nhấn Xong.", "hint": "Biểu tượng ngôi sao ⭐️ trên thanh địa chỉ là công cụ tạo Bookmark."},
+        {"id": 60621, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Vận dụng", "type": "scenario", "question": "Tình huống: Hằng ngày Bình đều truy cập trang web 'http://vtv7.vtv.vn' để xem các bài giảng Khoa học tự nhiên. Nhưng mỗi lần vào Bình đều phải gõ lại toàn bộ địa chỉ dài dòng. Em hãy chỉ cho Bình cách tiện lợi nhất:", "options": ["Lưu địa chỉ trang web vào thanh Bookmark của trình duyệt, lần sau chỉ cần nháy chuột vào tên trang là mở được ngay", "Viết địa chỉ trang web ra một tờ giấy nhớ dán cạnh màn hình máy tính", "Để máy tính bật liên tục suốt đêm không tắt để không bị mất trang", "Gửi email địa chỉ trang web cho chính mình mỗi buổi sáng"], "answer": 0, "explanation": "Tính năng Bookmark sinh ra để giải quyết đúng nhu cầu này: lưu địa chỉ trang web thường dùng để mở lại chỉ bằng 1 cú nhấp chuột.", "remember": "Sử dụng Bookmark là cách nhanh nhất và thông minh nhất để mở lại các trang web thường dùng.", "hint": "Dùng tính năng Bookmark (Đánh dấu trang) của trình duyệt."},
+        {"id": 60622, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Vận dụng", "type": "scenario", "question": "Tình huống: Khi đang đọc bài viết về thiên văn trên một trang web, Mai thấy cụm từ 'Hành tinh Xanh' có chữ màu xanh và gạch chân. Khi Mai rê chuột vào thì con trỏ chuyển thành hình bàn tay. Mai nên làm gì để tìm hiểu sâu hơn về cụm từ này?", "options": ["Nháy chuột vào cụm từ đó để di chuyển theo liên kết đến trang web giải thích chi tiết", "Dùng tẩy xóa cụm từ đó đi trên màn hình máy tính", "Tắt ngay trình duyệt web vì sợ bị virus xâm nhập", "Gõ lại cụm từ đó vào phần mềm Word để tra nghĩa"], "answer": 0, "explanation": "Cụm từ đổi màu, gạch chân và con trỏ biến thành hình bàn tay chính là một siêu liên kết (hyperlink). Nháy chuột vào đó sẽ dẫn đến trang thông tin chi tiết liên quan.", "remember": "Nháy chuột vào siêu liên kết để chuyển đến nội dung hoặc trang web liên quan.", "hint": "Đó là một siêu liên kết dẫn đến trang thông tin chi tiết."},
+        {"id": 60623, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Vận dụng", "type": "scenario", "question": "Tình huống: Minh gõ địa chỉ website 'htttp://hoahoctro.tienphong.vn' nhưng trình duyệt thông báo lỗi không mở được trang. Sau khi quan sát, em phát hiện lỗi sai của Minh là gì?", "options": ["Minh đã gõ thừa một chữ 't' trong phần giao thức 'htttp://' (đúng phải là 'http://' hoặc 'https://')", "Minh chưa kết nối bàn phím với máy tính", "Trình duyệt web không cho phép học sinh đọc báo Hoa học trò", "Máy tính bắt buộc phải khởi động lại 3 lần mới vào được web"], "answer": 0, "explanation": "Địa chỉ website cần được gõ chính xác 100% từng ký tự. Lỗi gõ 'htttp://' thừa chữ 't' sẽ khiến trình duyệt không nhận diện được địa chỉ đích.", "remember": "Địa chỉ trang web phải được nhập chính xác từng ký tự và dấu câu.", "hint": "Quan sát kỹ số chữ cái 't' trong 'htttp://'."},
+        {"id": 60624, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Vận dụng", "type": "scenario", "question": "Tình huống: Lan muốn vừa mở trang web Bách khoa toàn thư để tra cứu tài liệu, vừa mở trang web từ điển trực tuyến trên cùng một cửa sổ trình duyệt. Lan có thể làm điều này bằng cách nào?", "options": ["Mở thêm một thẻ mới (tab mới) bằng cách bấm vào dấu cộng (+) trên thanh tiêu đề của trình duyệt", "Phải mua thêm một chiếc máy tính thứ hai đặt bên cạnh", "Cài đặt lại toàn bộ hệ điều hành máy tính", "Tắt trang này rồi gõ trang kia liên tục"], "answer": 0, "explanation": "Các trình duyệt web hiện đại đều hỗ trợ mở nhiều thẻ (tabs) đồng thời bằng cách bấm vào nút dấu cộng (+) để xem nhiều trang web cùng lúc.", "remember": "Sử dụng các thẻ (tabs) để mở và duyệt nhiều trang web đồng thời trong một cửa sổ.", "hint": "Bấm vào biểu tượng dấu cộng (+) trên thanh thẻ (tab) của trình duyệt."},
+        {"id": 60625, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Vận dụng", "type": "true_false", "question": "Chỉ cần máy tính có kết nối mạng Internet là học sinh có thể xem được nội dung các website mà không cần cài đặt bất kỳ phần mềm trình duyệt web nào.", "options": ["Đúng", "Sai"], "answer": 1, "explanation": "Sai. SGK ghi rõ: 'Người sử dụng muốn truy cập các website thì cần phải sử dụng một phần mềm ứng dụng gọi là trình duyệt (web browser)'.", "remember": "Bắt buộc phải có phần mềm trình duyệt web để giải mã và hiển thị các trang web.", "hint": "Cần có phần mềm trình duyệt để mở và hiển thị các trang web."},
+        {"id": 60626, "topic": "Bài 6. Mạng thông tin toàn cầu", "topicKey": "b6", "difficulty": "Vận dụng", "type": "choice", "question": "Khi em đang duyệt web và muốn quay trở lại trang web vừa xem trước đó, em nên nhấn vào nút điều hướng nào trên trình duyệt?", "options": ["Nút mũi tên quay lại sang trái (Back ⬅️)", "Nút dấu nhân (Close ❌) ở góc trên", "Nút tải lại trang hình mũi tên tròn (Reload 🔄)", "Nút thu nhỏ cửa sổ trình duyệt (_)"], "answer": 0, "explanation": "Nút mũi tên quay lại (Back ⬅️) trên thanh công cụ của trình duyệt cho phép người dùng lùi lại trang web đã xem liền trước đó.", "remember": "Nút Back (⬅️) đưa em quay lại trang web vừa xem trước đó.", "hint": "Nút mũi tên chỉ sang bên trái trên thanh điều hướng."}
+
       ],
 
       // ===== LỚP 7 =====
@@ -2064,11 +2435,13 @@
       6: {
         title: "Tin Học 6 - Khám Phá Dữ Liệu & Mạng Máy Tính",
         stages: [
-          { key: "all", name: "🌟 Toàn Bộ 40 Câu", desc: "Trọn vẹn 4 bài học học kì 1" },
+          { key: "all", name: "🌟 Toàn Bộ Kiến Thức", desc: "Tổng hợp toàn bộ các bài học học kì 1" },
           { key: "b1", name: "🟢 Bài 1: Dữ liệu", desc: "Thông tin & Vật mang tin (10 câu)" },
           { key: "b2", name: "🔵 Bài 2: Xử lí thông tin", desc: "Quy trình & vai trò CPU (10 câu)" },
           { key: "b3", name: "🟣 Bài 3: Đơn vị Bit", desc: "Biểu diễn bit & dung lượng (10 câu)" },
-          { key: "b4", name: "🏆 Bài 4: Mạng LAN/WAN", desc: "Mạng máy tính & Router/Switch (10 câu)" }
+          { key: "b4", name: "🏆 Bài 4: Mạng LAN/WAN", desc: "Mạng máy tính & Router/Switch (10 câu)" },
+          { key: "b5", name: "🌐 Học sinh luyện tập – Bài 5: Internet", desc: "Khái niệm, đặc điểm chính, lợi ích & ứng dụng (Ngân hàng 26 câu • Rút ngẫu nhiên 12 câu)", icon: "🌐" },
+          { key: "b6", name: "🌍 Học sinh luyện tập – Bài 6: Mạng thông tin toàn cầu", desc: "World Wide Web, website, siêu văn bản & trình duyệt (Ngân hàng 26 câu • Rút ngẫu nhiên 12 câu)", icon: "🌍" }
         ]
       },
       7: {
@@ -2193,6 +2566,76 @@
       screen.classList.add("active");
     }
 
+    // ===== HỆ THỐNG ĐIỀU PHỐI & RANDOM CÂU HỎI THÔNG MINH (BÀI 5 & BÀI 6) =====
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function cloneAndPrepareQuestion(rawQ) {
+      const q = JSON.parse(JSON.stringify(rawQ));
+      
+      // Nếu là câu trắc nghiệm thông thường, xáo trộn thứ tự các lựa chọn để học sinh không học vẹt vị trí
+      if (q.type === "choice" && Array.isArray(q.options) && q.options.length === 4) {
+        const originalCorrectText = q.options[q.answer];
+        const shuffled = shuffleArray(q.options);
+        q.options = shuffled;
+        q.answer = shuffled.indexOf(originalCorrectText);
+      } else if (q.type === "order" && Array.isArray(q.steps)) {
+        // Đối với câu sắp xếp, xáo trộn thứ tự các bước ban đầu hiển thị
+        const indexedSteps = q.steps.map((text, idx) => ({ text, originalIdx: idx }));
+        let shuffled = shuffleArray(indexedSteps);
+        // Đảm bảo không tình cờ đúng ngay từ đầu
+        let isSame = shuffled.every((item, idx) => item.originalIdx === idx);
+        if (isSame && shuffled.length > 1) {
+          [shuffled[0], shuffled[1]] = [shuffled[1], shuffled[0]];
+        }
+        q.currentSteps = shuffled;
+      } else if (q.type === "matching" && Array.isArray(q.pairs)) {
+        // Đối với câu ghép nối, giữ nguyên cột A, xáo trộn cột B
+        const rightItems = q.pairs.map((p, idx) => ({ text: p.right, originalIdx: idx }));
+        q.shuffledRights = shuffleArray(rightItems);
+      } else if (q.type === "classify" && Array.isArray(q.items)) {
+        q.shuffledItems = shuffleArray(q.items);
+      }
+      return q;
+    }
+
+    function samplePracticeQuestions(pool, targetCount = 12) {
+      if (!pool || pool.length <= targetCount) {
+        return shuffleArray(pool).map(cloneAndPrepareQuestion);
+      }
+
+      // Phân bổ theo 3 mức độ nhận thức: Nhận biết, Thông hiểu, Vận dụng
+      const nbPool = pool.filter(q => q.difficulty === "Nhận biết");
+      const thPool = pool.filter(q => q.difficulty === "Thông hiểu");
+      const vdPool = pool.filter(q => q.difficulty === "Vận dụng" || q.difficulty === "Vận dụng cao");
+
+      const nbTarget = 4;
+      const thTarget = 5;
+      const vdTarget = 3;
+
+      const pickedNB = shuffleArray(nbPool).slice(0, nbTarget);
+      const pickedTH = shuffleArray(thPool).slice(0, thTarget);
+      const pickedVD = shuffleArray(vdPool).slice(0, vdTarget);
+
+      let selected = [...pickedNB, ...pickedTH, ...pickedVD];
+
+      // Nếu thiếu câu ở nhóm nào, bù thêm từ các câu còn lại
+      if (selected.length < targetCount) {
+        const selectedIds = new Set(selected.map(q => q.id));
+        const remaining = pool.filter(q => !selectedIds.has(q.id));
+        selected = selected.concat(shuffleArray(remaining).slice(0, targetCount - selected.length));
+      }
+
+      // Xáo trộn thứ tự xuất hiện các câu hỏi trong đề
+      return shuffleArray(selected).map(cloneAndPrepareQuestion);
+    }
+
     document.getElementById("btn-start-game").addEventListener("click", () => {
       sound.playClick();
       const enteredName = playerNameInput.value.trim();
@@ -2203,9 +2646,20 @@
       let pool = [];
 
       if (state.selectedStage === "all") {
-        pool = [...fullBank];
+        if (state.currentGrade === 6 && fullBank.length > 25) {
+          // Lớp 6 rút ngẫu nhiên 20 câu toàn diện khi chọn Toàn bộ
+          pool = samplePracticeQuestions(fullBank, 20);
+        } else {
+          pool = shuffleArray(fullBank).map(cloneAndPrepareQuestion);
+        }
       } else {
-        pool = fullBank.filter(q => q.topicKey === state.selectedStage);
+        const topicQuestions = fullBank.filter(q => q.topicKey === state.selectedStage);
+        if (state.selectedStage === "b5" || state.selectedStage === "b6") {
+          // Rút ngẫu nhiên 12 câu cân đối nhận biết, thông hiểu, vận dụng cho Bài 5 & Bài 6
+          pool = samplePracticeQuestions(topicQuestions, 12);
+        } else {
+          pool = shuffleArray(topicQuestions).map(cloneAndPrepareQuestion);
+        }
       }
 
       state.questions = pool;
@@ -2241,20 +2695,22 @@
       } else {
         displayComboBox.style.display = "none";
       }
-      const progress = ((state.currentIndex) / state.questions.length) * 100;
-      progressBar.style.width = `${progress}%`;
+
+      const total = state.questions.length;
+      const cur = state.currentIndex + 1;
+      const pct = total > 0 ? Math.round((cur / total) * 100) : 0;
+      progressBar.style.width = `${pct}%`;
     }
 
     function updateLifelineButtons() {
-      count5050.textContent = state.lifelines.fiftyFifty;
-      countRobot.textContent = state.lifelines.robotHint;
-      countSkip.textContent = state.lifelines.skip;
+      document.getElementById("count-5050").textContent = state.lifelines.fiftyFifty;
+      document.getElementById("count-robot").textContent = state.lifelines.robotHint;
+      document.getElementById("count-skip").textContent = state.lifelines.skip;
+
       btnLife5050.disabled = state.lifelines.fiftyFifty <= 0;
       btnLifeRobot.disabled = state.lifelines.robotHint <= 0;
       btnLifeSkip.disabled = state.lifelines.skip <= 0;
     }
-
-    const letters = ["A", "B", "C", "D"];
 
     function loadQuestion(index) {
       state.answered = false;
@@ -2264,22 +2720,445 @@
       quizTopicBadge.textContent = "📘 " + q.topic;
       quizCounter.textContent = `CÂU ${index + 1} / ${state.questions.length}`;
       quizDifficulty.textContent = `Mức độ: ${q.difficulty}`;
-      quizQuestionText.textContent = q.question;
+      
+      // Hiển thị nội dung câu hỏi
+      if (q.type === "scenario") {
+        quizQuestionText.innerHTML = `<div class="scenario-badge">🧑‍🎓 Tình huống thực tế</div><br>${q.question}`;
+      } else {
+        quizQuestionText.textContent = q.question;
+      }
 
       quizOptionsContainer.innerHTML = "";
-      q.options.forEach((optText, i) => {
-        const btn = document.createElement("button");
-        btn.className = "option-btn";
-        btn.dataset.index = i;
-        btn.innerHTML = `
-          <div class="opt-letter">${letters[i]}</div>
-          <div style="flex-grow: 1;">${optText}</div>
-        `;
-        btn.addEventListener("click", () => handleSelectAnswer(i, btn));
-        quizOptionsContainer.appendChild(btn);
-      });
+
+      // DẠNG 1 & DẠNG 6: TRẮC NGHIỆM 4 ĐÁP ÁN (CHOICE / SCENARIO)
+      if (!q.type || q.type === "choice" || q.type === "scenario") {
+        quizOptionsContainer.className = "options-grid";
+        q.options.forEach((optText, i) => {
+          const btn = document.createElement("button");
+          btn.className = "option-btn";
+          btn.dataset.index = i;
+          btn.innerHTML = `
+            <div class="opt-letter">${letters[i]}</div>
+            <div style="flex-grow: 1;">${optText}</div>
+          `;
+          btn.addEventListener("click", () => handleSelectAnswer(i, btn));
+          quizOptionsContainer.appendChild(btn);
+        });
+      }
+      // DẠNG 2: ĐÚNG HOẶC SAI (TRUE / FALSE)
+      else if (q.type === "true_false") {
+        quizOptionsContainer.className = "true-false-grid";
+        const btnTrue = document.createElement("button");
+        btnTrue.className = "tf-btn tf-btn-true";
+        btnTrue.innerHTML = `<span style="font-size:1.6rem;">✅</span> <span>ĐÚNG</span>`;
+        btnTrue.addEventListener("click", () => handleSelectAnswer(0, btnTrue));
+
+        const btnFalse = document.createElement("button");
+        btnFalse.className = "tf-btn tf-btn-false";
+        btnFalse.innerHTML = `<span style="font-size:1.6rem;">❌</span> <span>SAI</span>`;
+        btnFalse.addEventListener("click", () => handleSelectAnswer(1, btnFalse));
+
+        quizOptionsContainer.appendChild(btnTrue);
+        quizOptionsContainer.appendChild(btnFalse);
+      }
+      // DẠNG 3: GHÉP NỐI (MATCHING)
+      else if (q.type === "matching") {
+        quizOptionsContainer.className = "matching-wrapper";
+        renderMatchingQuestion(q);
+      }
+      // DẠNG 4: KÉO THẢ PHÂN LOẠI (CLASSIFY)
+      else if (q.type === "classify") {
+        quizOptionsContainer.className = "classify-wrapper";
+        renderClassifyQuestion(q);
+      }
+      // DẠNG 5: SẮP XẾP TRÌNH TỰ (ORDER)
+      else if (q.type === "order") {
+        quizOptionsContainer.className = "order-wrapper";
+        renderOrderQuestion(q);
+      }
 
       updateTopBar();
+    }
+
+    // ===== RENDER & XỬ LÝ CÂU HỎI GHÉP NỐI (MATCHING) =====
+    function renderMatchingQuestion(q) {
+      const container = document.createElement("div");
+      container.className = "matching-container";
+
+      const leftCol = document.createElement("div");
+      leftCol.className = "matching-col";
+      leftCol.innerHTML = `<div class="matching-col-title">📌 CỘT A (Khái niệm / Đặc điểm)</div>`;
+
+      const rightCol = document.createElement("div");
+      rightCol.className = "matching-col";
+      rightCol.innerHTML = `<div class="matching-col-title">🎯 CỘT B (Nội dung mô tả)</div>`;
+
+      const pairColors = ["#8b5cf6", "#3b82f6", "#10b981", "#f97316"];
+      const userPairs = {}; // leftIdx -> rightItemIdx
+      let selectedLeftIdx = null;
+
+      q.pairs.forEach((p, lIdx) => {
+        const card = document.createElement("div");
+        card.className = "matching-card";
+        card.id = `m-left-${lIdx}`;
+        card.innerHTML = `<span>${p.left}</span> <span class="pair-tag" id="tag-left-${lIdx}"></span>`;
+        card.addEventListener("click", () => {
+          if (state.answered) return;
+          sound.playClick();
+          leftCol.querySelectorAll(".matching-card").forEach(c => c.classList.remove("selected"));
+          card.classList.add("selected");
+          selectedLeftIdx = lIdx;
+        });
+        leftCol.appendChild(card);
+      });
+
+      q.shuffledRights.forEach((r, rIdx) => {
+        const card = document.createElement("div");
+        card.className = "matching-card";
+        card.id = `m-right-${rIdx}`;
+        card.innerHTML = `<span>${r.text}</span> <span class="pair-tag" id="tag-right-${rIdx}"></span>`;
+        card.addEventListener("click", () => {
+          if (state.answered) return;
+          sound.playClick();
+          if (selectedLeftIdx === null) {
+            showModal("Gợi ý ghép nối", "Em hãy nhấp chọn một mục ở Cột A trước, sau đó nhấp vào mục tương ứng ở Cột B nhé!", "💡");
+            return;
+          }
+
+          // Xóa liên kết cũ của right nếu có
+          Object.keys(userPairs).forEach(k => {
+            if (userPairs[k] === rIdx) delete userPairs[k];
+          });
+          userPairs[selectedLeftIdx] = rIdx;
+
+          // Cập nhật giao diện ghép nối
+          refreshMatchingView();
+          selectedLeftIdx = null;
+          leftCol.querySelectorAll(".matching-card").forEach(c => c.classList.remove("selected"));
+        });
+        rightCol.appendChild(card);
+      });
+
+      function refreshMatchingView() {
+        // Reset all badges
+        q.pairs.forEach((_, lIdx) => {
+          const lCard = document.getElementById(`m-left-${lIdx}`);
+          const lTag = document.getElementById(`tag-left-${lIdx}`);
+          lCard.classList.remove("paired");
+          lCard.style.borderColor = "#cbd5e1";
+          lTag.innerHTML = "";
+        });
+        q.shuffledRights.forEach((_, rIdx) => {
+          const rCard = document.getElementById(`m-right-${rIdx}`);
+          const rTag = document.getElementById(`tag-right-${rIdx}`);
+          rCard.classList.remove("paired");
+          rCard.style.borderColor = "#cbd5e1";
+          rTag.innerHTML = "";
+        });
+
+        // Áp dụng màu cho các cặp đã ghép
+        Object.entries(userPairs).forEach(([lIdxStr, rIdx], pairNum) => {
+          const lIdx = parseInt(lIdxStr, 10);
+          const color = pairColors[pairNum % pairColors.length];
+          const badgeHtml = `<span class="pair-badge" style="background:${color}">Cặp ${pairNum + 1}</span>`;
+
+          const lCard = document.getElementById(`m-left-${lIdx}`);
+          const lTag = document.getElementById(`tag-left-${lIdx}`);
+          lCard.classList.add("paired");
+          lCard.style.borderColor = color;
+          lTag.innerHTML = badgeHtml;
+
+          const rCard = document.getElementById(`m-right-${rIdx}`);
+          const rTag = document.getElementById(`tag-right-${rIdx}`);
+          rCard.classList.add("paired");
+          rCard.style.borderColor = color;
+          rTag.innerHTML = badgeHtml;
+        });
+      }
+
+      container.appendChild(leftCol);
+      container.appendChild(rightCol);
+      quizOptionsContainer.appendChild(container);
+
+      // Nút kiểm tra ghép nối
+      const btnCheck = document.createElement("button");
+      btnCheck.className = "btn-check-interactive";
+      btnCheck.innerHTML = `<span>✔️</span> <span>KIỂM TRA GHÉP NỐI</span>`;
+      btnCheck.addEventListener("click", () => {
+        if (state.answered) return;
+        if (Object.keys(userPairs).length < q.pairs.length) {
+          showModal("Chưa hoàn thành ghép nối", `Em mới ghép được ${Object.keys(userPairs).length}/${q.pairs.length} cặp. Hãy ghép đủ tất cả các cặp trước khi kiểm tra nhé!`, "⚠️");
+          return;
+        }
+
+        // Chấm điểm
+        let allCorrect = true;
+        let correctDetails = "<ul style='margin-left: 20px; line-height: 1.6;'>";
+        q.pairs.forEach((p, lIdx) => {
+          const matchedRIdx = userPairs[lIdx];
+          const matchedRight = q.shuffledRights[matchedRIdx];
+          const isMatch = matchedRight && matchedRight.originalIdx === lIdx;
+          if (!isMatch) allCorrect = false;
+          correctDetails += `<li><strong>${p.left}</strong> nối với <strong>${p.right}</strong></li>`;
+        });
+        correctDetails += "</ul>";
+
+        btnCheck.disabled = true;
+        handleInteractiveResult(
+          allCorrect,
+          allCorrect ? "🎉 CHÍNH XÁC HOÀN TOÀN!" : "❌ GHÉP NỐI CHƯA CHÍNH XÁC!",
+          `<strong>Đáp án chuẩn xác:</strong><br>${correctDetails}`,
+          q.explanation,
+          q.remember
+        );
+      });
+      quizOptionsContainer.appendChild(btnCheck);
+    }
+
+    // ===== RENDER & XỬ LÝ CÂU HỎI PHÂN LOẠI (CLASSIFY) =====
+    function renderClassifyQuestion(q) {
+      const container = document.createElement("div");
+      container.className = "classify-container";
+
+      const pool = document.createElement("div");
+      pool.className = "classify-pool";
+      pool.id = "classify-pool";
+
+      const zonesGrid = document.createElement("div");
+      zonesGrid.className = "classify-zones-grid";
+
+      const zoneCards = {};
+      const placements = {}; // itemIndex -> categoryName (or null if in pool)
+      let selectedItemIdx = null;
+
+      q.categories.forEach(catName => {
+        const zone = document.createElement("div");
+        zone.className = "classify-zone";
+        zone.dataset.category = catName;
+        zone.innerHTML = `<div class="classify-zone-title">📁 ${catName}</div><div class="zone-items-container" style="display:flex; flex-wrap:wrap; gap:6px;"></div>`;
+        zone.addEventListener("click", (e) => {
+          if (state.answered) return;
+          if (selectedItemIdx !== null) {
+            sound.playClick();
+            placements[selectedItemIdx] = catName;
+            selectedItemIdx = null;
+            refreshClassifyView();
+          }
+        });
+        zonesGrid.appendChild(zone);
+        zoneCards[catName] = zone.querySelector(".zone-items-container");
+      });
+
+      function refreshClassifyView() {
+        pool.innerHTML = "";
+        Object.values(zoneCards).forEach(z => z.innerHTML = "");
+
+        q.shuffledItems.forEach((item, idx) => {
+          const chip = document.createElement("div");
+          chip.className = `classify-chip ${selectedItemIdx === idx ? "selected" : ""}`;
+          chip.innerHTML = `<span>🏷️</span> <span>${item.text}</span>`;
+          chip.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (state.answered) return;
+            sound.playClick();
+            if (placements[idx]) {
+              // Đang ở trong zone, bấm thì trả lại pool
+              placements[idx] = null;
+              selectedItemIdx = null;
+              refreshClassifyView();
+            } else {
+              // Đang ở pool, chọn để bỏ vào zone
+              selectedItemIdx = (selectedItemIdx === idx) ? null : idx;
+              refreshClassifyView();
+            }
+          });
+
+          const currentCat = placements[idx];
+          if (currentCat && zoneCards[currentCat]) {
+            zoneCards[currentCat].appendChild(chip);
+          } else {
+            pool.appendChild(chip);
+          }
+        });
+
+        // Gợi ý nếu pool còn thẻ
+        const placedCount = Object.values(placements).filter(Boolean).length;
+        if (placedCount < q.shuffledItems.length) {
+          pool.title = "Nhấp chọn một thẻ rồi nhấp vào nhóm bên dưới để phân loại";
+        }
+      }
+
+      refreshClassifyView();
+      container.appendChild(pool);
+      container.appendChild(zonesGrid);
+      quizOptionsContainer.appendChild(container);
+
+      // Nút kiểm tra phân loại
+      const btnCheck = document.createElement("button");
+      btnCheck.className = "btn-check-interactive";
+      btnCheck.innerHTML = `<span>✔️</span> <span>KIỂM TRA PHÂN LOẠI</span>`;
+      btnCheck.addEventListener("click", () => {
+        if (state.answered) return;
+        const placedCount = Object.values(placements).filter(Boolean).length;
+        if (placedCount < q.shuffledItems.length) {
+          showModal("Chưa hoàn thành phân loại", `Em còn ${q.shuffledItems.length - placedCount} thẻ chưa phân nhóm. Hãy đưa hết các thẻ vào đúng nhóm trước khi kiểm tra nhé!`, "⚠️");
+          return;
+        }
+
+        let allCorrect = true;
+        let detailsHtml = "<div style='line-height:1.6;'>";
+        q.categories.forEach(cat => {
+          detailsHtml += `<br><strong>📁 ${cat}:</strong><br>`;
+          const correctItems = q.shuffledItems.filter(it => it.category === cat).map(it => "• " + it.text);
+          detailsHtml += correctItems.join("<br>");
+        });
+        detailsHtml += "</div>";
+
+        q.shuffledItems.forEach((item, idx) => {
+          if (placements[idx] !== item.category) allCorrect = false;
+        });
+
+        btnCheck.disabled = true;
+        handleInteractiveResult(
+          allCorrect,
+          allCorrect ? "🎉 PHÂN LOẠI CHÍNH XÁC!" : "❌ PHÂN LOẠI CHƯA ĐÚNG!",
+          `<strong>Đáp án phân loại chuẩn:</strong>${detailsHtml}`,
+          q.explanation,
+          q.remember
+        );
+      });
+      quizOptionsContainer.appendChild(btnCheck);
+    }
+
+    // ===== RENDER & XỬ LÝ CÂU HỎI SẮP XẾP TRÌNH TỰ (ORDER) =====
+    function renderOrderQuestion(q) {
+      const container = document.createElement("div");
+      container.className = "order-container";
+
+      function refreshOrderView() {
+        container.innerHTML = "";
+        q.currentSteps.forEach((stepItem, idx) => {
+          const card = document.createElement("div");
+          card.className = "order-item-card";
+          card.innerHTML = `
+            <div style="display:flex; align-items:center; gap:10px;">
+              <div class="order-num-badge">Bước ${idx + 1}</div>
+              <span>${stepItem.text}</span>
+            </div>
+            <div class="order-btn-group">
+              <button class="btn-move" ${idx === 0 || state.answered ? "disabled" : ""} data-dir="up">⬆️ Lên</button>
+              <button class="btn-move" ${idx === q.currentSteps.length - 1 || state.answered ? "disabled" : ""} data-dir="down">⬇️ Xuống</button>
+            </div>
+          `;
+
+          const btnUp = card.querySelector('[data-dir="up"]');
+          if (btnUp) {
+            btnUp.addEventListener("click", () => {
+              if (state.answered || idx === 0) return;
+              sound.playClick();
+              [q.currentSteps[idx - 1], q.currentSteps[idx]] = [q.currentSteps[idx], q.currentSteps[idx - 1]];
+              refreshOrderView();
+            });
+          }
+
+          const btnDown = card.querySelector('[data-dir="down"]');
+          if (btnDown) {
+            btnDown.addEventListener("click", () => {
+              if (state.answered || idx === q.currentSteps.length - 1) return;
+              sound.playClick();
+              [q.currentSteps[idx + 1], q.currentSteps[idx]] = [q.currentSteps[idx], q.currentSteps[idx + 1]];
+              refreshOrderView();
+            });
+          }
+
+          container.appendChild(card);
+        });
+      }
+
+      refreshOrderView();
+      quizOptionsContainer.appendChild(container);
+
+      // Nút kiểm tra thứ tự
+      const btnCheck = document.createElement("button");
+      btnCheck.className = "btn-check-interactive";
+      btnCheck.innerHTML = `<span>✔️</span> <span>KIỂM TRA THỨ TỰ</span>`;
+      btnCheck.addEventListener("click", () => {
+        if (state.answered) return;
+
+        let allCorrect = true;
+        let correctStepsHtml = "<ol style='margin-left:22px; line-height:1.6;'>";
+        q.correctOrder.forEach((origIdx, stepNum) => {
+          if (q.currentSteps[stepNum].originalIdx !== origIdx) {
+            allCorrect = false;
+          }
+          correctStepsHtml += `<li>${q.steps[origIdx]}</li>`;
+        });
+        correctStepsHtml += "</ol>";
+
+        btnCheck.disabled = true;
+        handleInteractiveResult(
+          allCorrect,
+          allCorrect ? "🎉 SẮP XẾP CHÍNH XÁC HOÀN TOÀN!" : "❌ THỨ TỰ CHƯA CHÍNH XÁC!",
+          `<strong>Trình tự đúng chuẩn:</strong><br>${correctStepsHtml}`,
+          q.explanation,
+          q.remember
+        );
+      });
+      quizOptionsContainer.appendChild(btnCheck);
+    }
+
+    // ===== XỬ LÝ PHẢN HỒI KẾT QUẢ TƯƠNG TÁC (CHUNG CHO MATCHING, CLASSIFY, ORDER) =====
+    function handleInteractiveResult(isCorrect, title, detailHtml, explanation, remember) {
+      if (state.answered) return;
+      state.answered = true;
+
+      const q = state.questions[state.currentIndex];
+
+      if (isCorrect) {
+        sound.playCorrect();
+        fireConfetti(55);
+
+        state.combo++;
+        if (state.combo > state.maxCombo) state.maxCombo = state.combo;
+
+        let basePoints = 120;
+        if (q.difficulty === "Vận dụng" || q.difficulty === "Vận dụng cao") basePoints = 150;
+
+        let comboBonus = 0;
+        if (state.combo === 2) comboBonus = 20;
+        else if (state.combo === 3) comboBonus = 30;
+        else if (state.combo >= 4) comboBonus = 50;
+
+        state.score += (basePoints + comboBonus);
+        state.correctCount++;
+        if (state.topicStats[q.topic]) state.topicStats[q.topic].correct++;
+
+        quizExplanationBox.className = "explanation-box correct-feedback";
+        quizFeedbackTitle.innerHTML = `${title} (+${basePoints}${comboBonus > 0 ? " + " + comboBonus + " Combo" : ""} điểm)`;
+        quizKnowledgeText.innerHTML = `<strong>💡 Ghi nhớ (SGK):</strong> ${remember}<br><span style="color:#475569; font-size: 0.95rem;">${explanation}</span>`;
+        quizRobotCheer.innerHTML = `🤖 BYTE: Xuất sắc lắm ${state.playerName}! Em đã hiểu rất sâu và thao tác rất chuẩn xác.`;
+      } else {
+        sound.playWrong();
+        state.combo = 0;
+        state.lives--;
+
+        quizExplanationBox.className = "explanation-box wrong-feedback";
+        quizFeedbackTitle.innerHTML = title;
+        quizKnowledgeText.innerHTML = `${detailHtml}<br><strong>💡 Giải thích:</strong> ${explanation}<br><strong>🧠 Ghi nhớ (SGK):</strong> ${remember}`;
+        quizRobotCheer.innerHTML = `🤖 BYTE: Đừng lo lắng nhé! Đọc kỹ đáp án chuẩn và ghi nhớ ở trên để làm tốt hơn ở lần sau!`;
+
+        if (state.lives <= 0) {
+          setTimeout(() => {
+            showModal("🤖 Tiếp Sức Từ BYTE!", "Em đã tạm thời dùng hết 3 mạng, nhưng BYTE vừa tặng thêm cho em 2 trái tim ❤️❤️ để hoàn thành chặng đường ôn tập nhé!", "💖");
+            state.lives = 2;
+            updateTopBar();
+          }, 600);
+        }
+      }
+
+      quizExplanationBox.style.display = "block";
+      updateTopBar();
+      quizExplanationBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     function handleSelectAnswer(selectedIndex, selectedBtn) {
@@ -2287,7 +3166,7 @@
       state.answered = true;
 
       const q = state.questions[state.currentIndex];
-      const allBtns = quizOptionsContainer.querySelectorAll(".option-btn");
+      const allBtns = quizOptionsContainer.querySelectorAll(".option-btn, .tf-btn");
       allBtns.forEach(b => b.classList.add("disabled"));
 
       const isCorrect = selectedIndex === q.answer;
@@ -2320,14 +3199,17 @@
       } else {
         sound.playWrong();
         selectedBtn.classList.add("wrong");
-        allBtns[q.answer].classList.add("correct");
+        if (allBtns[q.answer]) {
+          allBtns[q.answer].classList.add("correct");
+        }
 
         state.combo = 0;
         state.lives--;
 
+        const correctAnsText = q.options ? q.options[q.answer] : (q.answer === 0 ? "ĐÚNG" : "SAI");
         quizExplanationBox.className = "explanation-box wrong-feedback";
         quizFeedbackTitle.innerHTML = `❌ CHƯA CHÍNH XÁC!`;
-        quizKnowledgeText.innerHTML = `<strong>Đáp án đúng là ${letters[q.answer]}:</strong> ${q.options[q.answer]}<br><strong>💡 Giải thích:</strong> ${q.explanation}<br><strong>🧠 Ghi nhớ:</strong> ${q.remember}`;
+        quizKnowledgeText.innerHTML = `<strong>Đáp án đúng là:</strong> ${correctAnsText}<br><strong>💡 Giải thích:</strong> ${q.explanation}<br><strong>🧠 Ghi nhớ:</strong> ${q.remember}`;
         quizRobotCheer.innerHTML = `🤖 BYTE: Đừng nản lòng nhé! Đọc kỹ ghi nhớ ở trên để làm đúng ở các câu tiếp theo!`;
 
         if (state.lives <= 0) {
@@ -2356,19 +3238,25 @@
 
     btnLife5050.addEventListener("click", () => {
       if (state.answered || state.lifelines.fiftyFifty <= 0) return;
+      const q = state.questions[state.currentIndex];
+      if (q.type && q.type !== "choice") {
+        showModal("Trợ giúp 50/50", "Quyền trợ giúp 50/50 chỉ áp dụng cho câu hỏi trắc nghiệm 4 lựa chọn nhé!", "💡");
+        return;
+      }
       sound.playClick();
       state.lifelines.fiftyFifty--;
       updateLifelineButtons();
 
-      const q = state.questions[state.currentIndex];
       const wrongIndices = [0, 1, 2, 3].filter(idx => idx !== q.answer);
       wrongIndices.sort(() => Math.random() - 0.5);
       const toHide = wrongIndices.slice(0, 2);
 
       const allBtns = quizOptionsContainer.querySelectorAll(".option-btn");
       toHide.forEach(idx => {
-        allBtns[idx].classList.add("faded");
-        allBtns[idx].style.pointerEvents = "none";
+        if (allBtns[idx]) {
+          allBtns[idx].classList.add("faded");
+          allBtns[idx].style.pointerEvents = "none";
+        }
       });
     });
 
@@ -2402,35 +3290,63 @@
       switchScreen(screenResult);
 
       const totalQ = state.questions.length;
-      const accuracy = totalQ > 0 ? Math.round((state.correctCount / totalQ) * 100) : 0;
+      const correct = state.correctCount;
+      const wrong = totalQ - correct;
+      const accuracy = totalQ > 0 ? Math.round((correct / totalQ) * 100) : 0;
+      const score10 = totalQ > 0 ? ((correct / totalQ) * 10).toFixed(1) : "0.0";
 
       document.getElementById("res-score").textContent = state.score;
-      document.getElementById("res-correct").textContent = `${state.correctCount} / ${totalQ}`;
+      document.getElementById("res-correct").textContent = `${correct} / ${totalQ}`;
       document.getElementById("res-accuracy").textContent = `${accuracy}%`;
       document.getElementById("res-combo").textContent = state.maxCombo;
+
+      // Hiển thị điểm thang 10 và số câu sai nếu có phần tử
+      const elScore10 = document.getElementById("res-score-10");
+      if (elScore10) elScore10.textContent = score10;
+      const elWrong = document.getElementById("res-wrong");
+      if (elWrong) elWrong.textContent = `${wrong}`;
 
       document.getElementById("result-greeting").textContent = `Chúc mừng ${state.playerName} đã hoàn thành chặng ôn tập Tin học Lớp ${state.currentGrade}!`;
 
       const rankBadge = document.getElementById("result-rank-badge");
-      let rankTitle = "🌱 ĐANG TIẾN BỘ";
-      let rankColor = "#64748b";
+      let rankTitle = "⚠️ NÊN ÔN TẬP LẠI KIẾN THỨC";
+      let rankColor = "#ef4444";
 
       if (accuracy >= 90) {
-        rankTitle = "👑 HUYỀN THOẠI TIN HỌC";
+        rankTitle = "👑 XUẤT SẮC (Đạt trên 90%)";
         rankColor = "#3a0ca3";
-      } else if (accuracy >= 80) {
-        rankTitle = "🥇 CAO THỦ TIN HỌC";
+      } else if (accuracy >= 75) {
+        rankTitle = "🥇 TỐT (Đạt từ 75% đến dưới 90%)";
         rankColor = "#2563eb";
-      } else if (accuracy >= 65) {
-        rankTitle = "🥈 CHIẾN BINH TIN HỌC";
-        rankColor = "#059669";
       } else if (accuracy >= 50) {
-        rankTitle = "⭐ NHÀ KHÁM PHÁ";
+        rankTitle = "🥈 CẦN CỐ GẮNG THÊM (Đạt 50% - 74%)";
         rankColor = "#d97706";
       }
 
       rankBadge.textContent = rankTitle;
       rankBadge.style.background = rankColor;
+
+      // Lưu lịch sử tiến trình vào localStorage
+      try {
+        const historyRecord = {
+          date: new Date().toLocaleString("vi-VN"),
+          grade: state.currentGrade,
+          stage: state.selectedStage,
+          playerName: state.playerName,
+          score: state.score,
+          score10: score10,
+          accuracy: accuracy,
+          correct: correct,
+          total: totalQ
+        };
+        const hist = JSON.parse(localStorage.getItem("unigo_practice_history") || "[]");
+        hist.unshift(historyRecord);
+        if (hist.length > 30) hist.pop();
+        localStorage.setItem("unigo_practice_history", JSON.stringify(hist));
+        localStorage.setItem("unigo_last_practice", JSON.stringify(historyRecord));
+      } catch (err) {
+        console.warn("localStorage note:", err);
+      }
 
       const tbody = document.getElementById("analysis-table-body");
       tbody.innerHTML = "";
@@ -2438,14 +3354,14 @@
       Object.entries(state.topicStats).forEach(([topicName, stats]) => {
         if (stats.total === 0) return;
         const rate = Math.round((stats.correct / stats.total) * 100);
-        let note = "Em nắm rất chắc!";
+        let note = "Em nắm rất chắc kiến thức này!";
         let icon = "✅";
 
         if (rate < 60) {
-          note = "Cần đọc lại sách giáo khoa và ôn thêm";
+          note = "Cần đọc lại SGK các mục tương ứng và làm lại";
           icon = "🔴";
         } else if (rate < 85) {
-          note = "Khá tốt, chú ý các từ khóa";
+          note = "Khá tốt, chú ý ôn thêm các từ khóa trọng tâm";
           icon = "⚠️";
         }
 
@@ -2468,8 +3384,7 @@
       sound.playClick();
       switchScreen(screenStart);
     });
-
-    function showModal(title, msg, icon = "🤖") {
+function showModal(title, msg, icon = "🤖") {
       modalTitle.textContent = title;
       modalMessage.innerHTML = msg;
       modalIcon.textContent = icon;
@@ -3384,7 +4299,54 @@
         document.body.classList.remove("presentation-mode");
       }
     });
+  
+    // ===== HỖ TRỢ TRUY CẬP TRỰC TIẾP (DEEP LINKING CHO BÀI 5 & BÀI 6) =====
+    function checkDirectLessonLink() {
+      try {
+        const hash = (window.location.hash || "").toLowerCase();
+        const params = new URLSearchParams(window.location.search);
+        const bai = params.get("bai");
+        const stage = params.get("stage");
+
+        if (hash === "#bai5" || hash === "#internet" || bai === "5" || stage === "b5") {
+          const tab6 = document.querySelector('.btn-grade-tab[data-grade="6"]');
+          if (tab6) {
+            document.querySelectorAll(".btn-grade-tab").forEach(t => t.classList.remove("active"));
+            tab6.classList.add("active");
+            renderStagesForGrade(6);
+            setTimeout(() => {
+              const card = document.querySelector('.stage-card[data-stage="b5"]');
+              if (card) {
+                card.click();
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }, 300);
+          }
+        } else if (hash === "#bai6" || hash === "#www" || hash === "#web" || bai === "6" || stage === "b6") {
+          const tab6 = document.querySelector('.btn-grade-tab[data-grade="6"]');
+          if (tab6) {
+            document.querySelectorAll(".btn-grade-tab").forEach(t => t.classList.remove("active"));
+            tab6.classList.add("active");
+            renderStagesForGrade(6);
+            setTimeout(() => {
+              const card = document.querySelector('.stage-card[data-stage="b6"]');
+              if (card) {
+                card.click();
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }, 300);
+          }
+        }
+      } catch (e) {
+        console.warn("Deep link check note:", e);
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", checkDirectLessonLink);
+    window.addEventListener("hashchange", checkDirectLessonLink);
+    setTimeout(checkDirectLessonLink, 400);
   </script>
+
 
   
 
