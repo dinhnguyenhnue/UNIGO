@@ -2712,6 +2712,8 @@
       btnLifeSkip.disabled = state.lifelines.skip <= 0;
     }
 
+    const letters = ["A", "B", "C", "D", "E", "F"];
+
     function loadQuestion(index) {
       state.answered = false;
       quizExplanationBox.style.display = "none";
@@ -2782,6 +2784,10 @@
 
     // ===== RENDER & XỬ LÝ CÂU HỎI GHÉP NỐI (MATCHING) =====
     function renderMatchingQuestion(q) {
+      if (!q.shuffledRights && Array.isArray(q.pairs)) {
+        const rightItems = q.pairs.map((p, idx) => ({ text: p.right, originalIdx: idx }));
+        q.shuffledRights = shuffleArray(rightItems);
+      }
       const container = document.createElement("div");
       container.className = "matching-container";
 
@@ -2917,6 +2923,9 @@
 
     // ===== RENDER & XỬ LÝ CÂU HỎI PHÂN LOẠI (CLASSIFY) =====
     function renderClassifyQuestion(q) {
+      if (!q.shuffledItems && Array.isArray(q.items)) {
+        q.shuffledItems = shuffleArray(q.items);
+      }
       const container = document.createElement("div");
       container.className = "classify-container";
 
@@ -3032,6 +3041,14 @@
 
     // ===== RENDER & XỬ LÝ CÂU HỎI SẮP XẾP TRÌNH TỰ (ORDER) =====
     function renderOrderQuestion(q) {
+      if (!q.currentSteps && Array.isArray(q.steps)) {
+        const indexedSteps = q.steps.map((text, idx) => ({ text, originalIdx: idx }));
+        let shuffled = shuffleArray(indexedSteps);
+        if (shuffled.every((item, idx) => item.originalIdx === idx) && shuffled.length > 1) {
+          [shuffled[0], shuffled[1]] = [shuffled[1], shuffled[0]];
+        }
+        q.currentSteps = shuffled;
+      }
       const container = document.createElement("div");
       container.className = "order-container";
 
@@ -4304,7 +4321,7 @@ function showModal(title, msg, icon = "🤖") {
     function checkDirectLessonLink() {
       try {
         const hash = (window.location.hash || "").toLowerCase();
-        const params = new URLSearchParams(window.location.search);
+        const params = (typeof URLSearchParams !== "undefined" && window.location && window.location.search) ? new URLSearchParams(window.location.search) : { get: () => null };
         const bai = params.get("bai");
         const stage = params.get("stage");
 
