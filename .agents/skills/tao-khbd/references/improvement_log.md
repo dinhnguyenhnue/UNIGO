@@ -53,3 +53,16 @@
   - `references/KHBD_TIEU_HOC.md`: Section D/E + tên trường
   - `AGENTS.md`: Section IV điểm 1/3/4/6
 - **Kết quả**: 4/4 file rules đã cập nhật thành công.
+
+
+---
+
+## Đợt Kiểm toán & Tái thiết kế Toàn diện Hệ thống KHBD + Slide Tin học Lớp 3, 4, 5 (2026-11-02)
+- **Phạm vi kiểm toán:** 105 file gốc tại `D:\UNIGO\Phân phối chương trình\Tin học\KHBD Tin học 345 KNTT` + 111 file hiện hành tại `D:\UNIGO\KHBD_Tin_học` (Lớp 3, 4, 5) + 15 bộ Slide `.pptx`.
+- **Phát hiện cốt lõi:** 96/105 bài trong `D:\UNIGO\KHBD_Tin_học` trước đây bị rập khuôn boilerplate 8 dòng; bộ `KHBD Tin học 345 KNTT` có nội dung SGK rất tốt nhưng thiếu 100% mã năng lực đặc thù `NLa–NLe`, thiếu Rubric đánh giá, phân hóa sơ sài 2-3 từ và có lỗi ghi đè câu hỏi khởi động.
+- **Kết quả triển khai:**
+  1. Giữ nguyên 100% thư mục gốc `KHBD Tin học 345 KNTT`.
+  2. Xây dựng mới 105 file KHBD chuẩn UNIGO tại `D:\UNIGO\KHBD_Tin_học_Chuẩn_Mới` và đồng bộ nâng cấp toàn bộ 111 file trong `D:\UNIGO\KHBD_Tin_học\Lớp_3, Lớp_4, Lớp_5`.
+  3. Trích xuất 330 hình ảnh SGK gốc + tạo mới 31 sơ đồ Infographic Tiếng Việt 100%.
+  4. Xây dựng mới 105 bộ Slide bài giảng `.pptx` (12 slide/bài) đồng bộ 1-1 và nâng cấp toàn bộ các bộ slide hiện có.
+  5. Cập nhật đồng bộ 5 Skills: `tao-khbd`, `tao-slide-bai-giang`, `nang-luc-so`, `unigo-giao-vien`, `sgk-ocr`.

@@ -423,3 +423,156 @@ Ví dụ: `D:\UNIGO\KHBD_Tin_học\Lớp_3\Tuần_02\Slide_Tin_hoc_Lop_3_Bai01_T
 ## Cải tiến liên tục
 Sau mỗi lần tạo slide, ghi nhận feedback vào:
 `D:\UNIGO\.agents\skills\tao-slide-bai-giang\references\improvement_log.md`
+
+
+---
+
+## CẬP NHẬT CHUẨN ĐỒNG BỘ KHBD – SLIDE TRỰC QUAN UNIGO (GIAI ĐOẠN 5 & 8)
+
+1. **Cấu trúc 12 Slide chuẩn đồng bộ 1-1 với KHBD mới:**
+   - **Slide 1:** Tiêu đề bài học + Chủ đề + Trang SGK + Hình minh họa SGK mở đầu (Hero Image).
+   - **Slide 2:** Mục tiêu bài học dành cho học sinh (4 thẻ màu trực quan, ngôn ngữ thân thiện với HS Tiểu học).
+   - **Slide 3:** Hoạt động 1 – Tình huống khởi động (Tranh tình huống SGK + Câu chuyện của An, Minh, Khoa).
+   - **Slide 4:** Hoạt động 1 – Câu hỏi gợi mở & Thảo luận nhóm đôi (Bóng thoại câu hỏi + Gợi ý dẫn dắt).
+   - **Slide 5:** Hoạt động 2 – Khám phá kiến thức mới 1 (Hình ảnh SGK chiếm 60% diện tích + Nhiệm vụ khám phá).
+   - **Slide 6:** Hoạt động 2 – Sơ đồ quy trình / Các bước thao tác chuẩn (Infographic 100% nhãn Tiếng Việt có mũi tên tuần tự Bước 1 $\rightarrow$ Bước 4).
+   - **Slide 7:** Hoạt động 2 – Hộp Kiến thức mới / Chốt ghi nhớ SGK (Nền vàng cam nổi bật + Biểu tượng bóng đèn).
+   - **Slide 8:** Hoạt động 3 – Trò chơi Trắc nghiệm nhanh 4 đáp án A, B, C, D.
+   - **Slide 9:** Hoạt động 3 – Nhiệm vụ Thực hành phân hóa 2 mức độ (Cột trái: Mức Cơ bản | Cột phải: Thử thách Nâng cao).
+   - **Slide 10:** Hoạt động 4 – Tình huống Vận dụng thực tiễn & Góc Công dân số / Trí tuệ nhân tạo (AI) an toàn.
+   - **Slide 11:** Bảng Tự đánh giá của học sinh sau bài học (3 mức độ: 🌟 Hoàn thành tốt | 👍 Hoàn thành | 💪 Cần cố gắng).
+   - **Slide 12:** Tổng kết bài học & Dặn dò chuẩn bị bài tiếp theo.
+2. **Bảo tồn tuyệt đối mẫu UNIGO & Vùng an toàn:**
+   - Luôn nhân bản từ `D:\UNIGO\Hệ thống mẫu văn bản\Mẫu slide có chân trang.pptx`, giữ nguyên Logo góc trái trên (`Y <= 1.12in`) và Thanh chân trang UNIGO (`Y >= 6.40in`). Toàn bộ nội dung đặt trong `1.15in <= Y <= 6.35in`.
+
+
+---
+
+## POWERPOINT QUALITY ASSURANCE – UNIGO (QUY TRÌNH KIỂM ĐỊNH 9 BƯỚC BẮT BUỘC)
+
+> [!CAUTION]
+> **NGUYÊN TẮC BẮT BUỘC:** Tuyệt đối không được xem việc chạy script xuất file `.pptx` thành công là đồng nghĩa với việc slide đã hoàn thành. Mọi file `.pptx` sau khi tạo BẮT BUỘC phải đi qua đầy đủ 9 bước kiểm định dưới đây trước khi bàn giao cho người dùng.
+
+### Bước 1: Kiểm tra và làm sạch Template UNIGO trước khi thiết kế
+- Mở trực tiếp từ file chuẩn `D:\UNIGO\Hệ thống mẫu văn bản\Mẫu slide có chân trang.pptx` (`13.333 in × 7.50 in`, tỷ lệ 16:9).
+- **Bảo toàn tuyệt đối Slide Master:** Giữ nguyên `Picture 7` (Logo UNIGO tại `left=0.17in, top=0.15in, right=1.12in, bottom=1.09in`) và `Picture 9` (Thanh chân trang UNIGO tại `left=0.00in, top=6.43in, right=13.40in, bottom=7.67in`).
+- **Xóa sạch 4 slide mẫu mặc định trong `prs.slides._sldIdLst` trước khi thêm slide mới:** File mẫu gốc có sẵn 4 slide (`Slide 1: TRƯỜNG TIỂU HỌC VÀ THCS UNIGO`, `Slide 2: Môn Tin học lớp`, `Slide 3: Môn Tin học lớp`, `Slide 4: Thanks for listening`). Bắt buộc xóa cả 4 slide này khỏi `_sldIdLst` trước khi tạo bài mới để:
+  - Không bao giờ để sót slide chỉ có tiêu đề (`Môn Tin học lớp`) không có nội dung ở Slide 2, 3.
+  - Không bao giờ để slide kết thúc (`Thanks for listening`) nằm sai vị trí ở giữa bài (Slide 4).
+  - Không bao giờ sao chép nhầm `TextBox 5` (`TRƯỜNG TIỂU HỌC VÀ THCS UNIGO`) đè lên tiêu đề của các slide nội dung.
+
+### Bước 2: Thiết lập Vùng hiển thị an toàn (Safe Zone) nghiêm ngặt
+- **Vùng cấm Logo UNIGO:** `X < 1.15 in` và `Y < 1.09 in` — Không đặt bất kỳ đối tượng nào đè vào vùng này.
+- **Vùng Thanh tiêu đề Slide (Header Bar):** Đặt tại `X = 1.30 in .. 12.85 in`, `Y = 0.28 in .. 0.92 in` (nằm hoàn toàn bên phải Logo UNIGO).
+- **Vùng Nội dung chính (Body Safe Zone):** `X = 0.50 in .. 12.85 in`, `Y = 1.15 in .. 6.30 in`.
+- **Vùng cấm Chân trang UNIGO:** `Y >= 6.40 in` — Tuyệt đối không để khung chữ hoặc hình ảnh tràn xuống dưới `Y = 6.38 in`.
+
+### Bước 3: Kiểm soát kích thước, vị trí đối tượng, Font chữ và Tỷ lệ ảnh
+- **Gộp khung nền và văn bản làm một đối tượng duy nhất:** Khi tạo thẻ màu có chữ, ghi trực tiếp văn bản vào `text_frame` của `MSO_SHAPE.ROUNDED_RECTANGLE` thay vì đặt thêm `TextBox` rời đè lên trên (tránh lỗi lệch vị trí và chồng lấn bounding box).
+- **Tự động co giãn cỡ chữ theo chiều cao khung (`Auto-fit Height Calculation`):** Trước khi ghi văn bản vào khung có kích thước `(width_in, height_in)`, phải tính số dòng sau khi ngắt dòng (`total_wrapped_lines`) và chiều cao cần thiết `req_h = total_wrapped_lines * (font_pt / 72.0 * 1.32) + 0.12`. Nếu `req_h > height_in`, tự động giảm `font_pt` (trong ngưỡng `14pt – 20pt`) hoặc chia tách slide, tuyệt đối không để chữ tràn khỏi khung.
+- **Cấm ký tự Emoji lỗi font (`□`) và ký tự `\x0b`:** Loại bỏ toàn bộ ký tự Emoji ngoài vùng hỗ trợ của font `Arial` / `Times New Roman` (dải `U+10000..U+10FFFF`) và ký tự ngắt dòng dọc `\x0b` để không xuất hiện các ô vuông `□` trên slide.
+- **Bảo toàn tỷ lệ khung hình ảnh (Aspect Ratio):** Luôn tính `ratio = w_px / h_px` từ ảnh gốc và căn giữa trong vùng chứa `(box_l, box_t, box_w, box_h)`, tuyệt đối không kéo giãn làm méo ảnh. Mỗi slide trực quan trong bài phải sử dụng một hình ảnh/sơ đồ riêng biệt, không lặp lại cùng 1 ảnh cho nhiều slide.
+
+### Bước 4: Kiểm soát Nội dung dành cho Học sinh & Trình tự 11 Slide chuẩn
+- **Chuyển hóa 100% ngôn ngữ dành cho Học sinh:** Tuyệt đối không copy nguyên văn kịch bản giáo án của giáo viên (`- GV giới thiệu...`, `- GV y/c HS...`, `a. Mục tiêu...`, `b. Cách thức tiến hành...`) lên slide.
+- **Trình tự 11 Slide chuẩn sư phạm UNIGO:**
+  1. `Slide 01 – Trang bìa:` Tên trường, môn/khối lớp, chủ đề, tên bài học, trang SGK, giáo viên và hình ảnh đại diện bài học.
+  2. `Slide 02 – Khởi động:` Tình huống thực tế mở đầu và tranh minh họa tình huống SGK.
+  3. `Slide 03 – Câu hỏi gợi mở:` Câu hỏi thảo luận nhóm đôi và gợi ý kết nối vào bài học mới.
+  4. `Slide 04 – Mục tiêu bài học:` 3 dải băng mục tiêu rõ ràng, thân thiện với học sinh.
+  5. `Slide 05 – Hình thành kiến thức:` Hình minh họa SGK / Sơ đồ tư duy khám phá kiến thức mới.
+  6. `Slide 06 – Minh họa và thực hành mẫu:` Sơ đồ quy trình 4 bước thao tác tuần tự Tiếng Việt 100%.
+  7. `Slide 07 – Chốt kiến thức:` Hộp kiến thức Ghi nhớ trọng tâm SGK nổi bật.
+  8. `Slide 08 – Luyện tập:` Câu hỏi trắc nghiệm củng cố và Nhiệm vụ thực hành phân hóa 2 mức độ (Cơ bản & Nâng cao).
+  9. `Slide 09 – Vận dụng:` Bài tập vận dụng thực tiễn & Cẩm nang Công dân số / AI an toàn.
+  10. `Slide 10 – Tổng kết & Tự đánh giá:` Bảng tự đánh giá 3 mức độ (`Hoàn thành tốt` | `Hoàn thành` | `Cần cố gắng`) và Dặn dò về nhà.
+  11. `Slide 11 – Slide Cảm ơn / Kết thúc:` Đặt đúng ở vị trí cuối cùng của bài giảng.
+
+### Bước 5: Render PPTX sang Hình ảnh sau khi xuất
+- Chạy công cụ render trực quan (`render_pptx_to_folder`) để xuất toàn bộ từng slide thành ảnh PNG độ phân giải `1333 × 750 px` (`slide_01.png` $\rightarrow$ `slide_11.png`) và ghép thành **Ảnh tổng quan toàn bộ slide (`overview_all_slides.png`)**.
+
+### Bước 6: Kiểm tra Cấu trúc tự động & Kiểm tra Trực quan bằng mắt (Visual Inspection)
+- Chạy script kiểm toán cấu trúc (`audit_single_pptx`) kiểm tra 7 nhóm lỗi: (1) Slide rỗng/chỉ có tiêu đề, (2) Slide kết thúc sai vị trí, (3) Tràn chữ (`ReqH > BoxH`), (4) Chồng lấn hình–chữ, (5) Chồng lấn chữ–chữ, (6) Vi phạm vùng Logo/Chân trang UNIGO, (7) Cỡ chữ nhỏ (`< 13.5pt`) hoặc lỗi ký tự `□`.
+- Dùng công cụ `read_file` mở trực tiếp file ảnh `overview_all_slides.png` và các slide có nhiều thành phần đồ họa để kiểm tra trực quan 100%.
+
+### Bước 7: Tự động sửa lỗi (Auto-Remediation)
+- Nếu phát hiện bất kỳ lỗi nào ở Bước 6: tự động xóa slide thừa, dịch chuyển tọa độ thoát khỏi vùng Logo/Chân trang, mở rộng chiều cao khung hoặc giảm cỡ chữ để hết tràn chữ, tách khoảng cách các đối tượng giao nhau và khôi phục nội dung thiếu.
+
+### Bước 8: Render lại và Kiểm tra lần hai (Second-Pass Verification)
+- Sau khi sửa lỗi ở Bước 7, bắt buộc chạy lại trình kiểm toán và render lại ảnh `overview_all_slides.png` lần thứ hai để xác nhận `issue_count == 0` trên toàn bộ các slide.
+
+### Bước 9: Chỉ bàn giao phiên bản đạt chuẩn 100%
+- Chỉ bàn giao cho người dùng khi toàn bộ file `.pptx` đạt **0 lỗi cấu trúc & hiển thị**, kèm theo ảnh tổng quan `overview_all_slides.png` đã được kiểm chứng trực quan.
+
+
+---
+
+## SKILL B – UNIGO STUDENT-FACING SLIDE DESIGN (CHUẨN THIẾT KẾ SLIDE LẤY HỌC SINH LÀM TRUNG TÂM & QUẢN LÝ DỰ ÁN)
+
+> [!IMPORTANT]
+> **Nguyên tắc tối thượng của `SKILL B`:**
+> **KHBD (`SKILL A`) mô tả cách giáo viên dạy; Slide (`SKILL B`) thể hiện những gì học sinh cần quan sát, suy nghĩ, khám phá và ghi nhớ.**
+> Slide **KHÔNG** phải bản sao KHBD, **KHÔNG** phải tài liệu hướng dẫn giáo viên và **TUYỆT ĐỐI KHÔNG** đưa kịch bản điều hành lớp học (`"GV tổ chức..."`, `"HS nhận ra..."`, `"Bước 1..."`) hoặc bảng mã năng lực chuyên môn (`NLa–NLe`, `CV 3456`) lên màn hình.
+
+### 1. Quy trình 4 Bước Phân tích Trước khi Thiết kế Slide
+1. **Bước 1 – Đọc SGK (`D:\UNIGO\SGK\`):** Xác định tên bài, chủ đề, yêu cầu cần đạt, các đơn vị kiến thức, thuật ngữ chuẩn, hình ảnh minh họa gốc, sơ đồ/bảng biểu, câu hỏi luyện tập và nhiệm vụ vận dụng.
+2. **Bước 2 – Đọc KHBD tương ứng (`D:\UNIGO\KHBD_Tin_học_Chuẩn_Mới\` hoặc `D:\UNIGO\KHBD_Tin_học\`):** Nắm trình tự hoạt động, thời điểm xuất hiện từng nội dung và các điểm chốt kiến thức (không sao chép nguyên văn lời dẫn GV).
+3. **Bước 3 – Lập Bản đồ nội dung Slide (`Slide Content Map`):** Lưu tại `D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\03_LESSON_CONTENT_MAP\` với bảng 4 cột: `Thứ tự | Nội dung kiến thức (Ngôn ngữ HS) | Mục đích slide | Hình ảnh cần có`.
+4. **Bước 4 – Kiểm tra tính thống nhất:** Đối chiếu Bản đồ slide với SGK và KHBD, đảm bảo không thiếu kiến thức trọng tâm, không sai thuật ngữ SGK và không lẫn ngôn ngữ giáo viên.
+
+### 2. Cấu trúc & Các Dạng Bố cục Slide Linh hoạt (`Layouts A – G`)
+Không giới hạn cứng số lượng slide; thiết kế linh hoạt theo độ phức tạp của bài học (thông thường `12 – 15 slides/bài`):
+- **A. Slide giới thiệu:** Tên chủ đề, tên bài học, hình ảnh chủ đề SGK và câu dẫn ngắn tạo hứng thú cho học sinh.
+- **B. Slide khởi động:** Câu hỏi tình huống, hình ảnh quan sát cắt chuẩn từ SGK, câu đố hoặc thử thách mở đầu.
+- **C. Slide mục tiêu:** 3 yêu cầu cần đạt viết bằng ngôn ngữ học sinh (*"Sau bài học này em sẽ..."*). Không đưa bảng phân tích mã năng lực của giáo viên lên slide.
+- **D. Slide hình thành kiến thức (Nhiều slide tách theo từng đơn vị kiến thức):** Sử dụng linh hoạt hình ảnh SGK có chú thích (Callout), sơ đồ cấu tạo (đánh số `1-2-3-4`), sơ đồ quy trình có mũi tên nối, bảng so sánh, tình huống Đúng/Sai (`Nên / Không nên`).
+- **E. Slide ghi nhớ & chốt kiến thức:** Sử dụng **Sơ đồ tư duy (Mindmap)**, bảng tổng hợp hoặc từ khóa cốt lõi (không viết thành đoạn văn dài).
+- **F. Slide luyện tập (BẮT BUỘC TÁCH RIÊNG CÂU HỎI VÀ ĐÁP ÁN):**
+  - *Slide Câu hỏi:* Hiển thị đề bài (trắc nghiệm, ghép cặp, đúng/sai, nhận diện hình ảnh SGK) để học sinh suy nghĩ và trả lời trước.
+  - *Slide Đáp án & Giải thích (Slide kế tiếp):* Hiển thị đáp án đúng nổi bật kèm lời giải thích vì sao đúng.
+- **G. Slide vận dụng:** Đưa kiến thức vào giải quyết vấn đề thực tiễn đời sống và giáo dục an toàn số / an toàn điện.
+
+### 3. Quy trình Xử lý Hình ảnh & Kiểm định 15 Bước
+1. **Ưu tiên hình ảnh SGK gốc:** Cắt chuẩn (`PIL.Image.crop`) từ trang SGK độ phân giải cao (`1700 × 2200 px`), giữ nguyên tỷ lệ khung hình (`aspect ratio`), không làm biến dạng hay cắt mất chữ/thông tin. Lưu vào `D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\06_IMAGES\`.
+2. **Tạo hình ảnh bổ sung & Sơ đồ tư duy:** Khi cần tổng hợp kiến thức ở phần Ghi nhớ hoặc mô phỏng quy trình, tạo sơ đồ trực quan Tiếng Việt 100%, màu sắc hài hòa, đúng lứa tuổi.
+3. **Kiểm định chất lượng 15 bước bắt buộc:**
+   - Sau khi xuất PPTX từ mẫu `D:\UNIGO\Hệ thống mẫu văn bản\Mẫu slide có chân trang.pptx`, bắt buộc chạy `render_pptx_visual_qa.py` và `deep_audit_all_pptx.py` để render toàn bộ slide ra ảnh PNG (`1333 × 750 px`) và ghép `overview_all_slides.png` tại `07_QUALITY_CONTROL\`.
+   - Kiểm tra trực quan đủ 15 mục: (1) Số lượng slide, (2) Thứ tự nội dung, (3) Nội dung từng slide 100% ngôn ngữ HS, (4) Render PNG, (5) Ảnh tổng quan, (6) Duyệt từng slide, (7) Không có slide trống, (8) Không tràn chữ, (9) Không chồng lấn, (10) Không lỗi font/ô vuông `□`, (11) Nguyên vẹn Logo & Chân trang UNIGO, (12) Ảnh sắc nét đúng tỷ lệ, (13) Khớp Bản đồ nội dung, (14) Chuẩn kiến thức SGK, (15) Khớp trình tự KHBD.
+
+### 4. Cơ chế Quản lý Phiên làm việc & Checkpoint (`D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\`)
+- Khi bắt đầu phiên mới, luôn đọc `PROJECT_MASTER.md`, `SESSION_CHECKPOINT.md`, `PROGRESS_TRACKER.md` và `CHANGELOG.md`.
+- Sau mỗi công đoạn (lập bản đồ slide, cắt ảnh, xuất PPTX, kiểm định 15 bước), cập nhật ngay vào `PROGRESS_TRACKER.md` (`.xlsx`), `SESSION_CHECKPOINT.md` và `CHANGELOG.md`.
+
+
+---
+
+## MODULE BỔ SUNG: HIGH-QUALITY VISUAL STORYTELLING – UNIGO (bắt buộc cho mọi slide Tin học)
+
+**Tư duy:** hình ảnh trước, chữ sau. Hình giúp HS nhìn thấy kiến thức, hiểu khái niệm, hình dung quy trình, khám phá tình huống, ghi nhớ lâu.
+
+### 1. Mật độ hình ảnh (định hướng)
+1. Mỗi slide kiến thức có ≥ 1 hình minh họa có nghĩa; khái niệm phức tạp dùng 2–4 hình/sơ đồ.
+2. Slide giới thiệu, khởi động, tình huống: hình lớn chiếm ~40–65% diện tích.
+3. Slide thao tác: ảnh từng bước hoặc ảnh chụp giao diện phần mềm.
+4. Slide tổng kết: sơ đồ tư duy / infographic.
+5. Không tạo slide chỉ có chữ nếu có thể diễn đạt bằng hình/sơ đồ mà vẫn chính xác.
+
+### 2. Năm loại hình phải phối hợp
+A. Ảnh SGK cắt đúng vùng (kiến thức cần chính xác) · B. Hình tạo mới (nhân vật, bối cảnh, tình huống, thiết bị) · C. Sơ đồ (cấu tạo, quy trình, phân loại, bảng so sánh, infographic) · D. Ảnh chụp giao diện thực tế (phần mềm, thao tác) · E. Hình tương tác (đố hình, đúng/sai, tìm lỗi, ghép cặp, thử thách quan sát).
+
+### 3. Nhân vật & phong cách
+- Mỗi bài/khối có nhân vật dẫn chuyện nhất quán (mẫu: robot **Bít**, hàm `mascot()` trong `scratch/visual_storytelling_bai3.py`), biểu cảm theo ngữ cảnh (happy/think/alert), hành động gắn với kiến thức. Không dùng nhân vật có bản quyền, không để nhân vật chỉ tạo dáng.
+- Phong cách: 2D vector / modern colorful educational / isometric infographic / friendly technology; giữ nhất quán trong cả bài.
+- Hình AI/ảnh sinh mới (khi dùng công cụ tạo ảnh): phải kiểm tra cấu tạo thiết bị, chữ tiếng Việt, ngoại hình nhân vật trước khi dùng.
+
+### 4. Quy trình
+1. **Lập Danh sách hình ảnh** trước khi tạo slide, lưu tại `03_LESSON_CONTENT_MAP/Danh_sach_hinh_anh_<Lớp>_<Bài>.md` gồm: Mã hình, Nội dung, Slide dùng, Mục tiêu sư phạm, Nguồn, Tỷ lệ, Phong cách.
+2. Thiếu nguồn SGK thì chủ động tạo hình mới; không bỏ qua hình vì tốn thời gian.
+3. Không lặp một hình trên nhiều slide nếu không có chủ đích (slide đáp án dùng hình đánh dấu đáp án riêng, ví dụ `VS06b`).
+4. Không đặt tiêu đề trùng lặp bên trong ảnh và trên banner slide.
+
+### 5. Không chấp nhận
+Slide toàn chữ kéo dài · icon nhỏ thay hình minh họa · hình không liên quan/mờ/méo · thiết bị vẽ sai cấu tạo · chữ sai chính tả trong hình · nhân vật đổi ngoại hình · hình trang trí vô giá trị học tập.
+
+### 6. Kiểm định hình ảnh (chấm riêng, ngoài bố cục & văn bản)
+Phong phú · sinh động · phù hợp HS · liên quan kiến thức · chính xác (thiết bị, giao diện, thao tác Tin học) · nhất quán phong cách · giúp hiểu bài. Slide còn trống nhiều hoặc thiếu hình phải thiết kế lại; không đánh giá đạt chỉ vì bố cục đẹp và chữ đúng.

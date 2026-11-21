@@ -1,0 +1,120 @@
+{
+  "grade": 4,
+  "tuan": 9,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 4",
+  "bai_hoc": "BÀI 5: THAO TÁC VỚI TỆP VÀ THƯ MỤC (T1)",
+  "images": [
+    {
+      "rId": "rId8",
+      "file": "lop4_tuan09_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "362x300"
+    },
+    {
+      "rId": "rId7",
+      "file": "lop4_tuan09_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "285x223"
+    },
+    {
+      "rId": "rId31",
+      "file": "lop4_tuan09_sgk_img03.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img03.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "1366x768"
+    },
+    {
+      "rId": "rId30",
+      "file": "lop4_tuan09_sgk_img04.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img04.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "1366x768"
+    },
+    {
+      "rId": "rId29",
+      "file": "lop4_tuan09_sgk_img05.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img05.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "1366x768"
+    },
+    {
+      "rId": "rId28",
+      "file": "lop4_tuan09_sgk_img06.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img06.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "1366x768"
+    },
+    {
+      "rId": "rId27",
+      "file": "lop4_tuan09_sgk_img07.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img07.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "789x437"
+    },
+    {
+      "rId": "rId25",
+      "file": "lop4_tuan09_sgk_img08.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img08.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "259x82"
+    },
+    {
+      "rId": "rId23",
+      "file": "lop4_tuan09_sgk_img09.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img09.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "279x97"
+    },
+    {
+      "rId": "rId21",
+      "file": "lop4_tuan09_sgk_img10.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img10.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "263x98"
+    },
+    {
+      "rId": "rId19",
+      "file": "lop4_tuan09_sgk_img11.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img11.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "269x95"
+    },
+    {
+      "rId": "rId17",
+      "file": "lop4_tuan09_sgk_img12.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img12.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "648x127"
+    },
+    {
+      "rId": "rId15",
+      "file": "lop4_tuan09_sgk_img13.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img13.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "669x259"
+    },
+    {
+      "rId": "rId14",
+      "file": "lop4_tuan09_sgk_img14.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img14.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "626x160"
+    },
+    {
+      "rId": "rId12",
+      "file": "lop4_tuan09_sgk_img15.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img15.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "660x184"
+    },
+    {
+      "rId": "rId10",
+      "file": "lop4_tuan09_sgk_img16.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_09\\lop4_tuan09_sgk_img16.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 9",
+      "size": "648x538"
+    }
+  ]
+}

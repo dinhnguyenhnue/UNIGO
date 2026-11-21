@@ -1,3 +1,6 @@
+> **LƯU Ý HIỆN HÀNH (2026–2027):** Tài liệu này là bản patch lịch sử cho giai đoạn thí điểm QĐ 3439, không còn là hướng dẫn vận hành. Không làm theo các yêu cầu bên dưới về QĐ 3439, mã năng lực hoặc dữ liệu AI cũ. Dùng `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_AI_QD2422.md` và mục hiện hành trong `SKILL.md`, căn cứ QĐ 2422/QĐ-BGDĐT và CV 5588/BGDĐT-GDPT. Giữ nguyên phần bên dưới chỉ để truy vết thay đổi cũ.
+
+---
 # Bổ sung Mục 2.4 Năng lực AI — Patch cho SKILL.md tao-khbd
 
 > [!IMPORTANT]
@@ -130,3 +133,4 @@ Checklist đã được cập nhật lên 17 tiêu chí (thêm #6 NL AI, #11 Ch�
 | **Dữ liệu AI JSON** | `D:\UNIGO\.agents\skills\tao-khbd\references\cv3439_ai_data.json` |
 | **CV 3439 DOCX đã OCR** | `D:\UNIGO\.agents\skills\tao-khbd\references\cv3439_ai_curriculum.docx` |
 | **CV 3439 Raw Text** | `D:\UNIGO\.agents\skills\tao-khbd\references\cv3439_raw_text.json` |
+

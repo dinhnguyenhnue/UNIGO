@@ -82,3 +82,15 @@ D:\UNIGO\SGK\Lớp_[X]\ocr_output\
 ├── lesson_manifest.json    # Bảng phân phối bài học và dải trang SGK
 └── docx/                   # File .docx từng bài học hoàn chỉnh kèm ảnh & phụ lục
 ```
+
+
+---
+
+## CẬP NHẬT QUY TRÌNH TRÍCH XUẤT HÌNH ẢNH SGK & TẠO INFOGRAPHIC TIẾNG VIỆT 100% (GIAI ĐOẠN 4 & 8)
+
+1. **Tổ chức thư mục tài sản hình ảnh theo từng bài học:**
+   - Mọi hình ảnh trích xuất từ SGK (`D:\UNIGO\SGK`) và từ kho KHBD tham chiếu (`D:\UNIGO\Phân phối chương trình\Tin học\KHBD Tin học 345 KNTT`) được lưu tại:
+     `D:\UNIGO\KHBD_Tin_học_Chuẩn_Mới\Lớp_[X]\images\Tuan_[YY]\`
+   - Kèm theo file `image_manifest.json` ghi rõ: tên tệp ảnh, kích thước, nguồn trích xuất và số trang SGK tương ứng.
+2. **Quy tắc bổ sung Infographic trực quan Tiếng Việt 100%:**
+   - Đối với các bài học thiếu hình ảnh minh họa quy trình thao tác hoặc tổng hợp kiến thức, tự động tạo sơ đồ Infographic 4 bước có mũi tên chỉ hướng bằng Tiếng Việt 100% (tuyệt đối không dùng nhãn tiếng Anh ngẫu nhiên).

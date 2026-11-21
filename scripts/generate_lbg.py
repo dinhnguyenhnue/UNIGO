@@ -593,15 +593,40 @@ PPCT_ROB_5C1_NEW = {
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
-# ĐIỀU CHỈNH BÙ TIẾT DO SỰ KIỆN TUẦN 10, 12, 13 (Áp dụng từ Tuần 14)
-# Key: (tuan_so, lop, mon_int, ppct) -> Tên bài dạy nối tiếp & gộp bài đuổi kịp trước ĐGĐK 2
+# ĐIỀU CHỈNH BÙ / GỘP / ĐẨY TIẾT DO NGHỈ LỄ & SỰ KIỆN (TUẦN 5, 10, 12, 13, 16, 17)
+# Key: (tuan_so, lop, mon_int, ppct) -> Tên bài dạy nối tiếp & gộp bài đuổi kịp trước ĐGĐK
 # ─────────────────────────────────────────────────────────────────────────────
 
 CATCHUP_LESSON_OVERRIDES = {
-    # 1. Lớp 2A1 - Tin học (Bù 1 tiết nghỉ Dã ngoại Tuần 12)
+    # 0. Bù Nghỉ lễ Quốc khánh 02/09 & Tổng duyệt khai giảng (Tuần 5 -> Gộp ở Tuần 6 & Tuần 7)
+    # Các lớp học Chiều Thứ 5 (TTH 1, TTH2, 3A1 Tin; 1C1 Rob) và Chiều Thứ 6 (8A1 Rob) đã học ở Tuần 5 nên không cần gộp
+    (6, 'TT3', 'Tin học', 5): 'Làm quen với chuột & Kéo – thả thật vui',
+    (6, '1A1', 'Tin học', 5): 'Chuột: di chuyển và nhấp & Chuột: kéo – thả',
+    (6, '1C1', 'Tin học', 5): 'Chuột: di chuyển và nhấp & Chuột: kéo – thả',
+    (6, '1A1', 'Robotics', 5): 'Bài 4. Chú ốc sên chậm chạp & Bài 5. Xe cảnh sát tuần tra',
+    (6, '2A1', 'Tin học', 5): 'Mở, đóng và chuyển đổi ứng dụng & Tệp là gì?',
+    (6, '2C1', 'Tin học', 5): 'Mở, đóng và chuyển đổi ứng dụng & Tệp là gì?',
+    (6, '2A1', 'Robotics', 5): 'Bài 4. Đàn gà con & Bài 5. Những bạn nhỏ lễ phép',
+    (6, '2C1', 'Robotics', 5): 'Bài 4. Đàn gà con & Bài 5. Những bạn nhỏ lễ phép',
+    (6, '3C1', 'Tin học', 5): 'Bài 2: Xử lí thông tin (Tiết 2) & Bài 3: Máy tính và em (Tiết 1)',
+    (6, '3A1', 'Robotics', 5): 'Bài 4. Đàn gà con & Bài 5. Những bạn nhỏ lễ phép',
+    (6, '3C1', 'Robotics', 5): 'Bài 4. Đàn gà con & Bài 5. Những bạn nhỏ lễ phép',
+    (6, '4C1', 'Tin học', 5): 'Bài 2: Gõ bàn phím đúng cách (Tiết 2) & Bài 3: Thông tin trên trang Web (Tiết 1)',
+    (6, '4C1', 'Robotics', 5): 'Bài 4. Đàn gà con & Bài 5. Những bạn nhỏ lễ phép',
+    # Robotics Lớp 5C1, 6A1, 7A1 nghỉ 2 tiết ở Tuần 5 (PPCT 3, 4) -> Gộp ở Tuần 7 (PPCT 5, 6) trước ĐGĐK 1 (Tuần 9)
+    (7, '5C1', 'Robotics', 5): 'Bài 3. Robot nhận biết âm thanh & Bài 4. Bộ điều khiển từ xa',
+    (7, '5C1', 'Robotics', 6): 'Bài 5. Động cơ Dynamixel hoạt động thế nào? & Bài 6. Phương tiện giao thông qua các thời đại',
+    (7, '6A1', 'Robotics', 5): 'Bài 3. Robot nhận biết âm thanh & Bài 4. Bộ điều khiển từ xa',
+    (7, '6A1', 'Robotics', 6): 'Bài 5. Động cơ Dynamixel hoạt động thế nào? & Bài 6. Phương tiện giao thông qua các thời đại',
+    (7, '7A1', 'Robotics', 5): 'Bài 3. Robot nhận biết âm thanh & Bài 4. Bộ điều khiển từ xa',
+    (7, '7A1', 'Robotics', 6): 'Bài 5. Động cơ Dynamixel hoạt động thế nào? & Bài 6. Phương tiện giao thông qua các thời đại',
+
+    # 1. Lớp 2A1 - Tin học (Bù 1 tiết ĐÁNH GIÁ ĐỊNH KỲ 1 bị nghỉ Dã ngoại Tuần 12)
+    (13, '2A1', 'Tin học', 12): 'ĐÁNH GIÁ ĐỊNH KỲ 1',
     (14, '2A1', 'Tin học', 13): 'Thông tin và dữ liệu & Thông tin dạng chữ, hình, âm thanh, video',
 
-    # 2. Lớp 3C1 - Robotics (Bù 1 tiết nghỉ Dã ngoại Tuần 12)
+    # 2. Lớp 3C1 - Robotics (Bù 1 tiết Bài 9. Môi trường biển bị nghỉ Dã ngoại Tuần 12)
+    (13, '3C1', 'Robotics', 12): 'Bài 9. Môi trường biển',
     (14, '3C1', 'Robotics', 13): 'Bài 10. Cùng câu cá nào! & Bài 11. Thế giới khủng long',
 
     # 3. Lớp 6A1 - Tin học (Bù Bài 5. Internet bị nghỉ Dã ngoại Tuần 12, đuổi kịp ở Tuần 16)
@@ -621,6 +646,17 @@ CATCHUP_LESSON_OVERRIDES = {
     (15, '8A1', 'Robotics', 14): 'Bài 10. Robot hút bụi',
     (17, '8A1', 'Robotics', 15): 'Bài 11. Lực hấp dẫn & Bài 12. Domino trong Robotics',
     (17, '8A1', 'Robotics', 16): 'Bài 13. Robot phục vụ đời sống',
+
+    # 6. Bù Mít tinh kỷ niệm ngày Nhà giáo Việt Nam 20-11 (Sáng Thứ Năm 19/11 Tuần 16 -> Gộp ở Tuần 17)
+    (17, 'TT3', 'Tin học', 16): 'Đường đi đến kho báu & Robot bị lạc rồi!',
+    (17, 'TTH 1', 'Tin học', 16): 'Đường đi đến kho báu & Robot bị lạc rồi!',
+    (17, '1A1', 'Robotics', 16): 'Bài 13. Hoạt động mùa hè & Bài 14. Bắt đầu chuyến hành trình cùng tàu hoả',
+
+    # 7. Bù Nghỉ lễ 24/11 (Thứ Ba 24/11 Tuần 17 -> Gộp ở Tuần 18 cho 1C1, TTH2 và Tuần 19 cho 7A1 Robotics)
+    (18, '1C1', 'Tin học', 17): 'Mê cung của em & Sửa lỗi đường đi',
+    (18, 'TTH2', 'Tin học', 17): 'Robot bị lạc rồi! & Em tìm quy luật',
+    (19, '7A1', 'Robotics', 17): 'Bài 13. Robot phục vụ đời sống & Ôn tập Đánh giá định kỳ 2',
+    (19, '7A1', 'Robotics', 18): 'Đánh giá định kỳ 2',
 }
 
 
@@ -953,6 +989,41 @@ def populate_lbg_table(tbl, schedule_map, tuan_so, start_date, is_sang=True):
         if is_sang:
             merge_and_format_block(tbl, start_row=16, end_row=25, start_col=2, end_col=6, text='Tổng duyệt khai giảng')
         # Chiều Thứ 5, 6: giữ nguyên lịch dạy bình thường theo TKB
+
+    # ── Tuần 10: Sáng Thứ Sáu T4-T5 (6A1) Trải nghiệm Văn Miếu ──
+    elif tuan_so == 10 and is_sang:
+        merge_and_format_block(
+            tbl, start_row=24, end_row=25, start_col=5, end_col=5,
+            text='Chương trình học tập trải nghiệm giải mật thư  tại Văn Miếu – Quốc Tử Giám'
+        )
+
+    # ── Tuần 12: Cả ngày Thứ Sáu (Sáng & Chiều) Dã ngoại toàn trường ──
+    elif tuan_so == 12:
+        merge_and_format_block(
+            tbl, start_row=21, end_row=25, start_col=5, end_col=5,
+            text='Dã ngoại toàn trường'
+        )
+
+    # ── Tuần 13: Chiều Thứ Sáu Lễ hội Halloween toàn trường ──
+    elif tuan_so == 13 and not is_sang:
+        merge_and_format_block(
+            tbl, start_row=21, end_row=25, start_col=5, end_col=5,
+            text='Lễ hội Halloween toàn trường'
+        )
+
+    # ── Tuần 16: Sáng Thứ Năm Tham gia Mít tinh kỷ niệm ngày 20-11 ──
+    elif tuan_so == 16 and is_sang:
+        merge_and_format_block(
+            tbl, start_row=16, end_row=20, start_col=5, end_col=5,
+            text='THAM GIA MÍT TINH KỈ NIỆM NGÀY 20-11'
+        )
+
+    # ── Tuần 17: Cả ngày Thứ Ba (Sáng & Chiều) Nghỉ lễ 24/11 ──
+    elif tuan_so == 17:
+        merge_and_format_block(
+            tbl, start_row=6, end_row=10, start_col=5, end_col=5,
+            text='Nghỉ lễ 24/11'
+        )
 
 
 def update_table_data(doc, tuan_so, start_date=None):
@@ -1311,6 +1382,10 @@ def fix_page_breaks(doc):
 
 def clear_row_data(row):
     for ci in range(2, min(7, len(row.cells))):
+        if ci == 5:
+            c5_txt = row.cells[5].text.strip().upper()
+            if any(kw in c5_txt for kw in ['NGHỈ LỄ', 'DÃ NGOẠI', 'HALLOWEEN', 'MÍT TINH', 'TỔNG DUYỆT', 'KHAI GIẢNG']):
+                continue
         for p in row.cells[ci].paragraphs:
             for r in p.runs:
                 r.text = ''

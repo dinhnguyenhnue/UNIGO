@@ -1,3 +1,6 @@
+> [!WARNING]
+> **ĐÃ THAY THẾ CHO NĂM HỌC 2026–2027.** QĐ 3439 là khung thí điểm 2025. Dùng `KHBD_NANG_LUC_AI_QD2422.md` theo QĐ 2422/CV 5588 cho KHBD hiện hành. Giữ tệp này để tra cứu hồ sơ lịch sử.
+
 # Hướng dẫn Năng lực Trí tuệ nhân tạo (AI) trong KHBD theo QĐ 3439/BGDĐT
 
 Văn bản gốc: `D:\UNIGO\Hệ thống mẫu văn bản\Công_văn_quy_định\3439_QD_BGDDT_signed_c93bf_c86ef.pdf`

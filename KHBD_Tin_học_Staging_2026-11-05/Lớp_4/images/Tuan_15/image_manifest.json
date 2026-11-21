@@ -1,0 +1,36 @@
+{
+  "grade": 4,
+  "tuan": 15,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 4",
+  "bai_hoc": "BÀI 8. ĐỊNH DẠNG VĂN BẢN TRÊN TRANG CHIẾU (T2)",
+  "images": [
+    {
+      "rId": "rId9",
+      "file": "lop4_tuan15_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_15\\lop4_tuan15_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 15",
+      "size": "45x56"
+    },
+    {
+      "rId": "rId8",
+      "file": "lop4_tuan15_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_15\\lop4_tuan15_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 15",
+      "size": "637x320"
+    },
+    {
+      "rId": "rId7",
+      "file": "lop4_tuan15_sgk_img03.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_15\\lop4_tuan15_sgk_img03.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 15",
+      "size": "649x310"
+    },
+    {
+      "rId": "rId6",
+      "file": "lop4_tuan15_sgk_img04.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_15\\lop4_tuan15_sgk_img04.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 15",
+      "size": "424x282"
+    }
+  ]
+}

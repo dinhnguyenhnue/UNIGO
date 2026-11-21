@@ -1,0 +1,57 @@
+{
+  "grade": 5,
+  "tuan": 23,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 5",
+  "bai_hoc": "BÀI 11. CẤU TRÚC LẶP (T2)",
+  "images": [
+    {
+      "rId": "rId9",
+      "file": "lop5_tuan23_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_23\\lop5_tuan23_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 23",
+      "size": "350x279"
+    },
+    {
+      "rId": "rId8",
+      "file": "lop5_tuan23_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_23\\lop5_tuan23_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 23",
+      "size": "337x211"
+    },
+    {
+      "rId": "rId7",
+      "file": "lop5_tuan23_sgk_img03.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_23\\lop5_tuan23_sgk_img03.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 23",
+      "size": "335x230"
+    },
+    {
+      "rId": "rId6",
+      "file": "lop5_tuan23_sgk_img04.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_23\\lop5_tuan23_sgk_img04.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 23",
+      "size": "310x308"
+    },
+    {
+      "rId": "rId5",
+      "file": "lop5_tuan23_sgk_img05.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_23\\lop5_tuan23_sgk_img05.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 23",
+      "size": "291x255"
+    },
+    {
+      "rId": "rId4",
+      "file": "lop5_tuan23_sgk_img06.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_23\\lop5_tuan23_sgk_img06.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 23",
+      "size": "314x306"
+    },
+    {
+      "rId": "rId10",
+      "file": "lop5_tuan23_sgk_img07.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_23\\lop5_tuan23_sgk_img07.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 23",
+      "size": "582x184"
+    }
+  ]
+}

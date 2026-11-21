@@ -1,0 +1,57 @@
+{
+  "grade": 4,
+  "tuan": 22,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 4",
+  "bai_hoc": "BÀI 11. CHỈNH SỬA VĂN BẢN (T1)",
+  "images": [
+    {
+      "rId": "rId9",
+      "file": "lop4_tuan22_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_22\\lop4_tuan22_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 22",
+      "size": "479x240"
+    },
+    {
+      "rId": "rId7",
+      "file": "lop4_tuan22_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_22\\lop4_tuan22_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 22",
+      "size": "485x244"
+    },
+    {
+      "rId": "rId5",
+      "file": "lop4_tuan22_sgk_img03.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_22\\lop4_tuan22_sgk_img03.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 22",
+      "size": "611x301"
+    },
+    {
+      "rId": "rId4",
+      "file": "lop4_tuan22_sgk_img04.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_22\\lop4_tuan22_sgk_img04.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 22",
+      "size": "769x223"
+    },
+    {
+      "rId": "rId12",
+      "file": "lop4_tuan22_sgk_img05.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_22\\lop4_tuan22_sgk_img05.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 22",
+      "size": "31x40"
+    },
+    {
+      "rId": "rId11",
+      "file": "lop4_tuan22_sgk_img06.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_22\\lop4_tuan22_sgk_img06.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 22",
+      "size": "45x47"
+    },
+    {
+      "rId": "rId10",
+      "file": "lop4_tuan22_sgk_img07.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_22\\lop4_tuan22_sgk_img07.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 22",
+      "size": "36x43"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "grade": 4,
+  "tuan": 29,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 4",
+  "bai_hoc": "BÀI 14. KHÁM PHÁ MÔI TRƯỜNG LẬP TRÌNH TRỰC QUAN (T2)",
+  "images": [
+    {
+      "rId": "rId6",
+      "file": "lop4_tuan29_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_29\\lop4_tuan29_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 29",
+      "size": "188x508"
+    },
+    {
+      "rId": "rId5",
+      "file": "lop4_tuan29_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_29\\lop4_tuan29_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 29",
+      "size": "323x237"
+    },
+    {
+      "rId": "rId4",
+      "file": "lop4_tuan29_sgk_img03.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_29\\lop4_tuan29_sgk_img03.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 29",
+      "size": "140x530"
+    }
+  ]
+}

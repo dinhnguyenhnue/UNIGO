@@ -148,3 +148,47 @@ Sau mỗi phiên làm việc:
 | **Giáo trình Robotics Nâng cao** | `Phân phối chương trình\Robotics\Giáo trình - OLLO Spark.docx` (.pdf) |
 | **Năng lực đặc thù Robotics** | `.agents\skills\tao-khbd\references\KHBD_NANG_LUC_DAC_THU_ROBOTICS.md` |
 | **Năng lực đặc thù Tin học** | `.agents\skills\tao-khbd\references\KHBD_NANG_LUC_DAC_THU.md` |
+
+
+---
+
+## CẬP NHẬT ĐIỀU PHỐI QUY TRÌNH 10 BƯỚC & KIỂM ĐỊNH 100 ĐIỂM (GIAI ĐOẠN 8)
+
+Khi nhận bất kỳ câu lệnh ngắn nào từ giáo viên (ví dụ: *"Soạn KHBD Tin học lớp X bài Y"*, *"Tạo giáo án và slide bài Y lớp X"*, *"Chuẩn hóa KHBD bài Y"*, *"Thiết kế lại bài dạy Tin học theo chuẩn UNIGO"*), `unigo-giao-vien` tự động điều phối:
+1. Trích xuất nội dung & hình ảnh SGK từ `D:\UNIGO\SGK` và kho tham chiếu `D:\UNIGO\Phân phối chương trình\Tin học\KHBD Tin học 345 KNTT` (qua `sgk-ocr`).
+2. Xây dựng Ma trận năng lực bài học (Năng lực chung, Năng lực đặc thù Tin học `NLa–NLe`, Năng lực số `CV 3456`, Định hướng Năng lực AI `QĐ 3439`) qua `nang-luc-so`.
+3. Thiết kế KHBD `.docx` theo mẫu chuẩn `D:\UNIGO\Hệ thống mẫu văn bản\Khung_KHBD_Tieu_hoc_UNIGO.docx` có đầy đủ: Ma trận 4 cột (Mục tiêu – Hoạt động – Sản phẩm – Đánh giá), Phương pháp dạy học chủ đạo, 4 Hoạt động dạy học có Phân hóa 2 tầng (Cơ bản / Nâng cao), Hình ảnh SGK nhúng trực tiếp, và Bảng Rubric đánh giá 3 mức độ ở Mục V (qua `tao-khbd`).
+4. Thiết kế bộ Slide bài giảng `.pptx` 12 slide trực quan dành cho học sinh (qua `tao-slide-bai-giang`).
+5. Chạy kiểm định tự động thang 100 điểm (14 tiêu chí, đạt $\ge 90/100$ điểm, bảo tồn Header Logo & Footer UNIGO) trước khi xuất báo cáo.
+
+
+---
+
+## CƠ CHẾ ĐIỀU PHỐI LỆNH NGẮN (SHORT-COMMAND DISPATCH) & QUẢN LÝ CHECKPOINT (`D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\`)
+
+### 1. Quy tắc Tự động Vận hành bằng Lệnh Ngắn (Mục X)
+Khi người dùng đưa ra các lệnh ngắn như:
+- *"Tạo slide Tin học lớp 3 bài 1"*
+- *"Tạo KHBD và slide Tin học lớp 4 bài 5"*
+- *"Chỉ tạo slide từ KHBD có sẵn"*
+- *"Thiết kế lại slide bài học này"*
+- *"Kiểm tra chất lượng slide vừa tạo"*
+- *"Tiếp tục dự án từ checkpoint"*
+
+Agent **TỰ ĐỘNG** xác định (không hỏi lại các quy chuẩn đã lưu):
+1. **Tài liệu SGK cần sử dụng:** Tra tại `D:\UNIGO\SGK\Lớp_[X]\`.
+2. **KHBD tương ứng:** Tra tại `D:\UNIGO\KHBD_Tin_học_Chuẩn_Mới\Lớp_[X]\` và `D:\UNIGO\KHBD_Tin_học\Lớp_[X]\`.
+3. **Template UNIGO:**
+   - Slide: `D:\UNIGO\Hệ thống mẫu văn bản\Mẫu slide có chân trang.pptx`.
+   - KHBD: `D:\UNIGO\Hệ thống mẫu văn bản\Khung_KHBD_Tieu_hoc_UNIGO.docx`.
+4. **Phân tách `SKILL A` & `SKILL B`:**
+   - Khi tạo KHBD $\rightarrow$ Kích hoạt **`SKILL A – UNIGO KHBD DESIGN`** (`tao-khbd`).
+   - Khi tạo Slide $\rightarrow$ Kích hoạt **`SKILL B – UNIGO STUDENT-FACING SLIDE DESIGN`** (`tao-slide-bai-giang`): Lập Bản đồ nội dung Slide (`03_LESSON_CONTENT_MAP\`), cắt ảnh SGK (`06_IMAGES\`), tạo Slide lấy học sinh làm trung tâm (`Layouts A–G`, tách riêng Slide Câu hỏi và Slide Đáp án & Giải thích), render PNG và kiểm định 15 bước (`07_QUALITY_CONTROL\`).
+
+### 2. Quy tắc Tiếp tục Phiên làm việc (Session Resume Protocol – Mục VIII.4)
+Khi bắt đầu phiên làm việc mới hoặc nhận lệnh *"Tiếp tục dự án từ checkpoint"*, bắt buộc thực hiện theo thứ tự:
+1. Đọc `D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\PROJECT_MASTER.md`.
+2. Đọc `D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\SESSION_CHECKPOINT.md`.
+3. Đọc `D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\PROGRESS_TRACKER.md` (`.xlsx`).
+4. Đọc `D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\CHANGELOG.md`.
+5. Kiểm tra các file đầu ra thực tế trong `05_SLIDES_FINAL\` và `07_QUALITY_CONTROL\`, xác định trạng thái hiện tại và tiếp tục đúng công việc còn dang dở (không làm lại từ đầu, không ghi đè phiên bản đã hoàn thiện).

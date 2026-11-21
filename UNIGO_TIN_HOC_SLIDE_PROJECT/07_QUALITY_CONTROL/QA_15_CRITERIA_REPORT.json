@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-11-02T14:21:27.137256",
+  "exemplar_1_lop3_bai1": {
+    "num_slides": 14,
+    "overview_png": "D:\\UNIGO\\UNIGO_TIN_HOC_SLIDE_PROJECT\\07_QUALITY_CONTROL\\Lop3_Bai1_Render\\overview_all_slides.png",
+    "structural_errors": 0,
+    "passed_all_15_criteria": true
+  },
+  "exemplar_2_lop3_bai3": {
+    "num_slides": 14,
+    "overview_png": "D:\\UNIGO\\UNIGO_TIN_HOC_SLIDE_PROJECT\\07_QUALITY_CONTROL\\Lop3_Bai3_Render\\overview_all_slides.png",
+    "structural_errors": 0,
+    "passed_all_15_criteria": true
+  },
+  "total_repository_pptx_checked": 150,
+  "scrubbed_teacher_remnants_files": 0
+}

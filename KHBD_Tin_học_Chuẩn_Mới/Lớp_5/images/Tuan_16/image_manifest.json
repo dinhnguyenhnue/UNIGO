@@ -1,0 +1,120 @@
+{
+  "grade": 5,
+  "tuan": 16,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 5",
+  "bai_hoc": "BÀI 8A: LÀM QUEN VỚI PHẦN MỀM ĐỒ HỌA (T2)",
+  "images": [
+    {
+      "rId": "rId8",
+      "file": "lop5_tuan16_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "48x74"
+    },
+    {
+      "rId": "rId13",
+      "file": "lop5_tuan16_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "148x48"
+    },
+    {
+      "rId": "rId18",
+      "file": "lop5_tuan16_sgk_img03.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img03.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "198x298"
+    },
+    {
+      "rId": "rId7",
+      "file": "lop5_tuan16_sgk_img04.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img04.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "68x63"
+    },
+    {
+      "rId": "rId12",
+      "file": "lop5_tuan16_sgk_img05.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img05.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "53x79"
+    },
+    {
+      "rId": "rId17",
+      "file": "lop5_tuan16_sgk_img06.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img06.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "460x154"
+    },
+    {
+      "rId": "rId16",
+      "file": "lop5_tuan16_sgk_img07.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img07.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "419x163"
+    },
+    {
+      "rId": "rId6",
+      "file": "lop5_tuan16_sgk_img08.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img08.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "56x54"
+    },
+    {
+      "rId": "rId11",
+      "file": "lop5_tuan16_sgk_img09.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img09.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "99x43"
+    },
+    {
+      "rId": "rId5",
+      "file": "lop5_tuan16_sgk_img10.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img10.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "63x66"
+    },
+    {
+      "rId": "rId15",
+      "file": "lop5_tuan16_sgk_img11.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img11.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "449x150"
+    },
+    {
+      "rId": "rId10",
+      "file": "lop5_tuan16_sgk_img12.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img12.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "309x44"
+    },
+    {
+      "rId": "rId19",
+      "file": "lop5_tuan16_sgk_img13.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img13.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "196x296"
+    },
+    {
+      "rId": "rId4",
+      "file": "lop5_tuan16_sgk_img14.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img14.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "54x70"
+    },
+    {
+      "rId": "rId9",
+      "file": "lop5_tuan16_sgk_img15.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img15.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "315x41"
+    },
+    {
+      "rId": "rId14",
+      "file": "lop5_tuan16_sgk_img16.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_16\\lop5_tuan16_sgk_img16.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 16",
+      "size": "263x43"
+    }
+  ]
+}

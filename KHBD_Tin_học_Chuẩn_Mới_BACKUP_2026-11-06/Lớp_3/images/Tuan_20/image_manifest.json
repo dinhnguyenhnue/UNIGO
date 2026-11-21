@@ -1,0 +1,22 @@
+{
+  "grade": 3,
+  "tuan": 20,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 3",
+  "bai_hoc": "BÀI 8: SƠ ĐỒ HÌNH CÂY. TỔ CHỨC THÔNG TIN TRONG MÁY TÍNH (T2)",
+  "images": [
+    {
+      "rId": "rId7",
+      "file": "lop3_tuan20_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_3\\images\\Tuan_20\\lop3_tuan20_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 3 KNTT - Tuần 20",
+      "size": "227x327"
+    },
+    {
+      "rId": "rId6",
+      "file": "lop3_tuan20_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_3\\images\\Tuan_20\\lop3_tuan20_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 3 KNTT - Tuần 20",
+      "size": "226x239"
+    }
+  ]
+}

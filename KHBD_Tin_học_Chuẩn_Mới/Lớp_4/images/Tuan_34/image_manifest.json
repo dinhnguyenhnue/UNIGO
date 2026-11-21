@@ -1,0 +1,36 @@
+{
+  "grade": 4,
+  "tuan": 34,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 4",
+  "bai_hoc": "ÔN TẬP CUỐI HỌC KỲ II",
+  "images": [
+    {
+      "rId": "rId7",
+      "file": "lop4_tuan34_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_34\\lop4_tuan34_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 34",
+      "size": "258x60"
+    },
+    {
+      "rId": "rId6",
+      "file": "lop4_tuan34_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_34\\lop4_tuan34_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 34",
+      "size": "186x70"
+    },
+    {
+      "rId": "rId5",
+      "file": "lop4_tuan34_sgk_img03.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_34\\lop4_tuan34_sgk_img03.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 34",
+      "size": "223x73"
+    },
+    {
+      "rId": "rId4",
+      "file": "lop4_tuan34_sgk_img04.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_4\\images\\Tuan_34\\lop4_tuan34_sgk_img04.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 4 KNTT - Tuần 34",
+      "size": "363x64"
+    }
+  ]
+}

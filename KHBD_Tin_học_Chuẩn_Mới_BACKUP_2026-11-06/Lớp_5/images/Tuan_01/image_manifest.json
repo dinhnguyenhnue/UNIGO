@@ -1,0 +1,99 @@
+{
+  "grade": 5,
+  "tuan": 1,
+  "chu_de": "CHỦ ĐỀ 1: MÁY TÍNH VÀ EM",
+  "bai_hoc": "BÀI 1: EM CÓ THỂ LÀM GÌ VỚI MÁY TÍNH? (T1)",
+  "images": [
+    {
+      "rId": "rId9",
+      "file": "lop5_tuan01_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "586x237"
+    },
+    {
+      "rId": "rId8",
+      "file": "lop5_tuan01_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "629x228"
+    },
+    {
+      "rId": "rId7",
+      "file": "lop5_tuan01_sgk_img03.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img03.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "620x370"
+    },
+    {
+      "rId": "rId6",
+      "file": "lop5_tuan01_sgk_img04.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img04.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "610x344"
+    },
+    {
+      "rId": "rId18",
+      "file": "lop5_tuan01_sgk_img05.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img05.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "493x263"
+    },
+    {
+      "rId": "rId17",
+      "file": "lop5_tuan01_sgk_img06.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img06.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "668x205"
+    },
+    {
+      "rId": "rId16",
+      "file": "lop5_tuan01_sgk_img07.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img07.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "649x168"
+    },
+    {
+      "rId": "rId15",
+      "file": "lop5_tuan01_sgk_img08.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img08.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "587x270"
+    },
+    {
+      "rId": "rId14",
+      "file": "lop5_tuan01_sgk_img09.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img09.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "646x293"
+    },
+    {
+      "rId": "rId13",
+      "file": "lop5_tuan01_sgk_img10.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img10.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "641x293"
+    },
+    {
+      "rId": "rId12",
+      "file": "lop5_tuan01_sgk_img11.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img11.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "643x320"
+    },
+    {
+      "rId": "rId11",
+      "file": "lop5_tuan01_sgk_img12.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img12.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "639x316"
+    },
+    {
+      "rId": "rId10",
+      "file": "lop5_tuan01_sgk_img13.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_01\\lop5_tuan01_sgk_img13.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 1",
+      "size": "654x157"
+    }
+  ]
+}

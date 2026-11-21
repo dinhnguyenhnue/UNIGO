@@ -362,3 +362,10 @@ hoat_dong_list = [
 | 19 | Tổng số bảng? | ≥ 6 (1 TT + 4 HĐ + 1 ký tên) |
 | 20 | Viền bảng đúng chuẩn? | Table[0] (Thông tin) và Table ký tên cuối: **NO BORDER** (`w:val="nil"`). |
 | 21 | Viền bảng hoạt động? | 4 bảng tiến trình dạy học (HĐ 1-4): **CÓ VIỀN** (`w:val="single"`, `w:sz="4"`). |
+
+
+## Cập nhật chuẩn AI năm học 2026–2027
+
+Áp dụng QĐ 2422/QĐ-BGDĐT và CV 5588/BGDĐT-GDPT; tài liệu cũ viện dẫn QĐ 3439 là hướng dẫn thí điểm 2025, không dùng làm chuẩn hiện hành. Khung AI hiện hành có NLa–NLd. Tách biệt năng lực AI này với NLS Miền VI. Theo dõi riêng 12 tiết AI cốt lõi mỗi lớp/năm; tích hợp trong Tin học để củng cố/vận dụng, không đổi hoặc tăng YCCĐ môn học. Bài không phù hợp không gán AI. Thực hiện yêu cầu rà soát công cụ, bảo vệ dữ liệu, độ tuổi, giám sát giáo viên và phương án không cần tài khoản cá nhân.
+
+Chi tiết: `KHBD_NANG_LUC_AI_QD2422.md`.

@@ -179,7 +179,7 @@ Tất cả tài liệu môn Robotics nằm tại thư mục: `D:\UNIGO\Phân ph�
      KHÔNG dùng cụm "Sự hiểu biết về...", "Khả năng nhận diện...".
      Mỗi gạch đầu dòng `-` PHẢI xuống dòng riêng.
      **Nguồn:** YCCĐ từ Bước 3.0 → chuyển đổi sang danh từ (THCS) hoặc giữ nguyên (TH).
-  - **Năng lực** (3 nhóm bắt buộc, mục `2.1.`, `2.2.`, `2.3.`):
+  - **Năng lực**: các nhóm `2.1.`, `2.2.`, `2.3.` theo template; `2.4. Năng lực AI` trong chuyên đề AI hoặc tiết Tin học có lồng ghép thực chất.
 
     **`2.1. Năng lực đặc thù` — PHÂN BIỆT THEO MÔN:**
 
@@ -228,11 +228,11 @@ Tất cả tài liệu môn Robotics nằm tại thư mục: `D:\UNIGO\Phân ph�
 > [!CAUTION]
 > **CẤM LẶP NỘI DUNG**: Mỗi năng lực/phẩm chất CHỈ ĐƯỢC GHI MỘT LẦN duy nhất.
 > KHÔNG ghi tổng quát (ví dụ: `- Năng lực đặc thù: Nhận biết...`) rồi lặp chi tiết bên dưới.
-> Tên mục `2.1.`, `2.2.`, `2.3.` chỉ xuất hiện 1 lần, nội dung bullet ngay dưới.
+> Tên mục năng lực chỉ xuất hiện 1 lần. Mục 2.4 được dùng khi có YCCĐ AI phù hợp; bài không tích hợp được ghi trong mapping năm, không gán năng lực giả.
 
 > **TUYỆT ĐỐI KHÔNG** ghi chữ `(BẮT BUỘC)` tùy tiện vào tiêu đề hay nội dung.
 
-**Kết quả bước 3:** Bảng mục tiêu Kiến thức / Năng lực (2.1/2.2/2.3) / Phẩm chất hoàn chỉnh.
+**Kết quả bước 3:** Bảng mục tiêu Kiến thức / Năng lực Tin học / NLS / Năng lực chung / Phẩm chất; thêm Năng lực AI (2.4) khi phù hợp hoặc khi soạn tiết cốt lõi AI.
 
 ---
 
@@ -277,6 +277,7 @@ I. Mục tiêu
       2.1. Năng lực đặc thù (Tin học):  ← Mã NLa-NLe + tên + biểu hiện + #HĐ
       2.2. Năng lực số (TT 02/2025):   ← Miền + thành tố + Bậc + biểu hiện + #HĐ
       2.3. Năng lực chung:
+      2.4. Năng lực AI (QĐ 2422), chỉ ghi khi là chuyên đề AI hoặc tích hợp thực chất:
    3. Phẩm chất:
 
 II. Thiết bị dạy học và học liệu:
@@ -333,10 +334,10 @@ RÚT KINH NGHIỆM SAU BÀI DẠY   ← GIỮ NGUYÊN
 |---|----------|---------|
 | 1 | Kiến thức bám sát SGK? | Nội dung KHBD phản ánh đúng kiến thức SGK, có tham chiếu trang SGK. |
 | 2 | Mục tiêu dùng Danh từ trực tiếp? | Không dùng động từ. Mỗi `-` xuống dòng riêng. |
-| 3 | Năng lực đủ 4 nhóm (2.1/2.2/2.3/2.4)? | Đặc thù + Số + Chung + AI, mỗi nhóm ≥ 1 mục. |
+| 3 | Thành phần năng lực có đúng phạm vi? | 2.1/2.2/2.3 bám hoạt động; 2.4 AI chỉ trong tiết cốt lõi AI hoặc tích hợp thực chất; kiểm tra thêm bảng mapping 12 tiết/lớp/năm. |
 | 4 | NL đặc thù đúng format? | Có mã NLa-NLe + tên + biểu hiện + gắn #HĐ. |
 | 5 | NL số đúng format? | Có `Miền [La Mã]. [Tên] (thành tố – Bậc)` + biểu hiện + #HĐ. |
-| 6 | NL AI (2.4) đúng format? | Có mã `[Bậc].[Chủ đề].[Mã]` + biểu hiện từ CV 3439 + #HĐ. |
+| 6 | NL AI (2.4) đúng khung hiện hành? | Tra YCCĐ/mã theo QĐ 2422; ghi NLa–NLd phù hợp, biểu hiện quan sát được và #HĐ; không dùng mã nội bộ QĐ 3439. |
 | 7 | Không lặp nội dung? | Mỗi NL/PC chỉ xuất hiện 1 lần duy nhất. |
 | 8 | Gắn mốc #Hoạt động? | Mỗi năng lực/phẩm chất đều chỉ rõ Hoạt động đạt được. |
 | 9 | Không ghi "(BẮT BUỘC)"? | Tuyệt đối không xuất hiện chuỗi `(BẮT BUỘC)`. |
@@ -462,3 +463,71 @@ Nội dung ghi nhận:
 - Bài/Lớp đã tạo
 - Feedback từ user (nếu có)
 - Điều chỉnh áp dụng cho lần sau
+
+
+---
+
+## CHUẨN THIẾT KẾ KHBD TIN HỌC UNIGO MỚI (10 QUY TRÌNH CỐT LÕI & KIỂM ĐỊNH 100 ĐIỂM)
+
+Khi người dùng gọi các câu lệnh ngắn như:
+- *"Soạn KHBD Tin học lớp X bài Y"*
+- *"Tạo giáo án và slide bài Y lớp X"*
+- *"Chuẩn hóa KHBD bài Y"*
+- *"Thiết kế lại bài dạy Tin học theo chuẩn UNIGO"*
+
+Agent **TỰ ĐỘNG KÍCH HOẠT** đầy đủ 10 quy trình bắt buộc sau (tuyệt đối không tạo giáo án rập khuôn/boilerplate):
+
+1. **Quy trình đọc và phân tích SGK & Kho tham chiếu chuẩn:**
+   - Tra cứu trực tiếp nội dung bài học từ `D:\UNIGO\SGK` và kho tham chiếu gốc `D:\UNIGO\Phân phối chương trình\Tin học\KHBD Tin học 345 KNTT` (hoặc kho chuẩn mới `D:\UNIGO\KHBD_Tin_học_Chuẩn_Mới`).
+   - Xác định chính xác trang SGK, tình huống mở đầu (nhân vật An, Minh, Khoa), kênh hình, câu hỏi hoạt động và *Hộp kiến thức ghi nhớ*.
+2. **Quy trình xác định mục tiêu bài học (Đo lường được & Cụm danh từ trực tiếp):**
+   - Liệt kê đầy đủ gạch đầu dòng `+` dưới dòng `- Sau bài học này em sẽ:`.
+   - Mục `1. Kiến thức:` viết bằng danh từ / cụm danh từ trực tiếp, không dùng động từ mơ hồ.
+3. **Quy trình xây dựng Ma trận năng lực đặc thù theo từng bài:**
+   - **2.1. Năng lực đặc thù Tin học (`NLa–NLe`):** Chọn đúng thành tố phù hợp bản chất bài (Phần cứng/Tệp thư mục $\rightarrow$ `NLa`; An toàn/Bản quyền $\rightarrow$ `NLb`; Giải quyết vấn đề/Lập trình Scratch/Tìm kiếm $\rightarrow$ `NLc`; Phần mềm ứng dụng/Soạn thảo/Trình chiếu/Đồ họa $\rightarrow$ `NLd`; Hợp tác nhóm/Chia sẻ số $\rightarrow$ `NLe`) kèm hành vi quan sát được và `(Đạt được thông qua Hoạt động ...)`.
+   - **2.2. Năng lực số (`TT 02/2025 – CV 3456`):** Chọn đúng mã `X.Y.CB1a/b` (Lớp 1–3) hoặc `X.Y.CB2a/b` (Lớp 4–5) gắn thực chất vào hoạt động thực hành của bài.
+   - **2.3. Năng lực chung:** Cụ thể hóa `Tự chủ và tự học`, `Giao tiếp và hợp tác`, `Giải quyết vấn đề và sáng tạo` theo nhiệm vụ của bài.
+   - **2.4. Năng lực AI (QĐ 2422/QĐ-BGDĐT):** Đọc `references/KHBD_NANG_LUC_AI_QD2422.md`; tra đúng YCCĐ theo lớp và dùng thành phần NLa–NLd. Dùng trong KHBD chuyên đề AI hoặc tiết Tin học có cơ hội củng cố/vận dụng thực chất. Không ép AI vào thao tác cơ học hay tự đổi YCCĐ môn học. Đối chiếu 12 tiết AI cốt lõi/lớp/năm trong kế hoạch năm riêng.
+4. **Quy trình lựa chọn Phương pháp và Kĩ thuật dạy học chủ đạo (`Mục III`):**
+   - Lựa chọn linh hoạt theo đặc trưng bài: *Dạy học khám phá khái niệm*, *Giải quyết vấn đề & Tư duy thuật toán*, *Thực hành trực tiếp có hướng dẫn & Sửa lỗi (Debugging)*, *Học tập theo tình huống (Case study)*, *Trò chơi học tập*, *Dạy học dự án nhỏ*.
+5. **Quy trình thiết kế Chuỗi 4 hoạt động dạy học có Phân hóa 2 tầng (`Mục IV`):**
+   - Bảng 2 cột có viền (`HOẠT ĐỘNG CỦA GV – HS` | `KẾT QUẢ CẦN ĐẠT`).
+   - 4 hoạt động: `Hoạt động 1. Khởi động` $\rightarrow$ `Hoạt động 2. Hình thành kiến thức mới` $\rightarrow$ `Hoạt động 3. Luyện tập` $\rightarrow$ `Hoạt động 4. Vận dụng`.
+   - Mỗi hoạt động có đủ: `a) Mục tiêu`, `b) Nội dung`, `c) Sản phẩm`, `d) Tổ chức thực hiện (Bước 1 -> Bước 4)` kèm **Nhiệm vụ Phân hóa Mức Cơ bản (Hỗ trợ HTHSY)** và **Nhiệm vụ Phân hóa Mức Nâng cao (Mở rộng)**, và `e) Đánh giá kết quả hoạt động`.
+6. **Quy trình thiết kế câu hỏi, bài tập và sản phẩm học tập thực tiễn:**
+   - Câu hỏi gắn chặt với hình minh họa SGK và trải nghiệm thực tế của học sinh tại gia đình, trường học.
+7. **Quy trình thiết kế Đánh giá gắn chặt với Mục tiêu (`Ma trận 4 cột` & `Mục V. Rubric 3 mức độ`):**
+   - Bắt buộc có **Bảng Ma trận kết nối Mục tiêu – Hoạt động – Sản phẩm – Phương pháp đánh giá** (4 cột) ở cuối Mục I và **Bảng tiêu chí đánh giá Rubric 3 mức độ (`Hoàn thành tốt` | `Hoàn thành` | `Cần cố gắng`)** ở Mục V.
+8. **Quy trình trích xuất hình ảnh SGK & tạo Infographic Tiếng Việt 100%:**
+   - Trích xuất hình ảnh gốc từ SGK/KHBD tham chiếu lưu vào thư mục `images/` của bài kèm `image_manifest.json` và nhúng trực tiếp vào KHBD. Mọi sơ đồ/infographic tự sinh phải dùng **100% nhãn Tiếng Việt chuẩn**.
+9. **Quy trình thiết kế Slide bài giảng `.pptx` đồng bộ 1-1 với KHBD:**
+   - Dùng mẫu `D:\UNIGO\Hệ thống mẫu văn bản\Mẫu slide có chân trang.pptx` (bảo tồn Logo đầu trang và Thanh chân trang UNIGO, vùng an toàn `1.15in <= Y <= 6.35in`), thiết kế 12 slide trực quan dành cho học sinh.
+10. **Quy trình kiểm định chất lượng 100 điểm (14 tiêu chí Giai đoạn 7):**
+    - Chạy script kiểm định tự động đảm bảo đạt $\ge 90/100$ điểm, `header drawings >= 1`, `footer paragraphs >= 1`, không có lỗi nghiêm trọng trước khi bàn giao.
+
+
+---
+
+## SKILL A – UNIGO KHBD DESIGN (QUY CHUẨN TÀI LIỆU DÀNH CHO GIÁO VIÊN & LIÊN KẾT VỚI SKILL B)
+
+> [!IMPORTANT]
+> **Nguyên tắc phân tách cốt lõi (`SKILL A` vs `SKILL B`):**
+> - **`SKILL A – UNIGO KHBD DESIGN` (`tao-khbd`):** Thiết kế Kế hoạch bài dạy (`.docx`) **dành riêng cho giáo viên**, trả lời đầy đủ: Giáo viên chuẩn bị gì, giới thiệu kiến thức thế nào, đặt câu hỏi gì, tổ chức hoạt động ra sao, học sinh thực hiện nhiệm vụ gì, hỗ trợ/xử lý tình huống phân hóa (Mức Cơ bản / Mức Nâng cao) như thế nào và đánh giá kết quả bằng bảng Rubric 3 mức (`Hoàn thành tốt / Hoàn thành / Cần cố gắng`) ra sao.
+> - **`SKILL B – UNIGO STUDENT-FACING SLIDE DESIGN` (`tao-slide-bai-giang`):** Thiết kế Slide trình chiếu (`.pptx`) **dành trực tiếp cho học sinh** quan sát, suy nghĩ, khám phá và ghi nhớ.
+> - **Cơ chế liên kết không sao chép:** `SKILL A` cung cấp khung trình tự hoạt động, câu hỏi trọng tâm và kiến thức chốt cho `SKILL B`, nhưng `SKILL B` **TUYỆT ĐỐI KHÔNG** sao chép lời dẫn điều hành lớp học (`"GV tổ chức..."`, `"HS nhận ra..."`, `"Bước 1..."`) hoặc bảng mã năng lực chuyên môn (`NLa–NLe`, `CV 3456`) lên màn hình chiếu của học sinh.
+
+### Quy tắc đồng bộ Quản lý Dự án & Checkpoint (`D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\`)
+1. Trước khi tạo hoặc chỉnh sửa KHBD, đọc:
+   - `D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\PROJECT_MASTER.md`
+   - `D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\SESSION_CHECKPOINT.md`
+   - `D:\UNIGO\UNIGO_TIN_HOC_SLIDE_PROJECT\PROGRESS_TRACKER.md`
+2. Sau khi hoàn thành và kiểm định KHBD (thang 100 điểm, đạt $\ge 90/100$), cập nhật ngay trạng thái vào `PROGRESS_TRACKER.md` (`.xlsx`), `SESSION_CHECKPOINT.md` và `CHANGELOG.md`.
+
+
+## CẬP NHẬT CHUẨN NĂM HỌC 2026–2027 — NLS VÀ GIÁO DỤC AI
+
+1. **Năng lực số (TT 02/2025 – CV 3456):** Gắn descriptor đúng bậc với thao tác thật; không dùng chung một cặp miền cho mọi bài. Miền VI trong khung NLS khác năng lực AI đặc thù theo QĐ 2422.
+2. **Năng lực AI:** Dùng QĐ 2422/QĐ-BGDĐT và CV 5588/BGDĐT-GDPT hiện hành. Khung hiện hành có bốn thành phần NLa–NLd. Không dùng mô tả NLa–NLe hoặc bộ mã nội bộ của skill cũ như chuẩn pháp quy.
+3. **Kế hoạch cốt lõi:** Bảo đảm bảng mapping 12 tiết AI/lớp/năm theo kế hoạch giáo dục; hoạt động tích hợp ngắn chỉ củng cố/vận dụng, không tự tính là một tiết cốt lõi và không tăng YCCĐ Tin học.
+4. **Bảo vệ học sinh:** Dùng công cụ đã được rà soát độ tuổi/điều khoản, giáo viên giám sát, không yêu cầu tài khoản cá nhân hoặc dữ liệu cá nhân; chuẩn bị phương án ngoại tuyến.
+5. **Hoạt động và hình:** Nhiệm vụ mỗi bài phải đặc thù nội dung; thay đổi phù hợp giữa khám phá, trò chơi/thẻ, mô phỏng, thực hành, tìm lỗi, sản phẩm, tình huống và đánh giá chéo. Nhúng hình SGK đúng bài/trang tại hoạt động cần dùng, có chú thích nguồn; không thay hình bài học bằng logo hoặc câu mô tả chung “chiếu hình ảnh”.

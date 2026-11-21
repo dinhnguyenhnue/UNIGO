@@ -182,3 +182,27 @@ Ví dụ hoàn chỉnh:
 | Dữ liệu NLS đầy đủ (JSON) | `D:\UNIGO\.agents\skills\tao-khbd\references\cv3456_full_data.json` |
 | Hướng dẫn NLS chi tiết | `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_SO_CV3456.md` |
 | CV 3456 gốc | `D:\UNIGO\Hệ thống mẫu văn bản\Công_văn_quy_định\3456-VV_huong_dan_trien_khai_Khung_nang_luc_so_cho_HS_885ca.docx` |
+
+
+---
+
+## NGUYÊN TẮC TÍCH HỢP NĂNG LỰC SỐ VÀ AI (CẬP NHẬT 2026–2027)
+
+> Phần AI của bản hướng dẫn cũ dưới đây dùng QĐ 3439 (khung thí điểm 2025), chỉ để truy vết. Khi soạn KHBD năm học 2026–2027, áp dụng QĐ 2422/QĐ-BGDĐT và CV 5588/BGDĐT-GDPT theo mục VIII; không dùng mã/descriptor cũ.
+
+1. **Nguyên tắc tích hợp Năng lực số (TT 02/2025 – CV 3456) thực chất (Không gán ghép hình thức):**
+   - Năng lực số phải gắn trực tiếp với thao tác học sinh thực hiện trong `Hoạt động 2 (Hình thành kiến thức)` và `Hoạt động 3 (Luyện tập – Thực hành)`.
+   - **CẤM TUYỆT ĐỐI** ghi đè câu hỏi khởi động gốc của SGK bằng các câu hỏi an toàn mạng không liên quan đến nội dung bài học (ví dụ: không chèn câu hỏi "không nhấn vào đường link lạ" vào bài "Phần cứng và phần mềm").
+   - Bậc chuẩn: Lớp 1, 2, 3 dùng mã **`X.Y.CB1a/b`**; Lớp 4, 5 dùng mã **`X.Y.CB2a/b`**.
+2. **Nguyên tắc AI lịch sử (không dùng làm chuẩn hiện hành):**
+   - Chỉ tích hợp AI ở những bài có cơ hội sư phạm tự nhiên (nhận diện thông tin & quyết định trên thiết bị thông minh, máy tìm kiếm/trợ lí giọng nói, đạo đức & bản quyền nội dung số, cấu trúc điều khiển tuần tự/lặp/rẽ nhánh trong lập trình Scratch).
+   - Ở các bài thuần rèn luyện thao tác cơ học cơ bản (tư thế ngồi, cầm chuột, gõ phím, tạo thư mục), ghi rõ **Ghi chú sư phạm không gượng ép AI** để giữ sự trong sáng, chuẩn mực của bài học.
+
+
+## VIII. Phân biệt Miền VI NLS với năng lực AI theo QĐ 2422
+
+Miền VI theo TT 02/2025/CV 3456 là một miền của **Năng lực số**; dùng mã/thành tố và descriptor đúng bậc trong `cv3456_full_data.json`. Năng lực AI đặc thù năm học 2026–2027 theo QĐ 2422/QĐ-BGDĐT là hệ yêu cầu riêng với bốn thành phần NLa–NLd. Không chép mã hoặc descriptor của hệ này sang hệ kia. Khi một nhiệm vụ phát triển cả hai, ghi riêng từng mục và gắn đúng hoạt động. Khi KHBD không có cơ hội AI tự nhiên, không gán năng lực AI; ghi trong bảng mapping 12 tiết/lớp/năm.
+
+Nguồn hiện hành: `D:\UNIGO\.agents\skills\tao-khbd\references\KHBD_NANG_LUC_AI_QD2422.md`.
+
+

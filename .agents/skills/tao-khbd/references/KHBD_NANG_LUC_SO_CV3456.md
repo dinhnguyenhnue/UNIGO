@@ -1,3 +1,5 @@
+> LƯU Ý: Bảng NLS Miền VI trong tài liệu này thuộc hệ Năng lực số theo nguồn/tài liệu tham chiếu. Không dùng thay cho năng lực AI đặc thù theo QĐ 2422/QĐ-BGDĐT; từ năm học 2026–2027, tra YCCĐ AI tại KHBD_NANG_LUC_AI_QD2422.md. Phần viện dẫn QĐ 3439 là lịch sử/thí điểm 2025.
+
 # Hướng dẫn Chuẩn hóa Năng lực số (NLS) trong KHBD theo CV 3456/BGDĐT-GDPT & Thông tư 02/2025
 
 Văn bản gốc: `D:\UNIGO\Hệ thống mẫu văn bản\Công_văn_quy_định\3456-VV_huong_dan_trien_khai_Khung_nang_luc_so_cho_HS_885ca.docx`
@@ -152,3 +154,5 @@ descriptor = data[thanh_to]['descriptors'][bac_col]
 5. ✅ Gắn **mốc Hoạt động** (Đạt được thông qua HĐ X, HĐ Y)
 6. ✅ KHÔNG lặp nội dung giữa primary và secondary
 7. ✅ KHÔNG dùng descriptor chung chung, tự bịa ("Khai thác thông tin số, dữ liệu đa phương tiện an toàn phục vụ bài học")
+
+

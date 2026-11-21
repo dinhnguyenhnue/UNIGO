@@ -302,3 +302,26 @@ for child in list(doc.element.body):
 5. **Vận dụng**: Kết hợp bài học với cuộc sống, nhiệm vụ về nhà (5 phút)
 6. **Không có**: Phụ lục, Rubric riêng — phần này chỉ có ở THCS
 7. **Tên trường**: `Trường Tiểu học và THCS UNIGO` (thống nhất)
+
+
+---
+
+## CẬP NHẬT CHUẨN THIẾT KẾ KHBD TIỂU HỌC MỚI (GIAI ĐOẠN 2, 3, 7, 8)
+
+1. **Bảng thông tin đầu bài (Table 0 - 3x2 không viền `w:val="nil"`):**
+   - Row 0: `Trường: Tiểu học và THCS UNIGO` | `Ngày soạn: DD/MM/YYYY`
+   - Row 1: `GV: Đậu Đình Nguyên` | `Ngày dạy: DD/MM/YYYY`
+   - Row 2: `Tổ: Tổ chuyên môn Tiểu học` | `Lớp: 3A1, 3C1 / 4C1 / 5C1`
+2. **Cấu trúc 5 Mục lớn chuẩn hóa:**
+   - **I. YÊU CẦU CẦN ĐẠT:** `- Sau bài học này em sẽ:` (`+` bullets) $\rightarrow$ `1. Kiến thức` (cụm danh từ trực tiếp) $\rightarrow$ `2. Năng lực` (`2.1. Năng lực đặc thù Tin học NLa–NLe`, `2.2. Năng lực số CV 3456`, `2.3. Năng lực chung`, `2.4. Năng lực AI theo QĐ 2422, chỉ khi là tiết cốt lõi AI hoặc tích hợp thực chất`) $\rightarrow$ `3. Phẩm chất` $\rightarrow$ `4. Ma trận kết nối Mục tiêu – Hoạt động – Sản phẩm – Phương pháp đánh giá` (Bảng 4 cột có viền).
+   - **II. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU:** Ghi rõ trang SGK, danh mục ảnh minh họa trích xuất và thiết bị phòng máy.
+   - **III. PHƯƠNG PHÁP VÀ KĨ THUẬT DẠY HỌC CHỦ ĐẠO:** Lựa chọn linh hoạt theo đặc trưng bài học.
+   - **IV. TIẾN TRÌNH DẠY HỌC:** 4 Hoạt động (`Hoạt động 1. Khởi động`, `Hoạt động 2. Hình thành kiến thức mới`, `Hoạt động 3. Luyện tập`, `Hoạt động 4. Vận dụng`), mỗi hoạt động có `a) Mục tiêu`, `b) Nội dung`, `c) Sản phẩm`, `d) Tổ chức thực hiện` (Bảng 2 cột có viền, gộp GV & HS ở cột 1 theo `Bước 1 -> Bước 4`, tích hợp **Phân hóa Mức Cơ bản & Mức Nâng cao**, nhúng hình ảnh SGK trực tiếp), và `e) Đánh giá kết quả hoạt động`.
+   - **V. ĐÁNH GIÁ VÀ ĐIỀU CHỈNH SAU BÀI DẠY:** Bảng Rubric đánh giá 3 mức độ (`Hoàn thành tốt (T)` | `Hoàn thành (H)` | `Cần cố gắng (C)`) + `RÚT KINH NGHIỆM SAU BÀI DẠY` + Bảng chữ ký 3×3 không viền.
+
+
+## Cập nhật chuẩn AI năm học 2026–2027
+
+Áp dụng QĐ 2422/QĐ-BGDĐT và CV 5588/BGDĐT-GDPT; tài liệu cũ viện dẫn QĐ 3439 là hướng dẫn thí điểm 2025, không dùng làm chuẩn hiện hành. Khung AI hiện hành có NLa–NLd. Tách biệt năng lực AI này với NLS Miền VI. Theo dõi riêng 12 tiết AI cốt lõi mỗi lớp/năm; tích hợp trong Tin học để củng cố/vận dụng, không đổi hoặc tăng YCCĐ môn học. Bài không phù hợp không gán AI. Thực hiện yêu cầu rà soát công cụ, bảo vệ dữ liệu, độ tuổi, giám sát giáo viên và phương án không cần tài khoản cá nhân.
+
+Chi tiết: `KHBD_NANG_LUC_AI_QD2422.md`.

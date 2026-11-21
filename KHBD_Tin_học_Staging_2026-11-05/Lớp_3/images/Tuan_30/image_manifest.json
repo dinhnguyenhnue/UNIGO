@@ -1,0 +1,36 @@
+{
+  "grade": 3,
+  "tuan": 30,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 3",
+  "bai_hoc": "BÀI 14. EM THỰC HIỆN CÔNG VIỆC NHƯ THẾ NÀO? (T2)",
+  "images": [
+    {
+      "rId": "rId7",
+      "file": "lop3_tuan30_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_3\\images\\Tuan_30\\lop3_tuan30_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 3 KNTT - Tuần 30",
+      "size": "201x146"
+    },
+    {
+      "rId": "rId6",
+      "file": "lop3_tuan30_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_3\\images\\Tuan_30\\lop3_tuan30_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 3 KNTT - Tuần 30",
+      "size": "206x128"
+    },
+    {
+      "rId": "rId5",
+      "file": "lop3_tuan30_sgk_img03.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_3\\images\\Tuan_30\\lop3_tuan30_sgk_img03.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 3 KNTT - Tuần 30",
+      "size": "559x203"
+    },
+    {
+      "rId": "rId4",
+      "file": "lop3_tuan30_sgk_img04.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_3\\images\\Tuan_30\\lop3_tuan30_sgk_img04.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 3 KNTT - Tuần 30",
+      "size": "539x255"
+    }
+  ]
+}

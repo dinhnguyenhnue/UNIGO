@@ -263,8 +263,12 @@ def filter_merged_for_cap(doc, keep_cap):
                 continue
             cap = classify_lop(lop)
             if cap is not None and cap != keep_cap:
-                # Clear data columns (2..6)
+                # Clear data columns (2..6), giữ nguyên ô sự kiện/nghỉ lễ gộp ở cột 5
                 for ci in range(2, min(7, len(row.cells))):
+                    if ci == 5:
+                        c5_txt = row.cells[5].text.strip().upper()
+                        if any(kw in c5_txt for kw in ['NGHỈ LỄ', 'DÃ NGOẠI', 'HALLOWEEN', 'MÍT TINH', 'TỔNG DUYỆT', 'KHAI GIẢNG']):
+                            continue
                     for p in row.cells[ci].paragraphs:
                         for r in p.runs:
                             r.text = ''

@@ -1,0 +1,22 @@
+{
+  "grade": 3,
+  "tuan": 24,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 3",
+  "bai_hoc": "BÀI 10. BẢO VỆ THÔNG TIN KHI DÙNG MÁY TÍNH. (T2)",
+  "images": [
+    {
+      "rId": "rId5",
+      "file": "lop3_tuan24_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_3\\images\\Tuan_24\\lop3_tuan24_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 3 KNTT - Tuần 24",
+      "size": "446x163"
+    },
+    {
+      "rId": "rId4",
+      "file": "lop3_tuan24_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_3\\images\\Tuan_24\\lop3_tuan24_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 3 KNTT - Tuần 24",
+      "size": "574x380"
+    }
+  ]
+}

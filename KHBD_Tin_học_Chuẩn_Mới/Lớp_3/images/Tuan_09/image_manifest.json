@@ -1,0 +1,22 @@
+{
+  "grade": 3,
+  "tuan": 9,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 3",
+  "bai_hoc": "BÀI 4: LÀM VIỆC VỚI MÁY TÍNH (T3)",
+  "images": [
+    {
+      "rId": "rId7",
+      "file": "lop3_tuan09_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_3\\images\\Tuan_09\\lop3_tuan09_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 3 KNTT - Tuần 9",
+      "size": "80x78"
+    },
+    {
+      "rId": "rId6",
+      "file": "lop3_tuan09_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_3\\images\\Tuan_09\\lop3_tuan09_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 3 KNTT - Tuần 9",
+      "size": "87x81"
+    }
+  ]
+}

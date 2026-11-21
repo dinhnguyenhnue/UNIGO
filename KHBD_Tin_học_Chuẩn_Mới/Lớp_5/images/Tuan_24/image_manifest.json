@@ -1,0 +1,50 @@
+{
+  "grade": 5,
+  "tuan": 24,
+  "chu_de": "CHỦ ĐỀ HỌC TẬP TIN HỌC LỚP 5",
+  "bai_hoc": "BÀI 12: THỰC HÀNH SỬ DỤNG LỆNH LẶP (T1)",
+  "images": [
+    {
+      "rId": "rId9",
+      "file": "lop5_tuan24_sgk_img01.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_24\\lop5_tuan24_sgk_img01.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 24",
+      "size": "161x57"
+    },
+    {
+      "rId": "rId8",
+      "file": "lop5_tuan24_sgk_img02.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_24\\lop5_tuan24_sgk_img02.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 24",
+      "size": "121x56"
+    },
+    {
+      "rId": "rId7",
+      "file": "lop5_tuan24_sgk_img03.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_24\\lop5_tuan24_sgk_img03.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 24",
+      "size": "125x51"
+    },
+    {
+      "rId": "rId6",
+      "file": "lop5_tuan24_sgk_img04.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_24\\lop5_tuan24_sgk_img04.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 24",
+      "size": "160x53"
+    },
+    {
+      "rId": "rId5",
+      "file": "lop5_tuan24_sgk_img05.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_24\\lop5_tuan24_sgk_img05.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 24",
+      "size": "57x60"
+    },
+    {
+      "rId": "rId4",
+      "file": "lop5_tuan24_sgk_img06.png",
+      "path": "D:\\UNIGO\\KHBD_Tin_học_Chuẩn_Mới\\Lớp_5\\images\\Tuan_24\\lop5_tuan24_sgk_img06.png",
+      "source": "Trích xuất nguyên bản từ KHBD Tin học 5 KNTT - Tuần 24",
+      "size": "205x279"
+    }
+  ]
+}
