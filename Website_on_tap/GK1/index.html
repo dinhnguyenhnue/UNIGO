@@ -1260,6 +1260,18 @@
         <p class="game-subtitle" id="grade-hero-subtitle">Chuẩn Chương trình GDPT 2018 & SGK Kết nối tri thức với cuộc sống • Năm học 2026 – 2027</p>
       </div>
 
+      <!-- BANNER TÍCH HỢP CHUYÊN TRANG HÀNH TRÌNH ÔN TẬP CUỐI HỌC KÌ 1 (LỚP 1 - LỚP 8) -->
+      <div style="background:linear-gradient(135deg,#dbeafe 0%,#eff6ff 60%,#ecfdf5 100%); border:2px solid #3b82f6; border-radius:18px; padding:14px 18px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; box-shadow:0 6px 18px rgba(37,99,235,0.10);">
+        <div style="flex:1; min-width:260px;">
+          <div style="display:inline-block; background:#2563eb; color:#fff; font-size:0.76rem; font-weight:800; padding:2px 10px; border-radius:99px; margin-bottom:4px;">MỚI • ÔN TẬP CUỐI HỌC KÌ 1 (LỚP 1 – LỚP 8)</div>
+          <div style="font-size:1.05rem; font-weight:900; color:#1e3a8a;">🤖 Hành Trình Ôn Tập Cuối Học Kì 1 cùng Robot ROBO (80 câu/khối • Đủ 4 mức độ)</div>
+          <div style="font-size:0.85rem; color:#334155; margin-top:2px;">Tích hợp bản đồ trạm kiến thức, Thi thử 20 câu, Tự luận đối chiếu • Tự động lưu <strong>Số lần làm bài</strong> & <strong>Điểm số</strong> sang Trang tính thứ 2 (<code>OnTap_HK1</code>).</div>
+        </div>
+        <button type="button" class="btn-action" id="btn-open-hk1-robo" style="background:linear-gradient(135deg,#2563eb,#047857); padding:11px 20px; font-size:0.93rem; white-space:nowrap;">
+          🚀 Mở Hành Trình Ôn Tập HK1
+        </button>
+      </div>
+
       <!-- BANNER KHÔI PHỤC BÀI ĐANG LÀM DỞ (NẾU HỌC SINH TẢI LẠI TRANG) -->
       <div class="resume-banner" id="resume-session-banner">
         <div>
@@ -1920,6 +1932,14 @@
               <button class="btn-action" id="btn-save-webhook" style="padding:8px 14px; font-size:0.85rem;">💾 Lưu URL Webhook</button>
               <button class="btn-action" id="btn-test-webhook" style="padding:8px 14px; font-size:0.85rem; background:#10b981;">📡 Gửi dữ liệu thử nghiệm</button>
             </div>
+            <div style="margin-top:12px; padding:10px 12px; border-radius:10px; background:#eff6ff; border:1px solid #93c5fd;">
+              <div style="font-size:0.85rem; font-weight:800; color:#1e3a8a; margin-bottom:4px;">📑 Trang tính thứ 2 (<code>OnTap_HK1</code>) trên cùng link Google Sheets</div>
+              <p style="font-size:0.79rem; color:#334155; margin-bottom:8px;"> Sao chép mã Apps Script mới dán vào <em>Tiện ích mở rộng → Apps Script → Triển khai bản mới</em> để tự động tạo tab thứ 2 <code>OnTap_HK1</code> có đủ 14 cột (gồm Lần làm thứ & Điểm số):</p>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="btn-action" id="btn-copy-gs-sheet2" style="padding:7px 12px; font-size:0.82rem; background:#2563eb;">📋 Sao chép Mã Apps Script (Tab 2)</button>
+                <button type="button" class="btn-action" id="btn-test-webhook-hk1" style="padding:7px 12px; font-size:0.82rem; background:#047857;">📡 Test gửi vào Trang tính 2 (OnTap_HK1)</button>
+              </div>
+            </div>
             <div style="margin-top:14px; padding-top:10px; border-top:1px solid #cbd5e1;">
               <h4 style="font-size:0.9rem; margin-bottom:6px;">🔐 Đổi Mã PIN Giáo Viên</h4>
               <div style="display:flex; gap:8px;">
@@ -2530,6 +2550,16 @@
           periodId: pId,
           isPeriodBundle: true
         });
+        if (pId === "CK1") {
+          cardsData.push({
+            key: "OPEN_HK1_ROBO_PAGE",
+            title: "🤖 Chuyên Trang Hành Trình Ôn Tập Cuối Kì 1 (Đủ 80 câu 4 mức độ + Tự luận)",
+            desc: "Bản đồ trạm kiến thức SGK, Thi thử 20 câu & Tự luận • Ghi nhận Số lần làm & Điểm số sang Trang tính 2 (OnTap_HK1)",
+            qCount: 80,
+            periodId: "CK1",
+            isExternalHk1: true
+          });
+        }
 
         // Các bài học thành phần trong đợt đó
         Object.entries(catalog).forEach(([tk, info]) => {
@@ -2603,6 +2633,10 @@
 
         const selectThisCard = () => {
           sound.playClick();
+          if (item.isExternalHk1) {
+            openHk1RoboPortal();
+            return;
+          }
           container.querySelectorAll(".stage-card").forEach(c => c.classList.remove("selected"));
           div.classList.add("selected");
           state.selectedStage = item.key;
@@ -3990,17 +4024,29 @@
         topicBody.appendChild(tr);
       });
 
-      // Lưu kết quả vào Bảng điểm GV & đồng bộ Google Sheets
+      // Lưu kết quả vào Bảng điểm GV & đồng bộ Google Sheets (Tự động định tuyến CK1 sang Trang tính 2 OnTap_HK1 kèm Số lần làm)
       const pKey = state.selectedPeriod !== "BY_LESSON" ? state.selectedPeriod : "GK1";
+      const prevRecs = getExamRecords().filter(r =>
+        String(r.studentClass || "").toLowerCase() === String(state.selectedClass || "").toLowerCase() &&
+        String(r.studentName || "").toLowerCase() === String(state.playerName || "").toLowerCase() &&
+        String(r.periodId || "GK1") === pKey
+      );
+      const attemptNum = prevRecs.length + 1;
       const record = {
         id: Date.now(),
+        targetSheet: pKey === "CK1" ? "OnTap_HK1" : undefined,
         timestamp: new Date().toLocaleString("vi-VN"),
         studentName: state.playerName,
         studentClass: state.selectedClass,
         pcNumber: state.selectedPc,
+        machineNumber: state.selectedPc,
         grade: state.currentGrade,
         periodId: pKey,
+        activityTitle: pKey === "CK1" ? `Đề kiểm tra ${pKey} (Khối ${state.currentGrade})` : `Kiểm tra ${pKey}`,
+        attemptNumber: attemptNum,
+        totalAttemptsAllModes: attemptNum,
         score10: score10,
+        score: score10,
         correctCount: correct,
         totalQuestions: total,
         accuracy: accuracy,
@@ -4209,7 +4255,7 @@
           <td>${idx + 1}</td>
           <td><strong>${r.studentName}</strong></td>
           <td>${r.studentClass} (${r.pcNumber || ""})</td>
-          <td>${r.periodId || "GK1"}</td>
+          <td>${r.periodId || "GK1"}${r.activityTitle ? ` <div style="font-size:0.76rem;color:#475569;">${r.activityTitle}</div>` : ""}${r.attemptNumber ? ` <span style="display:inline-block;background:#dbeafe;color:#1d4ed8;padding:1px 7px;border-radius:99px;font-size:0.74rem;font-weight:800;">Lần ${r.attemptNumber}</span>` : ""}</td>
           <td><strong style="color:#4361ee;">${Number(r.score10 || 0).toFixed(1)}</strong></td>
           <td>${r.correctCount}/${r.totalQuestions}</td>
           <td>${r.timeSpent || "-"}</td>
@@ -4230,9 +4276,9 @@
         alert("Chưa có dữ liệu điểm để xuất!");
         return;
       }
-      let csv = "\uFEFFSTT,Họ và tên,Lớp,Số máy,Khối,Đợt,Điểm thang 10,Số câu đúng,Tổng số câu,Thời gian,Thời điểm nộp\n";
+      let csv = "\uFEFFSTT,Họ và tên,Lớp,Số máy,Khối,Đợt,Nội dung bài,Lần làm thứ,Điểm thang 10,Số câu đúng,Tổng số câu,Thời gian,Thời điểm nộp\n";
       recs.forEach((r, idx) => {
-        csv += `${idx + 1},"${r.studentName}","${r.studentClass}","${r.pcNumber || ""}",${r.grade},"${r.periodId || "GK1"}",${r.score10},${r.correctCount},${r.totalQuestions},"${r.timeSpent || ""}","${r.timestamp || ""}"\n`;
+        csv += `${idx + 1},"${r.studentName}","${r.studentClass}","${r.pcNumber || ""}",${r.grade},"${r.periodId || "GK1"}","${r.activityTitle || r.periodId || "GK1"}",${r.attemptNumber || 1},${r.score10},${r.correctCount},${r.totalQuestions},"${r.timeSpent || ""}","${r.timestamp || ""}"\n`;
       });
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
@@ -4858,6 +4904,65 @@
     checkSavedActiveSession();
     window.addEventListener("DOMContentLoaded", checkDirectLessonLink);
     window.addEventListener("hashchange", checkDirectLessonLink);
+
+    const GS_SHEET2_SCRIPT_CODE = "/**\n * ============================================================================\n * MÃ.GS CHUẨN HÓA CHO FILE GOOGLE SHEETS \"gk1-6-10\" (UNIGO TIN HỌC)\n * ============================================================================\n * CÁCH DÁN & CẬP NHẬT TRONG CỬA SỔ APPS SCRIPT \"Điểm thi\" (1 PHÚT):\n * 1. Trong cửa sổ Apps Script \"Điểm thi\" (tệp Mã.gs), xóa toàn bộ 23 dòng cũ và dán toàn bộ mã này vào -> Nhấn Ctrl + S (Lưu).\n * 2. (Khuyên dùng) Trên thanh công cụ bên cạnh nút \"▷ Chạy\", đổi hàm từ \"doPost\" sang \"khoiTaoTrangTinhThu2\"\n *    rồi bấm \"▷ Chạy\" 1 lần -> Ngay lập tức tab thứ 2 \"OnTap_HK1\" sẽ xuất hiện cạnh \"Trang tính1\" với đủ 13 cột tiêu đề!\n * 3. Nhấn nút màu xanh \"Triển khai\" (góc trên bên phải) -> \"Quản lý các bản triển khai\"\n *    -> Bấm biểu tượng cây bút ✏️ (Chỉnh sửa) -> Ở mục \"Phiên bản\", chọn \"Phiên bản mới\" -> Bấm \"Triển khai\".\n *    (Giữ nguyên 100% đường link Webhook cũ đang dùng trên web!).\n */\n\nvar SHEET1_NAME = \"Trang tính1\";\nvar SHEET2_NAME = \"OnTap_HK1\";\n\nvar SHEET2_HEADERS = [\n  \"Thời gian nộp\",\n  \"Họ và tên học sinh\",\n  \"Lớp\",\n  \"Khối\",\n  \"Số máy\",\n  \"Nội dung bài ôn tập\",\n  \"Lần làm thứ\",\n  \"Tổng số lượt đã làm\",\n  \"Điểm số\",\n  \"Số câu đúng\",\n  \"Tổng số câu\",\n  \"Thời gian làm bài\",\n  \"Xếp loại\"\n];\n\nfunction getOrCreateSheet2(ss) {\n  var sheet2 = ss.getSheetByName(SHEET2_NAME);\n  if (!sheet2) {\n    var insertIdx = Math.min(1, ss.getSheets().length);\n    sheet2 = ss.insertSheet(SHEET2_NAME, insertIdx);\n  }\n  if (sheet2.getLastRow() === 0) {\n    sheet2.appendRow(SHEET2_HEADERS);\n    var headerRange = sheet2.getRange(1, 1, 1, SHEET2_HEADERS.length);\n    headerRange.setFontWeight(\"bold\");\n    headerRange.setBackground(\"#1d4ed8\");\n    headerRange.setFontColor(\"#ffffff\");\n    headerRange.setHorizontalAlignment(\"center\");\n    sheet2.setFrozenRows(1);\n    sheet2.setColumnWidth(1, 145);\n    sheet2.setColumnWidth(2, 185);\n    sheet2.setColumnWidth(3, 75);\n    sheet2.setColumnWidth(4, 60);\n    sheet2.setColumnWidth(5, 85);\n    sheet2.setColumnWidth(6, 230);\n    sheet2.setColumnWidth(7, 95);\n    sheet2.setColumnWidth(8, 130);\n    sheet2.setColumnWidth(9, 85);\n    sheet2.setColumnWidth(10, 95);\n    sheet2.setColumnWidth(11, 95);\n    sheet2.setColumnWidth(12, 120);\n    sheet2.setColumnWidth(13, 115);\n  }\n  return sheet2;\n}\n\nfunction normText(s) {\n  return String(s || \"\").trim().toLowerCase();\n}\n\nfunction doPost(e) {\n  var lock = LockService.getScriptLock();\n  lock.tryLock(10000);\n  try {\n    var ss = SpreadsheetApp.getActiveSpreadsheet();\n    var raw = (e && e.postData && e.postData.contents) ? e.postData.contents : \"{}\";\n    var data = JSON.parse(raw);\n\n    var machineVal = data.machineNumber !== undefined ? data.machineNumber : (data.pcNumber || \"Máy tự do\");\n    var scoreVal = data.score !== undefined ? data.score : (data.score10 !== undefined ? data.score10 : 0);\n\n    // 1. NẾU LÀ DỮ LIỆU ÔN TẬP / KIỂM TRA HỌC KÌ 1 -> GHI VÀO TRANG TÍNH THỨ 2 (\"OnTap_HK1\")\n    var isHk1 = (\n      data.targetSheet === SHEET2_NAME ||\n      data.periodId === \"CK1\" ||\n      data.periodId === \"HK1_ROBO\"\n    );\n\n    if (isHk1) {\n      var sheet2 = getOrCreateSheet2(ss);\n      var lastRow = sheet2.getLastRow();\n\n      var sName = String(data.studentName || \"Học sinh\").trim();\n      var sClass = String(data.studentClass || (\"Lớp \" + (data.grade || \"\"))).trim();\n      var actTitle = String(data.activityTitle || \"Ôn tập Cuối kì 1\").trim();\n\n      // Tự động đếm số lần làm của học sinh ngay trên Trang tính thứ 2 (chính xác kể cả khi đổi máy trong phòng Tin!)\n      var sameActivityPrev = 0;\n      var totalStudentPrev = 0;\n      if (lastRow >= 2) {\n        // Đọc cột B (Họ tên), C (Lớp), D (Khối), E (Số máy), F (Nội dung bài ôn tập) -> từ cột 2, rộng 5 cột\n        var rows = sheet2.getRange(2, 2, lastRow - 1, 5).getValues();\n        var nName = normText(sName);\n        var nClass = normText(sClass);\n        var nAct = normText(actTitle);\n        for (var i = 0; i < rows.length; i++) {\n          if (normText(rows[i][0]) === nName && normText(rows[i][1]) === nClass) {\n            totalStudentPrev++;\n            if (normText(rows[i][4]) === nAct) {\n              sameActivityPrev++;\n            }\n          }\n        }\n      }\n\n      var attemptNum = Math.max(Number(data.attemptNumber) || 1, sameActivityPrev + 1);\n      var totalAttempts = Math.max(Number(data.totalAttemptsAllModes) || 1, totalStudentPrev + 1);\n\n      sheet2.appendRow([\n        new Date(),\n        sName,\n        sClass,\n        data.grade || \"\",\n        machineVal,\n        actTitle,\n        attemptNum,\n        totalAttempts,\n        Number(scoreVal),\n        data.correctCount !== undefined ? data.correctCount : \"\",\n        data.totalQuestions !== undefined ? data.totalQuestions : \"\",\n        data.timeSpent || \"\",\n        data.rank || \"\"\n      ]);\n\n      return ContentService\n        .createTextOutput(JSON.stringify({ status: \"success\", sheet: SHEET2_NAME, attemptNumber: attemptNum }))\n        .setMimeType(ContentService.MimeType.JSON);\n    }\n\n    // 2. DỮ LIỆU CŨ (GK1): GHI VÀO ĐÚNG \"Trang tính1\" THEO Y HỆT 10 CỘT A -> J HIỆN CÓ!\n    var sheet1 = ss.getSheetByName(SHEET1_NAME) || ss.getSheets()[0];\n    sheet1.appendRow([\n      new Date(),\n      data.studentName,\n      data.studentClass,\n      data.grade,\n      machineVal,\n      scoreVal,\n      data.correctCount,\n      data.totalQuestions,\n      data.timeSpent,\n      data.rank\n    ]);\n\n    return ContentService\n      .createTextOutput(JSON.stringify({ status: \"success\", sheet: sheet1.getName() }))\n      .setMimeType(ContentService.MimeType.JSON);\n\n  } catch (err) {\n    return ContentService\n      .createTextOutput(JSON.stringify({ status: \"error\", message: err.toString() }))\n      .setMimeType(ContentService.MimeType.JSON);\n  } finally {\n    lock.releaseLock();\n  }\n}\n\n/**\n * Chọn hàm \"khoiTaoTrangTinhThu2\" trên thanh công cụ rồi bấm \"▷ Chạy\" để tạo ngay tab thứ 2 \"OnTap_HK1\"\n */\nfunction khoiTaoTrangTinhThu2() {\n  var ss = SpreadsheetApp.getActiveSpreadsheet();\n  getOrCreateSheet2(ss);\n}\n";
+
+    function openHk1RoboPortal() {
+      const params = new URLSearchParams();
+      params.set("lop", String(state.currentGrade || 6));
+      if (state.selectedClass) params.set("cls", state.selectedClass);
+      if (state.playerName) params.set("name", state.playerName);
+      if (state.selectedPc) params.set("pc", state.selectedPc);
+      window.location.href = "on-tap-tin-hoc-hk1.html?" + params.toString();
+    }
+
+    const btnOpenHk1Robo = document.getElementById("btn-open-hk1-robo");
+    if (btnOpenHk1Robo) {
+      btnOpenHk1Robo.addEventListener("click", () => {
+        sound.playClick();
+        openHk1RoboPortal();
+      });
+    }
+
+    const btnCopyGsSheet2 = document.getElementById("btn-copy-gs-sheet2");
+    if (btnCopyGsSheet2) {
+      btnCopyGsSheet2.addEventListener("click", () => {
+        navigator.clipboard.writeText(GS_SHEET2_SCRIPT_CODE).then(() => {
+          alert("Đã sao chép Mã Google Apps Script (hỗ trợ tự tạo Trang tính thứ 2 'OnTap_HK1' với 14 cột)! Thầy hãy dán vào Tiện ích mở rộng -> Apps Script trên file Google Sheets hiện tại và nhấn Triển khai -> Phiên bản mới.");
+        }).catch(() => {
+          alert("Thầy có thể mở trực tiếp tệp Google_Apps_Script_Sheet2_OnTap_HK1.gs trong thư mục GK1 để sao chép mã!");
+        });
+      });
+    }
+
+    const btnTestHk1 = document.getElementById("btn-test-webhook-hk1");
+    if (btnTestHk1) {
+      btnTestHk1.addEventListener("click", () => {
+        syncToGoogleSheets({
+          targetSheet: "OnTap_HK1",
+          sheetIndex: 2,
+          timestamp: new Date().toLocaleString("vi-VN"),
+          grade: state.currentGrade || 6,
+          studentClass: state.selectedClass || "6A1",
+          studentName: "Học sinh Kiểm thử HK1",
+          pcNumber: "Máy GV",
+          machineNumber: "Máy GV",
+          periodId: "CK1",
+          activityTitle: "Đề thi thử Cuối kì 1 (20 câu)",
+          attemptNumber: 1,
+          totalAttemptsAllModes: 1,
+          score10: 9.5,
+          score: 9.5,
+          correctCount: 19,
+          totalQuestions: 20,
+          accuracy: 95,
+          rank: "XUẤT SẮC",
+          timeSpent: "4p 12s"
+        });
+        alert("Đã gửi gói dữ liệu thử nghiệm chỉ định vào Trang tính thứ 2 (OnTap_HK1)!");
+      });
+    }
+
     setTimeout(checkDirectLessonLink, 200);
   </script>
 </body>
