@@ -1,0 +1,529 @@
+{
+  "average": 96.5,
+  "results": [
+    {
+      "file": "D:\\UNIGO\\Website_on_tap\\GK1\\index.html",
+      "filename": "index.html",
+      "total_score": 93,
+      "max_score": 100,
+      "dimensions": {
+        "D1": {
+          "earned": 20,
+          "max": 20
+        },
+        "D2": {
+          "earned": 20,
+          "max": 20
+        },
+        "D3": {
+          "earned": 20,
+          "max": 20
+        },
+        "D4": {
+          "earned": 15,
+          "max": 15
+        },
+        "D5": {
+          "earned": 8,
+          "max": 15
+        },
+        "D6": {
+          "earned": 10,
+          "max": 10
+        }
+      },
+      "metrics": {
+        "alerts": 0,
+        "confirms": 0,
+        "inline_styles": 80,
+        "100vh": 0,
+        "100dvh": 1,
+        "js_syntax_ok": true
+      },
+      "checks": [
+        {
+          "dimension": "D1",
+          "name": "Meta description SEO",
+          "passed": true,
+          "max_pts": 2,
+          "earned_pts": 2,
+          "detail": "Co <meta name='description'>"
+        },
+        {
+          "dimension": "D1",
+          "name": "SVG Favicon",
+          "passed": true,
+          "max_pts": 2,
+          "earned_pts": 2,
+          "detail": "Co favicon"
+        },
+        {
+          "dimension": "D1",
+          "name": "Skip-to-content link",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": "Co skip-link"
+        },
+        {
+          "dimension": "D1",
+          "name": "Landmark <main>",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": "Co the <main>"
+        },
+        {
+          "dimension": "D1",
+          "name": "Semantic <button> (khong dung div bam)",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": "0 div gia nut"
+        },
+        {
+          "dimension": "D1",
+          "name": "ARIA Dialog & aria-modal",
+          "passed": true,
+          "max_pts": 2,
+          "earned_pts": 2,
+          "detail": "dialog=4, aria-modal=4"
+        },
+        {
+          "dimension": "D1",
+          "name": "Visible focus ring (:focus-visible)",
+          "passed": true,
+          "max_pts": 2,
+          "earned_pts": 2,
+          "detail": ""
+        },
+        {
+          "dimension": "D1",
+          "name": "Ho tro prefers-reduced-motion",
+          "passed": true,
+          "max_pts": 2,
+          "earned_pts": 2,
+          "detail": ""
+        },
+        {
+          "dimension": "D2",
+          "name": "Loai bo bang mau tim AI mac dinh",
+          "passed": true,
+          "max_pts": 5,
+          "earned_pts": 5,
+          "detail": "Da chuyen sang UNIGO Ocean/Emerald"
+        },
+        {
+          "dimension": "D2",
+          "name": "Typography tieng Viet Be Vietnam Pro",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": ""
+        },
+        {
+          "dimension": "D2",
+          "name": "So don vi thang hang (tabular-nums)",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D2",
+          "name": "Thang z-index chuan hoa (khong 5000/9999)",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": "Thang z-index sach"
+        },
+        {
+          "dimension": "D2",
+          "name": "He thong CSS design tokens UNIGO",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": ""
+        },
+        {
+          "dimension": "D3",
+          "name": "Khong dung window.alert() gay chan",
+          "passed": true,
+          "max_pts": 5,
+          "earned_pts": 5,
+          "detail": "0 alert()"
+        },
+        {
+          "dimension": "D3",
+          "name": "Khong dung window.confirm() tho cung",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": "0 confirm()"
+        },
+        {
+          "dimension": "D3",
+          "name": "Thong bao Toast / Inline phi chan",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": ""
+        },
+        {
+          "dimension": "D3",
+          "name": "Dong bo lich thi CK1 Tuan 20",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": "Da cap nhat Tuan 11-20 & 21-28"
+        },
+        {
+          "dimension": "D3",
+          "name": "Bo loc Khoi 1 & Khoi 2 trong Bang diem GV",
+          "passed": true,
+          "max_pts": 2,
+          "earned_pts": 2,
+          "detail": ""
+        },
+        {
+          "dimension": "D3",
+          "name": "Toi uu in Bang diem A4 (@media print)",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D4",
+          "name": "On dinh khung nhin Mobile (100dvh thay 100vh)",
+          "passed": true,
+          "max_pts": 5,
+          "earned_pts": 5,
+          "detail": "100vh=0, 100dvh=1"
+        },
+        {
+          "dimension": "D4",
+          "name": "Loai bo tre cham 300ms (touch-action: manipulation)",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": ""
+        },
+        {
+          "dimension": "D4",
+          "name": "Kich thuoc vung cham toi thieu >= 44px",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D4",
+          "name": "Responsive xep chong grid Quan tri GV tren Mobile",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D5",
+          "name": "Cu phap JavaScript hop le (node --check)",
+          "passed": true,
+          "max_pts": 8,
+          "earned_pts": 8,
+          "detail": "OK"
+        },
+        {
+          "dimension": "D5",
+          "name": "Giam inline style HTML (<= 75)",
+          "passed": false,
+          "max_pts": 7,
+          "earned_pts": 0,
+          "detail": "inline style=80"
+        },
+        {
+          "dimension": "D6",
+          "name": "Giu nguyen Webhook Google Sheets",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D6",
+          "name": "Giu nguyen Roster & Khoa dong bo OnTap_HK1",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D6",
+          "name": "Bao toan QUESTION_BANK, SGK_ALIGNMENT & PIN 2026",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "file": "D:\\UNIGO\\Website_on_tap\\GK1\\on-tap-tin-hoc-hk1.html",
+      "filename": "on-tap-tin-hoc-hk1.html",
+      "total_score": 100,
+      "max_score": 100,
+      "dimensions": {
+        "D1": {
+          "earned": 20,
+          "max": 20
+        },
+        "D2": {
+          "earned": 20,
+          "max": 20
+        },
+        "D3": {
+          "earned": 20,
+          "max": 20
+        },
+        "D4": {
+          "earned": 15,
+          "max": 15
+        },
+        "D5": {
+          "earned": 15,
+          "max": 15
+        },
+        "D6": {
+          "earned": 10,
+          "max": 10
+        }
+      },
+      "metrics": {
+        "alerts": 0,
+        "confirms": 0,
+        "inline_styles": 0,
+        "100vh": 0,
+        "100dvh": 1,
+        "js_syntax_ok": true
+      },
+      "checks": [
+        {
+          "dimension": "D1",
+          "name": "Meta description SEO",
+          "passed": true,
+          "max_pts": 2,
+          "earned_pts": 2,
+          "detail": "Co <meta name='description'>"
+        },
+        {
+          "dimension": "D1",
+          "name": "SVG Favicon",
+          "passed": true,
+          "max_pts": 2,
+          "earned_pts": 2,
+          "detail": "Co favicon"
+        },
+        {
+          "dimension": "D1",
+          "name": "Skip-to-content link",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": "Co skip-link"
+        },
+        {
+          "dimension": "D1",
+          "name": "Landmark <main>",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": "Co the <main>"
+        },
+        {
+          "dimension": "D1",
+          "name": "Semantic buttons & ARIA status",
+          "passed": true,
+          "max_pts": 6,
+          "earned_pts": 6,
+          "detail": "Du button chuan + aria-live"
+        },
+        {
+          "dimension": "D1",
+          "name": "Visible focus ring (:focus-visible)",
+          "passed": true,
+          "max_pts": 2,
+          "earned_pts": 2,
+          "detail": ""
+        },
+        {
+          "dimension": "D1",
+          "name": "Ho tro prefers-reduced-motion",
+          "passed": true,
+          "max_pts": 2,
+          "earned_pts": 2,
+          "detail": ""
+        },
+        {
+          "dimension": "D2",
+          "name": "Dong bo bang mau UNIGO Ocean/Emerald",
+          "passed": true,
+          "max_pts": 5,
+          "earned_pts": 5,
+          "detail": "Dong bo token #0f3d7a / #1d4ed8"
+        },
+        {
+          "dimension": "D2",
+          "name": "Typography tieng Viet Be Vietnam Pro",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": ""
+        },
+        {
+          "dimension": "D2",
+          "name": "So don vi thang hang (tabular-nums)",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D2",
+          "name": "Thang z-index chuan hoa (khong 5000/9999)",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": "Thang z-index sach"
+        },
+        {
+          "dimension": "D2",
+          "name": "Nut chuyen Giao dien Sang / Toi",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": ""
+        },
+        {
+          "dimension": "D3",
+          "name": "Khong dung window.alert() gay chan",
+          "passed": true,
+          "max_pts": 5,
+          "earned_pts": 5,
+          "detail": "0 alert()"
+        },
+        {
+          "dimension": "D3",
+          "name": "Khong dung window.confirm() tho cung",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": "0 confirm()"
+        },
+        {
+          "dimension": "D3",
+          "name": "Thong bao Toast / Inline phi chan",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": ""
+        },
+        {
+          "dimension": "D3",
+          "name": "Dong ho dem thoi gian lam bai truc tiep",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D3",
+          "name": "Man hinh tong ket Tu luan chuyen nghiep",
+          "passed": true,
+          "max_pts": 2,
+          "earned_pts": 2,
+          "detail": ""
+        },
+        {
+          "dimension": "D3",
+          "name": "Phim tat A-D / 1-4 & Enter qua cau",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D4",
+          "name": "On dinh khung nhin Mobile (100dvh thay 100vh)",
+          "passed": true,
+          "max_pts": 5,
+          "earned_pts": 5,
+          "detail": "100vh=0, 100dvh=1"
+        },
+        {
+          "dimension": "D4",
+          "name": "Loai bo tre cham 300ms (touch-action: manipulation)",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": ""
+        },
+        {
+          "dimension": "D4",
+          "name": "Kich thuoc vung cham toi thieu >= 44px",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D4",
+          "name": "Responsive breakpoints cho Mobile",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D5",
+          "name": "Cu phap JavaScript hop le (node --check)",
+          "passed": true,
+          "max_pts": 8,
+          "earned_pts": 8,
+          "detail": "OK"
+        },
+        {
+          "dimension": "D5",
+          "name": "Giam inline style HTML (<= 10)",
+          "passed": true,
+          "max_pts": 7,
+          "earned_pts": 7,
+          "detail": "inline style=0"
+        },
+        {
+          "dimension": "D6",
+          "name": "Giu nguyen Webhook Google Sheets",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D6",
+          "name": "Giu nguyen Roster & Khoa dong bo OnTap_HK1",
+          "passed": true,
+          "max_pts": 3,
+          "earned_pts": 3,
+          "detail": ""
+        },
+        {
+          "dimension": "D6",
+          "name": "Bao toan Ngan hang 8 khoi (Lop 1-8) trong const D",
+          "passed": true,
+          "max_pts": 4,
+          "earned_pts": 4,
+          "detail": "{\"1\": {\"q\": 54, \"e\": 24}, \"2\": {\"q\": 54, \"e\": 24}, \"3\": {\"q\": 56, \"e\": 24}, \"4\": {\"q\": 56, \"e\": 24}, \"5\": {\"q\": 56, \"e\": 24}, \"6\": {\"q\": 56, \"e\": 24}, \"7\": {\"q\": 56, \"e\": 24}, \"8\": {\"q\": 56, \"e\": 24}}"
+        }
+      ]
+    }
+  ]
+}
